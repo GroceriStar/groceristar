@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server/server.js",
     "lint": "eslint .",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "watch": "nodemon server/server.js",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.9.0",
