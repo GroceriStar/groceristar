@@ -7,31 +7,45 @@
     ]
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": true
   },
   "accessToken": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
   },
   "userCredential": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
   },
   "userIdentity": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "groceryDS",
     "public": false
-  }
+  },
+
+
+  "DepartmentModel": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "GroceryModel": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "IngredientModel": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
 }
