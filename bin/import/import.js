@@ -15,7 +15,7 @@ let Groceries    = require(path.resolve(__dirname, 'grocery'));
 
 let Departments  = require(path.resolve(__dirname, 'departments'));
 
-let Recipes      = require(path.resolve(__dirname, 'recipes'));
+// let Recipes      = require(path.resolve(__dirname, 'recipes'));
 
 
 
@@ -27,7 +27,7 @@ async.parallel({
 
 		groceries   : async.apply(Groceries.createGroceries),
 
-		recipes     : async.apply(Recipes.createRecipes),
+		// recipes     : async.apply(Recipes.createRecipes),
 		
 
 	

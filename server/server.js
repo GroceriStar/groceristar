@@ -48,7 +48,8 @@ try {
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+// app.set('view engine', 'pug');
+// app.set('json spaces', 2); // format json responses for easier viewing
 
 
 // boot scripts mount components like REST API

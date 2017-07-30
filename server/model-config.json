@@ -48,4 +48,9 @@
     "dataSource": "groceryDS",
     "public": true
   },
+    "User": {
+    "dataSource": "recipeDS",
+    "public": false
+  }
+  
 }
