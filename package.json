@@ -24,7 +24,7 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
-    "passport-ldapauth": "^0.4.0",
+    "passport-ldapauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-oauth2": "^1.1.2",
     "passport-twitter": "^1.0.2",
