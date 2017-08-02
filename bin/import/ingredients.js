@@ -318,35 +318,500 @@ function getIngredients(){
     },
     ///
     {  
-        name: "Saké",
+        name:'Candy / Gum',
     },
     {  
-        name: "Saké",
+        name:'Cookies',
     },
     {  
-        name: "Saké",
+           name:'Crackers',
     },
     {  
-        name: "Saké",
+         name:'Dried fruit',
     },
 
     {  
-        name: "Saké",
+         name:'Granola bars / Mix',
     },
     {  
-        name: "Saké",
+        name:'Nuts / Seeds',
     },
     {  
-        name: "Saké",
+       name: 'Oatmeal',
     },
     {  
-        name: "Saké",
+        name:'Popcorn',
     },
     {  
-        name: "Saké",
+       name:'Potato / Corn chips',
     },
     {  
-        name: "Saké",
+         
+      name:'Pretzels'
+    },
+    ////
+    {  
+         
+      name:'Burger night',
+    },
+    {  
+         
+      name:'Chili night',
+    },
+    {  
+         
+      name:'Pizza night',
+    },
+    {  
+         
+     name:'Spaghetti night',
+    },
+    {  
+         
+      name:'Taco night',
+    },
+    {  
+     name:'Take-out deli food'
+    },
+    {  
+         
+     name:'Baby food',
+    },
+    {  
+         
+     name:'Diapers',
+    },
+    {  
+         
+        name:'Formula',
+    },
+    {  
+         
+      name:'Lotion',
+    },
+    {  
+         
+      name:'Baby wash',
+    },
+    {  
+         
+     name:'Wipes'
+    },
+    ///
+    {  
+       name:'Cat food / Treats',
+    },
+    {  
+         
+      name:'Cat litter',
+    },
+    {  
+         
+      name:'Dog food / Treats',
+    },
+    {  
+     name:'Flea treatment',
+    },
+    {  
+         
+      name:'Pet shampoo'
+    },
+//////
+    {  
+         
+     name:'Apples',
+    },
+    {  
+         
+     name:'Avocados',
+    },
+
+    {  
+     name:'Bananas',
+    },
+    {  
+         
+    name:'Berries',
+    },
+
+    {  
+         
+      name:'Cherries',
+    },
+    {  
+         
+     name:'Grapefruit',
+    },
+    {  
+     name:'Grapes',
+    },
+    {  
+      name:'Kiwis',
+    },
+    {  
+         name:'Lemons / Limes',
+    },
+
+    {  
+        name:'Melon',
+    },
+    {  
+    name:'Nectarines',
+    },
+    {  
+       name:'Oranges',
+    },
+    {  
+         
+     name:'Peaches',
+    },
+
+    {      
+      name:'Pears',
+    },
+    {  
+         
+  name:'Plums'
+    },
+    ////////
+    {  
+         
+      name:'Bagels',
+    },
+    {  
+         
+     name:'Chip dip',
+    },
+    {  
+         
+      name:'Eggs / Fake eggs',
+    },
+    {  
+         
+     name:'English muffins',
+    },
+    {  
+         
+   name:'Fruit juice',
+    },
+    {  
+        
+  name:'Hummus',
+    },
+    {  
+        name:'Ready-bake breads',
+    },
+    {  
+         name:'Tofu',
+    },
+    {  
+        
+  name:'Tortillas'
+    },
+    ///
+    {  
+     name:'Breakfasts',
+    },
+    {  
+      name:'Burritos',
+    },
+    {  
+      
+  name:'Fish sticks',
+    },
+    {  
+      name:'Fries / Tater tots',
+    },
+    {  
+      name:'Ice cream / Sorbet',
+    },
+    {  
+        name:'Juice concentrate',
+    },
+    {  
+     name:'Pizza',
+    },
+    {  
+      name:'Pizza Rolls',
+    },{  
+      name:'Popsicles',
+    },{  
+      
+  name:'TV dinners',
+    },
+    {  
+       
+  name:'Vegetables'
+    },
+    //////
+    {  
+      name:'Bouillon cubes',
+    },{  
+         
+      name:'Cereal',
+    },{  
+         
+     name:'Coffee / Filters',
+    },
+    {  
+      name:'Instant potatoes',
+    },
+    {  
+      name:'Lemon / Lime juice',
+    },
+    {  
+      name:'Mac & cheese',
+    },{  
+      name:'Olive oil',
+    },{  
+         
+      name:'Packaged meals',
+    },
+    {  
+     name:'Pancake / Waffle mix',
+    },
+    {  
+      name:'Pasta',
+    },
+    {  
+       name:'Peanut butter',
+    },{  
+      name:'Pickles',
+    },{  
+       name:'Rice',
+    },
+    {  
+       name:'Tea',
+    },
+    {  
+       name:'Vegetable oil',
+    },
+    {  
+       
+  name:'Vinegar'
+    },
+    /////
+    {  
+         
+      name:'Applesauce',
+    },{  
+      name:'Baked beans',
+    },
+    {  
+       name:'Broth',
+    },
+    {  
+       name:'Fruit',
+    },
+    {  
+        name:'Olives',
+    },{  
+      name:'Tinned meats',
+    },{  
+        name:'Tuna / Chicken',
+    },
+    {  
+      name:'Soup / Chili',
+    },
+    {  
+      name:'Tomatoes',
+    },
+    {  
+         
+      name:'Veggies'
+    },
+    ////
+    {  
+      name:'Basil',
+    },{  
+      name:'Black pepper',
+    },
+    {  
+      name:'Cilantro',
+    },
+    {  
+      
+  name:'Cinnamon',
+    },
+    {  
+         name:'Garlic',
+    },{  
+       name:'Ginger',
+    },{  
+         name:'Mint',
+    },
+    {  
+         name:'Oregano',
+    },
+    {  
+         name:'Paprika',
+    },
+    {  
+       name:'Parsley',
+    },{  
+      name:'Red pepper',
+    },{  
+      name:'Salt',
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    //////
+    //////
+    {         
+    name:'Antiperspirant / Deodorant',
+    },
+    {         
+    name:'Bath soap / Hand soap',
+    },
+    {         
+    name:'Condoms / Other b.c.',
+    },
+    {         
+    name:'Cosmetics',
+    },
+    {         
+    name:'Cotton swabs / Balls',
+    },
+    {         
+    name:'Facial cleanser',
+    },
+    {         
+    name:'Facial tissue',
+    },
+    {         
+    name:'Feminine products',
+    },
+    {         
+    name:'Floss',
+    },
+    {         
+    name:'Hair gel / Spray',
+    },
+    {         
+    name:'Lip balm',
+    },
+    {         
+    name:'Moisturizing lotion',
+    },
+    {         
+    name:'Mouthwash',
+    },
+    {         
+    name:'Razors / Shaving cream',
+    },
+    {         
+    name:'Shampoo / Conditioner',
+    },
+    {         
+    name:'Sunblock',
+    },
+    {         
+    name:'Toilet paper',
+    },
+    {         
+    nname:'Toothpaste',
+    },
+    {         
+    name:'Vitamins / Supplements'
+    },
+    ///
+    {         
+    name:'Allergy',
+    },
+    {         
+    name:'Antibiotic',
+    },
+    {         
+    name:'Antidiarrheal',
+    },
+    {         
+    name:'Aspirin',
+    },
+    {         
+    name:'Antacid',
+    },
+    {         
+    name:'Band-aids / Medical',
+    },
+    {         
+    name:'Cold / Flu / Sinus',
+    },
+    {         
+    name:'Pain reliever',
+    },
+    {         
+    name:'Prescription pick-up'
+    },
+    ////
+    {         
+    name:'Aluminum foil',
+    },
+    {         
+    name:'Napkins',
+    },
+    {         
+    name:'Non-stick spray',
+    },
+    {         
+   name:'Paper towels',
+    },
+    {         
+    name:'Plastic wrap',
+    },
+    {         
+    name:'Sandwich / Freezer bags',
+    },
+    {         
+    name:'Wax paper'
+    },
+    ///
+
+    ///
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
+    },
+    {         
+    name:'Vanilla extract'
     },
 
 
