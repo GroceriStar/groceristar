@@ -141,7 +141,6 @@ router.get('/auth/logout', function(req, res, next) {
 
 
 
-  });
 
  
 

@@ -36,21 +36,18 @@
   },
 
 
-  "DepartmentModel": {
+  "Department": {
     "dataSource": "groceryDS",
     "public": true
   },
-  "GroceryModel": {
+  "Grocery": {
     "dataSource": "groceryDS",
     "public": true
   },
-  "IngredientModel": {
+  "Ingredient": {
     "dataSource": "groceryDS",
     "public": true
-  },
-    "User": {
-    "dataSource": "groceryDS",
-    "public": false
   }
+
   
 }

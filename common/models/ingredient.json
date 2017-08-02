@@ -22,7 +22,7 @@
     "updated_at": {
       "type": "date",
       "required": true
-    },
+    }
   },
   "validations": [],
   "relations": {

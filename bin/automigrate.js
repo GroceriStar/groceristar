@@ -3,10 +3,12 @@
 var path     = require('path');
 
 let app      = require(path.resolve(__dirname, '../server/server'));
-var database = app.datasources.recipeDS;
+var database = app.datasources.groceryDS;
+
 
 var lbTables = [
-	'User', 'accessToken', 'ACL', 'RoleMapping',
+	// 'User', 
+	'accessToken', 'ACL', 'RoleMapping',
 	'Role', 
 	
 	// custom tables
