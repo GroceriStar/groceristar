@@ -6,44 +6,350 @@ var relation    = 'ingredients';
 function getIngredients(){
 
 	var ingredients = [
-	{ 
-		name: "black pepper",
-
-		type: "simple",
-		units: "1 teaspoon",
-		done: "0",
-		delete: "0", 
-
-
-	},
-	{ 
-      name: "extra-virgin olive oil",
-
-      type: "complex",
-      units: "17 tablespoons + 0.25 cup",
-      done: "0",
-      delete: "0", 
-    
+  	{ 
+  		name: "Asparagus",
   	},
   	{ 
-      
-      name: "kosher salt",
+        name: "Broccoli",
+    },
+    { 
+        name: "Carrots",
+  	},
+  	{  
+        name: "Cauliflower",
+  	},
+    {  
+        name: "Celery",
+    },
+    {  
+        name: "Corn",
+    },
+    {  
+        name: "Cucumbers",
+    },
+    {  
+        name: "Lettuce / Greens",
+    },
+    {  
+        name: "Mushrooms",
+    },
+    {  
+        name: "Onions",
+    },
+    {  
+        name: "Peppers",
+    },
+    {  
+        name: "Potatoes",
+    },
+    {  
+        name: "Spinach",
+    },
+    {  
+        name: "Squash",
+    },
+    {  
+        name: "Zucchini",
+    },
+    {  
+        name: "Tomatoes*",
+    },
 
-      type: "simple",
-      units: "1 teaspoon",
-      done: "0",
-      delete: "0", 
-	},
-	{ 
-      
-      name: "kosher salt and freshly ground black",
+    /////
 
-      type: "simple",
-      units: "5 teaspoons",
-      done: "0",
-      delete: "0", 
 
-	}
+    {  
+        name: "BBQ sauce",
+    },
+    {  
+        name: "Gravy",
+    },
+    {  
+        name: "Honey",
+    },
+    {  
+        name: "Hot sauce",
+    },
+    {  
+        name: "Jam / Jelly / Preserves",
+    },
+    {  
+        name: "Ketchup / Mustard",
+    },
+    {  
+        name: "Pasta sauce",
+    },
+    {  
+        name: "Relish",
+    },
+    {  
+        name: "Salad dressin",
+    },
+    {  
+        name: "Salsa",
+    },
+    {  
+        name: "Soy sauce",
+    },
+    {  
+        name: "Steak sauce",
+    },
+    {  
+        name: "Syrup",
+    },
+    {  
+        name: "Worcestershire sauce",
+    },
+
+    //////
+    {  
+        name: "Butter / Margarine",
+    },
+    {  
+        name: "Cottage cheese",
+    },
+    {  
+        name: "Half & half",
+    },
+    {  
+        name: "Milk",
+    },
+    {  
+        name: "Sour cream",
+    },
+
+    {  
+        name: "Whipped cream",
+    },
+    {  
+        name: "Yogurt",
+    },
+
+    ////
+    {  
+        name: "Bleu cheese",
+    },
+    {  
+        name: "Cheddar",
+    },
+    {  
+        name: "Cottage cheese",
+    },
+    {  
+        name: "Cream cheese",
+    },
+    {  
+        name: "Feta",
+    },
+    {  
+        name: "Goat cheese",
+    },
+    {  
+        name: "Mozzarella",
+    },
+    {  
+        name: "Parmesan",
+    },
+    {  
+        name: "Provolone",
+    },
+    {  
+        name: "Ricotta",
+    },
+    {  
+        name: "Sandwich slices",
+    },
+    {  
+        name: "Swiss",
+    },
+
+    ////
+    {  
+        name: "Bacon / Sausage",
+    },
+    {  
+        name: "Beef",
+    },
+    {  
+        name: "Chicken",
+    },
+    {  
+        name: "Ground beef / Turkey",
+    },
+    {  
+        name: "Ham / Pork",
+    },
+    {  
+        name: "Hot dogs",
+    },
+    {  
+        name: "Lunchmeat",
+    },
+
+    {  
+        name: "Turkey",
+    },
+
+    /////
+    {  
+        name: "Catfish",
+    },
+    {  
+        name: "Crab",
+    },
+    {  
+        name: "Lobster",
+    },
+    {  
+        name: "Mussels",
+    },
+    {  
+        name: "Oysters",
+    },
+    {  
+        name: "Salmon",
+    },
+    {  
+        name: "Shrimp",
+    },
+    {  
+        name: "Tilapia",
+    },
+    {  
+        name: "Tuna",
+    },
+    ///
+    {  
+        name: "Beer",
+    },
+    {  
+        name: "Club soda / Tonic",
+    },
+    {  
+        name: "Champagne",
+    },
+    {  
+        name: "Gin",
+    },
+    {  
+        name: "Juice",
+    },
+    {  
+        name: "Mixers",
+    },
+    {  
+        name: "Red wine / White wine",
+    },
+    {  
+        name: "Rum",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Soda pop",
+    },
+    {  
+        name: "Sports drink",
+    },
+    {  
+        name: "Whiskey",
+    },
+    {  
+        name: "Vodka",
+    },
+    ///
+    {  
+        name: "Bagels / Croissants",
+    },
+    {  
+        name: "Buns / Rolls",
+    },
+    {  
+        name: "Cake / Cookies",
+    },
+    {  
+        name: "Donuts / Pastries",
+    },
+    {  
+        name: "Fresh bread",
+    },
+    {  
+        name: "Pie! Pie! Pie!",
+    },
+    {  
+        name: "Pita bread",
+    },
+    {  
+        name: "Sliced bread",
+    },
+    ////
+    {  
+        name:'Baking powder / Soda',
+    },
+    {  
+        name:'Bread crumbs',
+    },
+    {  
+        name:'Cake / Brownie mix',
+    },
+    {  
+        name:'Cake icing / Decorations',
+  
+    },
+    {  
+        name:'Chocolate chips / Cocoa',
+  
+    },
+    {  
+        name:'Flour',
+    },
+    {  
+        name:'Shortening',
+    },
+    {  
+        name:'Sugar',
+    },
+    {  
+       name:'Sugar substitute',
+    },
+    {  
+        name:'Yeast'
+    },
+    ///
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+    {  
+        name: "Saké",
+    },
+
+
 	];
 
 
