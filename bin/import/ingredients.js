@@ -769,51 +769,91 @@ function getIngredients(){
 
     ///
     {         
-    name:'Vanilla extract'
+    name:'Air freshener',
     },
     {         
-    name:'Vanilla extract'
+    name:'Bathroom cleaner',
     },
     {         
-    name:'Vanilla extract'
+    name:'Bleach / Detergent',
     },
     {         
-    name:'Vanilla extract'
+    name:'Dish / Dishwasher soap',
     },
     {         
-    name:'Vanilla extract'
+    name:'Garbage bags',
     },
     {         
-    name:'Vanilla extract'
+    name:'Glass cleaner',
     },
     {         
-    name:'Vanilla extract'
+    name:'Mop head / Vacuum bags',
     },
     {         
-    name:'Vanilla extract'
+    name:'Sponges / Scrubbers'
+    },
+    ////
+    {         
+    name:'CDRs / DVDRs',
     },
     {         
-    name:'Vanilla extract'
+    name:'Notepad / Envelopes',
     },
     {         
-    name:'Vanilla extract'
+    name:'Glue / Tape',
     },
     {         
-    name:'Vanilla extract'
+    name:'Printer paper',
     },
     {         
-    name:'Vanilla extract'
+    name:'Pens / Pencils',
     },
     {         
-    name:'Vanilla extract'
+    name:'Postage stamps'
+    },
+    ///
+    {         
+    name:'Arsenic',
     },
     {         
-    name:'Vanilla extract'
+    name:'Asbestos',
     },
     {         
-    name:'Vanilla extract'
+    name:'Cigarettes',
     },
+    {         
+    name:'Radionuclides',
+    },
+    {         
+    name:'Vinyl chloride',
+    },
+    ///
+    {         
+    name:'Batteries',
+  
+    },
+    {         
+    name:'Charcoal / Propane',
+    },
+    {         
+    name:'Flowers / Greeting card',
+    },
+    {         
+    name:'Insect repellent',
+    },
+    {         
+    name:'Light bulbs',
+    },
+    {         
+    name:'Newspaper / Magazine',
+    },
+    {         
+    name:'Random impulse buy',
+    },
+    ///
 
+    ///
+    
 
 	];
 
