@@ -2,6 +2,7 @@
   "name": "loopback-example-passport",
   "version": "2.0.0",
   "main": "server/server.js",
+  "engines": { "node" : "8.1.4" },
   "scripts": {
     "start": "node server/server.js",
     "lint": "eslint .",
