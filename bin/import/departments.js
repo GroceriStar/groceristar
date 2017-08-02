@@ -12,16 +12,12 @@ function getDepartments(){
 		{
 	
 		 name: "BAKERY/BREAD",
-		  items: [
-		
-		  ]
+		 
 		},
 		{
 		
 			name: "BAKING",
-			items: [
 			
-			]
 		}
 	];
 

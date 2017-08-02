@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "import": "node bin/import/import.js",
   },
   "dependencies": {
     "body-parser": "^1.9.0",

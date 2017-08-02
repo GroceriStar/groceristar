@@ -10,8 +10,8 @@ var lbTables = [
 	'Role', 
 	
 	// custom tables
-	'user', 'userCredential', 'userIdentity', 'IngredientModel',
-	'GroceryModel', 'DepartmentModel', 
+	'user', 'userCredential', 'userIdentity', 
+	'Ingredient', 'Grocery', 'Department', 
 
 ];
 
