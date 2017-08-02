@@ -49,7 +49,7 @@
     "public": true
   },
     "User": {
-    "dataSource": "recipeDS",
+    "dataSource": "groceryDS",
     "public": false
   }
   

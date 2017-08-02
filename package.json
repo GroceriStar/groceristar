@@ -2,14 +2,16 @@
   "name": "loopback-example-passport",
   "version": "2.0.0",
   "main": "server/server.js",
-  "engines": { "node" : "8.1.4" },
+  "engines": {
+    "node": "8.1.4"
+  },
   "scripts": {
     "start": "node server/server.js",
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
     "test": "mocha",
-    "import": "node bin/import/import.js",
+    "import": "node bin/import/import.js"
   },
   "dependencies": {
     "body-parser": "^1.9.0",
@@ -22,7 +24,9 @@
     "jade": "^1.7.0",
     "loopback": "^3.0.0",
     "loopback-boot": "^2.0.0",
+    "loopback-component-explorer": "^4.2.0",
     "loopback-component-passport": "^3.4.0",
+    "loopback-connector-mongodb": "^3.2.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
@@ -31,8 +35,7 @@
     "passport-oauth2": "^1.1.2",
     "passport-twitter": "^1.0.2",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^2.2.0",
-    "loopback-component-explorer": "^4.2.0"
+    "strong-error-handler": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
