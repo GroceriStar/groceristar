@@ -11,6 +11,9 @@
       "type": "string",
       "required": true
     },
+    "desc": {
+      "type": "string"
+    },
     "created_at": {
       "type": "date",
       "required": true
