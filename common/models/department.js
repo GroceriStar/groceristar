@@ -62,12 +62,13 @@ module.exports = function(Department) {
   // department/:id/ingredients
   Department.IngredientsByDepartment = function(departmentId, cb){
 
-    // var IngredientModel = DepartmentModel.app.models.IngredientModel;
+    var Ingredient = Department.app.models.Ingredient;
 
     // next version
-    IngredientModel.find({
+    Ingredient.find({
         where:{
-          deaprtmentId: { inq:departmentId } //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+          departmentId: departmentId //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+          // departmentId: { inq:departmentId } //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
         },
         fields: [
           // 'img', 'url',
@@ -77,12 +78,12 @@ module.exports = function(Department) {
 
 
 
-    Department.findById(departmentId, {
-        fields: 'items'
-      },function(err, result){
-        cb(null, result.items);
+    // Department.findById(departmentId, {
+    //     fields: 'items'
+    //   },function(err, result){
+    //     cb(null, result.items);
 
-      });
+    //   });
     
       
 
@@ -103,7 +104,7 @@ module.exports = function(Department) {
       type: 'array'
     },
     http: {
-      path: '/:id/ingredients',
+      path: '/ingredients/list',
       verb: 'get'
     }
   });
