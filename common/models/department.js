@@ -2,7 +2,8 @@
 
 module.exports = function(Department) {
 	Department.validatesPresenceOf(
-    'name', 'items'
+    'name', 
+    // 'items'
   );
 
 	Department.observe('update', function(ctx, next){
