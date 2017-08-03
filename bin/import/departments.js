@@ -190,7 +190,7 @@ function attachDepartmentsToGroceries(departments, groceries){
 		grocery.updateAttribute(relation2, arrayWithIds);
 		
 	});
-	// console.log(groceries);
+	
 };
 
 module.exports.createDepartments = createDepartments;

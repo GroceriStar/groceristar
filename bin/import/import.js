@@ -39,10 +39,10 @@ async.parallel({
 		// console.log(results.departments[0]);
 		// console.log(results.departments[0].id);
 		// console.log(results.groceries);
-		// var Ingredients  = require(path.resolve(__dirname, 'ingredients'))(departments);
-		var ingredients = Ingredients.createIngredients(results.departments);
 
-		console.log(ingredients);
+		Ingredients.createIngredients(results.departments);
+
+		
 
 
 		// Departments.attachDepartmentsToIngredients(
