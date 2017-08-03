@@ -329,6 +329,7 @@ function getIngredients(departments){
     {  
         name: "Vodka",departmentId: departments[6].id
     },
+
     ///
     {  
         name: "Bagels / Croissants",departmentId: departments[7].id
@@ -354,6 +355,7 @@ function getIngredients(departments){
     {  
         name: "Sliced bread",departmentId: departments[7].id
     },
+
     ////
     {  
         name:'Baking powder / Soda',departmentId: departments[8].id
@@ -469,6 +471,7 @@ function getIngredients(departments){
          
      name:'Wipes',departmentId: departments[11].id
     },
+
     ///
     {  
        name:'Cat food / Treats',departmentId: departments[12].id
@@ -548,380 +551,389 @@ function getIngredients(departments){
     ////////
     {  
          
-      name:'Bagels',departmentId: departments[].id
+      name:'Bagels',departmentId: departments[14].id
     },
     {  
          
-     name:'Chip dip',departmentId: departments[].id
+     name:'Chip dip',departmentId: departments[14].id
     },
     {  
          
-      name:'Eggs / Fake eggs',departmentId: departments[].id
+      name:'Eggs / Fake eggs',departmentId: departments[14].id
     },
     {  
          
-     name:'English muffins',departmentId: departments[].id
+     name:'English muffins',departmentId: departments[14].id
     },
     {  
          
-   name:'Fruit juice',departmentId: departments[].id
+   name:'Fruit juice',departmentId: departments[14].id
     },
     {  
         
-  name:'Hummus',departmentId: departments[].id
+  name:'Hummus',departmentId: departments[14].id
     },
     {  
-        name:'Ready-bake breads',departmentId: departments[].id
+        name:'Ready-bake breads',departmentId: departments[14].id
     },
     {  
-         name:'Tofu',departmentId: departments[].id
+         name:'Tofu',departmentId: departments[14].id
     },
     {  
         
-  name:'Tortillas',departmentId: departments[].id
+  name:'Tortillas',departmentId: departments[14].id
     },
+
     ///
     {  
-     name:'Breakfasts',departmentId: departments[].id
+     name:'Breakfasts',departmentId: departments[15].id
     },
     {  
-      name:'Burritos',departmentId: departments[].id
+      name:'Burritos',departmentId: departments[15].id
     },
     {  
       
-  name:'Fish sticks',departmentId: departments[].id
+  name:'Fish sticks',departmentId: departments[15].id
     },
     {  
-      name:'Fries / Tater tots',departmentId: departments[].id
+      name:'Fries / Tater tots',departmentId: departments[15].id
     },
     {  
-      name:'Ice cream / Sorbet',departmentId: departments[].id
+      name:'Ice cream / Sorbet',departmentId: departments[15].id
     },
     {  
-        name:'Juice concentrate',departmentId: departments[].id
+        name:'Juice concentrate',departmentId: departments[15].id
     },
     {  
-     name:'Pizza',departmentId: departments[].id
+     name:'Pizza',departmentId: departments[15].id
     },
     {  
-      name:'Pizza Rolls',departmentId: departments[].id
+      name:'Pizza Rolls',departmentId: departments[15].id
     },{  
-      name:'Popsicles',departmentId: departments[].id
+      name:'Popsicles',departmentId: departments[15].id
     },{  
       
-  name:'TV dinners',departmentId: departments[].id
+  name:'TV dinners',departmentId: departments[15].id
     },
     {  
        
-  name:'Vegetables',departmentId: departments[].id
+  name:'Vegetables',departmentId: departments[15].id
     },
     //////
     {  
-      name:'Bouillon cubes',departmentId: departments[].id
+      name:'Bouillon cubes',departmentId: departments[16].id
     },{  
          
-      name:'Cereal',departmentId: departments[].id
+      name:'Cereal',departmentId: departments[16].id
     },{  
          
-     name:'Coffee / Filters',departmentId: departments[].id
+     name:'Coffee / Filters',departmentId: departments[16].id
     },
     {  
-      name:'Instant potatoes',departmentId: departments[].id
+      name:'Instant potatoes',departmentId: departments[16].id
     },
     {  
-      name:'Lemon / Lime juice',departmentId: departments[].id
+      name:'Lemon / Lime juice',departmentId: departments[16].id
     },
     {  
-      name:'Mac & cheese',departmentId: departments[].id
+      name:'Mac & cheese',departmentId: departments[16].id
     },{  
-      name:'Olive oil',departmentId: departments[].id
+      name:'Olive oil',departmentId: departments[16].id
     },{  
          
-      name:'Packaged meals',departmentId: departments[].id
+      name:'Packaged meals',departmentId: departments[16].id
     },
     {  
-     name:'Pancake / Waffle mix',departmentId: departments[].id
+     name:'Pancake / Waffle mix',departmentId: departments[16].id
     },
     {  
-      name:'Pasta',departmentId: departments[].id
+      name:'Pasta',departmentId: departments[16].id
     },
     {  
-       name:'Peanut butter',departmentId: departments[].id
+       name:'Peanut butter',departmentId: departments[16].id
     },{  
-      name:'Pickles',departmentId: departments[].id
+      name:'Pickles',departmentId: departments[16].id
     },{  
-       name:'Rice',departmentId: departments[].id
+       name:'Rice',departmentId: departments[16].id
     },
     {  
-       name:'Tea',departmentId: departments[].id
+       name:'Tea',departmentId: departments[16].id
     },
     {  
-       name:'Vegetable oil',departmentId: departments[].id
+       name:'Vegetable oil',departmentId: departments[16].id
     },
     {  
        
-  name:'Vinegar',departmentId: departments[].id
+  name:'Vinegar',departmentId: departments[16].id
     },
     /////
     {  
          
-      name:'Applesauce',departmentId: departments[].id
+      name:'Applesauce',departmentId: departments[17].id
     },{  
-      name:'Baked beans',departmentId: departments[].id
+      name:'Baked beans',departmentId: departments[17].id
     },
     {  
-       name:'Broth',departmentId: departments[].id
+       name:'Broth',departmentId: departments[17].id
     },
     {  
-       name:'Fruit',departmentId: departments[].id
+       name:'Fruit',departmentId: departments[17].id
     },
     {  
-        name:'Olives',departmentId: departments[].id
+        name:'Olives',departmentId: departments[17].id
     },{  
-      name:'Tinned meats',departmentId: departments[].id
+      name:'Tinned meats',departmentId: departments[17].id
     },{  
-        name:'Tuna / Chicken',departmentId: departments[].id
+        name:'Tuna / Chicken',departmentId: departments[17].id
     },
     {  
-      name:'Soup / Chili',departmentId: departments[].id
+      name:'Soup / Chili',departmentId: departments[17].id
     },
     {  
-      name:'Tomatoes',departmentId: departments[].id
+      name:'Tomatoes',departmentId: departments[17].id
     },
     {  
          
-      name:'Veggies',departmentId: departments[].id
+      name:'Veggies',departmentId: departments[17].id
     },
     ////
     {  
-      name:'Basil',departmentId: departments[].id
+      name:'Basil',departmentId: departments[18].id
     },{  
-      name:'Black pepper',departmentId: departments[].id
+      name:'Black pepper',departmentId: departments[18].id
     },
     {  
-      name:'Cilantro',departmentId: departments[].id
+      name:'Cilantro',departmentId: departments[18].id
     },
     {  
       
-  name:'Cinnamon',departmentId: departments[].id
+  name:'Cinnamon',departmentId: departments[18].id
     },
     {  
-         name:'Garlic',departmentId: departments[].id
+         name:'Garlic',departmentId: departments[18].id
     },{  
-       name:'Ginger',departmentId: departments[].id
+       name:'Ginger',departmentId: departments[18].id
     },{  
-         name:'Mint',departmentId: departments[].id
+         name:'Mint',departmentId: departments[18].id
     },
     {  
-         name:'Oregano',departmentId: departments[].id
+         name:'Oregano',departmentId: departments[18].id
     },
     {  
-         name:'Paprika',departmentId: departments[].id
+         name:'Paprika',departmentId: departments[18].id
     },
     {  
-       name:'Parsley',departmentId: departments[].id
+       name:'Parsley',departmentId: departments[18].id
     },{  
-      name:'Red pepper',departmentId: departments[].id
+      name:'Red pepper',departmentId: departments[18].id
     },{  
-      name:'Salt',departmentId: departments[].id
+      name:'Salt',departmentId: departments[18].id
     },
     {         
-    name:'Vanilla extract',departmentId: departments[].id
+    name:'Vanilla extract',departmentId: departments[18].id
     },
     //////
     //////
     {         
-    name:'Antiperspirant / Deodorant',departmentId: departments[].id
+    name:'Antiperspirant / Deodorant',
+    departmentId: departments[19].id
     },
     {         
-    name:'Bath soap / Hand soap',departmentId: departments[].id
+    name:'Bath soap / Hand soap',departmentId: departments[19].id
     },
     {         
-    name:'Condoms / Other b.c.',departmentId: departments[].id
+    name:'Condoms / Other b.c.',departmentId: departments[19].id
     },
     {         
-    name:'Cosmetics',departmentId: departments[].id
+    name:'Cosmetics',departmentId: departments[19].id
     },
     {         
-    name:'Cotton swabs / Balls',departmentId: departments[].id
+    name:'Cotton swabs / Balls',departmentId: departments[19].id
     },
     {         
-    name:'Facial cleanser',departmentId: departments[].id
+    name:'Facial cleanser',departmentId: departments[19].id
     },
     {         
-    name:'Facial tissue',departmentId: departments[].id
+    name:'Facial tissue',departmentId: departments[19].id
     },
     {         
-    name:'Feminine products',departmentId: departments[].id
+    name:'Feminine products',departmentId: departments[19].id
     },
     {         
-    name:'Floss',departmentId: departments[].id
+    name:'Floss',departmentId: departments[19].id
     },
     {         
-    name:'Hair gel / Spray',departmentId: departments[].id
+    name:'Hair gel / Spray',departmentId: departments[19].id
     },
     {         
-    name:'Lip balm',departmentId: departments[].id
+    name:'Lip balm',departmentId: departments[19].id
     },
     {         
-    name:'Moisturizing lotion',departmentId: departments[].id
+    name:'Moisturizing lotion',departmentId: departments[19].id
     },
     {         
-    name:'Mouthwash',departmentId: departments[].id
+    name:'Mouthwash',departmentId: departments[19].id
     },
     {         
-    name:'Razors / Shaving cream',departmentId: departments[].id
+    name:'Razors / Shaving cream',departmentId: departments[19].id
     },
     {         
-    name:'Shampoo / Conditioner',departmentId: departments[].id
+    name:'Shampoo / Conditioner',departmentId: departments[19].id
     },
     {         
-    name:'Sunblock',departmentId: departments[].id
+    name:'Sunblock',departmentId: departments[19].id
     },
     {         
-    name:'Toilet paper',departmentId: departments[].id
+    name:'Toilet paper',departmentId: departments[19].id
     },
     {         
-    nname:'Toothpaste',departmentId: departments[].id
+    nname:'Toothpaste',departmentId: departments[19].id
     },
     {         
-    name:'Vitamins / Supplements',departmentId: departments[].id
+    name:'Vitamins / Supplements',departmentId: departments[19].id
     },
     ///
     {         
-    name:'Allergy',departmentId: departments[].id
+    name:'Allergy',departmentId: departments[20].id
     },
     {         
-    name:'Antibiotic',departmentId: departments[].id
+    name:'Antibiotic',departmentId: departments[20].id
     },
     {         
-    name:'Antidiarrheal',departmentId: departments[].id
+    name:'Antidiarrheal',departmentId: departments[20].id
     },
     {         
-    name:'Aspirin',departmentId: departments[].id
+    name:'Aspirin',departmentId: departments[20].id
     },
     {         
-    name:'Antacid',departmentId: departments[].id
+    name:'Antacid',departmentId: departments[20].id
     },
     {         
-    name:'Band-aids / Medical',departmentId: departments[].id
+    name:'Band-aids / Medical',departmentId: departments[20].id
     },
     {         
-    name:'Cold / Flu / Sinus',departmentId: departments[].id
+    name:'Cold / Flu / Sinus',departmentId: departments[20].id
     },
     {         
-    name:'Pain reliever',departmentId: departments[].id
+    name:'Pain reliever',departmentId: departments[20].id
     },
     {         
-    name:'Prescription pick-up',departmentId: departments[].id
+    name:'Prescription pick-up',departmentId: departments[20].id
     },
     ////
     {         
-    name:'Aluminum foil',departmentId: departments[].id
+    name:'Aluminum foil',departmentId: departments[21].id
     },
     {         
-    name:'Napkins',departmentId: departments[].id
+    name:'Napkins',departmentId: departments[21].id
     },
     {         
-    name:'Non-stick spray',departmentId: departments[].id
+    name:'Non-stick spray',departmentId: departments[21].id
     },
     {         
-   name:'Paper towels',departmentId: departments[].id
+   name:'Paper towels',departmentId: departments[21].id
     },
     {         
-    name:'Plastic wrap',departmentId: departments[].id
+    name:'Plastic wrap',departmentId: departments[21].id
     },
     {         
-    name:'Sandwich / Freezer bags',departmentId: departments[].id
+    name:'Sandwich / Freezer bags',departmentId: departments[21].id
     },
     {         
-    name:'Wax paper',departmentId: departments[].id
+    name:'Wax paper',departmentId: departments[21].id
     },
     ///
 
+
+
+
     ///
     {         
-    name:'Air freshener',departmentId: departments[].id
+    name:'Air freshener',departmentId: departments[23].id
     },
     {         
-    name:'Bathroom cleaner',departmentId: departments[].id
+    name:'Bathroom cleaner',departmentId: departments[23].id
     },
     {         
-    name:'Bleach / Detergent',departmentId: departments[].id
+    name:'Bleach / Detergent',departmentId: departments[23].id
     },
     {         
-    name:'Dish / Dishwasher soap',departmentId: departments[].id
+    name:'Dish / Dishwasher soap',departmentId: departments[23].id
     },
     {         
-    name:'Garbage bags',departmentId: departments[].id
+    name:'Garbage bags',departmentId: departments[23].id
     },
     {         
-    name:'Glass cleaner',departmentId: departments[].id
+    name:'Glass cleaner',departmentId: departments[23].id
     },
     {         
-    name:'Mop head / Vacuum bags',departmentId: departments[].id
+    name:'Mop head / Vacuum bags',departmentId: departments[23].id
     },
     {         
-    name:'Sponges / Scrubbers',departmentId: departments[].id
+    name:'Sponges / Scrubbers',departmentId: departments[23].id
     },
     ////
     {         
-    name:'CDRs / DVDRs',departmentId: departments[].id
+    name:'CDRs / DVDRs',departmentId: departments[24].id
     },
     {         
-    name:'Notepad / Envelopes',departmentId: departments[].id
+    name:'Notepad / Envelopes',departmentId: departments[24].id
     },
     {         
-    name:'Glue / Tape',departmentId: departments[].id
+    name:'Glue / Tape',departmentId: departments[24].id
     },
     {         
-    name:'Printer paper',departmentId: departments[].id
+    name:'Printer paper',departmentId: departments[24].id
     },
     {         
-    name:'Pens / Pencils',departmentId: departments[].id
+    name:'Pens / Pencils',departmentId: departments[24].id
     },
     {         
-    name:'Postage stamps',departmentId: departments[].id
-    },
-    ///
-    {         
-    name:'Arsenic',departmentId: departments[].id
-    },
-    {         
-    name:'Asbestos',departmentId: departments[].id
-    },
-    {         
-    name:'Cigarettes',departmentId: departments[].id
-    },
-    {         
-    name:'Radionuclides',departmentId: departments[].id
-    },
-    {         
-    name:'Vinyl chloride',departmentId: departments[].id
+    name:'Postage stamps',departmentId: departments[24].id
     },
     ///
     {         
-    name:'Batteries',departmentId: departments[].id
+    name:'Arsenic',departmentId: departments[25].id
+    },
+    {         
+    name:'Asbestos',departmentId: departments[25].id
+    },
+    {         
+    name:'Cigarettes',departmentId: departments[25].id
+    },
+    {         
+    name:'Radionuclides',departmentId: departments[25].id
+    },
+    {         
+    name:'Vinyl chloride',departmentId: departments[25].id
+    },
+    ///
+    {         
+    name:'Automotive',departmentId: departments[26].id
   
     },
     {         
-    name:'Charcoal / Propane',departmentId: departments[].id
+    name:'Batteries',departmentId: departments[26].id
+  
     },
     {         
-    name:'Flowers / Greeting card',departmentId: departments[].id
+    name:'Charcoal / Propane',departmentId: departments[26].id
     },
     {         
-    name:'Insect repellent',departmentId: departments[].id
+    name:'Flowers / Greeting card',departmentId: departments[26].id
     },
     {         
-    name:'Light bulbs',departmentId: departments[].id
+    name:'Insect repellent',departmentId: departments[26].id
     },
     {         
-    name:'Newspaper / Magazine',departmentId: departments[].id
+    name:'Light bulbs',departmentId: departments[26].id
     },
     {         
-    name:'Random impulse buy',departmentId: departments[].id
+    name:'Newspaper / Magazine',departmentId: departments[26].id
     },
+    {         
+    name:'Random impulse buy',departmentId: departments[26].id
+    }
     ///
 
     ///
@@ -987,5 +999,13 @@ function createIngredients(departments, cb){
   });
 };
 
-module.exports.attachIngredientsToRecipes = attachIngredientsToRecipes;
+// module.exports = function (departments, cb){
+//   database.automigrate('Ingredient', function(err){
+//     if (err) return cb(err);
+
+//     Ingredient.create(getIngredients( departments ), cb);
+//   });
+// };
+
+// module.exports.attachIngredientsToRecipes = attachIngredientsToRecipes;
 module.exports.createIngredients = createIngredients;

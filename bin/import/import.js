@@ -4,28 +4,27 @@
 var path            = require('path');
 var async           = require('async');
 
-
-
-
-
-let server          = require(path.resolve(__dirname, '../../server/server'));
-
-// var database        = server.datasources.groceryDS;
+// let server          = require(path.resolve(__dirname, '../../server/server'));
 
 
 // //include middleware
-let Ingredients  = require(path.resolve(__dirname, 'ingredients'));
+// let Ingredients  = require(path.resolve(__dirname, 'ingredients'));
 
 let Groceries    = require(path.resolve(__dirname, 'grocery'));
 
 let Departments  = require(path.resolve(__dirname, 'departments'));
 
 
+
+async.series()
+
+
 async.parallel({
 	
 		
-		// ingredients : async.apply(Ingredients.createIngredients),
+		
 		departments : async.apply(Departments.createDepartments),
+		// ingredients : async.apply(),
 
 		// groceries   : async.apply(Groceries.createGroceries),
 
@@ -37,12 +36,13 @@ async.parallel({
 		if( err ) throw err; 
 
 		// console.log(results.ingredients);
-		console.log(results.departments[0]);
-		console.log(results.departments[0].id);
+		// console.log(results.departments[0]);
+		// console.log(results.departments[0].id);
 		// console.log(results.groceries);
+		var Ingredients  = require(path.resolve(__dirname, 'ingredients'))(departments);
+		// var ingredients = Ingredients.createIngredients(departments);
 
-
-		
+		console.log(Ingredients);
 
 
 		// Departments.attachDepartmentsToIngredients(
@@ -52,7 +52,7 @@ async.parallel({
 		//:todo remove this function, when departments will work 
 		// Departments.attachDepartmentsToGroceries(
 		// 	results.departments, results.groceries
-		// 	);
+		// );
 
 
 		// Ingredients.attachIngredientsToRecipes(

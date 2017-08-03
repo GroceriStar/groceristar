@@ -184,5 +184,5 @@ function attachDepartmentsToGroceries(departments, groceries){
 };
 
 module.exports.createDepartments = createDepartments;
-module.exports.attachDepartmentsToIngredients = attachDepartmentsToIngredients;
+// module.exports.attachDepartmentsToIngredients = attachDepartmentsToIngredients;
 module.exports.attachDepartmentsToGroceries = attachDepartmentsToGroceries
