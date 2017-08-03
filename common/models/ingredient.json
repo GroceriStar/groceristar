@@ -10,6 +10,18 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "created_at": {
+      "type": "date",
+      "required": true
+    },
+    "updated_at": {
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],

@@ -27,66 +27,26 @@ module.exports = function(Department) {
 
 
 
-  Department.fetch = function(){
-  	var Grocery = Department.app.models.Grocery;
-  	var Ingredient = Department.app.models.Ingredient;
-
-  	Department.find({})
-  	.then(function(departments){
-  		departments.forEach(function(department){
-  			console.log(department.ingredients);
-
-  			var ingredientsId = department.ingredients;
-  			Ingredient.find({
-                where:{
-                    id: recipe.ingredients
-                }       
-            })
-            .then(function(ingredients){
-
-            	console.log( ingredients );
-
-            })
-            .catch(function(err){
-            	throw err;
-            });
-
-  		});
-  	})
-  	.catch(function(err){
-  		throw err;
-  	});
-  };
 
 
-  // department/:id/ingredients
+
   Department.IngredientsByDepartment = function(departmentId, cb){
 
     var Ingredient = Department.app.models.Ingredient;
 
-    // next version
+    // we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+    // departmentId: { inq:departmentId } //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+
     Ingredient.find({
         where:{
-          departmentId: departmentId //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
-          // departmentId: { inq:departmentId } //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+          departmentId: departmentId 
+    
         },
         fields: [
           // 'img', 'url',
 
           ]       
       },cb);
-
-
-
-    // Department.findById(departmentId, {
-    //     fields: 'items'
-    //   },function(err, result){
-    //     cb(null, result.items);
-
-    //   });
-    
-      
-
 
 
   };
