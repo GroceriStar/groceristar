@@ -36,4 +36,6 @@ Edit your list - create open to any userlist
  Print functionlaity
  Grocery List page template
  add link to github issues
+ 
+ A lot of things was covered at: https://github.com/atherdon/recipe-api-only/issues/99
 
