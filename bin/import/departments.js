@@ -6,7 +6,7 @@ var database    = server.datasources.groceryDS;
 
 var Department  = server.models.Department;
 // var relation1   = 'departmentId';
-// var relation2   = 'departmentIds';
+var relation2   = 'departmentIds';
 
 
 function getDepartments(){
@@ -172,6 +172,16 @@ function createDepartments(cb){
 // 	// console.log(second);
 
 // };
+
+function idsOnly(array){
+
+  var result = Object.keys(array).map(function(e) {
+    return array[e].id;
+    });
+
+  return result;    
+
+};
 
 function attachDepartmentsToGroceries(departments, groceries){
 	var arrayWithIds = idsOnly(departments);
