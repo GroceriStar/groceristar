@@ -40,7 +40,9 @@ async.parallel({
 		// console.log(results.departments[0].id);
 		// console.log(results.groceries);
 
-		Ingredients.createIngredients(results.departments);
+		var ingredient = Ingredients.createIngredients(
+			results.departments
+		);
 
 		
 

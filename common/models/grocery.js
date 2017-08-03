@@ -25,51 +25,82 @@ module.exports = function(Grocery) {
 	});
 
 
-	// @TODO not sure what i mean by this.
+	// :todo not sure what i mean by this.
 	Grocery.fetch = function(){
-		Ingredient = Grocery.app.models.Ingredient;
 
-		Department = Grocery.app.models.Department;
 
-		Grocery.find({})
-		.then(function(groceries){
+		Grocery.find({
+			include: ['Ingredient', 'Department']
+		}).then(function(groceries){
 			console.log(groceries);
-
-
-			groceries.forEach(function(grocery){
-		 		// console.log(grocery.ingredients);
-		 		// console.log(grocery.departments);
-		 		// DepartmentModel.findByIds(grocery.departments)
-		 		// .then(function(departments){
-
-
-		 		// 	// console.log(departments.ingredients);
-		 		// 	IngredientModel.findByIds(grocery.ingredients)
-			 	// 	.then(function(ingredients){		 			
-			 	// 		// console.log(ingredients);
-			 	// 	})
-		 		
-		 		// })
-
-		 		Ingredient.findByIds(grocery.ingredients)
-		 		.then(function(ingredients){		 			
-		 			// console.log(ingredients);
-		 		})
-			})
-
-
-			groceries.forEach(function(grocery){
-		 		// console.log(grocery.ingredients);
-		 		Ingredient.findByIds(grocery.ingredients)
-		 		.then(function(ingredients){		 			
-		 			// console.log(ingredients);
-		 		})
-			})
-
-
 		})
 
+		// Ingredient = Grocery.app.models.Ingredient;
+
+		// Department = Grocery.app.models.Department;
+
+		// Grocery.find({})
+		// .then(function(groceries){
+		// 	console.log(groceries);
+
+
+		// 	groceries.forEach(function(grocery){
+		//  		// console.log(grocery.ingredients);
+		//  		// console.log(grocery.departments);
+		//  		// DepartmentModel.findByIds(grocery.departments)
+		//  		// .then(function(departments){
+
+
+		//  		// 	// console.log(departments.ingredients);
+		//  		// 	IngredientModel.findByIds(grocery.ingredients)
+		// 	 	// 	.then(function(ingredients){		 			
+		// 	 	// 		// console.log(ingredients);
+		// 	 	// 	})
+		 		
+		//  		// })
+
+		//  		Ingredient.findByIds(grocery.ingredients)
+		//  		.then(function(ingredients){		 			
+		//  			// console.log(ingredients);
+		//  		})
+		// 	})
+
+
+		// 	groceries.forEach(function(grocery){
+		//  		// console.log(grocery.ingredients);
+		//  		Ingredient.findByIds(grocery.ingredients)
+		//  		.then(function(ingredients){		 			
+		//  			// console.log(ingredients);
+		//  		})
+		// 	})
+
+
+		// });
+
+
+
+
+
 	};
+
+
+	Grocery.remoteMethod('fetch', {
+		accepts: {
+		  // arg: 'menuId',
+		  // type: 'string',
+		  // required: true
+		},
+		returns: {
+		  arg: 'groceries',
+		  type: 'array'
+		},
+		http: {
+		  path: '/list/',
+		  verb: 'get'
+		}
+	});	
+
+
 
 	// @TODO if we have empty menuId then we need to get groceries for the latest(read current active menu);
 

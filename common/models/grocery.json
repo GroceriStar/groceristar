@@ -31,7 +31,7 @@
   "relations": {
     "departmentsList": {
       "type": "referencesMany",
-      "model": "DepartmentModel",
+      "model": "Department",
       "foreignKey": "departmentIds",
       "options": {
         "validate": true,
