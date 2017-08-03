@@ -1,5 +1,5 @@
 'use strict';
-
+var path        = require('path');
 let server      = require(path.resolve(__dirname, '../../server/server'));
 var Department  = server.models.Department;
 var relation1   = 'departmentId';
@@ -7,18 +7,6 @@ var relation2   = 'departmentIds';
 
 
 function getDepartments(){
-
-[
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	''
-];
 
 	var departments = [
 		{
