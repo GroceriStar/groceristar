@@ -946,39 +946,39 @@ function getIngredients(departments){
 };
 
 
-function attachIngredientsToRecipes(ingredients, recipes){
+// function attachIngredientsToRecipes(ingredients, recipes){
 
-  var first  = ingredients.slice(0, 2);
-  var second = ingredients.slice(1, 3);
-  console.log(first)  ;
-  console.log(second) ;
+//   var first  = ingredients.slice(0, 2);
+//   var second = ingredients.slice(1, 3);
+//   console.log(first)  ;
+//   console.log(second) ;
 
-  var one = idsOnly(first);
-  var two = idsOnly(second);
+//   var one = idsOnly(first);
+//   var two = idsOnly(second);
 
-  recipes[0].updateAttribute(relation, one);
+//   recipes[0].updateAttribute(relation, one);
 
-  recipes[1].updateAttribute(relation, two);
+//   recipes[1].updateAttribute(relation, two);
 
-  console.log(recipes);
+//   console.log(recipes);
 
 
-  // // only first 10 elements attach
-  // var first10  = arrayWithIds.slice(0, 10);
-  // var second10 = arrayWithIds.slice(11, 21);
+//   // // only first 10 elements attach
+//   // var first10  = arrayWithIds.slice(0, 10);
+//   // var second10 = arrayWithIds.slice(11, 21);
 
-  // recipes.forEach(function(recipe, index){
+//   // recipes.forEach(function(recipe, index){
 
-  //  if (index % 2 === 0){
-  //    recipe.updateAttribute('ingredients', first10);
-  //  } else {
-  //    recipe.updateAttribute('ingredients', second10);
-  //  }
+//   //  if (index % 2 === 0){
+//   //    recipe.updateAttribute('ingredients', first10);
+//   //  } else {
+//   //    recipe.updateAttribute('ingredients', second10);
+//   //  }
 
-  //  // recipe.updateAttribute('ingredients', arrayWithIds);
+//   //  // recipe.updateAttribute('ingredients', arrayWithIds);
     
-  // });
-};
+//   // });
+// };
 
 
 function idsOnly(array){
@@ -1008,4 +1008,5 @@ function createIngredients(departments, cb){
 // };
 
 // module.exports.attachIngredientsToRecipes = attachIngredientsToRecipes;
+
 module.exports.createIngredients = createIngredients;

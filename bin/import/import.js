@@ -8,7 +8,7 @@ var async           = require('async');
 
 
 // //include middleware
-// let Ingredients  = require(path.resolve(__dirname, 'ingredients'));
+let Ingredients  = require(path.resolve(__dirname, 'ingredients'));
 
 let Groceries    = require(path.resolve(__dirname, 'grocery'));
 
@@ -39,10 +39,10 @@ async.parallel({
 		// console.log(results.departments[0]);
 		// console.log(results.departments[0].id);
 		// console.log(results.groceries);
-		var Ingredients  = require(path.resolve(__dirname, 'ingredients'))(departments);
-		// var ingredients = Ingredients.createIngredients(departments);
+		// var Ingredients  = require(path.resolve(__dirname, 'ingredients'))(departments);
+		var ingredients = Ingredients.createIngredients(results.departments);
 
-		console.log(Ingredients);
+		console.log(ingredients);
 
 
 		// Departments.attachDepartmentsToIngredients(
