@@ -26,7 +26,7 @@ async.parallel({
 		departments : async.apply(Departments.createDepartments),
 		// ingredients : async.apply(),
 
-		// groceries   : async.apply(Groceries.createGroceries),
+		groceries   : async.apply(Groceries.createGroceries),
 
 		// recipes     : async.apply(Recipes.createRecipes),
 		
@@ -50,14 +50,11 @@ async.parallel({
 		// 	);
 
 		//:todo remove this function, when departments will work 
-		// Departments.attachDepartmentsToGroceries(
-		// 	results.departments, results.groceries
-		// );
+		Departments.attachDepartmentsToGroceries(
+			results.departments, results.groceries
+		);
 
 
-		// Ingredients.attachIngredientsToRecipes(
-		// 	results.ingredients, results.recipes
-		// 	);
 
 	}
 );

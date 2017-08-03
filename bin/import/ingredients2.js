@@ -788,7 +788,7 @@ function getIngredients(departments){
     name:'Toilet paper',departmentId: departments[19].id
     },
     {         
-    name:'Toothpaste',departmentId: departments[19].id
+    nname:'Toothpaste',departmentId: departments[19].id
     },
     {         
     name:'Vitamins / Supplements',departmentId: departments[19].id
@@ -996,8 +996,8 @@ function createIngredients(departments, cb){
   database.automigrate('Ingredient', function(err){
     if (err) return cb(err);
 
-    // Ingredient.create([{name:'pidor', departmentId: departments[0].id }], cb);
-    Ingredient.create(getIngredients( departments ), cb);
+    Ingredient.create([{name:'pidor', departmentId: departments[0].id }], cb);
+    // Ingredient.create(getIngredients( departments ), cb);
   });
 };
 
