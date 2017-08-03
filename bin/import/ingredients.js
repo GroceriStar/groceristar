@@ -9,6 +9,7 @@ var relation    = 'ingredients';
 
 function getIngredients(departments){
 
+
 	var ingredients = [
   	{ 
   		name: "Asparagus",
@@ -995,18 +996,11 @@ function createIngredients(departments, cb){
   database.automigrate('Ingredient', function(err){
     if (err) return cb(err);
 
-    Ingredient.create(getIngredients( departments ), cb);
+    Ingredient.create([{name:'pidor', departmentId: 123 }], cb);
+    // Ingredient.create(getIngredients( departments ), cb);
   });
 };
 
-// module.exports = function (departments, cb){
-//   database.automigrate('Ingredient', function(err){
-//     if (err) return cb(err);
 
-//     Ingredient.create(getIngredients( departments ), cb);
-//   });
-// };
-
-// module.exports.attachIngredientsToRecipes = attachIngredientsToRecipes;
 
 module.exports.createIngredients = createIngredients;
