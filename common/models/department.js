@@ -11,12 +11,45 @@ module.exports = function(Department) {
 		next();
 	});
 
-    Department.observe("before save", function updateTimestamp(ctx, next) {
+  Department.observe("before save", function updateTimestamp(ctx, next) {
 
     if( ctx.isNewInstance ){
       ctx.instance.created_at = new Date();
       ctx.instance.updated_at = new Date();
     } 
+
+
+
+    next();
+  });
+
+
+  Department.observe("before delete", function (ctx, next) {
+
+    var Ingredient = ctx.Model.app.models.Ingredient;
+
+    Ingredient.find({
+      where: {
+        departmentId: ctx.where.id
+      }
+    }).then(function(ingredients){
+      console.log(ingredients);
+
+      ingredients.forEach(function(ingredient){
+        Ingredient.destroyById(ingredient.id, function(){
+          console.log("Deleted ingredient", ingredient.id);
+        })
+      })
+
+    })
+    .catch(function(err){
+      throw err;
+    });
+
+    // if( ctx.isNewInstance ){
+    //   ctx.instance.created_at = new Date();
+    //   ctx.instance.updated_at = new Date();
+    // } 
 
 
 
