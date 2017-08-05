@@ -21,10 +21,30 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
-  res.render('pages/loginProfiles', {
-    user: req.user,
-    url: req.url,
-  });
+
+
+  var Grocery = app.models.Grocery;
+
+  Grocery.findOne()
+  .then(function(grocery){
+    console.log(grocery);
+    console.log(grocery.id);
+
+
+      res.render('pages/loginProfiles', {
+        user: req.user,
+        url: req.url,
+
+      });
+
+  }).cathc(function(err){
+    throw err;
+  })
+
+  // res.render('pages/loginProfiles', {
+  //   user: req.user,
+  //   url: req.url,
+  // });
 });
 
 router.get('/local', function(req, res, next) {
@@ -89,6 +109,11 @@ router.get('/auth/logout', function(req, res, next) {
 });
 
 
+router.get('/auth/attach-grocery-to-user', function(req, res, next) {
+  console.log( req.params.groceryId );
+  console.log( req.user );
+  // res.redirect('/');
+});
 
 
  
