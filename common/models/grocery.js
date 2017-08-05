@@ -153,4 +153,24 @@ module.exports = function(Grocery) {
 		}
 	});
 
+
+	// Grocery.attachToUser = function(cb){
+
+	// }
+	// Grocery.remoteMethod('groceryListForMenu', {
+	// 	accepts: {
+	// 	  arg: 'menuId',
+	// 	  type: 'string',
+	// 	  required: true
+	// 	},
+	// 	returns: {
+	// 	  arg: 'groceries',
+	// 	  type: 'array'
+	// 	},
+	// 	http: {
+	// 	  path: '/menu/:id',
+ //  		  // path: '/:id/menu',
+	// 	  verb: 'get'
+	// 	}
+	// });
 };
