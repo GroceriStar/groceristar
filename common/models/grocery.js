@@ -30,7 +30,10 @@ module.exports = function(Grocery) {
 
 
 		Grocery.find({
-			include: ['Ingredient', 'Department']
+			include: [
+			// 'Ingredient',
+			 'Department'
+			]
 		}).then(function(groceries){
 			console.log(groceries);
 		})
@@ -85,11 +88,11 @@ module.exports = function(Grocery) {
 
 
 	Grocery.remoteMethod('fetch', {
-		accepts: {
-		  // arg: 'menuId',
-		  // type: 'string',
-		  // required: true
-		},
+		// accepts: {
+		//   arg: 'menuId',
+		//   type: 'string',
+		//   required: true
+		// },
 		returns: {
 		  arg: 'groceries',
 		  type: 'array'
