@@ -24,7 +24,5 @@ block content
           label(for='password') Your Password
           input.form-control(type='password', name='password', placeholder='Password')
         button.btn.btn-default(type='submit') Submit
-      br
-      if (messages.error)
-        p
-          span(style="color:red")= messages.error
+        
+      include ../partials/errors  

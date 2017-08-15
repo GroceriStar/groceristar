@@ -64,7 +64,7 @@ app.middleware('parse', bodyParser.urlencoded({
 
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
-  model: app.models.accessToken,
+  model: app.models.accessToken, // :todo change this when we'll update model names
 }));
 
 app.middleware('session:before', cookieParser(app.get('cookieSecret')));
@@ -178,11 +178,6 @@ app.start = function() {
     }
   });
 };
-
-// start the server if `$ node server.js`
-// if (require.main === module) {
-//   app.start();
-// }
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

@@ -37,7 +37,7 @@ router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 
       });
 
-  }).cathc(function(err){
+  }).catch(function(err){
     throw err;
   })
 
@@ -51,15 +51,16 @@ router.get('/local', function(req, res, next) {
   res.render('pages/local', {
     user: req.user,
     url: req.url,
+    messages: {}
   });
 });
 
-router.get('/ldap', function(req, res, next) {
-  res.render('pages/ldap', {
-    user: req.user,
-    url: req.url,
-  });
-});
+// router.get('/ldap', function(req, res, next) {
+//   res.render('pages/ldap', {
+//     user: req.user,
+//     url: req.url,
+//   });
+// });
 
 router.get('/signup', function(req, res, next) {
   res.render('pages/signup', {
@@ -100,6 +101,7 @@ router.get('/login', function(req, res, next) {
   res.render('pages/login', {
     user: req.user,
     url: req.url,
+    messages: {}
   });
 });
 

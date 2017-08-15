@@ -6,6 +6,7 @@
 		<title>jsblocks • TodoMVC</title>
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="css/one.css">
 	</head>
 	<body>
 		<section data-query="view(Todos)" class="todoapp">
@@ -16,11 +17,15 @@
 			<section data-query="visible(todos().length > 0)" style="display: none;" class="main">
 				<input data-query="checked(todos.remaining() == 0).click(todos.toggleAll)" class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul data-query="each(todos.view)" class="todo-list">
+				<ul data-query="each(todos.view)" class="todo-list" id="todo-todo-todo">
 					<li data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)">
 						<div class="view">
+							
 							<input data-query="checked(completed).click(toggleComplete)" class="toggle" type="checkbox">
-							<label>{{title}}</label>
+							<label>
+								<span class="drag-handle">☰</span>
+								{{title}}
+							</label>
 							<button data-query="click(destroy)" class="destroy"></button>
 						</div>
 						<input data-query="val(title).keydown(handleAction).blur(closeEdit).focused(editing)" class="edit" />
@@ -49,11 +54,16 @@
 		</section>
 		<footer class="info">
 			<p>Double-click to edit a todo</p>
-			<p>Created by <a href="https://github.com/astoilkov">Antonio Stoilkov</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<!-- <p>Created by <a href="https://github.com/astoilkov">Antonio Stoilkov</a></p> -->
+			<!-- <p>Part of <a href="http://todomvc.com">TodoMVC</a></p> -->
 		</footer>
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/blocks/blocks.js"></script>
+
+		<!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+		<script src="js/Sortable.min.js"></script>
+		<script src="js/sortable-init.js"></script>
+
 		<script src="js/app.js"></script>
 	</body>
 </html>

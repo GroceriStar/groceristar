@@ -8,14 +8,9 @@ block content
         li
           a.btn.btn-primary(href='/local') Login with local account
         li
-          a.btn.btn-primary(href='/ldap') Login with ldap account
-        li
           a.btn.btn-primary(href="/auth/facebook") Login with Facebook
-        li
-          a.btn.btn-primary(href="/auth/google") Login with Google
-        li
-          a.btn.btn-primary(href="/auth/twitter") Login with Twitter
+
       br
-      if (messages.error)
+      if messages.error
         p
           span(style="color:red")= messages.error
