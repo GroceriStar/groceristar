@@ -31,11 +31,11 @@ router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
     console.log(grocery.id);
 
 
-      res.render('pages/loginProfiles', {
-        user: req.user,
-        url: req.url,
+      // res.render('pages/loginProfiles', {
+      //   user: req.user,
+      //   url: req.url,
 
-      });
+      // });
 
   }).catch(function(err){
     throw err;

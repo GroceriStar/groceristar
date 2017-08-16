@@ -3,32 +3,42 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>jsblocks • TodoMVC</title>
+		<title>
+			jsblocks • TodoMVC
+		</title>
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 		<link rel="stylesheet" href="css/one.css">
 	</head>
 	<body>
 		<section data-query="view(Todos)" class="todoapp">
+
 			<header class="header">
-				<h1>todos</h1>
-				<input data-query="val(newTodo.title).keydown(addTodo)" class="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>
+					todos
+				</h1>
+				<input data-query="val(newTodo.title).keydown(addTodo)" class="new-todo" 
+						placeholder="What needs to be done?" autofocus>
 			</header>
+
 			<section data-query="visible(todos().length > 0)" style="display: none;" class="main">
-				<input data-query="checked(todos.remaining() == 0).click(todos.toggleAll)" class="toggle-all" type="checkbox">
+				<input data-query="checked(todos.remaining() == 0).click(todos.toggleAll)" 
+						class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 				<ul data-query="each(todos.view)" class="todo-list" id="todo-todo-todo">
 					<li data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)">
 						<div class="view">
 							
-							<input data-query="checked(completed).click(toggleComplete)" class="toggle" type="checkbox">
+							<input data-query="checked(completed).click(toggleComplete)" class="toggle" 
+									type="checkbox">
 							<label>
 								<span class="drag-handle">☰</span>
 								{{title}}
 							</label>
 							<button data-query="click(destroy)" class="destroy"></button>
 						</div>
-						<input data-query="val(title).keydown(handleAction).blur(closeEdit).focused(editing)" class="edit" />
+						<input data-query="val(title).keydown(handleAction).blur(closeEdit).focused(editing)" 
+								class="edit" />
 					</li>
 				</ul>
 			</section>
@@ -38,13 +48,19 @@
 				</span>
 				<ul class="filters">
 					<li>
-						<a data-query="setClass('selected', filter() == 'all')" href="#/">All</a>
+						<a data-query="setClass('selected', filter() == 'all')" href="#/">
+							All
+						</a>
 					</li>
 					<li>
-						<a data-query="setClass('selected', filter() == 'active')" href="#/active">Active</a>
+						<a data-query="setClass('selected', filter() == 'active')" href="#/active">
+							Active
+						</a>
 					</li>
 					<li>
-						<a data-query="setClass('selected', filter() == 'completed')" href="#/completed">Completed</a>
+						<a data-query="setClass('selected', filter() == 'completed')" href="#/completed">
+							Completed
+						</a>
 					</li>
 				</ul>
 				<button data-query="visible(todos().length != todos.remaining()).click(todos.clearCompleted)" class="clear-completed">
@@ -53,14 +69,14 @@
 			</footer>
 		</section>
 		<footer class="info">
-			<p>Double-click to edit a todo</p>
-			<!-- <p>Created by <a href="https://github.com/astoilkov">Antonio Stoilkov</a></p> -->
-			<!-- <p>Part of <a href="http://todomvc.com">TodoMVC</a></p> -->
+			<p>
+				Double-click to edit a todo
+			</p>
+
 		</footer>
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/blocks/blocks.js"></script>
 
-		<!-- CDNJS :: Sortable (https://cdnjs.com/) -->
 		<script src="js/Sortable.min.js"></script>
 		<script src="js/sortable-init.js"></script>
 
