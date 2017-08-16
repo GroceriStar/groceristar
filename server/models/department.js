@@ -60,10 +60,25 @@ module.exports = function(Department) {
 
 
 
-  Department.methodA = function(departmentId){
-      // Department.find({
-      //   include
-      // });
+  Department.methodA = function( departmentId ){
+
+      Department.findOne({
+        include: {
+          relation: 'ingredients',
+          scope: {
+            fields: [ 'name' ]
+          }
+        }
+
+
+      // [
+      // 'Ingredient',
+       
+      // ]
+    }).then(function(groceries){
+      console.log(groceries);
+    })
+
   };
 
 

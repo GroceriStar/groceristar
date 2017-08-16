@@ -20,7 +20,8 @@ router.get('/', function(req, res, next) {
   Grocery.fetch();
 
 
-  res.render('pages/index', {user:
+  res.render('pages/index', {
+    user:
     req.user,
     url: req.url,
   });
@@ -64,6 +65,22 @@ router.get('/local', function(req, res, next) {
     messages: {}
   });
 });
+
+
+router.get('/department/:id', function(req, res, next){
+
+    var departmentId = req.params.id;
+
+    res.render('pages/department', {
+      user: req.user,
+      url: req.url,
+      messages: {},
+      department: departmentId
+    });
+
+});
+
+
 
 // router.get('/ldap', function(req, res, next) {
 //   res.render('pages/ldap', {

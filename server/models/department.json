@@ -29,7 +29,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ingredients": {
+      "type": "hasMany",
+      "model": "Ingredient",
+      "foreignKey": "departmentId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

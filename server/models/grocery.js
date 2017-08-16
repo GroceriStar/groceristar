@@ -33,7 +33,17 @@ module.exports = function(Grocery) {
 			include: {
 				relation: 'departmentsList',
 				scope: {
-					fields: [ 'name' ]
+					fields: [ 'name' ],
+					include: {
+						relation: 'ingredients',
+						scope: {
+							fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
+
 				}
 			}
 
