@@ -47,56 +47,14 @@ module.exports = function(Grocery) {
 				}
 			}
 
-
-			// [
-			// 'Ingredient',
-			 
-			// ]
-		}).then(function(groceries){
-			console.log(groceries);
+		}).then(function(grocery){
+			console.log(grocery);
 		})
 
-		// Ingredient = Grocery.app.models.Ingredient;
-
-		// Department = Grocery.app.models.Department;
-
-		// Grocery.find({})
-		// .then(function(groceries){
-		// 	console.log(groceries);
 
 
-		// 	groceries.forEach(function(grocery){
-		//  		// console.log(grocery.ingredients);
-		//  		// console.log(grocery.departments);
-		//  		// DepartmentModel.findByIds(grocery.departments)
-		//  		// .then(function(departments){
 
 
-		//  		// 	// console.log(departments.ingredients);
-		//  		// 	IngredientModel.findByIds(grocery.ingredients)
-		// 	 	// 	.then(function(ingredients){		 			
-		// 	 	// 		// console.log(ingredients);
-		// 	 	// 	})
-		 		
-		//  		// })
-
-		//  		Ingredient.findByIds(grocery.ingredients)
-		//  		.then(function(ingredients){		 			
-		//  			// console.log(ingredients);
-		//  		})
-		// 	})
-
-
-		// 	groceries.forEach(function(grocery){
-		//  		// console.log(grocery.ingredients);
-		//  		Ingredient.findByIds(grocery.ingredients)
-		//  		.then(function(ingredients){		 			
-		//  			// console.log(ingredients);
-		//  		})
-		// 	})
-
-
-		// });
 
 
 
@@ -106,11 +64,6 @@ module.exports = function(Grocery) {
 
 
 	Grocery.remoteMethod('fetch', {
-		// accepts: {
-		//   arg: 'menuId',
-		//   type: 'string',
-		//   required: true
-		// },
 		returns: {
 		  arg: 'groceries',
 		  type: 'array'
@@ -128,12 +81,12 @@ module.exports = function(Grocery) {
 	Grocery.groceryListForMenu = function(menuId, cb){
 
 
-		var Menu = Grocery.app.models.Menu;
+		// var Menu = Grocery.app.models.Menu;
 
-		Menu.MenuRecipesIngredients(menuId, function(data){
-			// @TODO test this "data" attribute
-			console.log(data);
-		});
+		// Menu.MenuRecipesIngredients(menuId, function(data){
+		// 	// @TODO test this "data" attribute
+		// 	console.log(data);
+		// });
 
 
 

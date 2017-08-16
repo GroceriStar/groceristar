@@ -70,7 +70,8 @@ router.get('/local', function(req, res, next) {
 router.get('/department/:id', function(req, res, next){
 
     var departmentId = req.params.id;
-
+    var Department   = app.models.Department;
+    
     res.render('pages/department', {
       user: req.user,
       url: req.url,
