@@ -29,11 +29,19 @@ module.exports = function(Grocery) {
 	Grocery.fetch = function(){
 
 
-		Grocery.find({
-			include: [
+		Grocery.findOne({
+			include: {
+				relation: 'departmentsList',
+				scope: {
+					fields: [ 'name' ]
+				}
+			}
+
+
+			// [
 			// 'Ingredient',
-			 'Department'
-			]
+			 
+			// ]
 		}).then(function(groceries){
 			console.log(groceries);
 		})

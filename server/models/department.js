@@ -60,6 +60,11 @@ module.exports = function(Department) {
 
 
 
+  Department.methodA = function(departmentId){
+      // Department.find({
+      //   include
+      // });
+  };
 
 
 

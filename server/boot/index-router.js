@@ -14,6 +14,12 @@ module.exports = function(app) {
 
 
 router.get('/', function(req, res, next) {
+
+  var Grocery = app.models.Grocery;
+
+  Grocery.fetch();
+
+
   res.render('pages/index', {user:
     req.user,
     url: req.url,
@@ -25,21 +31,25 @@ router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 
   var Grocery = app.models.Grocery;
 
-  Grocery.findOne()
-  .then(function(grocery){
-    console.log(grocery);
-    console.log(grocery.id);
+  Grocery.fetch();
 
 
-      // res.render('pages/loginProfiles', {
-      //   user: req.user,
-      //   url: req.url,
+  // Grocery.findOne()
+  // .then(function(grocery){
+  //   console.log(grocery);
+  //   console.log(grocery.id);
+  //   // console.log(grocery.departmentIds);
+  //   // console.log(grocery.title);
 
-      // });
+  //     // res.render('pages/loginProfiles', {
+  //     //   user: req.user,
+  //     //   url: req.url,
 
-  }).catch(function(err){
-    throw err;
-  })
+  //     // });
+
+  // }).catch(function(err){
+  //   throw err;
+  // })
 
   // res.render('pages/loginProfiles', {
   //   user: req.user,
