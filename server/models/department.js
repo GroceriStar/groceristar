@@ -60,7 +60,7 @@ module.exports = function(Department) {
 
 
 
-  Department.methodA = function( departmentId ){
+  Department.methodA = function( departmentId, cb ){
 
       Department.findOne({
         include: {
@@ -71,13 +71,11 @@ module.exports = function(Department) {
         }
 
 
-      // [
-      // 'Ingredient',
-       
-      // ]
-    }).then(function(groceries){
-      console.log(groceries);
     })
+    // .then(function(department){
+    //   console.log(department);
+    // })
+    .then(cb);
 
   };
 

@@ -71,13 +71,19 @@ router.get('/department/:id', function(req, res, next){
 
     var departmentId = req.params.id;
     var Department   = app.models.Department;
-    
-    res.render('pages/department', {
-      user: req.user,
-      url: req.url,
-      messages: {},
-      department: departmentId
+
+    Department.methodA(departmentId, function(departments){
+
+      console.log(departments);
+      
     });
+
+    // res.render('pages/department', {
+    //   user: req.user,
+    //   url: req.url,
+    //   messages: {},
+    //   department: departmentId
+    // });
 
 });
 
