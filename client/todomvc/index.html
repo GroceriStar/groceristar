@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/one.css">
 	</head>
 	<body>
+
 		<section data-query="view(Todos)" class="todoapp">
 
 			<header class="header">
@@ -42,6 +43,7 @@
 					</li>
 				</ul>
 			</section>
+
 			<footer data-query="visible(todos().length > 0)" style="display: none;" class="footer">
 				<span class="todo-count">
 					<strong>{{todos.remaining}}</strong> {{todos.remaining() == 1 ? 'item' : 'items'}} left
@@ -67,7 +69,9 @@
 					Clear completed
 				</button>
 			</footer>
+
 		</section>
+		
 		<footer class="info">
 			<p>
 				Double-click to edit a todo

@@ -26,7 +26,7 @@ module.exports = function(Grocery) {
 
 
 	// :todo not sure what i mean by this.
-	Grocery.fetch = function(){
+	Grocery.fetch = function(cb){
 
 
 		Grocery.findOne({
@@ -47,15 +47,80 @@ module.exports = function(Grocery) {
 				}
 			}
 
-		}).then(function(grocery){
+		}, function(err, grocery){
+
+			console.log(grocery);
+
+			var g = grocery.toJSON();
+			var object = {
+				desc: g.desc
+			};
+			var departments = [];
+			console.log(g.desc);
+			console.log(g.departmentsList);
+
+			// case #1 return only dep name with id for link creation
+			g.departmentsList.forEach(function(item, i){
+				// console.log(item);
+				// console.log(item);
+
+				// case #1 return only dep name with id for link creation
+				// console.log(item.name);
+				// console.log(item.id);
+				// console.log(item.visible);
+				// console.log(item.ingredients.length > 0);
+				departments.push({ id: item.id, name: item.name });
+
+				
+			});
+			console.log(departments);
+			object.departments = departments;
+
+			// case #2 display deps with ings
+			// g.departmentsList.forEach(function(item, i){
+			// 	// console.log(item);
+			// 	// console.log(item);
+
+
+			// 	console.log(item.name);
+			// 	console.log(item.id);
+			// 	console.log(item.visible);
+			// 	console.log(item.ingredients.length > 0);
+
+			// 	// console.log(item.ingredients);
+
+				
+			// })
+
+			
+
+				
+
+		});
+
+
+		.then(function(grocery){
 
 
 			var g = grocery.toJSON();
+			console.log(g.desc);
 			console.log(g.departmentsList);
+
+			
 			// console.log(g.departmentsList.ingredients);
 
 			g.departmentsList.forEach(function(item, i){
-				console.log(item);
+				// console.log(item);
+				// console.log(item);
+
+				// case #1 return only dep name with id for link creation
+				console.log(item.name);
+				console.log(item.id);
+				console.log(item.visible);
+				console.log(item.ingredients.length > 0);
+
+
+				// case #2 display deps with ings
 				// console.log(item.ingredients);
 			})
 			// console.log(grocery.departmentsList);
@@ -63,6 +128,35 @@ module.exports = function(Grocery) {
 
 
 		});
+		// .then(function(grocery){
+
+
+		// 	var g = grocery.toJSON();
+		// 	console.log(g.desc);
+		// 	console.log(g.departmentsList);
+
+			
+		// 	// console.log(g.departmentsList.ingredients);
+
+		// 	g.departmentsList.forEach(function(item, i){
+		// 		// console.log(item);
+		// 		// console.log(item);
+
+		// 		// case #1 return only dep name with id for link creation
+		// 		console.log(item.name);
+		// 		console.log(item.id);
+		// 		console.log(item.visible);
+		// 		console.log(item.ingredients.length > 0);
+
+
+		// 		// case #2 display deps with ings
+		// 		// console.log(item.ingredients);
+		// 	})
+		// 	// console.log(grocery.departmentsList);
+
+
+
+		// });
 
 
 
@@ -76,16 +170,16 @@ module.exports = function(Grocery) {
 	};
 
 
-	Grocery.remoteMethod('fetch', {
-		returns: {
-		  arg: 'groceries',
-		  type: 'array'
-		},
-		http: {
-		  path: '/list/',
-		  verb: 'get'
-		}
-	});	
+	// Grocery.remoteMethod('fetch', {
+	// 	returns: {
+	// 	  arg: 'groceries',
+	// 	  type: 'array'
+	// 	},
+	// 	http: {
+	// 	  path: '/list/',
+	// 	  verb: 'get'
+	// 	}
+	// });	
 
 
 
