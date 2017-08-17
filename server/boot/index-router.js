@@ -18,7 +18,9 @@ module.exports = function(app) {
     var Grocery = app.models.Grocery;
 
     // Grocery.fetch();
-    Grocery.fetch(function(response){
+    Grocery.fetch(function(error, response){
+
+        console.log(response);
 
           res.render('pages/index', {
             user: req.user,
@@ -75,7 +77,7 @@ module.exports = function(app) {
     });
   });
 
-
+  //:todo decide which method is better - grocery version or controller version
   router.get('/department/:id', function(req, res, next){
 
       var departmentId = req.params.id;
@@ -87,8 +89,8 @@ module.exports = function(app) {
 
         var d = departments.toJSON();
 
-        console.log(d);
-        console.log(d.ingredients);
+        // console.log(d);
+        // console.log(d.ingredients);
 
         var renderObject = {
           ingredients: d.ingredients,
@@ -96,15 +98,14 @@ module.exports = function(app) {
           description: d.desc,
           id: d.id
         }
+
+        console.log(renderObject)
+
+        res.render('pages/department', renderObject);
         
       });
 
-      // res.render('pages/department', {
-      //   user: req.user,
-      //   url: req.url,
-      //   messages: {},
-      //   department: departmentId
-      // });
+      
 
   });
 

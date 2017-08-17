@@ -49,20 +49,16 @@ module.exports = function(Grocery) {
 
 		}, function(err, grocery){
 
-			console.log(grocery);
+			// console.log(grocery);
 
 			var g = grocery.toJSON();
-			var object = {
-				desc: g.desc
-			};
+			
 			var departments = [];
-			console.log(g.desc);
-			console.log(g.departmentsList);
+			// console.log(g.desc);
+			// console.log(g.departmentsList);
 
 			// case #1 return only dep name with id for link creation
 			g.departmentsList.forEach(function(item, i){
-				// console.log(item);
-				// console.log(item);
 
 				// case #1 return only dep name with id for link creation
 				// console.log(item.name);
@@ -73,14 +69,14 @@ module.exports = function(Grocery) {
 
 				
 			});
-			console.log(departments);
-			object.departments = departments;
+
+
+			// console.log(departments);
+			// object.departments = departments;
 
 			// case #2 display deps with ings
 			// g.departmentsList.forEach(function(item, i){
 			// 	// console.log(item);
-			// 	// console.log(item);
-
 
 			// 	console.log(item.name);
 			// 	console.log(item.id);
@@ -93,41 +89,16 @@ module.exports = function(Grocery) {
 			// })
 
 			
-
+			var object = {
+				desc: g.desc,
+				departments:departments
+			};
+			cb(null, object);
 				
 
 		});
 
 
-		.then(function(grocery){
-
-
-			var g = grocery.toJSON();
-			console.log(g.desc);
-			console.log(g.departmentsList);
-
-			
-			// console.log(g.departmentsList.ingredients);
-
-			g.departmentsList.forEach(function(item, i){
-				// console.log(item);
-				// console.log(item);
-
-				// case #1 return only dep name with id for link creation
-				console.log(item.name);
-				console.log(item.id);
-				console.log(item.visible);
-				console.log(item.ingredients.length > 0);
-
-
-				// case #2 display deps with ings
-				// console.log(item.ingredients);
-			})
-			// console.log(grocery.departmentsList);
-
-
-
-		});
 		// .then(function(grocery){
 
 

@@ -48,11 +48,6 @@ module.exports = function(Department) {
       throw err;
     });
 
-    // if( ctx.isNewInstance ){
-    //   ctx.instance.created_at = new Date();
-    //   ctx.instance.updated_at = new Date();
-    // } 
-
 
 
     next();
@@ -66,7 +61,7 @@ module.exports = function(Department) {
         include: {
           relation: 'ingredients',
           scope: {
-            fields: [ 'name' ]
+            fields: [ 'name', 'id' ]
           }
         }
 
