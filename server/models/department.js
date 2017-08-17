@@ -57,13 +57,14 @@ module.exports = function(Department) {
 
   Department.methodA = function( departmentId, cb ){
 
-      Department.findOne({
+      Department.findById(departmentId, {
         include: {
           relation: 'ingredients',
           scope: {
             fields: [ 'name', 'id' ]
           }
-        }
+        },
+        // where: 
 
 
     })

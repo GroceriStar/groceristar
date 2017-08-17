@@ -11,6 +11,6 @@ block content
       p.lead In this sample application you can:
 
       ul
-		each val, index in ingredients
-			li= val
+        each val, index in ingredients
+          li= val.name + '(' + val.id + ')'
 
