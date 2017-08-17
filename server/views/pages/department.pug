@@ -1,3 +1,13 @@
 extends ../layouts/layout
 
 block content
+
+  .row
+    .col-md-12
+      h1 Sample Functionality
+      p.lead In this sample application you can:
+
+      ul
+        each val, index in ingredients
+    	  li= val
+

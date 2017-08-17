@@ -75,6 +75,18 @@ router.get('/department/:id', function(req, res, next){
     Department.methodA(departmentId, function(departments){
 
       console.log(departments);
+
+      var d = departments.toJSON();
+
+      console.log(d);
+      console.log(d.ingredients);
+
+      var renderObject = {
+        ingredients: d.ingredients,
+        name: d.name,
+        description: d.desc,
+        id: d.id
+      }
       
     });
 

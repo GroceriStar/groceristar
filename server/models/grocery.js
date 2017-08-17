@@ -48,16 +48,21 @@ module.exports = function(Grocery) {
 			}
 
 		}).then(function(grocery){
-			console.log(grocery);
 
-			// grocery.departmentsList.forEach(function(item, i){
-			// 	console.log(item.ingredients);
-			// })
+
+			var g = grocery.toJSON();
+			console.log(g.departmentsList);
+			// console.log(g.departmentsList.ingredients);
+
+			g.departmentsList.forEach(function(item, i){
+				console.log(item);
+				// console.log(item.ingredients);
+			})
 			// console.log(grocery.departmentsList);
 
 
 
-		})
+		});
 
 
 

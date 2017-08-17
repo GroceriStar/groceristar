@@ -92,9 +92,6 @@ module.exports = function(Ingredient) {
 
 
 
-
-
-
   // method list attached ingredients with unit convertion and additions
 	// RecipeModel.listIngredients = function(recipeId, cb){
  //        var IngredientModel = RecipeModel.app.models.IngredientModel;
