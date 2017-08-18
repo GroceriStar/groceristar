@@ -276,6 +276,8 @@ module.exports = function(Grocery) {
 			});
 
 			console.log( GroceryClone );
+			console.log( GroceryClone.id );
+			Grocery.attachToUser(GroceryClone.id, userId);
 
 
 		});
