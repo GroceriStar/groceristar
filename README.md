@@ -131,3 +131,4 @@ $ node .
 
 Grocery List Frontend Copyright: http://todomvc.com/ (https://github.com/tastejs/todomvc)
 And jsblocks Copyright: http://jsblocks.com (https://github.com/astoilkov/jsblocks)
+FontAwesome(http://fontawesome.io)
