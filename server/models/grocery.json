@@ -39,7 +39,16 @@
         "validate": true,
         "forceId": false
       }
-    }
+    },
+    "departmentsToHide":{
+      "type": "referencesMany",
+      "model": "Department",
+      "foreignKey": "hideThisIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
   },
   "acls": [],
   "methods": {}
