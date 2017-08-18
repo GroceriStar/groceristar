@@ -215,7 +215,7 @@ module.exports = function(Grocery) {
 			groceriesArray.push(groceryId);
 			console.log(groceriesArray);
 			model.updateAttribute('groceryIds',groceriesArray);
-		})
+		});
 
 	}
 
@@ -252,7 +252,7 @@ module.exports = function(Grocery) {
 				console.log(model);
 				var hiddenArray = model.hideThisIds;
 				hiddenArray.push(departmentId)
-				model.updateAttribute('hideThisIds', hiddenArray)
+				model.updateAttribute('hideThisIds', hiddenArray);
 			})
 
 		});
@@ -265,6 +265,21 @@ module.exports = function(Grocery) {
 	Grocery.clone = function(groceryId, userId, cb){
 
 		// Grocery.attachToUser(groceryId, userId);
+		Grocery.findById(groceryId, {}, function(grocery){
+
+
+			var GroceryClone = Grocery.create({
+				name: grocery.name,
+				desc: grocery.desc,
+				departmentIds: grocery.departmentIds,
+				hideThisIds:   grocery.hideThisIds,
+			});
+
+			console.log( GroceryClone );
+
+
+		});
+		
 
 	}
 };
