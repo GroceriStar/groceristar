@@ -35,8 +35,6 @@
     "dataSource": "groceryDS",
     "public": false
   },
-
-
   "Department": {
     "dataSource": "groceryDS",
     "public": true
@@ -48,7 +46,9 @@
   "Ingredient": {
     "dataSource": "groceryDS",
     "public": true
+  },
+  "Item": {
+    "dataSource": "groceryDS",
+    "public": true
   }
-
-  
 }
