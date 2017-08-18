@@ -212,8 +212,10 @@ module.exports = function(Grocery) {
 		User.findById(userId, {}, function(err, model){
 			var groceriesArray = model.groceryIds;
 			console.log(groceriesArray);
+
 			groceriesArray.push(groceryId);
 			console.log(groceriesArray);
+			
 			model.updateAttribute('groceryIds',groceriesArray);
 		});
 

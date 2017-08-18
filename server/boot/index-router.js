@@ -177,6 +177,18 @@ module.exports = function(app) {
   });
 
 
+  router.get('/clone/:id', function(req, res, next) {
+
+    console.log( req.params.groceryId );
+    console.log( req.user.id );
+
+    var Grocery = app.models.Grocery;
+    Grocery.clone( req.params.groceryId, req.user.id );
+
+    // res.redirect('/');
+  });
+
+
  
 
 

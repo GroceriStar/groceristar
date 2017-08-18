@@ -23,9 +23,9 @@
       "model": "Grocery",
       "foreignKey": "groceryIds"
     },
-    "favorites":{
+    "favorites": {
       "type": "hasMany",
-      "model": "Grocery",
+      "model": "Ingredient",
       "foreignKey": "favs"
     }
   },
