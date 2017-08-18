@@ -109,14 +109,16 @@ module.exports = function(app) {
 
   });
 
+  router.get('/delete/department/:id', function(req, res, next){
 
+    var departmentId = req.params.id;
+    var Department   = app.models.Department;
+    Department.destroyById(departmentId, function(err){
 
-  // router.get('/ldap', function(req, res, next) {
-  //   res.render('pages/ldap', {
-  //     user: req.user,
-  //     url: req.url,
-  //   });
-  // });
+    });
+
+  });
+
 
   router.get('/signup', function(req, res, next) {
     res.render('pages/signup', {
@@ -168,6 +170,7 @@ module.exports = function(app) {
 
 
   router.get('/auth/attach-grocery-to-user', function(req, res, next) {
+
     console.log( req.params.groceryId );
     console.log( req.user );
     // res.redirect('/');

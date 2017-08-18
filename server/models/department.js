@@ -28,6 +28,8 @@ module.exports = function(Department) {
 
   Department.observe("before delete", function (ctx, next) {
 
+    console.log('before hook fired');
+    
     var Ingredient = ctx.Model.app.models.Ingredient;
 
     Ingredient.find({

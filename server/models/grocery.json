@@ -40,7 +40,7 @@
         "forceId": false
       }
     },
-    "departmentsToHide":{
+    "departmentsToHide": {
       "type": "referencesMany",
       "model": "Department",
       "foreignKey": "hideThisIds",
@@ -48,7 +48,7 @@
         "validate": true,
         "forceId": false
       }
-    },
+    }
   },
   "acls": [],
   "methods": {}

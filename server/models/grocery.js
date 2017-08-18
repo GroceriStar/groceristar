@@ -141,6 +141,7 @@ module.exports = function(Grocery) {
 	};
 
 
+
 	// Grocery.remoteMethod('fetch', {
 	// 	returns: {
 	// 	  arg: 'groceries',
@@ -203,9 +204,11 @@ module.exports = function(Grocery) {
 	});
 
 
-	// Grocery.attachToUser = function(cb){
+	Grocery.attachToUser = function(groceryId, userId, cb){
 
-	// }
+	}
+
+
 	// Grocery.remoteMethod('groceryListForMenu', {
 	// 	accepts: {
 	// 	  arg: 'menuId',
@@ -222,4 +225,35 @@ module.exports = function(Grocery) {
 	// 	  verb: 'get'
 	// 	}
 	// });
+
+
+	Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
+
+		var Department = Grocery.app.models.Department;
+
+		// we check if this department even exists
+		Department.findById(departmentId, {}, function(){
+
+			Grocery.findById(groceryId, {
+				where: {departmentsList:inq(departmentId)}
+			}).then(function(model){
+
+				console.log(model);
+				var hiddenArray = model.hideThisIds;
+				hiddenArray.push(departmentId)
+				model.updateAttribute('hideThisIds', hiddenArray)
+			})
+
+		});
+
+	};
+
+	//:todo add remote method for enable API calls for this method
+
+
+	Grocery.clone = function(groceryId, userId, cb){
+
+		// Grocery.attachToUser(groceryId, userId);
+
+	}
 };
