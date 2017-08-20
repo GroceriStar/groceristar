@@ -77,7 +77,26 @@ module.exports = function(Department) {
 
   };
 
+  Department.methodB = function( departmentId, cb ){
 
+      Department.findById(departmentId, {
+        include: {
+          relation: 'ingredients',
+          scope: {
+            fields: [ 'name', 'id' ]
+          }
+        },
+        
+        // where: 
+
+
+    })
+    // .then(function(department){
+    //   console.log(department);
+    // })
+    .then(cb);
+
+  };
 
 
 

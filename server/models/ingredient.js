@@ -33,6 +33,22 @@ module.exports = function(Ingredient) {
     });
 
 
+    Ingredient.methodC = function(ingredientId, cb){
+
+        Ingredient.findById(ingredientId, {
+            // { 
+                "aggregate": { "group": { "id": "$status", "count": { "$sum": 1 } } } 
+            // }
+        }, function(result){
+
+
+
+            // cb(null, data);
+
+        })
+
+    };
+
     // method when Deparments use array of ingredients and move it inside departments array
 		  // method list attached ingredients by departments
     // Ingredient.listDepartments = function(ingredientId, cb){
