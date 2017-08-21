@@ -154,9 +154,6 @@ module.exports = function(app) {
     newUser.username   = req.body.username.trim();
     newUser.password   = req.body.password;
 
-    newUser.groceryIds = [];
-    newUser.favs       = [];
-
     User.create(newUser, function(err, user) {
       if (err) {
         req.flash('error', err.message);

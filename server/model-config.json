@@ -50,5 +50,13 @@
   "Item": {
     "dataSource": "groceryDS",
     "public": true
+  },
+  "userFav": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "userGrocery": {
+    "dataSource": "groceryDS",
+    "public": true
   }
 }
