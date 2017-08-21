@@ -43,7 +43,25 @@ module.exports = function(app) {
 
     var Grocery = app.models.Grocery;
 
-    Grocery.fetch();
+    Grocery.fetch(function(error, response){
+
+        console.log(response);
+
+          // res.render('pages/index', {
+          //   user: req.user,
+          //   url: req.url,
+          //   data: response //:todo change this names
+          // });
+
+           res.render('pages/loginProfiles', {
+            user: req.user,
+          url: req.url,
+
+         });
+
+    });
+
+
 
 
     // Grocery.findOne()
@@ -172,7 +190,10 @@ module.exports = function(app) {
   router.get('/auth/attach-grocery-to-user/:groceryId', function(req, res, next) {
 
     console.log( req.params.groceryId );
-    console.log( req.user );
+    console.log( req.user.id );
+
+    var Grocery = app.models.Grocery;
+    Grocery.attachToUser(groceryId, req.user.id);
     // res.redirect('/');
   });
 

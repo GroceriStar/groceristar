@@ -216,7 +216,7 @@ module.exports = function(Grocery) {
 			groceriesArray.push(groceryId);
 			console.log(groceriesArray);
 			
-			model.updateAttribute('groceryIds',groceriesArray);
+			// model.updateAttribute('groceryIds',groceriesArray);
 		});
 
 	}
