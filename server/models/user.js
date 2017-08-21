@@ -2,8 +2,15 @@
 
 module.exports = function(User) {
 
-	function listFavorites(){
-		
-	};
+
+
+	User.listFavorites = function(userId, cb){
+
+		User.findById(userId, {}, function(model){
+			console.log(model.favs);
+		});
+
+	}
+	//:todo add remote method for this functionality
 
 };

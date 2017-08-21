@@ -188,6 +188,24 @@ module.exports = function(app) {
     // res.redirect('/');
   });
 
+  router.get('/favorites', function(req, res, next){
+
+    console.log( req.user.id );
+    var User = app.models.user;
+    User.listFavorites(req.user.id, function(error, results){
+
+      console.log(results);
+
+      res.render('pages/favorites', {
+        list: results, //:todo change names, punk!
+        // url: req.url,
+        messages: {}
+      });
+
+    })
+
+  });
+
 
  
 
