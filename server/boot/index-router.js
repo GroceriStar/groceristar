@@ -142,16 +142,20 @@ module.exports = function(app) {
     res.render('pages/signup', {
       user: req.user,
       url: req.url,
+      messages: {}
     });
   });
 
   router.post('/signup', function(req, res, next) {
     var User = app.models.user;
 
-    var newUser = {};
-    newUser.email = req.body.email.toLowerCase();
-    newUser.username = req.body.username.trim();
-    newUser.password = req.body.password;
+    var newUser        = {};
+    newUser.email      = req.body.email.toLowerCase();
+    newUser.username   = req.body.username.trim();
+    newUser.password   = req.body.password;
+
+    newUser.groceryIds = [];
+    newUser.favs       = [];
 
     User.create(newUser, function(err, user) {
       if (err) {
@@ -187,19 +191,20 @@ module.exports = function(app) {
   });
 
 
-  router.get('/auth/attach-grocery-to-user/:groceryId', ensureLoggedIn('/login'), function(req, res, next) {
+  router.get('/auth/attach-grocery-to-user/:groceryId', 
+    ensureLoggedIn('/auth/account'), function(req, res, next) {
 
     // console.log( req.params );
     var groceryId = req.params.groceryId;
     var userId    = req.user.id;
-    
+
     // console.log( req.params.groceryId );
     // console.log( req.user.id );
 
     var Grocery = app.models.Grocery;
     Grocery.attachToUser(groceryId, userId);
 
-    // res.redirect('/');
+    res.redirect('/auth/account');
   });
 
 

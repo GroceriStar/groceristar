@@ -212,17 +212,20 @@ module.exports = function(Grocery) {
 		User.findById(userId, {}, function(err, model){
 
 			console.log(model);
-			var groceriesArray = model.groceryIds;
+			var groceriesArray = [];
+			// model.groceryIds;
 
-			if (typeof groceriesArray == 'undefined'){
-				groceriesArray = [];
+			if (typeof model.groceryIds !== 'undefined'){
+				groceriesArray = model.groceryIds;
 			}
-			console.log(groceriesArray);
+
+			// console.log(groceriesArray);
 
 			groceriesArray.push(groceryId);
-			console.log(groceriesArray);
+			// console.log(groceriesArray);
 			
-			// model.updateAttribute('groceryIds',groceriesArray);
+			model.updateAttribute('groceryIds', groceriesArray);
+			console.log(model);
 		});
 
 	}
