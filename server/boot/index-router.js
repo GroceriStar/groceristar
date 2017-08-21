@@ -45,7 +45,7 @@ module.exports = function(app) {
 
     Grocery.fetch(function(error, response){
 
-        console.log(response);
+        // console.log(response);
 
           // res.render('pages/index', {
           //   user: req.user,
@@ -103,7 +103,7 @@ module.exports = function(app) {
 
       Department.methodA(departmentId, function(departments){
 
-        console.log(departments);
+        // console.log(departments);
 
         var d = departments.toJSON();
 

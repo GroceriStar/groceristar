@@ -19,8 +19,12 @@
       "type": "hasMany",
       "model": "userCredential",
       "foreignKey": "userId"
+    },
+    "groceries": {
+      "type": "hasMany",
+      "model": "Grocery",
+      "foreignKey": "groceryIds"
     }
-
   },
   "acls": [],
   "methods": {}
