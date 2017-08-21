@@ -169,7 +169,7 @@ module.exports = function(app) {
   });
 
 
-  router.get('/auth/attach-grocery-to-user', function(req, res, next) {
+  router.get('/auth/attach-grocery-to-user/:groceryId', function(req, res, next) {
 
     console.log( req.params.groceryId );
     console.log( req.user );
