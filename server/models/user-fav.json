@@ -7,7 +7,18 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    },
+    "favorites": {
+      "type": "hasMany",
+      "model": "Ingredient",
+      "foreignKey": "favs"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -73,6 +73,7 @@ app.middleware('session', session({
   saveUninitialized: true,
   resave: true,
 }));
+
 passportConfigurator.init();
 
 // We need flash messages to see passport errors

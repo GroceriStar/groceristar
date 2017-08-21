@@ -7,17 +7,9 @@ var database = app.datasources.groceryDS;
 
 
 var lbTables = [
-	// 'User', 
-	'accessToken',
-	// 'AccessToken',
-	'ACL', 'RoleMapping',
-	'Role', 
 	
-	// custom tables
-	'user', 'userCredential', 'userIdentity', 
 
 	'userGrocery', 'userFav',
-	'Ingredient', 'Grocery', 'Department', 
 
 ];
 

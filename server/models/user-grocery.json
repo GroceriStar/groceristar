@@ -7,7 +7,19 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    },
+    "groceries": {
+      "type": "hasMany",
+      "model": "Grocery",
+      "foreignKey": "groceryIds"
+    }
+
+  },
   "acls": [],
   "methods": {}
 }

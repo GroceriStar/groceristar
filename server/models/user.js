@@ -3,14 +3,28 @@
 module.exports = function(User) {
 
 
+    User.observe("after save", function embeddedRelations(ctx, next) {
 
-	User.listFavorites = function(userId, cb){
+    	var UserGrocery  = User.app.models.userGrocery;
+ 		var UserFavorite = User.app.models.userFav;   	
 
-		User.findById(userId, {}, function(model){
-			console.log(model.favs);
-		});
+    	if( ctx.isNewInstance ){
+    		
+    		UserGrocery.create({
+    			userId: ctx.instance.id,
+    			groceryIds: []	
+    		});
 
-	}
-	//:todo add remote method for this functionality
+    		UserFavorite.create({
+    			userId: ctx.instance.id,
+    			favs: []	
+    		});
+    	}
+
+
+
+    	next();
+    });
+
 
 };
