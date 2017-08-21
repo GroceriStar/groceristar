@@ -35,17 +35,46 @@ module.exports = function(Ingredient) {
 
     Ingredient.methodC = function(ingredientId, cb){
 
-        Ingredient.findById(ingredientId, {
-            // { 
-                "aggregate": { "group": { "id": "$status", "count": { "$sum": 1 } } } 
-            // }
-        }, function(result){
+        var Deparments = Ingredient.app.models.Deparments;
+
+        Deparments.find({
+            include: {
+              relation: 'ingredients',
+              scope: {
+                fields: [ 'name', 'id' ],
+                where: { id:ingredientId }
+              }
+            }
+        }).then(function(result){
+
+        });
 
 
 
-            // cb(null, data);
+        // Grocery.find({
+        //     include: {
+        //       relation: 'ingredients',
+        //       scope: {
+        //         fields: [ 'name', 'id' ],
+        //         where: { id:ingredientId }
+        //       }
+        //     }
+        // }).then(function(result){
 
-        })
+        // });
+
+
+        // Ingredient.findById(ingredientId, {
+        //     // { 
+        //         "aggregate": { "group": { "id": "$status", "count": { "$sum": 1 } } } 
+        //     // }
+        // }, function(result){
+
+
+
+        //     // cb(null, data);
+
+        // });
 
     };
 
