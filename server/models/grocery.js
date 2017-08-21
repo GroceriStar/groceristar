@@ -210,7 +210,13 @@ module.exports = function(Grocery) {
 
 		var User = Grocery.app.models.user;
 		User.findById(userId, {}, function(err, model){
+
+			console.log(model);
 			var groceriesArray = model.groceryIds;
+
+			if (typeof groceriesArray == 'undefined'){
+				groceriesArray = [];
+			}
 			console.log(groceriesArray);
 
 			groceriesArray.push(groceryId);

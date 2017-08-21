@@ -187,13 +187,18 @@ module.exports = function(app) {
   });
 
 
-  router.get('/auth/attach-grocery-to-user/:groceryId', function(req, res, next) {
+  router.get('/auth/attach-grocery-to-user/:groceryId', ensureLoggedIn('/login'), function(req, res, next) {
 
-    console.log( req.params.groceryId );
-    console.log( req.user.id );
+    // console.log( req.params );
+    var groceryId = req.params.groceryId;
+    var userId    = req.user.id;
+    
+    // console.log( req.params.groceryId );
+    // console.log( req.user.id );
 
     var Grocery = app.models.Grocery;
-    Grocery.attachToUser(groceryId, req.user.id);
+    Grocery.attachToUser(groceryId, userId);
+
     // res.redirect('/');
   });
 
