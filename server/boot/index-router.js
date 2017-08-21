@@ -206,6 +206,11 @@ module.exports = function(app) {
 
   });
 
+  router.post('/delete/favorites', function(req, res, next){
+    console.log( req.user.id );
+    console.log( req.favoriteId ); // this is ingredient Id - we need to remove this id from array 
+  });
+
 
  
 
