@@ -16,14 +16,14 @@ let Departments  = require(path.resolve(__dirname, 'departments'));
 
 
 
-async.series()
+// async.series()
 
 
 async.parallel({
 	
 		
 		
-		departments : async.apply(Departments.createDepartments),
+		// departments : async.apply(Departments.createDepartments),
 		// ingredients : async.apply(),
 
 		groceries   : async.apply(Groceries.createGroceries),
@@ -60,5 +60,3 @@ async.parallel({
 
 	}
 );
-
-

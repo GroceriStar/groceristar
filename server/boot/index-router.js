@@ -47,19 +47,17 @@ module.exports = function(app) {
 
         // console.log(response);
 
-          // res.render('pages/index', {
-          //   user: req.user,
-          //   url: req.url,
-          //   data: response //:todo change this names
-          // });
-
+          
            res.render('pages/loginProfiles', {
             user: req.user,
-          url: req.url,
-
+            url: req.url,
+            //data: response //:todo change this names
          });
 
     });
+    // .catch(function(err){
+    //   throw err;
+    // });
 
 
 

@@ -209,45 +209,20 @@ module.exports = function(Grocery) {
 	Grocery.attachToUser = function(groceryId, userId, cb){
 
 		var User = Grocery.app.models.user;
-		// var UserGrocery = Grocery.app.models.userGrocery;
-
-		// UserGrocery.find({
-		// 	where: {userId: userId}
-		// }).then(function(model){
-
-		// 	console.log(model);
-		// 	var groceriesArray = [];
-
-		// 	// if (typeof model.groceryIds !== 'undefined'){
-		// 		// groceriesArray = model.groceryIds;
-		// 	// }
-
-		// 	// console.log(groceriesArray);
-
-		// 	// groceriesArray.push(groceryId);
-		// 	// console.log(groceriesArray);
-			
-		// 	// model.updateAttribute('groceryIds', groceriesArray);
-		// 	// console.log(model);
-
-		// });
-
-
+		
 		User.findById(userId, {
 
 		}, function(err, model){
 
 			// console.log(model);
 			var groceriesArray = [];
-			// model.groceryIds;
 
 			if (typeof model.groceryIds !== 'undefined'){
 				groceriesArray = model.groceryIds;
 			}
 
 			// console.log(groceriesArray);
-
-			groceriesArray.push(groceryId);
+			groceriesArray.unshift(groceryId);
 			// console.log(groceriesArray);
 			
 			model.updateAttribute('groceryIds', groceriesArray);
