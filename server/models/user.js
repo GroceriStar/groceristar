@@ -32,18 +32,21 @@ module.exports = function(User) {
 
         User.findById(userId, {
             include: {
-                // {
                 relation: 'favorites',
-                // scope: {
-                //     fields: [ 'name' ],
-                // }
+                scope: {
+                    fields: [ 'name', 'created_at' ],
+                }
             }
         }, function(err, model){
 
-            // console.log(model);
+            console.log(model);
+            // console.log('----------');
             var data = model.toJSON();
+            // console.log(data[0].favorites);
+            // console.log('----------');
+            console.log(data);
+            // console.log(data.favorites);
 
-            console.log(data.favorites);
 
             // data.favorites.forEach(function(item, i){
               

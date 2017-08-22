@@ -230,7 +230,7 @@ module.exports = function(app) {
 
   router.get('/favorites', ensureLoggedIn('/auth/account'), function(req, res, next){
 
-    console.log( req.user.id );
+    // console.log( req.user.id );
 
     var User = app.models.user;
     User.listFavorites(req.user.id, function(error, results){

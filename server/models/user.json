@@ -26,9 +26,13 @@
       "foreignKey": "groceryIds"
     },
     "favorites": {
-      "type": "hasMany",
+      "type": "referencesMany",
       "model": "Ingredient",
-      "foreignKey": "favs"
+      "foreignKey": "favs",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [],
