@@ -39,36 +39,24 @@ module.exports = function(User) {
             }
         }, function(err, model){
 
-            console.log(model);
-            // console.log('----------');
-            var data = model.toJSON();
-            // console.log(data[0].favorites);
-            // console.log('----------');
-            console.log(data);
+            var data      = model.toJSON();
+            var favorites = [];
+
             // console.log(data.favorites);
 
 
-            // data.favorites.forEach(function(item, i){
+            data.favorites.forEach(function(item, i){
               
-            //     // console.log(item.name);
-            //     // console.log(item.id);
-            //     // console.log(item.visible);
-            //     // console.log(item.ingredients.length > 0);
-            //     departments.push({ id: item.id, name: item.name });
+                // console.log(item.name);
+                // console.log(item.id);
+                favorites.push({ id: item.id, name: item.name });
 
                 
-            // });
+            });
 
 
-            // console.log(model.favs);
+            cb(null, favorites);
 
-            // Ingredient.find({
-            //     where: { 
-            //         id: { inq:  }
-            //     }
-            // })
-
-            // cb(null, )
         });
 
     }

@@ -233,15 +233,16 @@ module.exports = function(app) {
     // console.log( req.user.id );
 
     var User = app.models.user;
-    User.listFavorites(req.user.id, function(error, results){
+    User.listFavorites(req.user.id, function(error, response){
+      console.log(response);
 
       // console.log(results);
 
-      // res.render('pages/favorites', {
-      //   list: results, //:todo change names, punk!
-      //   // url: req.url,
-      //   messages: {}
-      // });
+      res.render('pages/favorites', {
+        data: response, //:todo change names, punk!
+        // url: req.url,
+        messages: {}
+      });
 
     })
 
