@@ -235,13 +235,13 @@ module.exports = function(app) {
     var User = app.models.user;
     User.listFavorites(req.user.id, function(error, results){
 
-      console.log(results);
+      // console.log(results);
 
-      res.render('pages/favorites', {
-        list: results, //:todo change names, punk!
-        // url: req.url,
-        messages: {}
-      });
+      // res.render('pages/favorites', {
+      //   list: results, //:todo change names, punk!
+      //   // url: req.url,
+      //   messages: {}
+      // });
 
     })
 
@@ -265,8 +265,8 @@ module.exports = function(app) {
     var ingredientId = req.params.ingredientId;
     var userId       = req.user.id;
 
-    console.log( ingredientId );
-    console.log( userId );
+    // console.log( ingredientId );
+    // console.log( userId );
 
     var User = app.models.user;
     User.attachFavoriteToUser(ingredientId, userId);

@@ -28,11 +28,73 @@ module.exports = function(User) {
 
     User.listFavorites = function(userId, cb){
 
-        User.findById(userId, {}, function(model){
-            console.log(model.favs);
+        var Ingredient = User.app.models.Ingredient;
+
+        User.findById(userId, {
+            include: {
+                // {
+                relation: 'favorites',
+                // scope: {
+                //     fields: [ 'name' ],
+                // }
+            }
+        }, function(err, model){
+
+            // console.log(model);
+            var data = model.toJSON();
+
+            console.log(data.favorites);
+
+            // data.favorites.forEach(function(item, i){
+              
+            //     // console.log(item.name);
+            //     // console.log(item.id);
+            //     // console.log(item.visible);
+            //     // console.log(item.ingredients.length > 0);
+            //     departments.push({ id: item.id, name: item.name });
+
+                
+            // });
+
+
+            // console.log(model.favs);
+
+            // Ingredient.find({
+            //     where: { 
+            //         id: { inq:  }
+            //     }
+            // })
+
+            // cb(null, )
         });
 
     }
+    //:todo add remote method for this functionality
+
+    User.attachFavoriteToUser = function(ingredientId, userId, cb){
+       
+        // var Ingredient = User.app.models.Ingredient;
+
+        User.findById(userId, {
+
+        }, function(err, model){
+
+            // console.log(model);
+            var favoritesArray = [];
+
+            if (typeof model.favs !== 'undefined'){
+                favoritesArray = model.favs;
+            }
+
+            // console.log(favoritesArray);
+            favoritesArray.unshift(ingredientId);
+            // console.log(favoritesArray);
+            
+            model.updateAttribute('favs', favoritesArray);
+            // console.log(model);
+        });
+
+    };
     //:todo add remote method for this functionality
 
 };
