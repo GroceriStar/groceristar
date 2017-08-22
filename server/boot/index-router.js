@@ -43,14 +43,24 @@ module.exports = function(app) {
 
     var Grocery = app.models.Grocery;
 
+    var User    = app.models.user; 
+    var userId  = req.user.id;
+    // console.log(req.user.id);
+
     Grocery.fetch(function(error, response){
 
         // console.log(response);
+
+           User.findById(userId, {}, function(err, model){
+              console.log(model);
+              console.log(model.groceryIds);
+           });
 
           
            res.render('pages/loginProfiles', {
             user: req.user,
             url: req.url,
+            groceries: false
             //data: response //:todo change this names
          });
 
@@ -62,23 +72,7 @@ module.exports = function(app) {
 
 
 
-    // Grocery.findOne()
-    // .then(function(grocery){
-    //   console.log(grocery);
-    //   console.log(grocery.id);
-    //   // console.log(grocery.departmentIds);
-    //   // console.log(grocery.title);
-
-    //     // res.render('pages/loginProfiles', {
-    //     //   user: req.user,
-    //     //   url: req.url,
-
-    //     // });
-
-    // }).catch(function(err){
-    //   throw err;
-    // })
-
+    
     // res.render('pages/loginProfiles', {
     //   user: req.user,
     //   url: req.url,

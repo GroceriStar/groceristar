@@ -15,7 +15,9 @@ block content
 
   a.btn.btn-primary(href="/auth/attach-grocery-to-user/599bd8e596fc0e2a4468137a") Attache2
 
-  
+  if groceries
+    .col-md-12
+      include ../partials/groceries-list
 
   h2 Linked Account(s)
   ul.list-inline.list-unstyled

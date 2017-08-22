@@ -1,0 +1,5 @@
+br
+ul
+  each val, index in groceries
+    li= val.name + '( ' + val.id + ' ) '
+      a(href='/view/grocery/' + val.id) link

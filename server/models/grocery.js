@@ -25,6 +25,54 @@ module.exports = function(Grocery) {
 	});
 
 
+	Grocery.fetchy = function(userId, cb){
+		Grocery.findOne({
+			include: {
+				relation: 'departmentsList',
+				scope: {
+					fields: [ 'name' ],
+					include: {
+						relation: 'ingredients',
+						scope: {
+							fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
+
+				}
+			}
+
+		}, function(err, grocery){
+
+			var g = grocery.toJSON();
+			
+			var departments = [];
+
+			// userId
+			User.findById(userId, {}, function(err, model){
+              console.log(model);
+              console.log(model.groceryIds);
+           });
+
+			g.departmentsList.forEach(function(item, i){
+
+				// case #1 return only dep name with id for link creation
+				// console.log(item.name);
+				// console.log(item.id);
+				// console.log(item.visible);
+				// console.log(item.ingredients.length > 0);
+				departments.push({ id: item.id, name: item.name });
+
+				
+			});
+
+
+
+		});
+	};
+
 	// :todo not sure what i mean by this.
 	Grocery.fetch = function(cb){
 
