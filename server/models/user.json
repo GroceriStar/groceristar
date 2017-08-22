@@ -24,6 +24,11 @@
       "type": "hasMany",
       "model": "Grocery",
       "foreignKey": "groceryIds"
+    },
+    "favorites": {
+      "type": "hasMany",
+      "model": "Ingredient",
+      "foreignKey": "favs"
     }
   },
   "acls": [],

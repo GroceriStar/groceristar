@@ -2,13 +2,13 @@
 
 module.exports = function(UserFav) {
 
-	UserFav.listFavorites = function(userId, cb){
+	// UserFav.listFavorites = function(userId, cb){
 
-		User.findById(userId, {}, function(model){
-			console.log(model.favs);
-		});
+	// 	User.findById(userId, {}, function(model){
+	// 		console.log(model.favs);
+	// 	});
 
-	}
-	//:todo add remote method for this functionality
+	// }
+	// //:todo add remote method for this functionality
 
 };

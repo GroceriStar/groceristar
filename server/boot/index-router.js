@@ -228,9 +228,10 @@ module.exports = function(app) {
     // res.redirect('/');
   });
 
-  router.get('/favorites', function(req, res, next){
+  router.get('/favorites', ensureLoggedIn('/auth/account'), function(req, res, next){
 
     console.log( req.user.id );
+
     var User = app.models.user;
     User.listFavorites(req.user.id, function(error, results){
 
@@ -251,7 +252,31 @@ module.exports = function(app) {
     console.log( req.favoriteId ); // this is ingredient Id - we need to remove this id from array 
   });
 
+  //:todo fix delete or finish this
+  router.post('/add/fav', function(req, res, next){
 
+    console.log(req.body);
+    console.log(req.params);
+
+  });
+
+  router.get('/add/fav2/:ingredientId', function(req, res, next){
+
+    var ingredientId = req.params.ingredientId;
+    var userId       = req.user.id;
+
+    console.log( ingredientId );
+    console.log( userId );
+
+    var User = app.models.user;
+    User.attachFavoriteToUser(ingredientId, userId);
+
+    res.redirect('/auth/account');
+
+
+  });
+
+  
  
 
 
