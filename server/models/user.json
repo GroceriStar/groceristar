@@ -21,9 +21,13 @@
       "foreignKey": "userId"
     },
     "groceries": {
-      "type": "hasMany",
+      "type": "referencesMany",
       "model": "Grocery",
-      "foreignKey": "groceryIds"
+      "foreignKey": "groceryIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     },
     "favorites": {
       "type": "referencesMany",

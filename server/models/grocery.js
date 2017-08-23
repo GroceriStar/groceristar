@@ -328,23 +328,53 @@ module.exports = function(Grocery) {
 		Grocery.findById(groceryId, {}, function(err, grocery){
 
 			// console.log(grocery);
-
-			var GroceryClone = Grocery.create({
-				name: grocery.name,
+			//:todo use createnew method instead of duplicate stuff
+			Grocery.create({
+				title: grocery.title,
 				desc: grocery.desc,
+				slug: grocery.slug,
+				img : grocery.img,
 				departmentIds: grocery.departmentIds,
 				hideThisIds:   grocery.hideThisIds,
+			}, function(err, model){
+
+				// console.log(model)
+				// console.log( model.id );
+				Grocery.attachToUser(model.id, userId, function(data){
+
+				});
+
 			});
 
-			console.log( GroceryClone );
-			console.log( GroceryClone.id );
-			Grocery.attachToUser(GroceryClone.id, userId, function(data){
+			
 
-			});
 
 
 		});
 		
+
+	}
+
+	// 	data must have this structure:
+	// {
+	// 				title: data.title,
+	// 				desc:  data.desc,
+	// 				slug:  data.slug,
+	// 				img :  data.img,
+	// 				departmentIds: data.departmentIds,
+	// 				hideThisIds:   data.hideThisIds,
+	// 			}
+	Grocery.createnew = function(userId, data, cb){
+
+		Grocery.create(data, function(err, model){
+
+				// console.log(model)
+				// console.log( model.id );
+				Grocery.attachToUser(model.id, userId, function(data){
+
+				});
+
+			});
 
 	}
 };

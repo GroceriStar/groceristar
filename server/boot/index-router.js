@@ -283,12 +283,12 @@ module.exports = function(app) {
  //:todo make it more protected from view
  router.get('/view/grocery/:groceryId', function(req, res, next){
 
-    console.log( req.params.groceryId );
+    // console.log( req.params.groceryId );
     // console.log( req.user.id );
 
     var Grocery = app.models.Grocery;
     Grocery.findById(req.params.groceryId, {}, function(err, grocery){
-      console.log(grocery)
+      // console.log(grocery)
       res.render('pages/grocery', {
         data: grocery, //:todo change names, punk!
         // url: req.url,
@@ -303,6 +303,23 @@ module.exports = function(app) {
 
 
 
+
+ router.get('create-new-grocery', 
+  ensureLoggedIn('/auth/account'), function(req, res, next){
+
+    console.log( req.user.id );
+    var Grocery = app.models.Grocery;
+    var data = {
+      title: data.title,
+      desc:  data.desc,
+      slug:  '',
+      img :  '',
+      // departmentIds: [], //not sure if we need this
+      // hideThisIds:   [],
+    }
+    Grocery.createnew(req.user.id, data, function(){});
+
+ });
 
 
  
