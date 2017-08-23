@@ -32,15 +32,15 @@ console.log( req.user.id );
 
   });
 
-    router.get('remove-from-purchased', function(req, res, next){
+	router.get('remove-from-purchased', function(req, res, next){
 
-  	var Grocery = app.models.Grocery;
-console.log( req.user.id );
-    console.log( req.ingredients );
-  	Grocery.withPurchased(groceryId, ingredients, function(err, model){
+		var Grocery = app.models.Grocery;
+		console.log( req.user.id );
+		console.log( req.ingredients );
+		Grocery.withPurchased(groceryId, ingredients, function(err, model){
 
-  		var data = model.toJSON();
-	      console.log(data.purchased);
+			var data = model.toJSON();
+      		console.log(data.purchased);
 
 	      if( !data.purchased ){ return true; } //:todo test this
 
@@ -56,7 +56,7 @@ console.log( req.user.id );
 	      model.updateAttribute('purchasedIds', arr);
 	      console.log(model);
 
-  	});
+  		});
 
 	// Grocery.findById(groceryId, {}, function(err, model){
 	// 	model.updateAttribute('title', 'Smack my bitch up');

@@ -450,17 +450,35 @@ module.exports = function(Grocery) {
 	Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
 
-			var purchasedArray = [];
+	      var data = model.toJSON();
+	      console.log(data.purchasedIds);
 
-			if (typeof model.purchasedIds !== 'undefined'){
-				purchasedArray = model.purchasedIds;
-			}
+	      if( !data.purchasedIds ){ return true; } //:todo test this
+
+	      let forDeletion = [ ingredientId ];
+
+	      let arr = data.purchasedIds;
+
+	      arr = arr.filter(item => !forDeletion.includes(item))
+	      // !!! Read below about array.includes(...) support !!!
+
+	      console.log(arr);
+
+	      model.updateAttribute('purchasedIds', arr);
+	      console.log(model);
+
+
+			// var purchasedArray = [];
+
+			// if (typeof model.purchasedIds !== 'undefined'){
+			// 	purchasedArray = model.purchasedIds;
+			// }
 
 			// console.log(purchasedArray);
-			purchasedArray.unshift(purchasedIds);
+			// purchasedArray.unshift(purchasedIds);
 			// console.log(purchasedArray);
 			
-			model.updateAttribute('purchasedIds', purchasedArray);
+			// model.updateAttribute('purchasedIds', purchasedArray);
 
 		})
 	};

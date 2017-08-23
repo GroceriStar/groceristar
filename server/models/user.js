@@ -102,4 +102,37 @@ module.exports = function(User) {
 
 
     };
+
+    User.detachGroceryAKADelete = function(groceryId, userId, cb){
+
+        User.findById(userId, {}, function(err, model){
+
+            if( model.groceryIds.includes(groceryId) ){
+                
+                // destroyById
+
+                
+                var data = model.toJSON();
+                console.log(data);
+                console.log(model.groceryIds);
+
+                if( !data.purchasedIds ){ return true; } //:todo test this
+
+                let forDeletion = [ ingredientId ];
+
+                let arr = data.purchasedIds;
+
+                arr = arr.filter(item => !forDeletion.includes(item))
+                // !!! Read below about array.includes(...) support !!!
+
+                console.log(arr);
+
+                model.updateAttribute('purchasedIds', arr);
+                console.log(model);
+
+            }
+
+        });
+
+    };
 };
