@@ -330,7 +330,7 @@ module.exports = function(Grocery) {
 			// console.log(grocery);
 			//:todo use createnew method instead of duplicate stuff
 			Grocery.create({
-				title: grocery.title,
+				title: 'Clone of <' + grocery.title + '>',
 				desc: grocery.desc,
 				slug: grocery.slug,
 				img : grocery.img,
