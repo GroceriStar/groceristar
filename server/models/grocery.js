@@ -309,7 +309,7 @@ module.exports = function(Grocery) {
 				where: {departmentsList:inq(departmentId)}
 			}).then(function(model){
 
-				console.log(model);
+				// console.log(model);
 				var hiddenArray = model.hideThisIds;
 				hiddenArray.push(departmentId)
 				model.updateAttribute('hideThisIds', hiddenArray);
@@ -325,8 +325,9 @@ module.exports = function(Grocery) {
 	Grocery.clone = function(groceryId, userId, cb){
 
 		// Grocery.attachToUser(groceryId, userId);
-		Grocery.findById(groceryId, {}, function(grocery){
+		Grocery.findById(groceryId, {}, function(err, grocery){
 
+			// console.log(grocery);
 
 			var GroceryClone = Grocery.create({
 				name: grocery.name,
@@ -337,7 +338,9 @@ module.exports = function(Grocery) {
 
 			console.log( GroceryClone );
 			console.log( GroceryClone.id );
-			Grocery.attachToUser(GroceryClone.id, userId);
+			Grocery.attachToUser(GroceryClone.id, userId, function(data){
+
+			});
 
 
 		});

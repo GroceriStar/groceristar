@@ -20,7 +20,7 @@ module.exports = function(app) {
     // Grocery.fetch();
     Grocery.fetch(function(error, response){
 
-        console.log(response);
+        // console.log(response);
 
           res.render('pages/index', {
             user: req.user,
@@ -52,15 +52,15 @@ module.exports = function(app) {
         // console.log(response);
           //:todo make this a separate method inside model
            User.findById(userId, {}).then(function(model){
-              console.log(model);
-              console.log(model.groceryIds);
+              // console.log(model);
+              // console.log(model.groceryIds);
 
               Grocery.find({
                 where: {id: {inq:model.groceryIds}}
               }).then(function(models){
 
 
-                console.log(models);
+                // console.log(models);
 
 
                  res.render('pages/loginProfiles', {
@@ -217,13 +217,15 @@ module.exports = function(app) {
   });
 
 
-  router.get('/clone/:id', function(req, res, next) {
+  router.get('/clone/:groceryId', function(req, res, next) {
 
     console.log( req.params.groceryId );
     console.log( req.user.id );
 
     var Grocery = app.models.Grocery;
-    Grocery.clone( req.params.groceryId, req.user.id );
+    Grocery.clone( req.params.groceryId, req.user.id, function(){
+
+    });
 
     // res.redirect('/');
   });
@@ -277,8 +279,27 @@ module.exports = function(app) {
 
   });
 
-  
- 
+ //:todo add relations and display whole information about 
+ //:todo make it more protected from view
+ router.get('/view/grocery/:groceryId', function(req, res, next){
+
+    console.log( req.params.groceryId );
+    // console.log( req.user.id );
+
+    var Grocery = app.models.Grocery;
+    Grocery.findById(req.params.groceryId, {}, function(err, grocery){
+      console.log(grocery)
+      res.render('pages/grocery', {
+        data: grocery, //:todo change names, punk!
+        // url: req.url,
+        messages: {}
+      });  
+
+    });
+
+
+
+ });
 
 
 
