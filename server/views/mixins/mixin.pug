@@ -1,0 +1,15 @@
+mixin link(href, name)
+  a.btn(class!=attributes.class title=name href=href target="_blank")= name
+
+//+link('http://peexaweb.com', 'Google')(class="additional-class")
+
+mixin view_departments(array, enable_hidden)
+  ul
+    each val, index in array
+      if( enable_hidden )
+        li= val.name + '( ' + val.id + ' ) '
+          a(href='/delete/department/' + val.id) link  
+      else unless val.visible
+        li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?: ' + val.visible
+          a(href='/delete/department/' + val.id) link  
+            

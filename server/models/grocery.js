@@ -377,4 +377,55 @@ module.exports = function(Grocery) {
 			});
 
 	}
+
+	Grocery.withDepartments = function(groceryId, cb){
+		Grocery.findOne({
+			include: {
+				relation: 'departmentsList',
+				scope: {
+					fields: [ 'name' ],
+					include: {
+						relation: 'ingredients',
+						scope: {
+							fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
+
+				}
+			},
+			where: {id:groceryId}
+
+		}, cb);
+	};
+
+	//:todo think about adding count(to departments). 
+	// So if ingredients in dep = 0 - don't show it
+	Grocery.element = function(groceryId, cb){
+
+		Grocery.withDepartments(groceryId, function(err, model){
+
+			var g = grocery.toJSON();
+			
+			var departments = [];
+			// console.log(g.desc);
+			// console.log(g.departmentsList);
+
+			// case #1 return only dep name with id for link creation
+			g.departmentsList.forEach(function(item, i){
+
+				if( item.visible ) {
+					departments.push({
+						 id: item.id,
+						 name: item.name 
+					});
+				}	
+
+				
+			});
+		})
+
+	}
 };
