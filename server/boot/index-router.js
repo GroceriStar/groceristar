@@ -147,6 +147,14 @@ module.exports = function(app) {
 
   });
 
+  router.get('/hide/department/:id', function(req, res, next){
+    var departmentId = req.params.id;
+    var Department   = app.models.Department;
+    Department.findById(departmentId, {}, function(err, model){
+      model.updateAttribute('visible', false);
+    })
+  });
+
 
   router.get('/signup', function(req, res, next) {
     res.render('pages/signup', {
