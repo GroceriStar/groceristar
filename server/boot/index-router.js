@@ -143,9 +143,7 @@ module.exports = function(app) {
 
     var departmentId = req.params.id;
     var Department   = app.models.Department;
-    Department.destroyById(departmentId, function(err){
-
-    });
+    Department.destroyById(departmentId, function(err){});
 
   });
 

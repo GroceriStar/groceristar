@@ -108,27 +108,31 @@ module.exports = function(User) {
         User.findById(userId, {}, function(err, model){
 
             if( model.groceryIds.includes(groceryId) ){
-                
-                // destroyById
+
+                // 
 
                 
                 var data = model.toJSON();
+                // var data = model;
                 console.log(data);
-                console.log(model.groceryIds);
+                // console.log(data.groceryIds);
 
-                if( !data.purchasedIds ){ return true; } //:todo test this
+                if( !data.groceryIds ){ return true; } //:todo test this
 
-                let forDeletion = [ ingredientId ];
+                let forDeletion = [ groceryId ];
 
-                let arr = data.purchasedIds;
+                let arr = data.groceryIds;
 
                 arr = arr.filter(item => !forDeletion.includes(item))
                 // !!! Read below about array.includes(...) support !!!
 
                 console.log(arr);
 
-                model.updateAttribute('purchasedIds', arr);
+                model.updateAttribute('groceryIds', arr);
                 console.log(model);
+
+                var Grocery = User.app.models.Grocery;
+                Grocery.destroyById(groceryId, function(err){});
 
             }
 
