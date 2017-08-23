@@ -428,4 +428,65 @@ module.exports = function(Grocery) {
 		})
 
 	}
+
+	Grocery.makePurchased = function(groceryId, ingredientId, cb){
+		Grocery.findById(groceryId, {}, function(err, model){
+
+			var purchasedArray = [];
+
+			if (typeof model.purchasedIds !== 'undefined'){
+				purchasedArray = model.purchasedIds;
+			}
+
+			// console.log(purchasedArray);
+			purchasedArray.unshift(purchasedIds);
+			// console.log(purchasedArray);
+			
+			model.updateAttribute('purchasedIds', purchasedArray);
+
+		})
+	};
+
+	Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
+		Grocery.findById(groceryId, {}, function(err, model){
+
+			var purchasedArray = [];
+
+			if (typeof model.purchasedIds !== 'undefined'){
+				purchasedArray = model.purchasedIds;
+			}
+
+			// console.log(purchasedArray);
+			purchasedArray.unshift(purchasedIds);
+			// console.log(purchasedArray);
+			
+			model.updateAttribute('purchasedIds', purchasedArray);
+
+		})
+	};
+
+	Grocery.withPurchased = function(groceryId, cb){
+		Grocery.findOne({
+			include: {
+				relation: 'purchased',
+				scope: {
+					fields: [ 'id', 'name' ],
+					// include: {
+					// 	relation: 'ingredients',
+					// 	scope: {
+					// 		fields: [ 'name' ],
+					// 		// where: {
+					// 		// 	departmentId: id
+					// 		// }
+					// 	}
+					// }
+
+				}
+			},
+			where: { id:groceryId }
+
+		}, cb);
+	};
+
+	
 };
