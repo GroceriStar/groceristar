@@ -28,8 +28,8 @@ module.exports = function(User) {
 
     User.listFavorites = function(userId, cb){
 
-        var Ingredient = User.app.models.Ingredient;
-
+        // var Ingredient = User.app.models.Ingredient;
+        //:todo start to use this method getCurrentUserWithFavorites
         User.findById(userId, {
             include: {
                 relation: 'favorites',
@@ -88,4 +88,18 @@ module.exports = function(User) {
     };
     //:todo add remote method for this functionality
 
+
+    User.getCurrentUserWithFavorites = function(userId, cb){
+
+        User.findById(userId, {
+            include: {
+                relation: 'favorites',
+                scope: {
+                    fields: [ 'id', 'name', 'created_at' ],
+                }
+            }
+        }, cb);
+
+
+    };
 };

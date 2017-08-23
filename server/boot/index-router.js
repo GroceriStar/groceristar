@@ -250,9 +250,36 @@ module.exports = function(app) {
 
   });
 
-  router.post('/delete/favorites', function(req, res, next){
+  router.post('/delete/favorites/:favoriteId', 
+    ensureLoggedIn('/auth/account'), function(req, res, next){
     console.log( req.user.id );
     console.log( req.favoriteId ); // this is ingredient Id - we need to remove this id from array 
+    var User = app.models.user;
+    User.findById(req.user.id, {
+
+    })
+
+    User.getCurrentUserWithFavorites(req.user.id, function(err, model){
+
+      var data = model.toJSON();
+      console.log(data.favorites);
+
+      if( !data.favorites ){ return true; } //:todo test this
+
+      let forDeletion = [ req.favoriteId ];
+
+      let arr = data.favorites;
+
+      arr = arr.filter(item => !forDeletion.includes(item))
+      // !!! Read below about array.includes(...) support !!!
+
+      console.log(arr);
+
+      model.updateAttribute('favs', arr);
+      console.log(model);
+
+    })
+
   });
 
   //:todo fix delete or finish this
