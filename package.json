@@ -38,6 +38,7 @@
     "pug": "^2.0.0-rc.3",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.2.0",
+    "todomvc-app-css": "^2.1.0",
     "todomvc-common": "^1.0.3"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ block content
     section.main(data-query='visible(todos().length > 0)', style='display: none;')
       input.toggle-all(data-query='checked(todos.remaining() == 0).click(todos.toggleAll)', type='checkbox')
       label(for='toggle-all') Mark all as complete
+
       ul#todo-todo-todo.todo-list(data-query='each(todos.view)')
         li(data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)")
           .view
@@ -18,10 +19,12 @@ block content
               | 						{{title}}
             button.destroy(data-query='click(destroy)')
           input.edit(data-query='val(title).keydown(handleAction).blur(closeEdit).focused(editing)')
+
     footer.footer(data-query='visible(todos().length > 0)', style='display: none;')
       span.todo-count
         strong {{todos.remaining}}
         |  {{todos.remaining() == 1 ? 'item' : 'items'}} left
+
       ul.filters
         li
           a(data-query="setClass('selected', filter() == 'all')", href='#/') All
@@ -29,5 +32,5 @@ block content
           a(data-query="setClass('selected', filter() == 'active')", href='#/active') Active
         li
           a(data-query="setClass('selected', filter() == 'completed')", href='#/completed') Completed
-      button.clear-completed(data-query='visible(todos().length != todos.remaining()).click(todos.clearCompleted)') Clear completed
 
+      button.clear-completed(data-query='visible(todos().length != todos.remaining()).click(todos.clearCompleted)') Clear completed
