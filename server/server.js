@@ -10,6 +10,9 @@ var app          = module.exports = loopback();
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 
+var path       = require('path');
+var express    = require('express');
+
 // Passport configurators..
 var loopbackPassport     = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
@@ -45,7 +48,6 @@ try {
 // -- Add your pre-processing middleware here --
 
 // Setup the view engine (pug)
-var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'pug');

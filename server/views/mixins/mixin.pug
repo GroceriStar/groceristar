@@ -9,7 +9,7 @@ mixin view_departments(array, enable_hidden)
       if( enable_hidden )
         li= val.name + '( ' + val.id + ' ) '
           a(href='/delete/department/' + val.id) link  
-      else unless val.visible
+      else if !val.visible
         li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?: ' + val.visible
           a(href='/delete/department/' + val.id) link  
             

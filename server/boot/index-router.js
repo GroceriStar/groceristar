@@ -22,7 +22,13 @@ module.exports = function(app) {
 
         // console.log(response);
 
-          res.render('pages/index', {
+          // res.render('pages/index', {
+          //   user: req.user,
+          //   url: req.url,
+          //   data: response //:todo change this names
+          // });
+
+          res.render('pages/grocery', {
             user: req.user,
             url: req.url,
             data: response //:todo change this names
