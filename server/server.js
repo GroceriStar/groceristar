@@ -51,6 +51,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('json spaces', 2); // format json responses for easier viewing
 
+// in client/public we store static files right now.
+var staticDir = path.join(__dirname + '/../client/public');
+app.use(express.static(staticDir));
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
