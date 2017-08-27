@@ -63,7 +63,11 @@
 		init: function () {
 			this
 				// load the data from the Local Storage
-				.reset(JSON.parse(localStorage.getItem('todos-jsblocks')) || [])
+				.reset(
+					JSON.parse(
+						localStorage.getItem('todos-jsblocks')
+						) || []
+					)
 				// save to Local Storage on each item add or remove
 				.on('add remove', this.save)
 				.updateRemaining();

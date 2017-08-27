@@ -30,7 +30,13 @@ module.exports = function(app) {
           //   data: response //:todo change this names
           // });
 
-          res.render('pages/grocery2', {
+          // res.render('pages/grocery2', {
+          //   user: req.user,
+          //   url: req.url,
+          //   data: response //:todo change this names
+          // });
+
+          res.render('pages/home', {
             user: req.user,
             url: req.url,
             data: response //:todo change this names
