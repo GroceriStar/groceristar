@@ -1,0 +1,103 @@
+/* ==========================================================================
+   COLOR: BLUE - #2980b9, #3498db
+========================================================================== */ 
+a, .text-color {
+    color: #2980b9;
+}
+
+.color-bg {
+    background-color: #2980b9;
+}
+
+/*------------------------------------------*/
+/*   Red Buttons 
+/*------------------------------------------*/
+.btn-color-ghost {
+    background: transparent;
+    color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-color, .btn-color-ghost:hover {
+    background: #2980b9;
+    color: #fff;
+    border-color: #2980b9;
+}
+
+.btn-color:hover {
+    background: #ffffff;
+    color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-white {
+    color: #2980b9;
+}
+
+.navbar-nav>li>a.btn-signup {
+    background: #2980b9;
+    color: #ffffff;
+    border-color: #2980b9;
+}
+
+.navbar-nav>li>a.btn-signup:hover, .navbar-nav>li>a.btn-signup:focus {
+    background: #ffffff;
+    color: #2980b9;
+    border-color: #ffffff;
+}
+
+/*------------------------------------------*/
+/*   Form
+/*------------------------------------------*/
+.form-control {
+    border: 2px solid #3498db;
+}
+
+.footer .form-control:focus {
+    color: #ddd;
+    background-color: #2980b9;
+    box-shadow: none;
+    outline: none;
+}
+
+/*------------------------------------------*/
+/*   Icons
+/*------------------------------------------*/
+.icon-lg:hover, .icon-lg:focus, .icon-sm:hover, .icon-sm:focus {
+    color:#2980b9;
+}
+
+/*------------------------------------------*/
+/*   Preloader
+/*------------------------------------------*/
+.preloader{
+    background-color: #2980b9;
+}
+
+/*------------------------------------------*/
+/*   Navbar Links Menu
+/*------------------------------------------*/
+.is-scrolling .navbar-nav>.active>a, .is-scrolling .navbar-nav>.active>a:hover, .is-scrolling .navbar-nav>.active>a:focus {
+    color: #2980b9;
+    background-color: transparent;
+}
+
+/*------------------------------------------*/
+/*   Early Access Modal
+/*------------------------------------------*/
+.login .modal-header .modal-title span{
+    font-weight: 400;
+    color: #2980b9;
+}
+
+/*------------------------------------------*/
+/*   Footer
+/*------------------------------------------*/
+.footer a:hover{
+    color: #2980b9;
+}
+
+
+
+
+

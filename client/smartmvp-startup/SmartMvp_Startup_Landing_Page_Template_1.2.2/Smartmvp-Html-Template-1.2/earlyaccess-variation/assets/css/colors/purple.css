@@ -1,0 +1,125 @@
+/* ==========================================================================
+   COLOR: PURPLE  #8e44ad - #9b59b6
+========================================================================== */ 
+a, .text-color {
+    color: #8e44ad;
+}
+
+.color-bg {
+    background-color: #8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Red Buttons 
+/*------------------------------------------*/
+.btn-color-ghost {
+    background: transparent;
+    color: #8e44ad;
+    border-color: #8e44ad;
+}
+
+.btn-color, .btn-color-ghost:hover {
+    background: #8e44ad;
+    color: #fff;
+    border-color: #8e44ad;
+}
+
+.btn-color:hover {
+    background: #ffffff;
+    color: #8e44ad;
+    border-color: #8e44ad;
+}
+
+.btn-white {
+    color: #8e44ad;
+}
+
+.navbar-nav>li>a.btn-signup {
+    background: #8e44ad;
+    color: #ffffff;
+    border-color: #8e44ad;
+}
+
+.navbar-nav>li>a.btn-signup:hover, .navbar-nav>li>a.btn-signup:focus {
+    background: #ffffff;
+    color: #8e44ad;
+    border-color: #ffffff;
+}
+
+/*------------------------------------------*/
+/*   Form
+/*------------------------------------------*/
+.form-control {
+    border: 2px solid #9b59b6;
+}
+
+.footer .form-control:focus {
+    color: #ddd;
+    background-color: #8e44ad;
+    box-shadow: none;
+    outline: none;
+}
+
+/*------------------------------------------*/
+/*   Icons
+/*------------------------------------------*/
+.icon-lg:hover, .icon-lg:focus, .icon-sm:hover, .icon-sm:focus {
+    color:#8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Preloader
+/*------------------------------------------*/
+.preloader{
+    background-color: #8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Navbar Links Menu
+/*------------------------------------------*/
+.is-scrolling .navbar-nav>.active>a, .is-scrolling .navbar-nav>.active>a:hover, .is-scrolling .navbar-nav>.active>a:focus {
+    color: #8e44ad;
+    background-color: transparent;
+}
+
+/*------------------------------------------*/
+/*   Early Access Modal
+/*------------------------------------------*/
+.login .modal-header .modal-title span{
+    font-weight: 400;
+    color: #8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Pricing Tab
+/*------------------------------------------*/
+.pricing-tab {
+    border: 3px solid #9b59b6;
+}
+
+.pricing-tab h4 {
+    border-bottom: 3px solid #9b59b6;
+}
+
+.pricing-tab .ribbon .popular{
+    background-color: #8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Team
+/*------------------------------------------*/
+.team-img .img-icons span i:hover{
+    color: #8e44ad;
+}
+
+/*------------------------------------------*/
+/*   Footer
+/*------------------------------------------*/
+.footer a:hover{
+    color: #8e44ad;
+}
+
+
+
+
+

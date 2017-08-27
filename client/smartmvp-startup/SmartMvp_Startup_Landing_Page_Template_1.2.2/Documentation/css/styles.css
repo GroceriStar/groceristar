@@ -1,0 +1,168 @@
+/* move special fonts to HTML head for better performance */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700%7CRaleway:300,400,600,700');
+
+
+
+/* custom template */
+html, body {
+   height: 100%;
+   font-family:'Open Sans','Helvetica',arial,sans-serif;
+   -webkit-font-smoothing: antialiased;
+   font-size: 15px;
+   line-height: 19px;
+   font-weight:400;
+}
+
+h1{
+  font-weight:400;
+  font-size:30px;
+  margin-bottom:0;
+}
+
+h2{
+  font-weight:400;
+  font-size:27px;
+}
+
+h3{
+  font-size:22px;
+  font-weight:600;
+  margin-top:35px;
+}
+
+.small{
+  font-size:14px;
+}
+
+strong{
+  font-weight:600;
+}
+
+a {
+  color:#c0392b;
+}
+
+a:hover{
+  text-decoration:none;
+  color:#323a45;
+}
+
+
+.wrapper, .row {
+   height: 100%;
+   margin-left:0;
+   margin-right:0;
+}
+
+.wrapper:before, .wrapper:after,
+.column:before, .column:after {
+    content: "";
+    display: table;
+}
+
+.wrapper:after,
+.column:after {
+    clear: both;
+}
+
+.column {
+    height: 100%;
+    overflow: auto;
+    zoom:1;
+}
+
+.column .padding {
+    padding: 10px;
+}
+
+.box {
+  	bottom: 0; /* increase for footer use */
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #323a45;
+}
+
+#main {
+  background-color:#fefefe;
+}
+
+#sidebar, #sidebar a {
+  color:#ffffff;
+  background-color:transparent;
+	text-shadow:1px 0 1px #888888;
+  padding: 5px 0 0 15px;
+}
+
+#sidebar a.logo {
+  display:block;
+  text-align:left;
+  text-decoration:none;
+  text-shadow:0 0 0;
+  font-family: 'Raleway','Open Sans',Helvetica,Arial,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 19px;
+  line-height: 21px;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 0;
+}
+
+#sidebar li>a{
+  padding:5px 0 0;
+}
+
+#sidebar-footer {
+  position:absolute;
+  bottom:5px;
+}
+
+.marginb20{
+  margin-bottom: 20px;
+}
+
+.margint20{
+  margin-top:20px;
+}
+
+.margint10{
+  margin-top:10px;
+}
+
+.p10{
+  padding:10px 0;
+}
+
+.divider{
+  margin: 35px 0;
+}
+
+.note{
+  background-color: #f1f1f1;
+  padding:15px;
+}
+
+.code{
+  background-color: #f1f1f1;
+  padding:20px 30px;
+  font-weight:600;
+}
+
+.code span{
+  color:#c0392b ;
+}
+
+.blankfooter{
+  height:200px;
+}
+
+
+
+
+
+

@@ -1,0 +1,1139 @@
+/* 
+Template Name: SmartMVP - Responsive Premium Startup Landing Page Template
+Theme URL: http://themedept.com/demo/smartmvp/index.html
+Description: SmartMVP - Responsive Premium Startup Landing Page Template
+Author: ThemeDept
+Author URL: http://themedept.com
+Version: 1.2.0
+Website: http://themedept.com
+Tags: startup landing page, app landing page, html5 template, one page, startup, saas, mvp, landing page
+*/
+
+
+/* ------------------------------------------ */
+/*             TABLE OF CONTENTS
+/* ------------------------------------------ */
+
+/*   01 - General Style                          */
+/*   02 - Typography                             */
+/*   03 - Buttons & Icons                        */
+/*   04 - Header & Navigation                    */
+/*   05 - Early Access Modal                     */
+/*   06 - Early Access Header                    */
+/*   07 - Countdown Header                       */
+/*   08 - General Section Settings               */
+/*   09 - Footer                                 */
+
+
+
+/* ==========================================================================
+   01. GENERAL STYLE
+========================================================================== */ 
+/*------------------------------------------*/
+/*	 Basic Settings
+/*------------------------------------------*/
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #727272;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+section{
+    position:relative;
+    overflow:hidden;
+}
+
+.main-wrapper {
+    overflow: hidden;
+}
+
+/*------------------------------------------------------------------*/
+/*	 Internet Explorer 10 in Windows 8 and Windows Phone 8 Bug fix
+/*-----------------------------------------------------------------*/
+@-webkit-viewport { 
+	width: device-width; 
+}
+
+@-moz-viewport { 
+	width: device-width; 
+}
+
+@-ms-viewport { 
+	width: device-width; 
+}
+
+@-o-viewport { 
+	width: device-width; 
+}
+
+@viewport { 
+	width: device-width; 
+}
+
+/*------------------------------------------*/
+/*	 Link 
+/*------------------------------------------*/
+a {
+	-webkit-transition: all 250ms ease-in-out;
+	-moz-transition: all 250ms ease-in-out;
+	-o-transition: all 250ms ease-in-out;
+	-ms-transition: all 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
+}
+
+a:hover, a:focus {
+	color: #3e3e3e;
+	text-decoration: none;
+}
+
+/*------------------------------------------*/
+/*	 Lists
+/*------------------------------------------*/
+ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+/*------------------------------------------*/
+/*	 Backgrounds
+/*------------------------------------------*/
+.light-bg{
+	background-color: #fafafa;
+}
+
+.dark-bg{
+    background-color: #323a45;
+}
+
+.white-bg{
+    background-color: #ffffff;
+}
+
+/*------------------------------------------*/
+/*	 Overlay Effect
+/*------------------------------------------*/
+.overlay{
+    /* Provides cross-browser RGBa background */
+    zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#80000000', endColorstr='#80000000');
+    background: transparent;
+    background: rgba(51, 51, 51, 0.5);
+}
+
+/* set filter as none for IE9+, because IE9+ support RGBa */
+:root .overlay {
+    filter: none\0/IE9;
+}
+
+/*------------------------------------------*/
+/*   Form Settings
+/*------------------------------------------*/
+.form-group {
+    margin-bottom: 25px;
+}
+
+.control-label {
+    display: block;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 7px 0;
+    color: #3e3e3e;
+}
+
+.form-control {
+    display: inline-block;
+    width: 100%;
+    height: 39px;
+    padding: 9px;
+    font-size: 13px;
+    line-height: 17px;
+    color: #3e3e3e;
+    background-color: transparent;
+    background-image: none;
+    border: 2px solid #cb6060;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+/*------------------------------------------*/
+/*   Modal Settings
+/*------------------------------------------*/
+.modal-content {
+    text-align: center;
+}
+
+/*------------------------------------------*/
+/*   Notifications
+/*------------------------------------------*/
+.lm-success,.lm-failed,.mcbeta-success,.mcbeta-failed,.email-success,.email-failed,.subscription-success,.subscription-failed {
+    display: none;
+    margin-top: 5px;
+}
+
+.lm-success,.email-success {
+    color:#27ae60;
+}
+
+.mcbeta-success,.mcbeta-failed,.subscription-success,.subscription-failed {
+    color:#ffffff;
+}
+
+.lm-failed,.email-failed {
+    color:#c0392b;
+}
+
+
+/*------------------------------------------*/
+/*	 Blockquote
+/*------------------------------------------*/
+blockquote {
+    border: 0;
+    padding: 0 20px;
+}
+
+blockquote:before {
+    height: 0;
+    float: left;
+    position: relative;
+    top: 14px;
+    left: -30px;
+    content: "“";
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-size: 50px;
+    color: #999;
+}
+
+blockquote img {
+	float: left;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	height: 75px;
+	width: 75px;
+	margin-right: 15px;
+}
+
+/*------------------------------------------*/
+/*   Wrappers & Boxes
+/*------------------------------------------*/
+.wrapper-lg{
+    padding: 120px 0;
+}
+
+.wrapper-md{
+    padding: 80px 0;
+}
+
+.wrapper-sm{
+    padding: 50px 0;
+}
+
+.wrapper-xs{
+    padding: 20px 0;
+}
+
+/* vertical align */
+.vmiddle{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/*------------------------------------------*/
+/*   Preloader
+/*------------------------------------------*/
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden !important;
+}
+
+.loader-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -20px 0 0 -80px;
+}
+
+.signal {
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    height: 30px;
+    opacity: 0;
+    width: 30px;
+    margin-top: 10px;
+    -webkit-animation: pulsate 1s ease-out;
+    -moz-animation: pulsate 1s ease-out;;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+      transform:scale(.1);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform:scale(1.2);
+      opacity: 0;
+    }
+}
+
+@-moz-keyframes pulsate {
+    0% {
+      transform:scale(.1);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform:scale(1.2);
+      opacity: 0;
+    }
+}
+
+/*------------------------------------------*/
+/*   New Venobox Close Icon
+/*------------------------------------------*/
+.vbox-close {
+    top: 5px;
+    right: 8px;
+    width: 60px;
+    height: 50px;
+    background: url(../images/venobox/close.gif) no-repeat #161617;
+}
+
+/*------------------------------------------*/
+/*   Text-Logo
+/*------------------------------------------*/
+.text-logo{
+    font-family: 'Raleway','Open Sans',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 19px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+
+/* ==========================================================================
+   02. TYPOGRAPHY
+========================================================================== */
+h1, h2, h3, h4 {
+ 	font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+ 	margin: 0 0 20px;
+    color: #3e3e3e;
+    letter-spacing: -1px;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 52px;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 42px;
+    line-height: 46px;
+    font-weight: 300;
+    text-align: center;
+}
+
+h3 {
+    font-size: 33px;
+    line-height: 36px;
+    font-weight: 300;
+}
+
+h4 {
+    font-size: 23px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #353535;
+}
+
+h5 {
+    font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+}
+
+b, strong {
+    font-weight: 400;
+}
+
+p {
+    margin: 0;
+}
+
+.large{
+	font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 50px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.small{
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+
+/* ==========================================================================
+   03. BUTTONS & ICONS
+========================================================================== */ 
+.btn {
+ 	font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+ 	line-height: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -o-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 14px 28px 13px 28px;
+    border:2px solid;
+}
+
+.btn:focus {
+ 	outline: none;
+}
+
+.btn:hover {
+ 	text-decoration: none;
+}
+
+.btn>i {
+    font-size: 15px;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+}
+
+.btn-box {
+    padding:20px 0;
+}
+
+/*------------------------------------------*/
+/*	 Buttons Color
+/*------------------------------------------*/
+.btn-ghost {
+	background: transparent;
+	color: #ffffff;
+	border-color: #ffffff;
+}
+
+.btn-ghost:hover {
+	background: #ffffff;
+	color: #3e3e3e;
+	border-color: #ffffff;
+}
+
+.btn-white {
+	background: #ffffff;
+	color: #c0392b;
+	border-color: #ffffff;
+}
+
+.btn-white:hover {
+    background: #c0392b;
+    color: #3e3e3e;
+    border-color: #c0392b;
+}
+
+.btn-grey {
+	color: #3e3e3e;
+	background-color: transparent;
+	border-color: #7f8c8d;
+}
+
+.btn-grey:hover {
+	color: #3e3e3e;
+	border-color: #3e3e3e;
+	background-color: transparent;
+}
+
+/*------------------------------------------*/
+/*	 Icons Style
+/*------------------------------------------*/
+.icon-lg, .icon-sm {
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    color: #3e3e3e;
+}
+
+.icon-lg {
+    font-size: 65px;
+}
+
+.icon-sm {
+    font-size: 40px;
+}
+
+
+/* ==========================================================================
+   04. HEADER & NAVIGATION
+========================================================================== */
+/*------------------------------------------*/
+/*   Header Background Parallax Settings
+/*------------------------------------------*/
+.header{
+    background: url("../images/hero-placeholder.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size:cover;
+    background-size: cover;   
+}
+
+.header .overlay {
+    height: 800px;
+}
+
+/*------------------------------------------*/
+/*   Navbar General Settings
+/*------------------------------------------*/
+.navbar{
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.navbar-fixed-top {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.navbar-fixed-top.is-scrolling{
+    background: #323a45;
+    background: rgba(50,58,69,0.95);
+    border: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-right{
+    position: relative;
+    top: 5px;
+    float: left;
+    text-align: left;
+}
+
+/* Img-Logo Fixes */
+.navbar-brand.img-logo{
+    padding:0;
+}
+
+/*------------------------------------------*/
+/*   Navbar Links Menu
+/*------------------------------------------*/
+.navbar-nav>li>a{
+    font-family: 'Raleway','Open Sans',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 15px;
+    color: #ffffff;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.navbar-nav>li>a:hover, .navbar-nav>li>a:focus, .navbar-nav>.active>a, .navbar-nav>.active>a:hover, .navbar-nav>.active>a:focus{
+    color: #ffffff;
+    background-color: transparent;
+}
+
+/*------------------------------------------*/
+/*   Navbar Mobile Menu
+/*------------------------------------------*/
+.navbar-toggle, .navbar-toggle:hover, .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+.navbar-toggle {
+    color: #ffffff;
+    padding: 0; 
+    margin-top: 13px;
+    margin-bottom: 0;
+    font-size:26px;
+}
+
+.navbar-collapse {
+    box-shadow:none;
+    border:0;
+}
+
+/*------------------------------------------*/
+/*   Navbar Buttons
+/*------------------------------------------*/
+.navbar-nav>li>a.btn-nav {
+    margin: 6px 0 10px 15px;
+    padding: 7px;  
+}
+
+.navbar-nav>li>a.btn-nav:hover, .navbar-nav>li>a.btn-nav:focus {
+    background: #ffffff;
+    color: #3e3e3e;
+    border-color: #ffffff;
+}
+
+/*------------------------------------------*/
+/*   Hero-Section
+/*------------------------------------------*/
+.hero-section .btn-color:hover{
+    border-color: #ffffff;
+}
+
+.hero-section p{
+    font-size: 21px;
+    line-height: 27px;
+    letter-spacing: -1px;
+    margin-bottom: 35px;
+}
+
+.hero-section .btn-box{
+    padding: 0;
+}
+
+.hero-section .btn{
+    margin-bottom: 0;
+} 
+
+
+/* ==========================================================================
+   05. EARLY ACCESS MODAL
+========================================================================== */ 
+.login .modal-dialog{
+    width: 400px;
+    margin-top: 105px;
+}
+
+.login .modal-content{
+    background-color: #fcfcfc;
+    border-radius:6px;
+}
+
+.login .modal-header {
+    padding: 15px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.login .modal-header .close{
+    color:#3e3e3e;
+    opacity:0.7;
+}
+
+.login .modal-header .close:hover{
+    opacity:1;
+}
+
+.login .modal-header .close i{
+    font-weight:bold;
+}
+
+.login .modal-header .close:focus{
+    outline:none;
+}
+
+.login .modal-header .modal-title{
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 29px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.login .modal-header .modal-subtitle{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #3e3e3e;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.login .form-control{
+    margin: 5px auto;
+}
+
+.login .btn{
+    width: 100%;
+    margin: 5px 0 0;
+}
+
+.login .btn-color:hover{
+    color: #fff;
+    background-color: #3e3e3e;
+    border-color: #3e3e3e;
+}
+
+.login .modal-footer{
+    border-top: 0;
+    margin-top: 0;
+    padding: 10px 20px 20px;
+}
+
+.login .forgot{
+    color: #3e3e3e;
+    margin-left: 0;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.modal-body {
+    padding: 20px 50px;
+}
+
+
+/* ==================================================================================
+   06. EARLY ACCESS HEADER
+=================================================================================== */ 
+.earlyaccess .btn{
+    margin-bottom: 0;
+    font-size: 13px;
+    padding: 16px 28px 15px;
+}
+
+.earlyaccess .hero-section{
+    text-align: center;
+}
+
+.earlyaccess .form-control{
+    background: #ffffff;
+    border-color: #ffffff;
+    font-weight: 400;
+    font-size: 14px;
+    height: 50px;
+    color: #333;
+}
+
+.earlyaccess .btn:hover{
+    background-color:#333333;
+    border-color:#333333;
+    color:#ffffff;
+}
+
+.earlyaccess .countdown{
+    padding-bottom: 35px;
+}
+
+
+/* ==========================================================================
+   07. COUNTDOWN HEADER
+========================================================================== */ 
+.countdown {
+    margin:0 auto;
+    width: 70%;
+}
+
+.time_circles {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.time_circles canvas{
+    width:auto;
+    height:auto;
+    z-index:1;
+    position: static;
+}
+
+.time_circles > div {
+    position: absolute;
+    text-align: center;
+}
+
+.time_circles > div > h4 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', serif;
+    text-align: center;
+    text-transform: uppercase;
+    color:#fff;
+}
+
+.time_circles > div > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 0.4em; 
+    font-family: 'Open Sans', serif;
+    color:#fff;
+}
+
+/* ==========================================================================
+   08. GENERAL SECTION SETTINGS
+========================================================================== */ 
+/*------------------------------------------*/
+/*   Clients Logo Section
+/*------------------------------------------*/
+.client-logo .col-md-3 {
+  height: 80px;
+  line-height: 80px;
+}
+
+.client-logo img {
+  max-height: 60px;
+  max-width: 140px;
+  opacity: 0.4;
+}
+
+.client-logo img:hover {
+  opacity: 1;
+}
+
+/*------------------------------------------*/
+/*   Early Features Section
+/*------------------------------------------*/
+.early-features .large{
+    margin-bottom: 20px;
+}
+
+.early-features .feature-box{
+    margin-top: 50px;
+}
+
+.feature-box .icon-box i{
+    margin: 5px 0 0;
+    width: 60px;
+    height: 120px;
+    float: left;
+}
+
+.feature-box .icon-box .icon-sm{
+    clear: both;
+}
+
+.feature-box h4{
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+
+.feature-box p{
+    font-size: 16px;
+    line-height: 20px;
+}
+
+/*------------------------------------------*/
+/*   Image with Action
+/*------------------------------------------*/
+.img-with-action .btn-color:hover{
+    background: transparent;
+}
+
+.img-with-action .btn-box{
+    padding-bottom: 0;
+}
+
+.img-col-bg{
+    position: absolute;
+    height: 100%;
+    padding: 0;
+    top: 0;
+}
+
+/* light img overlay*/
+.img-col-bg:before{
+    opacity: 0.2;
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #b0babf;
+}
+
+.img-left{
+    left:0;
+    background: url(../images/img-left.jpg) 50% 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+/*------------------------------------------*/
+/*   About Section
+/*------------------------------------------*/
+.about .large {
+    margin-bottom: 0;
+}
+
+.about-box {
+    margin-top: 70px;
+}
+
+.about-text {
+    margin-bottom: 35px;
+}
+
+.about-img {
+    padding-top: 2px;
+}
+
+.tab-icon {
+    margin-top: 30px;
+}
+
+.tab-icon .icon-sm{
+    width: 50px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.tab-icon .icon-title{
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #3e3e3e;
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+}
+
+/*------------------------------------------*/
+/*   Testimonial Section
+/*------------------------------------------*/
+.early-testimonial p.testimonial-quote{
+    font-size: 16.5px;
+    line-height: 22px;
+    padding-top: 4px;
+}
+
+.early-testimonial .author-box{
+    padding-top:10px;
+}
+
+.testimonial-name {
+    padding-top: 25px;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.testimonial-name span {
+    display: block;
+    font-weight: 600;
+    color: #333333;
+    font-size: 14px;
+}
+
+/*------------------------------------------*/
+/*   Cta Divider
+/*------------------------------------------*/
+.cta {
+    background: url("../images/cta-placeholder.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size:cover;
+    background-size: cover;   
+}
+
+.cta .overlay {
+    background: rgba(51, 51, 51, 0.6);
+}
+
+.cta h2, .cta .large {
+    text-align: center;
+}
+
+.cta h2 {
+    font-weight: 400;
+}
+
+.cta .btn {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.cta .btn-color:hover {
+    border-color: #ffffff;
+}
+
+
+/* ==========================================================================
+   14. FOOTER
+========================================================================== */ 
+.footer, .footer a{
+    color: #ced3d8;
+}
+
+.footer h5{
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.footer .form-text {
+    padding-bottom: 20px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.footer .form-group {
+    margin-bottom: 12px;
+}
+
+.footer .form-control{
+    width: 94%;
+    height: 45px;
+    border: none;
+    background-color: #2f3539;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer .form-control.textarea{
+    height: 140px;
+}
+
+.footer .btn-color:hover{
+    border-color: #ffffff;
+}
+
+.contact-item {
+    margin: 11px 0 16px;
+}
+
+.contact-icon {
+    margin-right: 10px;
+    font-size: 22px;
+    margin-bottom: 10px;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contact-content {
+    display: inline-block;
+    line-height: 21px;
+}
+
+.contact-content a {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.footer-nav{
+    margin-top: 100px;
+    font-family: 'Raleway','Open Sans',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 15px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    text-align: center;
+}
+
+.footer-nav li{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.footer-nav a {
+    color: #fff;
+}
+
+.footer-copy{
+    margin-top:15px;
+    font-size:13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+/* Twitter Feed by Tweetie */
+.tweet {
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.tweet ul{
+    list-style-type: circle;
+}
+
+.tweet li {
+    margin-top: 15px;
+}
+
+.tweet li img{
+    display: none;
+}
+
+.tweet li span{
+    font-style: italic;
+    font-size: 15px;
+}
+
+.twitter-box {
+    padding-top: 20px;
+}
+
+
+
+
+

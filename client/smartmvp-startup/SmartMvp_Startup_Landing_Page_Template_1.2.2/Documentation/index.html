@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>SmartMVP - Documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	
+  <body>
+    <div class="wrapper">
+        <div class="box">
+            <div class="row">
+              
+                <!-- sidebar -->
+                <div class="column col-sm-3" id="sidebar">
+                    <a class="logo" href="http://themedept.com/demo/smartmvp/index.html">SmartMvp</a>
+                    <ul class="nav">
+                        <li class="active"><a href="#gettingstarted">Getting Started</a>
+                        </li>
+                        <li><a href="#filestructure">File Structure</a>
+                            <ul>
+                              <li><a href="#htmlstructure">Html Structure</a></li>
+                              <li><a href="#cssstructure">Css Structure</a></li>
+                              <li><a href="#jsstructure">Javascript Structure</a></li>
+                              <li><a href="#fonts">Fonts</a></li>
+                              <li><a href="#icons">Icon Pack</a></li>
+                              <li><a href="#color">Color Variations</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#header">Header Section</a>
+                          <ul>
+                              <li><a href="#logo">Logo</a></li>
+                              <li><a href="#headerbg">Header Background</a></li>
+                              <li><a href="#countdown">Countdown</a></li>
+                              <li><a href="#video">Video Lightbox</a></li>
+                              <li><a href="#slider">Slider</a></li>
+                              <li><a href="#videobg">Video Background</a></li>
+                              <li><a href="#youtubebg">Youtube Background</a></li>
+                          </ul>
+                        </li>
+                          <li><a href="#customization">Customization</a>
+                          <ul>
+                              <li><a href="#preloader">Preloader</a></li>
+                              <li><a href="#buttons">Buttons</a></li>
+                              <li><a href="#sectionbg">Section Backgrounds</a></li>
+                              <li><a href="#animations">Animations</a></li>
+                              <li><a href="#tabs">Tabs</a></li>
+                              <li><a href="#charts">Charts &amp; Fss</a></li>
+                              <li><a href="#pricing">Pricing</a></li>
+                              <li><a href="#carousel">Screenshots Carousel</a></li>
+                              <li><a href="#twitter">Twitter Feed</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#forms">Forms</a>
+                          <ul>
+                              <li><a href="#subscribe">Subscribe.php</a></li>
+                              <li><a href="#mailchimp">Mailchimp Newsletter</a></li>
+                              <li><a href="#modal">Login/Signup Modal</a></li>
+                              <li><a href="#contactform">Contact Form</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#credits">Credits</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                  
+                </div>
+                <!-- /sidebar -->
+              
+                <!-- main -->
+                <div class="column col-sm-9" id="main">
+                    <div class="padding">
+                      <div class="row">    
+                          <div class="col-sm-12">
+                              <h1>SmartMvp - Documentation</h1>
+                              <p class="small">Version 1.2</p>
+                              <h3 class="marginb20">Cross Browser, High Quality and Responsive Startup Landing Page Template.</h3>
+                              <p>Thank you very much for purchasing our template. This documentation will give you an understanding of how SmartMvp is structured and guide you in performing common functions. If you require further assistance not covered in this documentation, please feel free to contact us on our <a href="https://themedept.ticksy.com/">support center</a>.</p>
+                              <p>We've done our best in making SmartMvp and hopefully you will love it as much as we do. Your opinion is very important for us and we will appreciate if you can rate and review SmartMVP on <a href="http://themeforest.net/">ThemeForest.</a></p>
+                              <p><strong> Thanks so much!</strong></p>
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+                      <div class="row" id="gettingstarted">
+                          <div class="col-sm-12">
+                              <h2>Getting Started</h2>
+                              <h3>Requirements</h3>
+                              <p>For installing this template you need to make sure that you have the following extensions on your webserver. You will need to contact your webhost if the following requirements are missing.<br></p>
+                              <ul>
+                                <li>PHP 5.2+;</li>
+                                <li>PHP Mail support;</li>
+                                <li>Enabling JavaScript in the web browser.</li>
+                              </ul>
+                              <h3>Installation</h3>
+                              <p>Unzip the downloaded files to the local disk on your computer. Inside the extracted folder there will be a folder with documentation and a folder with the html template. Copy all the content related to the layout that interests you inside "SmartMvp-Html-Template" to your server via FTP client.</p>
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+                      <div class="row" id="filestructure">
+                          <div class="col-sm-12">
+                              <h2>File Structure</h2>
+                              <p>As SmartMvp is an HTML template, it uses a number of .html pages in conjunction with css stylesheets and a number of javascript plugins. The following is a brief overview of the files and a look at some prominent features.</p>
+                              <p>SmartMvp file consists of two different layouts: Main-Layout and EarlyAccess-Variation. For each layout folder you can find all the html files and a folder: assets(the heart of SmartMvp). In this folder the directories and files are well organized as it shown on the image below.</p>
+                              <img src="images/file-structure.png" alt="" class="img-responsive">
+                              <p class="margint20">Every file (HTML, CSS, JS) that was created by us has clear code, wrapped with comments - all this for your convenience.</p>
+                              <ul>
+                                <li><strong>css -</strong> CSS styles folder
+                                  <ul>
+                                    <li><strong>colors -</strong> Color variation styles</li>
+                                    <li><strong>icons -</strong> Webfont Icon styles</li>
+                                    <li><strong>plugins -</strong> All the styles of the third part plugins used in the theme.</li>
+                                    <li><strong>style.css -</strong> Main Stylesheet for the template that includes all styles relating to the appearance of the elements you see inside each page.</li>
+                                    <li><strong>responsive.css -</strong> Responsive fixes for different devices. These styles modify how some of the content in SmartMvp appears on tablet and smartphones, if you need to edit anything specific to these devices, go here.</li>
+                                  </ul>
+                                </li>
+                                <li><strong>images -</strong> Images used into the theme</li>
+                                <li><strong>js -</strong> JavaScript files folder. Unless you know what you're doing, don't touch the JS files as any tinkering could result in undesired behaviour back in the browser.</li>
+                                <li><strong>php -</strong> PHP subscription script folder</li>
+                                <li><strong>index-namevariation.html -</strong> Html file for a different header variation layout.</li>
+                              </ul>
+                              <h3 id="htmlstructure">HTML Structure</h3>
+                              <p>This theme is built upon Twitter Bootstrap 3.2 framework and is fully responsive. It adapts to window resolution and looks good on all devices including ipad and iphone. See for yourself (resize your browser).</p>
+                              <div class="note">If you would like to read more about bootstrap framework click here: <strong><a href="http://getbootstrap.com/" target="_blank">Bootstrap Documentation</a></strong></div>
+                              <p class="margint20"><strong>Grid System - </strong>Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. The fluid grid system uses percents instead of pixels for column widths. Each row always include 12 columns (for example col-md-8 + col-md-4 = col-md-12). Bootstrap documentation: <a href="http://getbootstrap.com/css/#grid" target="_blank">here</a></p>
+                              <p>A good example in the theme is the intro-features section who have a first row with a div extended for all 12 columns, and a second row with 3 equal divs <strong>(.col-sm-4)</strong> which expands in 12 columns for extra small devices(less than 768px) </p>
+                              <img src="images/intro-features-grid.png" alt="" class="img-responsive">
+                              <p class="margint20"><strong>Page Structure - </strong> The general structure is the same in all the html theme files. Here is the general structure:</p>
+                              <img src="images/html-structure.png" alt="" class="img-responsive">
+                              <h3 id="cssstructure">CSS file Structure</h3>
+                              <p>We are using 6 CSS files across template. We separated styles for improving convenience to edit this template. If you're going to use this template in production we recommend you to merge all stylesheets in one file (for decreasing http queries).</p>
+                              <img src="images/css-structure.png" alt="" class="img-responsive">
+                              <h3 id="jsstructure">Javascript file Structure</h3>
+                              <p>All javascripts are placed in folder /js. In plugins.min.js we merge the scripts of all common plugins used in the site. In custom.js file we implement all functions calls.<br> This theme uses following Javascript files:</p>
+                              <ul>
+                                <li><strong>Bootstrap 3.2.0</strong> framework</li>
+                                <li><strong>jQuery 1.11.0 - </strong> A fast javascript library that simplifies how to traverse HTML documents, handle events, perform animations.)</li>
+                                <li><strong>jQuery Easing - </strong> jQuery with the jQuery Easing Plugin is the easiest way to describe animation with <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank">easing.</a></li>
+                                <li><strong>Modernizr - </strong> JavaScript library that detects HTML5 and CSS3 features in the user’s browser. Documentation <a href="http://modernizr.com/" target="_blank">here.</a></li>
+                                <li><strong>Owl Carousel - </strong> a popular jQuery plugin which is used for building touch enabled slider. Developed by <a href="http://owlgraphic.com/owlcarousel/" target="_blank">Owl Graphic</a></li>
+                                <li><strong>Venobox - </strong> Responsive jQuery lightbox plugin, suitable for images, inline contents, iFrames, Google-Maps, Ajax requests, Vimeo and YouTube videos. Created by<a href="http://lab.veno.it/venobox/" target="_blank"> Veno Lab.</a></li>
+                                <li><strong>Stellar.js -</strong> that helps our template act like parallax scroll. The plugin is created by <a href="http://markdalgleish.com/projects/stellar.js/" target="_blank">Mark Dalgleish</a></li>
+                                <li><strong>jQuery AjaxChimp - </strong> is a jQuery plugin which is used to send information to MailChimp list directly using our form in subscription section. Built by<a href="http://os.alfajango.com/easytabs/" target="_blank"> Alfa Jango.</a></li></li>
+                                <li><strong>EasyTabs - </strong> a lightweight jQuery plugin to provide full tab functionality. <a href="https://github.com/scdoshi/jquery-ajaxchimp" target="_blank">on GitHub.</a></li></li>
+                                <li><strong>WOW.js - </strong> a jQuery plugin which initiates animation effect on scroll. Created by <a href="http://mynameismatthieu.com/WOW/" target="_blank">Matthieu Aussaguel</a></li></li>
+                                <li><strong>TimeCircle.js - </strong> TimeCircles is a jQuery plugin that provides a nice looking way to either count down towards a certain time, or to count up from a certain time. TimeCircle  <a href="https://github.com/wimbarelds/TimeCircles" target="_blank">on github</a></li></li>
+                                <li><strong>Chart.js - </strong> a jQuery plugin for create simple, clean and engaging <a href="http://www.chartjs.org/" target="_blank">charts.</a></li></li>
+                                <li><strong>Jquery Superslides - </strong> a full screen, hardware accelerated <a href="http://www.chartjs.org/" target="_blank">slider</a> for jQuery.  </li></li>
+                                <li><strong>WayPoints - </strong> a jQuery plugin that makes it easy to execute a function whenever you scroll to an element. <a href="https://github.com/nicinabox/superslides" target="_blank">Github</a></li></li>
+                                <li><strong>Fss - Flate Surface Shader - </strong> a fantastic jQuery plugin for rendering lit Triangles to a number of contexts including WebGL, Canvas 2D and SVG. Created by <a href="http://matthew.wagerfield.com/flat-surface-shader/" target="_blank">Matthieu Wagerfield</a></li>
+                                <li><strong>Tweetie - </strong> a Simple Twitter Feed Plugin that works with new Twitter 1.1 API. <a href="https://github.com/sonnyt/Tweetie" target="_blank">Github here</a></li>
+                                <li><strong>Vide Video Plugin - </strong> a Plugin that add a background video to SmartMvp in index-videobg.html. <a href="https://github.com/VodkaBears/Vide" target="_blank">Github</a></li>
+                                <li><strong>YTPlayer - </strong> An open source jQuery component to easily build Youtube® player or to use Youtube® video as background in index-youtubebg.html. <a href="https://github.com/pupunzi/jquery.mb.YTPlayer" target="_blank">Github here</a></li>
+                              </ul>
+                              <h3 id="fonts">Fonts</h3>
+                              <p>SmartMvp uses <a href="https://www.google.com/fonts" target="_blank">Google WebFonts</a>: Open Sans, Raleway and Handlee.<br>
+                              You can choose other fonts from google directory editing this line of code in the &lt;head&gt; section.</p>
+                              <img src="images/google-fonts.png" alt="" class="img-responsive">
+                              <p class="margint20">If you want to import new font from Google Webfont library, don't forget to change property in CSS style: <strong>font-family</strong> with correct font name.</p>
+                              <img src="images/google-fonts-2.png" alt="" class="img-responsive">
+                              <h3 id="icons">Icon Pack</h3>
+                              <p>SmartMvp makes use of two stunning icon packs, both provided by <a href="http://www.elegantthemes.com/" target="_blank">Elegant Themes</a>: The <a href="http://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank">Elegant Icon Pack</a> and the <a href="http://www.elegantthemes.com/blog/freebie-of-the-week/free-line-style-icons" target="_blank">Elegant Line Icons</a>. Using these icon packs is a simple matter of knowing the correct class to use.</p>
+                              <div class="code"><span>&lt;i class="</span>icon icon-nameIconClass<span>"&gt;&lt;/i&gt;</span></div>
+                              <p class="margint20">For example, if you want to add a tablet icon you can write:</p>
+                              <div class="code"><span>&lt;i class="</span>icon icon-tablet<span>"&gt;&lt;/i&gt;</span></div>
+                              <div class="note">
+                              <strong>Resources:</strong><br>
+                              -<a href="https://www.dropbox.com/s/m0k4rc1rut8p0zg/smartmvp-icon-pack.pdf?dl=0" target="_blank">Complete list of class names - pdf</a><br>
+                              -<a href="http://www.elegantthemes.com/blog/resources/how-to-use-and-embed-an-icon-font-on-your-website" target="_blank">How to use and embed line icon font on your website</a><br>
+                              -<a href="http://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank">Complete Elegant Icon Font Set</a>
+                              </div>
+                              <h3 id="color">Color Variations</h3>
+                              <p>In SmartMVP there are 8 different predefined color skins.</p>
+                              <img src="images/colors.png" alt="" class="img-responsive">
+                              <p class="margint20">You can simply change template's color by replacing default color in the &lt;head&gt; section.</p>
+                              <img src="images/colors-css.png" alt="" class="img-responsive">
+                              <p class="margint20">For example, if you want to use the 'Purple' colour scheme you should include the following:</p>
+                              <div class="code"><span>&lt;link rel="</span>stylesheet<span>" href="</span>assets/css/colors/purple.css<span>"&gt;</span></div>
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+                      <div class="row" id="header">
+                          <div class="col-sm-12">
+                              <h2>Header Section</h2>
+                              <h3 id="logo">Logo</h3>
+                              <p>SmartMvp makes use of a simple text-logo. If you want to add and image-logo you can simply follow the instructions  near the text-logo area in the &lt;header&gt; section.</p>
+                              <img src="images/logo-css.png" alt="" class="img-responsive">
+                              <div class="note margint20">
+                                <strong>Recommended sizes for an image-logo are:<br>
+                                max-height: 50px;<br>
+                                max-width: 200px;</strong>
+                              </div>
+                              <h3 id="headerbg">Header Background</h3>
+                              <p>You can simply change the header's image by replacing hero-placeholder.jpg with the url of the new image. We have the following structure in <strong>style.css</strong><br></p>
+                              <img src="images/header-img.png" alt="" class="img-responsive">
+                              <p class="margint20">Smartmvp uses also a color-overlay on the header's image to make content more visible.</p>
+                              <img src="images/overlay.png" alt="" class="img-responsive">
+                              <p class="margint20">At last to enhance images SmartMvp provides a parallax effect with stellar.js: <a href="http://markdalgleish.com/projects/stellar.js/docs/" target="_blank">documentation here.</a>.</p>
+                              <img src="images/stellar.png" alt="" class="img-responsive">
+
+                              <h3 id="countdown">Countdown</h3>
+                              <p>The countdown timer is controlled by a javascript plugin called <a href="https://github.com/wimbarelds/TimeCircles" target="_blank">TimeCircles</a>. We have set it up in <strong>index-countdown.html</strong> so that all you need to do is pass a date into the data attribute <strong>'data-date'</strong> in the format <strong>YYYY/MM/DD  hh:mm:ss </strong>.<br>Be sure to leave the countdown div empty as it will be populated by the plugin.</p>
+                              <img src="images/countdown.png" alt="" class="img-responsive">
+                              <h3 id="video">Video Lightbox</h3>
+                              <p>SmartMvp makes use of the awesome <a href="http://lab.veno.it/venobox/" target="_blank"> Venobox </a>javascript plugin and is simple to setup on any element by observing the following conventions:</p>
+                              <div class="code">
+                                For video:<br>
+                                &lt;a class="venobox" data-type="vimeo" href="http://vimeo.com/idvideo"&gt;Open Vimeo video&lt;/a&gt;<br>
+                                &lt;a class="venobox" data-type="youtube" href="http://youtu.be/idvideo"&gt;Open Youtube video&lt;/a&gt;<br><br>
+                                For image:<br>
+                                &lt;a class="venobox" href="image.jpg"&gt;&lt;img src="image-small.jpg" alt="image alt"/&gt;&lt;/a&gt;<br><br>
+                                For gallery:<br>
+                                &lt;a class="venobox" data-gall="myGallery" href="image01-big.jpg"&gt;&lt;img src="image01-small.jpg" /&gt;&lt;/a&gt;<br>
+                                &lt;a class="venobox" data-gall="myGallery" href="image02-big.jpg">&lt;img src="image02-small.jpg" /&gt;&lt;/a&gt;
+                              </div>
+                              <p class="margint20">Play Video Buttons in SmartMvp</p>
+                              <img src="images/venobox.png" alt="" class="img-responsive">
+
+                              <h3 id="slider">Slider</h3>
+                              <p>For the slider is used a javascript plugin called <a href="https://github.com/wimbarelds/TimeCircles" target="_blank">Jquery Superslides</a>. We have set it up in <strong>index-slider.html</strong>. Markup is pretty straightforward, you can easily change texts and background image by following the comments in the code</p>
+                              <img src="images/slider-html.png" alt="" class="img-responsive">
+                              <p class="margint20">In <strong>assets/js/plugins/slider/slider.js</strong> you can set different options by following the <a href="https://github.com/nicinabox/superslides">plugin documentation</a>.</p>
+                              <img src="images/slider-js.png" alt="" class="img-responsive">
+                              
+                              <h3 id="videobg">Video Background</h3>
+                              <p>In <strong>index-videobg.html</strong> SmartMvp provides the opportunity to add a video in background(which should be composed of a screenshot jpg, a file .mp4, a file .ogv and a file .webm)</p>
+                              <img src="images/video-bg.png" alt="" class="img-responsive">
+                              <p>Video for Mobile Devices(iOS/Android) is disabled, only fullscreen poster will be used.<br>
+                              You can change path and poster type extension in <strong>assets/js/custom.js</strong> according to the plugin's documentation <a href="https://github.com/VodkaBears/Vide#readme">here</a>.</p>
+                              <img src="images/video-bg-js.png" alt="" class="img-responsive">
+
+                              <h3 id="youtubebg">Youtube Video Background</h3>
+                              <p>In <strong>index-youtubebg.html</strong> you can use any video from youtube as background. Simply change the videoURL in data-property</p>
+                              <img src="images/youtubevideobg.png" alt="" class="img-responsive">
+                              
+
+
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+                      <div class="row" id="customization">
+                          <div class="col-sm-12">
+                              <h2>Customization</h2>
+                              <h3 id="preloader">Preloader</h3>
+                              <p>Before the main contents of the website are loaded, there is an opportunity to show the preloader of the site. If you don’t need the preloader, you can delete div with class: preloader.</p>
+                              <img src="images/preloader.png" alt="" class="img-responsive">
+                              <h3 id="buttons">Buttons</h3>
+                              <p>Default button has <strong>.btn class</strong>.</p>
+                              <img src="images/btn.png" alt="" class="img-responsive">
+                              <p class="margint20">By Using other classes with <strong>.btn</strong>, you can change button's size and color.<br>
+                              </p>
+                              <div class="code">
+                                For example:<br>
+                                <span>&lt;a href="#" class="</span>btn btn-white<span>"&gt;This is a white button: white background with red text&lt;/a&gt;</span>
+                              </div>
+                              <div class="small margint20">(in style.css)</div>
+                              <img src="images/btn-colors.png" alt="" class="img-responsive">
+                              <div class="small margint20">(in red.css or other color variations)</div>
+                              <img src="images/btn-red.png" alt="" class="img-responsive">
+                              
+                              <h3 id="sectionbg">Section Backgrounds</h3>
+                              <p>SmartMvp provides 3 color-background more than the default white body background:</p>
+                              <div class="code margint20">
+                                light-bg: #f5f5f5<br>
+                                dark-bg: #323a45<br>
+                                color-bg: based on color-skins<br><br>
+                                Example:<br>
+                                <span>&lt;section class="</span>light-bg<span>"&gt;</span>
+                              </div>
+                              <h3 id="animations">Animations</h3>
+                              <p>We used <a href="http://mynameismatthieu.com/WOW/docs.html" target="_blank">WOW plugin</a> to trigger animations on scroll. It used Animate.css for CSS animation. You will find all of the animations in <a href="http://daneden.github.io/animate.css/" target="_blank">Animate.css</a> website. To learn more about WOW please read <a href="http://mynameismatthieu.com/WOW/docs.html" target="_blank">their Documentation</a>.</p>
+                              <div class="code">
+                                <span>&lt;div class="</span>nameClass wow nameAnimation<span>"&gt;Content here &lt;div&gt;</span><br><br>
+                                Example:<br>
+                                <span>&lt;div class="</span>col-sm-4 wow fadeIn<span>"&gt;Content here &lt;div&gt;</span>
+                              </div>
+                              <h3 id="tabs">Tabs</h3>
+                              <p>You can click tabs to swap between content that is divided into logical sections. SmartMVP uses <a href="http://os.alfajango.com/easytabs/" target="_blank">EasyTabs plugin</a> for Testimonials and Features. At the minimum, you need a container, a collection of links for your tabs (an unordered list by default), and matching divs for your tabbed content. Make sure the tab href attributes match the id of the target panel (panels must be referenced by id, not class). This is the  standard semantic markup used for Testimonials Section.</p>
+                              <img src="images/tabs.png" alt="" class="img-responsive">
+                              <h3 id="charts">Charts &amp; Fss</h3>
+                              <p><a href="http://www.chartjs.org/docs/" target="_blank">Chart.js</a> and <a href="https://github.com/wagerfield/flat-surface-shader" target="_blank">Fss.js</a> are Javascript plugins that use the canvas element to render charts and lit triangles that are highly customizable and very easy to implement.</p>
+                              <p><strong>Chart.js -</strong> SmartMvp provides 2 Doughnut Charts and a Line Chart.</p>
+                              <img src="images/canvas.png" alt="" class="img-responsive">
+                              <img src="images/line-canvas.png" alt="" class="img-responsive margint20">
+                              <p class="margint20">You can customize values, colors ,highlights and labels of each charts by editing this code in custom.js file.</p>
+                              <img src="images/doughnut.png" alt="" class="img-responsive">
+                              <p class="margint20">The value attribute should be a number, Chart.js will total all of the numbers and calculate the relative proportion of each.<br> You can also customize the label, data and colors of the line chart:</p>
+                              <img src="images/line-chart.png" alt="" class="img-responsive">
+                              <p class="margint20">Before Doughnut Chart or Line Chart Canvas is important to add a div with the classes described above for start animations.</p>
+                              <img src="images/start-chart.png" alt="" class="img-responsive">
+                              <div class="note margint20">To know more please read <a href="http://www.chartjs.org/docs/#getting-started" target="_blank">chart.js documentation</a></div><br>
+                              <p class="margint20"><strong>FSS.js -</strong> In custom.js you can change FSS.Light colors,FSS.Plane and FSS.material colors. To simplify your life you can modify directly the <a href="http://matthew.wagerfield.com/flat-surface-shader/" target="_blank">online demo</a> and replace the values into custom.js only after read <a href="https://github.com/wagerfield/flat-surface-shader" target="_blank">flat surface shader </a>documentation on github</p>
+                              <img src="images/fss.png" alt="" class="img-responsive">
+
+                              <h3 id="pricing">Pricing</h3>
+                              <p>You can show your price plan by using 3 price tables. Just edit price, features and plan's name.</p>
+                              <img src="images/pricing.png" alt="" class="img-responsive">
+                              <h3 id="carousel">Screenshots Carousel</h3>
+                              <p>SmartMvp makes use owl carousel in this section. If you wanna learn more about options and features please read doc: <a href="http://owlgraphic.com/owlcarousel/#how-to" target="_blank">Owl Carousel</a>.</p>
+                              <p>Just change the image links to your desired screenshots url. That's all.</p>
+                              <img src="images/owl.png" alt="" class="img-responsive">
+
+                              <h3 id="twitter">Twitter Feed</h3>
+                              <p>New Twitter API requires oAuth Token Key, so it's three step process.</p>
+                              <p><strong>Step 1 - </strong>First, you need a consumer key and secret keys. Get one from <a href="https://dev.twitter.com/apps" target="_blank">dev.twitter.com/apps</a></p>
+                              <p><strong>Step 2 - </strong>Edit assets/js/plugins/twitter/api/config.php file and replace values with your Consumer and oAuth Keys.</p>
+                              <img src="images/twitter-tokens.png" alt="" class="img-responsive">
+                              <p class="margint20"><strong>Step 3 - </strong>Customize your twitter feed following the instructions<a href="https://github.com/sonnyt/Tweetie" target="_blank"> on Github</a>
+                              <img src="images/twitter-js.png" alt="" class="img-responsive">
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+                      <div class="row" id="forms">
+                          <div class="col-sm-12">
+                              <h2>Forms</h2>
+                              <h3 id="subscribe">Subscribe.php</h3>
+                              <p>SmartMvp uses different signup/subscription forms.</p>
+                              <ul>
+                                <li>Signup Form on Signup Divider Section.</li>
+                                <li>Signup Form on Fast Registration Header.</li>
+                                <li>Login Modal Form</li>
+                                <li>Signup Modal Form</li>
+                                <li>Subscribe Form on Newsletter Section (Mailchimp by default)</li>
+                                <li>Subscribe Form on Early Access Header (Mailchimp by default)</li>
+                                <li>Subscribe Form on Countdown Header (Mailchimp by default)</li>
+                                <li>Get Early Access Modal Form (Mailchimp by default)</li>
+                                <li>Contact Form on Footer of Early-Access Variation</li>
+                              </ul>
+                              <p>Signup and Login Forms after a first validation, make an Ajax Call to <strong>subscribe.php</strong></p>
+                              <p><strong>Subscribe.php</strong> check Email Address and add it to <strong> email-list.txt</strong>.</p>
+                              <img src="images/email-list.png" alt="" class="img-responsive">
+                              <p>Emails will be saved each in their own line like in the image.</p>
+                              <p class="note"><strong>This solution can be correct for subscription form when you don't use Mailchimp but for signup/login form you need to implement your own code to connect your database or your backend.</strong></p>
+                              <h3 id="mailchimp">Mailchimp Newsletter</h3>
+                              <p>Current active subscribe form will save emails to your mailchimp list. If you don't have a Mailchimp account you alternative could use local subscribe that call subscribe.php above.</p>
+                              <img src="images/mailchimp-html.png" alt="" class="img-responsive">
+                              <p class="margint20">In order to connect your Mailchimp List you should first find the corresponding mailchimp post url. How to do this?</p>
+                              <ol>
+                                <li>Login to your mailchimp account</li>
+                                <li>Go to your list</li>
+                                <li>Select Signup Forms</li>
+                                <img src="images/mailchimp1.png" alt="" class="img-responsive margint20">
+                                <li class="margint20">Select Embedded forms</li>
+                                <img src="images/mailchimp2.png" alt="" class="img-responsive margint20">
+                                <li class="margint20">Copy the link and paste into <strong>custom.js</strong> mailchimp script.</li>
+                                <img src="images/mailchimp-js.png" alt="" class="img-responsive margint20">
+                                <p>(for main-layout)</p>
+                                <img src="images/mailchimp-js-ea.png" alt="" class="img-responsive margint20">
+                                <p>(for early-access variation)</p>
+                                <p class="margint20">Note: Remember to add <strong>http:</strong> if it is not included with mailchimp list url.</p>
+                              </ol>
+                              <h3 id="modal">Login/Signup Modal</h3>
+                              <p>SmartMvp provides login,signup and "get early access" modals.</p>
+                              <img src="images/login-modal.png" alt="" class="img-responsive margint20">
+                              <img src="images/signup-modal.png" alt="" class="img-responsive margint20">
+                              <img src="images/beta-modal.png" alt="" class="img-responsive margint20">
+                              <p class="margint20">You can customize this modals directly on the .html file.</p>
+                              <img src="images/modal-html.png" alt="" class="img-responsive margint20">
+                              <h3 id="contactform">Contact Form(for Early Access Variation)</h3>
+                              <p>Contact form will use php to send emails. Just open <strong>assets/php/sendmail.php</strong> file. Don't worry, no need to be familiar with PHP to edit this file. Change the current email <strong>smartmvp@themedept.com</strong> to your email address. Your form is ready!.</p>
+                              <img src="images/contact-form.png" alt="" class="img-responsive">
+
+                              <hr class="divider">
+
+                          </div>
+                      </div>
+
+
+
+                      <div class="row" id="credits">
+                          <div class="col-sm-12">
+                              <h2>Credits</h2>
+                              <p>Images used in the demo are from:</p>
+                              <ul>
+                                <li><a href="http://deathtothestockphoto.com/" target="_blank">Death to the stock photo</a></li>
+                                <li><a href="http://www.imcreator.com/free" target="_blank">IM Free</a></li>
+                                <p class="margint10">Listed below links to image:</p>
+                                <li><a href="http://www.imcreator.com/free/all-aboard" target="_blank">www.imcreator.com/free/all-aboard</a></li>
+                                <li><a href="http://www.imcreator.com/free/business/clark-kent" target="_blank">www.imcreator.com/free/business/clark-kent</a></li>
+                                <li><a href="http://www.imcreator.com/free/business/even-wachten" target="_blank">www.imcreator.com/free/business/even-wachten</a></li>
+                                <li><a href="http://www.imcreator.com/free/people/death-disco-july-2010" target="_blank">www.imcreator.com/free/people/death-disco-july-2010</a></li>
+                                <li><a href="http://www.imcreator.com/free/white-girl" target="_blank">www.imcreator.com/free/white-girl</a></li>
+                                <li><a href="http://www.imcreator.com/free/business/home-office1" target="_blank">www.imcreator.com/free/business/home-office1</a></li>
+                                <li><a href="http://www.imcreator.com/free/business/ryan-mccarthy" target="_blank">www.imcreator.com/free/business/ryan-mccarthy</a></li>
+                                <li><a href="http://www.imcreator.com/free/objects-items/buzz" target="_blank">www.imcreator.com/free/objects-items/buzz</a></li>
+                                <li><a href="http://www.imcreator.com/free/cityscape/urban/gaviota-en-el-top" target="_blank">www.imcreator.com/free/cityscape/urban/gaviota-en-el-top</a></li>
+                              </ul>
+                              <p>Video from:</p>
+                              <ul>
+                                <li><a href="https://www.youtube.com/watch?v=SZEflIVnhH8" target="_blank">Envato</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=e8DFN3m8XGQ" target="_blank">The Creators Project</a></li>
+                              </ul>
+                              <p>App Screenshots used in the demo are from:</p>
+                              <ul>
+                                <li><a href="http://graphicburger.com/bolt-ui-kit-free-sample/" target="_blank">Graphic Burger</a>
+                                </li>
+                              </ul>
+
+                              <hr class="divider">
+                            </div>
+                      </div>
+
+                       <div class="row" id="support">
+                          <div class="col-sm-12">
+                              <h2>Support</h2>
+                              <p class="margint20">If you need any help. Feel free to contact us anytime. We are in GMT +1 (Italy) and we aim to answer all questions within 24 hours in weekdays from Monday to Friday.</p>
+                              <p>Support Center: <a href="https://themedept.ticksy.com/">https://themedept.ticksy.com/</a></p>
+                              <p>Email: <a href="mailto:support@themedept.com">support@themedept.com</a></p>
+
+                              <hr class="divider">
+                            </div>
+                      </div>
+
+                      <div class="blankfooter"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- script references -->
+		<script src="js/jquery1.11.0.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+
+	</body>
+</html>
