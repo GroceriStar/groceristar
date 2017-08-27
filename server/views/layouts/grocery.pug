@@ -1,3 +1,4 @@
+include ./mixins/mixin.pug
 doctype html
 html(lang='en', data-framework='jsblocks')
   head
@@ -9,6 +10,9 @@ html(lang='en', data-framework='jsblocks')
     include static/styles-grocery
 
   body
+
+    block content  	
+
     footer.info
       p
         | Double-click to edit a todo
