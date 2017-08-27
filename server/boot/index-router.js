@@ -2,6 +2,8 @@
 
 var request        = require('request');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+
+
 // var loopback = require('loopback');
 
 
@@ -28,7 +30,7 @@ module.exports = function(app) {
           //   data: response //:todo change this names
           // });
 
-          res.render('pages/grocery', {
+          res.render('pages/grocery2', {
             user: req.user,
             url: req.url,
             data: response //:todo change this names

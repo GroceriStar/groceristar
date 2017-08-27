@@ -57,6 +57,16 @@ app.set('json spaces', 2); // format json responses for easier viewing
 var staticDir = path.join(__dirname + '/../client/public');
 app.use(express.static(staticDir));
 
+var jsblocksDir = path.join(__dirname + '/../node_modules/blocks');
+app.use(express.static(jsblocksDir));
+
+
+var todo1Dir = path.join(__dirname + '/../node_modules/todomvc-common');
+app.use(express.static(todo1Dir));
+
+var todo2Dir = path.join(__dirname + '/../node_modules/todomvc-app-css');
+app.use(express.static(todo2Dir));
+
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
