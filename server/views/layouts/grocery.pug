@@ -3,17 +3,14 @@ html(lang='en', data-framework='jsblocks')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title
-      | Title • TodoMVC
-    link(rel='stylesheet', href='node_modules/todomvc-common/base.css')
-    link(rel='stylesheet', href='node_modules/todomvc-app-css/index.css')
-    link(rel='stylesheet', href='css/one.css')
+    title Title • TodoMVC
+
+
+    include static/styles-grocery
+
   body
     footer.info
       p
         | Double-click to edit a todo
-    script(src='node_modules/todomvc-common/base.js')
-    script(src='node_modules/blocks/blocks.js')
-    script(src='js/Sortable.min.js')
-    script(src='js/sortable-init.js')
-    script(src='js/app.js')
+
+    include static/scripts-grocery
