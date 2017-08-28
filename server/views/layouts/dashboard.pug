@@ -2,6 +2,7 @@ include ../mixins/mixin.pug
 doctype html
 html.no-js.css-menubar(lang='en')
   head
+  
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
@@ -21,6 +22,9 @@ html.no-js.css-menubar(lang='en')
         |  browser. Please 
         a(href='http://browsehappy.com/') upgrade your browser
         |  to improve your experience.
+
+    include ../partials/navigation
+    include ../partials/banner
 
     block content
 

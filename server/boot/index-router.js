@@ -24,11 +24,12 @@ module.exports = function(app) {
 
         // console.log(response);
 
-          // res.render('pages/index', {
-          //   user: req.user,
-          //   url: req.url,
-          //   data: response //:todo change this names
-          // });
+          res.render('pages/index', {
+            user: req.user,
+            url: req.url,
+            data: response //:todo change this names
+          });
+
 
           // res.render('pages/grocery2', {
           //   user: req.user,
@@ -42,11 +43,11 @@ module.exports = function(app) {
           //   data: response
           // });
 
-          res.render('pages/dashboard', {
-            user: req.user,
-            url: req.url,
-            data: response
-          });
+          // res.render('pages/dashboard', {
+          //   user: req.user,
+          //   url: req.url,
+          //   data: response
+          // });
 
     });
 
