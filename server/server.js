@@ -70,6 +70,7 @@ app.use(express.static(todo2Dir));
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
+
 // to support JSON-encoded bodies
 app.middleware('parse', bodyParser.json());
 // to support URL-encoded bodies
@@ -77,10 +78,12 @@ app.middleware('parse', bodyParser.urlencoded({
   extended: true,
 }));
 
+
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
   model: app.models.accessToken, // :todo change this when we'll update model names
 }));
+
 
 app.middleware('session:before', cookieParser(app.get('cookieSecret')));
 app.middleware('session', session({
@@ -90,6 +93,7 @@ app.middleware('session', session({
 }));
 
 passportConfigurator.init();
+
 
 // We need flash messages to see passport errors
 app.use(flash());
@@ -105,6 +109,7 @@ for (var s in config) {
   c.session = c.session !== false;
   passportConfigurator.configureProvider(s, c);
 }
+
 
 app.start = function() {
   // start the web server

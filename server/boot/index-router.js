@@ -33,13 +33,19 @@ module.exports = function(app) {
           // res.render('pages/grocery2', {
           //   user: req.user,
           //   url: req.url,
-          //   data: response //:todo change this names
+          //   data: response
           // });
 
-          res.render('pages/home', {
+          // res.render('pages/home', {
+          //   user: req.user,
+          //   url: req.url,
+          //   data: response
+          // });
+
+          res.render('pages/dashboard', {
             user: req.user,
             url: req.url,
-            data: response //:todo change this names
+            data: response
           });
 
     });
