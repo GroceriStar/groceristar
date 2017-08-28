@@ -10,37 +10,8 @@ html.no-js.css-menubar(lang='en')
     title
       | Editable Table |
 
-      
-    link(rel='apple-touch-icon', href='../../assets/images/apple-touch-icon.png')
-    link(rel='shortcut icon', href='../../assets/images/favicon.ico')
-    // Stylesheets
-    link(rel='stylesheet', href='../../assets/css/bootstrap.min.css')
-    link(rel='stylesheet', href='../../assets/css/bootstrap-extend.min.css')
-    link(rel='stylesheet', href='../../assets/css/site.min.css')
-    // Plugins
-    link(rel='stylesheet', href='../../assets/vendor/animsition/animsition.css')
-    link(rel='stylesheet', href='../../assets/vendor/asscrollable/asScrollable.css')
-    link(rel='stylesheet', href='../../assets/vendor/switchery/switchery.css')
-    link(rel='stylesheet', href='../../assets/vendor/intro-js/introjs.css')
-    link(rel='stylesheet', href='../../assets/vendor/slidepanel/slidePanel.css')
-    link(rel='stylesheet', href='../../assets/vendor/flag-icon-css/flag-icon.css')
-    // Plugins For This Page
-    link(rel='stylesheet', href='../../assets/vendor/editable-table/editable-table.css')
-    // Fonts
-    link(rel='stylesheet', href='../../assets/fonts/web-icons/web-icons.min.css')
-    link(rel='stylesheet', href='../../assets/fonts/brand-icons/brand-icons.min.css')
-    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic')
+    include ../static/styles-dash  
 
-    //if lt IE 9
-      script(src='../../assets/vendor/html5shiv/html5shiv.min.js')
-    //if lt IE 10
-      script(src='../../assets/vendor/media-match/media.match.min.js')
-      script(src='../../assets/vendor/respond/respond.min.js')
-    // Scripts
-    script(src='../../assets/vendor/modernizr/modernizr.js')
-    script(src='../../assets/vendor/breakpoints/breakpoints.js')
-    script.
-      Breakpoints();
 
   body
     //if lt IE 8
@@ -113,34 +84,4 @@ html.no-js.css-menubar(lang='en')
     // End Page
     // Core
 
-    script(src='../../assets/vendor/jquery/jquery.js')
-    script(src='../../assets/vendor/bootstrap/bootstrap.js')
-    script(src='../../assets/vendor/animsition/jquery.animsition.js')
-    script(src='../../assets/vendor/asscroll/jquery-asScroll.js')
-    script(src='../../assets/vendor/mousewheel/jquery.mousewheel.js')
-    script(src='../../assets/vendor/asscrollable/jquery.asScrollable.all.js')
-    script(src='../../assets/vendor/ashoverscroll/jquery-asHoverScroll.js')
-    // Plugins
-    script(src='../../assets/vendor/switchery/switchery.min.js')
-    // <script src="../../assets/vendor/intro-js/intro.js"></script>
-    // <script src="../../assets/vendor/screenfull/screenfull.js"></script>
-    // <script src="../../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
-    // Plugins For This Page
-    script(src='../../assets/vendor/editable-table/mindmup-editabletable.js')
-    script(src='../../assets/vendor/editable-table/numeric-input-example.js')
-    // Scripts
-    script(src='../../assets/js/core.js')
-    script(src='../../assets/js/site.js')
-    // <script src="../../assets/js/sections/menu.js"></script>
-    script(src='../../assets/js/sections/menubar.js')
-    // <script src="../../assets/js/sections/gridmenu.js"></script>
-    // <script src="../../assets/js/sections/sidebar.js"></script>
-    script(src='../../assets/js/configs/config-colors.js')
-    script(src='../../assets/js/configs/config-tour.js')
-    script(src='../../assets/js/components/asscrollable.js')
-    script(src='../../assets/js/components/animsition.js')
-    script(src='../../assets/js/components/slidepanel.js')
-    // <script src="../../assets/js/components/switchery.js"></script>
-    // Scripts For This Page
-    script(src='../../assets/js/components/editable-table.js')
-    script(src='../../assets/examples/js/tables/editable.js')
+    include ../static/scripts-dash
