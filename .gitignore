@@ -25,3 +25,4 @@ build/Release
 node_modules
 providers.json
 client/todomvc/node_modules
+client/dasha/*

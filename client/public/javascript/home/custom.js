@@ -152,20 +152,22 @@ if (Modernizr.touch && ($('.header').attr('data-stellar-background-ratio') !== u
 new WOW().init();
 
 
+
+
 /* =================================
     VIDEO BACKGROUND            
 =================================== */
-$("#top").vide("assets/images/video/ocean", {
-    posterType: "jpg"
-});
+// $("#top").vide("assets/images/video/ocean", {
+//     posterType: "jpg"
+// });
 
 
 /* =================================
     YOUTUBE VIDEO BACKGROUND            
 =================================== */
-$(function(){
-    $(".player").YTPlayer();
-});
+// $(function(){
+//     $(".player").YTPlayer();
+// });
 
 
 /* ==========================================
@@ -214,11 +216,11 @@ $('.venobox').venobox();
 /* ===================================================================
     TWEETIE -  TWITTER FEED PLUGIN THAT WORKS WITH NEW Twitter 1.1 API
 ==================================================================== */
-$('.tweet').twittie({
-    apiPath : 'assets/js/plugins/twitter/api/tweet.php',
-    count: 2,
-    template: '{{tweet}} - <span class="date">{{date}}</span>'
-});
+// $('.tweet').twittie({
+//     apiPath : 'assets/js/plugins/twitter/api/tweet.php',
+//     count: 2,
+//     template: '{{tweet}} - <span class="date">{{date}}</span>'
+// });
 
 
 /* =================================
@@ -245,27 +247,27 @@ if (onMobile === true) {
 /* ==========================================
    MAILCHIMP NEWSLETTER SUBSCRIPTION
 ============================================= */
-$(".mailchimp-subscribe").ajaxChimp({
-    callback: mailchimpCallback,
-    url: "http://themedept.us9.list-manage.com/subscribe/post?u=63465a86fdd5f3b9fa31f9278&amp;id=52df53337f" // Replace your mailchimp post url inside double quote "".  
-});
+// $(".mailchimp-subscribe").ajaxChimp({
+    // callback: mailchimpCallback,
+    // url: "http://themedept.us9.list-manage.com/subscribe/post?u=63465a86fdd5f3b9fa31f9278&amp;id=52df53337f" // Replace your mailchimp post url inside double quote "".  
+// });
 
-function mailchimpCallback(resp) {
-if(resp.result === 'success') {
-    $('.mc-success')
-    .html('<i class="icon icon_check_alt2"></i>' + resp.msg)
-    .fadeIn(1000);
+// function mailchimpCallback(resp) {
+// if(resp.result === 'success') {
+//     $('.mc-success')
+//     .html('<i class="icon icon_check_alt2"></i>' + resp.msg)
+//     .fadeIn(1000);
 
-    $('.mc-failed').fadeOut(500);
+//     $('.mc-failed').fadeOut(500);
         
-} else if(resp.result === 'error') {
-    $('.mc-failed')
-    .html('<i class="icon icon_close_alt2"></i>' + resp.msg)
-    .fadeIn(1000);
+// } else if(resp.result === 'error') {
+//     $('.mc-failed')
+//     .html('<i class="icon icon_close_alt2"></i>' + resp.msg)
+//     .fadeIn(1000);
             
-    $('.mc-success').fadeOut(500);
-}
-}
+//     $('.mc-success').fadeOut(500);
+// }
+// }
 
 /* ==========================================
    FUNCTION FOR EMAIL ADDRESS VALIDATION
@@ -281,29 +283,29 @@ function isValidEmail(emailAddress) {
 /* ==========================================
    LOCAL NEWSLETTER
 ============================================= */
-$("#subscribe").submit(function(e) {
-    e.preventDefault();
-    var data = {
-        email: $("#s-email").val()
-    };
+// $("#subscribe").submit(function(e) {
+//     e.preventDefault();
+//     var data = {
+//         email: $("#s-email").val()
+//     };
 
-    if ( isValidEmail(data['email']) ) {
-        $.ajax({
-            type: "POST",
-            url: "assets/php/subscribe.php",
-            data: data,
-            success: function() {
-                $('.subscription-success').fadeIn(1000);
-                $('.subscription-failed').fadeOut(500);
-            }
-        });
-    } else {
-        $('.subscription-failed').fadeIn(1000);
-        $('.subscription-success').fadeOut(500);
-    }
+//     if ( isValidEmail(data['email']) ) {
+//         $.ajax({
+//             type: "POST",
+//             url: "assets/php/subscribe.php",
+//             data: data,
+//             success: function() {
+//                 $('.subscription-success').fadeIn(1000);
+//                 $('.subscription-failed').fadeOut(500);
+//             }
+//         });
+//     } else {
+//         $('.subscription-failed').fadeIn(1000);
+//         $('.subscription-success').fadeOut(500);
+//     }
 
-    return false;
-});
+//     return false;
+// });
 
 /* ============================
    LOGIN-MODAL VALIDATION. 
