@@ -14,12 +14,31 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
 
+  router.get('/home', function(req, res, next){
+
+    res.render('pages/home', {
+      user: req.user,
+      url: req.url,
+      data: response
+    });
+  });
+
+  router.get('/todo', function(req, res, next){
+
+    res.render('pages/grocery2', {
+      user: req.user,
+      url: req.url,
+      data: response
+    });
+  });
+
+
 
   router.get('/', function(req, res, next) {
 
     var Grocery = app.models.Grocery;
 
-    // Grocery.fetch();
+
     Grocery.fetch(function(error, response){
 
         // console.log(response);
@@ -37,11 +56,13 @@ module.exports = function(app) {
           //   data: response
           // });
 
+
           // res.render('pages/home', {
           //   user: req.user,
           //   url: req.url,
           //   data: response
           // });
+
 
           // res.render('pages/dashboard', {
           //   user: req.user,
@@ -77,7 +98,7 @@ module.exports = function(app) {
               // console.log(model.groceryIds);
 
               Grocery.find({
-                where: {id: {inq:model.groceryIds}}
+                where: {id: { inq:model.groceryIds }}
               }).then(function(models){
 
 
@@ -168,6 +189,7 @@ module.exports = function(app) {
 
   });
 
+  // :todo make it work 
   router.get('/hide/department/:id', function(req, res, next){
     var departmentId = req.params.id;
     var Department   = app.models.Department;
@@ -176,6 +198,27 @@ module.exports = function(app) {
     })
   });
 
+  router.get('/show/department/:id', function(req, res, next){
+    var departmentId = req.params.id;
+    var Department   = app.models.Department;
+    Department.findById(departmentId, {}, function(err, model){
+      model.updateAttribute('visible', true);
+    })
+  });
+
+
+  router.get('/visibility/department/:id', function(req, res, next){
+    var departmentId = req.params.id;
+    var Department   = app.models.Department;
+    Department.findById(departmentId, {}, function(err, model){
+
+      if(model.visible){
+        model.updateAttribute('visible', false);    
+      } else {
+        model.updateAttribute('visible', true);    
+      }
+    });        
+  })
 
   router.get('/signup', function(req, res, next) {
     res.render('pages/signup', {
