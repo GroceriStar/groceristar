@@ -3,13 +3,31 @@ mixin link(href, name)
 
 // example +link('http://peexaweb.com', 'Google')(class="additional-class")
 
-mixin view_departments(array, enable_hidden)
+mixin view_departments1(array)
   ul
     each val, index in array
-      if( enable_hidden )
         li= val.name + '( ' + val.id + ' ) '
-          a(href='/delete/department/' + val.id) link  
-      else if !val.visible
+          a(href='/delete/department/' + val.id) view  
+
+mixin view_departments_extended(array)
+  ul
+    each val, index in array
         li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?: ' + val.visible
-          a(href='/delete/department/' + val.id) link  
-            
+          a(href='/delete/department/' + val.id) view  
+
+mixin view_departments_awesome(array)
+  ul
+    each val, index in data.departments
+      li= val.name + '( ' + val.id + ' ) '
+        a(href='/delete/department/' + val.id) view
+
+        if user
+        //- User *is* logged In
+
+          if val.visible
+            a(href='/hide/department/' + val.id) HIDE
+          else
+            a(href='/show/department/' + val.id) SHOW 
+
+          a(href='/visibility/department/' + val.id)
+            i.fa.fa-bell.fa-4x   

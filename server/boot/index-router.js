@@ -206,7 +206,7 @@ module.exports = function(app) {
     })
   });
 
-
+  // :todo make it work 
   router.get('/visibility/department/:id', function(req, res, next){
     var departmentId = req.params.id;
     var Department   = app.models.Department;
@@ -385,11 +385,14 @@ module.exports = function(app) {
 
     var Grocery = app.models.Grocery;
     Grocery.findById(req.params.groceryId, {}, function(err, grocery){
-      // console.log(grocery)
+      
+      console.log(grocery.departments);
+
       res.render('pages/grocery', {
         data: grocery, //:todo change names, punk!
         // url: req.url,
-        messages: {}
+        messages: {},
+        departments: false
       });  
 
     });
