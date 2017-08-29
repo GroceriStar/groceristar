@@ -19,10 +19,16 @@ block content
       each val, index in departments
         .col-md-4.element-item
           h1= val.name
+            a(href='/visibility/department/' + val.id)
+              i.fa.fa-bell.fa-4x
+              i.fa.fa-eye.fa-4x  
+              i.fa.fa-eye-slash.fa-4x    
+
           ul
             each ing, j in val.ingredients
               li= ing.id + ' | ' + ing.name
               a(href='#') empty
               a(href='#') delete
-              a(href='#') purchase        
+              a(href='#') purchase
+         
           hr
