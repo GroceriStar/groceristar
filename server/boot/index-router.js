@@ -377,30 +377,7 @@ module.exports = function(app) {
 
   });
 
- //:todo add relations and display whole information about 
- //:todo make it more protected from view
- router.get('/view/grocery/:groceryId', function(req, res, next){
 
-    // console.log( req.params.groceryId );
-    // console.log( req.user.id );
-
-    var Grocery = app.models.Grocery;
-    Grocery.findById(req.params.groceryId, {}, function(err, grocery){
-      
-      console.log(grocery.departments);
-
-      res.render('pages/grocery', {
-        data: grocery, //:todo change names, punk!
-        // url: req.url,
-        messages: {},
-        departments: grocery.departments
-      });  
-
-    });
-
-
-
- });
 
 
 

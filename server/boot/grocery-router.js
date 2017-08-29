@@ -12,7 +12,8 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
   router.get('change-the-name/:groceryId', function(req, res, next){
-console.log( req.user.id );
+	console.log( req.user.id );
+
     console.log( req.favoriteId );
   	var Grocery = app.models.Grocery;
 	Grocery.findById(groceryId, {}, function(err, model){
@@ -66,6 +67,50 @@ console.log( req.user.id );
 
   });
 
+
+ //:todo add relations and display whole information about 
+ //:todo make it more protected from view
+ router.get('/view/grocery/:groceryId', ensureLoggedIn('/auth/account'), function(req, res, next){
+
+    // console.log( req.params.groceryId );
+    // console.log( req.user.id );
+
+    var Grocery   = app.models.Grocery;
+    var groceryId = req.params.groceryId;
+    // var userId    = req.user.id;
+
+    console.log(groceryId);
+    // console.log(userId);
+
+
+    Grocery.fetchById(groceryId, function(err, grocery){
+
+    	// console.log(grocery);
+
+    	// console.log(grocery.departments);
+
+    	// res.render('pages/grocery', {
+     //    data: grocery, //:todo change names, punk!
+     //    // url: req.url,
+     //    messages: {},
+     //    departments: grocery.departments
+     //  });  
+
+    });
+
+    // Grocery.findById(req.params.groceryId, {}, function(err, grocery){
+      
+    //   console.log(grocery.departments);
+
+  
+
+    // });
+
+
+
+
+
+ });
 
   app.use(router);
 

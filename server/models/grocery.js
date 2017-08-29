@@ -24,9 +24,32 @@ module.exports = function(Grocery) {
 		next();
 	});
 
+	// when we call this method - we know that this grocery is attached to user,
+	// so it's not so important to check relations between this grocery and user
 
-	Grocery.fetchy = function(userId, cb){
-		Grocery.findOne({
+	Grocery.fetchById = function(groceryId, cb){
+
+		// var User = Grocery.app.models.user;
+
+		// User.findById(userId, {
+		// 	include: {
+		// 		relation: 'groceries',
+		// 		scope: {
+		// 			where: {
+		// 				id: groceryId 
+		// 			},
+		// 			include: {
+		// 				relation: 'departmentsList',
+		// 			}
+		// 		}
+		// 	}
+		// }, function(err, user){
+
+		// 	console.log( user );
+
+		// });
+
+		Grocery.findById(groceryId, {
 			include: {
 				relation: 'departmentsList',
 				scope: {
@@ -35,9 +58,7 @@ module.exports = function(Grocery) {
 						relation: 'ingredients',
 						scope: {
 							fields: [ 'name' ],
-							// where: {
-							// 	departmentId: id
-							// }
+
 						}
 					}
 
@@ -47,30 +68,35 @@ module.exports = function(Grocery) {
 		}, function(err, grocery){
 
 			var g = grocery.toJSON();
-			
+			// console.log(grocery);
+
 			var departments = [];
 
 			// userId
-			User.findById(userId, {}, function(err, model){
-              console.log(model);
-              console.log(model.groceryIds);
-           });
+			// User.findById(userId, {}, function(err, model){
+   //            console.log(model);
+   //            console.log(model.groceryIds);
+   //         });
 
 			g.departmentsList.forEach(function(item, i){
+
+				console.log(item);
+				console.log(item.ingredients);
 
 				// case #1 return only dep name with id for link creation
 				// console.log(item.name);
 				// console.log(item.id);
 				// console.log(item.visible);
 				// console.log(item.ingredients.length > 0);
-				departments.push({ id: item.id, name: item.name });
+				// departments.push({ id: item.id, name: item.name });
 
 				
 			});
 
-
-
 		});
+
+
+
 	};
 
 	// :todo not sure what i mean by this.
