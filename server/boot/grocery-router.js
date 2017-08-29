@@ -85,16 +85,17 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, grocery){
 
-    	// console.log(grocery);
+    	console.log(grocery);
 
     	// console.log(grocery.departments);
 
-    	// res.render('pages/grocery', {
-     //    data: grocery, //:todo change names, punk!
-     //    // url: req.url,
-     //    messages: {},
-     //    departments: grocery.departments
-     //  });  
+    	res.render('pages/grocery', {
+    		title: 'Grocery: ' + grocery.id,
+	        data: grocery, //:todo change names, punk!
+	        // url: req.url,
+	        messages: {},
+	        departments: grocery.departmentsList
+	      });  
 
     });
 

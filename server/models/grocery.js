@@ -53,11 +53,11 @@ module.exports = function(Grocery) {
 			include: {
 				relation: 'departmentsList',
 				scope: {
-					fields: [ 'name' ],
+					fields: [ 'id', 'name' ],
 					include: {
 						relation: 'ingredients',
 						scope: {
-							fields: [ 'name' ],
+							fields: [ 'id', 'name' ],
 
 						}
 					}
@@ -69,8 +69,9 @@ module.exports = function(Grocery) {
 
 			var g = grocery.toJSON();
 			// console.log(grocery);
+			cb(null, g);
 
-			var departments = [];
+			// var departments = [];
 
 			// userId
 			// User.findById(userId, {}, function(err, model){
@@ -78,20 +79,27 @@ module.exports = function(Grocery) {
    //            console.log(model.groceryIds);
    //         });
 
-			g.departmentsList.forEach(function(item, i){
 
-				console.log(item);
-				console.log(item.ingredients);
 
-				// case #1 return only dep name with id for link creation
-				// console.log(item.name);
-				// console.log(item.id);
-				// console.log(item.visible);
-				// console.log(item.ingredients.length > 0);
-				// departments.push({ id: item.id, name: item.name });
+			// g.departmentsList.forEach(function(item, i){
+
+			// 	console.log(item);
+			// 	console.log(item.ingredients);
+
+			// 	// item.ingredients.forEach(function(ingredient))
+
+			// 	// case #1 return only dep name with id for link creation
+			// 	// console.log(item.name);
+			// 	// console.log(item.id);
+			// 	// console.log(item.visible);
+			// 	// console.log(item.ingredients.length > 0);
+			// 	// departments.push({ id: item.id, name: item.name });
 
 				
-			});
+			// });
+
+
+			
 
 		});
 

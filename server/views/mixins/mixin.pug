@@ -12,22 +12,22 @@ mixin view_departments1(array)
 mixin view_departments_extended(array)
   ul
     each val, index in array
-        li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?: ' + val.visible
-          a(href='/delete/department/' + val.id) view  
+        li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?:  ' + val.visible
+          a(href='/delete/department/' + val.id) ' ' + view  
 
 mixin view_departments_awesome(array)
   ul
-    each val, index in data.departments
+    each val, index in array
       li= val.name + '( ' + val.id + ' ) '
         a(href='/delete/department/' + val.id) view
 
-        if user
+        //if user
         //- User *is* logged In
 
-          if val.visible
-            a(href='/hide/department/' + val.id) HIDE
-          else
-            a(href='/show/department/' + val.id) SHOW 
+        if val.visible
+          a(href='/hide/department/' + val.id) HIDE
+        else
+          a(href='/show/department/' + val.id) SHOW 
 
-          a(href='/visibility/department/' + val.id)
-            i.fa.fa-bell.fa-4x   
+        a(href='/visibility/department/' + val.id)
+          i.fa.fa-bell.fa-4x   
