@@ -46,7 +46,8 @@ module.exports = function(app) {
           res.render('pages/index', {
             user: req.user,
             url: req.url,
-            data: response //:todo change this names
+            data: response, //:todo change this names
+            departments: response.departments
           });
 
 
@@ -392,7 +393,7 @@ module.exports = function(app) {
         data: grocery, //:todo change names, punk!
         // url: req.url,
         messages: {},
-        departments: false
+        departments: grocery.departments
       });  
 
     });
