@@ -33,7 +33,7 @@
     "ingredients": {
       "type": "hasMany",
       "model": "Ingredient",
-      "foreignKey": "ingredientIds"
+      "foreignKey": "departmentId"
     }
   },
   "acls": [],

@@ -21,8 +21,8 @@ block content
           h1= val.name
             a(href='/visibility/department/' + val.id)
               i.fa.fa-bell.fa-4x
-              i.fa.fa-eye.fa-4x  
-              i.fa.fa-eye-slash.fa-4x    
+              //i.fa.fa-eye.fa-4x  
+              //i.fa.fa-eye-slash.fa-4x    
 
           ul
             each ing, j in val.ingredients
@@ -35,13 +35,5 @@ block content
 
     hr
     
-    .container-fluid
-      .grid
-        .grid-sizer.col-xs-4
-        | tryaaaa
-        .grid-item.col-xs-4
-          .grid-item-content
-          | Bryyyyaaaaa
-        .grid-item.col-xs-4
-          .grid-item-content      
-          | Pow Pow Pow Pow
+  // include ../partials/grid-delete-later    
+

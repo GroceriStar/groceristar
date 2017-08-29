@@ -92,7 +92,7 @@ module.exports = function(app) {
     var groceryId = req.params.groceryId;
     // var userId    = req.user.id;
 
-    console.log(groceryId);
+    // console.log(groceryId);
     // console.log(userId);
 
 
