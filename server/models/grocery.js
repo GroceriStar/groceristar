@@ -29,26 +29,6 @@ module.exports = function(Grocery) {
 
 	Grocery.fetchById = function(groceryId, cb){
 
-		// var User = Grocery.app.models.user;
-
-		// User.findById(userId, {
-		// 	include: {
-		// 		relation: 'groceries',
-		// 		scope: {
-		// 			where: {
-		// 				id: groceryId 
-		// 			},
-		// 			include: {
-		// 				relation: 'departmentsList',
-		// 			}
-		// 		}
-		// 	}
-		// }, function(err, user){
-
-		// 	console.log( user );
-
-		// });
-
 		Grocery.findById(groceryId, {
 			include: {
 				relation: 'departmentsList',
@@ -99,7 +79,7 @@ module.exports = function(Grocery) {
 			// });
 
 
-			
+
 
 		});
 
@@ -540,5 +520,42 @@ module.exports = function(Grocery) {
 		}, cb);
 	};
 
+
+	Grocery.secondWave = function(groceryId, cb){
+
+		var Department = Grocery.app.models.Department;
+
+		Grocery.findById(groceryId, {
+
+		}, function(err, grocery){
+
+			console.log(grocery.ingredientIds);
+
+			var ingArr = grocery.ingredientIds;
+
+			Department.find({
+				include: {
+					relation: 'ingredients',
+					scope: {
+						where : {
+							id: {
+								inq: ingArr
+							}
+						}
+					}
+				}
+			}, function(err, model){
+
+				console.log(model);
+				console.log(model.ingredientIds);
+				var m = model.toJSON();
+				console.log(m.ingredients);
+
+			});
+
+		});
+
+
+	};
 	
 };

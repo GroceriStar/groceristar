@@ -8,6 +8,7 @@ html.no-js.css-menubar(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
     meta(name='description', content='')
     meta(name='author', content='')
+    
     title= title
       
 
@@ -15,14 +16,10 @@ html.no-js.css-menubar(lang='en')
 
 
   body
-  
-    //if lt IE 8
-      p.browserupgrade
-        | You are using an 
-        strong outdated
-        |  browser. Please 
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  to improve your experience.
+
+    include ../partials/browserupdate
+
+
 
     include ../partials/navigation
 

@@ -139,4 +139,29 @@ module.exports = function(User) {
         });
 
     };
+
+
+    User.methodofMethods = function(userId, cb){
+
+
+        // User.findById(userId, {
+        //  include: {
+        //      relation: 'groceries',
+        //      scope: {
+        //          where: {
+        //              id: groceryId 
+        //          },
+        //          include: {
+        //              relation: 'departmentsList',
+        //          }
+        //      }
+        //  }
+        // }, function(err, user){
+
+        //  console.log( user );
+
+        // });
+
+    };
+    
 };

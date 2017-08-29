@@ -12,9 +12,10 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
   router.get('change-the-name/:groceryId', function(req, res, next){
-	console.log( req.user.id );
+	// console.log( req.user.id );
 
-    console.log( req.favoriteId );
+    console.log( req.groceryId );
+    var groceryId = req.groceryId;
   	var Grocery = app.models.Grocery;
 	Grocery.findById(groceryId, {}, function(err, model){
 		model.updateAttribute('title', 'Smack my bitch up');
@@ -22,22 +23,37 @@ module.exports = function(app) {
 
   });
 
-  router.get('add-to-purchased', function(req, res, next){
+  router.get('add-to-purchased/:groceryId/:ingId', function(req, res, next){
 
- //  	var Grocery = app.models.Grocery;
- console.log( req.user.id );
-    console.log( req.favoriteId );
-	// Grocery.findById(groceryId, {}, function(err, model){
-	// 	model.updateAttribute('title', 'Smack my bitch up');
-	// })
+  	var Grocery = app.models.Grocery;
+ 	// console.log( req.user.id );
+ 	// var userId = req.user.id ;
+ 	var ingId     = req.params.ingId;
+ 	var groceryId = req.params.groceryId;
+
+    Grocery.makePurchased(groceryId, ingId, function(){});
+
 
   });
 
-	router.get('remove-from-purchased', function(req, res, next){
+  // router.get('unpurchase/:groceryId/:ingId', function(req, res, next){
+
+ 	// var ingId     = req.params.ingId;
+ 	// var groceryId = req.params.groceryId;
+
+ 	// Grocery.makeUnpurchased(groceryId, ingId, function(){});
+
+  // });
+
+	router.get('remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
 		var Grocery = app.models.Grocery;
-		console.log( req.user.id );
-		console.log( req.ingredients );
+
+		// console.log( req.user.id );		
+
+	 	var ingId     = req.params.ingId;
+ 		var groceryId = req.params.groceryId;
+
 		Grocery.withPurchased(groceryId, ingredients, function(err, model){
 
 			var data = model.toJSON();
@@ -59,9 +75,6 @@ module.exports = function(app) {
 
   		});
 
-	// Grocery.findById(groceryId, {}, function(err, model){
-	// 	model.updateAttribute('title', 'Smack my bitch up');
-	// })
 
 
 
