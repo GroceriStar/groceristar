@@ -18,11 +18,10 @@ block content
     .col-md-12
       each val, index in departments
         .col-md-4.element-item
-          h1= val.name
+          h3= val.name
             a(href='/visibility/department/' + val.id)
-              i.fa.fa-bell.fa-4x
-              //i.fa.fa-eye.fa-4x  
-              //i.fa.fa-eye-slash.fa-4x    
+              i.fa.fa-eye  
+              i.fa.fa-eye-slash.hide    
 
           ul
             each ing, j in val.ingredients

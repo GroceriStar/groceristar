@@ -19,8 +19,25 @@ module.exports = function(app) {
     res.render('pages/home', {
       user: req.user,
       url: req.url,
-      data: response
+      // data: response
     });
+  });
+
+  router.get('/pidor/update', function(req, res, next){
+    console.log(req.params);
+  });
+  router.get('/pidor/create', function(req, res, next){
+    console.log(req.params);
+  });
+
+  router.get('/tatypidor', function(req, res, next){
+    
+    res.json([
+      {"title":"123","completed":false},
+      {"title":"333","completed":false},
+      {"title":"sam ty pidor."}
+      ]);
+
   });
 
   router.get('/todo', function(req, res, next){
@@ -28,7 +45,7 @@ module.exports = function(app) {
     res.render('pages/grocery2', {
       user: req.user,
       url: req.url,
-      data: response
+      // data: response
     });
   });
 

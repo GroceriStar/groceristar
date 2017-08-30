@@ -3,15 +3,22 @@
 (function () {
 	'use strict';
 
-	var ENTER_KEY = 13;
+	var ENTER_KEY  = 13;
 	var ESCAPE_KEY = 27;
+
+
+
 
 	var App = blocks.Application();
 
 	var Todo = App.Model({
-		title: App.Property(),
+
+		// id       : App.Property(),
+
+		title    : App.Property(),
 
 		completed: App.Property(),
+		// departmentId: App.Property(),
 
 		editing: blocks.observable(),
 
@@ -54,22 +61,37 @@
 				this.title(this.lastValue);
 				this.editing(false);
 			}
+		},
+
+		update: {
+			url: 'pidor/update'
+		},
+		create: {
+			url: 'pidor/create'
 		}
+
 	});
 
 	var Todos = App.Collection(Todo, {
+
+		options: {
+			read: {
+				url: 'tatypidor'
+			}
+		},
+
 		remaining: blocks.observable(),
 
 		init: function () {
+
+			// console.log(localStorage.getItem('todos-jsblocks'));
+
 			this
+				.read()
 				// load the data from the Local Storage
-				.reset(
-					JSON.parse(
-						localStorage.getItem('todos-jsblocks')
-						) || []
-					)
+				// .reset(JSON.parse(localStorage.getItem('todos-jsblocks')) || [])
 				// save to Local Storage on each item add or remove
-				.on('add remove', this.save)
+				.on('add remove edit', this.save)
 				.updateRemaining();
 		},
 
@@ -81,6 +103,14 @@
 			});
 		},
 
+		arrowDownClick: function(){
+			// console.log('down is a usual state of your dick');
+			var complete = this.remaining() === 0 ? false : true;
+			this.each(function (todo) {
+				todo.completed(complete);
+			});
+		},	
+
 		// remove all completed todos
 		clearCompleted: function () {
 			this.removeAll(function (todo) {
@@ -91,21 +121,30 @@
 		// saves all data back to the Local Storage
 		save: function () {
 			var result = [];
-
+			// console.log(this())
 			blocks.each(this(), function (model) {
+				// console.log(model);	
 				result.push(model.dataItem());
 			});
-
-			localStorage.setItem('todos-jsblocks', JSON.stringify(result));
+			
+			// console.log( result );
+			// localStorage.setItem('todos-jsblocks', JSON.stringify(result));
 
 			this.updateRemaining();
 		},
+
+
 
 		// updates the observable
 		updateRemaining: function () {
 			this.remaining(this.reduce(function (memo, todo) {
 				return todo.completed() ? memo : memo + 1;
 			}, 0));
+		},
+
+		// implements drag-n-drop for sortable script
+		drag: function () {
+
 		}
 	});
 
@@ -152,5 +191,7 @@
 				this.newTodo.reset();
 			}
 		}
+
+
 	});
 })();

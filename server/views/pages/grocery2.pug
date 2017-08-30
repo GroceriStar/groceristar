@@ -1,14 +1,14 @@
-extends ../layouts/dashboard
+extends ../layouts/grocery
 
 block content
 
   section.todoapp(data-query='view(Todos)')
     header.header
       h1 todos
-      input.new-todo(data-query='val(newTodo.title).keydown(addTodo)', placeholder='What needs to be done?', autofocus='')
+      input.new-todo(data-query='val(newTodo.title).keydown(addTodo)', placeholder='Ingredient name', autofocus='')
     section.main(data-query='visible(todos().length > 0)', style='display: none;')
       input.toggle-all(data-query='checked(todos.remaining() == 0).click(todos.toggleAll)', type='checkbox')
-      label(for='toggle-all') Mark all as complete
+      label(for='toggle-all', data-query='click(todos.arrowdownclick)') Mark all as complete
 
       ul#todo-todo-todo.todo-list(data-query='each(todos.view)')
         li(data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)")

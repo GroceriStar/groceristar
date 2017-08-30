@@ -17,7 +17,8 @@
     },
     "visible": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": true
     },
     "created_at": {
       "type": "date",
