@@ -2,4 +2,5 @@ br
 ul
   each val, index in groceries
     li= val.title + '( ' + val.id + ' ) '
-      a(href='/view/grocery/' + val.id) link
+      a(href='/view/grocery/' + val.id, class="btn") link
+      a(href='/change-the-name/grocery' + val.id, class="btn") [change name beatch!]

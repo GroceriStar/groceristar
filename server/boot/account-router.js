@@ -23,7 +23,6 @@ module.exports = function(app) {
 		});
 	});
 
-
 	router.post('/signup', function(req, res, next) {
 		var User = app.models.user;
 
@@ -64,6 +63,56 @@ module.exports = function(app) {
 		req.logout();
 		res.redirect('/');
 	});
+
+	router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
+	    var Grocery = app.models.Grocery;
+	    var User    = app.models.user; 
+	    var userId  = req.user.id;
+	    // console.log(req.user.id);
+
+	    Grocery.fetch(function(error, response){
+
+	        // console.log(response);
+	          //:todo make this a separate method inside model
+	           User.findById(userId, {}).then(function(model){
+	              // console.log(model);
+	              // console.log(model.groceryIds);
+
+	              Grocery.find({
+	                where: {id: {
+	                  inq: model.groceryIds 
+	                 }
+	                }
+	              }).then(function(models){
+
+
+	                // console.log(models);
+
+
+	                 res.render('pages/account', {
+	                    user: req.user,
+	                    url: req.url,
+	                    groceries: models,
+	                  //data: response //:todo change this names
+	                }); 
+
+	              });
+
+	                
+
+	           });
+
+	          
+	       
+
+	    });
+	    // .catch(function(err){
+	    //   throw err;
+	    // });
+
+
+	});
+
 
 
   app.use(router);

@@ -11,27 +11,35 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
 
-  router.get('change-the-name/:groceryId', function(req, res, next){
+  router.get('change-the-name/grocery/:groceryId', function(req, res, next){
 	// console.log( req.user.id );
 
     console.log( req.groceryId );
     var groceryId = req.groceryId;
   	var Grocery = app.models.Grocery;
-	Grocery.findById(groceryId, {}, function(err, model){
-		model.updateAttribute('title', 'Smack my bitch up');
-	})
+  	Grocery.findById(groceryId, {}, function(err, model){
+  		model.updateAttribute('title', 'Smack my bitch up');
+  	})
 
   });
 
-  router.get('add-to-purchased/:groceryId/:ingId', function(req, res, next){
+  router.post('add-to-purchased/', function(req, res, next){
+
+
+    console.log(req.body);
+    console.log(req.params);
+
 
   	var Grocery = app.models.Grocery;
    	// console.log( req.user.id );
    	// var userId = req.user.id ;
-   	var ingId     = req.params.ingId;
-   	var groceryId = req.params.groceryId;
+   	// var ingId     = req.params.ingId;
 
-    Grocery.makePurchased(groceryId, ingId, function(){});
+    // var ingredientsArr = req.params.ingId;
+
+   	// var groceryId = req.params.groceryId;
+
+    // Grocery.makePurchased(groceryId, ingId, function(){});
 
 
   });
