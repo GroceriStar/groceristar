@@ -6,7 +6,7 @@ A tutorial for setting up a basic passport example.
 - [Prerequisites](#prerequisites)
 - [Client ids/secrets from third party](#client-idssecrets-from-third-party)
 - [Tutorial - Facebook](#tutorial---facebook)
-- [Tutorial - LDAP](#tutorial---ldap)
+
 
 ## Overview
 
@@ -14,7 +14,9 @@ LoopBack example for [loopback-passport](https://github.com/strongloop/loopback-
 LoopBack's user/userIdentity/userCredential models and [passport](http://passportjs.org) to interact with other auth providers.
 
 - Log in or sign up to LoopBack using third party providers (aka social logins)
-- Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated facebook/google accounts to retrieve pictures).
+- Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated facebook).
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
 
 ## Prerequisites
 
@@ -129,6 +131,8 @@ $ node .
 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
 
-Grocery List Frontend Copyright: http://todomvc.com/ (https://github.com/tastejs/todomvc)
-And jsblocks Copyright: http://jsblocks.com (https://github.com/astoilkov/jsblocks)
-FontAwesome(http://fontawesome.io)
+Grocery List Frontend Copyright: [http://todomvc.com/](https://github.com/tastejs/todomvc)
+
+And jsblocks Copyright: [http://jsblocks.com](https://github.com/astoilkov/jsblocks)
+
+[FontAwesome](http://fontawesome.io)

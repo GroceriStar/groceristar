@@ -7,8 +7,7 @@ module.exports = function(User) {
     	var UserGrocery  = User.app.models.userGrocery;
  		var UserFavorite = User.app.models.userFav;   	
 
-    	if( ctx.isNewInstance ){
-    		
+    	if( ctx.isNewInstance ) {   		
     		UserGrocery.create({
     			userId: ctx.instance.id,
     			groceryIds: []	
@@ -57,7 +56,6 @@ module.exports = function(User) {
             cb(null, favorites);
 
         });
-
     }
     //:todo add remote method for this functionality
 

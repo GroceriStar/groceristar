@@ -7,7 +7,7 @@ module.exports = function(app) {
 
 	var router  = app.loopback.Router();
 	
-  router.get('/favorites', ensureLoggedIn('/auth/account'), function(req, res, next){
+  router.get('/favorites', ensureLoggedIn('/auth/account'), function(req, res, next) {
 
     // console.log( req.user.id );
 
@@ -28,7 +28,7 @@ module.exports = function(app) {
   });
 
   router.post('/delete/favorites/:favoriteId', 
-    ensureLoggedIn('/auth/account'), function(req, res, next){
+    ensureLoggedIn('/auth/account'), function(req, res, next) {
     console.log( req.user.id );
     console.log( req.favoriteId ); // this is ingredient Id - we need to remove this id from array 
     var User = app.models.user;
@@ -36,7 +36,7 @@ module.exports = function(app) {
 
     })
 
-    User.getCurrentUserWithFavorites(req.user.id, function(err, model){
+    User.getCurrentUserWithFavorites(req.user.id, function(err, model) {
 
       var data = model.toJSON();
       console.log(data.favorites);
@@ -60,14 +60,14 @@ module.exports = function(app) {
   });
 
   //:todo fix delete or finish this
-  router.post('/add/fav', function(req, res, next){
+  router.post('/add/fav', function(req, res, next) {
 
     console.log(req.body);
     console.log(req.params);
 
   });
 
-  router.get('/add/fav2/:ingredientId', function(req, res, next){
+  router.get('/add/fav2/:ingredientId', function(req, res, next) {
 
     var ingredientId = req.params.ingredientId;
     var userId       = req.user.id;

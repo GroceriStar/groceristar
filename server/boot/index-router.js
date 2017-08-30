@@ -116,7 +116,10 @@ module.exports = function(app) {
               // console.log(model.groceryIds);
 
               Grocery.find({
-                where: {id: { inq:model.groceryIds }}
+                where: {id: {
+                  inq: model.groceryIds 
+                 }
+                }
               }).then(function(models){
 
 
