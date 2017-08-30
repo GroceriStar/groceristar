@@ -4,7 +4,7 @@ block content
 
   section.todoapp(data-query='view(Todos)')
     header.header
-      h3 department
+      h1 department
       input.new-todo(data-query='val(newTodo.title).keydown(addTodo)', placeholder='Ingredient name', autofocus='')
     section.main(data-query='visible(todos().length > 0)', style='display: none;')
       input#toggle-all.toggle-all(data-query='checked(todos.remaining() == 0).click(todos.toggleAll)', type='checkbox')
@@ -31,10 +31,15 @@ block content
         li
           a(data-query="setClass('selected', filter() == 'active')", href='#/active') Active
         li
-          a(data-query="setClass('selected', filter() == 'completed')", href='#/completed') Completed
-        li
-          a(data-query="setClass('selected', filter() == 'completed')", href='#/prev') Prev Department
-        li
-          a(data-query="setClass('selected', filter() == 'completed')", href='#/next') Next Department  
+          a(data-query="setClass('selected', filter() == 'completed')", href='#/completed') Purchased
 
-      button.clear-completed(data-query='visible(todos().length != todos.remaining()).click(todos.clearCompleted)') Clear completed
+      button.clear-completed(data-query='visible(todos().length != todos.remaining()).click(todos.clearCompleted)') Clear purchased
+
+
+
+  footer.info
+    p
+      | Double-click to edit a todo
+        
+    a(href='#/prev') Prev Department
+    a(href='#/next') Next Department
