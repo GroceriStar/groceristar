@@ -9,7 +9,7 @@ module.exports = function(Grocery) {
 
 	Grocery.observe('update', function(ctx, next){
 		ctx.instance.updated_at = new Date();
-		next();
+        next();
 	});
 
 	Grocery.observe("before save", function updateTimestamp(ctx, next) {

@@ -26,14 +26,16 @@
 			var collection = this.collection();
 
 			// collection is undefined when a Todo is still not part of the Todos collection
-			if (collection) {
-				// save to Local Storage on each attribute change
-				this.title.on('change', collection.save);
-				this.completed.on('change', collection.save);
-			}
+            if (collection) {
+
+	          // save to Local Storage on each attribute change
+	          this.title.on('change', collection.save);
+	          this.completed.on('change', collection.save);
+            }
 
 			this.title.on('change', function (newValue) {
 				this.title((newValue || '').trim());
+				this.save()
 			});
 		},
 
@@ -165,6 +167,8 @@
 			} else if (mode === 'completed') {
 				include = completed;
 			}
+
+			console.log(mode);
 
 			return include;
 		}),

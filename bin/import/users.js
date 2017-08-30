@@ -3,8 +3,7 @@
 var Ingredient  = server.models.user;
 // var relation    = 'ingredients';
 
-function getUsers(){
-
+function getUsers() {
 	var accounts = [	
 		{
 		  name: 'john',	

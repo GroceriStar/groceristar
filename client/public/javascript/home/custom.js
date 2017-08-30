@@ -34,19 +34,19 @@ function showRegisterForm(){
 }
 
 
-function showLoginForm(){
-    "use strict";
-    $('#loginModal .registerBox').fadeOut('fast',function(){
-        $('.loginBox').fadeIn('fast');
-        $('.register-footer').fadeOut('fast',function(){
-            $('.login-footer').fadeIn('fast');
-        });
+// function showLoginForm(){
+//     "use strict";
+//     $('#loginModal .registerBox').fadeOut('fast',function(){
+//         $('.loginBox').fadeIn('fast');
+//         $('.register-footer').fadeOut('fast',function(){
+//             $('.login-footer').fadeIn('fast');
+//         });
         
-        $('.modal-title').html('Sign in to <span>SmartMvp</span>');
-        $('.modal-subtitle').html('Enter your email and password');
-    });
-    $('.error').removeClass('alert alert-danger').html('');
-}
+//         $('.modal-title').html('Sign in to <span>SmartMvp</span>');
+//         $('.modal-subtitle').html('Enter your email and password');
+//     });
+//     $('.error').removeClass('alert alert-danger').html('');
+// }
 
 
 function openLoginModal(){

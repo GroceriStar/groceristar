@@ -7,10 +7,7 @@ var database = app.datasources.groceryDS;
 
 
 var lbTables = [
-	
-
 	'userGrocery', 'userFav',
-
 ];
 
 //creating loopback necessary tables if no exists

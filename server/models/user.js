@@ -4,7 +4,6 @@ module.exports = function(User) {
 
 
     User.observe("after save", function embeddedRelations(ctx, next) {
-
     	var UserGrocery  = User.app.models.userGrocery;
  		var UserFavorite = User.app.models.userFav;   	
 

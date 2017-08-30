@@ -57,15 +57,15 @@ module.exports = function(app) {
 		Grocery.withPurchased(groceryId, ingredients, function(err, model){
 
 			var data = model.toJSON();
-      		console.log(data.purchased);
+      console.log(data.purchased);
+      
+      if( !data.purchased ){ return true; } //:todo test this
+      
+      let forDeletion = ingredients;
 
-	      if( !data.purchased ){ return true; } //:todo test this
+	    let arr = data.favorites;
 
-	      let forDeletion = ingredients;
-
-	      let arr = data.favorites;
-
-	      arr = arr.filter(item => !forDeletion.includes(item))
+	    arr = arr.filter(item => !forDeletion.includes(item))
 	      // !!! Read below about array.includes(...) support !!!
 
 	      console.log(arr);
@@ -103,7 +103,7 @@ module.exports = function(app) {
     	// console.log(grocery.departments);
 
     	res.render('pages/grocery', {
-    		title: 'Grocery: ' + grocery.id,
+    		  title: 'Grocery: ' + grocery.id,
 	        data: grocery, //:todo change names, punk!
 	        // url: req.url,
 	        messages: {},

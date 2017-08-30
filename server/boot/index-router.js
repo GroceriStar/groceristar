@@ -126,7 +126,7 @@ module.exports = function(app) {
                  res.render('pages/loginProfiles', {
                     user: req.user,
                     url: req.url,
-                    groceries: models
+                    groceries: models,
                   //data: response //:todo change this names
                 }); 
 
