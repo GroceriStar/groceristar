@@ -26,10 +26,10 @@ module.exports = function(app) {
   router.get('add-to-purchased/:groceryId/:ingId', function(req, res, next){
 
   	var Grocery = app.models.Grocery;
- 	// console.log( req.user.id );
- 	// var userId = req.user.id ;
- 	var ingId     = req.params.ingId;
- 	var groceryId = req.params.groceryId;
+   	// console.log( req.user.id );
+   	// var userId = req.user.id ;
+   	var ingId     = req.params.ingId;
+   	var groceryId = req.params.groceryId;
 
     Grocery.makePurchased(groceryId, ingId, function(){});
 

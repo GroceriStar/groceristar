@@ -1,5 +1,8 @@
 'use strict';
 
+var _ = require('underscore');
+
+
 module.exports = function(Grocery) {
 
 	Grocery.validatesPresenceOf(
@@ -50,36 +53,6 @@ module.exports = function(Grocery) {
 			var g = grocery.toJSON();
 			// console.log(grocery);
 			cb(null, g);
-
-			// var departments = [];
-
-			// userId
-			// User.findById(userId, {}, function(err, model){
-   //            console.log(model);
-   //            console.log(model.groceryIds);
-   //         });
-
-
-
-			// g.departmentsList.forEach(function(item, i){
-
-			// 	console.log(item);
-			// 	console.log(item.ingredients);
-
-			// 	// item.ingredients.forEach(function(ingredient))
-
-			// 	// case #1 return only dep name with id for link creation
-			// 	// console.log(item.name);
-			// 	// console.log(item.id);
-			// 	// console.log(item.visible);
-			// 	// console.log(item.ingredients.length > 0);
-			// 	// departments.push({ id: item.id, name: item.name });
-
-				
-			// });
-
-
-
 
 		});
 
@@ -161,45 +134,6 @@ module.exports = function(Grocery) {
 		});
 
 
-		// .then(function(grocery){
-
-
-		// 	var g = grocery.toJSON();
-		// 	console.log(g.desc);
-		// 	console.log(g.departmentsList);
-
-			
-		// 	// console.log(g.departmentsList.ingredients);
-
-		// 	g.departmentsList.forEach(function(item, i){
-		// 		// console.log(item);
-		// 		// console.log(item);
-
-		// 		// case #1 return only dep name with id for link creation
-		// 		console.log(item.name);
-		// 		console.log(item.id);
-		// 		console.log(item.visible);
-		// 		console.log(item.ingredients.length > 0);
-
-
-		// 		// case #2 display deps with ings
-		// 		// console.log(item.ingredients);
-		// 	})
-		// 	// console.log(grocery.departmentsList);
-
-
-
-		// });
-
-
-
-
-
-
-
-
-
-
 	};
 
 
@@ -265,6 +199,7 @@ module.exports = function(Grocery) {
 		}
 	});
 
+
 	// lets assume that we have both 
 	//:todo you can extend this method if you want
 	//:todo add remote method for this method
@@ -285,6 +220,10 @@ module.exports = function(Grocery) {
 
 			// console.log(groceriesArray);
 			groceriesArray.unshift(groceryId);
+
+
+
+
 			// console.log(groceriesArray);
 			
 			model.updateAttribute('groceryIds', groceriesArray);
@@ -443,20 +382,25 @@ module.exports = function(Grocery) {
 
 	}
 
-	Grocery.makePurchased = function(groceryId, ingredientId, cb){
+	//ingredientIds must be an array
+	Grocery.makePurchased = function(groceryId, ingredientIds, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
+
+			console.log( _.union(undefined, ingredientIds ) )
 
 			var purchasedArray = [];
 
 			if (typeof model.purchasedIds !== 'undefined'){
-				purchasedArray = model.purchasedIds;
+				purchasedArray = _.union(model.purchasedIds, ingredientIds );
 			}
 
+			// _.union(purchasedArray, ingredientIds );
+
 			// console.log(purchasedArray);
-			purchasedArray.unshift(purchasedIds);
+			// purchasedArray.unshift(purchasedIds);
 			// console.log(purchasedArray);
 			
-			model.updateAttribute('purchasedIds', purchasedArray);
+			// model.updateAttribute('purchasedIds', purchasedArray);
 
 		})
 	};
@@ -482,17 +426,7 @@ module.exports = function(Grocery) {
 	      console.log(model);
 
 
-			// var purchasedArray = [];
-
-			// if (typeof model.purchasedIds !== 'undefined'){
-			// 	purchasedArray = model.purchasedIds;
-			// }
-
-			// console.log(purchasedArray);
-			// purchasedArray.unshift(purchasedIds);
-			// console.log(purchasedArray);
-			
-			// model.updateAttribute('purchasedIds', purchasedArray);
+		
 
 		})
 	};
@@ -557,5 +491,8 @@ module.exports = function(Grocery) {
 
 
 	};
+
+
+
 	
 };
