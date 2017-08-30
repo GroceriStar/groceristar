@@ -4,11 +4,11 @@ block content
 
   section.todoapp(data-query='view(Todos)')
     header.header
-      h1 todos
+      h3 department
       input.new-todo(data-query='val(newTodo.title).keydown(addTodo)', placeholder='Ingredient name', autofocus='')
     section.main(data-query='visible(todos().length > 0)', style='display: none;')
-      input.toggle-all(data-query='checked(todos.remaining() == 0).click(todos.toggleAll)', type='checkbox')
-      label(for='toggle-all', data-query='click(todos.arrowdownclick)') Mark all as complete
+      input#toggle-all.toggle-all(data-query='checked(todos.remaining() == 0).click(todos.toggleAll)', type='checkbox')
+      label(for='toggle-all') Mark all as complete
 
       ul#todo-todo-todo.todo-list(data-query='each(todos.view)')
         li(data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)")
@@ -32,5 +32,9 @@ block content
           a(data-query="setClass('selected', filter() == 'active')", href='#/active') Active
         li
           a(data-query="setClass('selected', filter() == 'completed')", href='#/completed') Completed
+        li
+          a(data-query="setClass('selected', filter() == 'completed')", href='#/prev') Prev Department
+        li
+          a(data-query="setClass('selected', filter() == 'completed')", href='#/next') Next Department  
 
       button.clear-completed(data-query='visible(todos().length != todos.remaining()).click(todos.clearCompleted)') Clear completed

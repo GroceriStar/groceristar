@@ -103,13 +103,7 @@
 			});
 		},
 
-		arrowDownClick: function(){
-			// console.log('down is a usual state of your dick');
-			var complete = this.remaining() === 0 ? false : true;
-			this.each(function (todo) {
-				todo.completed(complete);
-			});
-		},	
+
 
 		// remove all completed todos
 		clearCompleted: function () {
