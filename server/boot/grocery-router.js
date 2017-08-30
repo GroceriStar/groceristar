@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
 
-  router.get('change-the-name/grocery/:groceryId', function(req, res, next){
+  router.get('/change-the-name/grocery/:groceryId', function(req, res, next){
 	// console.log( req.user.id );
 
     console.log( req.groceryId );
@@ -23,7 +23,7 @@ module.exports = function(app) {
 
   });
 
-  router.post('add-to-purchased/', function(req, res, next){
+  router.post('/addtopurchased', function(req, res, next){
 
 
     console.log(req.body);
@@ -53,7 +53,7 @@ module.exports = function(app) {
 
   // });
 
-	router.get('remove-from-purchased/:groceryId/:ingId', function(req, res, next){
+	router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
 		var Grocery = app.models.Grocery;
 
