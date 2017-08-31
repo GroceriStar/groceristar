@@ -306,26 +306,17 @@ module.exports = function(Grocery) {
 	Grocery.makePurchased = function(groceryId, ingredientIds, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
 
-			console.log( model.purchasedIds )
-			console.log(ingredientIds)			
-
-			var volodya = ingredientIds.map(function(element){
-				return parseInt(element, 16);
-			});
-console.log(volodya)
-			var purchased = _.union(model.purchasedIds || [], ingredientIds );
-
-			// if (typeof model.purchasedIds !== 'undefined'){
-			// 	purchasedArray = _.union(model.purchasedIds, ingredientIds );
-			// }
-
-			// _.union(purchasedArray, ingredientIds );
-
-			console.log(purchased);
-			// purchasedArray.unshift(purchasedIds);
-			// console.log(purchasedArray);
+			var baza = model.purchasedIds || [];
 			
-			// model.updateAttribute('purchasedIds', purchased);
+			baza = baza.map(function(element){
+				return element.toString();
+			});
+			// :todo update to arr.filter(item => item.toString() ) ??
+
+
+			var purchased = _.union( baza, ingredientIds );
+
+			model.updateAttribute('purchasedIds', purchased);
 
 		})
 	};
@@ -359,7 +350,7 @@ console.log(volodya)
 	Grocery.clearPurchased = function(groceryId, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
 			model.updateAttribute('purchasedIds', []);
-			console.log(model);
+
 		});
 	};
 
