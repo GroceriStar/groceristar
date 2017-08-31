@@ -13,7 +13,7 @@ module.exports = function(app) {
     var groceryId = req.params.groceryId;
   	var Grocery = app.models.Grocery;
   	Grocery.findById(groceryId, {}, function(err, model){
-  		model.updateAttribute('title', 'Ultimate Grocery List #' + new Date().toString);
+  		model.updateAttribute('title', 'Ultimate Grocery List #' + new Date().toString());
       res.redirect('/auth/account');
   	});
 
@@ -80,7 +80,8 @@ module.exports = function(app) {
 
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
- router.get('/view/grocery/:groceryId', ensureLoggedIn('/auth/account'), function(req, res, next){
+ router.get('/view/grocery/:groceryId', ensureLoggedIn('/auth/account'), 
+  function(req, res, next){
 
     // console.log( req.params.groceryId );
     // console.log( req.user.id );
@@ -95,7 +96,7 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, grocery){
 
-    	console.log(grocery);
+    	// console.log(grocery);
 
     	// console.log(grocery.departments);
 

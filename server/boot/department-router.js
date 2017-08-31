@@ -49,20 +49,24 @@ module.exports = function(app) {
 	});
 
 	// :todo make it work 
-	router.get('/hide/department/:id', function(req, res, next){
+	router.get('/hide/department/:id/:groceryId', function(req, res, next){
 		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+		
 		var Department   = app.models.Department;
 		Department.findById(departmentId, {}, function(err, model){
 		  model.updateAttribute('visible', false);
-		})
+		});
 	});
 
-	router.get('/show/department/:id', function(req, res, next){
+	router.get('/show/department/:id/:groceryId', function(req, res, next){
 		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+
 		var Department   = app.models.Department;
 		Department.findById(departmentId, {}, function(err, model){
 		  model.updateAttribute('visible', true);
-		})
+		});
 	});
 
 	// :todo make it work 
