@@ -138,71 +138,9 @@ module.exports = function(Grocery) {
 
 
 
-	// Grocery.remoteMethod('fetch', {
-	// 	returns: {
-	// 	  arg: 'groceries',
-	// 	  type: 'array'
-	// 	},
-	// 	http: {
-	// 	  path: '/list/',
-	// 	  verb: 'get'
-	// 	}
-	// });	
-
-
-
-	// @TODO if we have empty menuId then we need to get groceries for the latest(read current active menu);
-
-	Grocery.groceryListForMenu = function(menuId, cb){
-
-
-		// var Menu = Grocery.app.models.Menu;
-
-		// Menu.MenuRecipesIngredients(menuId, function(data){
-		// 	// @TODO test this "data" attribute
-		// 	console.log(data);
-		// });
-
-
-
-		// GroceryModel.findById(groceryId)
-		// .then(function(grocery){
-
-		// 	DepartmentModel.find({
-		// 		where:{
-		// 			id: { inq:grocery.departments }
-		// 		},
-		// 		// fields: []       
-		// 	},cb);
-
-		// })
-		// .catch(function(err){
-		// 	if(err){ cb(err); }
-		// });
-
-	};
-
-	Grocery.remoteMethod('groceryListForMenu', {
-		accepts: {
-		  arg: 'menuId',
-		  type: 'string',
-		  required: true
-		},
-		returns: {
-		  arg: 'groceries',
-		  type: 'array'
-		},
-		http: {
-		  path: '/menu/:id',
-  		  // path: '/:id/menu',
-		  verb: 'get'
-		}
-	});
-
-
 	// lets assume that we have both 
-	//:todo you can extend this method if you want
-	//:todo add remote method for this method
+	// :todo you can extend this method if you want
+	// :todo add remote method for this method
 	Grocery.attachToUser = function(groceryId, userId, cb){
 
 		var User = Grocery.app.models.user;
@@ -231,24 +169,6 @@ module.exports = function(Grocery) {
 		});
 
 	}
-
-
-	// Grocery.remoteMethod('groceryListForMenu', {
-	// 	accepts: {
-	// 	  arg: 'menuId',
-	// 	  type: 'string',
-	// 	  required: true
-	// 	},
-	// 	returns: {
-	// 	  arg: 'groceries',
-	// 	  type: 'array'
-	// 	},
-	// 	http: {
-	// 	  path: '/menu/:id',
- //  		  // path: '/:id/menu',
-	// 	  verb: 'get'
-	// 	}
-	// });
 
 
 	Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
@@ -386,21 +306,26 @@ module.exports = function(Grocery) {
 	Grocery.makePurchased = function(groceryId, ingredientIds, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
 
-			console.log( _.union(undefined, ingredientIds ) )
+			console.log( model.purchasedIds )
+			console.log(ingredientIds)			
 
-			var purchasedArray = [];
+			var volodya = ingredientIds.map(function(element){
+				return parseInt(element, 16);
+			});
+console.log(volodya)
+			var purchased = _.union(model.purchasedIds || [], ingredientIds );
 
-			if (typeof model.purchasedIds !== 'undefined'){
-				purchasedArray = _.union(model.purchasedIds, ingredientIds );
-			}
+			// if (typeof model.purchasedIds !== 'undefined'){
+			// 	purchasedArray = _.union(model.purchasedIds, ingredientIds );
+			// }
 
 			// _.union(purchasedArray, ingredientIds );
 
-			// console.log(purchasedArray);
+			console.log(purchased);
 			// purchasedArray.unshift(purchasedIds);
 			// console.log(purchasedArray);
 			
-			// model.updateAttribute('purchasedIds', purchasedArray);
+			// model.updateAttribute('purchasedIds', purchased);
 
 		})
 	};
@@ -429,6 +354,13 @@ module.exports = function(Grocery) {
 		
 
 		})
+	};
+
+	Grocery.clearPurchased = function(groceryId, cb){
+		Grocery.findById(groceryId, {}, function(err, model){
+			model.updateAttribute('purchasedIds', []);
+			console.log(model);
+		});
 	};
 
 	Grocery.withPurchased = function(groceryId, cb){

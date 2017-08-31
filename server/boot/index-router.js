@@ -52,7 +52,6 @@ module.exports = function(app) {
 
 
   router.get('/', function(req, res, next) {
-
     var Grocery = app.models.Grocery;
 
 
@@ -63,7 +62,7 @@ module.exports = function(app) {
           res.render('pages/index', {
             user: req.user,
             url: req.url,
-            data: response, //:todo change this names
+            data: response, // :todo change this names
             departments: response.departments
           });
 
@@ -153,7 +152,7 @@ module.exports = function(app) {
       desc:  data.desc,
       slug:  '',
       img :  '',
-      // departmentIds: [], //not sure if we need this
+      // departmentIds: [], // not sure if we need this
       // hideThisIds:   [],
     }
     Grocery.createnew(req.user.id, data, function(){});

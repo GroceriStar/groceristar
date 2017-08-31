@@ -11,7 +11,8 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
 
-  router.get('/change-the-name/grocery/:groceryId', function(req, res, next){
+  router.get('/change-the-name/grocery/:groceryId', 
+    function(req, res, next){
 	// console.log( req.user.id );
 
     console.log( req.groceryId );
@@ -24,23 +25,25 @@ module.exports = function(app) {
   });
 
   router.post('/addtopurchased', function(req, res, next){
+    // console.log(req.body);
+  	var Grocery        = app.models.Grocery;
+    var ingredientsArr = req.body.ingredients;
+   	var groceryId      = req.body.groceryId;
 
+    Grocery.makePurchased(groceryId, ingredientsArr, function(){});
 
-    console.log(req.body);
-    console.log(req.params);
+    // Grocery.clearPurchased(groceryId, function(){});
+    // res.redirect('/auth/account');
 
+  });
 
-  	var Grocery = app.models.Grocery;
-   	// console.log( req.user.id );
-   	// var userId = req.user.id ;
-   	// var ingId     = req.params.ingId;
+  router.post('/clearpurchased', function(req, res, next){
+    // console.log(req.body);
+    var Grocery        = app.models.Grocery;
+    var groceryId      = req.body.groceryId;
 
-    // var ingredientsArr = req.params.ingId;
-
-   	// var groceryId = req.params.groceryId;
-
-    // Grocery.makePurchased(groceryId, ingId, function(){});
-
+    Grocery.clearPurchased(groceryId, function(){});
+    res.redirect('/auth/account');
 
   });
 
