@@ -5,22 +5,17 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 // var loopback = require('loopback');
 
 
-
-
 module.exports = function(app) {
 
   var router  = app.loopback.Router();
 
-  router.get('/change-the-name/grocery/:groceryId', 
-    function(req, res, next){
-	// console.log( req.user.id );
-
-    console.log( req.groceryId );
-    var groceryId = req.groceryId;
+  router.get('/change-the-name/grocery/:groceryId', function(req, res, next){ 
+    var groceryId = req.params.groceryId;
   	var Grocery = app.models.Grocery;
   	Grocery.findById(groceryId, {}, function(err, model){
-  		model.updateAttribute('title', 'Smack my bitch up');
-  	})
+  		model.updateAttribute('title', 'Ultimate Grocery List #' + new Date().toString);
+      res.redirect('/auth/account');
+  	});
 
   });
 
@@ -46,15 +41,6 @@ module.exports = function(app) {
     res.redirect('/auth/account');
 
   });
-
-  // router.get('unpurchase/:groceryId/:ingId', function(req, res, next){
-
- 	// var ingId     = req.params.ingId;
- 	// var groceryId = req.params.groceryId;
-
- 	// Grocery.makeUnpurchased(groceryId, ingId, function(){});
-
-  // });
 
 	router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
