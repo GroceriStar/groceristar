@@ -237,17 +237,20 @@ module.exports = function(Grocery) {
 	// 				departmentIds: data.departmentIds,
 	// 				hideThisIds:   data.hideThisIds,
 	// 			}
+
 	Grocery.createnew = function(userId, data, cb){
 
 		Grocery.create(data, function(err, model){
 
-				// console.log(model)
-				// console.log( model.id );
-				Grocery.attachToUser(model.id, userId, function(data){
+			console.log(model)
+			// :todo check relations with other sub models
 
-				});
+			// console.log( model.id );
+			Grocery.attachToUser(model.id, userId, function(data){
 
 			});
+
+		});
 
 	}
 
@@ -303,23 +306,23 @@ module.exports = function(Grocery) {
 	}
 
 	//ingredientIds must be an array
-	Grocery.makePurchased = function(groceryId, ingredientIds, cb){
-		Grocery.findById(groceryId, {}, function(err, model){
+	// Grocery.makePurchased = function(groceryId, ingredientIds){
+	// 	Grocery.findById(groceryId, {}, function(err, model){
 
-			var baza = model.purchasedIds || [];
+	// 		var baza = model.purchasedIds || [];
 			
-			baza = baza.map(function(element){
-				return element.toString();
-			});
-			// :todo update to arr.filter(item => item.toString() ) ??
+	// 		baza = baza.map(function(element){
+	// 			return element.toString();
+	// 		});
+	// 		// :todo update to arr.filter(item => item.toString() ) ??
 
 
-			var purchased = _.union( baza, ingredientIds );
+	// 		var purchased = _.union( baza, ingredientIds );
 
-			model.updateAttribute('purchasedIds', purchased);
+	// 		model.updateAttribute('purchasedIds', purchased);
 
-		})
-	};
+	// 	})
+	// };
 
 	Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
 		Grocery.findById(groceryId, {}, function(err, model){
@@ -344,15 +347,9 @@ module.exports = function(Grocery) {
 
 		
 
-		})
-	};
-
-	Grocery.clearPurchased = function(groceryId, cb){
-		Grocery.findById(groceryId, {}, function(err, model){
-			model.updateAttribute('purchasedIds', []);
-
 		});
 	};
+
 
 	Grocery.withPurchased = function(groceryId, cb){
 		Grocery.findOne({
@@ -416,6 +413,75 @@ module.exports = function(Grocery) {
 	};
 
 
+	Grocery.addPurchased = function(groceryId, ingredientIds){
+
+		var options = {
+			type: 'add',
+			field: 'purchasedIds',
+			groceryId: groceryId,
+			secondArray: ingredientIds 
+		};
+
+		Grocery.proceed(options);
+
+	}
+
+	Grocery.proceed = function(options){
+
+		var type = options.type;
+
+		Grocery.findById(options.groceryId, {}, function(err, model){
+
+
+			if( options.type == 'clear' ){
+
+				model.updateAttribute(options.field, []);	
+
+			}
+
+
+			if( options.type == 'add' ){
+
+				var previousData = model[options.field] || [];
+				
+				previousData = previousData.map(function(element){
+					return element.toString();
+				});
+				// :todo update to arr.filter(item => item.toString() ) ??
+
+				var mergedValues = _.union( previousData, options.newValues );
+
+				model.updateAttribute(options.field, mergedValues);
+
+			}		
+
+
+			if( options.type == 'remove' ){
+
+				var data = model.toJSON();
+				console.log(data.purchasedIds);
+
+				if( !data.purchasedIds ){ return true; } //:todo test this
+
+				let forDeletion = [ ingredientId ];
+
+				let arr = data.purchasedIds;
+
+				arr = arr.filter(item => !forDeletion.includes(item))
+				// !!! Read below about array.includes(...) support !!!
+
+				console.log(arr);
+
+				model.updateAttribute('purchasedIds', arr);
+				console.log(model);
+
+			}
+
+			
+
+		});
+
+	}
 
 	
 };

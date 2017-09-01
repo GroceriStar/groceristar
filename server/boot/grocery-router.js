@@ -22,12 +22,27 @@ module.exports = function(app) {
   router.post('/addtopurchased', function(req, res, next){
     // console.log(req.body);
   	var Grocery        = app.models.Grocery;
-    var ingredientsArr = req.body.ingredients;
+    var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
 
-    Grocery.makePurchased(groceryId, ingredientsArr, function(){});
+    // Grocery.makePurchased(groceryId, ingredientsArr, function(){});
 
-    // Grocery.clearPurchased(groceryId, function(){});
+    var options = {
+      type: 'add',
+      field: 'purchasedIds',
+      groceryId: groceryId,
+      newValues: ingredients 
+    };
+    Grocery.addPurchased(options);
+    
+    
+    // var options = {
+    //   type: 'clear',
+    //   field: 'purchasedIds',
+    //   groceryId: groceryId 
+    // };
+    // Grocery.proceed(options);
+    
     // res.redirect('/auth/account');
 
   });
