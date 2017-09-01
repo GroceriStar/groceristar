@@ -160,8 +160,6 @@ module.exports = function(Grocery) {
 			groceriesArray.unshift(groceryId);
 
 
-
-
 			// console.log(groceriesArray);
 			
 			model.updateAttribute('groceryIds', groceriesArray);
