@@ -50,7 +50,7 @@ module.exports = function(app) {
     // console.log(req.body);
     var Grocery        = app.models.Grocery;
 
-    Grocery.cleanPurchased(options);
+    Grocery.cleanPurchased({});
 
     res.redirect('/auth/account');
 

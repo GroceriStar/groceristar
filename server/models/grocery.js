@@ -322,31 +322,31 @@ module.exports = function(Grocery) {
 	// 	})
 	// };
 
-	Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
-		Grocery.findById(groceryId, {}, function(err, model){
+	// Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
+	// 	Grocery.findById(groceryId, {}, function(err, model){
 
-	      var data = model.toJSON();
-	      console.log(data.purchasedIds);
+	//       var data = model.toJSON();
+	//       console.log(data.purchasedIds);
 
-	      if( !data.purchasedIds ){ return true; } //:todo test this
+	//       if( !data.purchasedIds ){ return true; } //:todo test this
 
-	      let forDeletion = [ ingredientId ];
+	//       let forDeletion = [ ingredientId ];
 
-	      let arr = data.purchasedIds;
+	//       let arr = data.purchasedIds;
 
-	      arr = arr.filter(item => !forDeletion.includes(item))
-	      // !!! Read below about array.includes(...) support !!!
+	//       arr = arr.filter(item => !forDeletion.includes(item))
+	//       // !!! Read below about array.includes(...) support !!!
 
-	      console.log(arr);
+	//       console.log(arr);
 
-	      model.updateAttribute('purchasedIds', arr);
-	      console.log(model);
+	//       model.updateAttribute('purchasedIds', arr);
+	//       console.log(model);
 
 
 		
 
-		});
-	};
+	// 	});
+	// };
 
 
 	Grocery.withPurchased = function(groceryId, cb){
@@ -417,7 +417,7 @@ module.exports = function(Grocery) {
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
 
-	}
+	};
 
 	Grocery.removePurchased = function(options){
 
@@ -425,13 +425,29 @@ module.exports = function(Grocery) {
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
 
-	}
+	};
 
 	Grocery.cleanPurchased = function(options){
 		options.type  = 'clear';
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
-	}
+	};
+
+	Grocery.addDepartment = function(options){
+		options.type  = 'hide';
+		options.field = 'hideThisIds'
+		Grocery.proceed(options);	
+	};
+	Grocery.removeDepartment = function(options){
+		options.type  = 'show';
+		options.field = 'hideThisIds'
+		Grocery.proceed(options);		
+	};
+	Grocery.showAllDepartments = function(options){
+		options.type  = 'all';
+		options.field = 'hideThisIds'
+		Grocery.proceed(options);			
+	};
 
 	Grocery.proceed = function(options){
 
@@ -440,14 +456,14 @@ module.exports = function(Grocery) {
 		Grocery.findById(options.groceryId, {}, function(err, model){
 
 
-			if( options.type == 'clear' ){
+			if( options.type == 'clear' || options.type ==  'all'){
 
 				model.updateAttribute(options.field, []);	
 
 			}
 
 
-			if( options.type == 'add' ){
+			if( options.type == 'add' || options.type == 'hide'){
 
 				var previousData = model[options.field] || [];
 				

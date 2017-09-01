@@ -50,25 +50,62 @@ module.exports = function(app) {
 	});
 
 	// :todo make it work 
-	// router.get('/hide/department/:id/:groceryId', function(req, res, next){
-	// 	var departmentId = req.params.id;
-	// 	var groceryId = req.params.groceryId;
+	router.get('/hide/department/:id/:groceryId', function(req, res, next){
+		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
 		
-	// 	var Department   = app.models.Department;
-	// 	Department.findById(departmentId, {}, function(err, model){
-	// 	  model.updateAttribute('visible', false);
-	// 	});
-	// });
+		var Grocery   = app.models.Grocery;
+		
+		var options = {
+	      // type: 'hide',
+	      // field: 'hideThisIds',
+	      groceryId: groceryId,
+	      secondArray: [ departmentId ]
+	    };
+		
 
-	// router.get('/show/department/:id/:groceryId', function(req, res, next){
-	// 	var departmentId = req.params.id;
-	// 	var groceryId = req.params.groceryId;
+		Grocery.addDepartment(options);
 
-	// 	var Department   = app.models.Department;
-	// 	Department.findById(departmentId, {}, function(err, model){
-	// 	  model.updateAttribute('visible', true);
-	// 	});
-	// });
+
+		// .findById(departmentId, {}, function(err, model){
+		//   model.updateAttribute('visible', false);
+		// });
+	});
+
+	router.get('/show/department/:id/:groceryId', function(req, res, next){
+		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+
+		var Grocery   = app.models.Grocery;
+		
+		var options = {
+	      // type: 'show',
+	      // field: 'hideThisIds',
+	      groceryId: groceryId,
+	      secondArray: [ departmentId ]
+	    };
+		
+	    
+		Grocery.removeDepartment(options);
+
+	});
+
+	router.get('/show/all/:groceryId', function(req, res, next){
+		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+
+		var Grocery   = app.models.Grocery;
+		
+		var options = {
+	      // type: 'show',
+	      // field: 'hideThisIds',
+	      groceryId: groceryId,
+	      // secondArray: [ departmentId ]
+	    };
+		
+	    
+		Grocery.showAllDepartments(options);
+	});
 
 	// :todo make it work 
 	router.get('/visibility/department/:id', function(req, res, next){
@@ -88,6 +125,9 @@ module.exports = function(app) {
 
 
 	// visibility for a few departments at one time
+
+
+
 
 
 
