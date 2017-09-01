@@ -28,14 +28,13 @@ module.exports = function(app) {
     // Grocery.makePurchased(groceryId, ingredientsArr, function(){});
 
     var options = {
-      type: 'add',
-      field: 'purchasedIds',
+
       groceryId: groceryId,
-      newValues: ingredients 
+      secondArray: ingredients 
     };
     Grocery.addPurchased(options);
     
-    
+
     // var options = {
     //   type: 'clear',
     //   field: 'purchasedIds',
@@ -50,9 +49,9 @@ module.exports = function(app) {
   router.post('/clearpurchased', function(req, res, next){
     // console.log(req.body);
     var Grocery        = app.models.Grocery;
-    var groceryId      = req.body.groceryId;
 
-    Grocery.clearPurchased(groceryId, function(){});
+    Grocery.cleanPurchased(options);
+
     res.redirect('/auth/account');
 
   });
@@ -63,29 +62,38 @@ module.exports = function(app) {
 
 		// console.log( req.user.id );		
 
-	 	var ingId     = req.params.ingId;
- 		var groceryId = req.params.groceryId;
+	 	var ingredients = req.params.ingId;
+ 		var groceryId   = req.params.groceryId;
 
-		Grocery.withPurchased(groceryId, ingredients, function(err, model){
+    var options = {
 
-			var data = model.toJSON();
-      console.log(data.purchased);
+      groceryId: groceryId,
+      secondArray: ingredients 
+    };
+    Grocery.removePurchased(options);
+    
+    // Grocery.proceed(options);
+
+		// Grocery.withPurchased(groceryId, ingredients, function(err, model){
+
+		// 	var data = model.toJSON();
+  //     console.log(data.purchased);
       
-      if( !data.purchased ){ return true; } //:todo test this
+  //     if( !data.purchased ){ return true; } //:todo test this
       
-      let forDeletion = ingredients;
+  //     let forDeletion = ingredients;
 
-	    let arr = data.favorites;
+	 //    let arr = data.favorites;
 
-	    arr = arr.filter(item => !forDeletion.includes(item))
-	      // !!! Read below about array.includes(...) support !!!
+	 //    arr = arr.filter(item => !forDeletion.includes(item))
+	 //      // !!! Read below about array.includes(...) support !!!
 
-	      console.log(arr);
+	 //      console.log(arr);
 
-	      model.updateAttribute('purchasedIds', arr);
-	      console.log(model);
+	 //      model.updateAttribute('purchasedIds', arr);
+	 //      console.log(model);
 
-  		});
+  // 		});
 
 
 

@@ -413,17 +413,26 @@ module.exports = function(Grocery) {
 	};
 
 
-	Grocery.addPurchased = function(groceryId, ingredientIds){
+	Grocery.addPurchased = function(options){
 
-		var options = {
-			type: 'add',
-			field: 'purchasedIds',
-			groceryId: groceryId,
-			secondArray: ingredientIds 
-		};
-
+		options.type  = 'add';
+		options.field = 'purchasedIds'
 		Grocery.proceed(options);
 
+	}
+
+	Grocery.removePurchased = function(options){
+
+		options.type  = 'remove';
+		options.field = 'purchasedIds'
+		Grocery.proceed(options);
+
+	}
+
+	Grocery.cleanPurchased = function(options){
+		options.type  = 'clear';
+		options.field = 'purchasedIds'
+		Grocery.proceed(options);
 	}
 
 	Grocery.proceed = function(options){
@@ -449,7 +458,7 @@ module.exports = function(Grocery) {
 				});
 				// :todo update to arr.filter(item => item.toString() ) ??
 
-				var mergedValues = _.union( previousData, options.newValues );
+				var mergedValues = _.union( previousData, options.secondArray );
 
 				model.updateAttribute(options.field, mergedValues);
 
@@ -458,21 +467,20 @@ module.exports = function(Grocery) {
 
 			if( options.type == 'remove' ){
 
-				var data = model.toJSON();
-				console.log(data.purchasedIds);
+				// var data = model.toJSON();
+				// if( !data[options.field] ){ return true; } //:todo test this
+				
+				if( !model[options.field] ){ return true; } //:todo test this
 
-				if( !data.purchasedIds ){ return true; } //:todo test this
+				let arr = model[options.field];
+				console.log(arr);
 
-				let forDeletion = [ ingredientId ];
-
-				let arr = data.purchasedIds;
-
-				arr = arr.filter(item => !forDeletion.includes(item))
+				arr = arr.filter(item => !secondArray.includes(item))
 				// !!! Read below about array.includes(...) support !!!
 
 				console.log(arr);
 
-				model.updateAttribute('purchasedIds', arr);
+				model.updateAttribute(options.field, arr);
 				console.log(model);
 
 			}
