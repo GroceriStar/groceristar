@@ -40,6 +40,7 @@ module.exports = function(app) {
 
 	});
 
+	// removing department from grocery list
 	router.get('/delete/department/:id', function(req, res, next){
 
 		var departmentId = req.params.id;
@@ -49,39 +50,45 @@ module.exports = function(app) {
 	});
 
 	// :todo make it work 
-	router.get('/hide/department/:id/:groceryId', function(req, res, next){
-		var departmentId = req.params.id;
-		var groceryId = req.params.groceryId;
+	// router.get('/hide/department/:id/:groceryId', function(req, res, next){
+	// 	var departmentId = req.params.id;
+	// 	var groceryId = req.params.groceryId;
 		
-		var Department   = app.models.Department;
-		Department.findById(departmentId, {}, function(err, model){
-		  model.updateAttribute('visible', false);
-		});
-	});
+	// 	var Department   = app.models.Department;
+	// 	Department.findById(departmentId, {}, function(err, model){
+	// 	  model.updateAttribute('visible', false);
+	// 	});
+	// });
 
-	router.get('/show/department/:id/:groceryId', function(req, res, next){
-		var departmentId = req.params.id;
-		var groceryId = req.params.groceryId;
+	// router.get('/show/department/:id/:groceryId', function(req, res, next){
+	// 	var departmentId = req.params.id;
+	// 	var groceryId = req.params.groceryId;
 
-		var Department   = app.models.Department;
-		Department.findById(departmentId, {}, function(err, model){
-		  model.updateAttribute('visible', true);
-		});
-	});
+	// 	var Department   = app.models.Department;
+	// 	Department.findById(departmentId, {}, function(err, model){
+	// 	  model.updateAttribute('visible', true);
+	// 	});
+	// });
 
 	// :todo make it work 
 	router.get('/visibility/department/:id', function(req, res, next){
+		
 		var departmentId = req.params.id;
 		var Department   = app.models.Department;
-		Department.findById(departmentId, {}, function(err, model){
+		// Department.findById(departmentId, {}, function(err, model){
 
-		  if(model.visible){
-		    model.updateAttribute('visible', false);    
-		  } else {
-		    model.updateAttribute('visible', true);    
-		  }
-		});        
+		//   if(model.visible){
+		//     model.updateAttribute('visible', false);    
+		//   } else {
+		//     model.updateAttribute('visible', true);    
+		//   }
+		// });
+
 	});
+
+
+	// visibility for a few departments at one time
+
 
 
 	app.use(router);

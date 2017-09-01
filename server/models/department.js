@@ -17,7 +17,7 @@ module.exports = function(Department) {
       ctx.instance.created_at = new Date();
       ctx.instance.updated_at = new Date();
 
-      ctx.instance.visible    = true;
+      // ctx.instance.visible    = true;
     } 
 
 
