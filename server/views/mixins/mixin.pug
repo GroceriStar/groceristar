@@ -7,19 +7,19 @@ mixin view_departments1(array)
   ul
     each val, index in array
         li= val.name + '( ' + val.id + ' ) '
-          a(href='/delete/department/' + val.id) view  
+          a(href='/#' + val.id) view  
 
 mixin view_departments_extended(array)
   ul
     each val, index in array
         li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?:  ' + val.visible
-          a(href='/delete/department/' + val.id) ' ' + view  
+          a(href='/#' + val.id) ' ' + view  
 
 mixin view_departments_awesome(array)
   ul
     each val, index in array
       li= val.name + '( ' + val.id + ' ) '
-        a(href='/delete/department/' + val.id) view
+        a(href='/#' + val.id) view
 
         //if user
         //- User *is* logged In

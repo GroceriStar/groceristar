@@ -449,6 +449,9 @@ module.exports = function(Grocery) {
 		Grocery.proceed(options);			
 	};
 
+	Grocery.addIngredient
+	Grocery.
+
 	Grocery.proceed = function(options){
 
 		var type = options.type;

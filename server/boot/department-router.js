@@ -40,14 +40,6 @@ module.exports = function(app) {
 
 	});
 
-	// removing department from grocery list
-	router.get('/delete/department/:id', function(req, res, next){
-
-		var departmentId = req.params.id;
-		var Department   = app.models.Department;
-		Department.destroyById(departmentId, function(err){});
-
-	});
 
 	// :todo make it work 
 	router.get('/hide/department/:id/:groceryId', function(req, res, next){
@@ -107,7 +99,7 @@ module.exports = function(app) {
 		Grocery.showAllDepartments(options);
 	});
 
-	// :todo make it work 
+	// :todo make it work  or delete?
 	router.get('/visibility/department/:id', function(req, res, next){
 		
 		var departmentId = req.params.id;
