@@ -412,7 +412,6 @@ module.exports = function(Grocery) {
 
 
 	Grocery.addPurchased = function(options){
-
 		options.type  = 'add';
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
