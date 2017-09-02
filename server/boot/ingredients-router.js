@@ -13,8 +13,7 @@ module.exports = function(app) {
 		var Grocery   = app.models.Grocery;
 		
 		var options = {
-	      // type: 'hide',
-	      // field: 'hideThisIds',
+
 	      groceryId: groceryId,
 	      secondArray: [ ingredientId ]
 	    };
@@ -35,8 +34,7 @@ module.exports = function(app) {
 		var Grocery   = app.models.Grocery;
 		
 		var options = {
-	      // type: 'show',
-	      // field: 'hideThisIds',
+
 	      groceryId: groceryId,
 	      secondArray: [ ingredientId ]
 	    };
@@ -48,8 +46,48 @@ module.exports = function(app) {
 
 
 	// Ing change Department ID
+	router.get('/changedepartmentid/:id/:departmentId', function(req, res, next){
+		var Ingredient   = app.models.Ingredient;
+		var ingredientId = req.params.id;
+		var departmentId = req.params.departmentId;
+
+		Ingredient.findById(ingredientId, function(err, model){
+			model.updateAttribute('departmentId', departmentId);
+		})
+	});
+
 	// Ing change name
+	// :todo validation add
+	router.get('/changename/:id/:name', function(req, res, next){
+		var Ingredient   = app.models.Ingredient;
+		var ingredientId = req.params.id;
+		var name         = req.params.name;
+		 
+		Ingredient.findById(ingredientId, function(err, model){
+			model.updateAttribute('name', name);
+		})
+	});
+
 	// Ing create
+	// :todo update when 
+	router.post('/create/ing/:groceryId', function(req, res, next){
+		var Ingredient   = app.models.Ingredient;
+		var Grocery      = app.models.Grocery;
+		var object = {
+			name: req.body.name,
+			departmentId: req.body.departmentId
+		};
+		 
+		Ingredient.create(object, function(err, model){
+
+			// ADD removing ID FROM DATABASE
+			// Grocery.
+
+			res.redirect('/url-will-be'); // :todo update this
+		});
+
+
+	});
 
 
 

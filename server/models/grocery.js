@@ -449,9 +449,27 @@ module.exports = function(Grocery) {
 		Grocery.proceed(options);			
 	};
 
-	Grocery.addIngredient
-	Grocery.
+	Grocery.addIngredient = function(options){
+		options.type  = 'add-ing';
+		options.field = 'ingredientIds';
+		Grocery.proceed(options);			
+	};
+	Grocery.removeIngredient = function(options){
+		options.type  = 'remove-ing';
+		options.field = 'ingredientIds';
+		Grocery.proceed(options);			
+	};
 
+	// Grocery.addItem = function(options){
+	// 	options.type  = 'add-item';
+	// 	options.field = 'itemsIds';
+	// 	Grocery.proceed(options);	
+	// };
+	// Grocery.removeItem = function(options){
+	// 	options.type  = 'remove-item';
+	// 	options.field = 'itemsIds';
+	// 	Grocery.proceed(options);	
+	// };
 	Grocery.proceed = function(options){
 
 		var type = options.type;
@@ -466,7 +484,7 @@ module.exports = function(Grocery) {
 			}
 
 
-			if( options.type == 'add' || options.type == 'hide'){
+			if( options.type == 'add' || options.type == 'hide' || options.type == 'add-ing' ){
 
 				var previousData = model[options.field] || [];
 				
@@ -482,7 +500,7 @@ module.exports = function(Grocery) {
 			}		
 
 
-			if( options.type == 'remove' ){
+			if( options.type == 'remove' || options.type == 'show' || options.type == 'remove-ing' ){
 
 				// var data = model.toJSON();
 				// if( !data[options.field] ){ return true; } //:todo test this
