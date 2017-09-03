@@ -19,13 +19,8 @@ let Departments  = require(path.resolve(__dirname, 'departments'));
 // async.series()
 
 
-async.parallel({
-	
-		
-		
-		// departments : async.apply(Departments.createDepartments),
-		// ingredients : async.apply(),
-
+async.parallel({		
+		departments : async.apply(Departments.createDepartments),
 		groceries   : async.apply(Groceries.createGroceries),
 
 		// recipes     : async.apply(Recipes.createRecipes),
@@ -40,21 +35,16 @@ async.parallel({
 		// console.log(results.departments[0].id);
 		// console.log(results.groceries);
 
+
 		var ingredient = Ingredients.createIngredients(
 			results.departments
 		);
 
-		
+		console.log(ingredient);
 
-
-		// Departments.attachDepartmentsToIngredients(
-		// 	results.departments, results.ingredients
-		// 	);
-
-		//:todo remove this function, when departments will work 
-		Departments.attachDepartmentsToGroceries(
-			results.departments, results.groceries
-		);
+		Ingredients.attachIngredientsToGroceries(
+			ingredient, result.groceries
+			);
 
 
 

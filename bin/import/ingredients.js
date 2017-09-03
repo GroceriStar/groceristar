@@ -6,6 +6,7 @@ var database    = server.datasources.groceryDS;
 
 var Ingredient  = server.models.Ingredient;
 var relation    = 'ingredients';
+var relation2   = 'ingredientIds';
 
 function getIngredients(departments){
 
@@ -947,6 +948,8 @@ function getIngredients(departments){
 };
 
 
+
+
 // function attachIngredientsToRecipes(ingredients, recipes){
 
 //   var first  = ingredients.slice(0, 2);
@@ -995,12 +998,20 @@ function idsOnly(array){
 function createIngredients(departments, cb){
   database.automigrate('Ingredient', function(err){
     if (err) return cb(err);
-
-    // Ingredient.create([{name:'pidor', departmentId: departments[0].id }], cb);
+   
     Ingredient.create(getIngredients( departments ), cb);
   });
 };
 
+function attachIngredientsToGroceries(ingredients, groceries){
+ var arrayWithIds = idsOnly(ingredients);
 
+ groceries.forEach(function(grocery){
+     grocery.updateAttribute(relation2, arrayWithIds);
+        
+ });
+    
+};
 
 module.exports.createIngredients = createIngredients;
+module.exports.attachIngredientsToGroceries = attachIngredientsToGroceries;
