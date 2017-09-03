@@ -30,11 +30,6 @@ async.parallel({
 	}, function(err, results){
 		if( err ) throw err; 
 
-		// console.log(results.ingredients);
-		// console.log(results.departments[0]);
-		// console.log(results.departments[0].id);
-		// console.log(results.groceries);
-
 
 		var ingredient = Ingredients.createIngredients(
 			results.departments
