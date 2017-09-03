@@ -419,7 +419,6 @@ module.exports = function(Grocery) {
 	};
 
 	Grocery.removePurchased = function(options){
-
 		options.type  = 'remove';
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
