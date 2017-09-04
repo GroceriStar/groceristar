@@ -7,6 +7,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
+    "start2": "webpack --config webpack.config.js",
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
@@ -46,7 +47,9 @@
     "eslint": "^4.5.0",
     "eslint-config-loopback": "^8.0.0",
     "mocha": "^3.5.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
   },
   "repository": {
     "type": "git",
