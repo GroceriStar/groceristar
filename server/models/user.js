@@ -23,11 +23,11 @@ module.exports = function(User) {
     	next();
     });
 
-
+    //: todo add remote method for this functionality
     User.listFavorites = function(userId, cb){
 
         // var Ingredient = User.app.models.Ingredient;
-        //:todo start to use this method getCurrentUserWithFavorites
+        // :todo start to use this method getCurrentUserWithFavorites
         User.findById(userId, {
             include: {
                 relation: 'favorites',
@@ -57,7 +57,7 @@ module.exports = function(User) {
 
         });
     }
-    //:todo add remote method for this functionality
+
 
     User.attachFavoriteToUser = function(ingredientId, userId, cb){
        
@@ -84,6 +84,64 @@ module.exports = function(User) {
 
     };
     //:todo add remote method for this functionality
+
+
+    Grocery.proceed = function(options){
+
+        var type = options.type;
+
+        Grocery.findById(options.userId, {}, function(err, model){
+
+
+            if( options.type == 'clear'){
+
+                model.updateAttribute(options.field, []);   
+
+            }
+
+
+            if( options.type == 'add' ){
+
+                var previousData = model[options.field] || [];
+                
+                previousData = previousData.map(function(element){
+                    return element.toString();
+                });
+                // :todo update to arr.filter(item => item.toString() ) ??
+
+                var mergedValues = _.union( previousData, options.secondArray );
+
+                model.updateAttribute(options.field, mergedValues);
+
+            }       
+
+
+            if( options.type == 'remove' ){
+
+                // var data = model.toJSON();
+                // if( !data[options.field] ){ return true; } //:todo test this
+                
+                if( !model[options.field] ){ return true; } //:todo test this
+
+                let arr = model[options.field];
+                console.log(arr);
+
+                arr = arr.filter(item => !secondArray.includes(item))
+                // !!! Read below about array.includes(...) support !!!
+
+                console.log(arr);
+
+                model.updateAttribute(options.field, arr);
+                console.log(model);
+
+            }
+
+            
+
+        });
+
+    }
+
 
 
     User.getCurrentUserWithFavorites = function(userId, cb){

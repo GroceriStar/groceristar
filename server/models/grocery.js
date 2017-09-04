@@ -463,6 +463,7 @@ module.exports = function(Grocery) {
 	// 	options.field = 'itemsIds';
 	// 	Grocery.proceed(options);	
 	// };
+	
 	// Grocery.removeItem = function(options){
 	// 	options.type  = 'remove-item';
 	// 	options.field = 'itemsIds';

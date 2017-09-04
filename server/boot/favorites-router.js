@@ -27,14 +27,26 @@ module.exports = function(app) {
 
   });
 
-  router.post('/delete/favorites/:favoriteId', 
+  // :todo not sure, do we need this ensureLogin, huh?
+  router.post('/delete/favorites/:ingredientId', 
     ensureLoggedIn('/auth/account'), function(req, res, next) {
-    console.log( req.user.id );
-    console.log( req.favoriteId ); // this is ingredient Id - we need to remove this id from array 
-    var User = app.models.user;
-    User.findById(req.user.id, {
 
-    })
+    
+    var ingredients = req.params.ingredientId;
+    
+    var User = app.models.user;
+
+
+    
+    // this is a duplicated function from Grocery :todo think about it, real talk
+    
+    var options = {
+      type  : 'remove',
+      field : 'favs',
+       userId: userId,
+      secondArray: ingredients 
+    };
+    User.proceed(options);
 
     User.getCurrentUserWithFavorites(req.user.id, function(err, model) {
 
@@ -60,23 +72,33 @@ module.exports = function(app) {
   });
 
   //:todo fix delete or finish this
-  router.post('/add/fav', function(req, res, next) {
+  // router.post('/add/fav', function(req, res, next) {
 
-    console.log(req.body);
-    console.log(req.params);
+  //   console.log(req.body);
+  //   console.log(req.params);
 
-  });
+  // });
 
   router.get('/add/fav2/:ingredientId', function(req, res, next) {
 
-    var ingredientId = req.params.ingredientId;
+    var ingredients = req.params.ingredientId;
     var userId       = req.user.id;
 
     // console.log( ingredientId );
     // console.log( userId );
 
     var User = app.models.user;
-    User.attachFavoriteToUser(ingredientId, userId);
+
+    // this is a duplicated function from Grocery :todo think about it, real talk
+    
+    var options = {
+ type  : 'add',
+      field : 'favs',
+      userId: userId,
+      secondArray: ingredients 
+    };
+    User.proceed(options);
+    // User.attachFavoriteToUser(ingredientId, userId);
 
     res.redirect('/auth/account');
 
