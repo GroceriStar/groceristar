@@ -12,7 +12,10 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
         //- User *is* logged In
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='#') Future Link
+            a(href='/view/groceries') Saved groceries
+          li
+            a(href='/favorites') Favorites
+
           li(class=url=='/auth/account'?'active':undefined)
             a(href='/auth/account') View Account
           li
