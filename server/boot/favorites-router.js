@@ -15,10 +15,10 @@ module.exports = function(app) {
     User.listFavorites(req.user.id, function(error, response){
       console.log(response);
 
-      // console.log(results);
+      console.log( ( response.length > 0 ) ? response : false );
 
       res.render('pages/favorites', {
-        data: response, //:todo change names, punk!
+        data: ( response.length > 0 ) ? response : false, // :todo change names, punk!
         // url: req.url,
         messages: {}
       });
