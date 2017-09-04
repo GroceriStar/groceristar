@@ -9,13 +9,9 @@ module.exports = function(app) {
 	
   router.get('/favorites', ensureLoggedIn('/auth/account'), function(req, res, next) {
 
-    // console.log( req.user.id );
-
     var User = app.models.user;
     User.listFavorites(req.user.id, function(error, response){
-      console.log(response);
-
-      console.log( ( response.length > 0 ) ? response : false );
+      // console.log(response);
 
       res.render('pages/favorites', {
         data: ( response.length > 0 ) ? response : false, // :todo change names, punk!
@@ -81,7 +77,7 @@ module.exports = function(app) {
 
   router.get('/add/fav2/:ingredientId', ensureLoggedIn('/auth/account'), function(req, res, next) {
 
-    var ingredients = req.params.ingredientId;
+    var ingredientId = req.params.ingredientId;
     var userId       = req.user.id;
 
     // console.log( ingredientId );
@@ -89,17 +85,33 @@ module.exports = function(app) {
 
     var User = app.models.user;
 
-    // this is a duplicated function from Grocery :todo think about it, real talk
-     var options = {
-      type  : 'add',
-      field : 'favs',
-      userId: userId,
-      secondArray: ingredients 
-    };
-    User.proceed(options);
-    // User.attachFavoriteToUser(ingredientId, userId);
+    var Ingredient = app.models.Ingredient;
 
-    res.redirect('/auth/account');
+    Ingredient.findById(ingredientId, {}, function(err, model){
+
+      console.log(model);
+      if( model ){
+
+        var options = {
+          type  : 'add',
+          field : 'favs',
+          userId: userId,
+          secondArray: [model.id] 
+        };
+        // this is a duplicated function from Grocery :todo think about it, real talk
+        User.proceed(options);
+
+
+      }
+       res.redirect('/auth/account');
+
+    });
+
+    
+
+    
+
+   
 
 
   });
