@@ -24,11 +24,11 @@ module.exports = function(app) {
   });
 
 
-  router.post('/delete/favorites/:ingredientId', 
+  router.post('/delete/favorites/', 
     ensureLoggedIn('/auth/account'), function(req, res, next) {
 
     
-    var ingredients = req.params.ingredientId;
+    var ingredient = req.params.ingredients;
     
     var User = app.models.user;
 
@@ -75,7 +75,9 @@ module.exports = function(app) {
 
   // });
 
-  router.get('/add/fav2/:ingredientId', ensureLoggedIn('/auth/account'), function(req, res, next) {
+  router.get('/add/fav2/:ingredientId', 
+    ensureLoggedIn('/auth/account'), 
+    function(req, res, next) {
 
     var ingredientId = req.params.ingredientId;
     var userId       = req.user.id;

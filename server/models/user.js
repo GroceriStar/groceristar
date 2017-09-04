@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('underscore');
+
 module.exports = function(User) {
 
 
@@ -104,8 +106,6 @@ module.exports = function(User) {
 
                 var previousData = model[options.field] || [];
                 
-                console.log(previousData);
-
                 previousData = previousData.map(function(element){
                     return element.toString();
                 });
