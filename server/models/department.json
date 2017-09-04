@@ -13,7 +13,7 @@
     },
     "desc": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "created_at": {
       "type": "date",

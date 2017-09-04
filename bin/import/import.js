@@ -38,7 +38,7 @@ async.parallel({
 		console.log(ingredient);
 
 		Ingredients.attachIngredientsToGroceries(
-			ingredient, result.groceries
+			ingredient, results.groceries
 			);
 
 

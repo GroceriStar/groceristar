@@ -147,6 +147,34 @@ module.exports = function(app) {
 
  });
 
+
+
+
+ router.get('/remove/grocery/:groceryId', 
+  ensureLoggedIn('/auth/account'), 
+  function(req, res, next){
+    var groceryId = req.params.groceryId;
+    var userId    = req.user.id;
+    
+    var User      = app.models.user;
+    var Grocery   = app.models.Grocery;
+
+    // this is a duplicated function from Grocery :todo think about it, real talk   
+    var options = {
+      type  : 'detach',
+      field : 'groceryIds',
+      // groceryId: groceryId,
+      userId: userId,
+      secondArray: [ groceryId ]
+    };
+    User.proceed(options);
+
+    Grocery.destroyById(groceryId, function(err){});
+
+});
+
+
+
   app.use(router);
 
 };

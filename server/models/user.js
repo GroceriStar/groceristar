@@ -59,38 +59,38 @@ module.exports = function(User) {
     }
 
 
-    User.attachFavoriteToUser = function(ingredientId, userId, cb){
+    // User.attachFavoriteToUser = function(ingredientId, userId, cb){
        
-        // var Ingredient = User.app.models.Ingredient;
+    //     // var Ingredient = User.app.models.Ingredient;
 
-        User.findById(userId, {
+    //     User.findById(userId, {
 
-        }, function(err, model){
+    //     }, function(err, model){
 
-            // console.log(model);
-            var favoritesArray = [];
+    //         // console.log(model);
+    //         var favoritesArray = [];
 
-            if (typeof model.favs !== 'undefined'){
-                favoritesArray = model.favs;
-            }
+    //         if (typeof model.favs !== 'undefined'){
+    //             favoritesArray = model.favs;
+    //         }
 
-            // console.log(favoritesArray);
-            favoritesArray.unshift(ingredientId);
-            // console.log(favoritesArray);
+    //         // console.log(favoritesArray);
+    //         favoritesArray.unshift(ingredientId);
+    //         // console.log(favoritesArray);
             
-            model.updateAttribute('favs', favoritesArray);
-            // console.log(model);
-        });
+    //         model.updateAttribute('favs', favoritesArray);
+    //         // console.log(model);
+    //     });
 
-    };
+    // };
     //:todo add remote method for this functionality
 
 
-    Grocery.proceed = function(options){
+    User.proceed = function(options){
 
         var type = options.type;
 
-        Grocery.findById(options.userId, {}, function(err, model){
+        User.findById(options.userId, {}, function(err, model){
 
 
             if( options.type == 'clear'){
@@ -116,7 +116,7 @@ module.exports = function(User) {
             }       
 
 
-            if( options.type == 'remove' ){
+            if( options.type == 'remove' || options.type == 'detach' ){
 
                 // var data = model.toJSON();
                 // if( !data[options.field] ){ return true; } //:todo test this
@@ -158,42 +158,44 @@ module.exports = function(User) {
 
     };
 
-    User.detachGroceryAKADelete = function(groceryId, userId, cb){
 
-        User.findById(userId, {}, function(err, model){
 
-            if( model.groceryIds.includes(groceryId) ){
+    // User.detachGroceryAKADelete = function(groceryId, userId, cb){
 
-                // 
+    //     User.findById(userId, {}, function(err, model){
+
+    //         if( model.groceryIds.includes(groceryId) ){
+
+    //             // 
 
                 
-                var data = model.toJSON();
-                // var data = model;
-                console.log(data);
-                // console.log(data.groceryIds);
+    //             var data = model.toJSON();
+    //             // var data = model;
+    //             console.log(data);
+    //             // console.log(data.groceryIds);
 
-                if( !data.groceryIds ){ return true; } //:todo test this
+    //             if( !data.groceryIds ){ return true; } //:todo test this
 
-                let forDeletion = [ groceryId ];
+    //             let forDeletion = [ groceryId ];
 
-                let arr = data.groceryIds;
+    //             let arr = data.groceryIds;
 
-                arr = arr.filter(item => !forDeletion.includes(item))
-                // !!! Read below about array.includes(...) support !!!
+    //             arr = arr.filter(item => !forDeletion.includes(item))
+    //             // !!! Read below about array.includes(...) support !!!
 
-                console.log(arr);
+    //             console.log(arr);
 
-                model.updateAttribute('groceryIds', arr);
-                console.log(model);
+    //             model.updateAttribute('groceryIds', arr);
+    //             console.log(model);
 
-                var Grocery = User.app.models.Grocery;
-                Grocery.destroyById(groceryId, function(err){});
+    //             var Grocery = User.app.models.Grocery;
+    //             Grocery.destroyById(groceryId, function(err){});
 
-            }
+    //         }
 
-        });
+    //     });
 
-    };
+    // };
 
 
     User.methodofMethods = function(userId, cb){

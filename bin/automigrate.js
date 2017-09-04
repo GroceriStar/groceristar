@@ -16,7 +16,7 @@ var lbTables = [
 	// custom tables
 	'user', 'userCredential', 'userIdentity', 
 
-	'userGrocery', 'userFav',
+	// 'userGrocery', 'userFav',
 	'Ingredient', 'Grocery', 'Department', 
 
 ];
