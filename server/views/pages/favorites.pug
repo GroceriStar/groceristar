@@ -10,6 +10,6 @@ block content
     .col-md-12
       include ../partials/favorites-list-forms
 
-
-    .col-md-12
-      a(href="/add/fav2/clear", class="btn") Clear  
+    if data
+      .col-md-12
+        a(href="/add/fav2/clear", class="btn") Clear  

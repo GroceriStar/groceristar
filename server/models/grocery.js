@@ -176,26 +176,26 @@ module.exports = function(Grocery) {
 
 
 
-	Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
+	// Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
 
-		var Department = Grocery.app.models.Department;
+	// 	var Department = Grocery.app.models.Department;
 
-		// we check if this department even exists
-		Department.findById(departmentId, {}, function(){
+	// 	// we check if this department even exists
+	// 	Department.findById(departmentId, {}, function(){
 
-			Grocery.findById(groceryId, {
-				where: {departmentsList:inq(departmentId)}
-			}).then(function(model){
+	// 		Grocery.findById(groceryId, {
+	// 			where: {departmentsList:inq(departmentId)}
+	// 		}).then(function(model){
 
-				// console.log(model);
-				var hiddenArray = model.hideThisIds;
-				hiddenArray.push(departmentId)
-				model.updateAttribute('hideThisIds', hiddenArray);
-			})
+	// 			// console.log(model);
+	// 			var hiddenArray = model.hideThisIds;
+	// 			hiddenArray.push(departmentId)
+	// 			model.updateAttribute('hideThisIds', hiddenArray);
+	// 		})
 
-		});
+	// 	});
 
-	};
+	// };
 
 
 

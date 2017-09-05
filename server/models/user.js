@@ -61,40 +61,12 @@ module.exports = function(User) {
     }
 
 
-    // User.attachFavoriteToUser = function(ingredientId, userId, cb){
-       
-    //     // var Ingredient = User.app.models.Ingredient;
-
-    //     User.findById(userId, {
-
-    //     }, function(err, model){
-
-    //         // console.log(model);
-    //         var favoritesArray = [];
-
-    //         if (typeof model.favs !== 'undefined'){
-    //             favoritesArray = model.favs;
-    //         }
-
-    //         // console.log(favoritesArray);
-    //         favoritesArray.unshift(ingredientId);
-    //         // console.log(favoritesArray);
-            
-    //         model.updateAttribute('favs', favoritesArray);
-    //         // console.log(model);
-    //     });
-
-    // };
-    //:todo add remote method for this functionality
-
 
     User.proceed = function(options){
 
         var type = options.type;
 
         User.findById(options.userId, {}, function(err, model){
-
-            console.log(model);
 
             if( options.type == 'clear'){
 
