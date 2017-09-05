@@ -107,60 +107,11 @@ module.exports = function(app) {
 
 
 
-  router.get('/auth/attach-grocery-to-user/:groceryId', 
-    ensureLoggedIn('/auth/account'), function(req, res, next) {
-
-    // console.log( req.params );
-    var groceryId = req.params.groceryId;
-    var userId    = req.user.id;
-
-    // console.log( req.params.groceryId );
-    // console.log( req.user.id );
-
-    var Grocery = app.models.Grocery;
-    Grocery.attachToUser(groceryId, userId);
-
-    res.redirect('/auth/account');
-  });
-
-
-  router.get('/clone/:groceryId', function(req, res, next) {
-
-    console.log( req.params.groceryId );
-    console.log( req.user.id );
-
-    var Grocery = app.models.Grocery;
-    Grocery.clone( req.params.groceryId, req.user.id, function(){
-
-    });
-
-    // res.redirect('/');
-  });
 
 
 
 
 
-
-
-
-
- router.get('create-new-grocery', 
-  ensureLoggedIn('/auth/account'), function(req, res, next){
-
-    console.log( req.user.id );
-    var Grocery = app.models.Grocery;
-    var data = {
-      title: data.title,
-      desc:  data.desc,
-      slug:  '',
-      img :  '',
-      // departmentIds: [], // not sure if we need this
-      // hideThisIds:   [],
-    }
-    Grocery.createnew(req.user.id, data, function(){});
-
- });
 
 
  

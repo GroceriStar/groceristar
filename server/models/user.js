@@ -61,7 +61,7 @@ module.exports = function(User) {
     }
 
 
-
+    // _map and toString is equal to model.toJSON
     User.proceed = function(options){
 
         var type = options.type;

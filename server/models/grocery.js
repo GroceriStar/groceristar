@@ -241,13 +241,13 @@ module.exports = function(Grocery) {
 
 	// 	data must have this structure:
 	// {
-	// 				title: data.title,
-	// 				desc:  data.desc,
-	// 				slug:  data.slug,
-	// 				img :  data.img,
-	// 				departmentIds: data.departmentIds,
-	// 				hideThisIds:   data.hideThisIds,
-	// 			}
+	// 	title: data.title,
+	// 	desc:  data.desc,
+	// 	slug:  data.slug,
+	// 	img :  data.img,
+	// 	departmentIds: data.departmentIds,
+	// 	hideThisIds:   data.hideThisIds,
+	// }
 
 	Grocery.createnew = function(userId, data, cb){
 
@@ -315,51 +315,6 @@ module.exports = function(Grocery) {
 		})
 
 	}
-
-	//ingredientIds must be an array
-	// Grocery.makePurchased = function(groceryId, ingredientIds){
-	// 	Grocery.findById(groceryId, {}, function(err, model){
-
-	// 		var baza = model.purchasedIds || [];
-			
-	// 		baza = baza.map(function(element){
-	// 			return element.toString();
-	// 		});
-	// 		// :todo update to arr.filter(item => item.toString() ) ??
-
-
-	// 		var purchased = _.union( baza, ingredientIds );
-
-	// 		model.updateAttribute('purchasedIds', purchased);
-
-	// 	})
-	// };
-
-	// Grocery.makeUnpurchased = function(groceryId, ingredientId, cb){
-	// 	Grocery.findById(groceryId, {}, function(err, model){
-
-	//       var data = model.toJSON();
-	//       console.log(data.purchasedIds);
-
-	//       if( !data.purchasedIds ){ return true; } //:todo test this
-
-	//       let forDeletion = [ ingredientId ];
-
-	//       let arr = data.purchasedIds;
-
-	//       arr = arr.filter(item => !forDeletion.includes(item))
-	//       // !!! Read below about array.includes(...) support !!!
-
-	//       console.log(arr);
-
-	//       model.updateAttribute('purchasedIds', arr);
-	//       console.log(model);
-
-
-		
-
-	// 	});
-	// };
 
 
 	Grocery.withPurchased = function(groceryId, cb){
@@ -498,37 +453,26 @@ module.exports = function(Grocery) {
 
 			if( options.type == 'add' || options.type == 'hide' || options.type == 'add-ing' ){
 
-				var previousData = model[options.field] || [];
-				
-				previousData = previousData.map(function(element){
-					return element.toString();
-				});
-				// :todo update to arr.filter(item => item.toString() ) ??
+                let arr = _.map(model[options.field], item => item.toString());
 
-				var mergedValues = _.union( previousData, options.secondArray );
+                var mergedValues = _.union( arr, options.secondArray );
 
-				model.updateAttribute(options.field, mergedValues);
+                model.updateAttribute(options.field, mergedValues);
 
 			}		
 
 
 			if( options.type == 'remove' || options.type == 'show' || options.type == 'remove-ing' ){
 
-				// var data = model.toJSON();
-				// if( !data[options.field] ){ return true; } //:todo test this
-				
-				if( !model[options.field] ){ return true; } //:todo test this
+			
+                if( !model[options.field] ){ return true; }
 
-				let arr = model[options.field];
-				console.log(arr);
+                let arr = _.map(model[options.field], item => item.toString());
 
-				arr = arr.filter(item => !options.secondArray.includes(item))
-				// !!! Read below about array.includes(...) support !!!
+                arr = arr.filter(item => !options.secondArray.includes(item));
+                // !!! Read below about array.includes(...) support !!!
 
-				console.log(arr);
-
-				model.updateAttribute(options.field, arr);
-				console.log(model);
+                model.updateAttribute(options.field, arr);
 
 			}
 
