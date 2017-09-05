@@ -176,28 +176,54 @@ module.exports = function(User) {
 
             _.map( g.groceries, function(grocery){
 
-                // console.log(); 
+                // console.log(grocery.ingredients);
+                // var ing = grocery.ingredients;
+                // console.log( _.uniq(ing, 'departmentId') ) ;
 
-                // var arr = _.pluck(grocery.ingredients, 'departmentId');
+
+               //  console.log( _.groupBy(ing, value => value.departmentId) ) ;
+
+               // _.map(grocery.ingredients, function(ingredient){
+
+               //      console.log(typeof ingredient.departmentId);
+
+               // });
+
+                // var arr = _.map(_.pluck(grocery.ingredients, 'departmentId'), item => item.toString());
+                // console.log(arr);
+
+                // var arr2 = _.map(grocery.ingredients, item => item.departmentId.toString());
+                
+                // console.log(arr2);
+
+                var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
+                  return item.departmentId.toString();
+                }),function(grouped){
+                  return grouped[0];
+                });
+                console.log(uniques);
+
+
+                // let arr = _.map(arr, item => item.toString());
                 // var uniqueList = _.uniq(grocery.ingredients, 'departmentId');
                 // console.log(uniqueList); 
 
-                var mySubArray = [];
+//                 var mySubArray = [];
 
-                _.each(_.uniq(_.pluck(grocery.ingredients, 'departmentId')), function(name) {
-                    mySubArray.push(_.findWhere(grocery.ingredients, {departmentId: departmentId}));
-                });
+//                 _.each(_.uniq(_.pluck(grocery.ingredients, 'departmentId')), function(departmentId) {
+//                     mySubArray.push(_.findWhere(grocery.ingredients, {departmentId: departmentId}));
+//                 });
 
-                console.log(mySubArray);
+//                 console.log(mySubArray);
 
 
-                var uniques = _.map(_.groupBy(grocery.ingredients,function(doc){
-                      return doc.departmentId;
-                    }),function(grouped){
-                      return grouped[0];
-                    });
+//                 var uniques = _.map(_.groupBy(grocery.ingredients,function(doc){
+//                       return doc.departmentId;
+//                     }),function(grouped){
+//                       return grouped[0];
+//                     });
 
-console.log(uniques);
+// console.log(uniques);
 
                 });
 
