@@ -28,7 +28,7 @@ module.exports = function(app) {
     ensureLoggedIn('/auth/account'), function(req, res, next) {
 
     
-    var ingredient = req.params.ingredients;
+    var ingredients = req.body.ingredients;
     var userId = req.user.id;
     var User   = app.models.user;
 
@@ -41,7 +41,7 @@ module.exports = function(app) {
       secondArray: ingredients 
     };
 
-    console.log(options);
+    // console.log(options);
     User.proceed(options);
 
     res.redirect('/favorites');
@@ -93,7 +93,7 @@ module.exports = function(app) {
 
     Ingredient.findById(ingredientId, {}, function(err, model){
 
-      console.log(model);
+      // console.log(model);
       if( model ){
 
         var options = {

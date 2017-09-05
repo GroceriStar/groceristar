@@ -95,7 +95,7 @@ module.exports = function(User) {
         User.findById(options.userId, {}, function(err, model){
 
             console.log(model);
-            
+
             if( options.type == 'clear'){
 
                 model.updateAttribute(options.field, []);   
@@ -105,14 +105,9 @@ module.exports = function(User) {
 
             if( options.type == 'add' ){
 
-                var previousData = model[options.field] || [];
-                
-                previousData = previousData.map(function(element){
-                    return element.toString();
-                });
-                // :todo update to arr.filter(item => item.toString() ) ??
+                let arr = _.map(model[options.field], item => item.toString());
 
-                var mergedValues = _.union( previousData, options.secondArray );
+                var mergedValues = _.union( arr, options.secondArray );
 
                 model.updateAttribute(options.field, mergedValues);
 
@@ -121,21 +116,15 @@ module.exports = function(User) {
 
             if( options.type == 'remove' || options.type == 'detach' ){
 
-                // var data = model.toJSON();
-                // if( !data[options.field] ){ return true; } //:todo test this
-                
-                if( !model[options.field] ){ return true; } //:todo test this
+                if( !model[options.field] ){ return true; }
 
-                let arr = model[options.field];
-                console.log(arr);
+                let arr = _.map(model[options.field], item => item.toString());
 
-                arr = arr.filter(item => !options.secondArray.includes(item))
+                arr = arr.filter(item => !options.secondArray.includes(item));
                 // !!! Read below about array.includes(...) support !!!
 
-                console.log(arr);
-
                 model.updateAttribute(options.field, arr);
-                console.log(model);
+
 
             }
 
