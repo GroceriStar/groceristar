@@ -140,67 +140,6 @@ module.exports = function(Grocery) {
 
 
 
-	// Grocery.attachToUser = function(groceryId, userId, cb){
-
-	// 	var User = Grocery.app.models.user;
-		
-	// 	User.findById(userId, {
-
-	// 	}, function(err, model){
-
-	// 		// console.log(model);
-	// 		var groceriesArray = [];
-
-	// 		if (typeof model.groceryIds !== 'undefined'){
-	// 			groceriesArray = model.groceryIds;
-	// 		}
-
-	// 		// console.log(groceriesArray);
-	// 		groceriesArray.unshift(groceryId);
-
-
-	// 		// console.log(groceriesArray);
-			
-	// 		model.updateAttribute('groceryIds', groceriesArray);
-	// 		// console.log(model);
-	// 	});
-
-	// }
-
-
-
-
-
-
-
-
-
-	// Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
-
-	// 	var Department = Grocery.app.models.Department;
-
-	// 	// we check if this department even exists
-	// 	Department.findById(departmentId, {}, function(){
-
-	// 		Grocery.findById(groceryId, {
-	// 			where: {departmentsList:inq(departmentId)}
-	// 		}).then(function(model){
-
-	// 			// console.log(model);
-	// 			var hiddenArray = model.hideThisIds;
-	// 			hiddenArray.push(departmentId)
-	// 			model.updateAttribute('hideThisIds', hiddenArray);
-	// 		})
-
-	// 	});
-
-	// };
-
-
-
-
-
-
 
 	//:todo add remote method for enable API calls for this method
 
@@ -384,14 +323,12 @@ module.exports = function(Grocery) {
 		Grocery.proceed(options);
 
 	};
-
 	Grocery.removePurchased = function(options){
 		options.type  = 'remove';
 		options.field = 'purchasedIds'
 		Grocery.proceed(options);
 
 	};
-
 	Grocery.cleanPurchased = function(options){
 		options.type  = 'clear';
 		options.field = 'purchasedIds'

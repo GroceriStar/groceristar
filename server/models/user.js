@@ -79,7 +79,7 @@ module.exports = function(User) {
 
                 let arr = _.map(model[options.field], item => item.toString());
 
-                var mergedValues = _.union( arr, options.secondArray );
+                var mergedValues = _.union( options.secondArray, arr  ); // second array is first because of grocery lists
 
                 model.updateAttribute(options.field, mergedValues);
 

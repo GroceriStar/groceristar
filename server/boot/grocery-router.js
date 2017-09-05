@@ -20,7 +20,6 @@ module.exports = function(app) {
   });
 
   router.post('/addtopurchased', function(req, res, next){
-    // console.log(req.body);
   	var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
@@ -72,28 +71,7 @@ module.exports = function(app) {
     };
     Grocery.removePurchased(options);
     
-    // Grocery.proceed(options);
-
-		// Grocery.withPurchased(groceryId, ingredients, function(err, model){
-
-		// 	var data = model.toJSON();
-  //     console.log(data.purchased);
-      
-  //     if( !data.purchased ){ return true; } //:todo test this
-      
-  //     let forDeletion = ingredients;
-
-	 //    let arr = data.favorites;
-
-	 //    arr = arr.filter(item => !forDeletion.includes(item))
-	 //      // !!! Read below about array.includes(...) support !!!
-
-	 //      console.log(arr);
-
-	 //      model.updateAttribute('purchasedIds', arr);
-	 //      console.log(model);
-
-  // 		});
+    
 
 
 
@@ -103,7 +81,8 @@ module.exports = function(app) {
 
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
- router.get('/view/grocery/:groceryId', ensureLoggedIn('/auth/account'), 
+ router.get('/view/grocery/:groceryId', 
+  ensureLoggedIn('/auth/account'), 
   function(req, res, next){
 
     // console.log( req.params.groceryId );
@@ -152,8 +131,6 @@ module.exports = function(app) {
   router.get('/auth/attach-grocery-to-user/:groceryId', 
     ensureLoggedIn('/auth/account'), 
     function(req, res, next) {
-
-    // console.log( req.params );
     var groceryId = req.params.groceryId;
     var userId    = req.user.id;
     var User      = app.models.user;
@@ -163,7 +140,6 @@ module.exports = function(app) {
     var options = {
       type  : 'attach',
       field : 'groceryIds',
-      // groceryId: groceryId,
       userId: userId,
       secondArray: [ groceryId ]
     };
@@ -177,8 +153,7 @@ module.exports = function(app) {
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
     var groceryId = req.params.groceryId;
-    var userId    = req.user.id;
-    
+    var userId    = req.user.id;    
     var User      = app.models.user;
     var Grocery   = app.models.Grocery;
 
