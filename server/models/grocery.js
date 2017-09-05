@@ -147,7 +147,10 @@ module.exports = function(Grocery) {
 	Grocery.clone = function(groceryId, userId){
 
 		// Grocery.attachToUser(groceryId, userId);
-		Grocery.findById(groceryId, {}, function(err, grocery){
+		Grocery.findById(groceryId, {
+			include: ['ingredients', 'departmentsToHide']
+			
+		}, function(err, grocery){
 
 			console.log(grocery);
 			console.log('-----');
@@ -161,7 +164,7 @@ module.exports = function(Grocery) {
 				img : grocery.img,
 				// departmentIds: grocery.departmentIds,
 				hideThisIds:   grocery.hideThisIds,
-				ingredientIds: grocery.ingredientIdsб
+				ingredientIds: grocery.ingredientIds,
 				created_at: new Date(),
 				updated_at: new Date(),
 			};

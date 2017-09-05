@@ -1005,10 +1005,11 @@ function createIngredients(departments, cb){
 
 function attachIngredientsToGroceries(ingredients, groceries){
  var arrayWithIds = idsOnly(ingredients);
+console.log(arrayWithIds);
 
  groceries.forEach(function(grocery){
      grocery.updateAttribute(relation2, arrayWithIds);
-        
+        console.log(grocery);
  });
     
 };

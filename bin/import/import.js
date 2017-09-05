@@ -30,20 +30,22 @@ async.parallel({
 	}, function(err, results){
 		if( err ) throw err; 
 
-		console.log(results.departments);
+		// console.log(results.departments);
+		// console.log(results.groceries);
 
 		Ingredients.createIngredients(
 			results.departments, function(err, ingredients){
-				// console.log(model);
+
+				// console.log(ingredients);
 
 				Ingredients.attachIngredientsToGroceries(
 						ingredients, results.groceries
 			 	);
-
+				console.log('import finished');
 			});
 
 		// console.log(ingredient);
-		console.log('import finished');
+		
 		
 
 
