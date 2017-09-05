@@ -152,9 +152,7 @@ module.exports = function(Grocery) {
 			
 		}, function(err, grocery){
 
-			// console.log(grocery);
-			// console.log('-----');
-			// console.log(grocery.ingredientIds);
+
 			//:todo use createnew method instead of duplicate stuff
 
 			var object = {
@@ -168,16 +166,10 @@ module.exports = function(Grocery) {
 				created_at: new Date(),
 				updated_at: new Date(),
 			};
-			// console.log('-----');
-			// console.log(object);
+		
 
 			Grocery.create(object, function(err, model){
 
-				// console.log(model)
-				// console.log( model.id );
-				// Grocery.attachToUser(model.id, userId, function(data){
-
-				// });
 
 				var User    = Grocery.app.models.user;
 			    var options = {
@@ -187,7 +179,7 @@ module.exports = function(Grocery) {
 			      secondArray: [ model.id ]
 			    };
 			    User.proceed(options);
-			    console.log('-----');
+			    // console.log('-----');
 			});
 
 			
@@ -209,6 +201,8 @@ module.exports = function(Grocery) {
 	// 	hideThisIds:   data.hideThisIds,
 	// }
 
+
+
 	Grocery.createnew = function(userId, data, cb){
 
 		Grocery.create(data, function(err, model){
@@ -217,9 +211,9 @@ module.exports = function(Grocery) {
 			// :todo check relations with other sub models
 
 			// console.log( model.id );
-			Grocery.attachToUser(model.id, userId, function(data){
+			// Grocery.attachToUser(model.id, userId, function(data){
 
-			});
+			// });
 
 		});
 
