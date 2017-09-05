@@ -94,7 +94,8 @@ module.exports = function(User) {
 
         User.findById(options.userId, {}, function(err, model){
 
-
+            console.log(model);
+            
             if( options.type == 'clear'){
 
                 model.updateAttribute(options.field, []);   
@@ -128,7 +129,7 @@ module.exports = function(User) {
                 let arr = model[options.field];
                 console.log(arr);
 
-                arr = arr.filter(item => !secondArray.includes(item))
+                arr = arr.filter(item => !options.secondArray.includes(item))
                 // !!! Read below about array.includes(...) support !!!
 
                 console.log(arr);

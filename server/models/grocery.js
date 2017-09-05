@@ -169,6 +169,13 @@ module.exports = function(Grocery) {
 	}
 
 
+
+
+
+
+
+
+
 	Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){
 
 		var Department = Grocery.app.models.Department;
@@ -189,6 +196,12 @@ module.exports = function(Grocery) {
 		});
 
 	};
+
+
+
+
+
+
 
 	//:todo add remote method for enable API calls for this method
 
@@ -250,7 +263,7 @@ module.exports = function(Grocery) {
 
 		});
 
-	}
+	};
 
 	Grocery.withDepartments = function(groceryId, cb){
 		Grocery.findOne({
@@ -509,7 +522,7 @@ module.exports = function(Grocery) {
 				let arr = model[options.field];
 				console.log(arr);
 
-				arr = arr.filter(item => !secondArray.includes(item))
+				arr = arr.filter(item => !options.secondArray.includes(item))
 				// !!! Read below about array.includes(...) support !!!
 
 				console.log(arr);

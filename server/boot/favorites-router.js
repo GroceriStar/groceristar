@@ -29,20 +29,22 @@ module.exports = function(app) {
 
     
     var ingredient = req.params.ingredients;
-    
-    var User = app.models.user;
+    var userId = req.user.id;
+    var User   = app.models.user;
 
 
-    
-    // this is a duplicated function from Grocery :todo think about it, real talk
-    
+    // this is a duplicated function from Grocery :todo think about it, real talk   
     var options = {
       type  : 'remove',
       field : 'favs',
-       userId: userId,
+      userId: userId,
       secondArray: ingredients 
     };
+
+    console.log(options);
     User.proceed(options);
+
+    res.redirect('/favorites');
 
     // User.getCurrentUserWithFavorites(req.user.id, function(err, model) {
 
@@ -119,12 +121,11 @@ module.exports = function(app) {
   });
 
   router.get('/add/fav2/clear', function(req, res, next) {
-    var userId       = req.user.id;
+    var userId = req.user.id;
 
     // console.log( ingredientId );
     // console.log( userId );
-
-    var User = app.models.user;
+    var User   = app.models.user;
 
     // this is a duplicated function from Grocery :todo think about it, real talk   
     var options = {
@@ -135,7 +136,6 @@ module.exports = function(app) {
     User.proceed(options);
 
     res.redirect('/auth/account');
-
 
   });
 
