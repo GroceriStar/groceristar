@@ -159,7 +159,10 @@ module.exports = function(User) {
                  //     id: groceryId 
                  // },
                  include: {
-                     relation: 'ingredients'
+                     relation: 'ingredients',
+                     scope: {
+                        include: 'department'
+                     }
                  }
              }
          }
@@ -169,65 +172,35 @@ module.exports = function(User) {
 
             var g = user.toJSON();
 
-            // _.map( g.groceries, item => console.log(item.ingredients) );
-
-            
+            var response = [];
 
 
             _.map( g.groceries, function(grocery){
 
-                // console.log(grocery.ingredients);
-                // var ing = grocery.ingredients;
-                // console.log( _.uniq(ing, 'departmentId') ) ;
 
-
-               //  console.log( _.groupBy(ing, value => value.departmentId) ) ;
-
-               // _.map(grocery.ingredients, function(ingredient){
-
-               //      console.log(typeof ingredient.departmentId);
-
-               // });
-
-                // var arr = _.map(_.pluck(grocery.ingredients, 'departmentId'), item => item.toString());
-                // console.log(arr);
-
-                // var arr2 = _.map(grocery.ingredients, item => item.departmentId.toString());
-                
-                // console.log(arr2);
 
                 var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
-                  return item.departmentId.toString();
+                  return item.department.id.toString();
                 }), function(grouped){
 
-                    return grouped[0].departmentId.toString();
-                  // return grouped[0];
-                });
-                console.log(uniques);
-
-
-                // let arr = _.map(arr, item => item.toString());
-                // var uniqueList = _.uniq(grocery.ingredients, 'departmentId');
-                // console.log(uniqueList); 
-
-//                 var mySubArray = [];
-
-//                 _.each(_.uniq(_.pluck(grocery.ingredients, 'departmentId')), function(departmentId) {
-//                     mySubArray.push(_.findWhere(grocery.ingredients, {departmentId: departmentId}));
-//                 });
-
-//                 console.log(mySubArray);
-
-
-//                 var uniques = _.map(_.groupBy(grocery.ingredients,function(doc){
-//                       return doc.departmentId;
-//                     }),function(grouped){
-//                       return grouped[0];
-//                     });
-
-// console.log(uniques);
+                    return { id: grouped[0].department.id.toString(),
+                            name: grouped[0].department.name };
+                        
 
                 });
+                
+
+                response.push({
+                    id: grocery.id,
+                    title: grocery.title,
+                    departments: uniques
+                });
+
+                
+                });
+
+
+            cb(null, response);
 
 
 

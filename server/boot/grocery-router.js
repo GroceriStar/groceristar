@@ -214,16 +214,18 @@ module.exports = function(app) {
     var User      = app.models.user;
     // var Grocery   = app.models.Grocery;
 
-    User.methodofAllMethods(userId, function(){});
-
-    res.render('pages/grocery-list', {
+    User.methodofAllMethods(userId, function(err, groceries){
+      res.render('pages/grocery-list', {
         title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
 
         // url: req.url,
         messages: {},
         // departments: grocery.departmentsList
-        groceries: []
+        groceries: groceries
       }); 
+    });
+
+    
 
  });
 
