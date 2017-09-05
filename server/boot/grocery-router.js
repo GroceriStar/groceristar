@@ -177,10 +177,6 @@ module.exports = function(app) {
     var groceryId = req.params.groceryId;  
     // var User      = app.models.user;
     var Grocery   = app.models.Grocery;
-    // console.log( req.params.groceryId );
-    // console.log( req.user.id );
-
-    // var Grocery = app.models.Grocery;
     Grocery.clone( groceryId, userId, function(){});
 
     res.redirect('/auth/account');
@@ -220,7 +216,7 @@ module.exports = function(app) {
 
     User.methodofAllMethods(userId, function(){});
 
-    res.render('pages/grocery', {
+    res.render('pages/grocery-list', {
         title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
 
         // url: req.url,

@@ -197,9 +197,9 @@ module.exports = function(User) {
                  // where: {
                  //     id: groceryId 
                  // },
-                 // include: {
-                 //     relation: 'departmentsList',
-                 // }
+                 include: {
+                     relation: 'ingredients',
+                 }
              }
          }
         }, function(err, user){
