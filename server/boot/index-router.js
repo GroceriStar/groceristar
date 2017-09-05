@@ -93,11 +93,7 @@ module.exports = function(app) {
     });
 
 
-    // res.render('pages/index', {
-    //   user:
-    //   req.user,
-    //   url: req.url,
-    // });
+
   });
 
 

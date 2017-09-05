@@ -84,10 +84,6 @@ module.exports = function(app) {
  router.get('/view/grocery/:groceryId', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
-
-    // console.log( req.params.groceryId );
-    // console.log( req.user.id );
-
     var Grocery   = app.models.Grocery;
     var groceryId = req.params.groceryId;
     // var userId    = req.user.id;
@@ -148,7 +144,7 @@ module.exports = function(app) {
     res.redirect('/auth/account');
   });
 
-
+ // :todo finish
  router.get('/remove/grocery/:groceryId', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
@@ -168,13 +164,14 @@ module.exports = function(app) {
     User.proceed(options);
 
     Grocery.destroyById(groceryId, function(err){});
+    // res.redirect('/');
 
 });
 
 
 
 
-
+// :todo finish
   router.get('/clone/:groceryId', function(req, res, next) {
 
     console.log( req.params.groceryId );
@@ -192,7 +189,7 @@ module.exports = function(app) {
 
 
 
-
+// :todo finish
  router.get('create-new-grocery', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
@@ -208,9 +205,30 @@ module.exports = function(app) {
       // hideThisIds:   [],
     }
     Grocery.createnew(req.user.id, data, function(){});
+    // res.redirect('/');
 
  });
 
+// :todo finish
+ router.get('/view/groceries', 
+  ensureLoggedIn('/auth/account'), 
+  function(req, res, next){
+    var userId    = req.user.id;    
+    var User      = app.models.user;
+    // var Grocery   = app.models.Grocery;
+
+    User.methodofAllMethods(userId, function(){});
+
+    res.render('pages/grocery', {
+        title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
+
+        // url: req.url,
+        messages: {},
+        // departments: grocery.departmentsList
+        groceries: []
+      }); 
+
+ });
 
   app.use(router);
 

@@ -25,7 +25,8 @@ module.exports = function(User) {
     	next();
     });
 
-    //: todo add remote method for this functionality
+    // :todo add remote method for this functionality
+    // :todo update forEach to underscore, as we use it
     User.listFavorites = function(userId, cb){
 
         // var Ingredient = User.app.models.Ingredient;
@@ -184,14 +185,29 @@ module.exports = function(User) {
         // });
 
     };
-    
-    // lets assume that we have both 
-    // :todo you can extend this method if you want
-    // :todo add remote method for this method
+   
 
-    User.attachGrocery = function(userId, groceryId){
+    User.methodofAllMethods = function(userId, cb){
 
 
+        User.findById(userId, {
+         include: {
+             relation: 'groceries',
+             scope: {
+                 // where: {
+                 //     id: groceryId 
+                 // },
+                 // include: {
+                 //     relation: 'departmentsList',
+                 // }
+             }
+         }
+        }, function(err, user){
 
-    };
+            console.log( user );
+
+        });
+
+    }; 
+
 };
