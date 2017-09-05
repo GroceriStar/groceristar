@@ -138,35 +138,34 @@ module.exports = function(Grocery) {
 
 
 
-	// lets assume that we have both 
-	// :todo you can extend this method if you want
-	// :todo add remote method for this method
-	Grocery.attachToUser = function(groceryId, userId, cb){
 
-		var User = Grocery.app.models.user;
+
+	// Grocery.attachToUser = function(groceryId, userId, cb){
+
+	// 	var User = Grocery.app.models.user;
 		
-		User.findById(userId, {
+	// 	User.findById(userId, {
 
-		}, function(err, model){
+	// 	}, function(err, model){
 
-			// console.log(model);
-			var groceriesArray = [];
+	// 		// console.log(model);
+	// 		var groceriesArray = [];
 
-			if (typeof model.groceryIds !== 'undefined'){
-				groceriesArray = model.groceryIds;
-			}
+	// 		if (typeof model.groceryIds !== 'undefined'){
+	// 			groceriesArray = model.groceryIds;
+	// 		}
 
-			// console.log(groceriesArray);
-			groceriesArray.unshift(groceryId);
+	// 		// console.log(groceriesArray);
+	// 		groceriesArray.unshift(groceryId);
 
 
-			// console.log(groceriesArray);
+	// 		// console.log(groceriesArray);
 			
-			model.updateAttribute('groceryIds', groceriesArray);
-			// console.log(model);
-		});
+	// 		model.updateAttribute('groceryIds', groceriesArray);
+	// 		// console.log(model);
+	// 	});
 
-	}
+	// }
 
 
 

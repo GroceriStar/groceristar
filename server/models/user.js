@@ -75,7 +75,7 @@ module.exports = function(User) {
             }
 
 
-            if( options.type == 'add' ){
+            if( options.type == 'add' || options.type == 'attach' ){
 
                 let arr = _.map(model[options.field], item => item.toString());
 
@@ -185,4 +185,13 @@ module.exports = function(User) {
 
     };
     
+    // lets assume that we have both 
+    // :todo you can extend this method if you want
+    // :todo add remote method for this method
+
+    User.attachGrocery = function(userId, groceryId){
+
+
+
+    };
 };

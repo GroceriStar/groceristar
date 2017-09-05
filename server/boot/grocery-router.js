@@ -150,17 +150,24 @@ module.exports = function(app) {
 
 
   router.get('/auth/attach-grocery-to-user/:groceryId', 
-    ensureLoggedIn('/auth/account'), function(req, res, next) {
+    ensureLoggedIn('/auth/account'), 
+    function(req, res, next) {
 
     // console.log( req.params );
     var groceryId = req.params.groceryId;
     var userId    = req.user.id;
+    var User      = app.models.user;
+    var Grocery   = app.models.Grocery;
 
-    // console.log( req.params.groceryId );
-    // console.log( req.user.id );
-
-    var Grocery = app.models.Grocery;
-    Grocery.attachToUser(groceryId, userId);
+    // this is a duplicated function from Grocery :todo think about it, real talk   
+    var options = {
+      type  : 'attach',
+      field : 'groceryIds',
+      // groceryId: groceryId,
+      userId: userId,
+      secondArray: [ groceryId ]
+    };
+    User.proceed(options);
 
     res.redirect('/auth/account');
   });
@@ -212,7 +219,8 @@ module.exports = function(app) {
 
 
  router.get('create-new-grocery', 
-  ensureLoggedIn('/auth/account'), function(req, res, next){
+  ensureLoggedIn('/auth/account'), 
+  function(req, res, next){
 
     console.log( req.user.id );
     var Grocery = app.models.Grocery;

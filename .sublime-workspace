@@ -1,0 +1,1076 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Ing",
+				"Ingredient"
+			],
+			[
+				"In",
+				"Ingredient"
+			],
+			[
+				"depar",
+				"department"
+			],
+			[
+				"f",
+				"field"
+			],
+			[
+				"pro",
+				"proceed"
+			],
+			[
+				"grocery",
+				"groceryId"
+			],
+			[
+				"pur",
+				"purchasedIds"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"ing",
+				"ingredients"
+			],
+			[
+				"ingredi",
+				"ingredientIds"
+			],
+			[
+				"gro",
+				"groceryId"
+			],
+			[
+				"de",
+				"departments"
+			],
+			[
+				"gorcery",
+				"groceryId"
+			],
+			[
+				"g",
+				"groceryId"
+			],
+			[
+				"User",
+				"UserGrocery"
+			],
+			[
+				"mess",
+				"messages"
+			],
+			[
+				"new",
+				"newUser"
+			],
+			[
+				"res",
+				"results"
+			],
+			[
+				"in",
+				"ingredientId"
+			],
+			[
+				"iNG",
+				"Ingredient"
+			],
+			[
+				"att",
+				"attachToUser"
+			],
+			[
+				"Gro",
+				"Grocery"
+			],
+			[
+				"gr",
+				"grocery"
+			],
+			[
+				"update",
+				"updateAttribute"
+			],
+			[
+				"grocer",
+				"groceriesArray"
+			],
+			[
+				"groce",
+				"groceryId"
+			],
+			[
+				"user",
+				"userId"
+			],
+			[
+				"depa",
+				"departmentId"
+			],
+			[
+				"find",
+				"findById"
+			],
+			[
+				"render",
+				"renderObject"
+			],
+			[
+				"Пл",
+				"Планировка"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"recip",
+				"recipeId"
+			],
+			[
+				"arra",
+				"arrayWithIds"
+			],
+			[
+				"fin",
+				"findById"
+			],
+			[
+				"Menu",
+				"MenuModel"
+			],
+			[
+				"ingredei",
+				"ingredient"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"menu",
+				"menuId"
+			],
+			[
+				"Rec",
+				"RecipeModel"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"ingre",
+				"ingredientId"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"Reci",
+				"Recipe"
+			],
+			[
+				"Role",
+				"RoleMapping"
+			],
+			[
+				"Recipe",
+				"RecipeModel"
+			],
+			[
+				"get",
+				"getMenuId"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"fo",
+				"forEach"
+			],
+			[
+				"Re",
+				"Recipe"
+			],
+			[
+				"RoleM",
+				"RoleMapping"
+			],
+			[
+				"Recip",
+				"Recipes2"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "59ad416bed2a9b0f5c73c856\n59ad416bed2a9b0f5c73c857\n59ad416bed2a9b0f5c73c858\n59ad416bed2a9b0f5c73c85a\n\n\nGL 59ad416bed2a9b0f5c73c872\n\ning\n59ad416ced2a9b0f5c73c874\n59ad416ced2a9b0f5c73c873\n59ad416ced2a9b0f5c73c879\n59ad416ced2a9b0f5c73c878",
+			"settings":
+			{
+				"buffer_size": 234,
+				"line_ending": "Windows",
+				"name": "59ad416bed2a9b0f5c73c856"
+			}
+		},
+		{
+			"contents": "'use strict';\n\nvar _ = require('underscore');\n\n\nmodule.exports = function(Grocery) {\n\n\tGrocery.validatesPresenceOf(\n\t\t// 'departments',\n\t\t'img', 'desc', 'slug'\n\t);\n\n\tGrocery.observe('update', function(ctx, next){\n\t\tctx.instance.updated_at = new Date();\n        next();\n\t});\n\n\tGrocery.observe(\"before save\", function updateTimestamp(ctx, next) {\n\n\t\tif( ctx.isNewInstance ){\n\t\t\tctx.instance.created_at = new Date();\n\t\t\tctx.instance.updated_at = new Date();\n\t\t} \n\n\n\n\t\tnext();\n\t});\n\n\t// when we call this method - we know that this grocery is attached to user,\n\t// so it's not so important to check relations between this grocery and user\n\n\tGrocery.fetchById = function(groceryId, cb){\n\n\t\tGrocery.findById(groceryId, {\n\t\t\tinclude: {\n\t\t\t\trelation: 'departmentsList',\n\t\t\t\tscope: {\n\t\t\t\t\tfields: [ 'id', 'name' ],\n\t\t\t\t\tinclude: {\n\t\t\t\t\t\trelation: 'ingredients',\n\t\t\t\t\t\tscope: {\n\t\t\t\t\t\t\tfields: [ 'id', 'name' ],\n\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t}\n\t\t\t}\n\n\t\t}, function(err, grocery){\n\n\t\t\tvar g = grocery.toJSON();\n\t\t\t// console.log(grocery);\n\t\t\tcb(null, g);\n\n\t\t});\n\n\n\n\t};\n\n\t// :todo not sure what i mean by this.\n\tGrocery.fetch = function(cb){\n\n\n\t\tGrocery.findOne({\n\t\t\tinclude: {\n\t\t\t\trelation: 'departmentsList',\n\t\t\t\tscope: {\n\t\t\t\t\tfields: [ 'name' ],\n\t\t\t\t\tinclude: {\n\t\t\t\t\t\trelation: 'ingredients',\n\t\t\t\t\t\tscope: {\n\t\t\t\t\t\t\tfields: [ 'name' ],\n\t\t\t\t\t\t\t// where: {\n\t\t\t\t\t\t\t// \tdepartmentId: id\n\t\t\t\t\t\t\t// }\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t}\n\t\t\t}\n\n\t\t}, function(err, grocery){\n\n\t\t\t// console.log(grocery);\n\n\t\t\tvar g = grocery.toJSON();\n\t\t\t\n\t\t\tvar departments = [];\n\t\t\t// console.log(g.desc);\n\t\t\t// console.log(g.departmentsList);\n\n\t\t\t// case #1 return only dep name with id for link creation\n\t\t\tg.departmentsList.forEach(function(item, i){\n\n\t\t\t\t// case #1 return only dep name with id for link creation\n\t\t\t\t// console.log(item.name);\n\t\t\t\t// console.log(item.id);\n\t\t\t\t// console.log(item.visible);\n\t\t\t\t// console.log(item.ingredients.length > 0);\n\t\t\t\tdepartments.push({ id: item.id, name: item.name });\n\n\t\t\t\t\n\t\t\t});\n\n\n\t\t\t// console.log(departments);\n\t\t\t// object.departments = departments;\n\n\t\t\t// case #2 display deps with ings\n\t\t\t// g.departmentsList.forEach(function(item, i){\n\t\t\t// \t// console.log(item);\n\n\t\t\t// \tconsole.log(item.name);\n\t\t\t// \tconsole.log(item.id);\n\t\t\t// \tconsole.log(item.visible);\n\t\t\t// \tconsole.log(item.ingredients.length > 0);\n\n\t\t\t// \t// console.log(item.ingredients);\n\n\t\t\t\t\n\t\t\t// })\n\n\t\t\t\n\t\t\tvar object = {\n\t\t\t\tdesc: g.desc,\n\t\t\t\tdepartments:departments\n\t\t\t};\n\t\t\tcb(null, object);\n\t\t\t\t\n\n\t\t});\n\n\n\t};\n\n\n\n\n\n\t// Grocery.attachToUser = function(groceryId, userId, cb){\n\n\t// \tvar User = Grocery.app.models.user;\n\t\t\n\t// \tUser.findById(userId, {\n\n\t// \t}, function(err, model){\n\n\t// \t\t// console.log(model);\n\t// \t\tvar groceriesArray = [];\n\n\t// \t\tif (typeof model.groceryIds !== 'undefined'){\n\t// \t\t\tgroceriesArray = model.groceryIds;\n\t// \t\t}\n\n\t// \t\t// console.log(groceriesArray);\n\t// \t\tgroceriesArray.unshift(groceryId);\n\n\n\t// \t\t// console.log(groceriesArray);\n\t\t\t\n\t// \t\tmodel.updateAttribute('groceryIds', groceriesArray);\n\t// \t\t// console.log(model);\n\t// \t});\n\n\t// }\n\n\n\n\n\n\n\n\n\n\t// Grocery.groceryHideDepartment = function(departmentId, groceryId, cb){\n\n\t// \tvar Department = Grocery.app.models.Department;\n\n\t// \t// we check if this department even exists\n\t// \tDepartment.findById(departmentId, {}, function(){\n\n\t// \t\tGrocery.findById(groceryId, {\n\t// \t\t\twhere: {departmentsList:inq(departmentId)}\n\t// \t\t}).then(function(model){\n\n\t// \t\t\t// console.log(model);\n\t// \t\t\tvar hiddenArray = model.hideThisIds;\n\t// \t\t\thiddenArray.push(departmentId)\n\t// \t\t\tmodel.updateAttribute('hideThisIds', hiddenArray);\n\t// \t\t})\n\n\t// \t});\n\n\t// };\n\n\n\n\n\n\n\n\t//:todo add remote method for enable API calls for this method\n\n\n\tGrocery.clone = function(groceryId, userId, cb){\n\n\t\t// Grocery.attachToUser(groceryId, userId);\n\t\tGrocery.findById(groceryId, {}, function(err, grocery){\n\n\t\t\t// console.log(grocery);\n\t\t\t//:todo use createnew method instead of duplicate stuff\n\t\t\tGrocery.create({\n\t\t\t\ttitle: 'Clone of <' + grocery.title + '>',\n\t\t\t\tdesc: grocery.desc,\n\t\t\t\tslug: grocery.slug,\n\t\t\t\timg : grocery.img,\n\t\t\t\tdepartmentIds: grocery.departmentIds,\n\t\t\t\thideThisIds:   grocery.hideThisIds,\n\t\t\t}, function(err, model){\n\n\t\t\t\t// console.log(model)\n\t\t\t\t// console.log( model.id );\n\t\t\t\tGrocery.attachToUser(model.id, userId, function(data){\n\n\t\t\t\t});\n\n\t\t\t});\n\n\t\t\t\n\n\n\n\t\t});\n\t\t\n\n\t}\n\n\t// \tdata must have this structure:\n\t// {\n\t// \ttitle: data.title,\n\t// \tdesc:  data.desc,\n\t// \tslug:  data.slug,\n\t// \timg :  data.img,\n\t// \tdepartmentIds: data.departmentIds,\n\t// \thideThisIds:   data.hideThisIds,\n\t// }\n\n\tGrocery.createnew = function(userId, data, cb){\n\n\t\tGrocery.create(data, function(err, model){\n\n\t\t\tconsole.log(model)\n\t\t\t// :todo check relations with other sub models\n\n\t\t\t// console.log( model.id );\n\t\t\tGrocery.attachToUser(model.id, userId, function(data){\n\n\t\t\t});\n\n\t\t});\n\n\t};\n\n\tGrocery.withDepartments = function(groceryId, cb){\n\t\tGrocery.findOne({\n\t\t\tinclude: {\n\t\t\t\trelation: 'departmentsList',\n\t\t\t\tscope: {\n\t\t\t\t\tfields: [ 'name' ],\n\t\t\t\t\tinclude: {\n\t\t\t\t\t\trelation: 'ingredients',\n\t\t\t\t\t\tscope: {\n\t\t\t\t\t\t\tfields: [ 'name' ],\n\t\t\t\t\t\t\t// where: {\n\t\t\t\t\t\t\t// \tdepartmentId: id\n\t\t\t\t\t\t\t// }\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t}\n\t\t\t},\n\t\t\twhere: {id:groceryId}\n\n\t\t}, cb);\n\t};\n\n\t//:todo think about adding count(to departments). \n\t// So if ingredients in dep = 0 - don't show it\n\tGrocery.element = function(groceryId, cb){\n\n\t\tGrocery.withDepartments(groceryId, function(err, model){\n\n\t\t\tvar g = grocery.toJSON();\n\t\t\t\n\t\t\tvar departments = [];\n\t\t\t// console.log(g.desc);\n\t\t\t// console.log(g.departmentsList);\n\n\t\t\t// case #1 return only dep name with id for link creation\n\t\t\tg.departmentsList.forEach(function(item, i){\n\n\t\t\t\tif( item.visible ) {\n\t\t\t\t\tdepartments.push({\n\t\t\t\t\t\t id: item.id,\n\t\t\t\t\t\t name: item.name \n\t\t\t\t\t});\n\t\t\t\t}\t\n\n\t\t\t\t\n\t\t\t});\n\t\t})\n\n\t}\n\n\n\tGrocery.withPurchased = function(groceryId, cb){\n\t\tGrocery.findOne({\n\t\t\tinclude: {\n\t\t\t\trelation: 'purchased',\n\t\t\t\tscope: {\n\t\t\t\t\tfields: [ 'id', 'name' ],\n\t\t\t\t\t// include: {\n\t\t\t\t\t// \trelation: 'ingredients',\n\t\t\t\t\t// \tscope: {\n\t\t\t\t\t// \t\tfields: [ 'name' ],\n\t\t\t\t\t// \t\t// where: {\n\t\t\t\t\t// \t\t// \tdepartmentId: id\n\t\t\t\t\t// \t\t// }\n\t\t\t\t\t// \t}\n\t\t\t\t\t// }\n\n\t\t\t\t}\n\t\t\t},\n\t\t\twhere: { id:groceryId }\n\n\t\t}, cb);\n\t};\n\n\n\tGrocery.secondWave = function(groceryId, cb){\n\n\t\tvar Department = Grocery.app.models.Department;\n\n\t\tGrocery.findById(groceryId, {\n\n\t\t}, function(err, grocery){\n\n\t\t\tconsole.log(grocery.ingredientIds);\n\n\t\t\tvar ingArr = grocery.ingredientIds;\n\n\t\t\tDepartment.find({\n\t\t\t\tinclude: {\n\t\t\t\t\trelation: 'ingredients',\n\t\t\t\t\tscope: {\n\t\t\t\t\t\twhere : {\n\t\t\t\t\t\t\tid: {\n\t\t\t\t\t\t\t\tinq: ingArr\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}, function(err, model){\n\n\t\t\t\tconsole.log(model);\n\t\t\t\tconsole.log(model.ingredientIds);\n\t\t\t\tvar m = model.toJSON();\n\t\t\t\tconsole.log(m.ingredients);\n\n\t\t\t});\n\n\t\t});\n\n\n\t};\n\n\n\tGrocery.addPurchased = function(options){\n\t\toptions.type  = 'add';\n\t\toptions.field = 'purchasedIds'\n\t\tGrocery.proceed(options);\n\n\t};\n\n\tGrocery.removePurchased = function(options){\n\t\toptions.type  = 'remove';\n\t\toptions.field = 'purchasedIds'\n\t\tGrocery.proceed(options);\n\n\t};\n\n\tGrocery.cleanPurchased = function(options){\n\t\toptions.type  = 'clear';\n\t\toptions.field = 'purchasedIds'\n\t\tGrocery.proceed(options);\n\t};\n\n\tGrocery.addDepartment = function(options){\n\t\toptions.type  = 'hide';\n\t\toptions.field = 'hideThisIds'\n\t\tGrocery.proceed(options);\t\n\t};\n\tGrocery.removeDepartment = function(options){\n\t\toptions.type  = 'show';\n\t\toptions.field = 'hideThisIds'\n\t\tGrocery.proceed(options);\t\t\n\t};\n\tGrocery.showAllDepartments = function(options){\n\t\toptions.type  = 'all';\n\t\toptions.field = 'hideThisIds'\n\t\tGrocery.proceed(options);\t\t\t\n\t};\n\n\tGrocery.addIngredient = function(options){\n\t\toptions.type  = 'add-ing';\n\t\toptions.field = 'ingredientIds';\n\t\tGrocery.proceed(options);\t\t\t\n\t};\n\tGrocery.removeIngredient = function(options){\n\t\toptions.type  = 'remove-ing';\n\t\toptions.field = 'ingredientIds';\n\t\tGrocery.proceed(options);\t\t\t\n\t};\n\n\t// Grocery.addItem = function(options){\n\t// \toptions.type  = 'add-item';\n\t// \toptions.field = 'itemsIds';\n\t// \tGrocery.proceed(options);\t\n\t// };\n\t\n\t// Grocery.removeItem = function(options){\n\t// \toptions.type  = 'remove-item';\n\t// \toptions.field = 'itemsIds';\n\t// \tGrocery.proceed(options);\t\n\t// };\n\tGrocery.proceed = function(options){\n\n\t\tvar type = options.type;\n\n\t\tGrocery.findById(options.groceryId, {}, function(err, model){\n\n\n\t\t\tif( options.type == 'clear' || options.type ==  'all'){\n\n\t\t\t\tmodel.updateAttribute(options.field, []);\t\n\n\t\t\t}\n\n\n\t\t\tif( options.type == 'add' || options.type == 'hide' || options.type == 'add-ing' ){\n\n                let arr = _.map(model[options.field], item => item.toString());\n\n                var mergedValues = _.union( arr, options.secondArray );\n\n                model.updateAttribute(options.field, mergedValues);\n\n\t\t\t}\t\t\n\n\n\t\t\tif( options.type == 'remove' || options.type == 'show' || options.type == 'remove-ing' ){\n\n\t\t\t\n                if( !model[options.field] ){ return true; }\n\n                let arr = _.map(model[options.field], item => item.toString());\n\n                arr = arr.filter(item => !options.secondArray.includes(item));\n                // !!! Read below about array.includes(...) support !!!\n\n                model.updateAttribute(options.field, arr);\n\n\t\t\t}\n\n\t\t\t\n\n\t\t});\n\n\t}\n\n\t\n};\n",
+			"file": "server/models/grocery.js",
+			"file_size": 9773,
+			"file_write_time": 131490469959485019,
+			"settings":
+			{
+				"buffer_size": 9209,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 80 files for \"attachToUser\"\n\nF:\\code\\NMTG\\passport\\loopback-fb-login\\server\\boot\\index-router.js:\n  119  \n  120      var Grocery = app.models.Grocery;\n  121:     Grocery.attachToUser(groceryId, userId);\n  122  \n  123      res.redirect('/auth/account');\n\nF:\\code\\NMTG\\passport\\loopback-fb-login\\server\\models\\grocery.js:\n  142  \t// :todo you can extend this method if you want\n  143  \t// :todo add remote method for this method\n  144: \tGrocery.attachToUser = function(groceryId, userId, cb){\n  145  \n  146  \t\tvar User = Grocery.app.models.user;\n  ...\n  209  \tGrocery.clone = function(groceryId, userId, cb){\n  210  \n  211: \t\t// Grocery.attachToUser(groceryId, userId);\n  212  \t\tGrocery.findById(groceryId, {}, function(err, grocery){\n  213  \n  ...\n  225  \t\t\t\t// console.log(model)\n  226  \t\t\t\t// console.log( model.id );\n  227: \t\t\t\tGrocery.attachToUser(model.id, userId, function(data){\n  228  \n  229  \t\t\t\t});\n  ...\n  258  \n  259  \t\t\t// console.log( model.id );\n  260: \t\t\tGrocery.attachToUser(model.id, userId, function(data){\n  261  \n  262  \t\t\t});\n\n5 matches across 2 files\n\n\nSearching 80 files for \"detach\"\n\nF:\\code\\NMTG\\passport\\loopback-fb-login\\server\\boot\\grocery-router.js:\n  162      // this is a duplicated function from Grocery :todo think about it, real talk   \n  163      var options = {\n  164:       type  : 'detach',\n  165        field : 'groceryIds',\n  166        // groceryId: groceryId,\n\nF:\\code\\NMTG\\passport\\loopback-fb-login\\server\\models\\user.js:\n   87  \n   88  \n   89:             if( options.type == 'remove' || options.type == 'detach' ){\n   90  \n   91                  if( !model[options.field] ){ return true; }\n   ..\n  125  \n  126  \n  127:     // User.detachGroceryAKADelete = function(groceryId, userId, cb){\n  128  \n  129      //     User.findById(userId, {}, function(err, model){\n\n3 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 1845,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "server/boot/index-router.js",
+			"settings":
+			{
+				"buffer_size": 1953,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "'use strict';\n\nvar request        = require('request');\nvar ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;\n// var loopback = require('loopback');\n\n\nmodule.exports = function(app) {\n\n  var router  = app.loopback.Router();\n\n  router.get('/change-the-name/grocery/:groceryId', function(req, res, next){ \n    var groceryId = req.params.groceryId;\n  \tvar Grocery = app.models.Grocery;\n  \tGrocery.findById(groceryId, {}, function(err, model){\n  \t\tmodel.updateAttribute('title', 'Ultimate Grocery List #' + new Date().toString());\n      res.redirect('/auth/account');\n  \t});\n\n  });\n\n  router.post('/addtopurchased', function(req, res, next){\n    // console.log(req.body);\n  \tvar Grocery        = app.models.Grocery;\n    var ingredients    = req.body.ingredients;\n   \tvar groceryId      = req.body.groceryId;\n\n    // Grocery.makePurchased(groceryId, ingredientsArr, function(){});\n\n    var options = {\n\n      groceryId: groceryId,\n      secondArray: ingredients \n    };\n    Grocery.addPurchased(options);\n    \n\n    // var options = {\n    //   type: 'clear',\n    //   field: 'purchasedIds',\n    //   groceryId: groceryId \n    // };\n    // Grocery.proceed(options);\n    \n    // res.redirect('/auth/account');\n\n  });\n\n  router.post('/clearpurchased', function(req, res, next){\n    // console.log(req.body);\n    var Grocery        = app.models.Grocery;\n\n    Grocery.cleanPurchased({});\n\n    res.redirect('/auth/account');\n\n  });\n\n\trouter.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){\n\n\t\tvar Grocery = app.models.Grocery;\n\n\t\t// console.log( req.user.id );\t\t\n\n\t \tvar ingredients = req.params.ingId;\n \t\tvar groceryId   = req.params.groceryId;\n\n    var options = {\n\n      groceryId: groceryId,\n      secondArray: ingredients \n    };\n    Grocery.removePurchased(options);\n    \n    // Grocery.proceed(options);\n\n\t\t// Grocery.withPurchased(groceryId, ingredients, function(err, model){\n\n\t\t// \tvar data = model.toJSON();\n  //     console.log(data.purchased);\n      \n  //     if( !data.purchased ){ return true; } //:todo test this\n      \n  //     let forDeletion = ingredients;\n\n\t //    let arr = data.favorites;\n\n\t //    arr = arr.filter(item => !forDeletion.includes(item))\n\t //      // !!! Read below about array.includes(...) support !!!\n\n\t //      console.log(arr);\n\n\t //      model.updateAttribute('purchasedIds', arr);\n\t //      console.log(model);\n\n  // \t\t});\n\n\n\n\n  });\n\n\n //:todo add relations and display whole information about \n //:todo make it more protected from view\n router.get('/view/grocery/:groceryId', ensureLoggedIn('/auth/account'), \n  function(req, res, next){\n\n    // console.log( req.params.groceryId );\n    // console.log( req.user.id );\n\n    var Grocery   = app.models.Grocery;\n    var groceryId = req.params.groceryId;\n    // var userId    = req.user.id;\n\n    // console.log(groceryId);\n    // console.log(userId);\n\n\n    Grocery.fetchById(groceryId, function(err, grocery){\n\n    \t// console.log(grocery);\n\n    \t// console.log(grocery.departments);\n\n    \tres.render('pages/grocery', {\n    \t\t  title: 'Grocery: ' + grocery.id,\n\t        data: grocery, //:todo change names, punk!\n\t        // url: req.url,\n\t        messages: {},\n\t        departments: grocery.departmentsList\n\t      });  \n\n    });\n\n    // Grocery.findById(req.params.groceryId, {}, function(err, grocery){\n      \n    //   console.log(grocery.departments);\n\n  \n\n    // });\n\n\n\n\n\n });\n\n\n\n  router.get('/auth/attach-grocery-to-user/:groceryId', \n    ensureLoggedIn('/auth/account'), \n    function(req, res, next) {\n\n    // console.log( req.params );\n    var groceryId = req.params.groceryId;\n    var userId    = req.user.id;\n    var User      = app.models.user;\n    var Grocery   = app.models.Grocery;\n\n    // this is a duplicated function from Grocery :todo think about it, real talk   \n    var options = {\n      type  : 'attach',\n      field : 'groceryIds',\n      // groceryId: groceryId,\n      userId: userId,\n      secondArray: [ groceryId ]\n    };\n    User.proceed(options);\n\n    res.redirect('/auth/account');\n  });\n\n\n router.get('/remove/grocery/:groceryId', \n  ensureLoggedIn('/auth/account'), \n  function(req, res, next){\n    var groceryId = req.params.groceryId;\n    var userId    = req.user.id;\n    \n    var User      = app.models.user;\n    var Grocery   = app.models.Grocery;\n\n    // this is a duplicated function from Grocery :todo think about it, real talk   \n    var options = {\n      type  : 'detach',\n      field : 'groceryIds',\n      // groceryId: groceryId,\n      userId: userId,\n      secondArray: [ groceryId ]\n    };\n    User.proceed(options);\n\n    Grocery.destroyById(groceryId, function(err){});\n\n});\n\n\n\n\n\n  router.get('/clone/:groceryId', function(req, res, next) {\n\n    console.log( req.params.groceryId );\n    console.log( req.user.id );\n\n    var Grocery = app.models.Grocery;\n    Grocery.clone( req.params.groceryId, req.user.id, function(){\n\n    });\n\n    // res.redirect('/');\n  });\n\n\n\n\n\n\n router.get('create-new-grocery', \n  ensureLoggedIn('/auth/account'), \n  function(req, res, next){\n\n    console.log( req.user.id );\n    var Grocery = app.models.Grocery;\n    var data = {\n      title: data.title,\n      desc:  data.desc,\n      slug:  '',\n      img :  '',\n      // departmentIds: [], // not sure if we need this\n      // hideThisIds:   [],\n    }\n    Grocery.createnew(req.user.id, data, function(){});\n\n });\n\n\n  app.use(router);\n\n};",
+			"file": "server/boot/grocery-router.js",
+			"file_size": 5411,
+			"file_write_time": 131490473180097353,
+			"settings":
+			{
+				"buffer_size": 5377,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/boot/favorites-router.js",
+			"settings":
+			{
+				"buffer_size": 3119,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/views/pages/account.pug",
+			"settings":
+			{
+				"buffer_size": 1050,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/views/partials/favorites-list.pug",
+			"settings":
+			{
+				"buffer_size": 212,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/views/pages/favorites.pug",
+			"settings":
+			{
+				"buffer_size": 287,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/models/user.js",
+			"settings":
+			{
+				"buffer_size": 4561,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "игра во чтото на крипту.\nтипо шахматы или шашки онлайцн. проебал - отправь кусок противнику.\n\n\nбыстрая локация рядом с тобой фрешмаркетов или еды\nmapbox или как там эта вздрочь называется\n",
+			"settings":
+			{
+				"buffer_size": 188,
+				"line_ending": "Windows",
+				"name": "игра во чтото на крипту."
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/F/code/NMTG/passport/loopback-fb-login",
+		"/F/code/NMTG/passport/loopback-fb-login/client/dist",
+		"/F/code/NMTG/passport/loopback-fb-login/server",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials"
+	],
+	"file_history":
+	[
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/favorites-list-forms.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/package.json",
+		"/F/code/NMTG/passport/loopback-fb-login/webpack.config.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/index.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/navigation.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/index-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/grocery-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/department.json",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/import.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/automigrate.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/ingredients.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/departments.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/ingredients-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/department-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/grocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/items-routes.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/mixins/mixin.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/department.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/account.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/forms/purchased.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/middleware.development.json",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/layouts/dashboard.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/forms/clear-purchased.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/favorites-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/forms/grocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/forms/unpurchased.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/groceries-list.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/boot/account-router.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/layouts/layout.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/head.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/grocery.js",
+		"/F/code/NMTG/passport/loopback-fb-login/README.md",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/user-favorites.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/automigrate-small.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user.js",
+		"/F/code/NMTG/passport/loopback-fb-login/client/public/javascript/grocery/app.js",
+		"/F/code/NMTG/passport/loopback-fb-login/client/public/javascript/home/custom.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/ultimate/items2.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/ultimate/items1.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/ultimate/department1.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/users.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/grocery2.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/layouts/grocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/client/public/css/home/style.css",
+		"/F/code/2-2-2/_dev-notes/stuff",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/grocery.json",
+		"/F/code/NMTG/passport/loopback-fb-login/client/todomvc/js/app.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/scripts-grocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/grid-delete-later.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/scripts-dash.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/styles-dash.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/browserupdate.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/loginProfiles.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/grocery-item.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/departments-list-delete-later.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/client/dasha/html/tables/editable2.html",
+		"/F/code/NMTG/passport/loopback-fb-login/client/public/javascript/dash/editable.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/lastgrocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/banner.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/ingredient.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/login.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/favorites.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/signup.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/groceries.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/department.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/local.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/purchased.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/printgrocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/managegrocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/managedepartments.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/dashboard.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/server.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/layouts/homepage.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/pages/home.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/styles-home.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/.gitignore",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/scripts-home.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/static/styles-grocery.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/client/smartmvp-startup/main-layout/index-type.html",
+		"/F/code/NMTG/passport/loopback-fb-login/client/smartmvp-startup/main-layout/2.html",
+		"/F/code/NMTG/passport/loopback-fb-login/client/todomvc/index.html",
+		"/F/code/easymail/html/email/html/index.html",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user.json",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/grocery-item-hidden.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/favorites-list.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/footer.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/ingredient.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user-fav.json",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user-fav.js",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/grocery.js",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user-identity.json",
+		"/F/code/NMTG/passport/loopback-fb-login/server/models/user-grocery.json",
+		"/F/code/NMTG/passport/loopback-fb-login/providers.json",
+		"/F/code/NMTG/passport/loopback-fb-login/server/views/partials/departments-list.pug",
+		"/F/code/NMTG/passport/loopback-fb-login/bin/import/user-grocery.js",
+		"/F/code/NMTG/passport/loopback-fb-login/client/landos/download/index.html",
+		"/F/code/NMTG/api/the-api/server/models/ingredient.js",
+		"/F/code/NMTG/api/the-api/server/models/grocery.js",
+		"/F/code/NMTG/api/the-api/server/models/menu.js",
+		"/F/code/NMTG/api/the-api/server/models/department.js",
+		"/F/code/NMTG/api/the-api/server/models/recipe.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/calendar.html",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/calendar.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/core.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/bootstrap-extend.min.css",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/site.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/components.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/init.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/components.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/app.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/app.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/index.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/slider.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/main.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/append-svg.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/index3.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/index.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/index3.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/js/main.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/bin/www",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/process.php",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-sl_SL.po",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-uk_UA.po",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-ru_RU.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-ru_RU.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-sl_SI.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-zh_TW.po",
+		"/C/wamp64/www/second/wp-content/themes/два/plugins/wp-pagenavi-ru_RU.po"
+	],
+	"find":
+	{
+		"height": 50.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server\\boot",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server\\boot",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\client\\smartmvp-startup",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\client",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\node_modules",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server\\boot",
+			"F:\\code\\NMTG\\passport\\loopback-fb-login\\server\\models",
+			"F:\\code\\NMTG\\api\\the-api",
+			"F:\\code\\NMTG\\api\\the-api\\server\\models"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"detach",
+			"attachToUser",
+			"groceryHideDepartment",
+			"detachGroceryAKADelete",
+			"options.type == 'remove' ",
+			"detachGroceryAKADelete",
+			"delete/department",
+			"hide/department",
+			"makePurchased",
+			"baza",
+			"purchased",
+			"post",
+			"makePurchased",
+			"fonts",
+			"ocean.jpg",
+			"learn",
+			"blocks",
+			"destroyById",
+			"update",
+			"attachToUser",
+			"fetch",
+			"attachToUser",
+			"Site",
+			"selective",
+			"САД",
+			"map",
+			"attachAllergiesToRecipes",
+			"createAllergies",
+			"attachIngredientsToRecipes",
+			"createRecipes",
+			"attachDepartmentsToIngredients",
+			"createIngredients",
+			"attachIngredientsToRecipes",
+			"@TODO",
+			"Nutritions",
+			"forEach",
+			"listRecipesShort",
+			"\t\t\n",
+			"upsert",
+			"saveMenu",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 234,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								99,
+								99
+							]
+						],
+						"settings":
+						{
+							"auto_name": "59ad416bed2a9b0f5c73c856",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server/models/grocery.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3037,
+								2481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1492.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1845,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										180,
+										192
+									],
+									[
+										453,
+										465
+									],
+									[
+										645,
+										657
+									],
+									[
+										848,
+										860
+									],
+									[
+										988,
+										1000
+									],
+									[
+										1330,
+										1336
+									],
+									[
+										1560,
+										1566
+									],
+									[
+										1687,
+										1693
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "server/boot/index-router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1953,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1925,
+								1925
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3728.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server/boot/grocery-router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3501,
+								3501
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5111.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "server/boot/favorites-router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2286,
+								2286
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2754.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "server/views/pages/account.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1050,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								756,
+								756
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "server/views/partials/favorites-list.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								4
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "server/views/pages/favorites.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "server/models/user.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1778,
+								1778
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1371.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								187
+							]
+						],
+						"settings":
+						{
+							"auto_name": "игра во чтото на крипту.",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": ".sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 249.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
