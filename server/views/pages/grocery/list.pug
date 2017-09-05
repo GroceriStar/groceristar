@@ -1,1 +1,14 @@
-list.pug
+extends ../layouts/dashboard
+
+block content
+  h2 Third Party Profile(s)
+
+
+  hr
+
+  if groceries
+    .col-md-12
+      include ../partials/groceries-list
+    br
+  else
+    h2 You don't add any grocery lists at this moment    

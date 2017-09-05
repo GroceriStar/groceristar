@@ -173,14 +173,15 @@ module.exports = function(app) {
 
 // :todo finish
   router.get('/clone/:groceryId', function(req, res, next) {
+    var userId    = req.user.id;    
+    var groceryId = req.params.groceryId;  
+    // var User      = app.models.user;
+    var Grocery   = app.models.Grocery;
+    // console.log( req.params.groceryId );
+    // console.log( req.user.id );
 
-    console.log( req.params.groceryId );
-    console.log( req.user.id );
-
-    var Grocery = app.models.Grocery;
-    Grocery.clone( req.params.groceryId, req.user.id, function(){
-
-    });
+    // var Grocery = app.models.Grocery;
+    Grocery.clone( groceryId, userId, function(){});
 
     // res.redirect('/');
   });

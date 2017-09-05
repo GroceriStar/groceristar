@@ -144,29 +144,39 @@ module.exports = function(Grocery) {
 	//:todo add remote method for enable API calls for this method
 
 
-	Grocery.clone = function(groceryId, userId, cb){
+	Grocery.clone = function(groceryId, userId){
 
 		// Grocery.attachToUser(groceryId, userId);
 		Grocery.findById(groceryId, {}, function(err, grocery){
 
-			// console.log(grocery);
+			console.log(grocery);
+			console.log('-----');
+			console.log(grocery.ingredientIds);
 			//:todo use createnew method instead of duplicate stuff
-			Grocery.create({
+
+			var object = {
 				title: 'Clone of <' + grocery.title + '>',
 				desc: grocery.desc,
 				slug: grocery.slug,
 				img : grocery.img,
-				departmentIds: grocery.departmentIds,
+				// departmentIds: grocery.departmentIds,
 				hideThisIds:   grocery.hideThisIds,
-			}, function(err, model){
+				ingredientIds: grocery.ingredientIdsб
+				created_at: new Date(),
+				updated_at: new Date(),
+			};
+			console.log('-----');
+			console.log(object);
 
-				// console.log(model)
-				// console.log( model.id );
-				Grocery.attachToUser(model.id, userId, function(data){
+			// Grocery.create(object, function(err, model){
 
-				});
+			// 	// console.log(model)
+			// 	// console.log( model.id );
+			// 	Grocery.attachToUser(model.id, userId, function(data){
 
-			});
+			// 	});
+
+			// });
 
 			
 
