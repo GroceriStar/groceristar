@@ -198,8 +198,10 @@ module.exports = function(User) {
 
                 var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
                   return item.departmentId.toString();
-                }),function(grouped){
-                  return grouped[0];
+                }), function(grouped){
+
+                    return grouped[0].departmentId.toString();
+                  // return grouped[0];
                 });
                 console.log(uniques);
 
