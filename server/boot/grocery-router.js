@@ -183,7 +183,7 @@ module.exports = function(app) {
     // var Grocery = app.models.Grocery;
     Grocery.clone( groceryId, userId, function(){});
 
-    // res.redirect('/');
+    res.redirect('/auth/account');
   });
 
 

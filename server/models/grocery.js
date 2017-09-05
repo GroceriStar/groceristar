@@ -152,9 +152,9 @@ module.exports = function(Grocery) {
 			
 		}, function(err, grocery){
 
-			console.log(grocery);
-			console.log('-----');
-			console.log(grocery.ingredientIds);
+			// console.log(grocery);
+			// console.log('-----');
+			// console.log(grocery.ingredientIds);
 			//:todo use createnew method instead of duplicate stuff
 
 			var object = {
@@ -168,18 +168,27 @@ module.exports = function(Grocery) {
 				created_at: new Date(),
 				updated_at: new Date(),
 			};
-			console.log('-----');
-			console.log(object);
+			// console.log('-----');
+			// console.log(object);
 
-			// Grocery.create(object, function(err, model){
+			Grocery.create(object, function(err, model){
 
-			// 	// console.log(model)
-			// 	// console.log( model.id );
-			// 	Grocery.attachToUser(model.id, userId, function(data){
+				// console.log(model)
+				// console.log( model.id );
+				// Grocery.attachToUser(model.id, userId, function(data){
 
-			// 	});
+				// });
 
-			// });
+				var User    = Grocery.app.models.user;
+			    var options = {
+			      type  : 'attach',
+			      field : 'groceryIds',
+			      userId: userId,
+			      secondArray: [ model.id ]
+			    };
+			    User.proceed(options);
+			    console.log('-----');
+			});
 
 			
 
