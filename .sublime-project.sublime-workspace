@@ -1,0 +1,513 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Пл",
+				"Планировка"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"re",
+				"recipe"
+			],
+			[
+				"recip",
+				"recipeId"
+			],
+			[
+				"f",
+				"first"
+			],
+			[
+				"in",
+				"ingredients"
+			],
+			[
+				"arra",
+				"arrayWithIds"
+			],
+			[
+				"user",
+				"userInstance"
+			],
+			[
+				"fin",
+				"findById"
+			],
+			[
+				"Menu",
+				"MenuModel"
+			],
+			[
+				"ingredei",
+				"ingredient"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"gro",
+				"groceries"
+			],
+			[
+				"de",
+				"departments"
+			],
+			[
+				"menu",
+				"menuId"
+			],
+			[
+				"Rec",
+				"RecipeModel"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"find",
+				"findByIds"
+			],
+			[
+				"ingre",
+				"ingredientId"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"Reci",
+				"Recipe"
+			],
+			[
+				"Role",
+				"RoleMapping"
+			],
+			[
+				"User",
+				"UserModel"
+			],
+			[
+				"Recipe",
+				"RecipeModel"
+			],
+			[
+				"get",
+				"getMenuId"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"fo",
+				"forEach"
+			],
+			[
+				"Re",
+				"Recipe"
+			],
+			[
+				"RoleM",
+				"RoleMapping"
+			],
+			[
+				"Recip",
+				"Recipes2"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 43136,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/F/code/NMTG/passport/loopback-fb-login/.sublime-project.sublime-workspace",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/calendar.html",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/calendar.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/core.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/bootstrap-extend.min.css",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/site.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/components.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/init.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/components.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/html/apps/calendar/app.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/html/assets/js/app.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/index.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/slider.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/main.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/assets/js/append-svg.js",
+		"/F/code/СЕЛЬВЕНИЧЕ/house-lp/index3.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/index.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/index3.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/js/main.js",
+		"/F/code/NMTG/calendar3/fullcalendar-node2/bin/www",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/process.php",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-sl_SL.po",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-uk_UA.po",
+		"/C/wamp64/www/wp-content/latest6/languages/plugins/wp-pagenavi-ru_RU.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-ru_RU.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-sl_SI.po",
+		"/C/Users/PC/Desktop/ыч/wp-pagenavi-zh_TW.po",
+		"/C/wamp64/www/second/wp-content/themes/два/plugins/wp-pagenavi-ru_RU.po",
+		"/C/Users/PC/Desktop/ыч/plugin wp-pagenavi-sl.po",
+		"/C/Users/PC/Desktop/ыч/plugin wp-pagenavi-ru.po",
+		"/C/Users/PC/Desktop/ыч/plugin wp-pagenavi-zh-hant.po",
+		"/C/wamp64/www/second/wp-content/themes/два/plugins/wp-pagenavi-ru_RU.mo",
+		"/C/Users/PC/AppData/Local/Temp/fz3temp-2/footer.php",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/index2.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/google-maps.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/css/main.css",
+		"/F/code/СЕЛЬВЕНИЧЕ/themeforest-5674957-keylight-light-flat-portfolio/Keylight/HTML/index - Copy.html",
+		"/F/code/СЕЛЬВЕНИЧЕ/гит2/house-lp/.gitignore",
+		"/F/code/NMTG/api/the-api/server/models/user.js",
+		"/F/code/NMTG/api/the-api/server/models/email-model.json",
+		"/F/code/NMTG/api/the-api/server/model-config.json",
+		"/F/code/NMTG/api/the-api/server/models/diet-model.json",
+		"/F/code/NMTG/api/the-api/server/models/department-model2.json",
+		"/F/code/NMTG/api/the-api/server/models/department-model.json",
+		"/F/code/NMTG/api/the-api/server/models/cuisine-model.json",
+		"/F/code/NMTG/api/the-api/server/models/course-model.json",
+		"/F/code/NMTG/api/the-api/server/models/course-model.js",
+		"/F/code/NMTG/api/the-api/server/models/allergy-model.js",
+		"/F/code/NMTG/api/the-api/server/models/ingredient-model2.js",
+		"/F/code/NMTG/api/the-api/server/models/grocery-model.js",
+		"/F/code/NMTG/api/the-api/server/models/grocery-model.json",
+		"/F/code/NMTG/api/the-api/server/models/grocery-model2.json",
+		"/F/code/NMTG/api/the-api/server/models/holiday-model.json",
+		"/F/code/NMTG/api/the-api/server/models/holiday-model.js",
+		"/F/code/NMTG/api/the-api/server/models/ingredient-model2.json",
+		"/F/code/NMTG/api/the-api/server/models/menu-model.json",
+		"/F/code/NMTG/api/the-api/server/models/nutritions-model.json",
+		"/F/code/NMTG/api/the-api/server/models/recipe-model.json",
+		"/F/code/NMTG/api/the-api/server/models/recipe-model2.json",
+		"/F/code/NMTG/api/the-api/server/models/user-model.json",
+		"/F/code/NMTG/api/the-api/server/models/allergy-model.json",
+		"/F/code/NMTG/api/the-api/server/models/ingredient-model.json",
+		"/F/code/NMTG/api/the-api/bin/sample-menus-data.js",
+		"/F/code/NMTG/api/the-api/server/models/menu-model.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/menu.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/nutritions.js",
+		"/F/code/NMTG/api/the-api/bin/import-nutritions.js",
+		"/F/code/NMTG/api/the-api/bin/nutritions.js",
+		"/F/code/NMTG/api/the-api/package.production.json",
+		"/F/code/NMTG/api/the-api/bin/import-samples.js",
+		"/C/Users/PC/Downloads/htaccess",
+		"/F/code/NMTG/api/the-api/bin/holidays.js",
+		"/F/code/NMTG/api/the-api/bin/diet.js",
+		"/F/code/NMTG/api/the-api/bin/cuisine.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/recipes.js",
+		"/F/code/NMTG/api/the-api/bin/allergy.js",
+		"/F/code/NMTG/api/the-api/bin/courses.js",
+		"/F/code/NMTG/api/the-api/bin/sample-users-data.js",
+		"/F/code/NMTG/api/the-api/package.json",
+		"/F/code/NMTG/api/the-api/bin/grocery/departments.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/ingredients.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/grocery.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/import.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/list.js",
+		"/F/code/NMTG/api/the-api/bin/grocery/sample-ingredients-data.js",
+		"/F/code/NMTG/api/the-api/bin/import-grocery-only.js",
+		"/F/code/NMTG/api/the-api/server/models/user-model.js",
+		"/F/code/NMTG/api/the-api/bin/ingredients2.js",
+		"/F/code/NMTG/api/the-api/bin/departments2.js",
+		"/F/code/NMTG/api/the-api/bin/grocery2.js",
+		"/F/code/NMTG/api/the-api/README.md",
+		"/F/code/NMTG/api/the-api/server/controllers/user-controller.js",
+		"/F/code/NMTG/api/the-api/server/boot/user-router.js",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredient.php",
+		"/F/code/NMTG/api/the-api/bin/sample-data.js",
+		"/F/code/NMTG/api/the-api/server/views/account/login1.pug",
+		"/F/code/NMTG/api/the-api/server/server.js",
+		"/F/code/NMTG/api/the-api/server/views/account/response.pug",
+		"/F/code/NMTG/api/the-api/server/views/account/responseToTriggerEmail.pug",
+		"/F/code/NMTG/api/the-api/server/views/account/verified.pug",
+		"/F/code/NMTG/api/the-api/server/views/account/verify.pug",
+		"/F/code/NMTG/api/the-api/bin/sample-recipes-search-data.js",
+		"/F/code/NMTG/api/the-api/docs/trash/db.json",
+		"/F/code/NMTG/api/the-api/server/models/allergy.json",
+		"/F/code/NMTG/api/the-api/server/models/ingredient-model.js",
+		"/F/code/NMTG/api/the-api/bin/automigrate.js",
+		"/F/code/NMTG/api/the-api/server/datasources.json",
+		"/F/code/NMTG/api/the-api/server/models/recipe-model.js",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientImage.php",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientRating.php",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientLink.php",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientFavorite.php",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientDirection.php",
+		"/F/code/NMTG/api/the-api/docs/trash/ingredientComment.php",
+		"/F/code/NMTG/api/the-api/server/models/email-model.js",
+		"/F/code/NMTG/api/the-api/server/models/allergy.js",
+		"/F/code/NMTG/api/the-api/server/models/department-model.js",
+		"/F/code/NMTG/api/the-api/bin/sample-recipes-data.js",
+		"/F/code/NMTG/api/the-api/bin/sample-ingredients-data.js",
+		"/F/code/NMTG/api/the-api/bin/sample-grocery-data.js",
+		"/F/code/NMTG/api/the-api/bin/sample-departments-data.js",
+		"/F/code/NMTG/api/the-api/bin/send-email.js",
+		"/F/code/NMTG/api/the-api/.gitignore",
+		"/F/code/NMTG/api/the-api/server/boot/routes.js",
+		"/F/code/NMTG/api/the-api/bin/import-samples2.js",
+		"/F/code/NMTG/api/the-api/server/models/diet-model.js",
+		"/F/code/NMTG/api/the-api/server/models/customer-model.js",
+		"/F/code/NMTG/api/the-api/server/models/cuisine-model.js"
+	],
+	"find":
+	{
+		"height": 42.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+			"F:\\code\\NMTG\\api\\the-api",
+			"F:\\code\\NMTG\\api\\the-api\\server\\models"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Site",
+			"selective",
+			"САД",
+			"map",
+			"attachAllergiesToRecipes",
+			"createAllergies",
+			"attachIngredientsToRecipes",
+			"createRecipes",
+			"attachDepartmentsToIngredients",
+			"createIngredients",
+			"attachIngredientsToRecipes",
+			"@TODO",
+			"Nutritions",
+			"forEach",
+			"listRecipesShort",
+			"\t\t\n",
+			"upsert",
+			"saveMenu",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": ".sublime-workspace",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								43136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 42.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": ".sublime-project.sublime-project",
+	"replace":
+	{
+		"height": 80.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 159.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
