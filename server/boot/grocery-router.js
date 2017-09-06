@@ -92,6 +92,8 @@ module.exports = function(app) {
     // console.log(userId);
 
 
+    
+
     Grocery.fetchById(groceryId, function(err, grocery){
 
     	// console.log(grocery);

@@ -30,35 +30,39 @@ module.exports = function(Grocery) {
 	// when we call this method - we know that this grocery is attached to user,
 	// so it's not so important to check relations between this grocery and user
 
-	// Grocery.fetchById = function(groceryId, cb){
+	Grocery.fetchById = function(groceryId, cb){
 
-	// 	Grocery.findById(groceryId, {
-	// 		include: {
-	// 			relation: 'departmentsList',
-	// 			scope: {
-	// 				fields: [ 'id', 'name' ],
-	// 				include: {
-	// 					relation: 'ingredients',
-	// 					scope: {
-	// 						fields: [ 'id', 'name' ],
+		Grocery.findById(groceryId, {		
+			include: {
+				relation: 'ingredients',
+				scope: {
 
-	// 					}
-	// 				}
+					fields: [ 'id', 'name', 'department' ],
+					include: {
+						relation: 'department',
+						scope: {
+							fields: [ 'id', 'name' ],
+							// fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
 
-	// 			}
-	// 		}
+				}
+			}
 
-	// 	}, function(err, grocery){
+		}, function(err, grocery){
 
-	// 		var g = grocery.toJSON();
-	// 		// console.log(grocery);
-	// 		cb(null, g);
+			var g = grocery.toJSON();
+			// console.log(grocery);
+			cb(null, g);
 
-	// 	});
+		});
 
 
 
-	// };
+	};
 
 	// :todo not sure what i mean by this.
 	// not working now. Can be used for query ONLY
@@ -87,7 +91,7 @@ module.exports = function(Grocery) {
 
 			console.log(models);
 
-			_.map()
+			// _.map()
 
 			// var g = grocery.toJSON();
 			
@@ -277,6 +281,8 @@ module.exports = function(Grocery) {
 		}, cb);
 	};
 
+
+	// :todo now used right now. change this!
 	Grocery.fetchQuery = function(cb){
 
 		Grocery.find({
