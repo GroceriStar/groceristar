@@ -30,41 +30,42 @@ module.exports = function(Grocery) {
 	// when we call this method - we know that this grocery is attached to user,
 	// so it's not so important to check relations between this grocery and user
 
-	Grocery.fetchById = function(groceryId, cb){
+	// Grocery.fetchById = function(groceryId, cb){
 
-		Grocery.findById(groceryId, {
-			include: {
-				relation: 'departmentsList',
-				scope: {
-					fields: [ 'id', 'name' ],
-					include: {
-						relation: 'ingredients',
-						scope: {
-							fields: [ 'id', 'name' ],
+	// 	Grocery.findById(groceryId, {
+	// 		include: {
+	// 			relation: 'departmentsList',
+	// 			scope: {
+	// 				fields: [ 'id', 'name' ],
+	// 				include: {
+	// 					relation: 'ingredients',
+	// 					scope: {
+	// 						fields: [ 'id', 'name' ],
 
-						}
-					}
+	// 					}
+	// 				}
 
-				}
-			}
+	// 			}
+	// 		}
 
-		}, function(err, grocery){
+	// 	}, function(err, grocery){
 
-			var g = grocery.toJSON();
-			// console.log(grocery);
-			cb(null, g);
+	// 		var g = grocery.toJSON();
+	// 		// console.log(grocery);
+	// 		cb(null, g);
 
-		});
+	// 	});
 
 
 
-	};
+	// };
 
 	// :todo not sure what i mean by this.
+	// not working now. Can be used for query ONLY
 	Grocery.fetch = function(cb){
 
 
-		Grocery.findOne({
+		Grocery.find({
 			include: {
 				relation: 'ingredients',
 				scope: {
@@ -82,28 +83,36 @@ module.exports = function(Grocery) {
 				}
 			}
 
-		}, function(err, grocery){
+		}, function(err, models){
 
-			console.log(grocery);
+			console.log(models);
 
-			var g = grocery.toJSON();
+			_.map()
+
+			// var g = grocery.toJSON();
 			
-			var departments = [];
+			var response = [];
 			// console.log(g.desc);
 			// console.log(g.departmentsList);
 
 
-			// _.map( g.groceries, function(grocery){
+			// _.map( g.ingredients, function(ingredient){
 
-                // var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
+				// console.log(ingredient);
+				// console.log(ingredient.department);
+
+                // var uniques = _.map(_.groupBy(g.ingredients, function(item){
                 //   return item.department.id.toString();
                 // }), function(grouped){
 
-                //     return { id: grouped[0].department.id.toString(),
-                //             name: grouped[0].department.name };
+                //     return {  
+                //     		id: grouped[0].department.id.toString(),
+                //             name: grouped[0].department.name,
+                //             link: '#'
+                //         };
 
                 // });
-                
+                // console.log(uniques);
 
                 // response.push({
                 //     id: grocery.id,
@@ -150,11 +159,11 @@ module.exports = function(Grocery) {
 			// })
 
 			
-			var object = {
-				desc: g.desc,
-				departments:departments
-			};
-			cb(null, object);
+			// var object = {
+			// 	desc: g.desc,
+			// 	departments:departments
+			// };
+			// cb(null, object);
 				
 
 		});
@@ -264,6 +273,29 @@ module.exports = function(Grocery) {
 				}
 			},
 			where: {id:groceryId}
+
+		}, cb);
+	};
+
+	Grocery.fetchQuery = function(cb){
+
+		Grocery.find({
+			include: {
+				relation: 'ingredients',
+				scope: {
+					fields: [ 'id', 'name' ],
+					include: {
+						relation: 'department',
+						scope: {
+							fields: [ 'id', 'name', 'department' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
+
+				}
+			}
 
 		}, cb);
 	};

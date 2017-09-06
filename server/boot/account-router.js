@@ -72,42 +72,59 @@ module.exports = function(app) {
 	    var userId  = req.user.id;
 	    // console.log(req.user.id);
 
-	    Grocery.fetch(function(error, response){
+        User.methodofAllMethods(userId, function(err, groceries){
+	      res.render('pages/account', {
+	        title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
 
-	        // console.log(response);
-	          //:todo make this a separate method inside model
-	           User.findById(userId, {}).then(function(model){
-	              // console.log(model);
-	              // console.log(model.groceryIds);
+	        // url: req.url,
+	        messages: {},
+	        // departments: grocery.departmentsList
+	        groceries: groceries,
 
-	              Grocery.find({
-	                where: {id: {
-	                  inq: model.groceryIds 
-	                 }
-	                }
-	              }).then(function(models){
-
-
-	                // console.log(models);
+	        user: req.user,
+            url: req.url
+	          
+	      }); 
+	    });
 
 
-	                 res.render('pages/account', {
-	                    user: req.user,
-	                    url: req.url,
-	                    groceries: models,
-	                  //data: response //:todo change this names
-	                }); 
 
-	              });
+	    // Grocery.fetch(function(error, response){
+
+	    //     // console.log(response);
+	    //       //:todo make this a separate method inside model
+	    //        User.findById(userId, {}).then(function(model){
+	    //           // console.log(model);
+	    //           // console.log(model.groceryIds);
+
+	    //           Grocery.find({
+	    //             where: {id: {
+	    //               inq: model.groceryIds 
+	    //              }
+	    //             }
+	    //           }).then(function(models){
+
+
+	    //             // console.log(models);
+
+
+	    //              res.render('pages/account', {
+	    //                 user: req.user,
+	    //                 url: req.url,
+	    //                 groceries: models,
+	    //               //data: response //:todo change this names
+	    //             }); 
+
+	    //           });
 
 	                
 
-	           });
+	    //        });
 
 	          
 	       
 
-	    });
+	    // });
 	    // .catch(function(err){
 	    //   throw err;
 	    // });
