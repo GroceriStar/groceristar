@@ -7,8 +7,8 @@ block content
 
   if groceries
     .col-md-12
-      include ../partials/groceries-list
-      
+      //include ../partials/groceries-list
+      +view_groceries_departments(groceries)
     br
   else
     h2 You don't add any grocery lists at this moment    

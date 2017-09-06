@@ -64,6 +64,8 @@ module.exports = function(app) {
 		res.redirect('/');
 	});
 
+
+
 	router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 	    var Grocery = app.models.Grocery;
 	    var User    = app.models.user; 

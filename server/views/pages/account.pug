@@ -27,7 +27,9 @@ block content
 
   if groceries
     .col-md-12
-      include ../partials/groceries-list
+      +view_groceries_short(groceries)
+
+      //include ../partials/groceries-list
   br
 
 

@@ -167,17 +167,10 @@ module.exports = function(User) {
              }
          }
         }, function(err, user){
-
-            // console.log( user );
-
             var g = user.toJSON();
-
             var response = [];
 
-
             _.map( g.groceries, function(grocery){
-
-
 
                 var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
                   return item.department.id.toString();
@@ -185,7 +178,6 @@ module.exports = function(User) {
 
                     return { id: grouped[0].department.id.toString(),
                             name: grouped[0].department.name };
-                        
 
                 });
                 
@@ -197,7 +189,7 @@ module.exports = function(User) {
                 });
 
                 
-                });
+            });
 
 
             cb(null, response);

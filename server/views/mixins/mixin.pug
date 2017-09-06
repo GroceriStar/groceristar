@@ -16,17 +16,35 @@ mixin view_departments_extended(array)
           a(href='/#' + val.id) ' ' + view  
 
 mixin view_departments_awesome(array)
-  ul
-    each val, index in array
-      li= val.name + '( ' + val.id + ' ) '
-        a(href='/#' + val.id) view
+  if array
+    ul
+      each val, index in array
+        li= val.name + '( ' + val.id + ' ) '
+          a(href='/#' + val.id) view
 
         //if user
         //- User *is* logged In
 
+          a(href='/visibility/department/' + val.id)
+            i.fa.fa-bell.fa-4x
+            SHOW   
 
+mixin view_groceries_short(array)
+  br
+  ul
+    each val, index in array
+      li= val.title + '( ' + val.id + ' ) '
+        a(href='/view/grocery/' + val.id, class="btn") link
+      a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
 
-        a(href='/visibility/department/' + val.id)
-          i.fa.fa-bell.fa-4x
-          SHOW   
+mixin view_groceries_departments(array)
 
+  br
+  ul
+    each val, index in array
+      li= val.title + '( ' + val.id + ' ) '
+        a(href='/view/grocery/' + val.id, class="btn") link
+      a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
+
+      +view_departments_awesome(val.departments)
+      hr 

@@ -66,11 +66,11 @@ module.exports = function(Grocery) {
 
 		Grocery.findOne({
 			include: {
-				relation: 'departmentsList',
+				relation: 'ingredients',
 				scope: {
 					fields: [ 'name' ],
 					include: {
-						relation: 'ingredients',
+						relation: 'department',
 						scope: {
 							fields: [ 'name' ],
 							// where: {
@@ -92,18 +92,25 @@ module.exports = function(Grocery) {
 			// console.log(g.desc);
 			// console.log(g.departmentsList);
 
+
+
+
+
+
 			// case #1 return only dep name with id for link creation
-			g.departmentsList.forEach(function(item, i){
+			// g.departmentsList.forEach(function(item, i){
 
 				// case #1 return only dep name with id for link creation
 				// console.log(item.name);
 				// console.log(item.id);
 				// console.log(item.visible);
 				// console.log(item.ingredients.length > 0);
-				departments.push({ id: item.id, name: item.name });
+				// departments.push({ id: item.id, name: item.name });
 
 				
-			});
+			// });
+
+
 
 
 			// console.log(departments);
