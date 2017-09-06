@@ -3,7 +3,7 @@
 var _ = require('underscore');
 var path = require('path');
 
-var iterator = require(path.join(__dirname + '/../like-middleware-helper'));
+// var iterator = require(path.join(__dirname + '/../like-middleware-helper'));
 
 module.exports = function(User) {
 
@@ -174,7 +174,8 @@ module.exports = function(User) {
             var response = [];
 
 
-            iterator(g.groceries);
+            // iterator(g.groceries);
+            // :todo update to single function, without duplicates.
             _.map( g.groceries, function(grocery){
 
                 var uniques = _.map(_.groupBy(grocery.ingredients, function(item){

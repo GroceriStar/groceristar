@@ -68,11 +68,11 @@ module.exports = function(Grocery) {
 			include: {
 				relation: 'ingredients',
 				scope: {
-					fields: [ 'name' ],
+					// fields: [ 'name' ],
 					include: {
 						relation: 'department',
 						scope: {
-							fields: [ 'name' ],
+							// fields: [ 'name' ],
 							// where: {
 							// 	departmentId: id
 							// }
@@ -84,7 +84,7 @@ module.exports = function(Grocery) {
 
 		}, function(err, grocery){
 
-			// console.log(grocery);
+			console.log(grocery);
 
 			var g = grocery.toJSON();
 			
@@ -93,7 +93,26 @@ module.exports = function(Grocery) {
 			// console.log(g.departmentsList);
 
 
-			
+			// _.map( g.groceries, function(grocery){
+
+                // var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
+                //   return item.department.id.toString();
+                // }), function(grouped){
+
+                //     return { id: grouped[0].department.id.toString(),
+                //             name: grouped[0].department.name };
+
+                // });
+                
+
+                // response.push({
+                //     id: grocery.id,
+                //     title: grocery.title,
+                //     departments: uniques
+                // });
+
+                
+            // });
 
 
 
