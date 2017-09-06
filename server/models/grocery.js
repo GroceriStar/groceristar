@@ -93,7 +93,7 @@ module.exports = function(Grocery) {
 			// console.log(g.departmentsList);
 
 
-
+			
 
 
 

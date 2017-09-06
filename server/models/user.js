@@ -1,6 +1,9 @@
 'use strict';
 
 var _ = require('underscore');
+var path = require('path');
+
+var iterator = require(path.join(__dirname + '/../like-middleware-helper'));
 
 module.exports = function(User) {
 
@@ -45,7 +48,7 @@ module.exports = function(User) {
 
             // console.log(data.favorites);
 
-
+            // :todo update this ot underscore
             data.favorites.forEach(function(item, i){
               
                 // console.log(item.name);
@@ -170,6 +173,8 @@ module.exports = function(User) {
             var g = user.toJSON();
             var response = [];
 
+
+            iterator(g.groceries);
             _.map( g.groceries, function(grocery){
 
                 var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
@@ -190,6 +195,8 @@ module.exports = function(User) {
 
                 
             });
+
+
 
 
             cb(null, response);
