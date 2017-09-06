@@ -37,11 +37,11 @@ module.exports = function(Grocery) {
 				relation: 'ingredients',
 				scope: {
 
-					fields: [ 'id', 'name', 'department' ],
+					// fields: [ 'id', 'name', 'department' ],
 					include: {
 						relation: 'department',
 						scope: {
-							fields: [ 'id', 'name' ],
+							// fields: [ 'id', 'name' ],
 							// fields: [ 'name' ],
 							// where: {
 							// 	departmentId: id
@@ -54,9 +54,35 @@ module.exports = function(Grocery) {
 
 		}, function(err, grocery){
 
+			// :todo this is a copy of User class method
 			var g = grocery.toJSON();
 			// console.log(grocery);
-			cb(null, g);
+
+			// _.map( g.groceries, function(grocery){
+ 				var response = [];
+                var uniques = _.map(_.groupBy(g.ingredients, function(item){
+                	// console.log(item);
+                  return item.department.id.toString();
+                }), function(grouped){
+
+                    return { id: grouped[0].department.id.toString(),
+                            name: grouped[0].department.name };
+
+                });
+                
+
+                response.push({
+                    id: g.id,
+                    title: g.title,
+                    departments: uniques,
+                    data: []
+                });
+
+                
+            // });
+// console.log(response);
+
+			cb(null, response);
 
 		});
 
