@@ -7,3 +7,31 @@ GL
 
 
 create functionality when user uncheck ingredient from GL - so we need to remove it from Purchased list too.
+
+Создать gif, которая будет показывать и описывать процесс создания Gl
+
+1 Click GL clone -> 
+2 Edit name ->
+3 Slider with departments or list items
+
+4 hide or delete unnecesary department on wizard
+Manage departments step or Skip?
+
+Or
+| Department Name |
+| Hide | Delete | Skip | View | Edit |
+
+
+
+Preview Department Maybe?
+
+List with departments, names only
+
+with arrow-down icon to open 4 states of management
+
+Also you can can sort, Order of departments. (F)
+
+You can go to particular Dep by selecting it on select
+
+(F) Clone your own lists later
+
