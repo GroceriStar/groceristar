@@ -65,6 +65,8 @@ module.exports = function(Grocery) {
                 }), function(grouped){
 
             		 var ja = _.map(grouped, function(item){
+            		 	// return item.name
+            		 	
             		 	return [item.id, item.name]
             		 });
 

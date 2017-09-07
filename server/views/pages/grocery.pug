@@ -25,7 +25,8 @@ block content
 
           ul
             each ing, j in val.ingredients
-              li= ing.id + ' | ' + ing.name
+              
+              li= ing[0] + ' | ' ing[1]
               a(href='#', class="btn btn-small") empty
               a(href='#', class="btn btn-small") delete
               a(href='#', class="btn btn-small") purchase
