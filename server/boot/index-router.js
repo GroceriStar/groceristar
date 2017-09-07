@@ -68,60 +68,67 @@ Grocery.fetchById2(groceryId, function(err, response){
 
 
 
+
+
   router.get('/', function(req, res, next) {
     var Grocery = app.models.Grocery;
 
 
-    Grocery.fetch(function(error, response){
+    Grocery.find({
+      where: {
+        name: "Ultimate Grocery List"
+      }
+    }, function(err, model){
+      console.log(model);
+    })
 
-        // console.log(response);
-
-          res.render('pages/index', {
+    res.render('pages/index', {
             user: req.user,
             url: req.url,
-            data: response, // :todo change this names
-            departments: response.departments
+            // data: response, // :todo change this names
+            // departments: response.departments
           });
 
 
-          // res.render('pages/grocery2', {
-          //   user: req.user,
-          //   url: req.url,
-          //   data: response
-          // });
 
 
-          // res.render('pages/home', {
-          //   user: req.user,
-          //   url: req.url,
-          //   data: response
-          // });
+    // Grocery.fetch(function(error, response){
+
+    //     // console.log(response);
+
+    //       res.render('pages/index', {
+    //         user: req.user,
+    //         url: req.url,
+    //         data: response, // :todo change this names
+    //         departments: response.departments
+    //       });
 
 
-          // res.render('pages/dashboard', {
-          //   user: req.user,
-          //   url: req.url,
-          //   data: response
-          // });
+    //       // res.render('pages/grocery2', {
+    //       //   user: req.user,
+    //       //   url: req.url,
+    //       //   data: response
+    //       // });
 
-    });
+
+    //       // res.render('pages/home', {
+    //       //   user: req.user,
+    //       //   url: req.url,
+    //       //   data: response
+    //       // });
+
+
+    //       // res.render('pages/dashboard', {
+    //       //   user: req.user,
+    //       //   url: req.url,
+    //       //   data: response
+    //       // });
+
+    // });
 
 
 
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  

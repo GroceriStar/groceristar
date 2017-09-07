@@ -233,37 +233,14 @@ module.exports = function(Grocery) {
 
 
 			// case #1 return only dep name with id for link creation
-			// g.departmentsList.forEach(function(item, i){
-
-				// case #1 return only dep name with id for link creation
-				// console.log(item.name);
-				// console.log(item.id);
-				// console.log(item.visible);
-				// console.log(item.ingredients.length > 0);
-				// departments.push({ id: item.id, name: item.name });
-
-				
-			// });
-
-
-
-
-			// console.log(departments);
-			// object.departments = departments;
 
 			// case #2 display deps with ings
-			// g.departmentsList.forEach(function(item, i){
-			// 	// console.log(item);
 
-			// 	console.log(item.name);
-			// 	console.log(item.id);
-			// 	console.log(item.visible);
-			// 	console.log(item.ingredients.length > 0);
 
-			// 	// console.log(item.ingredients);
+			
 
-				
-			// })
+			
+			
 
 			
 			// var object = {
