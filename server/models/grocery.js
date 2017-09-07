@@ -65,7 +65,11 @@ module.exports = function(Grocery) {
                 }), function(grouped){
 
             		 var ja = _.map(grouped, function(item){
-            		 	return [item.id, item.name] // :todo change this to an object
+            		 	return [
+	            		 	item.id, 
+	            		 	item.name,
+	            		 	'/del/ing/' + item.id + '/' + g.id
+            		 	] // :todo change this to an object
             		 });
 
                 		

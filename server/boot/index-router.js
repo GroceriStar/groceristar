@@ -74,13 +74,13 @@ Grocery.fetchById2(groceryId, function(err, response){
     var Grocery = app.models.Grocery;
 
 
-    Grocery.find({
-      where: {
-        name: "Ultimate Grocery List"
-      }
-    }, function(err, model){
-      console.log(model);
-    })
+    // Grocery.find({
+    //   where: {
+    //     name: "Ultimate Grocery List"
+    //   }
+    // }, function(err, model){
+    //   console.log(model);
+    // })
 
     res.render('pages/index', {
             user: req.user,

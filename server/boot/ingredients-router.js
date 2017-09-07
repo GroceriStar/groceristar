@@ -6,6 +6,7 @@ var request        = require('request');
 module.exports = function(app) {
 	var router  = app.loopback.Router();
 
+
 	router.get('/add/ing/:id/:groceryId', function(req, res, next){
 		var ingredientId = req.params.id;
 		var groceryId = req.params.groceryId;
@@ -27,6 +28,8 @@ module.exports = function(app) {
 		// });
 	});
 
+
+
 	router.get('/del/ing/:id/:groceryId', function(req, res, next){
 		var ingredientId = req.params.id;
 		var groceryId = req.params.groceryId;
@@ -38,9 +41,10 @@ module.exports = function(app) {
 	      groceryId: groceryId,
 	      secondArray: [ ingredientId ]
 	    };
-		
+		// console.log(options);
 	    
-		Grocery.removeIngredient(options);
+		// Grocery.removeIngredient(options);
+		// res.redirect('/view/grocery/' + groceryId);
 
 	});
 
