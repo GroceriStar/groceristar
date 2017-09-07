@@ -54,26 +54,21 @@ module.exports = function(Grocery) {
 
 		}, function(err, grocery){
 
-			// :todo this is a copy of User class method
-			var g = grocery.toJSON();
-			// console.log(grocery);
 
-			// _.map( g.groceries, function(grocery){
- 				var response = [];
+			var g = grocery.toJSON();
+
+			
+ 				var response = {};
                 var uniques = _.map(_.groupBy(g.ingredients, function(item){
                 	// console.log(item);
                   return item.department.id.toString();
                 }), function(grouped){
 
-                		 var ja = _.map(grouped, function(item){
-                		 	return [item.id, item.name]
-                		 });
+            		 var ja = _.map(grouped, function(item){
+            		 	return [item.id, item.name]
+            		 });
 
-                		// console.log(ja);
-
-                		// console.log(grouped[0].name);
-
-
+                		
 
                     return { id: grouped[0].department.id.toString(),
                             name: grouped[0].department.name,
@@ -85,16 +80,13 @@ module.exports = function(Grocery) {
                 });
                 
 
-                response.push({
+                response = {
                     id: g.id,
                     title: g.title,
-                    data: uniques,
-                    // data: []
-                });
+                    data: uniques
+                };
 
-                
-            // });
-// console.log(response);
+           
 
 			cb(null, response);
 

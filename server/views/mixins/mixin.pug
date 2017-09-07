@@ -3,7 +3,7 @@ mixin link(href, name)
 
 // example +link('http://peexaweb.com', 'Google')(class="additional-class")
 
-mixin view_departments1(array)
+mixin view_departments(array)
   ul
     each val, index in array
         li= val.name + '( ' + val.id + ' ) '
@@ -48,3 +48,16 @@ mixin view_groceries_departments(array)
 
       +view_departments_awesome(val.departments)
       hr 
+
+mixin view_departments_ingredients(array)
+  if array
+    ul
+      each val, index in array
+        li= val.name
+          a(href='/#' + val.id) view
+
+
+
+          a(href='/visibility/department/' + val.id)
+            i.fa.fa-bell.fa-4x
+            SHOW         

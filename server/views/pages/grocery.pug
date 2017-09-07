@@ -3,7 +3,7 @@ extends ../layouts/dashboard
 block content
   .row
     .col-md-6.col-md-offset-3
-
+      h2= title
 
     .col-md-12
       h2 with hidden option
@@ -14,24 +14,24 @@ block content
       //+view_departments_awesome(data)  
 
     .col-md-12
-      each val, index in data
+      each val, index in elements
         .col-md-4.element-item
           h3= val.name
             a(href='/visibility/department/' + val.id)
               i.fa.fa-eye  
               i.fa.fa-eye-slash.hide
           h5= val.type        
+          h5= val.ingredients[0].id
 
           ul
             each ing, j in val.ingredients
               li= ing.id + ' | ' + ing.name
-              a(href='#') empty
-              a(href='#') delete
-              a(href='#') purchase
+              a(href='#', class="btn btn-small") empty
+              a(href='#', class="btn btn-small") delete
+              a(href='#', class="btn btn-small") purchase
          
-          hr
+          hr  
 
-    hr
-    
-  // include ../partials/grid-delete-later    
+    hr       
+  
 
