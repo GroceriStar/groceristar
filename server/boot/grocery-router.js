@@ -103,6 +103,7 @@ module.exports = function(app) {
     	res.render('pages/grocery', {
     		  title: response.title,
 	        elements: response.data, // [data>> department >> ingredient]
+          groceryId: groceryId,
 	        // url: req.url,
 	        messages: {},
 	        // departments: grocery.departmentsList
@@ -146,7 +147,8 @@ module.exports = function(app) {
     res.redirect('/auth/account');
   });
 
- // :todo finish
+
+ 
  router.get('/remove/grocery/:groceryId', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
@@ -159,14 +161,13 @@ module.exports = function(app) {
     var options = {
       type  : 'detach',
       field : 'groceryIds',
-      // groceryId: groceryId,
       userId: userId,
       secondArray: [ groceryId ]
     };
     User.proceed(options);
 
     Grocery.destroyById(groceryId, function(err){});
-    // res.redirect('/');
+    res.redirect('/auth/account');
 
 });
 

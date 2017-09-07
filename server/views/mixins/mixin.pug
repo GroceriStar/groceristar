@@ -15,15 +15,12 @@ mixin view_departments_extended(array)
         li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?:  ' + val.visible
           a(href='/#' + val.id) ' ' + view  
 
-mixin view_departments_awesome(array)
+mixin view_departments_awesome(array, groceryId)
   if array
     ul
       each val, index in array
         li= val.name + '( ' + val.id + ' ) '
-          a(href='/#' + val.id) view
-
-        //if user
-        //- User *is* logged In
+          a(href='/department/' + val.id + '/' + groceryId) view
 
           a(href='/visibility/department/' + val.id)
             i.fa.fa-bell.fa-4x
@@ -46,7 +43,7 @@ mixin view_groceries_departments(array)
         a(href='/view/grocery/' + val.id, class="btn") link
       a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
 
-      +view_departments_awesome(val.departments)
+      +view_departments_awesome(val.departments, val.id)
       hr 
 
 mixin view_departments_ingredients(array)

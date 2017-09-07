@@ -4,16 +4,19 @@ block content
 
   .row
     .col-md-12
-      h1 Sample Functionality
+    
       h1= name
+      a(href="/remove/department/:id/:groceryId") Remove Department from Grocery list
+      br
+      a(href="/visibility/department/:id/:groceryId") Visiblity this link can control
       h1= description
       h1= id
-      p.lead In this sample application you can:
+    
 
       ul
         each val, index in ingredients
           li= val.name + '( ' + val.id + ' )'
 
-    .col-md-12
-      include ../partials/departments-list    
+
+
 

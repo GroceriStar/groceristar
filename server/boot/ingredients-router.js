@@ -43,8 +43,8 @@ module.exports = function(app) {
 	    };
 		// console.log(options);
 	    
-		// Grocery.removeIngredient(options);
-		// res.redirect('/view/grocery/' + groceryId);
+		Grocery.removeIngredient(options);
+		res.redirect('/view/grocery/' + groceryId);
 
 	});
 

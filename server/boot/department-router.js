@@ -8,9 +8,11 @@ module.exports = function(app) {
 	var router  = app.loopback.Router();
 	
 	
-	//:todo decide which method is better - grocery version or controller version
-	router.get('/department/:id', function(req, res, next){
 
+	//:todo decide which method is better - grocery version or controller version
+	router.get('/department/:id/:groceryId', function(req, res, next){
+
+	  var departmentId = req.params.id;
 	  var departmentId = req.params.id;
 	  var Department   = app.models.Department;
 
@@ -64,6 +66,8 @@ module.exports = function(app) {
 		// });
 	});
 
+
+
 	router.get('/show/department/:id/:groceryId', function(req, res, next){
 		var departmentId = req.params.id;
 		var groceryId = req.params.groceryId;
@@ -82,6 +86,8 @@ module.exports = function(app) {
 
 	});
 
+
+
 	router.get('/show/all/:groceryId', function(req, res, next){
 		var departmentId = req.params.id;
 		var groceryId = req.params.groceryId;
@@ -99,8 +105,10 @@ module.exports = function(app) {
 		Grocery.showAllDepartments(options);
 	});
 
+
+
 	// :todo make it work  or delete?
-	router.get('/visibility/department/:id', function(req, res, next){
+	router.get('/visibility/department/:id/:groceryId', function(req, res, next){
 		
 		var departmentId = req.params.id;
 		var Department   = app.models.Department;
@@ -119,6 +127,25 @@ module.exports = function(app) {
 	// visibility for a few departments at one time
 
 
+
+	router.get('/remove/department/:id/:groceryId', function(req, res, next){
+		
+		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+
+		var Grocery   = app.models.Grocery;
+		
+		var options = {
+	      // type: 'show',
+	      // field: 'hideThisIds',
+	      groceryId: groceryId,
+	      secondArray: [ departmentId ]
+	    };
+		
+	    
+		// Grocery.showAllDepartments(options);
+
+	});
 
 
 
