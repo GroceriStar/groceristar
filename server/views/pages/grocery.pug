@@ -7,19 +7,20 @@ block content
 
     .col-md-12
       h2 with hidden option
-      +view_departments_extended(departments)
+      //+view_departments_extended(data)
 
     .col-md-12
       hr
-      +view_departments_awesome(departments)  
+      //+view_departments_awesome(data)  
 
     .col-md-12
-      each val, index in departments
+      each val, index in data
         .col-md-4.element-item
           h3= val.name
             a(href='/visibility/department/' + val.id)
               i.fa.fa-eye  
-              i.fa.fa-eye-slash.hide    
+              i.fa.fa-eye-slash.hide
+          h5= val.type        
 
           ul
             each ing, j in val.ingredients

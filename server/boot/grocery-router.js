@@ -94,18 +94,18 @@ module.exports = function(app) {
 
     
 
-    Grocery.fetchById(groceryId, function(err, grocery){
+    Grocery.fetchById(groceryId, function(err, response){
 
-    	// console.log(grocery);
+    	console.log(response.data);
 
-    	// console.log(grocery.departments);
-
+    	
+      // :todo make all data came from method
     	res.render('pages/grocery', {
-    		  title: 'Grocery: ' + grocery.id,
-	        data: grocery, //:todo change names, punk!
+    		  title: response.title,
+	        data: response.data, // [data>> department >> ingredient]
 	        // url: req.url,
 	        messages: {},
-	        departments: grocery.departmentsList
+	        // departments: grocery.departmentsList
 	      });  
 
     });

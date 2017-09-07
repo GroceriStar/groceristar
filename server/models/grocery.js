@@ -65,8 +65,22 @@ module.exports = function(Grocery) {
                   return item.department.id.toString();
                 }), function(grouped){
 
+                		 var ja = _.map(grouped, function(item){
+                		 	return [item.id, item.name]
+                		 });
+
+                		// console.log(ja);
+
+                		// console.log(grouped[0].name);
+
+
+
                     return { id: grouped[0].department.id.toString(),
-                            name: grouped[0].department.name };
+                            name: grouped[0].department.name,
+                            type: grouped[0].department.type,
+                            ingredients: ja,
+                            // ingid:  grouped[0].id 
+                        };
 
                 });
                 
@@ -74,8 +88,8 @@ module.exports = function(Grocery) {
                 response.push({
                     id: g.id,
                     title: g.title,
-                    departments: uniques,
-                    data: []
+                    data: uniques,
+                    // data: []
                 });
 
                 
