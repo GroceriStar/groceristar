@@ -58,16 +58,14 @@ module.exports = function(Grocery) {
 			var g = grocery.toJSON();
 
 			
- 				var response = {};
+ 			var response = {};
                 var uniques = _.map(_.groupBy(g.ingredients, function(item){
                 	// console.log(item);
                   return item.department.id.toString();
                 }), function(grouped){
 
             		 var ja = _.map(grouped, function(item){
-            		 	// return item.name
-            		 	
-            		 	return [item.id, item.name]
+            		 	return [item.id, item.name] // :todo change this to an object
             		 });
 
                 		
@@ -97,6 +95,77 @@ module.exports = function(Grocery) {
 
 
 	};
+
+	Grocery.fetchById2 = function(groceryId, cb){
+
+		Grocery.findById(groceryId, {		
+			include: {
+				relation: 'ingredients',
+				scope: {
+
+					// fields: [ 'id', 'name', 'department' ],
+					include: {
+						relation: 'department',
+						scope: {
+							// fields: [ 'id', 'name' ],
+							// fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
+
+				}
+			}
+
+		}, function(err, grocery){
+
+
+			var g = grocery.toJSON();
+
+			
+ 			var response = {};
+                var uniques = _.map(_.groupBy(g.ingredients, function(item){
+                	// console.log(item);
+                  return item.department.id.toString();
+                }), function(grouped){
+
+            		 var ja = _.map(grouped, function(item){
+            		 	return {
+	            		 	id: item.id,
+	            		 	title: item.name,
+	            		 	completed: false
+            		 	} // :todo change this to an object
+            		 });
+
+                		
+
+                    return { id: grouped[0].department.id.toString(),
+                            // name: grouped[0].department.name,
+                            // type: grouped[0].department.type,
+                            ingredients: ja,
+                            // ingid:  grouped[0].id 
+                        };
+
+                });
+                
+
+                response = {
+                    id: g.id,
+                    title: g.title,
+                    data: uniques
+                };
+
+           
+
+			cb(null, response);
+
+		});
+
+
+
+	};
+
 
 	// :todo not sure what i mean by this.
 	// not working now. Can be used for query ONLY

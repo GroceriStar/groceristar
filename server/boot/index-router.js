@@ -3,7 +3,7 @@
 var request        = require('request');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-
+var _ = require('underscore');
 // var loopback = require('loopback');
 
 
@@ -30,13 +30,27 @@ module.exports = function(app) {
     console.log(req.params);
   });
 
-  router.get('/tatypidor', function(req, res, next){
+  router.get('/tatypidor', ensureLoggedIn('/auth/account'), function(req, res, next){
     
-    res.json([
-      {"title":"123","completed":false},
-      {"title":"333","completed":false},
-      {"title":"sam ty pidor."}
-      ]);
+
+    var Grocery = app.models.Grocery;
+    var userId    = req.user.id;
+     var groceryId = '59aebf4832e8fb1c105968f9';
+
+Grocery.fetchById2(groceryId, function(err, response){
+
+  // _.map(response.data)
+  // console.log(response.data[0].ingredients);
+  res.json(response.data[0].ingredients);
+
+})
+
+
+    // res.json([
+    //   {"title":"123","completed":false},
+    //   {"title":"333","completed":false},
+    //   {"title":"sam ty pidor."}
+    //   ]);
 
   });
 
