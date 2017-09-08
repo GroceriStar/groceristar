@@ -342,28 +342,28 @@ module.exports = function(Grocery) {
 
 	};
 
-	Grocery.withDepartments = function(groceryId, cb){
-		Grocery.findOne({
-			include: {
-				relation: 'departmentsList',
-				scope: {
-					fields: [ 'name' ],
-					include: {
-						relation: 'ingredients',
-						scope: {
-							fields: [ 'name' ],
-							// where: {
-							// 	departmentId: id
-							// }
-						}
-					}
+	// Grocery.withDepartments = function(groceryId, cb){
+	// 	Grocery.findOne({
+	// 		include: {
+	// 			relation: 'departmentsList',
+	// 			scope: {
+	// 				fields: [ 'name' ],
+	// 				include: {
+	// 					relation: 'ingredients',
+	// 					scope: {
+	// 						fields: [ 'name' ],
+	// 						// where: {
+	// 						// 	departmentId: id
+	// 						// }
+	// 					}
+	// 				}
 
-				}
-			},
-			where: {id:groceryId}
+	// 			}
+	// 		},
+	// 		where: {id:groceryId}
 
-		}, cb);
-	};
+	// 	}, cb);
+	// };
 
 
 	// :todo now used right now. change this!
@@ -389,6 +389,7 @@ module.exports = function(Grocery) {
 
 		}, cb);
 	};
+
 
 	//:todo think about adding count(to departments). 
 	// So if ingredients in dep = 0 - don't show it
@@ -513,6 +514,10 @@ module.exports = function(Grocery) {
 		options.type  = 'all';
 		options.field = 'hideThisIds'
 		Grocery.proceed(options);			
+	};
+	Grocery.removeRemoveDepartment = function(options){
+		options.type  = 'destroy';
+		options.field = 'ingredientIds';
 	};
 
 	Grocery.addIngredient = function(options){

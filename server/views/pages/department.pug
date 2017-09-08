@@ -6,9 +6,9 @@ block content
     .col-md-12
     
       h1= name
-      a(href="/remove/department/:id/:groceryId") Remove Department from Grocery list
+      a(href="/remove/department/" + id + "/" + groceryId) Remove Department from Grocery list
       br
-      a(href="/visibility/department/:id/:groceryId") Visiblity this link can control
+      a(href="/visibility/department/" + id + "/" + groceryId) Visiblity this link can control
       h1= description
       h1= id
     
