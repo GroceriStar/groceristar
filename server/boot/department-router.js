@@ -204,8 +204,11 @@ module.exports = function(app) {
 			var g = grocery.toJSON();
 
 			var toRemove = _.pluck(g.ingredients, 'id');
-
+			toRemove     = _.map(toRemove, item => item.toString());
+			
 			console.log(toRemove);
+
+
 
 			var options = {
 		      groceryId: groceryId,
