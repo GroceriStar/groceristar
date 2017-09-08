@@ -12,12 +12,15 @@ block content
         .col-md-4.element-item
           h3= val.name
             a(href='/visibility/department/' + val.id + '/' + groceryId)
-              i.fa.fa-eye  
-              i.fa.fa-eye-slash.hide
+              if val.ingredients.length
+                i.fa.fa-eye-slash
+              else    
+                i.fa.fa-eye
+                
           h5= val.type                  
           h5= val.id + ' <= Department ID'
 
-          if val.ingredients
+          if val.ingredients.length
             ul
               each ing, j in val.ingredients
               
