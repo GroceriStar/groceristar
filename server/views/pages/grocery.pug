@@ -11,7 +11,7 @@ block content
       each val, index in elements
         .col-md-4.element-item
           h3= val.name
-            a(href='/visibility/department/' + val.id)
+            a(href='/visibility/department/' + val.id + '/' + groceryId)
               i.fa.fa-eye  
               i.fa.fa-eye-slash.hide
           h5= val.type        

@@ -515,10 +515,11 @@ module.exports = function(Grocery) {
 		options.field = 'hideThisIds'
 		Grocery.proceed(options);			
 	};
-	Grocery.removeRemoveDepartment = function(options){
-		options.type  = 'destroy';
-		options.field = 'ingredientIds';
-	};
+	// Grocery.removeRemoveDepartment = function(options){
+	// 	// options.type  = 'destroy';
+	// 	// options.field = 'ingredientIds';
+	// 	Grocery.removeIngredient(options);
+	// };
 
 	Grocery.addIngredient = function(options){
 		options.type  = 'add-ing';

@@ -106,18 +106,66 @@ module.exports = function(app) {
 
 
 	// :todo make it work  or delete?
-	router.get('/visibility/department/:id/:groceryId', function(req, res, next){
-		
-		var departmentId = req.params.id;
-		var Department   = app.models.Department;
-		// Department.findById(departmentId, {}, function(err, model){
+// 			1) we got all information from grocery and check 
+// 	2) is this departmentId isset at hide array 
+// 3) depending on result we've add or remove it from it
 
-		//   if(model.visible){
-		//     model.updateAttribute('visible', false);    
-		//   } else {
-		//     model.updateAttribute('visible', true);    
-		//   }
-		// });
+	router.get('/visibility/department/:id/:groceryId', function(req, res, next){		
+		var departmentId = req.params.id;
+		var groceryId = req.params.groceryId;
+		var Department   = app.models.Department;
+		var Grocery      = app.models.Grocery;
+
+		Grocery.findById(groceryId, {
+			// include: {
+			// 	relation: 'ingredients',
+			// 	scope: {
+			// 		where: {
+			// 			departmentId: departmentId
+			// 		}
+			// 	}
+			// }
+
+		}, function(err, grocery){
+
+			console.log(grocery);
+
+			var g = grocery.toJSON();
+
+			console.log(grocery.hideThisIds);
+			var toRemove = _.pluck(g.ingredients, 'id');
+
+
+			if( !grocery.hideThisIds ){ console.log('empy'); }
+			
+			let arr = _.map(grocery.hideThisIds, item => item.toString());
+
+            arr = arr.filter(item => !departmentId.includes(item));
+			// console.log(toRemove);
+
+			// var options = {
+		 //      groceryId: groceryId,
+		 //      secondArray: toRemove
+		 //    };
+				    
+			// Grocery.removeIngredient(options);
+
+		});
+
+	// 	res.redirect('/view/grocery/' + groceryId);
+
+
+		
+		// var options = {
+	 //      // type: 'show',
+	 //      // field: 'hideThisIds',
+	 //      groceryId: groceryId,
+	 //      // secondArray: [ departmentId ]
+	 //    };
+		
+	    
+		// Grocery.showAllDepartments(options);
+
 
 	});
 
@@ -205,7 +253,7 @@ module.exports = function(app) {
 
 			var toRemove = _.pluck(g.ingredients, 'id');
 			toRemove     = _.map(toRemove, item => item.toString());
-			
+
 			console.log(toRemove);
 
 
