@@ -14,17 +14,18 @@ block content
             a(href='/visibility/department/' + val.id + '/' + groceryId)
               i.fa.fa-eye  
               i.fa.fa-eye-slash.hide
-          h5= val.type        
-          h5= val.ingredients[0].id
+          h5= val.type                  
+          h5= val.id + ' <= Department ID'
 
-          ul
-            each ing, j in val.ingredients
+          if val.ingredients
+            ul
+              each ing, j in val.ingredients
               
-              li= ing[0] + ' | ' + ing[1]
-              a(href='/'+ing[0], class="btn btn-default btn-small") empty
-              a(href='/'+ing[0], class="btn btn-default btn-small") move
-              a(href=ing[2], class="btn btn-default btn-small") delete
-              a(href='/'+ing[0], class="btn btn-default btn-small") purchase
+                li= ing[0] + ' | ' + ing[1]
+                a(href='/'+ing[0], class="btn btn-default btn-small") empty
+                a(href='/'+ing[0], class="btn btn-default btn-small") move
+                a(href=ing[2], class="btn btn-default btn-small") delete
+                a(href='/'+ing[0], class="btn btn-default btn-small") purchase
          
           hr  
 

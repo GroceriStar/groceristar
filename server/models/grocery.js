@@ -84,14 +84,24 @@ module.exports = function(Grocery) {
 
             	// if(!){ return false; } 
 
-            	
+            	if ( !flag ) { 
 
-                return { id: grouped[0].department.id.toString(),
+            		return { id: grouped[0].department.id.toString(),
                         name: grouped[0].department.name,
                         type: grouped[0].department.type,
                         ingredients: ja,
                         // ingid:  grouped[0].id 
                     };
+
+            	}
+
+            	return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: [],
+                        // ingid:  grouped[0].id 
+                    };
+                
 
             });
             
