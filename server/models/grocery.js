@@ -59,36 +59,50 @@ module.exports = function(Grocery) {
 
 			
  			var response = {};
-                var uniques = _.map(_.groupBy(g.ingredients, function(item){
-                	// console.log(item);
-                  return item.department.id.toString();
-                }), function(grouped){
 
-            		 var ja = _.map(grouped, function(item){
-            		 	return [
-	            		 	item.id, 
-	            		 	item.name,
-	            		 	'/del/ing/' + item.id + '/' + g.id
-            		 	] // :todo change this to an object
-            		 });
+ 			
+			let arr = _.map(grocery.hideThisIds, item => item.toString());
 
-                		
+			
 
-                    return { id: grouped[0].department.id.toString(),
-                            name: grouped[0].department.name,
-                            type: grouped[0].department.type,
-                            ingredients: ja,
-                            // ingid:  grouped[0].id 
-                        };
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);           	
+              return item.department.id.toString();
+            }), function(grouped){
 
-                });
-                
+            	var departmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, departmentId);
+            	console.log( flag );
 
-                response = {
-                    id: g.id,
-                    title: g.title,
-                    data: uniques
-                };
+        		 var ja = _.map(grouped, function(item){
+        		 	return [
+            		 	item.id, 
+            		 	item.name,
+            		 	'/del/ing/' + item.id + '/' + g.id
+        		 	] // :todo change this to an object
+        		 });
+
+            	// if(!){ return false; } 
+
+            	
+
+                return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: ja,
+                        // ingid:  grouped[0].id 
+                    };
+
+            });
+            
+
+            // console.log( uniques );    
+
+            response = {
+                id: g.id,
+                title: g.title,
+                data: uniques
+            };
 
            
 
@@ -581,6 +595,8 @@ module.exports = function(Grocery) {
                 model.updateAttribute(options.field, arr);
 
 			}
+
+			// console.log(model.hideThisIds);
 
 			
 

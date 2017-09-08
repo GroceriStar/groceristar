@@ -96,7 +96,7 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, response){
 
-    	console.log(response.data);
+    	// console.log(response.data);
 
     	
       // :todo make all data came from method
