@@ -137,7 +137,8 @@ p.paragraph {
 
 /*containers*/
 .container-lrg,
-.container-sml {
+.container-sml,
+.container-techniq {
   margin: auto;
   width: 100%;
 }
