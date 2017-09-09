@@ -53,17 +53,9 @@ module.exports = function(Grocery) {
 			}
 
 		}, function(err, grocery){
-
-
 			var g = grocery.toJSON();
-
-			
- 			var response = {};
-
  			
 			let arr = _.map(grocery.hideThisIds, item => item.toString());
-
-			
 
             var uniques = _.map(_.groupBy(g.ingredients, function(item){
             	// console.log(item);           	
@@ -72,7 +64,7 @@ module.exports = function(Grocery) {
 
             	var departmentId = grouped[0].departmentId.toString();
             	var flag = _.contains(arr, departmentId);
-            	console.log( flag );
+            	
 
         		 var ja = _.map(grouped, function(item){
         		 	return [
@@ -82,15 +74,14 @@ module.exports = function(Grocery) {
         		 	] // :todo change this to an object
         		 });
 
-            	// if(!){ return false; } 
+            	
 
             	if ( !flag ) { 
 
             		return { id: grouped[0].department.id.toString(),
                         name: grouped[0].department.name,
                         type: grouped[0].department.type,
-                        ingredients: ja,
-                        // ingid:  grouped[0].id 
+                        ingredients: ja,                        
                     };
 
             	}
@@ -98,17 +89,15 @@ module.exports = function(Grocery) {
             	return { id: grouped[0].department.id.toString(),
                         name: grouped[0].department.name,
                         type: grouped[0].department.type,
-                        ingredients: [],
-                        // ingid:  grouped[0].id 
+                        ingredients: [],                        
                     };
                 
 
             });
             
 
-            // console.log( uniques );    
-
-            response = {
+            
+            var response = {
                 id: g.id,
                 title: g.title,
                 data: uniques

@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8">
 
-    <!-- TITLE OF SITE -->
-    <title>SmartMVP | Startup and App Responsive Landing Page Template</title>
+    
+    <title>
+   
+    </title>
 
-    <meta name="description" content="Responsive Landing Page for Presenting Your Startup: Saas, Mobile or Web Application" />
-    <meta name="keywords" content="smartmvp, startup theme, startup template, startup example, startup landing page, one page, responsive, app landing, html template, mobile application, responsive landing page" />
-    <meta name="author" content="ThemeDept">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- FAVICON  -->
@@ -56,7 +58,9 @@
         ============================== -->
         <div class="preloader">
             <div class="loader-container">
-                <div class="text-logo">SmartMVP</div>
+                <div class="text-logo">
+                SmartMVP
+                </div>
                 <div class="signal"></div>
             </div>
         </div> 
@@ -102,15 +106,19 @@
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right">
                                         <!-- Menu Items -->
-                                        <li><a href="#about" title="" class="scrollto">About</a></li>
-                                        <li><a href="#features" title="" class="scrollto">Features</a></li>
-                                        <li><a href="#pricing" title="" class="scrollto">Pricing</a></li>
-                                        <li><a href="#testimonials" title="" class="scrollto">Testimonials</a></li>
-                                        <li><a href="#team" title="" class="scrollto">Team</a></li>
-                                        <li><a href="#mobile-download" title="" class="scrollto">Mobile</a></li>
-                                        <!-- Login and Signup Modal on click -->
-                                        <li><a class="btn btn-nav" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Login</a></li>
-                                        <li><a class="btn btn-nav btn-signup" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Sign Up</a></li> 
+                                        <li><a href="#about" title="" class="scrollto">About</a>
+                                        </li>
+                                        <li><a href="#features" title="" class="scrollto">Features</a>
+                                        </li>
+                                        <li><a href="#pricing" title="" class="scrollto">Pricing</a>
+                                        </li>
+                                        <li><a href="#testimonials" title="" class="scrollto">Testimonials</a>
+                                        </li>
+                                        <li><a href="#team" title="" class="scrollto">Team</a>
+                                        </li>
+                                        <li><a href="#mobile-download" title="" class="scrollto">Mobile</a>
+                                        </li>
+                                        
                                     </ul>
                                 </div><!-- /End Navbar-Collapse -->
                             </div><!-- /End Col -->
@@ -119,80 +127,7 @@
                 </nav><!-- /End Sticky Navigation -->
 
 
-                <!-- =========================================
-                     Login/Signup Bootstrap Modal
-                ==========================================  -->
-                <div class="modal fade login" id="loginModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            
-                            <!-- Modal-Header -->
-                            <div class="modal-header">
-                                <!-- Close Button -->
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    <i class="icon icon_close_alt2"></i>
-                                </button>
-                                <!-- Modal-Header Title-->
-                                <h4 class="modal-title">Sign in to <span>Smartmvp</span></h4>
-                                <p class="modal-subtitle">Enter your email and password</p>
-                            </div><!-- /End Modal-Header -->
-
-                            <!-- Modal-Body Content -->
-                            <div class="modal-body">  
-                                <div class="box">
-                                     <div class="content">
-                                        <!-- Login Form -->
-                                        <div class="loginBox">
-                                            <form id="login-modal" role="form">
-                                                <!-- Success/Alert Notification -->
-                                                <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong>Congratulation! Login modal validation is working. Implement your code.</strong></p>
-                                                <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Something went wrong! Insert correct value.</strong></p>
-                                                <!-- Input Fields -->
-                                                <input id="lm-email" class="form-control input-lg" type="text" placeholder="Email" name="lm-email" required>
-                                                <input id="lm-password" class="form-control input-lg" type="password" placeholder="Password" name="lm-password" required>
-                                                <!-- Login Button -->
-                                                <button class="btn btn-color">Login</button>
-                                            </form>
-                                        </div><!-- /End Login Form -->
-                                     </div>
-                                </div><!-- /End Login Form Box -->
-                                <div class="box">
-                                    <!-- Signup Form -->
-                                    <div class="content registerBox" style="display:none;">
-                                        <form id="signup-modal" role="form">
-                                            <!-- Success/Alert Notification -->
-                                            <p class="sm-success"><i class="icon icon_check_alt2"></i> <strong>Congratulation! Signup modal validation is working. Implement your code.</strong></p>
-                                            <p class="sm-failed"><i class="icon icon_close_alt2"></i><strong> Something went wrong! Insert correct value.</strong></p>
-                                            <!-- Input Fields -->
-                                            <input id="sm-email" class="form-control input-lg" type="text" placeholder="Email" name="sm-email" required>
-                                            <input id="sm-password" class="form-control input-lg" type="password" placeholder="Password" name="sm-password">
-                                            <input id="sm-confirm" class="form-control input-lg" type="password" placeholder="Repeat Password" name="sm-confirm">
-                                            <!-- Signup Button -->
-                                            <button class="btn btn-color">Create Account</button>
-                                        </form>
-                                        
-                                    </div><!-- /End Signup Form -->
-                                </div><!-- /End Signup Form Box -->
-                            </div><!-- /End Modal-Body -->
-
-                            <!-- Modal-Footer -->
-                            <div class="modal-footer">
-                                <!-- Login-Footer. Redirect to Signup-Modal-->
-                                <div class="forgot login-footer">
-                                    <span>Don't have an account? 
-                                         <a href="javascript: showRegisterForm();">Sign up.</a>
-                                    </span>
-                                </div>
-                                <!-- Signup-Footer. Redirect to Login-Modal -->
-                                <div class="forgot register-footer" style="display:none">
-                                     <span>Already have an account?</span>
-                                     <a href="javascript: showLoginForm();">Login</a>
-                                </div>
-                            </div><!-- /End Modal-Footer -->      
-                          
-                        </div><!-- /End Modal Content -->
-                    </div><!-- /End Modal Dialog -->
-                </div><!-- /End Modal -->
+               
 
                 
                 <!-- =========================================
@@ -702,373 +637,11 @@
         ============================== -->
 
 
-        <!-- =======================================================
-             TESTIMONIALS WITH PRESS/CLIENTS LOGOS
-        ============================================================ -->
-        <section class="testimonial-press light-bg" id="testimonials">
-            <div class="container vmiddle">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>What our users are saying</h2>
-                        <p class="large">Find out why our users keep using SmartMvp</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="tabs testimonials tab-container">
-                        <div class="col-md-8">
-                            <div class="panel-container">
-                                <div class="tab-block" id="tab-testimonials-1">
-                                    <blockquote>
-                                        <!-- Testimonial quote -->
-                                        <p>Placeat ut recusandae maiores, aliquam error. Sequi accusamus nostrum porro reprehenderit commodi delectus omnis similique possimus non aut, dicta rem iste nemo perferendis, incidunt mollitia asperiores at tenetur dolores ut libero necessitatibus veritatis fuga. Ut sequi assumenda odit.</p>
-                                        <!-- Testimonial image -->
-                                        <img src="assets/images/testimonials/testimonial-1.jpg" alt=" ">
-                                        <!-- Testimonial info -->
-                                        <p class="testimonial-name"><span>James Knight</span>Manager @ LoremIpsum</p>
-                                    </blockquote>
-                                </div><!-- /End Tab-block -->
-                                <div class="tab-block" id="tab-testimonials-2">
-                                    <blockquote>
-                                        <!-- Testimonial quote -->
-                                        <p>Iusto quam fugit consequatur explicabo at deserunt eius vel, debitis non itaque blanditiis error iure modi, asperiores molestiae dolorum! Earum expedita sit, nesciunt neque magnam at dolorem praesentium saepe! Rerum recusandae qui quidem, a neque consequatur laboriosam.</p>
-                                        <!-- Testimonial image -->
-                                        <img src="assets/images/testimonials/testimonial-2.jpg" alt=" ">
-                                        <!-- Testimonial info -->
-                                        <p class="testimonial-name"><span>Nathan Wood</span>Chief Technology Officer @ StartupIpsum</p>
-                                    </blockquote>
-                                </div><!-- /End Tab-block -->
-                                <div class="tab-block" id="tab-testimonials-3">
-                                    <blockquote>
-                                        <!-- Testimonial quote -->
-                                        <p>Commodi quod eligendi molestiae quaerat temporibus odio alias, nobis repudiandae eum molestias libero modi non ipsum architecto facere cumque esse veritatis voluptatibus. Quia eius nulla deleniti impedit officia quidem temporibus, enim! Ab ex, ipsa ullam asperiores itaque.</p>
-                                        <!-- Testimonial image -->
-                                        <img src="assets/images/testimonials/testimonial-3.jpg" alt=" ">
-                                        <!-- Testimonial info -->
-                                        <p class="testimonial-name"><span>Amber Evans</span>Chief Marketing Officer @ AgencyLorem</p>
-                                    </blockquote>
-                                </div><!-- /End Tab-block -->
-                                <div class="tab-block" id="tab-testimonials-4">
-                                    <blockquote>
-                                        <!-- Testimonial quote -->
-                                        <p>Aliquid doloremque ipsum ipsam molestias aliquam ab quod mollitia sed. Vero sapiente voluptatem, voluptatum excepturi a doloribus. Dicta sit quo sed, eaque! Voluptates in illo maiores corporis? Placeat ut recusandae maiores, aliquam error. Sequi accusamus nostrum porro.</p>
-                                        <!-- Testimonial image -->
-                                        <img src="assets/images/testimonials/testimonial-4.jpg" alt=" ">
-                                        <!-- Testimonial info -->
-                                        <p class="testimonial-name"><span>Harry Palmer</span>CEO and Founder @ IpsumSite</p>
-                                    </blockquote>
-                                </div><!-- /End Tab-block -->
-                            </div><!-- /End Panel-container -->
-                        </div><!-- /End Col -->
-                            
-                        <ul class="etabs col-md-4 list-unstyled">
-                            <li class="tab col-md-6">
-                                <a href="#tab-testimonials-1">
-                                    <!-- Testimonial logo -->
-                                    <img src="assets/images/press-logos/press-3.png" alt="">
-                                </a>
-                            </li>
-                            <li class="tab col-md-6">
-                                <a href="#tab-testimonials-2">
-                                    <!-- Testimonial logo -->
-                                    <img src="assets/images/press-logos/press-2.png" alt="">
-                                </a>
-                            </li>
-                            <li class="tab col-md-6">
-                                <a href="#tab-testimonials-3">
-                                    <!-- Testimonial logo -->
-                                    <img src="assets/images/press-logos/press-1.png" alt="">
-                                </a>
-                            </li>
-                            <li class="tab col-md-6">
-                                <a href="#tab-testimonials-4">
-                                    <!-- Testimonial logo -->
-                                    <img src="assets/images/press-logos/press-4.png" alt="">
-                                </a>
-                            </li>
-                        </ul><!-- /End Etabs --> 
 
-                    </div><!-- /End Tabs --> 
-                </div><!-- /End Row -->
-            </div><!-- /End Container -->
-        </section>
-        <!-- =============================
-             /END TESTIMONIALS
-        ============================== -->
+       
         
+    
 
-        <!-- ==================================================
-            TEAM
-        ======================================================= -->
-        <section class="team" id="team">
-            <div class="container">
-                <div class="wrapper-lg">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Meet the Team</h2>
-                            <p class="large">We are a passionate team of designers, developers and marketing experts with headquarters in Melbourne.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Team Box -->
-                        <div class="col-sm-4 team-box">
-                            <div class="team-img">
-                                <img src="assets/images/team-placeholder.jpg" class="img-responsive" alt="">
-                                <div class="img-overlay">
-                                    <div class="img-icons">
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-facebook"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-twitter"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-linkedin"></i>
-                                            </a>
-                                        </span>
-                                    </div>  
-                                </div>
-                            </div>
-                            <h4>Lukas Mayr</h4>
-                            <p class="team-bio"><span class="text-color">Lead designer</span> with experience in most things visual. He loves trying out new techniques and finding the perfect solution for any kind of requirements.</p>
-                        </div>
-                        <!-- Team Box -->
-                        <div class="col-sm-4 team-box">
-                            <div class="team-img">
-                                <img src="assets/images/team-placeholder.jpg" class="img-responsive" alt="">
-                                <div class="img-overlay">
-                                    <div class="img-icons">
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-facebook"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-twitter"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-linkedin"></i>
-                                            </a>
-                                        </span>
-                                    </div>  
-                                </div>
-                            </div>
-                            <h4>Isabella Knudsen</h4>
-                            <p class="team-bio"><span class="text-color">Director of Growth and Customer Acquisition</span>. She enjoys the finer details of a project, considering every stage of its journey from planning to completion.</p>
-                        </div>
-                        <!-- Team Box -->
-                        <div class="col-sm-4 team-box">
-                            <div class="team-img">
-                                <img src="assets/images/team-placeholder.jpg" class="img-responsive" alt="">
-                                <div class="img-overlay">
-                                    <div class="img-icons">
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-facebook"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-twitter"></i>
-                                            </a>
-                                        </span>
-                                        <span class="icon-white">
-                                            <a href="#">
-                                                <i class="icon icon-linkedin"></i>
-                                            </a>
-                                        </span>
-                                    </div>  
-                                </div>
-                            </div>
-                            <h4>Adrien Simon</h4>
-                            <p class="team-bio"><span class="text-color">Full stack hacker, product design, backend development, user interface and everything in between.</span> He likes to keep things simple and focus on the little details.</p>
-                        </div>
-                    </div><!-- /End Row -->
-                </div><!-- End Wrapper -->
-            </div><!--/End Container -->
-        </section>
-        <!-- =============================
-             /END TEAM SECTION 
-        ============================== -->
-        
-            
-        <!-- ==================================================
-            MOBILE DOWNLOAD SECTION
-        ======================================================= -->
-        <section class="mobile-download light-bg" id="mobile-download">
-            <div class="container">
-                <div class="wrapper-lg">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Download the App</h2>
-                            <p class="large">Don't miss the chance to get our amazing Mobile Application. Get connected anytime.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Text and Mobile Download Buttons -->
-                        <div class="col-sm-6 col-md-4">
-                            <h3>Supercharge your Productivity</h3>
-                            <p class="mobile-text">With an online dashboard and a mobile app, you'll have full control of your account and see your usage in real-time. <span class="text-color">Even more convenient!</span></p>
-                            <a href="#" class="btn btn-color"><i class="icon icon_cloud-download_alt"></i>Download Now!!</a>
-                        </div>
-                      
-                        <div class="col-sm-6 col-md-4">
-                            <!-- Screenshot Carousel -->
-                            <div class="shot-container">
-                                <div id="owl-carousel-shots-phone" class="owl-carousel">
-                                    <div class="owl-container text-center shots-modal">
-                                        <img src="assets/images/app-screenshots/app-screenshot1alt.jpg" alt="" title="this is the title" />
-                                    </div>
-                                    <div class="owl-container text-center shots-modal">
-                                        <img src="assets/images/app-screenshots/app-screenshot2alt.jpg" alt="" title="this is the title" />
-                                    </div>
-                                    <div class="owl-container text-center shots-modal">
-                                        <img src="assets/images/app-screenshots/app-screenshot3alt.jpg" alt="" title="this is the title" />
-                                    </div>
-                                </div><!-- /End owl carousel-->
-                            </div><!-- /End Container -->
-                        </div>
-
-                        <div class="col-sm-12 col-md-4 right-features">
-                            <!-- More Features -->
-                            <div class="col-sm-4 col-md-12">
-                                <h4>Get Notified</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam inventore.</p>
-                            </div>
-                            <div class="col-sm-4 col-md-12">
-                                <h4>Add Data in Seconds</h4>
-                                <p>Magnam beatae similique molestias incidunt, assumenda dolorem ea deserunt.</p>
-                            </div>
-                            <div class="col-sm-4 col-md-12">
-                                <h4>Real Time Alerts</h4>
-                                <p>Accusantium at sapiente mollitia asperiores quisquam rerum hic et animi.</p>
-                            </div>
-                        </div>
-                    </div><!-- /End Row -->
-                </div><!-- /End Wrapper -->
-            </div><!-- /End Container -->
-        </section>
-        <!-- =============================
-             /END MOBILE DOWNLOAD SECTION 
-        ============================== -->
-
-        
-        <!-- ==================================================
-            NEWSLETTER AND SOCIAL DIVIDER
-        ======================================================= -->
-        <section class="newsletter color-bg" id="newsletter">
-            <div class="container">
-                <div class="wrapper-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <!-- =========================
-                                Social Icons
-                            ============================== -->
-                            <div class="table">
-                                <div class="table-row">
-                                    <div class="table-cell follow">
-                                        <h5 class="table-title">Follow Us</h5>
-                                    </div>
-                                    <div class="table-cell">
-                                        <ul class="social-list">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon icon-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon icon-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon icon-googleplus"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon icon-linkedin"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!-- /End Table-Cell -->
-                                </div><!-- /End Table-Row -->
-                            </div><!-- /End Table -->
-                        </div><!-- /End Col -->
-
-                        <div class="col-md-6">
-                            <!-- =========================
-                                MAILCHIMP SUBSCRIPTION FORM 
-                            ============================== -->            
-                            <form class="mailchimp-subscribe" role="form">
-                                <div class="table">
-                                    <div class="table-row">
-                                        <div class="table-cell getnewsletter">
-                                            <h5 class="table-title">Get the Newsletter</h5>
-                                        </div>
-                                        <div class="table-cell">
-                                            <div class="input-group text-white">
-                                                <!-- Input Form -->
-                                                <input type="email" id="subscriber-email" name="email" placeholder="Your email address" class="form-control">
-                                                <!-- Submit Button -->
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-white">Subscribe</button>
-                                                </span>
-                                            </div><!-- /End Input Group -->
-                                        </div><!-- /End Table-Cell -->
-                                    </div><!-- /End Table-Row -->
-                                </div><!-- /End Table -->
-                                <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
-                                    <!-- Notifications --> 
-                                    <p class="mc-success"></p>
-                                    <p class="mc-failed"></p>
-                                </div>
-                            </form><!-- /End Mailchimp Subscribe Form -->
-                                      
-                            <!-- =========================
-                                LOCAL SUBSCRIPTION FORM 
-                            ============================== -->
-                            <!-- ALTERNATE USE: SAVE YOUR SUBSCRIBE LIST IN .TXT
-
-                            <form id="subscribe" role="form">
-                                <div class="table">
-                                    <div class="table-row">
-                                        <div class="table-cell getnewsletter">
-                                            <h5 class="table-title">Get the Newsletter</h5>
-                                        </div>
-                                    </div>
-                                    <div class="table-cell">
-                                        <div class="input-group">
-                                            <input type="email" id="s-email" name="email" placeholder="Your email address" class="form-control">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-color">Submit</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
-                                    <p class="subscription-success"><i class="icon icon_check_alt2"></i> You are successfully subscribed for our newsletter.</p>
-                                    <p class="subscription-failed"><i class="icon icon_close_alt2"></i> Something went wrong!</p>
-                                </div>
-                            </form>
-                            -->
-
-                        </div><!-- /End Col -->
-                    </div><!-- /End Row -->
-                </div><!-- End Wrapper -->
-            </div><!-- /End Container -->
-        </section>
-        <!-- =============================
-             /END NEWSLETTER SECTION 
-        ============================== -->
         
         
         <!-- ==================================================
@@ -1082,47 +655,49 @@
                         <div class="col-md-5">
                                 <!-- Logo -->
                                 <a href="#top" class="scrollto" title="SmartMvp">
-                                    <span class="text-logo">SmartMvp</span>
+                                    <span class="text-logo">
+                                    SmartMvp
+                                    </span>
                                 </a>
-                                <p class="footer-hero"><strong>600.000</strong> users registered since January.<br>
-                                We've created the product that will help your startup get better marketing results.</p>
-                                <p class="footer-cta">What are you waiting for?
-                                    <a href="#top" class="btn btn-color">Purchase this Design</a>
-                                </p> 
+                               
                         </div>
                         <!-- Footer Contact Col -->
                         <div class="col-md-3">
-                            <h5 class="text-white">Our Contact</h5>
+                            <h5 class="text-white">
+                            Our Contact
+                            </h5>
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="icon icon_mail"></i>
                                 </div>
                                 <div class="contact-content">
-                                    <a href="mailto:mail@themedept.com">mail@themedept.com</a>
+                                    <a href="mailto:#">
+                                    mail@themedept.com
+                                    </a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="icon icon_pin"></i>
                                 </div>
-                                <div class="contact-content">
+                                <!-- <div class="contact-content">
                                     121 King Street, Melbourne<br>
                                     Victoria 3000 Australia
-                                </div>
+                                </div> -->
                             </div>
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="icon icon_phone"></i>
                                 </div>
-                                <div class="contact-content">
+                                <!-- <div class="contact-content">
                                     1-234-567-89
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Footer Right Col: Twitter Feed -->
                         <div class="col-md-4">
-                                <h5 class="text-white">Recent Tweets</h5>
-                                <div class="tweet"></div>
+                                <!-- <h5 class="text-white">Recent Tweets</h5>
+                                <div class="tweet"></div> -->
                         </div>
 
                         <!-- Footer Menu and Copy -->
@@ -1145,7 +720,9 @@
                                         <a href="#">Privacy</a>
                                     </li>
                                 </ul>
-                                <p class="footer-copy">&copy; 2014-16 - SmartMvp. Original Design by <a href="http://themedept.com">ThemeDept.</a></p>
+                                <p class="footer-copy">
+                                
+                                </p>
                             </div>
                         </div>
                         
@@ -1164,7 +741,7 @@
     <script src="assets/js/plugins/jquery.easing.1.3.min.js"></script>
     <script src="assets/js/plugins/modernizr.custom.min.js"></script>
     <script src="assets/js/plugins/plugins.min.js"></script>
-    <script src="assets/js/plugins/twitter/tweetie.min.js"></script>
+
     <!-- Custom Script -->
     <script src="assets/js/custom.js"></script>
 
