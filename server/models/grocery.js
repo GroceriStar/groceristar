@@ -113,6 +113,7 @@ module.exports = function(Grocery) {
 
 	};
 
+	// hidden Only
 	Grocery.fetchById2 = function(groceryId, cb){
 
 		Grocery.findById(groceryId, {		
@@ -136,42 +137,56 @@ module.exports = function(Grocery) {
 			}
 
 		}, function(err, grocery){
-
-
 			var g = grocery.toJSON();
+ 			
+			let arr = _.map(grocery.hideThisIds, item => item.toString());
 
-			
- 			var response = {};
-                var uniques = _.map(_.groupBy(g.ingredients, function(item){
-                	// console.log(item);
-                  return item.department.id.toString();
-                }), function(grouped){
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);           	
+              return item.department.id.toString();
+            }), function(grouped){
 
-            		 var ja = _.map(grouped, function(item){
-            		 	return {
-	            		 	id: item.id,
-	            		 	title: item.name,
-	            		 	completed: false
-            		 	} // :todo change this to an object
-            		 });
+            	var departmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, departmentId);
+            	
 
-                		
+        		 var ja = _.map(grouped, function(item){
+        		 	return [
+            		 	item.id, 
+            		 	item.name,
+            		 	'/del/ing/' + item.id + '/' + g.id
+        		 	] // :todo change this to an object
+        		 });
 
-                    return { id: grouped[0].department.id.toString(),
-                            // name: grouped[0].department.name,
-                            // type: grouped[0].department.type,
-                            ingredients: ja,
-                            // ingid:  grouped[0].id 
-                        };
+            	
 
-                });
+            	if ( !flag ) { 
+
+            		return { 
+            			// id: grouped[0].department.id.toString(),
+                        // name: grouped[0].department.name,
+                        // type: grouped[0].department.type,
+                        // ingredients: ja,                        
+                    };
+
+            	}
+
+            	return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: ja,                        
+                    };
                 
 
-                response = {
-                    id: g.id,
-                    title: g.title,
-                    data: uniques
-                };
+            });
+            
+
+            
+            var response = {
+                id: g.id,
+                title: g.title,
+                data: uniques
+            };
 
            
 

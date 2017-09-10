@@ -125,6 +125,32 @@ module.exports = function(app) {
 
  });
 
+ router.get('/view/grocery/hidden/:groceryId',
+  ensureLoggedIn('/auth/account'),
+  function(req, res, next){
+    var Grocery   = app.models.Grocery;
+    var groceryId = req.params.groceryId;
+
+    // only hidden departments will be diplsayed
+    Grocery.fetchById2(groceryId, function(err, response){
+
+      // console.log(response.data);
+
+      
+      // :todo make all data came from method
+      res.render('pages/grocery', {
+          title: response.title,
+          elements: response.data, // [data>> department >> ingredient]
+          groceryId: groceryId,
+          // url: req.url,
+          messages: {},
+          // departments: grocery.departmentsList
+        });  
+
+    });
+
+  });
+
 
 
   router.get('/auth/attach-grocery-to-user/:groceryId', 
