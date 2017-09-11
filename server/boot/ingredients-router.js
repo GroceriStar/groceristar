@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 	router.get('/add/ing/:id/:groceryId', function(req, res, next){
 		var ingredientId = req.params.id;
-		var groceryId = req.params.groceryId;
+		var groceryId    = req.params.groceryId;
 		
 		var Grocery   = app.models.Grocery;
 		
@@ -17,14 +17,8 @@ module.exports = function(app) {
 	      groceryId: groceryId,
 	      secondArray: [ ingredientId ]
 	    };
-		
-
 		Grocery.addIngredient(options);
 
-
-		// .findById(departmentId, {}, function(err, model){
-		//   model.updateAttribute('visible', false);
-		// });
 	});
 
 
@@ -73,9 +67,10 @@ module.exports = function(app) {
 
 	// Ing create
 	// :todo update when 
-	router.post('/create/ing/:groceryId', function(req, res, next){
-		var Ingredient   = app.models.Ingredient;
-		var Grocery      = app.models.Grocery;
+	router.post('/create/ing/', function(req, res, next){
+		var Ingredient = app.models.Ingredient;
+		var Grocery    = app.models.Grocery;
+		var groceryId  = req.body.groceryId;
 		var object = {
 			name: req.body.name,
 			departmentId: req.body.departmentId
@@ -84,7 +79,7 @@ module.exports = function(app) {
 		Ingredient.create(object, function(err, model){
 
 			console.log(model);
-			
+
 			var options = {
 		      groceryId: groceryId,
 		      secondArray: [ model.id ]

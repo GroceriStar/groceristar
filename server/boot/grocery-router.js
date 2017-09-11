@@ -29,10 +29,7 @@ module.exports = function(app) {
     var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
 
-    // Grocery.makePurchased(groceryId, ingredientsArr, function(){});
-
     var options = {
-
       groceryId: groceryId,
       secondArray: ingredients 
     };
@@ -42,8 +39,7 @@ module.exports = function(app) {
   });
 
   router.post('/clearpurchased', function(req, res, next){
-    // console.log(req.body);
-    var Grocery        = app.models.Grocery;
+    var Grocery = app.models.Grocery;
 
     Grocery.cleanPurchased({});
 
