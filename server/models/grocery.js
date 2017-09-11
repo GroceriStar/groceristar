@@ -209,7 +209,7 @@ module.exports = function(Grocery) {
 			//:todo use createnew method instead of duplicate stuff
 
 			var object = {
-				title: 'Clone of <' + grocery.title + '>',
+				title: 'Clone of <' + grocery.name + '>',
 				desc: grocery.desc,
 				slug: grocery.slug,
 				img : grocery.img,
@@ -222,8 +222,6 @@ module.exports = function(Grocery) {
 		
 
 			Grocery.create(object, function(err, model){
-
-
 				var User    = Grocery.app.models.user;
 			    var options = {
 			      type  : 'attach',

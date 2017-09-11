@@ -75,7 +75,7 @@ module.exports = function(app) {
 			name: req.body.name,
 			departmentId: req.body.departmentId
 		};
-		 
+		console.log(object); 
 		Ingredient.create(object, function(err, model){
 
 			console.log(model);
