@@ -30,16 +30,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "departmentsList": {
-      "type": "referencesMany",
-      "model": "Department",
-      "foreignKey": "departmentIds",
-      "options": {
-        "validate": true,
-        "forceId": false
-      }
-    },
+  "relations": {    
     "departmentsToHide": {
       "type": "referencesMany",
       "model": "Department",

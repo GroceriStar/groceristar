@@ -11,6 +11,8 @@ block content
         option(value='twitter') Cheese
         option(value='linkedin') Meat
   
+  script(src='/vendor/jquery/jquery.js')
+  
   script(src='/javascript/select-demo/classie.js')
   script(src='/javascript/select-demo/selectFx.js')
   script.
@@ -20,3 +22,16 @@ block content
     new SelectFx(el);
     } );
     })();
+
+  script.
+    $(document).ready(function(){
+
+      $('select').on('change', function() {
+		  
+		  console.log(this.value);
+		  console.log(this.data())
+
+		})
+
+    });
+

@@ -104,54 +104,35 @@ Grocery.fetchById2(groceryId, function(err, response){
 
 
   router.get('/', function(req, res, next) {
-    var Grocery = app.models.Grocery;
+    // var Grocery = app.models.Grocery;
+    var User    = app.models.user;
 
+    User.withAdminAndUltimate(function(err, admin){
+        console.log(admin);
 
-    // Grocery.find({
-    //   where: {
-    //     name: "Ultimate Grocery List"
-    //   }
-    // }, function(err, model){
-    //   console.log(model);
-    // })
+        var json = admin.toJSON();
+        console.log(json.groceries);        
 
-    // User.withAdmin(function(err, admin){
-    //         console.log(admin);
-    // });
-
-
-    // console.log(UserExtended);
-
-    res.render('pages/index', {
+        res.render('pages/index', {
             user: req.user,
             url: req.url,
             // data: response, // :todo change this names
             // departments: response.departments
           });
 
+    });
 
 
+    // console.log(UserExtended);
 
-    // Grocery.fetch(function(error, response){
-
-    //     // console.log(response);
-
-    //       res.render('pages/index', {
-    //         user: req.user,
-    //         url: req.url,
-    //         data: response, // :todo change this names
-    //         departments: response.departments
-    //       });
-
-
-    //       // res.render('pages/grocery2', {
+    
+ //       // res.render('pages/grocery2', {
     //       //   user: req.user,
     //       //   url: req.url,
     //       //   data: response
     //       // });
 
-
-    //       // res.render('pages/home', {
+//       // res.render('pages/home', {
     //       //   user: req.user,
     //       //   url: req.url,
     //       //   data: response
@@ -164,7 +145,6 @@ Grocery.fetchById2(groceryId, function(err, response){
     //       //   data: response
     //       // });
 
-    // });
 
 
 

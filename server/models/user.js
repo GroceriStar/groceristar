@@ -239,12 +239,29 @@ module.exports = function(User) {
     User.withAdmin = function(cb){
         User.findOne({
             where: {
-                username: 'admin'
+                name: 'admin'
+            },
+            include: {
+                 relation: 'groceries'
+                 // scope: {
+                     
+                 // }
+            }
+        }, cb);
+    };
+
+    User.withAdminAndUltimate = function(cb){
+        User.findOne({
+            where: {
+                name: 'admin'
             },
             include: {
                  relation: 'groceries',
                  scope: {
-                     
+                     where: {
+                        title: "Ultimate Grocery List"
+                     },
+                     fields: [ 'id', 'title' ],
                  }
             }
         }, cb);
