@@ -232,4 +232,23 @@ module.exports = function(User) {
 
     }; 
 
+
+
+
+
+    User.withAdmin = function(cb){
+        User.findOne({
+            where: {
+                username: 'admin'
+            },
+            include: {
+                 relation: 'groceries',
+                 scope: {
+                     
+                 }
+            }
+        }, cb);
+    };
+
+
 };

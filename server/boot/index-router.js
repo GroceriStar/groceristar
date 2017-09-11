@@ -2,10 +2,11 @@
 
 var request        = require('request');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+var path           = require('path');
 
 var _ = require('underscore');
 
-var UserExtended = require(path.resolve(__dirname, '../../bin/import/users'));
+// var UserExtended = require(path.resolve(__dirname, '../../bin/import/users'));
 // var loopback = require('loopback');
 // let server          = require(path.resolve(__dirname, '../../server/server'));
 
@@ -94,6 +95,10 @@ Grocery.fetchById2(groceryId, function(err, response){
     // }, function(err, model){
     //   console.log(model);
     // })
+
+    // User.withAdmin(function(err, admin){
+    //         console.log(admin);
+    // });
 
 
     // console.log(UserExtended);
