@@ -14,12 +14,13 @@ let Groceries    = require(path.resolve(__dirname, 'grocery'));
 
 let Departments  = require(path.resolve(__dirname, 'departments'));
 
-
+let Users        = require(path.resolve(__dirname, 'users'));
 
 // async.series()
 
 
 async.parallel({		
+		users       : async.apply(Users.createUsers),
 		departments : async.apply(Departments.createDepartments),
 		groceries   : async.apply(Groceries.createGroceries),
 

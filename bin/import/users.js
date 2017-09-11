@@ -32,7 +32,7 @@ function getUsers() {
 
 function createUsers(cb){
 	// console.log(users);
-	database.automigrate('UserModel', function(err){
+	database.automigrate('user', function(err){
 		if (err) return cb(err);
 
 		User.create(getUsers(), cb);
