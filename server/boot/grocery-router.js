@@ -31,17 +31,8 @@ module.exports = function(app) {
       groceryId: groceryId,
       secondArray: ingredients 
     };
-    Grocery.addPurchased(options);
-    
-
-    // var options = {
-    //   type: 'clear',
-    //   field: 'purchasedIds',
-    //   groceryId: groceryId 
-    // };
-    // Grocery.proceed(options);
-    
-    // res.redirect('/auth/account');
+    Grocery.addPurchased(options);  
+    res.redirect('/auth/account');
 
   });
 

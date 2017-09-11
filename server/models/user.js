@@ -127,6 +127,23 @@ module.exports = function(User) {
     };
 
 
+    User.withGroceries  = function(userId, cb){
+        User.findById(userId, {
+        include: {
+             relation: 'groceries',
+             scope: {
+                 // where: {
+                 //     id: groceryId 
+                 // },
+                 // include: {
+                 //     relation: 'departmentsList',
+                 // }
+             }
+        }
+        }, cb);
+    };
+    User.withFavourites = function(userId, cb){};
+
     User.methodofMethods = function(userId, cb){
 
 
