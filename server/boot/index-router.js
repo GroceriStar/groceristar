@@ -78,6 +78,25 @@ Grocery.fetchById2(groceryId, function(err, response){
   });
 
 
+  router.get('/select', function(req, res, next){
+
+    res.render('pages/grocery2', {
+      user: req.user,
+      url: req.url,
+      // data: response
+    });
+  });
+
+ router.get('/sortable', function(req, res, next){
+
+    res.render('pages/grocery2', {
+      user: req.user,
+      url: req.url,
+      // data: response
+    });
+  });
+
+
 
 
 

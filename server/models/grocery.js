@@ -162,12 +162,7 @@ module.exports = function(Grocery) {
 
             	if ( !flag ) { 
 
-            		return { 
-            			// id: grouped[0].department.id.toString(),
-                        // name: grouped[0].department.name,
-                        // type: grouped[0].department.type,
-                        // ingredients: ja,                        
-                    };
+            		return false;
 
             	}
 
@@ -185,10 +180,10 @@ module.exports = function(Grocery) {
             var response = {
                 id: g.id,
                 title: g.title,
-                data: uniques
+                data: _.compact(uniques)
             };
 
-           
+          
 
 			cb(null, response);
 

@@ -125,17 +125,17 @@ module.exports = function(app) {
     // only hidden departments will be diplsayed
     Grocery.fetchById2(groceryId, function(err, response){
 
-      // console.log(response.data);
+      console.log(response);
 
       
       // :todo make all data came from method
-      // res.render('pages/grocery', {
-      //     title: response.title,
-      //     elements: response.data, // [data>> department >> ingredient]
-      //     groceryId: groceryId,
-      //     messages: {},
+      res.render('pages/grocery', {
+          title: response.title,
+          elements: response.data, // [data>> department >> ingredient]
+          groceryId: groceryId,
+          messages: {},
 
-      //   });  
+      });  
 
     });
 
