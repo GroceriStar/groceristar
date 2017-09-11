@@ -115,7 +115,7 @@ Grocery.fetchById2(groceryId, function(err, response){
           name: ultimate.name
 
         };
-        console.log(data);        
+        // console.log(data);        
 
         res.render('pages/index', {
             user: req.user,

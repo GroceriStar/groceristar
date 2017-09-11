@@ -14,7 +14,6 @@ module.exports = function(app) {
 		var Grocery   = app.models.Grocery;
 		
 		var options = {
-
 	      groceryId: groceryId,
 	      secondArray: [ ingredientId ]
 	    };
@@ -84,10 +83,18 @@ module.exports = function(app) {
 		 
 		Ingredient.create(object, function(err, model){
 
-			// ADD removing ID FROM DATABASE
-			// Grocery.
+			console.log(model);
+			
+			var options = {
+		      groceryId: groceryId,
+		      secondArray: [ model.id ]
+		    };
+		    console.log(options);
 
-			res.redirect('/url-will-be'); // :todo update this
+
+			Grocery.addIngredient(options);
+
+			// res.redirect('/url-will-be'); // :todo update this
 		});
 
 

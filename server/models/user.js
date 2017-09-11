@@ -261,7 +261,7 @@ module.exports = function(User) {
                      where: {
                         name: "Ultimate Grocery List"
                      },
-                     fields: [ 'id', 'title' ],
+                     fields: [ 'id', 'name' ],
                  }
             }
         }, cb);

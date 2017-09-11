@@ -78,38 +78,6 @@ module.exports = function(Ingredient) {
 
     };
 
-    // method when Deparments use array of ingredients and move it inside departments array
-		  // method list attached ingredients by departments
-    // Ingredient.listDepartments = function(ingredientId, cb){
-    //     var DepartmentModel = Ingredient.app.models.DepartmentModel;
-
-    //     Ingredient.findById(ingredientId)
-    //     .then(function(recipe){
-    //         console.log( recipe.ingredients );
-    //         // @TODO change to custom method on recipe model
-    //         Ingredient.find({
-    //             where:{
-    //                 id: recipe.ingredients
-    //             }       
-    //         })
-    //         .then(function(ingredients){
-    //         //  recipe.ingredients = ingredients;
-    //         // console.log(recipe);
-    //         // return recipe;
-    //             cb(null, ingredients);
-    //         });
-
-
-
-
-    //     })
-    //     .catch(function(err){
-    //         if(err){ cb(err); }
-    //     });
-
-
-
-    // };
     // Ingredient.remoteMethod('listIngredients', {
     //     accepts: {
     //       arg: 'recipeId',

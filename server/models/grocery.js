@@ -194,42 +194,6 @@ module.exports = function(Grocery) {
 	};
 
 
-	// :todo not sure what i mean by this.
-	// not working now. Can be used for query ONLY
-	Grocery.fetch = function(cb){
-		Grocery.find({
-			include: {
-				relation: 'ingredients',
-				scope: {
-					// fields: [ 'name' ],
-					include: {
-						relation: 'department',
-						scope: {
-							// fields: [ 'name' ],
-							// where: {
-							// 	departmentId: id
-							// }
-						}
-					}
-
-				}
-			}
-
-		}, function(err, models){
-
-			console.log(models);
-
-
-		});
-
-
-	};
-
-
-
-
-
-
 	//:todo add remote method for enable API calls for this method
 
 
@@ -339,11 +303,11 @@ module.exports = function(Grocery) {
 			include: {
 				relation: 'ingredients',
 				scope: {
-					fields: [ 'id', 'name' ],
+					// fields: [ 'id', 'name' ],
 					include: {
 						relation: 'department',
 						scope: {
-							fields: [ 'id', 'name', 'department' ],
+							// fields: [ 'id', 'name', 'department' ],
 							// where: {
 							// 	departmentId: id
 							// }

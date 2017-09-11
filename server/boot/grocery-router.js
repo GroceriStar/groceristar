@@ -9,13 +9,18 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
 
-  router.get('/change-the-name/grocery/:groceryId', function(req, res, next){ 
-    var groceryId = req.params.groceryId;
-  	var Grocery = app.models.Grocery;
-  	Grocery.findById(groceryId, {}, function(err, model){
-  		model.updateAttribute('title', 'Ultimate Grocery List #' + new Date().toString());
+  
+
+  router.post('/update/name', function(req, res, next){
+    var groceryId = req.body.groceryId;
+    var name      = req.body.name;
+    var Grocery   = app.models.Grocery;
+
+    Grocery.findById(groceryId, {}, function(err, model){
+      model.updateAttribute('name', name);
       res.redirect('/auth/account');
-  	});
+    });
+
 
   });
 
@@ -242,9 +247,19 @@ module.exports = function(app) {
       }); 
     });
 
-    
-
  });
+
+
+ // :todo delete later
+ // router.get('/change-the-name/grocery/:groceryId', function(req, res, next){ 
+ //    var groceryId = req.params.groceryId;
+ //    var Grocery = app.models.Grocery;
+ //    Grocery.findById(groceryId, {}, function(err, model){
+ //      model.updateAttribute('name', 'Ultimate Grocery List #' + new Date().toString());
+ //      res.redirect('/auth/account');
+ //    });
+
+ //  });
 
   app.use(router);
 
