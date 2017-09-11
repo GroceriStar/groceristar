@@ -130,7 +130,7 @@ module.exports = function(app) {
       
       // :todo make all data came from method
       res.render('pages/grocery', {
-          title: response.title,
+          title: 'Hidden departments of ' + response.title,
           elements: response.data, // [data>> department >> ingredient]
           groceryId: groceryId,
           messages: {},

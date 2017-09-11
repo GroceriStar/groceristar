@@ -80,7 +80,7 @@ Grocery.fetchById2(groceryId, function(err, response){
 
   router.get('/select', function(req, res, next){
 
-    res.render('pages/grocery2', {
+    res.render('pages/select-only-delete-later', {
       user: req.user,
       url: req.url,
       // data: response
