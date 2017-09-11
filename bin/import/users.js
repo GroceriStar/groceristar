@@ -1,6 +1,7 @@
 'use strict';
 
 var User  = server.models.user;
+var UserTable = 'user';
 // var relation    = 'ingredients';
 
 function getUsers() {
@@ -9,19 +10,16 @@ function getUsers() {
 		  name: 'john',	
 		  email: 'john.doe@ibm.com',
 		  password: 'john1',
-		  // menus: [],
 		},
 		{
 		  name: 'jane',
 		  email: 'jane.doe@ibm.com',
 		  password: 'jane1',
-		  // menus: [],
 		},
 		{
 		  name: 'admin',
 		  email: 'admin@ibm.com',
 		  password: 'admin',
-		  // menus: [],
 		}
   	];
 
@@ -32,7 +30,7 @@ function getUsers() {
 
 function createUsers(cb){
 	// console.log(users);
-	database.automigrate('user', function(err){
+	database.automigrate(UserTable, function(err){
 		if (err) return cb(err);
 
 		User.create(getUsers(), cb);
@@ -63,21 +61,11 @@ function assignAdmin(admin){
 
 
 function attachGroceryToAdmin(admin, grocery){
-
-	var options = {
-      type  : 'attach',
-      field : 'groceryIds',
+    var options = {
       userId: admin.id,
       secondArray: [ grocery.id ]
     };
-    User.proceed(options);
-
-	// grocery.updateAttribute('userId', admin.id);
-
-	// videos.forEach(function(video){
-	// 	video.updateAttribute('userId', admin.id);
-		
-	// });
+    User.addGrocery(options);
 
 };
 
@@ -92,7 +80,7 @@ function attachGroceryToAdmin(admin, grocery){
 // };
 
 
-function getAdminGLlists = function( User ){
+function getAdminGroceries = function( User ){
 	// this is a custom method for user model, 
 	// which I decided to move from main model definition to this place
 
@@ -123,38 +111,7 @@ function getAdminGLlists = function( User ){
 			console.log(admin);
 		});
 
-
-
-
-		User.findOne({
-			where : {
-					username: 'admin'
-			},
-			include: {
-				relation: ''
-			} 
-		})
-		.then(function(admin){
-			// console.log(admin.id);
-
-			// admin.videos({},function(err, videos){
-			// 	console.log(videos)
-			// })
-
-			VideoModel.find({
-				where: {
-					// userId: admin.id 
-					userId:  admin.id 
-				},
-				fields: [
-					'title', 'url', 'desc',
-					'start', 'end', 'step'
-				]				
-				
-			}, function(err, videos){
-				console.log(videos)
-			});
-		});
+		
 
 	};
 
@@ -162,4 +119,4 @@ function getAdminGLlists = function( User ){
 
 module.exports.createUsers     = createUsers;
 module.exports.assignAdmin     = assignAdmin;
-module.exports.getAdminGLlists = getAdminGLlists;
+module.exports.getAdminGroceries = getAdminGroceries;

@@ -202,8 +202,6 @@ module.exports = function(Grocery) {
 	// :todo not sure what i mean by this.
 	// not working now. Can be used for query ONLY
 	Grocery.fetch = function(cb){
-
-
 		Grocery.find({
 			include: {
 				relation: 'ingredients',
@@ -226,61 +224,6 @@ module.exports = function(Grocery) {
 
 			console.log(models);
 
-			// _.map()
-
-			// var g = grocery.toJSON();
-			
-			var response = [];
-			// console.log(g.desc);
-			// console.log(g.departmentsList);
-
-
-			// _.map( g.ingredients, function(ingredient){
-
-				// console.log(ingredient);
-				// console.log(ingredient.department);
-
-                // var uniques = _.map(_.groupBy(g.ingredients, function(item){
-                //   return item.department.id.toString();
-                // }), function(grouped){
-
-                //     return {  
-                //     		id: grouped[0].department.id.toString(),
-                //             name: grouped[0].department.name,
-                //             link: '#'
-                //         };
-
-                // });
-                // console.log(uniques);
-
-                // response.push({
-                //     id: grocery.id,
-                //     title: grocery.title,
-                //     departments: uniques
-                // });
-
-                
-            // });
-
-
-
-			// case #1 return only dep name with id for link creation
-
-			// case #2 display deps with ings
-
-
-			
-
-			
-			
-
-			
-			// var object = {
-			// 	desc: g.desc,
-			// 	departments:departments
-			// };
-			// cb(null, object);
-				
 
 		});
 
@@ -370,28 +313,28 @@ module.exports = function(Grocery) {
 
 	};
 
-	// Grocery.withDepartments = function(groceryId, cb){
-	// 	Grocery.findOne({
-	// 		include: {
-	// 			relation: 'departmentsList',
-	// 			scope: {
-	// 				fields: [ 'name' ],
-	// 				include: {
-	// 					relation: 'ingredients',
-	// 					scope: {
-	// 						fields: [ 'name' ],
-	// 						// where: {
-	// 						// 	departmentId: id
-	// 						// }
-	// 					}
-	// 				}
+	Grocery.withDepartments = function(groceryId, cb){
+		Grocery.findById(groceryId, {
+			include: {
+				relation: 'ingredients',
+				scope: {
+					// fields: [ 'name' ],
+					include: {
+						relation: 'department',
+						scope: {
+							// fields: [ 'name' ],
+							// where: {
+							// 	departmentId: id
+							// }
+						}
+					}
 
-	// 			}
-	// 		},
-	// 		where: {id:groceryId}
+				}
+			}
+			// where: {id:groceryId}
 
-	// 	}, cb);
-	// };
+		}, cb);
+	};
 
 
 	// :todo now used right now. change this!

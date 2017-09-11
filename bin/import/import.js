@@ -34,6 +34,8 @@ async.parallel({
 		// console.log(results.departments);
 		// console.log(results.groceries);
 
+		Users.assignAdmin(results.users[2]);
+
 		Ingredients.createIngredients(
 			results.departments, function(err, ingredients){
 

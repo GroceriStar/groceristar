@@ -4,8 +4,10 @@ var request        = require('request');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 var _ = require('underscore');
-// var loopback = require('loopback');
 
+var UserExtended = require(path.resolve(__dirname, '../../bin/import/users'));
+// var loopback = require('loopback');
+// let server          = require(path.resolve(__dirname, '../../server/server'));
 
 
 
@@ -92,6 +94,9 @@ Grocery.fetchById2(groceryId, function(err, response){
     // }, function(err, model){
     //   console.log(model);
     // })
+
+
+    // console.log(UserExtended);
 
     res.render('pages/index', {
             user: req.user,
