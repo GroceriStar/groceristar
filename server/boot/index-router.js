@@ -108,7 +108,7 @@ module.exports = function(app) {
 
     User.withAdminAndUltimate(function(err, admin){
 
-        var json = admin.toJSON();
+        var json     = admin.toJSON();
         var ultimate = json.groceries[0];
         var data = {
           id: ultimate.id,

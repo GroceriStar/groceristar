@@ -197,44 +197,38 @@ module.exports = function(Grocery) {
 	//:todo add remote method for enable API calls for this method
 
 
-	Grocery.clone = function(groceryId, userId){
-
-		
-
-
-		// Grocery.attachToUser(groceryId, userId);
+	Grocery.cloner = function(groceryId, userId){
 		Grocery.findById(groceryId, {
 			include: ['ingredients', 'departmentsToHide']
 			
 		}, function(err, grocery){
-
-			console.log( grocery )
+			// console.log( grocery.name );
+			// console.log( grocery );
 			//:todo use createnew method instead of duplicate stuff
-
-			// var object = {
-			// 	name: 'Clone of <' + grocery.name + '>',
-			// 	desc: grocery.desc,
-			// 	slug: grocery.slug,
-			// 	img : grocery.img,
-			// 	// departmentIds: grocery.departmentIds,
-			// 	hideThisIds:   grocery.hideThisIds,
-			// 	ingredientIds: grocery.ingredientIds,
-			// 	created_at: new Date(),
-			// 	updated_at: new Date(),
-			// };
+			var object = {
+				name: 'Clone of < ' + grocery.name + ' >',
+				desc: grocery.desc,
+				slug: grocery.slug,
+				img : grocery.img,
+				hideThisIds  :   grocery.hideThisIds,
+				ingredientIds: grocery.ingredientIds,
+				created_at   : new Date(),
+				updated_at   : new Date(),
+			};
 		
 
-			// Grocery.create(object, function(err, model){
-			// 	var User    = Grocery.app.models.user;
-			//     var options = {
-			//       type  : 'attach',
-			//       field : 'groceryIds',
-			//       userId: userId,
-			//       secondArray: [ model.id ]
-			//     };
-			//     User.proceed(options);
-			//     // console.log('-----');
-			// });
+			Grocery.create(object, function(err, model){
+				console.log(model);
+				var User    = Grocery.app.models.user;
+			    var options = {
+			      type  : 'attach',
+			      field : 'groceryIds',
+			      userId: userId,
+			      secondArray: [ model.id ]
+			    };
+			    User.proceed(options);
+			    // console.log('-----');
+			});
 
 			
 

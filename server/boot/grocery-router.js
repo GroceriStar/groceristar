@@ -225,7 +225,8 @@ module.exports = function(app) {
     var groceryId = req.params.groceryId;  
     // var User      = app.models.user;
     var Grocery   = app.models.Grocery;
-    Grocery.clone( groceryId, userId, function(){});
+    // console.log(typeof userId);
+    Grocery.cloner( groceryId, userId );
 
     res.redirect('/auth/account');
   });
