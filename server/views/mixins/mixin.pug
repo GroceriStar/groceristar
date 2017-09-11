@@ -58,3 +58,7 @@ mixin view_departments_ingredients(array)
           a(href='/visibility/department/' + val.id)
             i.fa.fa-bell.fa-4x
             SHOW         
+
+
+mixin button_clone_ultimate(object)            
+  a.btn.btn-primary(href="/clone/" + object.id)= "CLONE GROCERY:  " + object.name

@@ -74,17 +74,17 @@ module.exports = function(app) {
 
         User.methodofAllMethods(userId, function(err, data){
 
-        	console.log(data);
+        	console.log(typeof data.clone.id);
 
 			res.render('pages/account', {
-				title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
+				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,
 				// url: req.url,
-				messages: {},
+				messages  : {},
 				// departments: grocery.departmentsList
-				groceries: data.response,
-				clone: clone,
-				user: req.user,
-				url: req.url
+				groceries : data.response,
+				clone     : data.clone,
+				user      : req.user,
+				url       : req.url
 			  
 			}); 
 	    });

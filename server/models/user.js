@@ -202,7 +202,7 @@ module.exports = function(User) {
                 var json     = admin.toJSON();
                 var ultimate = json.groceries[0];
                 var data = {
-                  id: ultimate.id,
+                  id: ultimate.id.toString(),
                   name: ultimate.name
 
                 };
