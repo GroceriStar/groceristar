@@ -7,6 +7,7 @@ block content
 
       a(href='/remove/grocery/' + groceryId) Remove GL FROM THIS USER
 
+
     .col-md-12
       each val, index in elements
         .col-md-4.element-item
@@ -16,6 +17,8 @@ block content
                 i.fa.fa-eye-slash
               else    
                 i.fa.fa-eye
+
+            a(href='/visibility/department/' + val.id + '/' + groceryId)  Manage department    
                 
           h5= val.type                  
           h5= val.id + ' <= Department ID'

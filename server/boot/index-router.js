@@ -51,13 +51,13 @@ module.exports = function(app) {
     var userId    = req.user.id;
      var groceryId = '59aebf4832e8fb1c105968f9';
 
-Grocery.fetchById2(groceryId, function(err, response){
+    Grocery.fetchById2(groceryId, function(err, response){
 
-  // _.map(response.data)
-  // console.log(response.data[0].ingredients);
-  res.json(response.data[0].ingredients);
+      // _.map(response.data)
+      // console.log(response.data[0].ingredients);
+      res.json(response.data[0].ingredients);
 
-})
+    })
 
 
     // res.json([

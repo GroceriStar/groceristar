@@ -77,6 +77,7 @@ module.exports = function(app) {
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
     var Grocery   = app.models.Grocery;
+    var User      = app.models.user;
     var groceryId = req.params.groceryId;
     // var userId    = req.user.id;
 
@@ -88,18 +89,47 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, response){
 
-    	// console.log(response.data);
+      // :todo make all data came from method
+      res.render('pages/grocery', {
+          title: response.title,
+          elements: response.data, // [data>> department >> ingredient]
+          groceryId: groceryId,
+          // url: req.url,
+          messages: {},
+          // departments: grocery.departmentsList
+        }); 
+
+
+    //   User.withAdminAndUltimate(function(err, admin){
+
+    //     var json     = admin.toJSON();
+    //     var ultimate = json.groceries[0];
+    //     var data = {
+    //       id: ultimate.id,
+    //       name: ultimate.name
+
+    //     };
+
+
+    //     console.log(data);        
+
+
+    //   // :todo make all data came from method
+    //   // res.render('pages/grocery', {
+    //   //     title: response.title,
+    //   //     elements: response.data, // [data>> department >> ingredient]
+    //   //     groceryId: groceryId,
+    //   //     // url: req.url,
+    //   //     messages: {},
+    //   //     // departments: grocery.departmentsList
+    //   //   }); 
+
+
+
+    // });
 
     	
-      // :todo make all data came from method
-    	res.render('pages/grocery', {
-    		  title: response.title,
-	        elements: response.data, // [data>> department >> ingredient]
-          groceryId: groceryId,
-	        // url: req.url,
-	        messages: {},
-	        // departments: grocery.departmentsList
-	      });  
+
 
     });
 
@@ -232,14 +262,14 @@ module.exports = function(app) {
     var User      = app.models.user;
     // var Grocery   = app.models.Grocery;
 
-    User.methodofAllMethods(userId, function(err, groceries){
+    User.methodofAllMethods(userId, function(err, data){
       res.render('pages/grocery-list', {
         title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
 
         // url: req.url,
         messages: {},
         // departments: grocery.departmentsList
-        groceries: groceries
+        groceries: data.groceries
       }); 
     });
 

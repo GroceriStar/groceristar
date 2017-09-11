@@ -30,6 +30,7 @@ module.exports = function(User) {
 
     // :todo add remote method for this functionality
     // :todo update forEach to underscore, as we use it
+    // :todo update for using with proceed
     User.listFavorites = function(userId, cb){
 
         // var Ingredient = User.app.models.Ingredient;
@@ -148,31 +149,7 @@ module.exports = function(User) {
         }
         }, cb);
     };
-    User.withFavourites = function(userId, cb){};
-
-    User.methodofMethods = function(userId, cb){
-
-
-        // User.findById(userId, {
-        //  include: {
-        //      relation: 'groceries',
-        //      scope: {
-        //          where: {
-        //              id: groceryId 
-        //          },
-        //          include: {
-        //              relation: 'departmentsList',
-        //          }
-        //      }
-        //  }
-        // }, function(err, user){
-
-        //  console.log( user );
-
-        // });
-
-    };
-   
+    // User.withFavourites = function(userId, cb){};  
 
     User.methodofAllMethods = function(userId, cb){
 
@@ -181,15 +158,12 @@ module.exports = function(User) {
          include: {
              relation: 'groceries',
              scope: {
-                 // where: {
-                 //     id: groceryId 
-                 // },
-                 include: {
-                     relation: 'ingredients',
-                     scope: {
-                        include: 'department'
-                     }
-                 }
+                include: {
+                    relation: 'ingredients',
+                    scope: {
+                       include: 'department'
+                    }
+                }
              }
          }
         }, function(err, user){
@@ -223,8 +197,39 @@ module.exports = function(User) {
 
 
 
-            cb(null, response);
+            User.withAdminAndUltimate(function(err, admin){
 
+                var json     = admin.toJSON();
+                var ultimate = json.groceries[0];
+                var data = {
+                  id: ultimate.id,
+                  name: ultimate.name
+
+                };
+
+       
+                cb(null, {
+                    clone: data,
+                    response: response
+                });
+        
+
+              // :todo make all data came from method
+              // res.render('pages/grocery', {
+              //     title: response.title,
+              //     elements: response.data, // [data>> department >> ingredient]
+              //     groceryId: groceryId,
+              //     // url: req.url,
+              //     messages: {},
+              //     // departments: grocery.departmentsList
+              //   }); 
+
+
+
+            });
+
+
+            
 
 
 

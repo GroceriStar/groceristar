@@ -72,19 +72,21 @@ module.exports = function(app) {
 	    var userId  = req.user.id;
 	    // console.log(req.user.id);
 
-        User.methodofAllMethods(userId, function(err, groceries){
-	      res.render('pages/account', {
-	        title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
+        User.methodofAllMethods(userId, function(err, data){
 
-	        // url: req.url,
-	        messages: {},
-	        // departments: grocery.departmentsList
-	        groceries: groceries,
+        	console.log(data);
 
-	        user: req.user,
-            url: req.url
-	          
-	      }); 
+			res.render('pages/account', {
+				title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
+				// url: req.url,
+				messages: {},
+				// departments: grocery.departmentsList
+				groceries: data.response,
+				clone: clone,
+				user: req.user,
+				url: req.url
+			  
+			}); 
 	    });
 
 
