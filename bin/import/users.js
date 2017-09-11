@@ -80,7 +80,7 @@ function attachGroceryToAdmin(admin, grocery){
 // };
 
 
-function getAdminGroceries = function( User ){
+function getAdminGroceries ( User ){
 	// this is a custom method for user model, 
 	// which I decided to move from main model definition to this place
 

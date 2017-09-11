@@ -129,14 +129,13 @@ module.exports = function(app) {
 
       
       // :todo make all data came from method
-      res.render('pages/grocery', {
-          title: response.title,
-          elements: response.data, // [data>> department >> ingredient]
-          groceryId: groceryId,
-          // url: req.url,
-          messages: {},
-          // departments: grocery.departmentsList
-        });  
+      // res.render('pages/grocery', {
+      //     title: response.title,
+      //     elements: response.data, // [data>> department >> ingredient]
+      //     groceryId: groceryId,
+      //     messages: {},
+
+      //   });  
 
     });
 
@@ -154,12 +153,11 @@ module.exports = function(app) {
 
     // this is a duplicated function from Grocery :todo think about it, real talk   
     var options = {
-      type  : 'attach',
-      field : 'groceryIds',
       userId: userId,
       secondArray: [ groceryId ]
     };
-    User.proceed(options);
+    User.addGrocery(options);
+    // User.proceed(options);
 
     res.redirect('/auth/account');
   });
