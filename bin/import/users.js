@@ -1,6 +1,13 @@
 'use strict';
 
-var User  = server.models.user;
+var path        = require('path');
+let server      = require(path.resolve(__dirname, '../../server/server'));
+var database    = server.datasources.groceryDS;
+
+var User   = server.models.user;
+var Role   = server.models.Role;
+var RoleMapping   = server.models.RoleMapping;
+var Grocery = server.models.Grocery;
 var UserTable = 'user';
 // var relation    = 'ingredients';
 
@@ -61,6 +68,7 @@ function assignAdmin(admin){
 
 
 function attachGroceryToAdmin(admin, grocery){
+	console.log(grocery);
     var options = {
       userId: admin.id,
       secondArray: [ grocery.id ]
@@ -119,4 +127,5 @@ function getAdminGroceries ( User ){
 
 module.exports.createUsers     = createUsers;
 module.exports.assignAdmin     = assignAdmin;
+module.exports.attachGroceryToAdmin     = attachGroceryToAdmin;
 module.exports.getAdminGroceries = getAdminGroceries;

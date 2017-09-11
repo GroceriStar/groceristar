@@ -68,7 +68,7 @@ module.exports = function(User) {
     User.addGrocery = function(options){
         options.type  = 'attach';
         options.field = 'groceryIds'
-        Grocery.proceed(options);
+        User.proceed(options);
     };
 
     // _map and toString is equal to model.toJSON

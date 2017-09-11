@@ -35,6 +35,7 @@ async.parallel({
 		// console.log(results.groceries);
 
 		Users.assignAdmin(results.users[2]);
+		Users.attachGroceryToAdmin(results.users[2], results.groceries[0]);
 
 		Ingredients.createIngredients(
 			results.departments, function(err, ingredients){
