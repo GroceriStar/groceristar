@@ -14,7 +14,8 @@
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
     "test": "mocha",
-    "import": "node bin/import/import.js"
+    "import": "node bin/import/import.js",
+    "migrate": "node bin/automigrate.js"
   },
   "dependencies": {
     "blocks": "^0.3.5",

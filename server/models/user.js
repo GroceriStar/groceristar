@@ -259,7 +259,7 @@ module.exports = function(User) {
                  relation: 'groceries',
                  scope: {
                      where: {
-                        title: "Ultimate Grocery List"
+                        name: "Ultimate Grocery List"
                      },
                      fields: [ 'id', 'title' ],
                  }

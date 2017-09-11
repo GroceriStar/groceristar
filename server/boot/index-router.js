@@ -104,21 +104,24 @@ Grocery.fetchById2(groceryId, function(err, response){
 
 
   router.get('/', function(req, res, next) {
-    // var Grocery = app.models.Grocery;
     var User    = app.models.user;
 
     User.withAdminAndUltimate(function(err, admin){
-        console.log(admin);
 
         var json = admin.toJSON();
-        console.log(json.groceries);        
+        var ultimate = json.groceries[0];
+        var data = {
+          id: ultimate.id,
+          name: ultimate.name
+
+        };
+        console.log(data);        
 
         res.render('pages/index', {
             user: req.user,
             url: req.url,
-            // data: response, // :todo change this names
-            // departments: response.departments
-          });
+            data: data, 
+        });
 
     });
 

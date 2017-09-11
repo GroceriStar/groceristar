@@ -68,7 +68,7 @@ function assignAdmin(admin){
 
 
 function attachGroceryToAdmin(admin, grocery){
-	console.log(grocery);
+	// console.log(grocery);
     var options = {
       userId: admin.id,
       secondArray: [ grocery.id ]
