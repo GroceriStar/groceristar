@@ -72,7 +72,7 @@ module.exports = function(app) {
 		var Grocery      = app.models.Grocery;
 		var groceryId    = req.body.groceryId;
 		var departmentId = req.body.departmentId;
-		 
+
 		var object = {
 			name: req.body.name,
 			departmentId: departmentId
@@ -91,7 +91,7 @@ module.exports = function(app) {
 
 			Grocery.addIngredient(options);
 
-			res.redirect('/department/' + departmentId); // :todo update this
+			res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
 		});
 
 

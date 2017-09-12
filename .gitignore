@@ -24,5 +24,11 @@ build/Release
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 providers.json
+
 client/todomvc/node_modules
 client/dasha/*
+client/landos/*
+client/SelectInspiration-master/*
+client/smartmvp-startup/*
+client/todomvc/*
+

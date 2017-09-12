@@ -117,10 +117,17 @@ module.exports = function(app) {
         };
         // console.log(data);        
 
-        res.render('pages/index', {
-            user: req.user,
-            url: req.url,
-            data: data, 
+        // res.render('pages/index', {
+        //     user: req.user,
+        //     url: req.url,
+        //     data: data, 
+        // });
+
+        res.render('pages/landing', {
+          user: req.user,
+          url: req.url,
+          data: data,
+          
         });
 
     });
