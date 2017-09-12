@@ -15,7 +15,7 @@ If bug: Steps to reproduce + link to sample repo
 # Expected result
 
 <!--
-Also include actual results if bug
+Also, include actual results if bug
 -->
 
 # Additional information
