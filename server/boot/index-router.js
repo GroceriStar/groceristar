@@ -33,14 +33,7 @@ module.exports = function(app) {
     console.log(req.params);
   });
 
-  router.get('/landosik', function(req, res, next){
 
-    res.render('pages/landing', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
-  });
 
 
 
@@ -101,7 +94,14 @@ module.exports = function(app) {
 
 
 
+  router.get('/landosik', function(req, res, next){
 
+    res.render('pages/landing', {
+      user: req.user,
+      url: req.url,
+      // data: response
+    });
+  });
 
   router.get('/', function(req, res, next) {
     var User    = app.models.user;

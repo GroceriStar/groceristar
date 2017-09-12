@@ -23,6 +23,7 @@ module.exports = function(app) {
 
 	    var renderObject = {
 	    	id: d.id,
+	    	departmentId:  d.id, // :change that
 	    	name: d.name,
 			ingredients : d.ingredients,		
 			description : d.desc,

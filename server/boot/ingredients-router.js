@@ -68,28 +68,30 @@ module.exports = function(app) {
 	// Ing create
 	// :todo update when 
 	router.post('/create/ing/', function(req, res, next){
-		var Ingredient = app.models.Ingredient;
-		var Grocery    = app.models.Grocery;
-		var groceryId  = req.body.groceryId;
+		var Ingredient   = app.models.Ingredient;
+		var Grocery      = app.models.Grocery;
+		var groceryId    = req.body.groceryId;
+		var departmentId = req.body.departmentId;
+		 
 		var object = {
 			name: req.body.name,
-			departmentId: req.body.departmentId
+			departmentId: departmentId
 		};
-		console.log(object); 
+		// console.log(object); 
 		Ingredient.create(object, function(err, model){
 
-			console.log(model);
+			// console.log(model);
 
 			var options = {
 		      groceryId: groceryId,
 		      secondArray: [ model.id ]
 		    };
-		    console.log(options);
+		    // console.log(options);
 
 
 			Grocery.addIngredient(options);
 
-			// res.redirect('/url-will-be'); // :todo update this
+			res.redirect('/department/' + departmentId); // :todo update this
 		});
 
 
