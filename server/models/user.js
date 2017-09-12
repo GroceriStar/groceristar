@@ -72,6 +72,10 @@ module.exports = function(User) {
         User.proceed(options);
     };
 
+    User.cloneGrocery = function(options){
+        
+    };
+
     // _map and toString is equal to model.toJSON
     User.proceed = function(options){
 

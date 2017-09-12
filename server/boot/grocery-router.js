@@ -79,13 +79,8 @@ module.exports = function(app) {
     var Grocery   = app.models.Grocery;
     var User      = app.models.user;
     var groceryId = req.params.groceryId;
-    // var userId    = req.user.id;
+    // var userId    = req.user.id; 
 
-    // console.log(groceryId);
-    // console.log(userId);
-
-
-    
 
     Grocery.fetchById(groceryId, function(err, response){
 
@@ -218,12 +213,9 @@ module.exports = function(app) {
 
 
 
-
-// :todo finish
   router.get('/clone/:groceryId', function(req, res, next) {
     var userId    = req.user.id;    
     var groceryId = req.params.groceryId;  
-    // var User      = app.models.user;
     var Grocery   = app.models.Grocery;
     // console.log(typeof userId);
     Grocery.cloner( groceryId, userId );
@@ -261,17 +253,17 @@ module.exports = function(app) {
   function(req, res, next){
     var userId    = req.user.id;    
     var User      = app.models.user;
-    // var Grocery   = app.models.Grocery;
 
     User.methodofAllMethods(userId, function(err, data){
+      // console.log(data);
       res.render('pages/grocery-list', {
         title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
-
         // url: req.url,
         messages: {},
-        // departments: grocery.departmentsList
-        groceries: data.groceries
+        groceries: data.response,
+
       }); 
+
     });
 
  });

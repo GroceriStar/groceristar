@@ -218,7 +218,7 @@ module.exports = function(Grocery) {
 		
 
 			Grocery.create(object, function(err, model){
-				console.log(model);
+
 				var User    = Grocery.app.models.user;
 			    var options = {
 			      type  : 'attach',

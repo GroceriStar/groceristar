@@ -70,7 +70,6 @@ module.exports = function(app) {
 	    var userId  = req.user.id;
 
         User.methodofAllMethods(userId, function(err, data){
-        	console.log(data.response);
 			res.render('pages/account', {
 				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,
 				// url: req.url,

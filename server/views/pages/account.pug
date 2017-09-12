@@ -30,7 +30,6 @@ block content
     .col-md-12
       +view_groceries_short(groceries)
 
-      //include ../partials/groceries-list
   br
 
 
@@ -40,12 +39,11 @@ block content
 
 
 
-  
-
   h2 Linked Account(s)
   ul.list-inline.list-unstyled
     li
       a.btn.btn-primary(href="/link/facebook") Link Facebook
+
 
   p.small
     if user.accounts.length !== 0
@@ -54,4 +52,3 @@ block content
         p.small= JSON.stringify(val)
     else
       | NONE
-  

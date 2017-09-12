@@ -15,6 +15,7 @@ mixin view_departments_awesome(array, groceryId)
     ul
       each val, index in array
         li= val.name + '( ' + val.id + ' ) '
+          button_department(val.id, groceryId)
           a(href='/department/' + val.id + '/' + groceryId) view
 
           a(href='/visibility/department/' + val.id)
@@ -62,3 +63,13 @@ mixin link2(href, name)
 
 mixin button_clone_ultimate(object)
   +link('/clone/' + object.id, 'CLONE GROCERY:  ' + object.name)(class="btn-primary")            
+
+mixin button_department(id, groceryId)
+  +link('/department/' + id + '/' + groceryId, 'view')
+
+mixin button_department_awesome(id, groceryId)
+  a(href='/department/' + id + '/' + groceryId)
+    i.fa.fa-ellipsis-v
+
+    
+    
