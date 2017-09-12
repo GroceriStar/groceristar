@@ -23,12 +23,11 @@ module.exports = function(app) {
 
 	    var renderObject = {
 	    	id: d.id,
-			ingredients: d.ingredients,
-			name: d.name,
-			description: d.desc,
-			groceryId: groceryId
-
-	    }
+	    	name: d.name,
+			ingredients : d.ingredients,		
+			description : d.desc,
+			groceryId   : groceryId
+	    };
 
 	    // console.log(renderObject)
 

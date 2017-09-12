@@ -53,9 +53,8 @@ module.exports = function(Grocery) {
 			}
 
 		}, function(err, grocery){
-			var g = grocery.toJSON();
- 			
-			let arr = _.map(grocery.hideThisIds, item => item.toString());
+			var g       = grocery.toJSON();
+			let arr     = _.map(grocery.hideThisIds, item => item.toString());
 
             var uniques = _.map(_.groupBy(g.ingredients, function(item){
             	// console.log(item);           	
@@ -95,15 +94,11 @@ module.exports = function(Grocery) {
 
             });
             
-
-            
             var response = {
                 id: g.id,
-                title: g.title,
+                name: g.name,
                 data: uniques
             };
-
-           
 
 			cb(null, response);
 
@@ -179,7 +174,7 @@ module.exports = function(Grocery) {
             
             var response = {
                 id: g.id,
-                title: g.title,
+                name: g.name,
                 data: _.compact(uniques)
             };
 

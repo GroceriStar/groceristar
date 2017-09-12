@@ -13,9 +13,14 @@ block content
       h1= id
     
 
+      include ../forms/add-ingredient    
+
+
+
       ul
         each val, index in ingredients
           li= val.name + '( ' + val.id + ' )'
+
 
 
 

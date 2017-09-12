@@ -1,6 +1,6 @@
-form#purchased(name="formsubmit", method="post", action="/update/name")
-  input(type="text", name="name", value="THIS IS A NEW NAME")  
+form#updateName(name="formsubmit", method="post", action="/update/name")
+  input(type="text", name="name", value=name)  
   br
-  input(type="text", name="groceryId", value=groceryId)
+  input(type="hidden", name="groceryId", value=groceryId)
   br
   input.btn.btn-success(type='submit', value='Save')

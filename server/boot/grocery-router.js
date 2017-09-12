@@ -24,6 +24,8 @@ module.exports = function(app) {
 
   });
 
+
+
   router.post('/addtopurchased', function(req, res, next){
   	var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
@@ -86,27 +88,15 @@ module.exports = function(app) {
 
       // :todo make all data came from method
       res.render('pages/grocery', {
-          title: response.title,
+          name: response.name,
           elements: response.data, // [data>> department >> ingredient]
           groceryId: groceryId,
           // url: req.url,
           messages: {},
-          // departments: grocery.departmentsList
         }); 
 
 
-    //   User.withAdminAndUltimate(function(err, admin){
-
-    //     var json     = admin.toJSON();
-    //     var ultimate = json.groceries[0];
-    //     var data = {
-    //       id: ultimate.id,
-    //       name: ultimate.name
-
-    //     };
-
-
-    //     console.log(data);        
+   
 
 
     //   // :todo make all data came from method
@@ -121,23 +111,10 @@ module.exports = function(app) {
 
 
 
-    // });
-
     	
 
 
     });
-
-    // Grocery.findById(req.params.groceryId, {}, function(err, grocery){
-      
-    //   console.log(grocery.departments);
-
-  
-
-    // });
-
-
-
 
 
  });
@@ -155,7 +132,7 @@ module.exports = function(app) {
       
       // :todo make all data came from method
       res.render('pages/grocery', {
-          title: 'Hidden departments of ' + response.title,
+          name: 'Hidden departments of ' + response.name,
           elements: response.data, // [data>> department >> ingredient]
           groceryId: groceryId,
           messages: {},
@@ -232,7 +209,7 @@ module.exports = function(app) {
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
 
-    console.log( req.user.id );
+    // console.log( req.user.id );
     var Grocery = app.models.Grocery;
     var data = {
       title: data.title,
