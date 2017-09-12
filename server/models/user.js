@@ -187,15 +187,12 @@ module.exports = function(User) {
 
                 response.push({
                     id: grocery.id,
-                    title: grocery.title,
+                    name: grocery.name,
                     departments: uniques
                 });
 
                 
             });
-
-
-
 
             User.withAdminAndUltimate(function(err, admin){
 
@@ -214,24 +211,9 @@ module.exports = function(User) {
                 });
         
 
-              // :todo make all data came from method
-              // res.render('pages/grocery', {
-              //     title: response.title,
-              //     elements: response.data, // [data>> department >> ingredient]
-              //     groceryId: groceryId,
-              //     // url: req.url,
-              //     messages: {},
-              //     // departments: grocery.departmentsList
-              //   }); 
-
 
 
             });
-
-
-            
-
-
 
         });
 

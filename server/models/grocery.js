@@ -210,7 +210,7 @@ module.exports = function(Grocery) {
 				desc: grocery.desc,
 				slug: grocery.slug,
 				img : grocery.img,
-				hideThisIds  :   grocery.hideThisIds,
+				hideThisIds  : grocery.hideThisIds,
 				ingredientIds: grocery.ingredientIds,
 				created_at   : new Date(),
 				updated_at   : new Date(),

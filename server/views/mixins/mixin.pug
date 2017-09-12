@@ -55,9 +55,10 @@ mixin view_departments_ingredients(array)
             SHOW         
 
 mixin link(href, name)
-  a.btn(class!=attributes.class title=name href=href target="_blank")= name
+  a.btn(class!=attributes.class title=name href=href)= name
 
-// example +link('http://peexaweb.com', 'Google')(class="additional-class")
+mixin link2(href, name)
+  a.btn(class!=attributes.class title=name href=href target="_blank")= name
 
 mixin button_clone_ultimate(object)
   +link('/clone/' + object.id, 'CLONE GROCERY:  ' + object.name)(class="btn-primary")            

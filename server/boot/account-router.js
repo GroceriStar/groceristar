@@ -64,14 +64,13 @@ module.exports = function(app) {
 		res.redirect('/');
 	});
 
-
-
 	router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 	    var Grocery = app.models.Grocery;
 	    var User    = app.models.user; 
 	    var userId  = req.user.id;
 
         User.methodofAllMethods(userId, function(err, data){
+        	console.log(data.response);
 			res.render('pages/account', {
 				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,
 				// url: req.url,
