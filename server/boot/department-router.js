@@ -14,7 +14,7 @@ module.exports = function(app) {
 	router.get('/department/:id/:groceryId', function(req, res, next){
 
 	  var departmentId = req.params.id;
-	  var groceryId = req.params.groceryId;
+	  var groceryId    = req.params.groceryId;
 	  var Department   = app.models.Department;
 
 	  Department.methodA(departmentId, function(departments){
@@ -22,11 +22,11 @@ module.exports = function(app) {
 	    var d = departments.toJSON();
 
 	    var renderObject = {
-	      ingredients: d.ingredients,
-	      name: d.name,
-	      description: d.desc,
-	      id: d.id,
-	      groceryId: groceryId
+	    	id: d.id,
+			ingredients: d.ingredients,
+			name: d.name,
+			description: d.desc,
+			groceryId: groceryId
 
 	    }
 

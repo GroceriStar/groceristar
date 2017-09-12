@@ -73,7 +73,9 @@ module.exports = function(User) {
     };
 
     User.cloneGrocery = function(options){
-        
+        // options.type  = 'attach';
+        // options.field = 'groceryIds'
+        // User.proceed(options);
     };
 
     // _map and toString is equal to model.toJSON
