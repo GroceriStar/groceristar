@@ -1,68 +1,31 @@
 doctype html
 html.no-js.css-menubar(lang='en')
   head
-  
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
-    meta(name='description', content='')
-    meta(name='author', content='')
+
+    include ../static/styles-dash 
 
     title Login 
 
-    link(rel='apple-touch-icon', href='../../assets/images/apple-touch-icon.png')
-    link(rel='shortcut icon', href='../../assets/images/favicon.ico')
-
-    // Stylesheets
-    link(rel='stylesheet', href='../../assets/css/bootstrap.min.css')
-    link(rel='stylesheet', href='../../assets/css/bootstrap-extend.min.css')
-    link(rel='stylesheet', href='../../assets/css/site.min.css')
-
-    // Plugins
-    link(rel='stylesheet', href='../../assets/vendor/animsition/animsition.css')
-    link(rel='stylesheet', href='../../assets/vendor/asscrollable/asScrollable.css')
-    link(rel='stylesheet', href='../../assets/vendor/switchery/switchery.css')
-    link(rel='stylesheet', href='../../assets/vendor/intro-js/introjs.css')
-    link(rel='stylesheet', href='../../assets/vendor/slidepanel/slidePanel.css')
-    link(rel='stylesheet', href='../../assets/vendor/flag-icon-css/flag-icon.css')
 
     // Page
     link(rel='stylesheet', href='../../assets/examples/css/pages/login-v3.css')
 
-    // Fonts
-    link(rel='stylesheet', href='../../assets/fonts/web-icons/web-icons.min.css')
-    link(rel='stylesheet', href='../../assets/fonts/brand-icons/brand-icons.min.css')
-    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic')
-
-    //if lt IE 9
-      script(src='../../assets/vendor/html5shiv/html5shiv.min.js')
-
-    //if lt IE 10
-      script(src='../../assets/vendor/media-match/media.match.min.js')
-      script(src='../../assets/vendor/respond/respond.min.js')
-
-    // Scripts
-    script(src='../../assets/vendor/modernizr/modernizr.js')
-    script(src='../../assets/vendor/breakpoints/breakpoints.js')
-
-    script.
-      Breakpoints();
+    
 
   body.page-login-v3.layout-full
 
-    //if lt IE 8
-      p.browserupgrade
-        | You are using an 
-        strong outdated
-        |  browser. Please 
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  to improve your experience.
+    include ../partials/browserupdate
 
     // Page
     .page.animsition.vertical-align.text-center(data-animsition-in='fade-in', data-animsition-out='fade-out')
       .page-content.vertical-align-middle
         .panel
           .panel-body
+
+            include ../partials/login-buttons
+
+
+
             .brand
               // <img class="brand-img" src="../../assets/images/logo-blue.png" alt="...">
               h2.brand-text.font-size-18
@@ -87,37 +50,14 @@ html.no-js.css-menubar(lang='en')
           p © 2017 STARTAPEEE. All RIGHT RESERVED.
 
 
+    include ../static/scripts-dash
 
-    script(src='../../assets/vendor/jquery/jquery.js')
-    script(src='../../assets/vendor/bootstrap/bootstrap.js')
-    script(src='../../assets/vendor/animsition/jquery.animsition.js')
-    script(src='../../assets/vendor/asscroll/jquery-asScroll.js')
-    script(src='../../assets/vendor/mousewheel/jquery.mousewheel.js')
-    script(src='../../assets/vendor/asscrollable/jquery.asScrollable.all.js')
-    script(src='../../assets/vendor/ashoverscroll/jquery-asHoverScroll.js')
-
-    // Plugins
-    script(src='../../assets/vendor/switchery/switchery.min.js')
-    script(src='../../assets/vendor/intro-js/intro.js')
-    script(src='../../assets/vendor/screenfull/screenfull.js')
-    script(src='../../assets/vendor/slidepanel/jquery-slidePanel.js')
+   
 
     // Plugins For This Page
     script(src='../../assets/vendor/jquery-placeholder/jquery.placeholder.js')
 
-    // Scripts
-    script(src='../../assets/js/core.js')
-    script(src='../../assets/js/site.js')
-    script(src='../../assets/js/sections/menu.js')
-    script(src='../../assets/js/sections/menubar.js')
-    script(src='../../assets/js/sections/gridmenu.js')
-    script(src='../../assets/js/sections/sidebar.js')
-    script(src='../../assets/js/configs/config-colors.js')
-    script(src='../../assets/js/configs/config-tour.js')
-    script(src='../../assets/js/components/asscrollable.js')
-    script(src='../../assets/js/components/animsition.js')
-    script(src='../../assets/js/components/slidepanel.js')
-    script(src='../../assets/js/components/switchery.js')
+
 
     // Scripts For This Page
     script(src='../../assets/js/components/jquery-placeholder.js')
