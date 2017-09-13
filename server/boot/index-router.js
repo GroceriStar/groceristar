@@ -94,14 +94,14 @@ module.exports = function(app) {
 
 
 
-  router.get('/landosik', function(req, res, next){
+  // router.get('/landosik', function(req, res, next){
 
-    res.render('pages/landing', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
-  });
+  //   res.render('pages/landing', {
+  //     user: req.user,
+  //     url: req.url,
+  //     // data: response
+  //   });
+  // });
 
   router.get('/', function(req, res, next) {
     var User    = app.models.user;

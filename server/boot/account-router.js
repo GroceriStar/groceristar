@@ -15,6 +15,7 @@ module.exports = function(app) {
 		});
 	});
 	
+
 	router.get('/signup', function(req, res, next) {
 		res.render('pages/signup', {
 		  user: req.user,
@@ -22,6 +23,7 @@ module.exports = function(app) {
 		  messages: {}
 		});
 	});
+
 
 	router.post('/signup', function(req, res, next) {
 		var User = app.models.user;
@@ -51,18 +53,21 @@ module.exports = function(app) {
 		});
 	});
 
+
 	router.get('/login', function(req, res, next) {
-		res.render('pages/login', {
+		res.render('pages/login2', {
 		  user: req.user,
 		  url: req.url,
 		  messages: {}
 		});
 	});
 
+
 	router.get('/auth/logout', function(req, res, next) {
 		req.logout();
 		res.redirect('/');
 	});
+
 
 	router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 	    var Grocery = app.models.Grocery;

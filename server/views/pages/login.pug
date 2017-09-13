@@ -3,12 +3,7 @@ extends ../layouts/dashboard
 block content
   .row
     .col-md-12
-      h1 Login:
-      ul.list-inline.list-unstyled
-        li
-          a.btn.btn-primary(href='/local') Login with local account
-        li
-          a.btn.btn-primary(href="/auth/facebook") Login with Facebook
+      include ../partials/login-buttons
 
       br
       if messages.error
