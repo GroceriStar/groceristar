@@ -55,7 +55,7 @@ module.exports = function(app) {
 
 
 	router.get('/login', function(req, res, next) {
-		res.render('pages/login2', {
+		res.render('pages/login', {
 		  user: req.user,
 		  url: req.url,
 		  messages: {}

@@ -1,3 +1,4 @@
+include ../mixins/mixin.pug
 html
   head
     title
@@ -6,6 +7,8 @@ html
     link(rel='stylesheet', href='/css/landos/main.css')
     link(rel='stylesheet', href='/css/landos/devices.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic')
+
+    link(rel='stylesheet', href='/fonts/7-stroke/7-stroke.min.css')
 
 
   body
@@ -17,10 +20,10 @@ html
               | STARTAPEEEE
 
           div
+
             a.nav-link(href='#')
-              | Twitter
-            a.nav-link(href='#')
-              | Facebook
+              | Facebook Login
+
             a.nav-link(href='#')
               | Home
             a.nav-link(href='#')
@@ -50,6 +53,11 @@ html
             button.ctas-button
               | Sign Up
 
+          a.nav-link(href='#')
+            | Review <Ultimate Grocery List>    
+          +button_view_grocery(data.id, 'Review ' + data.name)
+          
+
         .col-6.sidedevices
           .browserwrapper
             .browser
@@ -64,6 +72,19 @@ html
         .col-6
           b.emoji
             | 🎓
+
+          i.icon.pe-close(style="font-size: 60px;")
+          i.icon.pe-cash(style="font-size: 60px;")
+          i.icon.pe-shopbag(style="font-size: 60px;")
+          i.icon.pe-search(style="font-size: 60px;")
+          i.icon.pe-note2(style="font-size: 60px;")
+          i.icon.pe-pen(style="font-size: 60px;")
+          i.icon.pe-phone(style="font-size: 60px;")
+          i.icon.pe-like(style="font-size: 60px;")
+          i.icon.pe-edit(style="font-size: 60px;")
+          i.icon.pe-download(style="font-size: 60px;")
+
+
           h3.subheading
             | Brilliant Domain Names.
           p.paragraph
@@ -76,6 +97,126 @@ html
             | Instant Handles
           p.paragraph
             | Naming your brand has never been soooo easy! With Launchaco you can instantly search for twitter, facebook, medium, and instagram handles.
+    .feature2
+      .container-lrg.flex
+        .col-6
+          b.emoji
+            | 🎓
+
+          i.icon.pe-close(style="font-size: 60px;")
+          i.icon.pe-cash(style="font-size: 60px;")
+          i.icon.pe-shopbag(style="font-size: 60px;")
+          i.icon.pe-search(style="font-size: 60px;")
+          i.icon.pe-note2(style="font-size: 60px;")
+          i.icon.pe-pen(style="font-size: 60px;")
+          i.icon.pe-phone(style="font-size: 60px;")
+          i.icon.pe-like(style="font-size: 60px;")
+          i.icon.pe-edit(style="font-size: 60px;")
+          i.icon.pe-download(style="font-size: 60px;")
+
+
+          h3.subheading
+            | Brilliant Domain Names.
+          p.paragraph
+            | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
+
+        .col-6
+          b.emoji
+            | 💐
+          h3.subheading
+            | Instant Handles
+          p.paragraph
+            | Naming your brand has never been soooo easy! With Launchaco you can instantly search for twitter, facebook, medium, and instagram handles.
+    .feature2
+      .container-lrg.flex
+        .col-6
+          b.emoji
+            | 🎓
+
+          i.icon.pe-close(style="font-size: 60px;")
+          i.icon.pe-cash(style="font-size: 60px;")
+          i.icon.pe-shopbag(style="font-size: 60px;")
+          i.icon.pe-search(style="font-size: 60px;")
+          i.icon.pe-note2(style="font-size: 60px;")
+          i.icon.pe-pen(style="font-size: 60px;")
+          i.icon.pe-phone(style="font-size: 60px;")
+          i.icon.pe-like(style="font-size: 60px;")
+          i.icon.pe-edit(style="font-size: 60px;")
+          i.icon.pe-download(style="font-size: 60px;")
+
+
+          h3.subheading
+            | Brilliant Domain Names.
+          p.paragraph
+            | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
+
+        .col-6
+          b.emoji
+            | 💐
+          h3.subheading
+            | Instant Handles
+          p.paragraph
+            | Naming your brand has never been soooo easy! With Launchaco you can instantly search for twitter, facebook, medium, and instagram handles.
+    .feature2
+      .container-lrg.flex
+        .col-6
+          b.emoji
+            | 🎓
+
+          i.icon.pe-close(style="font-size: 60px;")
+          i.icon.pe-cash(style="font-size: 60px;")
+          i.icon.pe-shopbag(style="font-size: 60px;")
+          i.icon.pe-search(style="font-size: 60px;")
+          i.icon.pe-note2(style="font-size: 60px;")
+          i.icon.pe-pen(style="font-size: 60px;")
+          i.icon.pe-phone(style="font-size: 60px;")
+          i.icon.pe-like(style="font-size: 60px;")
+          i.icon.pe-edit(style="font-size: 60px;")
+          i.icon.pe-download(style="font-size: 60px;")
+
+
+          h3.subheading
+            | Brilliant Domain Names.
+          p.paragraph
+            | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
+
+        .col-6
+          b.emoji
+            | 💐
+          h3.subheading
+            | Instant Handles
+          p.paragraph
+            | Naming your brand has never been soooo easy! With Launchaco you can instantly search for twitter, facebook, medium, and instagram handles.
+    .feature2
+      .container-lrg.flex
+        .col-6
+          b.emoji
+            | 🎓
+
+          i.icon.pe-close(style="font-size: 60px;")
+          i.icon.pe-cash(style="font-size: 60px;")
+          i.icon.pe-shopbag(style="font-size: 60px;")
+          i.icon.pe-search(style="font-size: 60px;")
+          i.icon.pe-note2(style="font-size: 60px;")
+          i.icon.pe-pen(style="font-size: 60px;")
+          i.icon.pe-phone(style="font-size: 60px;")
+          i.icon.pe-like(style="font-size: 60px;")
+          i.icon.pe-edit(style="font-size: 60px;")
+          i.icon.pe-download(style="font-size: 60px;")
+
+
+          h3.subheading
+            | Brilliant Domain Names.
+          p.paragraph
+            | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
+
+        .col-6
+          b.emoji
+            | 💐
+          h3.subheading
+            | Instant Handles
+          p.paragraph
+            | Naming your brand has never been soooo easy! With Launchaco you can instantly search for twitter, facebook, medium, and instagram handles.                                                
 
     .socialproof.feature2
       .container-techniq

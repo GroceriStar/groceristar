@@ -37,12 +37,14 @@ module.exports = function(app) {
 
 
 
-  router.get('/tatypidor', ensureLoggedIn('/auth/account'), function(req, res, next){
-    
-
-    var Grocery = app.models.Grocery;
+  router.get('/tatypidor/:groceryId', 
+    ensureLoggedIn('/auth/account'), 
+    function(req, res, next){    
+    var Grocery   = app.models.Grocery;
     var userId    = req.user.id;
-     var groceryId = '59aebf4832e8fb1c105968f9';
+    var groceryId = req.params.groceryId;
+    
+    // var groceryId = '59aebf4832e8fb1c105968f9';
 
     Grocery.fetchById2(groceryId, function(err, response){
 
@@ -127,6 +129,7 @@ module.exports = function(app) {
           user: req.user,
           url: req.url,
           data: data,
+          title: "There will be a new title sometime"
           
         });
 

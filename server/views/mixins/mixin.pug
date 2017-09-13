@@ -1,14 +1,14 @@
-mixin view_departments(array)
+mixin view_departments(array, groceryId)
   ul
     each val, index in array
         li= val.name + '( ' + val.id + ' ) '
-          a(href='/#' + val.id) view  
+          a(href='/department/' + val.id + '/' + groceryId) view  
 
-mixin view_departments_extended(array)
+mixin view_departments_extended(array, groceryId)
   ul
     each val, index in array
         li= val.name + '( ' + val.id + ' ) ' + ' isVISIBLE?:  ' + val.visible
-          a(href='/#' + val.id) ' ' + view  
+          a(href='/department/' + val.id + '/' + groceryId) view  
 
 mixin view_departments_awesome(array, groceryId)
   if array
@@ -70,3 +70,6 @@ mixin button_department(id, groceryId)
 mixin button_department_awesome(id, groceryId)
   a(href='/department/' + id + '/' + groceryId)
     i.fa.fa-ellipsis-v
+
+mixin button_view_grocery(groceryId, title)    
+  +link('/view/grocery/' + groceryId, title)('btn btn-default')
