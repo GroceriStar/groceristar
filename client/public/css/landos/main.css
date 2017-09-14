@@ -363,6 +363,7 @@ address {
 
 .icon-large i {	
 	font-size: 65px;
+	color: #1a1a1a;
 }
 
 .feature2 {
@@ -378,7 +379,7 @@ address {
 	padding-left: 15px;
 }
 .feature2 .col-4 {
-	padding: 120px 0;
+	padding: 40px 0;
 }
 
 @media (max-width: 900px) {
