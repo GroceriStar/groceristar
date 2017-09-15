@@ -81,59 +81,68 @@ module.exports = function(app) {
     //     groceryId: groceryId,
     // };
 
+    Grocery.fetchById(groceryId, function(err, response){
+      console.log(response);
+      // we don't need response.ingredients. But this is keeped from this method.
+      // we'll need to create our own method for this  tasks. :todo
+      res.render('pages/select-only-delete-later', {
+        user: req.user,
+        url: req.url,
+        data: response.data
+      });
+
+    });
+
+
     // :todo update this later
-    Grocery.withDepartments(groceryId, function(err, grocery){
-      console.log(grocery);
+    // Grocery.withDepartments(groceryId, function(err, grocery){
+    //   // console.log(grocery);
 
-      // var g = grocery.toJSON();
+    //   var g = grocery.toJSON();
       
-      // let arr = _.map(grocery.hideThisIds, item => item.toString());
+    //   let arr = _.map(grocery.hideThisIds, item => item.toString());
 
-        // var uniques = _.map(_.groupBy(g.ingredients, function(item){
-        //   // console.log(item);             
-        //   return item.department.id.toString();
-        // }), function(grouped){
+    //     var uniques = _.map(_.groupBy(g.ingredients, function(item){
+    //       // console.log(item);             
+    //       return item.department.id.toString();
+    //     }), function(grouped){
 
-        //   var departmentId = grouped[0].departmentId.toString();
-        //   var flag = _.contains(arr, departmentId);
+    //       var departmentId = grouped[0].departmentId.toString();
+    //       var flag = _.contains(arr, departmentId);
           
 
-        //  var ja = _.map(grouped, function(item){
-        //   return [
-        //       item.id, 
-        //       item.name,
-        //       '/del/ing/' + item.id + '/' + g.id
-        //   ] // :todo change this to an object
-        //  });          
+    //      var ja = _.map(grouped, function(item){
+    //       return [
+    //           item.id, 
+    //           item.name,
+    //           '/del/ing/' + item.id + '/' + g.id
+    //       ] // :todo change this to an object
+    //      });          
 
-        //   if ( !flag ) { 
+    //       if ( !flag ) { 
 
-        //     return false;
+    //         return false;
 
-        //   }
+    //       }
 
-        //   return { id: grouped[0].department.id.toString(),
-        //             name: grouped[0].department.name,
-        //             type: grouped[0].department.type,
-        //             ingredients: ja,                        
-        //         };
+    //       return { id: grouped[0].department.id.toString(),
+    //                 name: grouped[0].department.name,
+    //                 type: grouped[0].department.type,
+    //                 ingredients: ja,                        
+    //             };
             
 
-        // });
+    //     });
 
 
-        // console.log(uniques);
+    //     console.log(uniques);
 
 
-    })
+    // })
 
     // Grocery.showAllDepartments(options);
 
-    res.render('pages/select-only-delete-later', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
+    
   });
 
  router.get('/sortable', function(req, res, next){

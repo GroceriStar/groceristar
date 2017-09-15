@@ -73,6 +73,9 @@ module.exports = function(app) {
   });
 
 
+
+
+
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
  router.get('/view/grocery/:groceryId', 
