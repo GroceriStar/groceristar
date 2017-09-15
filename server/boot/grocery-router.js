@@ -6,11 +6,10 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 
 module.exports = function(app) {
-
   var router  = app.loopback.Router();
 
   
-
+  // Update grocery list name
   router.post('/update/name', function(req, res, next){
     var groceryId = req.body.groceryId;
     var name      = req.body.name;
@@ -26,51 +25,7 @@ module.exports = function(app) {
 
 
 
-  router.post('/addtopurchased', function(req, res, next){
-  	var Grocery        = app.models.Grocery;
-    var ingredients    = req.body.ingredients;
-   	var groceryId      = req.body.groceryId;
 
-    var options = {
-      groceryId: groceryId,
-      secondArray: ingredients 
-    };
-    Grocery.addPurchased(options);  
-    res.redirect('/auth/account');
-
-  });
-
-  router.post('/clearpurchased', function(req, res, next){
-    var Grocery = app.models.Grocery;
-
-    Grocery.cleanPurchased({});
-
-    res.redirect('/auth/account');
-
-  });
-
-	router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
-
-		var Grocery = app.models.Grocery;
-
-		// console.log( req.user.id );		
-
-	 	var ingredients = req.params.ingId;
- 		var groceryId   = req.params.groceryId;
-
-    var options = {
-
-      groceryId: groceryId,
-      secondArray: ingredients 
-    };
-    Grocery.removePurchased(options);
-    
-    
-
-
-
-
-  });
 
 
 
@@ -248,17 +203,6 @@ module.exports = function(app) {
 
  });
 
-
- // :todo delete later
- // router.get('/change-the-name/grocery/:groceryId', function(req, res, next){ 
- //    var groceryId = req.params.groceryId;
- //    var Grocery = app.models.Grocery;
- //    Grocery.findById(groceryId, {}, function(err, model){
- //      model.updateAttribute('name', 'Ultimate Grocery List #' + new Date().toString());
- //      res.redirect('/auth/account');
- //    });
-
- //  });
 
   app.use(router);
 

@@ -72,14 +72,11 @@ module.exports = function(app) {
     });
   });
 
+
   // :todo this must be moved to departments
   router.get('/select/:groceryId', function(req, res, next){
     var groceryId = req.params.groceryId;
     var Grocery   = app.models.Grocery;
-
-    // var options = {
-    //     groceryId: groceryId,
-    // };
 
     Grocery.fetchById(groceryId, function(err, response){
       console.log(response);

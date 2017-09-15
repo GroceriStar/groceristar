@@ -7,12 +7,12 @@ block content
     section
 
       select.cs-select.cs-skin-border
-        //option(value='', disabled='', selected='') Department
+        option(value='', disabled='', selected='') Department
 
-        //each val, index in departments
-          //option(value=val.id) val.name
-          //option(value='twitter') Cheese
-          //option(value='linkedin') Meat
+        each val, index in data
+          if (val.ingredients.length !== 0)
+            option(value=val.id)= val.name 
+
   
   
   script(src='/vendor/jquery/jquery.js')
