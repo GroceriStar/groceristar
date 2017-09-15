@@ -17,9 +17,9 @@ module.exports = function(app) {
 	  var groceryId    = req.params.groceryId;
 	  var Department   = app.models.Department;
 
-	  Department.methodA(departmentId, function(departments){
+	  Department.methodA(departmentId, function(department){
 
-	    var d = departments.toJSON();
+	    var d = department.toJSON();
 
 	    var renderObject = {
 	    	id: d.id,
@@ -86,21 +86,16 @@ module.exports = function(app) {
 
 
 // :todo test this
+// Not working i think
 	router.get('/show/all/:groceryId', function(req, res, next){
-		var departmentId = req.params.id;
 		var groceryId = req.params.groceryId;
-
-		var Grocery   = app.models.Grocery;
-		
+		var Grocery   = app.models.Grocery;	
 		var options = {
-	      // type: 'show',
-	      // field: 'hideThisIds',
 	      groceryId: groceryId,
-	      // secondArray: [ departmentId ]
 	    };
-		
-	    
+			    
 		Grocery.showAllDepartments(options);
+
 	});
 
 
@@ -211,6 +206,7 @@ module.exports = function(app) {
 
 	// });
 
+
 	router.get('/remove/department/:id/:groceryId', function(req, res, next){
 		var departmentId = req.params.id;
 		var groceryId    = req.params.groceryId;
@@ -225,7 +221,7 @@ module.exports = function(app) {
 
 		// Grocery.removeDepartment(options);
 
-
+		// :todo update things. This is a duplicated code
 		Grocery.findById(groceryId, {
 			include: {
 				relation: 'ingredients',

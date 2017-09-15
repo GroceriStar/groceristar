@@ -5,11 +5,15 @@ block content
   .container
     // Top Navigation
     section
+
       select.cs-select.cs-skin-border
-        option(value='', disabled='', selected='') Department
-        option(value='email') Dairy
-        option(value='twitter') Cheese
-        option(value='linkedin') Meat
+        //option(value='', disabled='', selected='') Department
+
+        //each val, index in departments
+          //option(value=val.id) val.name
+          //option(value='twitter') Cheese
+          //option(value='linkedin') Meat
+  
   
   script(src='/vendor/jquery/jquery.js')
   
@@ -27,11 +31,11 @@ block content
     $(document).ready(function(){
 
       $('select').on('change', function() {
-		  
-		  console.log(this.value);
-		  console.log(this.data())
 
-		})
+        console.log(this.value);
+        console.log(this.data());
+
+      });
 
     });
 

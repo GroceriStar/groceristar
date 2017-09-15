@@ -72,8 +72,62 @@ module.exports = function(app) {
     });
   });
 
+  // :todo this must be moved to departments
+  router.get('/select/:groceryId', function(req, res, next){
+    var groceryId = req.params.groceryId;
+    var Grocery   = app.models.Grocery;
 
-  router.get('/select', function(req, res, next){
+    // var options = {
+    //     groceryId: groceryId,
+    // };
+
+    // :todo update this later
+    Grocery.withDepartments(groceryId, function(err, grocery){
+      console.log(grocery);
+
+      // var g = grocery.toJSON();
+      
+      // let arr = _.map(grocery.hideThisIds, item => item.toString());
+
+        // var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        //   // console.log(item);             
+        //   return item.department.id.toString();
+        // }), function(grouped){
+
+        //   var departmentId = grouped[0].departmentId.toString();
+        //   var flag = _.contains(arr, departmentId);
+          
+
+        //  var ja = _.map(grouped, function(item){
+        //   return [
+        //       item.id, 
+        //       item.name,
+        //       '/del/ing/' + item.id + '/' + g.id
+        //   ] // :todo change this to an object
+        //  });          
+
+        //   if ( !flag ) { 
+
+        //     return false;
+
+        //   }
+
+        //   return { id: grouped[0].department.id.toString(),
+        //             name: grouped[0].department.name,
+        //             type: grouped[0].department.type,
+        //             ingredients: ja,                        
+        //         };
+            
+
+        // });
+
+
+        // console.log(uniques);
+
+
+    })
+
+    // Grocery.showAllDepartments(options);
 
     res.render('pages/select-only-delete-later', {
       user: req.user,

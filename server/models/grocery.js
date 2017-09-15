@@ -109,6 +109,7 @@ module.exports = function(Grocery) {
 	};
 
 	// hidden Only
+	// :todo update this, using withDepartments method
 	Grocery.fetchById2 = function(groceryId, cb){
 
 		Grocery.findById(groceryId, {		
@@ -263,45 +264,15 @@ module.exports = function(Grocery) {
 	};
 
 	Grocery.withDepartments = function(groceryId, cb){
-		Grocery.findById(groceryId, {
+		Grocery.findById(groceryId, {		
 			include: {
 				relation: 'ingredients',
 				scope: {
-					// fields: [ 'name' ],
 					include: {
 						relation: 'department',
-						scope: {
-							// fields: [ 'name' ],
-							// where: {
-							// 	departmentId: id
-							// }
-						}
-					}
+						// scope: {
 
-				}
-			}
-			// where: {id:groceryId}
-
-		}, cb);
-	};
-
-
-	// :todo now used right now. change this!
-	Grocery.fetchQuery = function(cb){
-
-		Grocery.find({
-			include: {
-				relation: 'ingredients',
-				scope: {
-					// fields: [ 'id', 'name' ],
-					include: {
-						relation: 'department',
-						scope: {
-							// fields: [ 'id', 'name', 'department' ],
-							// where: {
-							// 	departmentId: id
-							// }
-						}
+						// }
 					}
 
 				}
@@ -309,6 +280,8 @@ module.exports = function(Grocery) {
 
 		}, cb);
 	};
+
+
 
 
 	//:todo think about adding count(to departments). 
@@ -364,42 +337,42 @@ module.exports = function(Grocery) {
 	};
 
 
-	Grocery.secondWave = function(groceryId, cb){
+	// Grocery.secondWave = function(groceryId, cb){
 
-		var Department = Grocery.app.models.Department;
+	// 	var Department = Grocery.app.models.Department;
 
-		Grocery.findById(groceryId, {
+	// 	Grocery.findById(groceryId, {
 
-		}, function(err, grocery){
+	// 	}, function(err, grocery){
 
-			console.log(grocery.ingredientIds);
+	// 		console.log(grocery.ingredientIds);
 
-			var ingArr = grocery.ingredientIds;
+	// 		var ingArr = grocery.ingredientIds;
 
-			Department.find({
-				include: {
-					relation: 'ingredients',
-					scope: {
-						where : {
-							id: {
-								inq: ingArr
-							}
-						}
-					}
-				}
-			}, function(err, model){
+	// 		Department.find({
+	// 			include: {
+	// 				relation: 'ingredients',
+	// 				scope: {
+	// 					where : {
+	// 						id: {
+	// 							inq: ingArr
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 		}, function(err, model){
 
-				console.log(model);
-				console.log(model.ingredientIds);
-				var m = model.toJSON();
-				console.log(m.ingredients);
+	// 			console.log(model);
+	// 			console.log(model.ingredientIds);
+	// 			var m = model.toJSON();
+	// 			console.log(m.ingredients);
 
-			});
+	// 		});
 
-		});
+	// 	});
 
 
-	};
+	// };
 
 
 	Grocery.addPurchased = function(options){
