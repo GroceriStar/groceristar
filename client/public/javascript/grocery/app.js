@@ -77,6 +77,8 @@
 	var Todos = App.Collection(Todo, {
 
 		options: {
+			// idAttr: 'groceryId',
+
 			read: {
 				url: 'tatypidor'
 			}

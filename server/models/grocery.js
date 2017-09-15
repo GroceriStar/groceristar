@@ -190,6 +190,71 @@ module.exports = function(Grocery) {
 	};
 
 
+	Grocery.fetchById3 = function(groceryId, cb){
+
+		Grocery.findById(groceryId, Grocery.query1(), function(err, grocery){
+			var g       = grocery.toJSON();
+			let arr     = _.map(grocery.hideThisIds, item => item.toString());
+
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);           	
+              return item.department.id.toString();
+            }), function(grouped){
+
+            	var departmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, departmentId);
+            	
+
+        		 var ja = _.map(grouped, function(item){
+        		 	// Grocery.customIngredientsArray('todo', item, g.id);
+        		 	// return [
+            // 		 	item.id, 
+            // 		 	item.name,
+            // 		 	'/del/ing/' + item.id + '/' + g.id
+        		 	// ] // :todo change this to an object
+        		 	return {
+						id: item.id,
+						title: item.name, // :todo change title to name
+						completed: false,
+						delete: '/del/ing/' + item.id + '/' + g.id
+					}
+        		 });
+        		 // console.log(ja);
+            	
+
+            	if ( !flag ) { 
+
+            		return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: ja,                        
+                    };
+
+            	}
+
+            	return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: [],                        
+                    };
+                
+
+            });
+            
+            var response = {
+                id: g.id,
+                name: g.name,
+                data: uniques
+            };
+
+			cb(null, response);
+
+		});
+
+
+
+	};
+
 	//:todo add remote method for enable API calls for this method
 
 
@@ -263,6 +328,49 @@ module.exports = function(Grocery) {
 
 	};
 
+	// This query connect grocery, ingredients and departments
+	Grocery.query1 = function(){
+		return {		
+			include: {
+				relation: 'ingredients',
+				scope: {
+					include: {
+						relation: 'department',
+						// scope: {
+
+						// }
+					}
+
+				}
+			}
+
+		};
+	};
+
+	// this query connect grocery and purchased ingredients
+	Grocery.query2 = function(groceryId){
+		return {
+			include: {
+				relation: 'purchased',
+				scope: {
+					fields: [ 'id', 'name' ],
+					// include: {
+					// 	relation: 'ingredients',
+					// 	scope: {
+					// 		fields: [ 'name' ],
+					// 		// where: {
+					// 		// 	departmentId: id
+					// 		// }
+					// 	}
+					// }
+
+				}
+			},
+			where: { id:groceryId }
+
+		};
+	};
+
 	Grocery.withDepartments = function(groceryId, cb){
 		Grocery.findById(groceryId, {		
 			include: {
@@ -314,26 +422,7 @@ module.exports = function(Grocery) {
 
 
 	Grocery.withPurchased = function(groceryId, cb){
-		Grocery.findOne({
-			include: {
-				relation: 'purchased',
-				scope: {
-					fields: [ 'id', 'name' ],
-					// include: {
-					// 	relation: 'ingredients',
-					// 	scope: {
-					// 		fields: [ 'name' ],
-					// 		// where: {
-					// 		// 	departmentId: id
-					// 		// }
-					// 	}
-					// }
-
-				}
-			},
-			where: { id:groceryId }
-
-		}, cb);
+		Grocery.findOne(Grocery.query2(groceryId), cb);
 	};
 
 
@@ -482,6 +571,25 @@ module.exports = function(Grocery) {
 		});
 
 	}
+
+	// change to params and remove second and third attribute
+	Grocery.customIngredientsArray = function(type, ingredient, groceryId){
+
+		if (type == 'todo'){
+			return {
+				id: ingredient.id,
+				title: ingredient.name, // change title to name
+				completed: false,
+				delete: '/del/ing/' + ingredient.id + '/' + groceryId
+			};
+			// [
+   //          		 	ingredient.id, 
+   //          		 	ingredient.name,
+   //          		 	'/del/ing/' + ingredient.id + '/' + groceryId
+   //      		 	] // :todo change this to an object
+		}
+
+	};
 
 	
 };

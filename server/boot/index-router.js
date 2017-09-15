@@ -37,32 +37,37 @@ module.exports = function(app) {
 
 
 
-  router.get('/tatypidor/:groceryId', 
-    ensureLoggedIn('/auth/account'), 
-    function(req, res, next){    
-    var Grocery   = app.models.Grocery;
-    var userId    = req.user.id;
-    var groceryId = req.params.groceryId;
-    
-    // var groceryId = '59aebf4832e8fb1c105968f9';
-
-    Grocery.fetchById2(groceryId, function(err, response){
-
-      // _.map(response.data)
-      // console.log(response.data[0].ingredients);
-      res.json(response.data[0].ingredients);
-
-    })
-
-
     // res.json([
     //   {"title":"123","completed":false},
     //   {"title":"333","completed":false},
-    //   {"title":"sam ty pidor."}
-    //   ]);
+    //   {"title":"Ingredos"}
+    // ]);
+// router.get('/tatypidor/:groceryId', 
+  router.get('/tatypidor', 
+    ensureLoggedIn('/auth/account'), 
+    function(req, res, next){    
+
+      res.json([
+      {"title":"123","completed":false},
+      {"title":"333","completed":false},
+      {"title":"Ingredos","completed":false}
+    ]);
+
+    // var Grocery   = app.models.Grocery;
+    // var userId    = req.user.id;
+    // var groceryId = req.params.groceryId;
+    
+    // Grocery.fetchById3(groceryId, function(err, response){
+    //   // console.log(response);
+    //   // console.log(response.data[1].ingredients);
+    //   // _.map(response.data)
+    //   // console.log(response.data[0].ingredients);
+    //   res.json(response.data[1].ingredients);
+
+    // });
 
   });
-
+// todo/:groceryId'
   router.get('/todo', function(req, res, next){
 
     res.render('pages/grocery2', {
@@ -71,6 +76,7 @@ module.exports = function(app) {
       // data: response
     });
   });
+
 
 
   // :todo this must be moved to departments
@@ -91,56 +97,8 @@ module.exports = function(app) {
     });
 
 
-    // :todo update this later
-    // Grocery.withDepartments(groceryId, function(err, grocery){
-    //   // console.log(grocery);
-
-    //   var g = grocery.toJSON();
-      
-    //   let arr = _.map(grocery.hideThisIds, item => item.toString());
-
-    //     var uniques = _.map(_.groupBy(g.ingredients, function(item){
-    //       // console.log(item);             
-    //       return item.department.id.toString();
-    //     }), function(grouped){
-
-    //       var departmentId = grouped[0].departmentId.toString();
-    //       var flag = _.contains(arr, departmentId);
-          
-
-    //      var ja = _.map(grouped, function(item){
-    //       return [
-    //           item.id, 
-    //           item.name,
-    //           '/del/ing/' + item.id + '/' + g.id
-    //       ] // :todo change this to an object
-    //      });          
-
-    //       if ( !flag ) { 
-
-    //         return false;
-
-    //       }
-
-    //       return { id: grouped[0].department.id.toString(),
-    //                 name: grouped[0].department.name,
-    //                 type: grouped[0].department.type,
-    //                 ingredients: ja,                        
-    //             };
-            
-
-    //     });
-
-
-    //     console.log(uniques);
-
-
-    // })
-
-    // Grocery.showAllDepartments(options);
-
-    
   });
+
 
  router.get('/sortable', function(req, res, next){
 
