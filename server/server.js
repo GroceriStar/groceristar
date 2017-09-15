@@ -67,6 +67,14 @@ app.use(express.static(todo1Dir));
 var todo2Dir = path.join(__dirname + '/../node_modules/todomvc-app-css');
 app.use(express.static(todo2Dir));
 
+
+
+var todo3Dir = path.join(__dirname + '/../node_modules/handlebars/dist');
+app.use(express.static(todo3Dir));
+
+var todo4Dir = path.join(__dirname + '/../node_modules/director/build');
+app.use(express.static(todo4Dir));
+
 // boot scripts mount components like REST API
 boot(app, __dirname);
 

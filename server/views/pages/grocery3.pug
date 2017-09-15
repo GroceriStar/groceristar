@@ -1,1 +1,61 @@
-grocery3.pug
+doctype html
+html(lang='en', data-framework='jquery')
+  head
+    meta(charset='utf-8')
+    title jQuery • TodoMVC
+    
+    //link(rel='stylesheet', href='css/app.css')
+
+    link(rel='stylesheet', href='base.css')
+
+    link(rel='stylesheet', href='index.css')
+
+    link(rel='stylesheet', href='/css/one.css')
+
+  body
+    section#todoapp
+      header#header
+        h1 todos
+        input#new-todo(placeholder='What needs to be done?', autofocus='')
+      section#main
+        input#toggle-all(type='checkbox')
+        label(for='toggle-all') Mark all as complete
+        ul#todo-list
+      footer#footer
+    footer#info
+      p Double-click to edit a todo
+      p
+        | Part of 
+        a(href='http://todomvc.com') TodoMVC
+    script#todo-template(type='text/x-handlebars-template').
+      {{#this}}
+      <li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+      <div class="view">
+      <input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+      <label>{{title}}</label>
+      <button class="destroy"></button>
+      </div>
+      <input class="edit" value="{{title}}">
+      </li>
+      {{/this}}
+    script#footer-template(type='text/x-handlebars-template').
+      <span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
+      <ul id="filters">
+      <li>
+      <a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
+      </li>
+      <li>
+      <a {{#eq filter 'active'}}class="selected"{{/eq}}href="#/active">Active</a>
+      </li>
+      <li>
+      <a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
+      </li>
+      </ul>
+      {{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
+
+    script(src='base.js')
+    script(src='/javascript/home/js/plugins/jquery1.11.0.min.js')
+    //script(src='node_modules/jquery/dist/jquery.js')
+    script(src='handlebars.js')
+    script(src='director.js')
+    script(src='/javascript/jquery/app.js')

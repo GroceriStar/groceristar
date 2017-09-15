@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 		<link rel="stylesheet" href="css/app.css">
+		
 	</head>
 	<body>
 		<section id="todoapp">
@@ -22,9 +23,10 @@
 		</section>
 		<footer id="info">
 			<p>Double-click to edit a todo</p>
-			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			
 			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
+
 		<script id="todo-template" type="text/x-handlebars-template">
 			{{#this}}
 			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
@@ -37,6 +39,7 @@
 			</li>
 		{{/this}}
 		</script>
+
 		<script id="footer-template" type="text/x-handlebars-template">
 			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
 			<ul id="filters">
@@ -52,6 +55,7 @@
 			</ul>
 			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
 		</script>
+
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 		<script src="node_modules/handlebars/dist/handlebars.js"></script>

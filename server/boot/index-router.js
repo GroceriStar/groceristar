@@ -70,7 +70,7 @@ module.exports = function(app) {
 // todo/:groceryId'
   router.get('/todo', function(req, res, next){
 
-    res.render('pages/grocery2', {
+    res.render('pages/grocery3', {
       user: req.user,
       url: req.url,
       // data: response
