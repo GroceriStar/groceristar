@@ -2,9 +2,9 @@
 jQuery(function ($) {
 	'use strict';
 
-	Handlebars.registerHelper('eq', function (a, b, options) {
-		return a === b ? options.fn(this) : options.inverse(this);
-	});
+	// Handlebars.registerHelper('eq', function (a, b, options) {
+	// 	return a === b ? options.fn(this) : options.inverse(this);
+	// });
 
 
 
@@ -48,94 +48,7 @@ jQuery(function ($) {
 	};
 
 
-	var todoTemplate1 = function(elements){
 
-		var html = '';
-		// <script id="todo-template"
-		_.each([
-		{
-			completed:false, id:123, title: 'pidaras1'
-		},{
-			completed:false, id:22, title: 'pidaras2'
-		},{
-			completed:false, id:100, title: 'pidaras3'
-		}
-		], function(element){
-
-			var single = '';
-
-			if( element.completed ){
-				single += '<li class="completed" data-id="' + element.id + '">';
-			} else {
-				single += '<li  data-id="' + element.id + '">';
-			}
-
-			  single += '<div class="view">' ;
-				if( element.completed ){
-					single += '<input class="toggle" type="checkbox" checked>';
-				} else {
-					single += '<input class="toggle" type="checkbox" >';
-				}
-
-					
-				single += '<label>' + element.title + '</label>'+
-							'<button class="destroy"></button>'+
-					'</div>'+
-					'<input class="edit" value="' + element.title + '">'
-
-			single += '</li>';
-
-			html += single;
-
-			
-		});
-
-		// console.log(html);
-		return html;
-
-		
-		
-	};
-	
-
-	var footerTemplate = function(data){
-		// <script id="footer-template"
-		var html = '<span id="todo-count">' +
-				'<strong>' + data.activeTodoCount + '</strong>' +
-				data.activeTodoWord + ' left' +
-		 	'</span>';
-
-		html += '<ul id="filters">' +
-				'<li>';
-
-		if( data.filter === 'all'){
-			html += '<a class="selected" href="#/all">All</a>';
-		} else {
-			html += '<a href="#/all">All</a>';
-		}
-
-		if( data.filter === 'active'){
-			html += '<a class="selected" href="#/active">Active</a>';
-		} else {
-			html += '<a href="#/active">Active</a>';
-		}
-
-		if( data.filter === 'completed'){
-			html += '<a class="selected" href="#/completed">Completed</a>';
-		} else {
-			html += '<a href="#/completed">Completed</a>';
-		}	
-
-		html += '</ul>';				
-
-		if (data.completedTodos){
-			html += '<button id="clear-completed">Clear completed</button>';
-		}
-
-
-		// console.log(html);
-		return html;
-	};
 	// Handlebars.compile($('#footer-template').html());
 
 
@@ -146,15 +59,17 @@ jQuery(function ($) {
 
 			this.todos = util.store('todos-jquery');
 
-			console.log(this.todos);
+			// console.log(this.todos);
 
-			this.todoTemplate = Handlebars.compile($('#todo-template').html());
+			// this.todoTemplate = Handlebars.compile($('#todo-template').html());
 			// console.log(this.todoTemplate);
 
-			this.footerTemplate = Handlebars.compile($('#footer-template').html());
+			// this.footerTemplate = Handlebars.compile($('#footer-template').html());
 			// console.log(this.footerTemplate);
 
 			this.bindEvents();
+
+
 
 			new Router({
 				'/:filter': function (filter) {
@@ -162,6 +77,9 @@ jQuery(function ($) {
 					this.render();
 				}.bind(this)
 			}).init('/all');
+
+
+
 		},
 		bindEvents: function () {
 			$('#new-todo').on('keyup', this.create.bind(this));
@@ -177,10 +95,11 @@ jQuery(function ($) {
 		render: function () {
 			var todos = this.getFilteredTodos();
 
-			// console.log(todos);
+			console.log(todos);
 
 			$('#todo-list').html(
 				this.todoTemplate(todos)
+				// this.todoTemplate(todos)
 			);
 
 			$('#main').toggle(todos.length > 0);
@@ -197,20 +116,12 @@ jQuery(function ($) {
 			var todoCount = this.todos.length;
 			var activeTodoCount = this.getActiveTodos().length;
 
-			// footerTemplate({
-			// 	activeTodoCount: 10,
-			// 	activeTodoWord: 6,
-			// 	filter: 'all',
-			// 	completedTodos: true
-			// });
-
 			var template = this.footerTemplate({
 				activeTodoCount: activeTodoCount,
 				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
 				completedTodos: todoCount - activeTodoCount,
 				filter: this.filter
 			});
-
 
 			$('#footer').toggle(todoCount > 0).html(template);
 		},
@@ -320,7 +231,99 @@ jQuery(function ($) {
 		destroy: function (e) {
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
+		},
+
+		// templates related stuff
+		todoTemplate: function(elements){
+
+			var html = '';
+
+			_.each(elements
+			// 	[
+			// {
+			// 	completed:false, id:123, title: 'pidaras1'
+			// },{
+			// 	completed:false, id:22, title: 'pidaras2'
+			// },{
+			// 	completed:false, id:100, title: 'pidaras3'
+			// }
+			// ]
+			, function(element){
+
+				var single = '';
+
+				if( element.completed ){
+					single += '<li class="completed" data-id="' + element.id + '">';
+				} else {
+					single += '<li data-id="' + element.id + '" data-department-id="0" >';
+				}
+
+				  single += '<div class="view">' ;
+					if( element.completed ){
+						single += '<input class="toggle" type="checkbox" checked>';
+					} else {
+						single += '<input class="toggle" type="checkbox" >';
+					}
+
+						
+					single += '<label>' + element.title + '</label>'+
+								'<button class="destroy"></button>'+
+						'</div>'+
+						'<input class="edit" value="' + element.title + '">'
+
+				single += '</li>';
+
+				html += single;
+
+				
+			});
+
+			// console.log(html);
+			return html;
+		},
+	
+
+		footerTemplate : function(data){
+			// <script id="footer-template"
+			var html = '<span id="todo-count">' +
+					'<strong>' + data.activeTodoCount + ' </strong>' +
+					data.activeTodoWord + ' left' +
+			 	'</span>';
+
+			html += '<ul id="filters">' +
+					'<li>';
+
+			if( data.filter === 'all'){
+				html += '<a class="selected" href="#/all">All</a>';
+			} else {
+				html += '<a href="#/all">All</a>';
+			}
+
+			if( data.filter === 'active'){
+				html += '<a class="selected" href="#/active">Active</a>';
+			} else {
+				html += '<a href="#/active">Active</a>';
+			}
+
+			if( data.filter === 'completed'){
+				html += '<a class="selected" href="#/completed">Completed</a>';
+			} else {
+				html += '<a href="#/completed">Completed</a>';
+			}	
+
+			html += '</ul>';				
+
+			if (data.completedTodos){
+				html += '<button id="clear-completed">Clear completed</button>';
+			}
+
+
+			// console.log(html);
+			return html;
 		}
+
+		// template related stuff
+
 	};
 
 	App.init();
