@@ -254,6 +254,7 @@ jQuery(function ($) {
 				groceryId: false,
 				order: false
 			});
+			
 
 			$input.val('');
 
