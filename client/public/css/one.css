@@ -1,3 +1,8 @@
+#main,
+#footer {
+	display: none;
+}
+
 .drag-handle {
 	margin-right: 10px;
 	font: bold 20px Sans-Serif;

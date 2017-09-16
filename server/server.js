@@ -61,11 +61,11 @@ app.use(express.static(staticDir));
 // app.use(express.static(jsblocksDir));
 
 
-var todo1Dir = path.join(__dirname + '/../node_modules/todomvc-common');
-app.use(express.static(todo1Dir));
+// var todo1Dir = path.join(__dirname + '/../node_modules/todomvc-common');
+// app.use(express.static(todo1Dir));
 
-var todo2Dir = path.join(__dirname + '/../node_modules/todomvc-app-css');
-app.use(express.static(todo2Dir));
+// var todo2Dir = path.join(__dirname + '/../node_modules/todomvc-app-css');
+// app.use(express.static(todo2Dir));
 
 
 
@@ -74,6 +74,7 @@ app.use(express.static(todo2Dir));
 
 // var todo4Dir = path.join(__dirname + '/../node_modules/director/build');
 // app.use(express.static(todo4Dir));
+
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
