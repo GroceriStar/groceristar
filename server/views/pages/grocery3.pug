@@ -2,8 +2,7 @@ doctype html
 html(lang='en', data-framework='jquery')
   head
     meta(charset='utf-8')
-    title
-      | jQuery • TodoMVC
+    title= 'jQuery • TodoMVC' + groceryId
 
     link(rel='stylesheet', href='/css/jquery/base.css')
 
@@ -16,8 +15,7 @@ html(lang='en', data-framework='jquery')
   body
     section#todoapp
       header#header
-        h1
-          | todos
+        h1= 'todos ' + groceryid
         input#new-todo(placeholder='What needs to be done?', autofocus='')
       section#main
         input#toggle-all(type='checkbox')

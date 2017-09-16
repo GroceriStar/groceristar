@@ -68,12 +68,15 @@ module.exports = function(app) {
 
   });
 
-// todo/:groceryId'
-  router.get('/todo', function(req, res, next){
 
+  router.get('/todo/:groceryId', function(req, res, next){
+    var Grocery   = app.models.Grocery;
+    var userId    = req.user.id;
+    var groceryId = req.params.groceryId;
     res.render('pages/grocery3', {
       user: req.user,
       url: req.url,
+      groceryId: groceryId,
       // data: response
     });
   });
