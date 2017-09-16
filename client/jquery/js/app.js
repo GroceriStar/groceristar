@@ -15,6 +15,9 @@ jQuery(function ($) {
 	var ESCAPE_KEY = 27;
 
 	var util = {
+
+
+
 		uuid: function () {
 			/*jshint bitwise:false */
 			var i, random;
@@ -30,6 +33,8 @@ jQuery(function ($) {
 
 			return uuid;
 		},
+
+
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
 		},
@@ -232,6 +237,8 @@ jQuery(function ($) {
 			}
 
 			this.todos.push({
+
+
 
 				id: util.uuid(),
 
