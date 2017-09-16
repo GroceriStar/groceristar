@@ -51,46 +51,108 @@ jQuery(function ($) {
 	var todoTemplate1 = function(elements){
 
 		var html = '';
+		// <script id="todo-template"
+		_.each([
+		{
+			completed:false, id:123, title: 'pidaras1'
+		},{
+			completed:false, id:22, title: 'pidaras2'
+		},{
+			completed:false, id:100, title: 'pidaras3'
+		}
+		], function(element){
 
-		_.each([1,2,3], function(element){
-			console.log('123');
+			var single = '';
+
+			if( element.completed ){
+				single += '<li class="completed" data-id="' + element.id + '">';
+			} else {
+				single += '<li  data-id="' + element.id + '">';
+			}
+
+			  single += '<div class="view">' ;
+				if( element.completed ){
+					single += '<input class="toggle" type="checkbox" checked>';
+				} else {
+					single += '<input class="toggle" type="checkbox" >';
+				}
+
+					
+				single += '<label>' + element.title + '</label>'+
+							'<button class="destroy"></button>'+
+					'</div>'+
+					'<input class="edit" value="' + element.title + '">'
+
+			single += '</li>';
+
+			html += single;
+
+			
 		});
 
-		// 	{{#this}}
-		// 	<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
-		// 		<div class="view">
-		// 			<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-		// 			<label>{{title}}</label>
-		// 			<button class="destroy"></button>
-		// 		</div>
-		// 		<input class="edit" value="{{title}}">
-		// 	</li>
-		// {{/this}}
+		// console.log(html);
+		return html;
+
+		
 		
 	};
-	// Handlebars.compile($('#todo-template').html());
-			// console.log(this.todoTemplate);
+	
 
-	var footerTemplate = function(){
+	var footerTemplate = function(data){
+		// <script id="footer-template"
+		var html = '<span id="todo-count">' +
+				'<strong>' + data.activeTodoCount + '</strong>' +
+				data.activeTodoWord + ' left' +
+		 	'</span>';
 
+		html += '<ul id="filters">' +
+				'<li>';
+
+		if( data.filter === 'all'){
+			html += '<a class="selected" href="#/all">All</a>';
+		} else {
+			html += '<a href="#/all">All</a>';
+		}
+
+		if( data.filter === 'active'){
+			html += '<a class="selected" href="#/active">Active</a>';
+		} else {
+			html += '<a href="#/active">Active</a>';
+		}
+
+		if( data.filter === 'completed'){
+			html += '<a class="selected" href="#/completed">Completed</a>';
+		} else {
+			html += '<a href="#/completed">Completed</a>';
+		}	
+
+		html += '</ul>';				
+
+		if (data.completedTodos){
+			html += '<button id="clear-completed">Clear completed</button>';
+		}
+
+
+		// console.log(html);
+		return html;
 	};
 	// Handlebars.compile($('#footer-template').html());
-			// console.log(this.todoTemplate);
+
 
 	var App = {
 		init: function () {
 
-			todoTemplate1('123');
+			// todoTemplate1('123');
 
 			this.todos = util.store('todos-jquery');
 
 			console.log(this.todos);
 
 			this.todoTemplate = Handlebars.compile($('#todo-template').html());
-			console.log(this.todoTemplate);
+			// console.log(this.todoTemplate);
 
 			this.footerTemplate = Handlebars.compile($('#footer-template').html());
-			console.log(this.todoTemplate);
+			// console.log(this.footerTemplate);
 
 			this.bindEvents();
 
@@ -114,25 +176,41 @@ jQuery(function ($) {
 		},
 		render: function () {
 			var todos = this.getFilteredTodos();
+
+			// console.log(todos);
+
 			$('#todo-list').html(
 				this.todoTemplate(todos)
 			);
 
 			$('#main').toggle(todos.length > 0);
 			$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
+
 			this.renderFooter();
+
 			$('#new-todo').focus();
+
 			util.store('todos-jquery', this.todos);
 		},
 		renderFooter: function () {
+
 			var todoCount = this.todos.length;
 			var activeTodoCount = this.getActiveTodos().length;
+
+			// footerTemplate({
+			// 	activeTodoCount: 10,
+			// 	activeTodoWord: 6,
+			// 	filter: 'all',
+			// 	completedTodos: true
+			// });
+
 			var template = this.footerTemplate({
 				activeTodoCount: activeTodoCount,
 				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
 				completedTodos: todoCount - activeTodoCount,
 				filter: this.filter
 			});
+
 
 			$('#footer').toggle(todoCount > 0).html(template);
 		},
