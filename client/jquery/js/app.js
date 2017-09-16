@@ -33,10 +33,12 @@ jQuery(function ($) {
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
 		},
+
+
 		store: function (namespace, data) {
 			if (arguments.length > 1) {
-
-				return localStorage.setItem(namespace, JSON.stringify(data));
+				// console.log('added');
+				// return localStorage.setItem(namespace, JSON.stringify(data));
 
 			} else {
 
@@ -44,6 +46,48 @@ jQuery(function ($) {
 				return (store && JSON.parse(store)) || [];
 
 			}
+		},
+
+
+		read: function(data){
+
+			$.ajax({
+				type: "GET",
+				url: '/tatypidor',
+				dataType: 'json'
+			}).done(function(data){
+				console.log('success');
+                console.log(JSON.stringify(data));
+			})
+
+		},
+		save: function(data){
+			// $.ajax({
+			// 	type: "GET",
+			// 	url: '/tatypidor',
+			// 	dataType: 'json'
+			// }).done(function(data){
+			// 	console.log('success');
+   //              console.log(JSON.stringify(data));
+			// })
+			console.log(data);
+
+			// var data = {};
+			// data.title = "title";
+			// data.message = "message";
+					
+			$.ajax({
+				type: 'POST',
+				data: JSON.stringify(data),
+				dataType: 'json',
+		        // contentType: 'application/json',
+                url: 'ktobylobosran',						
+                success: function(data) {
+                    console.log('success');
+                    console.log(JSON.stringify(data));
+                }
+            });
+
 		}
 	};
 
@@ -56,9 +100,9 @@ jQuery(function ($) {
 		init: function () {
 
 			// todoTemplate1('123');
-
+			// console.log( util.read() );
 			this.todos = util.store('todos-jquery');
-
+			// this.todos = util.read();
 			// console.log(this.todos);
 
 			// this.todoTemplate = Handlebars.compile($('#todo-template').html());
@@ -86,16 +130,16 @@ jQuery(function ($) {
 			$('#toggle-all').on('change', this.toggleAll.bind(this));
 			$('#footer').on('click', '#clear-completed', this.destroyCompleted.bind(this));
 			$('#todo-list')
-				.on('change', '.toggle', this.toggle.bind(this))
-				.on('dblclick', 'label', this.editingMode.bind(this))
-				.on('keyup', '.edit', this.editKeyup.bind(this))
-				.on('focusout', '.edit', this.update.bind(this))
-				.on('click', '.destroy', this.destroy.bind(this));
+				.on('change',   '.toggle',  this.toggle.bind(this))
+				.on('dblclick', 'label',    this.editingMode.bind(this))
+				.on('keyup',    '.edit',    this.editKeyup.bind(this))
+				.on('focusout', '.edit',    this.update.bind(this))
+				.on('click',    '.destroy', this.destroy.bind(this));
 		},
 		render: function () {
 			var todos = this.getFilteredTodos();
 
-			console.log(todos);
+			// console.log(todos);
 
 			$('#todo-list').html(
 				this.todoTemplate(todos)
@@ -109,11 +153,17 @@ jQuery(function ($) {
 
 			$('#new-todo').focus();
 
+			// do we need to pass all items? or we just can handle item, that was changed.
+			// this.save(this.todos);
 			util.store('todos-jquery', this.todos);
+
+
+
+
 		},
 		renderFooter: function () {
 
-			var todoCount = this.todos.length;
+			var todoCount       = this.todos.length;
 			var activeTodoCount = this.getActiveTodos().length;
 
 			var template = this.footerTemplate({
@@ -182,9 +232,16 @@ jQuery(function ($) {
 			}
 
 			this.todos.push({
+
 				id: util.uuid(),
+
 				title: val,
+
 				completed: false
+
+				departmentId: false,
+				groceryId: false,
+				order: false
 			});
 
 			$input.val('');
@@ -193,7 +250,9 @@ jQuery(function ($) {
 		},
 		toggle: function (e) {
 			var i = this.getIndexFromEl(e.target);
+			console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
+			console.log(this.todos);
 			this.render();
 		},
 		editingMode: function (e) {
@@ -234,7 +293,7 @@ jQuery(function ($) {
 		},
 
 		// templates related stuff
-		todoTemplate: function(elements){
+		todoTemplate: function(elements, index){
 
 			var html = '';
 
@@ -253,9 +312,9 @@ jQuery(function ($) {
 				var single = '';
 
 				if( element.completed ){
-					single += '<li class="completed" data-id="' + element.id + '">';
+					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + index + '">';
 				} else {
-					single += '<li data-id="' + element.id + '" data-department-id="0" >';
+					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + index + '" >';
 				}
 
 				  single += '<div class="view">' ;

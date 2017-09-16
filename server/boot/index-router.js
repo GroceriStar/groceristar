@@ -67,6 +67,7 @@ module.exports = function(app) {
     // });
 
   });
+
 // todo/:groceryId'
   router.get('/todo', function(req, res, next){
 
@@ -77,6 +78,14 @@ module.exports = function(app) {
     });
   });
 
+
+  router.post('/ktobylobosran', function(req, res, next){
+
+    console.log(req.body);
+
+    //res.send('success');
+
+  });
 
 
   // :todo this must be moved to departments
