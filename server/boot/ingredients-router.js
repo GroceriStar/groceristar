@@ -74,26 +74,32 @@ module.exports = function(app) {
 		var groceryId    = req.body.groceryId;
 		var departmentId = req.body.departmentId;
 
-		var object = {
-			name: req.body.name,
-			departmentId: departmentId
-		};
+		console.log(req.body);
+
+
+
+		// var object = {
+		// 	name: req.body.name,
+		// 	departmentId: departmentId
+		// };
+		
 		// console.log(object); 
-		Ingredient.create(object, function(err, model){
 
-			// console.log(model);
+		// Ingredient.create(object, function(err, model){
 
-			var options = {
-		      groceryId: groceryId,
-		      secondArray: [ model.id ]
-		    };
-		    // console.log(options);
+		// 	// console.log(model);
+
+		// 	var options = {
+		//       groceryId: groceryId,
+		//       secondArray: [ model.id ]
+		//     };
+		//     // console.log(options);
 
 
-			Grocery.addIngredient(options);
+		// 	Grocery.addIngredient(options);
 
-			res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
-		});
+		// 	res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
+		// });
 
 
 	});

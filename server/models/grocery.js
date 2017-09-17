@@ -203,9 +203,12 @@ module.exports = function(Grocery) {
 
             	var departmentId = grouped[0].departmentId.toString();
             	var flag = _.contains(arr, departmentId);
-            	
+
+            	// console.log( _.indexOf(list, grouped[0]) );
 
         		 var ja = _.map(grouped, function(item){
+
+        		 	// console.log( _.indexOf(grouped, item) )
         		 	// Grocery.customIngredientsArray('todo', item, g.id);
         		 	// return [
             // 		 	item.id, 
@@ -216,7 +219,8 @@ module.exports = function(Grocery) {
 						id: item.id,
 						title: item.name, // :todo change title to name
 						completed: false,
-						departmentId: departmentId
+						departmentId: departmentId,
+						order: _.indexOf(grouped, item)
 						// delete: '/del/ing/' + item.id + '/' + g.id
 					}
         		 });

@@ -131,7 +131,7 @@ jQuery(function ($) {
 		// 	return departmentId;			
 		// },
 		// read: function(){
-			
+
 		// },
 		getGroceryId: function(){
 
@@ -142,11 +142,14 @@ jQuery(function ($) {
 
 			
 			// this.todos = util.store('todos-jquery');
-			var groceryId = $('body').data().groceryId;
+			// var groceryId = $('body').data().groceryId;
+
+			var groceryId = this.getGroceryId();
 
 			// console.log($('body').data());
 			// console.log(groceryId);
 			// var vasiliy = '';
+
 			var myVariable;
 			$.ajax({
 				type: "GET",
@@ -315,7 +318,7 @@ jQuery(function ($) {
 				return;
 			}
 
-			console.log(this.todos);
+			// console.log(this.todos);
 			// console.log($input.data().departmentId)
 
 			var toSave = {
@@ -324,7 +327,29 @@ jQuery(function ($) {
 				departmentId: departmentId,
 			};
 
+			// console.log(toSave);
 
+			console.log( _.last(this.todos) );
+
+			var ITEM = _.last(this.todos);
+			console.log(ITEM.order);
+			
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/create/ing/',
+			// 	dataType: 'json',
+			// 	data: JSON.stringify(toSave),
+			// 	'async': false
+			// }).done(function(data){
+				
+			// 	// console.log('success');
+   //              // this.todos = JSON.stringify(data);
+   //              myVariable = JSON.stringify(data);
+   //              myVariable = JSON.parse(myVariable);
+   //              // console.log(myVariable);
+   //              // console.log(typeof myVariable);
+			
+			// });
 
 
 			this.todos.push({
@@ -339,7 +364,7 @@ jQuery(function ($) {
 
 				departmentId: false,
 				groceryId: false,
-				order: false
+				order: 0
 			});
 			console.log(this.todos);
 
