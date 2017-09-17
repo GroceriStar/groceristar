@@ -49,9 +49,9 @@ module.exports = function(app) {
     function(req, res, next){    
       // console.log('123');
       res.json([
-      {"title":"123", "completed":false},
-      {"title":"333", "completed":false},
-      {"title":"Ingredos", "completed":false}
+      {"title":"123", "completed":false, "departmentId": "0"},
+      {"title":"333", "completed":false, "departmentId": "0"},
+      {"title":"Ingredos", "completed":false, "departmentId": "0"}
     ]);
 
     // var Grocery   = app.models.Grocery;

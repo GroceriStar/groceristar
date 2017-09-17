@@ -125,30 +125,62 @@ jQuery(function ($) {
 
 
 	var App = {
+		ovca: [],
+		// proshmandovka: function(data){
+
+		// },
 		init: function () {
 
 			// todoTemplate1('123');
 			// console.log( util.read() );
-
+			// console.log(this);
+			// console.log(App);
 			// this.todos = util.store('todos-jquery');
-var groceryId = $('body').data().groceryId;
+			var groceryId = $('body').data().groceryId;
 
 			// console.log($('body').data());
 			// console.log(groceryId);
 			// var vasiliy = '';
+			var myVariable;
 			$.ajax({
 				type: "GET",
 				url: '/tatypidor/' + groceryId,
-				dataType: 'json'
+				dataType: 'json',
+				'async': false
 			}).done(function(data){
 				
-				console.log('success');
-                this.todos = JSON.stringify(data);
-                console.log('ty pidorasa kusok polnogo');
+				// console.log('success');
+                // this.todos = JSON.stringify(data);
+                myVariable = JSON.stringify(data);
+
+				// this.bindEvents();
+
+
+
+				// new Router({
+				// 	'/:filter': function (filter) {
+				// 		this.filter = filter;
+				// 		this.render();
+				// 	}.bind(this)
+				// }).init('/all');
+
+
+
+
+
+
+
+
+
+                // console.log('ty pidorasa kusok polnogo');
+                // $('body').hide();
+                // console.log( this.todos );
 			});
+
+			// console.log(myVariable);
 			// util.read(this);
-			// this.todos = util.read();
-			console.log( this.todos );
+			this.todos = myVariable || [];
+			console.log(this.todos)
 
 			// this.todos = util.read();
 			// console.log(this.todos);
@@ -158,6 +190,8 @@ var groceryId = $('body').data().groceryId;
 
 			// this.footerTemplate = Handlebars.compile($('#footer-template').html());
 			// console.log(this.footerTemplate);
+
+
 
 			this.bindEvents();
 
@@ -241,7 +275,12 @@ var groceryId = $('body').data().groceryId;
 			this.render();
 		},
 		getActiveTodos: function () {
+
+			console.log(this.todos);
+
 			return this.todos.filter(function (todo) {
+				// console.log(todo);
+
 				return !todo.completed;
 			});
 		},
