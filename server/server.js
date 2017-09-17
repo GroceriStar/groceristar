@@ -24,7 +24,7 @@ var passportConfigurator = new PassportConfigurator(app);
  *   object accessible through `req.body`
  *
  */
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 /**
  * Flash messages for passport
@@ -62,11 +62,11 @@ boot(app, __dirname);
 
 
 // to support JSON-encoded bodies
-// app.middleware('parse', bodyParser.json());
+app.middleware('parse', bodyParser.json());
 // to support URL-encoded bodies
-// app.middleware('parse', bodyParser.urlencoded({
-//   extended: true,
-// }));
+app.middleware('parse', bodyParser.urlencoded({
+  extended: true,
+}));
 
 
 // The access token is only available after boot

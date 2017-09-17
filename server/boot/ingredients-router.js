@@ -1,6 +1,7 @@
 'use strict';
 
-var request        = require('request');
+const request  = require('request');
+const _       = require("underscore");
 // var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 module.exports = function(app) {
@@ -74,9 +75,13 @@ module.exports = function(app) {
 		var groceryId    = req.body.groceryId;
 		var departmentId = req.body.departmentId;
 
-		// console.log(req.body);
-		const res_data = JSON.parse(req.body);
-		onsole.log(res_data);
+		console.log(req.body);
+		_.map(req.body, function(item, key){
+			console.log(key);
+			console.log(typeof key);
+		});
+		// const res_data = JSON.parse(req.body);
+		// console.log(res_data);
 		// console.log(groceryId);
 		// console.log(departmentId);
 		// console.log(req.body.name);
