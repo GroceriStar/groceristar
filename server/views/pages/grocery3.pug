@@ -17,7 +17,7 @@ html(lang='en', data-framework='jquery')
       header#header
         h1= 'todos '
         h1= groceryId
-        input#new-todo(placeholder='What needs to be done?', autofocus='')
+        input#new-todo(placeholder='What needs to be done?', autofocus='', data-department-id=departmentId)
       section#main
         input#toggle-all(type='checkbox')
         label(for='toggle-all') Mark all as complete

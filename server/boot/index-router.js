@@ -35,25 +35,16 @@ module.exports = function(app) {
 
 
 
-
-
-    // res.json([
-    //   {"title":"123","completed":false},
-    //   {"title":"333","completed":false},
-    //   {"title":"Ingredos"}
-    // ]);
+    // [
+      //   {"title":"123", "completed":false, "departmentId": "0"},
+      //   {"title":"333", "completed":false, "departmentId": "0"},
+      //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
+      // ]
 
   // :todo think about making this post instead of get
   router.get('/tatypidor/:groceryId', 
     //ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
-      // console.log('123');
-      // res.json([
-      //   {"title":"123", "completed":false, "departmentId": "0"},
-      //   {"title":"333", "completed":false, "departmentId": "0"},
-      //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
-      // ]);
-
     var Grocery   = app.models.Grocery;
     // var userId    = req.user.id;
     var groceryId = req.params.groceryId;
@@ -74,21 +65,35 @@ module.exports = function(app) {
     var Grocery   = app.models.Grocery;
     // var userId    = req.user.id;
     var groceryId = req.params.groceryId;
+
+    var departmentId = '59b6e8efbdfb0c292068e55c';
+
     res.render('pages/grocery3', {
       user: req.user,
       url: req.url,
       groceryId: groceryId,
+      departmentId: departmentId
       // data: response
     });
   });
 
 
-  router.post('/ktobylobosran', function(req, res, next){
+  // router.post('/ktobylobosran', function(req, res, next){
 
-    console.log(req.body);
+  //   console.log(req.body);
 
-    //res.send('success');
+  //   //res.send('success');
 
+  // });
+
+
+ router.get('/sortable', function(req, res, next){
+
+    res.render('pages/grocery2', {
+      user: req.user,
+      url: req.url,
+      // data: response
+    });
   });
 
 
@@ -113,14 +118,6 @@ module.exports = function(app) {
   });
 
 
- router.get('/sortable', function(req, res, next){
-
-    res.render('pages/grocery2', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
-  });
 
 
 

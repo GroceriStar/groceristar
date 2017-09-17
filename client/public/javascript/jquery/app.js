@@ -125,16 +125,22 @@ jQuery(function ($) {
 
 
 	var App = {
-		ovca: [],
-		// proshmandovka: function(data){
-
+		
+		// getDepartmentId: function(){
+		// 	var departmentId = $('body').data().departmentId;
+		// 	return departmentId;			
 		// },
+		// read: function(){
+			
+		// },
+		getGroceryId: function(){
+
+			var groceryId = $('body').data().groceryId;
+			return groceryId;
+		},
 		init: function () {
 
-			// todoTemplate1('123');
-			// console.log( util.read() );
-			// console.log(this);
-			// console.log(App);
+			
 			// this.todos = util.store('todos-jquery');
 			var groceryId = $('body').data().groceryId;
 
@@ -155,28 +161,7 @@ jQuery(function ($) {
                 myVariable = JSON.parse(myVariable);
                 // console.log(myVariable);
                 // console.log(typeof myVariable);
-				// this.bindEvents();
-
-
-
-				// new Router({
-				// 	'/:filter': function (filter) {
-				// 		this.filter = filter;
-				// 		this.render();
-				// 	}.bind(this)
-				// }).init('/all');
-
-
-
-
-
-
-
-
-
-                // console.log('ty pidorasa kusok polnogo');
-                // $('body').hide();
-                // console.log( this.todos );
+			
 			});
 
 			// console.log(myVariable);
@@ -321,14 +306,27 @@ jQuery(function ($) {
 			}
 		},
 		create: function (e) {
-			var $input = $(e.target);
-			var val = $input.val().trim();
+
+			var $input       = $(e.target);
+			var val          = $input.val().trim();
+			var departmentId = $input.data().departmentId;
 
 			if (e.which !== ENTER_KEY || !val) {
 				return;
 			}
 
 			console.log(this.todos);
+			// console.log($input.data().departmentId)
+
+			var toSave = {
+				name: val,
+				groceryId: this.getGroceryId(),
+				departmentId: departmentId,
+			};
+
+
+
+
 			this.todos.push({
 
 
