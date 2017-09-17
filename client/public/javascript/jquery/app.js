@@ -329,27 +329,29 @@ jQuery(function ($) {
 
 			// console.log(toSave);
 
-			console.log( _.last(this.todos) );
+			// console.log( _.last(this.todos) );
 
 			var ITEM = _.last(this.todos);
-			console.log(ITEM.order);
+			// console.log(ITEM.order++);
+			var order_for_new_element = ITEM.order++;
+			// console.log(order_for_new_element);
 			
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/create/ing/',
-			// 	dataType: 'json',
-			// 	data: JSON.stringify(toSave),
-			// 	'async': false
-			// }).done(function(data){
+			$.ajax({
+				type: "POST",
+				url: '/create/ing/',
+				dataType: 'json',
+				data: JSON.stringify(toSave),
+				'async': false
+			}).done(function(data){
 				
-			// 	// console.log('success');
-   //              // this.todos = JSON.stringify(data);
-   //              myVariable = JSON.stringify(data);
-   //              myVariable = JSON.parse(myVariable);
-   //              // console.log(myVariable);
-   //              // console.log(typeof myVariable);
+				console.log('success');
+                // this.todos = JSON.stringify(data);
+                // myVariable = JSON.stringify(data);
+                // myVariable = JSON.parse(myVariable);
+                // console.log(myVariable);
+                // console.log(typeof myVariable);
 			
-			// });
+			});
 
 
 			this.todos.push({
@@ -420,25 +422,14 @@ jQuery(function ($) {
 		todoTemplate: function(elements, index){
 
 			var html = '';
-
-			_.each(elements
-			// 	[
-			// {
-			// 	completed:false, id:123, title: 'pidaras1'
-			// },{
-			// 	completed:false, id:22, title: 'pidaras2'
-			// },{
-			// 	completed:false, id:100, title: 'pidaras3'
-			// }
-			// ]
-			, function(element){
+			_.each(elements, function(element){
 
 				var single = '';
 
 				if( element.completed ){
-					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + index + '">';
+					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
 				} else {
-					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + index + '" >';
+					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
 				}
 
 				  single += '<div class="view">' ;
@@ -460,8 +451,6 @@ jQuery(function ($) {
 
 				
 			});
-
-			// console.log(html);
 			return html;
 		},
 	

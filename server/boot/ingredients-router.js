@@ -74,15 +74,21 @@ module.exports = function(app) {
 		var groceryId    = req.body.groceryId;
 		var departmentId = req.body.departmentId;
 
-		console.log(req.body);
+		// console.log(req.body);
+		const res_data = JSON.parse(req.body);
+		onsole.log(res_data);
+		// console.log(groceryId);
+		// console.log(departmentId);
+		// console.log(req.body.name);
 
-
+		// var obj = JSON.stringify(req.body);
+		// console.log(obj);
 
 		// var object = {
 		// 	name: req.body.name,
 		// 	departmentId: departmentId
 		// };
-		
+
 		// console.log(object); 
 
 		// Ingredient.create(object, function(err, model){
