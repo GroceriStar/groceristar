@@ -12,10 +12,10 @@ html(lang='en', data-framework='jquery')
 
 
 
-  body
+  body(data-groceryId=groceryId)
     section#todoapp
       header#header
-        h1= 'todos ' + groceryid
+        h1= 'todos ' + groceryId
         input#new-todo(placeholder='What needs to be done?', autofocus='')
       section#main
         input#toggle-all(type='checkbox')

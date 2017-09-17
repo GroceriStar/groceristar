@@ -42,8 +42,9 @@ module.exports = function(app) {
     //   {"title":"333","completed":false},
     //   {"title":"Ingredos"}
     // ]);
-// router.get('/tatypidor/:groceryId', 
-  router.get('/tatypidor', 
+
+  // :todo think about making this post instead of get
+  router.get('/tatypidor:groceryId', 
     ensureLoggedIn('/auth/account'), 
     function(req, res, next){    
 
@@ -71,7 +72,7 @@ module.exports = function(app) {
 
   router.get('/todo/:groceryId', function(req, res, next){
     var Grocery   = app.models.Grocery;
-    var userId    = req.user.id;
+    // var userId    = req.user.id;
     var groceryId = req.params.groceryId;
     res.render('pages/grocery3', {
       user: req.user,

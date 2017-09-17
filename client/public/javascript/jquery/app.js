@@ -54,13 +54,15 @@ jQuery(function ($) {
 		},
 
 
-		read: function(data){
+		read: function(){
 
-			// var groceryId = $().data().groceryId;
+			var groceryId = $('body').data().groceryId;
 
+			console.log(data);
+			console.log(groceryId);
 			$.ajax({
 				type: "GET",
-				url: '/tatypidor/',
+				url: '/tatypidor/' + groceryId,
 				dataType: 'json'
 			}).done(function(data){
 				console.log('success');
@@ -107,7 +109,7 @@ jQuery(function ($) {
 		init: function () {
 
 			// todoTemplate1('123');
-			// console.log( util.read() );
+			console.log( util.read() );
 
 			this.todos = util.store('todos-jquery');
 
@@ -254,7 +256,7 @@ jQuery(function ($) {
 				groceryId: false,
 				order: false
 			});
-			
+
 
 			$input.val('');
 
