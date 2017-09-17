@@ -338,7 +338,7 @@ jQuery(function ($) {
 						'<input class="edit" value="' + element.title + '">'
 
 				single += '</li>';
-
+				console.log(single)
 				html += single;
 
 				

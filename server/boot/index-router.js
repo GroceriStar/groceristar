@@ -48,24 +48,24 @@ module.exports = function(app) {
     //ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
       // console.log('123');
-      res.json([
-      {"title":"123", "completed":false, "departmentId": "0"},
-      {"title":"333", "completed":false, "departmentId": "0"},
-      {"title":"Ingredos", "completed":false, "departmentId": "0"}
-    ]);
+      // res.json([
+      //   {"title":"123", "completed":false, "departmentId": "0"},
+      //   {"title":"333", "completed":false, "departmentId": "0"},
+      //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
+      // ]);
 
-    // var Grocery   = app.models.Grocery;
+    var Grocery   = app.models.Grocery;
     // var userId    = req.user.id;
-    // var groceryId = req.params.groceryId;
+    var groceryId = req.params.groceryId;
     
-    // Grocery.fetchById3(groceryId, function(err, response){
-    //   // console.log(response);
-    //   // console.log(response.data[1].ingredients);
-    //   // _.map(response.data)
-    //   // console.log(response.data[0].ingredients);
-    //   res.json(response.data[1].ingredients);
+    Grocery.fetchById3(groceryId, function(err, response){
+      // console.log(response);
+      console.log(response.data[1].ingredients);
+      // _.map(response.data)
+      // console.log(response.data[0].ingredients);
+      res.json(response.data[1].ingredients);
 
-    // });
+    });
 
   });
 

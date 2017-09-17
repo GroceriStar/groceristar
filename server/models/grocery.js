@@ -216,7 +216,8 @@ module.exports = function(Grocery) {
 						id: item.id,
 						title: item.name, // :todo change title to name
 						completed: false,
-						delete: '/del/ing/' + item.id + '/' + g.id
+						departmentId: departmentId
+						// delete: '/del/ing/' + item.id + '/' + g.id
 					}
         		 });
         		 // console.log(ja);

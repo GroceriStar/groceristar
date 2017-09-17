@@ -4,17 +4,17 @@
 // License text available at https://opensource.org/licenses/MIT
 'use strict';
 
-var loopback     = require('loopback');
-var boot         = require('loopback-boot');
+const loopback     = require('loopback');
+const boot         = require('loopback-boot');
 var app          = module.exports = loopback();
-var cookieParser = require('cookie-parser');
-var session      = require('express-session');
+const cookieParser = require('cookie-parser');
+const session      = require('express-session');
 
-var path       = require('path');
-var express    = require('express');
+const path       = require('path');
+const express    = require('express');
 
 // Passport configurators..
-var loopbackPassport     = require('loopback-component-passport');
+const loopbackPassport     = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var passportConfigurator = new PassportConfigurator(app);
 
@@ -24,7 +24,7 @@ var passportConfigurator = new PassportConfigurator(app);
  *   object accessible through `req.body`
  *
  */
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 /**
  * Flash messages for passport
@@ -34,7 +34,7 @@ var bodyParser = require('body-parser');
  * if any. This is often the best approach, because the verify callback
  * can make the most accurate determination of why authentication failed.
  */
-var flash      = require('express-flash');
+const flash      = require('express-flash');
 
 // attempt to build the providers/passport config
 var config = {};

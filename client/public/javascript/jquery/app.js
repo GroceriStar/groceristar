@@ -152,7 +152,9 @@ jQuery(function ($) {
 				// console.log('success');
                 // this.todos = JSON.stringify(data);
                 myVariable = JSON.stringify(data);
-
+                myVariable = JSON.parse(myVariable);
+                // console.log(myVariable);
+                // console.log(typeof myVariable);
 				// this.bindEvents();
 
 
@@ -180,7 +182,7 @@ jQuery(function ($) {
 			// console.log(myVariable);
 			// util.read(this);
 			this.todos = myVariable || [];
-			console.log(this.todos)
+			// console.log(this.todos)
 
 			// this.todos = util.read();
 			// console.log(this.todos);
@@ -226,10 +228,7 @@ jQuery(function ($) {
 
 			if( todos ){
 
-				$('#todo-list').html(
-					this.todoTemplate(todos)
-					// this.todoTemplate(todos)
-				);
+				$('#todo-list').html( this.todoTemplate(todos) );
 
 			
 				$('#main').toggle(todos.length > 0);
@@ -276,13 +275,16 @@ jQuery(function ($) {
 		},
 		getActiveTodos: function () {
 
-			console.log(this.todos);
+			// console.log(this.todos);
+			// console.log(typeof this.todos);
 
-			return this.todos.filter(function (todo) {
-				// console.log(todo);
+			if(typeof this.todos !== 'string'){
+				return this.todos.filter(function (todo) {
+					return !todo.completed;
+				});	
+			}
 
-				return !todo.completed;
-			});
+			
 		},
 		getCompletedTodos: function () {
 			return this.todos.filter(function (todo) {
@@ -326,6 +328,7 @@ jQuery(function ($) {
 				return;
 			}
 
+			console.log(this.todos);
 			this.todos.push({
 
 
@@ -340,7 +343,7 @@ jQuery(function ($) {
 				groceryId: false,
 				order: false
 			});
-
+			console.log(this.todos);
 
 			$input.val('');
 
@@ -423,7 +426,7 @@ jQuery(function ($) {
 					}
 
 						
-					single += '<label>' + element.title + '</label>'+
+					single += '<label>' + element.title + '<span class="drag-handle">☰</span></label>'+
 								'<button class="destroy"></button>'+
 						'</div>'+
 						'<input class="edit" value="' + element.title + '">'

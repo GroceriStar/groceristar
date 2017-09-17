@@ -1,8 +1,8 @@
 'use strict';
 
 
-var path            = require('path');
-var async           = require('async');
+const path            = require('path');
+const async           = require('async');
 
 // let server          = require(path.resolve(__dirname, '../../server/server'));
 

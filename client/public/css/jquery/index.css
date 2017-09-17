@@ -345,6 +345,22 @@ html #clear-completed:active {
 	text-decoration: underline;
 }
 
+.drag-handle {
+	margin-right: 10px;
+	font: bold 20px Sans-Serif;
+	color: #5F9EDF;
+	display: inline-block;
+	cursor: move;
+	cursor: -webkit-grabbing;  /* overrides 'move' */
+
+	float: right;
+	display: none;
+}
+#todo-list li label:hover .drag-handle {
+	display: block;
+}
+
+
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox
