@@ -58,8 +58,9 @@ jQuery(function ($) {
 
 			var groceryId = $('body').data().groceryId;
 
-			console.log(data);
+			// console.log($('body').data());
 			console.log(groceryId);
+			
 			$.ajax({
 				type: "GET",
 				url: '/tatypidor/' + groceryId,

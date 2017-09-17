@@ -44,7 +44,7 @@ module.exports = function(app) {
     // ]);
 
   // :todo think about making this post instead of get
-  router.get('/tatypidor:groceryId', 
+  router.get('/tatypidor/:groceryId', 
     ensureLoggedIn('/auth/account'), 
     function(req, res, next){    
 
