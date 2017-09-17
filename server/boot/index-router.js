@@ -45,13 +45,13 @@ module.exports = function(app) {
 
   // :todo think about making this post instead of get
   router.get('/tatypidor/:groceryId', 
-    ensureLoggedIn('/auth/account'), 
+    //ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
-
+      // console.log('123');
       res.json([
-      {"title":"123","completed":false},
-      {"title":"333","completed":false},
-      {"title":"Ingredos","completed":false}
+      {"title":"123", "completed":false},
+      {"title":"333", "completed":false},
+      {"title":"Ingredos", "completed":false}
     ]);
 
     // var Grocery   = app.models.Grocery;

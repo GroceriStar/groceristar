@@ -59,16 +59,34 @@ jQuery(function ($) {
 			var groceryId = $('body').data().groceryId;
 
 			// console.log($('body').data());
-			console.log(groceryId);
-			
+			// console.log(groceryId);
+			// var vasiliy = '';
 			$.ajax({
 				type: "GET",
 				url: '/tatypidor/' + groceryId,
 				dataType: 'json'
 			}).done(function(data){
-				console.log('success');
-                console.log(JSON.stringify(data));
-			})
+				// console.log('success');
+                // console.log(JSON.stringify(data));
+                // var dataFromDatabase = JSON.stringify(data);
+                // return 
+                // console.log(data);
+
+                // console.log(JSON.stringify(data));
+                // console.log(this);
+
+
+                // objectos.todos = JSON.stringify(data);
+
+                // console.log(
+                // 	objectos.todos
+                // 	);
+                // return '123';
+                // return dataFromDatabase;
+			});
+
+			// console.log(vasiliy);
+			// return vasiliy;
 
 		},
 		save: function(data){
@@ -110,9 +128,27 @@ jQuery(function ($) {
 		init: function () {
 
 			// todoTemplate1('123');
-			console.log( util.read() );
+			// console.log( util.read() );
 
-			this.todos = util.store('todos-jquery');
+			// this.todos = util.store('todos-jquery');
+var groceryId = $('body').data().groceryId;
+
+			// console.log($('body').data());
+			// console.log(groceryId);
+			// var vasiliy = '';
+			$.ajax({
+				type: "GET",
+				url: '/tatypidor/' + groceryId,
+				dataType: 'json'
+			}).done(function(data){
+				
+				console.log('success');
+                this.todos = JSON.stringify(data);
+                console.log('ty pidorasa kusok polnogo');
+			});
+			// util.read(this);
+			// this.todos = util.read();
+			console.log( this.todos );
 
 			// this.todos = util.read();
 			// console.log(this.todos);
@@ -149,25 +185,33 @@ jQuery(function ($) {
 				.on('click',    '.destroy', this.destroy.bind(this));
 		},
 		render: function () {
+
 			var todos = this.getFilteredTodos();
 
 			// console.log(todos);
 
-			$('#todo-list').html(
-				this.todoTemplate(todos)
-				// this.todoTemplate(todos)
-			);
+			if( todos ){
 
-			$('#main').toggle(todos.length > 0);
-			$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
+				$('#todo-list').html(
+					this.todoTemplate(todos)
+					// this.todoTemplate(todos)
+				);
 
-			this.renderFooter();
+			
+				$('#main').toggle(todos.length > 0);
+				$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
 
-			$('#new-todo').focus();
+				this.renderFooter();
+
+				$('#new-todo').focus();
+
+			}
+
+
 
 			// do we need to pass all items? or we just can handle item, that was changed.
 			// this.save(this.todos);
-			util.store('todos-jquery', this.todos);
+			// util.store('todos-jquery', this.todos);
 
 
 
