@@ -80,3 +80,5 @@ mixin button_view_grocery(groceryId, title)
 //mixin button_facebook_login(class)
 //  a(href='/auth/facebook', class=class) 'Login with Facebook'
 
+mixin button_ingredients_list(groceryId, departmentId)
+  +link('/todo/' + groceryId + '/' + departmentId, 'TODOLIST')

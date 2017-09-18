@@ -79,13 +79,14 @@ module.exports = function(app) {
       // ]
 
   // :todo think about making this post instead of get
-  // router.get('/tatypidor/:groceryId/:departmentId', 
-  router.get('/tatypidor/:groceryId', 
-    //ensureLoggedIn('/auth/account'),  // :todo get back this 
+  // router.get('/getingredients/:groceryId/:departmentId/', 
+  router.get('/getingredients/:groceryId/:departmentId/', 
+    ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
-    var Grocery   = app.models.Grocery;
+    var Grocery      = app.models.Grocery;
     // var userId    = req.user.id;
-    var groceryId = req.params.groceryId;
+    var groceryId    = req.params.groceryId;
+    var departmentId = req.params.departmentId;
     
     Grocery.fetchById3(groceryId, function(err, response){
       // console.log(response);
@@ -101,17 +102,20 @@ module.exports = function(app) {
   });
 
 
-  router.get('/todo/:groceryId', function(req, res, next){
-    var Grocery   = app.models.Grocery;
-    // var userId    = req.user.id;
-    var groceryId = req.params.groceryId;
 
-    var departmentId = '59b6e8efbdfb0c292068e55c';
+  router.get('/todo/:groceryId/:departmentId', 
+    function(req, res, next){
+    var Grocery      = app.models.Grocery;
+    // var userId    = req.user.id;
+    var groceryId    = req.params.groceryId;
+    var departmentId = req.params.departmentId;
+
+    // var departmentId = '59b6e8efbdfb0c292068e55c';
 
     res.render('pages/grocery3', {
-      user: req.user,
-      url: req.url,
-      groceryId: groceryId,
+      user        : req.user,
+      url         : req.url,
+      groceryId   : groceryId,
       departmentId: departmentId
       // data: response
     });

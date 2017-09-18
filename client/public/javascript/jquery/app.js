@@ -46,7 +46,7 @@ jQuery(function ($) {
 
 		// 	$.ajax({
 		// 		type: "GET",
-		// 		url: '/tatypidor/' + groceryId,
+		// 		url: '/getingredients/' + groceryId,
 		// 		dataType: 'json'
 		// 	}).done(function(data){
 				
@@ -73,10 +73,6 @@ jQuery(function ($) {
 		},
 		init: function () {
 
-			
-			// this.todos = util.store('todos-jquery');
-			// var groceryId = $('body').data().groceryId;
-
 			var groceryId = this.getGroceryId();
 
 			// console.log($('body').data());
@@ -86,17 +82,14 @@ jQuery(function ($) {
 			var myVariable;
 			$.ajax({
 				type: "GET",
-				url: '/tatypidor/' + groceryId,
+				url: '/getingredients/' + groceryId + '/' + '',
 				dataType: 'json',
 				'async': false
 			}).done(function(data){
 				
-				// console.log('success');
-                // this.todos = JSON.stringify(data);
                 myVariable = JSON.stringify(data);
                 myVariable = JSON.parse(myVariable);
-                // console.log(myVariable);
-                // console.log(typeof myVariable);
+               
 			
 			});
 
@@ -323,7 +316,7 @@ jQuery(function ($) {
 				ingredients: [ $ingredient.data().id ],
 				groceryId: this.getGroceryId()
 			};
-			// console.log(toPurchase);
+			// console.log(toPurchase)
 
 			// move this to another place, please :todo
 			// var result = false;
@@ -351,8 +344,10 @@ jQuery(function ($) {
 
 			var $input = $(e.target).closest('li').addClass('editing').find('.edit');
 			var val = $input.val();
-			console.log($input);
-			console.log($input.val());
+
+			// console.log($input);
+			// console.log($input.val());
+
 			$input.val('').focus().val(val);
 
 		},

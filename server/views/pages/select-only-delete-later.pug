@@ -5,13 +5,17 @@ block content
   .container
     // Top Navigation
     section
+      
+      form#choose-department(name="formsubmit", method="post", action="/dprtmnt/view/")
 
-      select.cs-select.cs-skin-border
-        option(value='', disabled='', selected='') Department
+        select.cs-select.cs-skin-border#departmentList
+          option(value='', disabled='', selected='') Department
 
-        each val, index in data
-          if (val.ingredients.length !== 0)
-            option(value=val.id)= val.name 
+          each val, index in data
+            if (val.ingredients.length !== 0)
+              option(value=val.id)= val.name 
+
+        input.btn.btn-success(type='submit', value='Open Department')      
 
   
   
@@ -36,6 +40,26 @@ block content
         console.log(this.data());
 
       });
+
+      $('#choose-department').on('submit', function(){
+
+        return false;
+      });
+
+      $("#choose-department").submit(function(e) {
+
+        //prevent Default functionality
+        e.preventDefault();
+
+        //get the action-url of the form
+        //var actionurl = e.currentTarget.action;
+
+        var groceryId = 0;
+        var departmentId = 0;
+
+        window.location.replace("/todo/" + groceryId + '/' + departmentId);
+
+    });
 
     });
 

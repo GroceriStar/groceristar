@@ -26,6 +26,7 @@ module.exports = function(app) {
 
   });
 
+
   router.post('/clearpurchased', function(req, res, next){
     var Grocery = app.models.Grocery;
 
@@ -35,17 +36,17 @@ module.exports = function(app) {
 
   });
 
-router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
-	var Grocery = app.models.Grocery;
+  router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
-		// console.log( req.user.id );		
+  	var Grocery = app.models.Grocery;
 
-	 	var ingredients = req.params.ingId;
- 		var groceryId   = req.params.groceryId;
+  		// console.log( req.user.id );		
+
+   	var ingredients = req.params.ingId;
+  		var groceryId   = req.params.groceryId;
 
     var options = {
-
       groceryId: groceryId,
       secondArray: ingredients 
     };
