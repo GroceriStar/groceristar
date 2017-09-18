@@ -1,15 +1,6 @@
-/*global jQuery, Handlebars, Router */
+/*global jQuery, Router */
 jQuery(function ($) {
 	'use strict';
-
-	// Handlebars.registerHelper('eq', function (a, b, options) {
-	// 	return a === b ? options.fn(this) : options.inverse(this);
-	// });
-
-
-
-
-
 
 	var ENTER_KEY  = 13;
 	var ESCAPE_KEY = 27;
@@ -17,111 +8,28 @@ jQuery(function ($) {
 	var util = {
 
 
-
-		uuid: function () {
-			/*jshint bitwise:false */
-			var i, random;
-			var uuid = '';
-
-			for (i = 0; i < 32; i++) {
-				random = Math.random() * 16 | 0;
-				if (i === 8 || i === 12 || i === 16 || i === 20) {
-					uuid += '-';
-				}
-				uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
-			}
-
-			return uuid;
-		},
-
-
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
 		},
 
 
-		store: function (namespace, data) {
-			if (arguments.length > 1) {
-				// console.log('added');
-				// return localStorage.setItem(namespace, JSON.stringify(data));
+		// store: function (namespace, data) {
+		// 	if (arguments.length > 1) {
+		// 		// console.log('added');
+		// 		// return localStorage.setItem(namespace, JSON.stringify(data));
 
-			} else {
+		// 	} else {
 
-				var store = localStorage.getItem(namespace);
-				return (store && JSON.parse(store)) || [];
+		// 		var store = localStorage.getItem(namespace);
+		// 		return (store && JSON.parse(store)) || [];
 
-			}
-		},
-
-
-		read: function(){
-
-			var groceryId = $('body').data().groceryId;
-
-			// console.log($('body').data());
-			// console.log(groceryId);
-			// var vasiliy = '';
-			$.ajax({
-				type: "GET",
-				url: '/tatypidor/' + groceryId,
-				dataType: 'json'
-			}).done(function(data){
-				// console.log('success');
-                // console.log(JSON.stringify(data));
-                // var dataFromDatabase = JSON.stringify(data);
-                // return 
-                // console.log(data);
-
-                // console.log(JSON.stringify(data));
-                // console.log(this);
+		// 	}
+		// },
 
 
-                // objectos.todos = JSON.stringify(data);
-
-                // console.log(
-                // 	objectos.todos
-                // 	);
-                // return '123';
-                // return dataFromDatabase;
-			});
-
-			// console.log(vasiliy);
-			// return vasiliy;
-
-		},
-		save: function(data){
-			// $.ajax({
-			// 	type: "GET",
-			// 	url: '/tatypidor',
-			// 	dataType: 'json'
-			// }).done(function(data){
-			// 	console.log('success');
-   //              console.log(JSON.stringify(data));
-			// })
-			console.log(data);
-
-			// var data = {};
-			// data.title = "title";
-			// data.message = "message";
-					
-			$.ajax({
-				type: 'POST',
-				data: JSON.stringify(data),
-				dataType: 'json',
-		        // contentType: 'application/json',
-                url: 'ktobylobosran',						
-                success: function(data) {
-                    console.log('success');
-                    console.log(JSON.stringify(data));
-                }
-            });
-
-		}
+		
 	};
 
-
-
-	// Handlebars.compile($('#footer-template').html());
 
 
 	var App = {
@@ -131,6 +39,31 @@ jQuery(function ($) {
 		// 	return departmentId;			
 		// },
 		// read: function(){
+
+		// 	var groceryId = $('body').data().groceryId;
+
+			
+
+		// 	$.ajax({
+		// 		type: "GET",
+		// 		url: '/tatypidor/' + groceryId,
+		// 		dataType: 'json'
+		// 	}).done(function(data){
+				
+		// 	});
+
+			
+
+		// },
+		// save: function(data){
+			
+		// 	console.log(data);
+
+		// 	// var data = {};
+		// 	// data.title = "title";
+		// 	// data.message = "message";
+					
+			
 
 		// },
 		getGroceryId: function(){
@@ -167,22 +100,14 @@ jQuery(function ($) {
 			
 			});
 
-			// console.log(myVariable);
-			// util.read(this);
+			
 			this.todos = myVariable || [];
 			// console.log(this.todos)
 
 			// this.todos = util.read();
 			// console.log(this.todos);
 
-			// this.todoTemplate = Handlebars.compile($('#todo-template').html());
-			// console.log(this.todoTemplate);
-
-			// this.footerTemplate = Handlebars.compile($('#footer-template').html());
-			// console.log(this.footerTemplate);
-
-
-
+			
 			this.bindEvents();
 
 
@@ -220,6 +145,7 @@ jQuery(function ($) {
 
 			
 				$('#main').toggle(todos.length > 0);
+
 				$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
 
 				this.renderFooter();
@@ -297,8 +223,10 @@ jQuery(function ($) {
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
-		getIndexFromEl: function (el) {
-			var id = $(el).closest('li').data('id');
+		getIndexFromEl: function (element) {
+			var $ingredient = this.getElementFromEvent(element);
+			var id = $ingredient.data('id');
+
 			var todos = this.todos;
 			var i = todos.length;
 
@@ -308,18 +236,15 @@ jQuery(function ($) {
 				}
 			}
 		},
+		getElementFromEvent: function(element){
+			var $ingredient = $(element).closest('li');
+			return $ingredient;
+		},
 		create: function (e) {
 
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
 			var departmentId = $input.data().departmentId;
-
-			if (e.which !== ENTER_KEY || !val) {
-				return;
-			}
-
-			// console.log(this.todos);
-			// console.log($input.data().departmentId)
 
 			var toSave = {
 				name: val,
@@ -327,15 +252,16 @@ jQuery(function ($) {
 				departmentId: departmentId,
 			};
 
-			// console.log(toSave);
+			if (e.which !== ENTER_KEY || !val) { return; }
 
-			// console.log( _.last(this.todos) );
-
+			
 			var ITEM = _.last(this.todos);
-			// console.log(ITEM.order++);
-			var order_for_new_element = ITEM.order++;
+			// console.log(ITEM.order);
+
+			var order_for_new_element = ITEM.order + 1;
 			// console.log(order_for_new_element);
 
+			var new_id = false;
 			$.ajax({
 				type: "POST",
 				url: '/create/ing/',
@@ -345,49 +271,90 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success');
-				
-				console.log(data);
-                // this.todos = JSON.stringify(data);
-                // myVariable = JSON.stringify(data);
-                // myVariable = JSON.parse(myVariable);
-                // console.log(myVariable);
-                // console.log(typeof myVariable);
-			
+				// console.log('success');
+
+				new_id = data.id;
 			});
 
-
-			this.todos.push({
-
-
-
-				id: util.uuid(),
-
-				title: val,
+			var new_object = {
+				id: new_id,
+				name: val,
 
 				completed: false,
 
-				departmentId: false,
-				groceryId: false,
-				order: 0
-			});
-			console.log(this.todos);
+				groceryId: this.getGroceryId(),
+				departmentId: departmentId,
+				order: order_for_new_element
+			}
+
+			// console.log(new_object);
+			this.todos.push(new_object);
+
+			// this.todos.push({
+
+
+
+			// 	id: util.uuid(),
+
+			// 	title: val,
+
+			// 	completed: false,
+
+			// 	departmentId: false,
+			// 	groceryId: false,
+			// 	order: 0
+			// });
+			// console.log(this.todos);
 
 			$input.val('');
 
 			this.render();
 		},
-		toggle: function (e) {
-			var i = this.getIndexFromEl(e.target);
-			console.log(this.todos);
+		toggle: function (event) {
+			var i = this.getIndexFromEl(event.target);
+			var $ingredient = this.getElementFromEvent(event.target);
+
+			// console.log(e);
+
+			// console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
-			console.log(this.todos);
+
+			var toPurchase = {
+				ingredients: [ $ingredient.data().id ],
+				groceryId: this.getGroceryId()
+			};
+			// console.log(toPurchase);
+
+			// move this to another place, please :todo
+			// var result = false;
+			$.ajax({
+				type: "POST",
+				url: '/addtopurchased/',
+				dataType: 'json',
+				data: toPurchase,
+				
+				'async': false
+			}).done(function(data){
+				
+				console.log('success');
+				// console.log(data);
+
+				// result = data.id;
+			});
+			// console.log(result);
+
+
+
 			this.render();
 		},
 		editingMode: function (e) {
+
 			var $input = $(e.target).closest('li').addClass('editing').find('.edit');
 			var val = $input.val();
+			console.log($input);
+			console.log($input.val());
 			$input.val('').focus().val(val);
+
 		},
 		editKeyup: function (e) {
 			if (e.which === ENTER_KEY) {
@@ -443,10 +410,14 @@ jQuery(function ($) {
 					}
 
 						
-					single += '<label>' + element.title + '<span class="drag-handle">☰</span></label>'+
+					single += '<label>' + element.name + '</label>'+
 								'<button class="destroy"></button>'+
 						'</div>'+
-						'<input class="edit" value="' + element.title + '">'
+						'<input class="edit" value="' + element.name + '">'
+					// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+					// 			'<button class="destroy"></button>'+
+					// 	'</div>'+
+					// 	'<input class="edit" value="' + element.name + '">'	
 
 				single += '</li>';
 

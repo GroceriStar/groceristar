@@ -7,7 +7,7 @@ const _       = require("underscore");
 module.exports = function(app) {
 	var router  = app.loopback.Router();
 
-
+	// :todo this must be a remote method
 	router.get('/add/ing/:id/:groceryId', function(req, res, next){
 		var ingredientId = req.params.id;
 		var groceryId    = req.params.groceryId;
@@ -23,7 +23,7 @@ module.exports = function(app) {
 	});
 
 
-
+	// :todo this must be a remote method
 	router.get('/del/ing/:id/:groceryId', function(req, res, next){
 		var ingredientId = req.params.id;
 		var groceryId = req.params.groceryId;
@@ -68,13 +68,11 @@ module.exports = function(app) {
 	});
 
 
-	// Ing create
-	// :todo update when 
+	// Ing create. Not working with not advanced forms
 	router.post('/create/ing/', function(req, res, next){
 		var Ingredient   = app.models.Ingredient;
 		var Grocery      = app.models.Grocery;
-
-		
+	
 		var departmentId = req.body.departmentId;
 		var name         = req.body.name;
 
@@ -85,19 +83,14 @@ module.exports = function(app) {
 			departmentId: departmentId
 		};
 
-		// console.log(object); 
-
 		Ingredient.create(object, function(err, model){
 
 			// console.log(model);
-
 			var options = {
 		      groceryId: groceryId,
 		      secondArray: [ model.id ]
 		    };
 		    // console.log(options);
-
-
 			Grocery.addIngredient(options);
 			// res.json('success');
 			res.json({id: model.id});

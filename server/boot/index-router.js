@@ -79,7 +79,8 @@ module.exports = function(app) {
       // ]
 
   // :todo think about making this post instead of get
-  router.get('/tatypidor/:groceryId:/departmentId', 
+  // router.get('/tatypidor/:groceryId/:departmentId', 
+  router.get('/tatypidor/:groceryId', 
     //ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
     var Grocery   = app.models.Grocery;
@@ -88,6 +89,8 @@ module.exports = function(app) {
     
     Grocery.fetchById3(groceryId, function(err, response){
       // console.log(response);
+      console.log(response.data[1]);
+      
       // console.log(response.data[1].ingredients);
       // _.map(response.data)
       // console.log(response.data[0].ingredients);
