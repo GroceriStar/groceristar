@@ -195,7 +195,9 @@ module.exports = function(Grocery) {
 		Grocery.findById(groceryId, Grocery.query1(), function(err, grocery){
 			var g       = grocery.toJSON();
 			let arr     = _.map(grocery.hideThisIds, item => item.toString());
-
+			// change this names later, please :todo
+			let purchasedArray    = _.map(grocery.purchasedIds, item => item.toString());
+			// console.log(arr2);
             var uniques = _.map(_.groupBy(g.ingredients, function(item){
             	// console.log(item);           	
               return item.department.id.toString();
@@ -206,22 +208,23 @@ module.exports = function(Grocery) {
 
             	// console.log( _.indexOf(list, grouped[0]) );
 
+
+
         		 var ja = _.map(grouped, function(item){
 
         		 	// console.log( _.indexOf(grouped, item) )
         		 	// Grocery.customIngredientsArray('todo', item, g.id);
-        		 	// return [
-            // 		 	item.id, 
-            // 		 	item.name,
-            // 		 	'/del/ing/' + item.id + '/' + g.id
-        		 	// ] // :todo change this to an object
+        		 	// console.log(_.contains(purchasedArray, '59b6e8f1bdfb0c292068e591'));
+        		 	// console.log( item.id.toString() )
+        		 	// console.log(typeof item.id.toString())
+
         		 	return {
 						id: item.id,
-						title: item.name, // :todo change title to name
-						completed: false,
+						name: item.name, 
+						completed: _.contains(purchasedArray, item.id.toString()),
 						departmentId: departmentId,
 						order: _.indexOf(grouped, item)
-						// delete: '/del/ing/' + item.id + '/' + g.id
+						
 					}
         		 });
         		 // console.log(ja);
