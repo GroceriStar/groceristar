@@ -335,16 +335,19 @@ jQuery(function ($) {
 			// console.log(ITEM.order++);
 			var order_for_new_element = ITEM.order++;
 			// console.log(order_for_new_element);
-			
+
 			$.ajax({
 				type: "POST",
 				url: '/create/ing/',
 				dataType: 'json',
-				data: JSON.stringify(toSave),
+				data: toSave,
+				
 				'async': false
 			}).done(function(data){
 				
 				console.log('success');
+				
+				console.log(data);
                 // this.todos = JSON.stringify(data);
                 // myVariable = JSON.stringify(data);
                 // myVariable = JSON.parse(myVariable);

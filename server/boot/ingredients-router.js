@@ -67,50 +67,42 @@ module.exports = function(app) {
 		})
 	});
 
+
 	// Ing create
 	// :todo update when 
 	router.post('/create/ing/', function(req, res, next){
 		var Ingredient   = app.models.Ingredient;
 		var Grocery      = app.models.Grocery;
-		var groceryId    = req.body.groceryId;
+
+		
 		var departmentId = req.body.departmentId;
+		var name         = req.body.name;
 
-		console.log(req.body);
-		_.map(req.body, function(item, key){
-			console.log(key);
-			console.log(typeof key);
-		});
-		// const res_data = JSON.parse(req.body);
-		// console.log(res_data);
-		// console.log(groceryId);
-		// console.log(departmentId);
-		// console.log(req.body.name);
-
-		// var obj = JSON.stringify(req.body);
-		// console.log(obj);
-
-		// var object = {
-		// 	name: req.body.name,
-		// 	departmentId: departmentId
-		// };
+		var groceryId    = req.body.groceryId;
+		
+		var object = {
+			name: name,
+			departmentId: departmentId
+		};
 
 		// console.log(object); 
 
-		// Ingredient.create(object, function(err, model){
+		Ingredient.create(object, function(err, model){
 
-		// 	// console.log(model);
+			// console.log(model);
 
-		// 	var options = {
-		//       groceryId: groceryId,
-		//       secondArray: [ model.id ]
-		//     };
-		//     // console.log(options);
+			var options = {
+		      groceryId: groceryId,
+		      secondArray: [ model.id ]
+		    };
+		    // console.log(options);
 
 
-		// 	Grocery.addIngredient(options);
-
-		// 	res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
-		// });
+			Grocery.addIngredient(options);
+			// res.json('success');
+			res.json({id: model.id});
+			// res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
+		});
 
 
 	});
