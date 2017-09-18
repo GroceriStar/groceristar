@@ -79,7 +79,7 @@ module.exports = function(app) {
       // ]
 
   // :todo think about making this post instead of get
-  router.get('/tatypidor/:groceryId', 
+  router.get('/tatypidor/:groceryId:/departmentId', 
     //ensureLoggedIn('/auth/account'),  // :todo get back this 
     function(req, res, next){    
     var Grocery   = app.models.Grocery;

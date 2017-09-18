@@ -8,17 +8,21 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 module.exports = function(app) {
   var router  = app.loopback.Router();
 
+  // move this to remote methods :todo
   router.post('/addtopurchased', function(req, res, next){
   	var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
 
+    console.log(req.body);
+
     var options = {
       groceryId: groceryId,
       secondArray: ingredients 
     };
-    Grocery.addPurchased(options);  
-    res.redirect('/auth/account');
+    Grocery.addPurchased(options); 
+    res.json('success');
+    // res.redirect('/auth/account');
 
   });
 
