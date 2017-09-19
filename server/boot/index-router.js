@@ -54,7 +54,8 @@ module.exports = function(app) {
       res.render('pages/select-only-delete-later', {
         user: req.user,
         url: req.url,
-        data: response.data
+        data: response.data,
+        groceryId: groceryId
       });
 
     });

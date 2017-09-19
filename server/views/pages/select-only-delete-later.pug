@@ -6,7 +6,7 @@ block content
     // Top Navigation
     section
       
-      form#choose-department(name="formsubmit", method="post", action="/dprtmnt/view/")
+      form#choose-department(name="formsubmit", method="post")
 
         select.cs-select.cs-skin-border#departmentList
           option(value='', disabled='', selected='') Department
@@ -14,7 +14,11 @@ block content
           each val, index in data
             if (val.ingredients.length !== 0)
               option(value=val.id)= val.name 
-
+        
+        
+        br
+        br
+        input#grocery(type="hidden", name="grocery", value=groceryId)
         input.btn.btn-success(type='submit', value='Open Department')      
 
   
@@ -41,10 +45,10 @@ block content
 
       });
 
-      $('#choose-department').on('submit', function(){
+      //$('#choose-department').on('submit', function(){
 
-        return false;
-      });
+        //return false;
+      //});
 
       $("#choose-department").submit(function(e) {
 
@@ -54,10 +58,12 @@ block content
         //get the action-url of the form
         //var actionurl = e.currentTarget.action;
 
-        var groceryId = 0;
-        var departmentId = 0;
+        var groceryId    = $('#grocery').val();
+        var departmentId = $('select').val();
+       
+        var path = "/todo/" + groceryId + '/' + departmentId;        
 
-        window.location.replace("/todo/" + groceryId + '/' + departmentId);
+        window.location.replace(path);
 
     });
 
