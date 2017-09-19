@@ -223,13 +223,33 @@ jQuery(function ($) {
 
 
 			// console.log(this.todos);
-
+			var difference = _.difference(array1, array2);
 			console.log( _.difference(array1, array2) );
+			console.log( _.pluck(difference, 'id') )
 
+			var toRemove = {
+				ingredients: '',
+				groceryId: this.getGroceryId()
+			};
 
+			// var new_id = false;
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/create/ing/',
+			// 	dataType: 'json',
+			// 	data: toRemove,
+				
+			// 	'async': false
+			// }).done(function(data){
+				
+			// 	// console.log('success');
+
+			// 	new_id = data.id;
+			// });
+			
 			// var myVariable;
 			// $.ajax({
-			// 	type: "GET",
+			// 	type: "POST",
 			// 	url: '/getingredients/' + groceryId + '/' + departmentId,
 			// 	dataType: 'json',
 			// 	'async': false

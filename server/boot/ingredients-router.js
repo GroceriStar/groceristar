@@ -100,7 +100,11 @@ module.exports = function(app) {
 
 	});
 
-	
+
+	router.post('/delete/ingredients/:ingredients', function(req, res, next){
+		
+	})
+
 
 
 

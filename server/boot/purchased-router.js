@@ -37,6 +37,32 @@ module.exports = function(app) {
   });
 
 
+  // used for ajax call from todo list
+  router.post('/remove-from-grocerylist', function(reqm res, next){
+    var Grocery = app.models.Grocery;
+    var ingredients    = req.body.ingredients;
+    var groceryId      = req.body.groceryId;
+
+
+    // var ingredients = req.params.ingId;
+    // var groceryId   = req.params.groceryId;
+
+    var options = {
+      groceryId: groceryId,
+      secondArray: ingredients 
+    };
+
+    Grocery.removePurchased(options);
+      
+    Grocery.removeIngredient(options);
+
+    // :todo add removing ingredient from whole database
+
+  });
+
+
+
+
   router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
   	var Grocery = app.models.Grocery;
@@ -44,7 +70,7 @@ module.exports = function(app) {
   		// console.log( req.user.id );		
 
    	var ingredients = req.params.ingId;
-  		var groceryId   = req.params.groceryId;
+  	var groceryId   = req.params.groceryId;
 
     var options = {
       groceryId: groceryId,

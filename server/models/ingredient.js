@@ -133,4 +133,19 @@ module.exports = function(Ingredient) {
  //            if(err){ cb(err); }
  //        });
 
+
+    Ingredient.proceed = function(options){
+        var type = options.type;
+
+        Ingredient.findById(options.id, function(err, model){
+
+            if( type == 'delete' ){
+
+                // here we need to check, if this ingredient are included at MotherIngredients/
+
+            }
+
+        });
+    };
+
 };
