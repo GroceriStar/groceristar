@@ -174,9 +174,13 @@ jQuery(function ($) {
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
+			console.log(this.todos);
+
 			this.todos.forEach(function (todo) {
 				todo.completed = isChecked;
 			});
+
+			console.log(this.todos);
 
 			this.render();
 		},
@@ -210,8 +214,37 @@ jQuery(function ($) {
 			return this.todos;
 		},
 		destroyCompleted: function () {
-			this.todos = this.getActiveTodos();
+
+			// console.log(this.todos);
+			var array1  = this.todos;
+			this.todos  = this.getActiveTodos();
+			var array2  = this.getActiveTodos();
 			this.filter = 'all';
+
+
+			// console.log(this.todos);
+
+			console.log( _.difference(array1, array2) );
+
+
+			// var myVariable;
+			// $.ajax({
+			// 	type: "GET",
+			// 	url: '/getingredients/' + groceryId + '/' + departmentId,
+			// 	dataType: 'json',
+			// 	'async': false
+			// }).done(function(data){
+				
+   //              myVariable = JSON.stringify(data);
+   //              myVariable = JSON.parse(myVariable);
+               
+			
+			// });
+
+			
+			// this.todos = myVariable || [];
+
+
 			this.render();
 		},
 		// accepts an element from inside the `.item` div and
@@ -422,8 +455,6 @@ jQuery(function ($) {
 			});
 			return html;
 		},
-	
-
 		footerTemplate : function(data){
 			// <script id="footer-template"
 			var html = '<span id="todo-count">' +
@@ -462,7 +493,6 @@ jQuery(function ($) {
 			// console.log(html);
 			return html;
 		}
-
 		// template related stuff
 
 	};

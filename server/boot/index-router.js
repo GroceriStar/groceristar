@@ -83,13 +83,11 @@ module.exports = function(app) {
     var groceryId    = req.params.groceryId;
     var departmentId = req.params.departmentId;
     
+    // console.log(departmentId);
+
     Grocery.fetchById3(groceryId, departmentId, function(err, response){
       // console.log(response);
-      // console.log(response.data);
-      
-      // console.log(response.data[1].ingredients);
-      // _.map(response.data)
-      // console.log(response.data[0].ingredients);
+      // console.log(response.data.ingredients);
       res.json(response.data.ingredients);
 
     });
