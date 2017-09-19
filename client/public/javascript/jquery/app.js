@@ -182,6 +182,34 @@ jQuery(function ($) {
 
 			console.log(this.todos);
 
+
+			// var ingredientIds = _.pluck(this.todos, 'id');
+			// console.log(ingredientIds);
+			// move all ids to purchased.
+			// var toPurchase = {
+			// 	ingredients: ingredientIds,
+			// 	groceryId: this.getGroceryId()
+			// };
+			// console.log(toPurchase)
+
+			// move this to another place, please :todo
+			// var result = false;
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/addtopurchased/',
+			// 	dataType: 'json',
+			// 	data: toPurchase,
+				
+			// 	'async': false
+			// }).done(function(data){
+				
+			// 	console.log('success complete all');
+			// 	// console.log(data);
+
+			// 	// result = data.id;
+			// });
+
+
 			this.render();
 		},
 		getActiveTodos: function () {
