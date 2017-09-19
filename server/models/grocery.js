@@ -193,6 +193,7 @@ module.exports = function(Grocery) {
 	Grocery.fetchById3 = function(groceryId, departmentId, cb){
 
 		Grocery.findById(groceryId, Grocery.query1(), function(err, grocery){
+
 			var g       = grocery.toJSON();
 			let arr     = _.map(grocery.hideThisIds, item => item.toString());
 
@@ -266,13 +267,16 @@ module.exports = function(Grocery) {
 
             });
             
+            // console.log( uniques );
+            // console.log( _.compact(uniques) );
+            uniques = _.compact(uniques);
             var response = {
                 id: g.id,
                 name: g.name,
-                data: uniques
+                data: uniques[0]
             };
 
-            console.log( response );
+            // console.log( response );
 
 			cb(null, response);
 

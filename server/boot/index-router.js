@@ -85,12 +85,12 @@ module.exports = function(app) {
     
     Grocery.fetchById3(groceryId, departmentId, function(err, response){
       // console.log(response);
-      console.log(response.data[1]);
+      // console.log(response.data);
       
       // console.log(response.data[1].ingredients);
       // _.map(response.data)
       // console.log(response.data[0].ingredients);
-      res.json(response.data[1].ingredients);
+      res.json(response.data.ingredients);
 
     });
 
@@ -176,7 +176,9 @@ module.exports = function(app) {
   });
 
 
- 
+  //  app.use(function(req, res, next) {
+  //   res.status(404).send('Sorry cant find that!');
+  // });
 
   app.use(router);
 

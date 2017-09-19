@@ -62,8 +62,13 @@ app.set('json spaces', 2); // format json responses for easier viewing
 var staticDir = path.join(__dirname + '/../client/public');
 app.use(express.static(staticDir));
 
+if (process.env.NODE_ENV === 'development') {
+  // only use in development 
+  app.use(errorhandler());
+}
+
 // boot scripts mount components like REST API
-// boot(app, __dirname);
+boot(app, __dirname);
 
 
 // to support JSON-encoded bodies
@@ -94,10 +99,7 @@ passportConfigurator.init();
 app.use(flash());
 
 
-if (process.env.NODE_ENV === 'development') {
-  // only use in development 
-  app.use(errorhandler());
-}
+
 
 
 
