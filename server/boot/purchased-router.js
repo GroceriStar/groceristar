@@ -38,12 +38,12 @@ module.exports = function(app) {
 
 
   // used for ajax call from todo list
-  router.post('/remove-from-grocerylist', function(reqm res, next){
+  router.post('/purchased/remove-from-grocerylist', function(req, res, next){
     var Grocery = app.models.Grocery;
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
 
-
+    console.log(req.body);
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 

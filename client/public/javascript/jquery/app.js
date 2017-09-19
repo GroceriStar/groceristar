@@ -224,29 +224,29 @@ jQuery(function ($) {
 
 			// console.log(this.todos);
 			var difference = _.difference(array1, array2);
-			console.log( _.difference(array1, array2) );
-			console.log( _.pluck(difference, 'id') )
+			// console.log( _.difference(array1, array2) );
+			// console.log( _.pluck(difference, 'id') )
 
 			var toRemove = {
-				ingredients: '',
+				ingredients: _.pluck(difference, 'id'),
 				groceryId: this.getGroceryId()
 			};
 
 			// var new_id = false;
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/create/ing/',
-			// 	dataType: 'json',
-			// 	data: toRemove,
+			$.ajax({
+				type: "POST",
+				url: '/purchased/remove-from-grocerylist',
+				dataType: 'json',
+				data: toRemove,
 				
-			// 	'async': false
-			// }).done(function(data){
+				'async': false
+			}).done(function(data){
 				
-			// 	// console.log('success');
+				console.log('success destroyCompleted');
 
-			// 	new_id = data.id;
-			// });
-			
+				// new_id = data.id;
+			});
+
 			// var myVariable;
 			// $.ajax({
 			// 	type: "POST",
@@ -498,15 +498,15 @@ jQuery(function ($) {
 			}
 
 			if( data.filter === 'completed'){
-				html += '<a class="selected" href="#/completed">Completed</a>';
+				html += '<a class="selected" href="#/completed">Purchased</a>';
 			} else {
-				html += '<a href="#/completed">Completed</a>';
+				html += '<a href="#/completed">Purchased</a>';
 			}	
 
 			html += '</ul>';				
 
 			if (data.completedTodos){
-				html += '<button id="clear-completed">Clear completed</button>';
+				html += '<button id="clear-completed">Clear purchased</button>';
 			}
 
 

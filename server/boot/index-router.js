@@ -98,20 +98,29 @@ module.exports = function(app) {
 
   router.get('/todo/:groceryId/:departmentId', 
     function(req, res, next){
-    var Grocery      = app.models.Grocery;
+    // var Grocery      = app.models.Grocery;
     // var userId    = req.user.id;
     var groceryId    = req.params.groceryId;
     var departmentId = req.params.departmentId;
 
+    var Department   = app.models.Department;
+
+    Department.findById(departmentId, function(err, model){
+
+      res.render('pages/grocery3', {
+        user        : req.user,
+        url         : req.url,
+        groceryId   : groceryId,
+        departmentId: departmentId,
+        name        : model.name
+        // data: response
+      });
+
+    });
+
     // var departmentId = '59b6e8efbdfb0c292068e55c';
 
-    res.render('pages/grocery3', {
-      user        : req.user,
-      url         : req.url,
-      groceryId   : groceryId,
-      departmentId: departmentId
-      // data: response
-    });
+    
   });
 
 
