@@ -190,44 +190,48 @@ module.exports = function(Grocery) {
 	};
 
 
-	Grocery.fetchById3 = function(groceryId, cb){
+	Grocery.fetchById3 = function(groceryId, departmentId, cb){
 
 		Grocery.findById(groceryId, Grocery.query1(), function(err, grocery){
 			var g       = grocery.toJSON();
 			let arr     = _.map(grocery.hideThisIds, item => item.toString());
+
 			// change this names later, please :todo
 			let purchasedArray    = _.map(grocery.purchasedIds, item => item.toString());
 			// console.log(arr2);
+
             var uniques = _.map(_.groupBy(g.ingredients, function(item){
             	// console.log(item);           	
               return item.department.id.toString();
             }), function(grouped){
 
-            	var departmentId = grouped[0].departmentId.toString();
-            	var flag = _.contains(arr, departmentId);
+
+            	var currentDepartmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, currentDepartmentId);
 
             	// console.log( _.indexOf(list, grouped[0]) );
 
-
-
+            	console.log(typeof currentDepartmentId);
+            	console.log(typeof departmentId);
+            	console.log(currentDepartmentId == departmentId);
+            	// if( currentDepartmentId == departmentId ) {}
         		 var ja = _.map(grouped, function(item){
 
         		 	// console.log( _.indexOf(grouped, item) )
         		 	// Grocery.customIngredientsArray('todo', item, g.id);
-        		 	// console.log(_.contains(purchasedArray, '59b6e8f1bdfb0c292068e591'));
-        		 	// console.log( item.id.toString() )
-        		 	// console.log(typeof item.id.toString())
 
         		 	return {
 						id: item.id,
 						name: item.name, 
 						completed: _.contains(purchasedArray, item.id.toString()),
-						departmentId: departmentId,
+						departmentId: currentDepartmentId,
 						order: _.indexOf(grouped, item)
 						
 					}
         		 });
-        		 // console.log(ja);
+
+        		 console.log(departmentId);
+        		 console.log(ja);
             	
 
             	if ( !flag ) { 

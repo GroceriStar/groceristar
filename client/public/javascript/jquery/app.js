@@ -34,10 +34,10 @@ jQuery(function ($) {
 
 	var App = {
 		
-		// getDepartmentId: function(){
-		// 	var departmentId = $('body').data().departmentId;
-		// 	return departmentId;			
-		// },
+		getDepartmentId: function(){
+			var departmentId = $('#new-todo').data().departmentId;
+			return departmentId;			
+		},
 		// read: function(){
 
 		// 	var groceryId = $('body').data().groceryId;
@@ -73,16 +73,16 @@ jQuery(function ($) {
 		},
 		init: function () {
 
-			var groceryId = this.getGroceryId();
-
+			var groceryId    = this.getGroceryId();
+			var departmentId = this.getDepartmentId();	
 			// console.log($('body').data());
-			// console.log(groceryId);
+			// console.log(departmentId);
 			// var vasiliy = '';
 
 			var myVariable;
 			$.ajax({
 				type: "GET",
-				url: '/getingredients/' + groceryId + '/' + '',
+				url: '/getingredients/' + groceryId + '/' + departmentId,
 				dataType: 'json',
 				'async': false
 			}).done(function(data){

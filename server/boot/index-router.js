@@ -26,12 +26,6 @@ module.exports = function(app) {
     });
   });
 
-  router.get('/pidor/update', function(req, res, next){
-    console.log(req.params);
-  });
-  router.get('/pidor/create', function(req, res, next){
-    console.log(req.params);
-  });
  router.get('/sortable', function(req, res, next){
 
     res.render('pages/grocery2', {
@@ -73,12 +67,12 @@ module.exports = function(app) {
   // });
 
 
+
     // [
       //   {"title":"123", "completed":false, "departmentId": "0"},
       //   {"title":"333", "completed":false, "departmentId": "0"},
       //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
       // ]
-
   // :todo think about making this post instead of get
   // router.get('/getingredients/:groceryId/:departmentId/', 
   router.get('/getingredients/:groceryId/:departmentId/', 
@@ -89,7 +83,7 @@ module.exports = function(app) {
     var groceryId    = req.params.groceryId;
     var departmentId = req.params.departmentId;
     
-    Grocery.fetchById3(groceryId, function(err, response){
+    Grocery.fetchById3(groceryId, departmentId, function(err, response){
       // console.log(response);
       console.log(response.data[1]);
       

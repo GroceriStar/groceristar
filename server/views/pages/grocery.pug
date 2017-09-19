@@ -7,7 +7,8 @@ block content
 
       
       +link('/remove/grocery/' + groceryId, 'Remove GL FROM THIS USER')
-      +link('/todo/' + groceryId, 'Open TODO LIST')
+      
+
 
       include ../forms/update-name
 
@@ -22,8 +23,10 @@ block content
                 i.fa.fa-eye
             |      
             +button_department_awesome(val.id, groceryId)
-            //a(href='/todo/' + groceryId + '/' + val.id) TODOLIST
+            
             +button_ingredients_list(groceryId, val.id)
+            
+            +link('/todo/' + groceryId + '/' + val.id, 'Open TODO LIST')
             //a(href='/visibility/department/' + val.id + '/' + groceryId)
               //i.fa.fa-ellipsis-v  
                 
