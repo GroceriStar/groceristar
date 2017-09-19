@@ -56,6 +56,7 @@ module.exports = function(app) {
       
     Grocery.removeIngredient(options);
 
+    res.json('success');
     // :todo add removing ingredient from whole database
 
   });

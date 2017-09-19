@@ -215,24 +215,18 @@ jQuery(function ($) {
 		},
 		destroyCompleted: function () {
 
-			// console.log(this.todos);
 			var array1  = this.todos;
 			this.todos  = this.getActiveTodos();
 			var array2  = this.getActiveTodos();
 			this.filter = 'all';
 
-
-			// console.log(this.todos);
 			var difference = _.difference(array1, array2);
-			// console.log( _.difference(array1, array2) );
-			// console.log( _.pluck(difference, 'id') )
 
 			var toRemove = {
 				ingredients: _.pluck(difference, 'id'),
 				groceryId: this.getGroceryId()
 			};
 
-			// var new_id = false;
 			$.ajax({
 				type: "POST",
 				url: '/purchased/remove-from-grocerylist',
@@ -244,26 +238,7 @@ jQuery(function ($) {
 				
 				console.log('success destroyCompleted');
 
-				// new_id = data.id;
 			});
-
-			// var myVariable;
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/getingredients/' + groceryId + '/' + departmentId,
-			// 	dataType: 'json',
-			// 	'async': false
-			// }).done(function(data){
-				
-   //              myVariable = JSON.stringify(data);
-   //              myVariable = JSON.parse(myVariable);
-               
-			
-			// });
-
-			
-			// this.todos = myVariable || [];
-
 
 			this.render();
 		},
@@ -382,7 +357,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success');
+				console.log('success AddToPurchased');
 				// console.log(data);
 
 				// result = data.id;
@@ -432,6 +407,26 @@ jQuery(function ($) {
 			this.render();
 		},
 		destroy: function (e) {
+			var $ingredient = this.getElementFromEvent(e.target);
+			var id = $ingredient.data('id');
+			var toRemove = {
+				ingredients: [ id ],
+				groceryId: this.getGroceryId()
+			};
+
+			$.ajax({
+				type: "POST",
+				url: '/del/ing/',
+				dataType: 'json',
+				data: toRemove,
+				
+				'async': false
+			}).done(function(data){
+				
+				console.log('success destroy one ingredient');
+
+			});
+
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
 		},

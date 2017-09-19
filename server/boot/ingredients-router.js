@@ -24,21 +24,25 @@ module.exports = function(app) {
 
 
 	// :todo this must be a remote method
-	router.get('/del/ing/:id/:groceryId', function(req, res, next){
-		var ingredientId = req.params.id;
-		var groceryId = req.params.groceryId;
+	router.post('/del/ing/', function(req, res, next){
+		// var ingredientId = req.params.id;
+		// var groceryId = req.params.groceryId;
 
+		var ingredients    = req.body.ingredients;
+    	var groceryId      = req.body.groceryId;
+    	console.log(req.body);
 		var Grocery   = app.models.Grocery;
 		
 		var options = {
 
 	      groceryId: groceryId,
-	      secondArray: [ ingredientId ]
+	      secondArray: ingredients
 	    };
 		// console.log(options);
 	    
 		Grocery.removeIngredient(options);
-		res.redirect('/view/grocery/' + groceryId);
+		res.json('success');
+		// res.redirect('/view/grocery/' + groceryId);
 
 	});
 
@@ -102,7 +106,7 @@ module.exports = function(app) {
 
 
 	router.post('/delete/ingredients/:ingredients', function(req, res, next){
-		
+
 	})
 
 
