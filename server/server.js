@@ -6,12 +6,17 @@
 
 const loopback     = require('loopback');
 const boot         = require('loopback-boot');
-var app            = module.exports = loopback();
 const cookieParser = require('cookie-parser');
 const session      = require('express-session');
 
 const path         = require('path');
 const express      = require('express');
+
+const errorhandler = require('errorhandler');
+
+var app            = module.exports = loopback();
+
+
 
 // Passport configurators..
 const loopbackPassport   = require('loopback-component-passport');
@@ -58,7 +63,7 @@ var staticDir = path.join(__dirname + '/../client/public');
 app.use(express.static(staticDir));
 
 // boot scripts mount components like REST API
-boot(app, __dirname);
+// boot(app, __dirname);
 
 
 // to support JSON-encoded bodies
@@ -87,6 +92,14 @@ passportConfigurator.init();
 
 // We need flash messages to see passport errors
 app.use(flash());
+
+
+if (process.env.NODE_ENV === 'development') {
+  // only use in development 
+  app.use(errorhandler());
+}
+
+
 
 passportConfigurator.setupModels({
   userModel: app.models.user, //:todo we'll change later model have to Upper

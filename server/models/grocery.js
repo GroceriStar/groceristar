@@ -211,30 +211,29 @@ module.exports = function(Grocery) {
 
             	// console.log( _.indexOf(list, grouped[0]) );
 
-            	console.log(typeof currentDepartmentId);
-            	console.log(typeof departmentId);
-            	console.log(currentDepartmentId == departmentId);
-            	// if( currentDepartmentId == departmentId ) {}
-        		 var ja = _.map(grouped, function(item){
+            	// console.log(typeof currentDepartmentId);
+            	// console.log(typeof departmentId);
+            	// console.log(currentDepartmentId == departmentId);
+
+            	if( currentDepartmentId !== departmentId ) { return ;}
+
+            		var ja = _.map(grouped, function(item){
 
         		 	// console.log( _.indexOf(grouped, item) )
         		 	// Grocery.customIngredientsArray('todo', item, g.id);
 
-        		 	return {
-						id: item.id,
-						name: item.name, 
-						completed: _.contains(purchasedArray, item.id.toString()),
-						departmentId: currentDepartmentId,
-						order: _.indexOf(grouped, item)
-						
-					}
-        		 });
+	        		 	return {
+							id: item.id,
+							name: item.name, 
+							completed: _.contains(purchasedArray, item.id.toString()),
+							departmentId: currentDepartmentId,
+							order: _.indexOf(grouped, item)
+							
+						}
+        		 	});
 
-        		 console.log(departmentId);
-        		 console.log(ja);
-            	
 
-            	if ( !flag ) { 
+            		if ( !flag ) { 
 
             		return { id: grouped[0].department.id.toString(),
                         name: grouped[0].department.name,
@@ -243,13 +242,27 @@ module.exports = function(Grocery) {
                     };
 
             	}
-
-            	return { id: grouped[0].department.id.toString(),
-                        name: grouped[0].department.name,
-                        type: grouped[0].department.type,
-                        ingredients: [],                        
-                    };
+            	return {};
+            	// return { id: grouped[0].department.id.toString(),
+             //            name: grouped[0].department.name,
+             //            type: grouped[0].department.type,
+             //            ingredients: [],                        
+             //        };
                 
+
+            	// } 
+
+            	// else {
+            	// 	ja = [];
+            	// }
+
+        		 
+
+        		 // console.log(departmentId);
+        		 // console.log(ja);
+            	
+
+
 
             });
             
@@ -258,6 +271,8 @@ module.exports = function(Grocery) {
                 name: g.name,
                 data: uniques
             };
+
+            console.log( response );
 
 			cb(null, response);
 
