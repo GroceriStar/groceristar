@@ -2,7 +2,7 @@
 
 const request  = require('request');
 const _        = require("underscore");
-// var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 module.exports = function(app) {
 	var router  = app.loopback.Router();
@@ -27,7 +27,6 @@ module.exports = function(app) {
 	router.post('/del/ing/', function(req, res, next){
 		// var ingredientId = req.params.id;
 		// var groceryId = req.params.groceryId;
-
 		var ingredients    = req.body.ingredients;
     	var groceryId      = req.body.groceryId;
     	console.log(req.body);
@@ -74,13 +73,10 @@ module.exports = function(app) {
 	});
 
 	// Ing change name
-	// :todo validation add
 	router.post('/changename/', function(req, res, next){
 		var Ingredient   = app.models.Ingredient;
 		var ingredientId = req.body.id;
 		var name         = req.body.name;
-		
-		// console.log(res.body);
 
 		Ingredient.findById(ingredientId, function(err, model){
 			model.updateAttribute('name', name);
@@ -126,10 +122,33 @@ module.exports = function(app) {
 	});
 
 
-	router.post('/delete/ingredients/:ingredients', function(req, res, next){
+	// router.post('/delete/ingredients/:ingredients', function(req, res, next){
 
-	})
+	// })
 
+
+	    // [
+      //   {"title":"123", "completed":false, "departmentId": "0"},
+      //   {"title":"333", "completed":false, "departmentId": "0"},
+      //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
+      // ]
+  // :todo think about making this post instead of get
+  // router.get('/getingredients/:groceryId/:departmentId/', 
+	router.get('/getingredients/:groceryId/:departmentId/', 
+		ensureLoggedIn('/auth/account'),  // :todo get back this 
+		function(req, res, next){    
+		var Grocery      = app.models.Grocery;
+		// var userId    = req.user.id;
+		var groceryId    = req.params.groceryId;
+		var departmentId = req.params.departmentId;
+
+		Grocery.fetchById3(groceryId, departmentId, function(err, response){
+		  // console.log(response);
+		  // console.log(response.data.ingredients);
+		  res.json(response.data.ingredients);
+		});
+
+	});
 
 
 

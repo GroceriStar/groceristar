@@ -14,10 +14,6 @@ module.exports = function(app) {
     var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
 
-    console.log(req.body);
-
-    console.log(req.body.type);
-
     if(req.body.type == 'add'){
       var options = {
         groceryId: groceryId,
@@ -35,9 +31,6 @@ module.exports = function(app) {
       res.json('success');
 
     }
-
-    
-
 
   });
 

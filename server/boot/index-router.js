@@ -66,36 +66,6 @@ module.exports = function(app) {
   //   });
   // });
 
-
-
-    // [
-      //   {"title":"123", "completed":false, "departmentId": "0"},
-      //   {"title":"333", "completed":false, "departmentId": "0"},
-      //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
-      // ]
-  // :todo think about making this post instead of get
-  // router.get('/getingredients/:groceryId/:departmentId/', 
-  router.get('/getingredients/:groceryId/:departmentId/', 
-    ensureLoggedIn('/auth/account'),  // :todo get back this 
-    function(req, res, next){    
-    var Grocery      = app.models.Grocery;
-    // var userId    = req.user.id;
-    var groceryId    = req.params.groceryId;
-    var departmentId = req.params.departmentId;
-    
-    // console.log(departmentId);
-
-    Grocery.fetchById3(groceryId, departmentId, function(err, response){
-      // console.log(response);
-      // console.log(response.data.ingredients);
-      res.json(response.data.ingredients);
-
-    });
-
-  });
-
-
-
   router.get('/todo/:groceryId/:departmentId', 
     function(req, res, next){
     // var Grocery      = app.models.Grocery;
@@ -113,7 +83,6 @@ module.exports = function(app) {
         groceryId   : groceryId,
         departmentId: departmentId,
         name        : model.name
-        // data: response
       });
 
     });

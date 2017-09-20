@@ -47,9 +47,6 @@ jQuery(function ($) {
 
 			var groceryId    = this.getGroceryId();
 			var departmentId = this.getDepartmentId();	
-			// console.log($('body').data());
-			// console.log(departmentId);
-			// var vasiliy = '';
 
 			var myVariable;
 			$.ajax({
@@ -66,13 +63,7 @@ jQuery(function ($) {
 			});
 
 			
-			this.todos = myVariable || [];
-			// console.log(this.todos)
-
-			// this.todos = util.read();
-			// console.log(this.todos);
-
-			
+			this.todos = myVariable || [];		
 			this.bindEvents();
 
 
@@ -119,15 +110,6 @@ jQuery(function ($) {
 
 			}
 
-
-
-			// do we need to pass all items? or we just can handle item, that was changed.
-			// this.save(this.todos);
-			// util.store('todos-jquery', this.todos);
-
-
-
-
 		},
 		renderFooter: function () {
 
@@ -146,6 +128,8 @@ jQuery(function ($) {
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
+			console.log( isChecked );
+
 			console.log(this.todos);
 
 			this.todos.forEach(function (todo) {
@@ -154,32 +138,59 @@ jQuery(function ($) {
 
 			console.log(this.todos);
 
-
-			// var ingredientIds = _.pluck(this.todos, 'id');
-			// console.log(ingredientIds);
+			var ingredientIds = _.pluck(this.todos, 'id');
+			console.log(ingredientIds);
 			// move all ids to purchased.
-			// var toPurchase = {
-			// 	ingredients: ingredientIds,
-			// 	groceryId: this.getGroceryId()
-			// };
-			// console.log(toPurchase)
+			var toPurchase = {
+				ingredients: ingredientIds,
+				groceryId: this.getGroceryId()
+			};
+			console.log(toPurchase);
+
+			if( isChecked ){
+
+				//add ingredients to purchased
+				toPurchase.type = 'add';
+
+				$.ajax({
+					type: "POST",
+					url: '/togglepurchased/',
+					dataType: 'json',
+					data: toPurchase,
+					
+					'async': false
+				}).done(function(data){
+					
+					console.log('success add all ingredients');
+					// console.log(data);
+
+				});
+
+			} else {
+
+				//remove ingredients from purchased
+				toPurchase.type = 'remove';
+				$.ajax({
+					type: "POST",
+					url: '/togglepurchased/',
+					dataType: 'json',
+					data: toPurchase,
+					
+					'async': false
+				}).done(function(data){
+					
+					console.log('success remove all ingredients from purchased');
+					// console.log(data);
+
+				});
+			}
+
+
+			
 
 			// move this to another place, please :todo
 			// var result = false;
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/addtopurchased/',
-			// 	dataType: 'json',
-			// 	data: toPurchase,
-				
-			// 	'async': false
-			// }).done(function(data){
-				
-			// 	console.log('success complete all');
-			// 	// console.log(data);
-
-			// 	// result = data.id;
-			// });
+			
 
 
 			this.render();
