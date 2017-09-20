@@ -363,10 +363,30 @@ jQuery(function ($) {
 			var i = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
 
+			console.log( $(event.target).prop('checked') );
+
+			var flag =  $(event.target).prop('checked');
+
+
+
 			// console.log(e);
 
 			// console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
+
+
+			// checked 
+			if (flag){
+
+				//add to purchased
+
+				
+
+			} else {
+
+				// remove from purchased
+
+			}
 
 			var toPurchase = {
 				ingredients: [ $ingredient.data().id ],
@@ -453,10 +473,10 @@ jQuery(function ($) {
 				return;
 			}
 
-			
 
 
-			
+
+
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);
