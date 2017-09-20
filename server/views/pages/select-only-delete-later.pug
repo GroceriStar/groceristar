@@ -6,20 +6,10 @@ block content
     // Top Navigation
     section
       
-      form#choose-department(name="formsubmit", method="post")
 
-        select.cs-select.cs-skin-border#departmentList
-          option(value='', disabled='', selected='') Department
+      include ../partials/departments-select
 
-          each val, index in data
-            if (val.ingredients.length !== 0)
-              option(value=val.id)= val.name 
-        
-        
-        br
-        br
-        input#grocery(type="hidden", name="grocery", value=groceryId)
-        input.btn.btn-success(type='submit', value='Open Department')      
+     
 
   
   

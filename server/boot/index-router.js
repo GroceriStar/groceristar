@@ -36,6 +36,7 @@ module.exports = function(app) {
  //  });
 
 
+
   // :todo this must be moved to departments
   router.get('/select/:groceryId', function(req, res, next){
     var groceryId = req.params.groceryId;

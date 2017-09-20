@@ -161,7 +161,7 @@ jQuery(function ($) {
 					'async': false
 				}).done(function(data){
 					
-					console.log('success add all ingredients');
+					//console.log('success add all ingredients');
 					// console.log(data);
 
 				});
@@ -179,7 +179,7 @@ jQuery(function ($) {
 					'async': false
 				}).done(function(data){
 					
-					console.log('success remove all ingredients from purchased');
+					//console.log('success remove all ingredients from purchased');
 					// console.log(data);
 
 				});
@@ -250,7 +250,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success destroyCompleted');
+				// console.log('success destroyCompleted');
 
 			});
 
@@ -367,7 +367,7 @@ jQuery(function ($) {
 					'async': false
 				}).done(function(data){
 					
-					console.log('success AddToPurchased');
+					//console.log('success AddToPurchased');
 					// console.log(data);
 
 					// result = data.id;
@@ -396,7 +396,7 @@ jQuery(function ($) {
 					'async': false
 				}).done(function(data){
 					
-					console.log('success removed Purchased');
+					//console.log('success removed Purchased');
 					// console.log(data);
 
 					// result = data.id;
@@ -467,7 +467,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success update name');
+				//console.log('success update name');
 
 			});
 
@@ -497,7 +497,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success destroy one ingredient');
+				//console.log('success destroy one ingredient');
 
 			});
 
