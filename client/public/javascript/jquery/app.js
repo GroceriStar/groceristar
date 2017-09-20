@@ -243,7 +243,7 @@ jQuery(function ($) {
 
 			$.ajax({
 				type: "POST",
-				url: '/changename/',
+				url: '/unattach/',
 				dataType: 'json',
 				data: toRemove,
 				
@@ -494,7 +494,7 @@ jQuery(function ($) {
 
 			$.ajax({
 				type: "POST",
-				url: '/purchased/remove/grocerylist',
+				url: '/unattach/',
 				dataType: 'json',
 				data: toRemove,
 				

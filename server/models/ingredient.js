@@ -19,8 +19,7 @@ module.exports = function(Ingredient) {
     		ctx.instance.created_at = new Date();
     		ctx.instance.updated_at = new Date();
 
-            ctx.instance.done   = false;
-            ctx.instance.delete = false;            
+          
     	} 
 
 

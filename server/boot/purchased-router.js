@@ -2,6 +2,7 @@
 
 var request        = require('request');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const _        = require("underscore");
 // var loopback = require('loopback');
 
 
@@ -46,22 +47,45 @@ module.exports = function(app) {
 
 
     // Ing change name
-  router.post('/pidor/', function(req, res, next){
-    var Grocery        = app.models.Grocery;
-    var ingredients    = req.body.ingredients;
-    var groceryId      = req.body.groceryId;
+  // router.post('/unattach/', function(req, res, next){
+  //   var Grocery        = app.models.Grocery;
+  //   var Ingredient   = app.models.Ingredient;
+    
+  //   var ingredients    = req.body.ingredients;
+  //   var groceryId      = req.body.groceryId;
 
-    console.log(ingredients);
-    // var Ingredient   = app.models.Ingredient;
-    // var ingredientId = req.body.id;
-    // var name         = req.body.name;
+  //   var options = {
+  //     groceryId: groceryId,
+  //     secondArray: ingredients 
+  //   };
 
-    // Ingredient.findById(ingredientId, function(err, model){
-    //   model.updateAttribute('name', name);
+  //   Ingredient.find({
+  //     where : {
+  //       id : { inq : ingredients }
+  //     }
+  //   }, function(err, models){
 
-    //   res.json('success');
-    // });
-  });
+  //     // console.log(models);
+      
+  //     _.map(models, function(model){
+
+  //       console.log(model);
+
+  //       if(model.custom){
+   
+  //         model.updateAttribute('departmentId', false);    
+
+  //       }
+  //       console.log(model);
+
+  //     });
+  //     res.json('success');
+
+  //   });
+
+
+
+  // });
 
 
   // used for ajax call from todo list
@@ -79,9 +103,9 @@ module.exports = function(app) {
       secondArray: ingredients 
     };
 
-    // Grocery.removePurchased(options);
+    Grocery.removePurchased(options);
       
-    // Grocery.removeIngredient(options);
+    Grocery.removeIngredient(options);
 
     Ingredient.find({
       where : {
@@ -89,23 +113,25 @@ module.exports = function(app) {
       }
     }, function(err, models){
 
-      console.log(models);
-      res.json('success');
-      // _.map(models, function(model){
+      // console.log(models);
+      
+      _.map(models, function(model){
 
-      //   console.log(model);
+        // console.log(model);
 
-      //   if(model.custom){
+        if(model.custom){
    
-      //     model.updateAttribute('departmentId', false);    
+          model.updateAttribute('departmentId', false);    
 
-      //   }
+        }
+        // console.log(model);
 
-      // });
+      });
+      res.json('success');
 
     });
 
-    res.json('success');
+    // res.json('success');
     // :todo add removing ingredient from whole database
 
   });
