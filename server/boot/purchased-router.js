@@ -45,8 +45,27 @@ module.exports = function(app) {
   });
 
 
+    // Ing change name
+  router.post('/pidor/', function(req, res, next){
+    var Grocery        = app.models.Grocery;
+    var ingredients    = req.body.ingredients;
+    var groceryId      = req.body.groceryId;
+
+    console.log(ingredients);
+    // var Ingredient   = app.models.Ingredient;
+    // var ingredientId = req.body.id;
+    // var name         = req.body.name;
+
+    // Ingredient.findById(ingredientId, function(err, model){
+    //   model.updateAttribute('name', name);
+
+    //   res.json('success');
+    // });
+  });
+
+
   // used for ajax call from todo list
-  router.post('/purchased/remove-from-grocerylist', function(req, res, next){
+  router.post('/unattach', function(req, res, next){
     var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
@@ -60,9 +79,9 @@ module.exports = function(app) {
       secondArray: ingredients 
     };
 
-    Grocery.removePurchased(options);
+    // Grocery.removePurchased(options);
       
-    Grocery.removeIngredient(options);
+    // Grocery.removeIngredient(options);
 
     Ingredient.find({
       where : {
@@ -71,6 +90,7 @@ module.exports = function(app) {
     }, function(err, models){
 
       console.log(models);
+      res.json('success');
       // _.map(models, function(model){
 
       //   console.log(model);
@@ -83,7 +103,7 @@ module.exports = function(app) {
 
       // });
 
-    })
+    });
 
     res.json('success');
     // :todo add removing ingredient from whole database

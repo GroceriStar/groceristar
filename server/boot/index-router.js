@@ -17,23 +17,23 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
 
-  router.get('/home', function(req, res, next){
+  // router.get('/home', function(req, res, next){
 
-    res.render('pages/home', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
-  });
+  //   res.render('pages/home', {
+  //     user: req.user,
+  //     url: req.url,
+  //     // data: response
+  //   });
+  // });
 
- router.get('/sortable', function(req, res, next){
+ // router.get('/sortable', function(req, res, next){
 
-    res.render('pages/grocery2', {
-      user: req.user,
-      url: req.url,
-      // data: response
-    });
-  });
+ //    res.render('pages/grocery2', {
+ //      user: req.user,
+ //      url: req.url,
+ //      // data: response
+ //    });
+ //  });
 
 
   // :todo this must be moved to departments
@@ -121,30 +121,33 @@ module.exports = function(app) {
           
         });
 
+        //       // res.render('pages/grocery2', {
+        //       //   user: req.user,
+        //       //   url: req.url,
+        //       //   data: response
+        //       // });
+
+        //       // res.render('pages/home', {
+        //       //   user: req.user,
+        //       //   url: req.url,
+        //       //   data: response
+        //       // });
+
+
+        //       // res.render('pages/dashboard', {
+        //       //   user: req.user,
+        //       //   url: req.url,
+        //       //   data: response
+        //       // });
+        // console.log(UserExtended);
+
     });
 
 
-    // console.log(UserExtended);
+    
 
     
- //       // res.render('pages/grocery2', {
-    //       //   user: req.user,
-    //       //   url: req.url,
-    //       //   data: response
-    //       // });
 
-//       // res.render('pages/home', {
-    //       //   user: req.user,
-    //       //   url: req.url,
-    //       //   data: response
-    //       // });
-
-
-    //       // res.render('pages/dashboard', {
-    //       //   user: req.user,
-    //       //   url: req.url,
-    //       //   data: response
-    //       // });
 
 
 

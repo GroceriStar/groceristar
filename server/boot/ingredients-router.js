@@ -23,27 +23,34 @@ module.exports = function(app) {
 	});
 
 
+
+
+
+
 	// :todo this must be a remote method
-	router.post('/del/ing/', function(req, res, next){
-		// var ingredientId = req.params.id;
-		// var groceryId = req.params.groceryId;
-		var ingredients    = req.body.ingredients;
-    	var groceryId      = req.body.groceryId;
-    	console.log(req.body);
-		var Grocery   = app.models.Grocery;
+	// router.post('/del/ing/', function(req, res, next){
+	// 	// var ingredientId = req.params.id;
+	// 	// var groceryId = req.params.groceryId;
+	// 	var ingredients    = req.body.ingredients;
+ //    	var groceryId      = req.body.groceryId;
+ //    	console.log(req.body);
+	// 	var Grocery   = app.models.Grocery;
 		
-		var options = {
+	// 	var options = {
 
-	      groceryId: groceryId,
-	      secondArray: ingredients
-	    };
-		// console.log(options);
+	//       groceryId: groceryId,
+	//       secondArray: ingredients
+	//     };
+	// 	// console.log(options);
 	    
-		Grocery.removeIngredient(options);
-		res.json('success');
-		// res.redirect('/view/grocery/' + groceryId);
+	// 	Grocery.removeIngredient(options);
+	// 	res.json('success');
+	// 	// res.redirect('/view/grocery/' + groceryId);
 
-	});
+	// });
+
+
+
 
 
 

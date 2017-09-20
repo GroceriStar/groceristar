@@ -238,9 +238,12 @@ jQuery(function ($) {
 				groceryId: this.getGroceryId()
 			};
 
+			console.log(difference);
+			console.log(toRemove);
+
 			$.ajax({
 				type: "POST",
-				url: '/purchased/remove-from-grocerylist',
+				url: '/changename/',
 				dataType: 'json',
 				data: toRemove,
 				
@@ -257,10 +260,10 @@ jQuery(function ($) {
 		// returns the corresponding index in the `todos` array
 		getIndexFromEl: function (element) {
 			var $ingredient = this.getElementFromEvent(element);
-			var id = $ingredient.data('id');
+			var id    = $ingredient.data('id');
 
 			var todos = this.todos;
-			var i = todos.length;
+			var i     = todos.length;
 
 			while (i--) {
 				if (todos[i].id === id) {
@@ -304,7 +307,6 @@ jQuery(function ($) {
 			}).done(function(data){
 				
 				// console.log('success');
-
 				new_id = data.id;
 			});
 
@@ -322,21 +324,6 @@ jQuery(function ($) {
 			// console.log(new_object);
 			this.todos.push(new_object);
 
-			// this.todos.push({
-
-
-
-			// 	id: util.uuid(),
-
-			// 	title: val,
-
-			// 	completed: false,
-
-			// 	departmentId: false,
-			// 	groceryId: false,
-			// 	order: 0
-			// });
-			// console.log(this.todos);
 
 			$input.val('');
 
@@ -367,25 +354,25 @@ jQuery(function ($) {
 					groceryId: this.getGroceryId(),
 					type: 'add' 
 				};
-			// console.log(toPurchase)
+				// console.log(toPurchase)
 
-			// move this to another place, please :todo
-			// var result = false;
-			$.ajax({
-				type: "POST",
-				url: '/togglepurchased/',
-				dataType: 'json',
-				data: toPurchase,
-				
-				'async': false
-			}).done(function(data){
-				
-				console.log('success AddToPurchased');
-				// console.log(data);
+				// move this to another place, please :todo
+				// var result = false;
+				$.ajax({
+					type: "POST",
+					url: '/togglepurchased/',
+					dataType: 'json',
+					data: toPurchase,
+					
+					'async': false
+				}).done(function(data){
+					
+					console.log('success AddToPurchased');
+					// console.log(data);
 
-				// result = data.id;
-			});
-			// console.log(result);
+					// result = data.id;
+				});
+				// console.log(result);
 
 
 			} else {
@@ -400,21 +387,21 @@ jQuery(function ($) {
 
 			// move this to another place, please :todo
 			// var result = false;
-			$.ajax({
-				type: "POST",
-				url: '/togglepurchased/',
-				dataType: 'json',
-				data: toPurchase,
-				
-				'async': false
-			}).done(function(data){
-				
-				console.log('success removed Purchased');
-				// console.log(data);
+				$.ajax({
+					type: "POST",
+					url: '/togglepurchased/',
+					dataType: 'json',
+					data: toPurchase,
+					
+					'async': false
+				}).done(function(data){
+					
+					console.log('success removed Purchased');
+					// console.log(data);
 
-				// result = data.id;
-			});
-			// console.log(result);
+					// result = data.id;
+				});
+				// console.log(result);
 
 
 			}
@@ -452,8 +439,8 @@ jQuery(function ($) {
 			var index = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
 
-			console.log(index)
-			console.log()
+			// console.log(index)
+			// console.log()
 
 			// console.log($ingredient.data().id)
 
@@ -463,7 +450,7 @@ jQuery(function ($) {
 				id  : $ingredient.data().id,
 				name: val
 			};
-			console.log(toRename);
+			// console.log(toRename);
 			$.ajax({
 				type: "POST",
 				url: '/changename/',
@@ -476,7 +463,6 @@ jQuery(function ($) {
 				console.log('success update name');
 
 			});
-
 
 
 
@@ -508,7 +494,7 @@ jQuery(function ($) {
 
 			$.ajax({
 				type: "POST",
-				url: '/del/ing/',
+				url: '/purchased/remove/grocerylist',
 				dataType: 'json',
 				data: toRemove,
 				
