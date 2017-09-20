@@ -59,17 +59,37 @@ module.exports = function(app) {
 		})
 	});
 
-	// Ing change name
-	// :todo validation add
-	router.get('/changename/:id/:name', function(req, res, next){
+
+	// :todo this maybe not used function
+	router.post('/remove-department-from-ingredient', function(req, res, next){
+
 		var Ingredient   = app.models.Ingredient;
 		var ingredientId = req.params.id;
-		var name         = req.params.name;
-		 
+		var departmentId = req.params.departmentId;
+
+		Ingredient.findById(ingredientId, function(err, model){
+			model.updateAttribute('departmentId', false);
+		})
+
+	});
+
+	// Ing change name
+	// :todo validation add
+	router.post('/changename/', function(req, res, next){
+		var Ingredient   = app.models.Ingredient;
+		var ingredientId = req.body.id;
+		var name         = req.body.name;
+		
+		// console.log(res.body);
+
 		Ingredient.findById(ingredientId, function(err, model){
 			model.updateAttribute('name', name);
-		})
+
+			res.json('success');
+		});
 	});
+
+
 
 
 	// Ing create. Not working with not advanced forms
@@ -84,7 +104,8 @@ module.exports = function(app) {
 		
 		var object = {
 			name: name,
-			departmentId: departmentId
+			departmentId: departmentId,
+			custom: true
 		};
 
 		Ingredient.create(object, function(err, model){
@@ -97,7 +118,7 @@ module.exports = function(app) {
 		    // console.log(options);
 			Grocery.addIngredient(options);
 			// res.json('success');
-			res.json({id: model.id});
+			res.json({ id: model.id });
 			// res.redirect('/department/' + departmentId + '/' + groceryId); // :todo update this
 		});
 

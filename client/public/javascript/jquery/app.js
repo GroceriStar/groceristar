@@ -402,7 +402,7 @@ jQuery(function ($) {
 			var val = $input.val();
 
 			// console.log($input);
-			// console.log($input.val());
+			//console.log($input.val());
 
 			$input.val('').focus().val(val);
 
@@ -421,10 +421,42 @@ jQuery(function ($) {
 			var $el = $(el);
 			var val = $el.val().trim();
 
+			var $ingredient = this.getElementFromEvent(e.target);
+
+			// console.log($ingredient.data().id)
+
+			// console.log(val);
+
+			var toRename = {
+				id  : $ingredient.data().id,
+				name: val
+			};
+			console.log(toRename);
+			$.ajax({
+				type: "POST",
+				url: '/changename/',
+				dataType: 'json',
+				data: toRename,
+				
+				'async': false
+			}).done(function(data){
+				
+				console.log('success update name');
+
+			});
+
+
+
+
 			if (!val) {
 				this.destroy(e);
 				return;
 			}
+
+			
+
+
+			
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);

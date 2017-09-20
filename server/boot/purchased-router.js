@@ -39,11 +39,11 @@ module.exports = function(app) {
 
   // used for ajax call from todo list
   router.post('/purchased/remove-from-grocerylist', function(req, res, next){
-    var Grocery = app.models.Grocery;
+    var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
 
-    console.log(req.body);
+    console.log(ingredients);
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 
@@ -55,6 +55,27 @@ module.exports = function(app) {
     Grocery.removePurchased(options);
       
     Grocery.removeIngredient(options);
+
+    Ingredient.find({
+      where : {
+        id : { inq : ingredients }
+      }
+    }, function(err, models){
+
+      console.log(models);
+      // _.map(models, function(model){
+
+      //   console.log(model);
+
+      //   if(model.custom){
+   
+      //     model.updateAttribute('departmentId', false);    
+
+      //   }
+
+      // });
+
+    })
 
     res.json('success');
     // :todo add removing ingredient from whole database

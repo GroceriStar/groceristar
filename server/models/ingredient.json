@@ -15,6 +15,11 @@
       "type": "string",
       "required": false
     },
+    "custom": {
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
     "created_at": {
       "type": "date",
       "required": true
