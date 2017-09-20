@@ -91,10 +91,11 @@ module.exports = function(app) {
   // used for ajax call from todo list
   router.post('/unattach', function(req, res, next){
     var Grocery        = app.models.Grocery;
+    var Ingredient     = app.models.Ingredient;
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
 
-    console.log(ingredients);
+    // console.log(ingredients);
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 
@@ -117,14 +118,15 @@ module.exports = function(app) {
       
       _.map(models, function(model){
 
-        // console.log(model);
 
-        if(model.custom){
+
+        if(model.custom == true){
    
-          model.updateAttribute('departmentId', false);    
+          // model.updateAttribute('departmentId', false);    
+          model.destroy();
 
         }
-        // console.log(model);
+        
 
       });
       res.json('success');

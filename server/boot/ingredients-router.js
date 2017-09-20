@@ -67,17 +67,17 @@ module.exports = function(app) {
 
 
 	// :todo this maybe not used function
-	router.post('/remove-department-from-ingredient', function(req, res, next){
+	// router.post('/remove-department-from-ingredient', function(req, res, next){
 
-		var Ingredient   = app.models.Ingredient;
-		var ingredientId = req.params.id;
-		var departmentId = req.params.departmentId;
+	// 	var Ingredient   = app.models.Ingredient;
+	// 	var ingredientId = req.params.id;
+	// 	var departmentId = req.params.departmentId;
 
-		Ingredient.findById(ingredientId, function(err, model){
-			model.updateAttribute('departmentId', false);
-		})
+	// 	Ingredient.findById(ingredientId, function(err, model){
+	// 		model.updateAttribute('departmentId', false);
+	// 	})
 
-	});
+	// });
 
 	// Ing change name
 	router.post('/changename/', function(req, res, next){

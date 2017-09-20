@@ -238,8 +238,8 @@ jQuery(function ($) {
 				groceryId: this.getGroceryId()
 			};
 
-			console.log(difference);
-			console.log(toRemove);
+			// console.log(difference);
+			// console.log(toRemove);
 
 			$.ajax({
 				type: "POST",
@@ -333,7 +333,7 @@ jQuery(function ($) {
 			var i = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
 
-			console.log( $(event.target).prop('checked') );
+			// console.log( $(event.target).prop('checked') );
 
 			var flag =  $(event.target).prop('checked');
 
@@ -436,8 +436,15 @@ jQuery(function ($) {
 			var el = e.target;
 			var $el = $(el);
 			var val = $el.val().trim();
-			var index = this.getIndexFromEl(el);
+
+			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
+
+
+			if (!val) {
+				this.destroy(e);
+				return;
+			}
 
 			// console.log(index)
 			// console.log()
@@ -465,21 +472,10 @@ jQuery(function ($) {
 			});
 
 
-
-			if (!val) {
-				this.destroy(e);
-				return;
-			}
-
-
-
-
-
-
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else {
-				this.todos[this.getIndexFromEl(el)].name = val;
+				this.todos[index].name = val;
 			}
 
 			this.render();

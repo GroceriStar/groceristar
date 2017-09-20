@@ -176,7 +176,6 @@ module.exports = function(User) {
             var g = user.toJSON();
             var response = [];
 
-
             // iterator(g.groceries);
             // :todo update to single function, without duplicates.
             _.map( g.groceries, function(grocery){
