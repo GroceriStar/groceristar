@@ -38,34 +38,6 @@ jQuery(function ($) {
 			var departmentId = $('#new-todo').data().departmentId;
 			return departmentId;			
 		},
-		// read: function(){
-
-		// 	var groceryId = $('body').data().groceryId;
-
-			
-
-		// 	$.ajax({
-		// 		type: "GET",
-		// 		url: '/getingredients/' + groceryId,
-		// 		dataType: 'json'
-		// 	}).done(function(data){
-				
-		// 	});
-
-			
-
-		// },
-		// save: function(data){
-			
-		// 	console.log(data);
-
-		// 	// var data = {};
-		// 	// data.title = "title";
-		// 	// data.message = "message";
-					
-			
-
-		// },
 		getGroceryId: function(){
 
 			var groceryId = $('body').data().groceryId;
@@ -379,26 +351,18 @@ jQuery(function ($) {
 			if (flag){
 
 				//add to purchased
-
-				
-
-			} else {
-
-				// remove from purchased
-
-			}
-
-			var toPurchase = {
-				ingredients: [ $ingredient.data().id ],
-				groceryId: this.getGroceryId()
-			};
+				var toPurchase = {
+					ingredients: [ $ingredient.data().id ],
+					groceryId: this.getGroceryId(),
+					type: 'add' 
+				};
 			// console.log(toPurchase)
 
 			// move this to another place, please :todo
 			// var result = false;
 			$.ajax({
 				type: "POST",
-				url: '/addtopurchased/',
+				url: '/togglepurchased/',
 				dataType: 'json',
 				data: toPurchase,
 				
@@ -411,6 +375,40 @@ jQuery(function ($) {
 				// result = data.id;
 			});
 			// console.log(result);
+
+
+			} else {
+
+				// remove from purchased
+				var toPurchase = {
+					ingredients: [ $ingredient.data().id ],
+					groceryId: this.getGroceryId(),
+					type: 'remove'
+				};
+			// console.log(toPurchase)
+
+			// move this to another place, please :todo
+			// var result = false;
+			$.ajax({
+				type: "POST",
+				url: '/togglepurchased/',
+				dataType: 'json',
+				data: toPurchase,
+				
+				'async': false
+			}).done(function(data){
+				
+				console.log('success removed Purchased');
+				// console.log(data);
+
+				// result = data.id;
+			});
+			// console.log(result);
+
+
+			}
+
+
 
 
 
@@ -440,8 +438,11 @@ jQuery(function ($) {
 			var el = e.target;
 			var $el = $(el);
 			var val = $el.val().trim();
-
+			var index = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
+
+			console.log(index)
+			console.log()
 
 			// console.log($ingredient.data().id)
 
@@ -481,7 +482,7 @@ jQuery(function ($) {
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else {
-				this.todos[this.getIndexFromEl(el)].title = val;
+				this.todos[this.getIndexFromEl(el)].name = val;
 			}
 
 			this.render();

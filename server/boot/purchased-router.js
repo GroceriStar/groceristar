@@ -9,20 +9,35 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
   // move this to remote methods :todo
-  router.post('/addtopurchased', function(req, res, next){
+  router.post('/togglepurchased', function(req, res, next){
   	var Grocery        = app.models.Grocery;
     var ingredients    = req.body.ingredients;
    	var groceryId      = req.body.groceryId;
 
     console.log(req.body);
 
-    var options = {
-      groceryId: groceryId,
-      secondArray: ingredients 
-    };
-    Grocery.addPurchased(options); 
-    res.json('success');
-    // res.redirect('/auth/account');
+    console.log(req.body.type);
+
+    if(req.body.type == 'add'){
+      var options = {
+        groceryId: groceryId,
+        secondArray: ingredients 
+      };
+      Grocery.addPurchased(options); 
+      res.json('success');
+
+    } else {
+      var options = {
+        groceryId: groceryId,
+        secondArray: ingredients 
+      };
+      Grocery.removePurchased(options);
+      res.json('success');
+
+    }
+
+    
+
 
   });
 
@@ -84,23 +99,23 @@ module.exports = function(app) {
 
 
 
+  // :todo I think we don't use this method anymore
+  // router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
-  router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
+  // 	var Grocery = app.models.Grocery;
 
-  	var Grocery = app.models.Grocery;
+  // 		// console.log( req.user.id );		
 
-  		// console.log( req.user.id );		
+  //  	var ingredients = req.params.ingId;
+  // 	var groceryId   = req.params.groceryId;
 
-   	var ingredients = req.params.ingId;
-  	var groceryId   = req.params.groceryId;
+  //   var options = {
+  //     groceryId: groceryId,
+  //     secondArray: ingredients 
+  //   };
+  //   Grocery.removePurchased(options);
 
-    var options = {
-      groceryId: groceryId,
-      secondArray: ingredients 
-    };
-    Grocery.removePurchased(options);
-
-  });
+  // });
 
   app.use(router);
 };
