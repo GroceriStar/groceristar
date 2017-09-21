@@ -9,11 +9,12 @@
 		url('../../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+/**, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }*/
+
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
-body {
+/*body {
 	background: #3498db;
 	color: #fff;
 	font-weight: 400;
@@ -39,7 +40,7 @@ body::after {
 body::after {
 	top: auto;
 	bottom: 0;
-}
+}*/
 
 a {
 	color: #1e6fa4;
@@ -76,10 +77,10 @@ a:hover, a:focus {
 .color-8 a { color: #7ad7ee; }
 .color-8 a:hover, .color-8 a:focus { color: #539eb1; }
 
-section {
+/*section {
 	padding: 4% 1em 10%;
 	text-align: center;
-}
+}*/
 
 label.select-label {
 	display: block;
@@ -226,6 +227,20 @@ label.select-label {
 .wrap {
 	padding: 1em 0;
 }
+
+.cs-select.cs-skin-border {
+	color: rgba(175, 47, 47, 0.15);
+}
+
+.cs-select.cs-skin-border .cs-placeholder {
+	/*box-shadow: 0 10px 0 -5px rgba(0,0,0,0.1);	*/
+	border-bottom: 3px solid rgba(175, 47, 47, 0.15);
+	border-color: rgba(175, 47, 47, 0.15);
+}
+
+
+
+
 
 @media screen and (max-width: 30em) {
 

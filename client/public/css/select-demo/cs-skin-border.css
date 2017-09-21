@@ -21,7 +21,10 @@ div.cs-skin-border {
 }
 
 .cs-skin-border > span {
-	border: 5px solid #000;
+	/*border: 5px solid #000;*/
+
+	border: 0px;
+
 	border-color: inherit;
 	-webkit-transition: background 0.2s, border-color 0.2s;
 	transition: background 0.2s, border-color 0.2s;

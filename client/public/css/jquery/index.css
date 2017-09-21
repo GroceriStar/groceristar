@@ -254,6 +254,9 @@ label[for='toggle-all'] {
 	height: 20px;
 	text-align: center;
 	border-top: 1px solid #e6e6e6;
+
+	/*box-sizing: inherit;
+	-webkit-box-sizing: inherit;*/
 }
 
 #footer:before {
@@ -326,7 +329,7 @@ html #clear-completed:active {
 }
 
 #info {
-	margin: 65px auto 0;
+	margin: 20px auto 0;
 	color: #bfbfbf;
 	font-size: 10px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
