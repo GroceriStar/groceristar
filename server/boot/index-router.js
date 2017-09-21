@@ -68,6 +68,15 @@ module.exports = function(app) {
   //   });
   // });
 
+  router.get('/credits', function(req, res, next){
+
+      res.render('pages/credits', {
+        user        : req.user,
+        url         : req.url,
+      });
+
+  });
+
   router.get('/todo/:groceryId/:departmentId', 
     function(req, res, next){
     var Grocery      = app.models.Grocery;
