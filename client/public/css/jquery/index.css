@@ -366,6 +366,16 @@ html #clear-completed:active {
 }
 
 
+.hide {
+	display: none;
+}
+
+
+
+#todoapp {
+	margin-top: 35px;
+}
+
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox

@@ -238,7 +238,12 @@ label.select-label {
 	border-color: rgba(175, 47, 47, 0.15);
 }
 
-
+/*.cs-select.cs-skin-border .cs-placeholder {
+	padding-left: 0px;
+}
+.cs-select.cs-skin-border.cs-active .cs-placeholder {
+	padding-left: 28px;	
+}*/
 
 
 

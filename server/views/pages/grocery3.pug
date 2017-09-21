@@ -11,10 +11,10 @@ html(lang='en', data-framework='jquery')
     link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
 
     
-    //link(rel='stylesheet', href='/css/select-demo/normalize.css')
-    //link(rel='stylesheet', href='/css/select-demo/demo.css')
-    //link(rel='stylesheet', href='/css/select-demo/cs-select.css')
-    //link(rel='stylesheet', href='/css/select-demo/cs-skin-border.css')
+    link(rel='stylesheet', href='/css/select-demo/normalize.css')
+    link(rel='stylesheet', href='/css/select-demo/demo.css')
+    link(rel='stylesheet', href='/css/select-demo/cs-select.css')
+    link(rel='stylesheet', href='/css/select-demo/cs-skin-border.css')
 
 
 
@@ -47,7 +47,7 @@ html(lang='en', data-framework='jquery')
 
     section#todoapp
       header#header
-        h1= name
+        //h1= name
         input#new-todo(placeholder='Ingredient name', autofocus='', data-department-id=departmentId)
       section#main
         input#toggle-all(type='checkbox')
@@ -77,9 +77,54 @@ html(lang='en', data-framework='jquery')
     script(src='/javascript/select-demo/classie.js')
     script(src='/javascript/select-demo/selectFx.js')
     script.
+      $(document).ready(function(){
+        //$('select.cs-select').show();
+      });
+
       (function() {
+
+        
+
+      
+
       [].slice.call(
         document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
           new SelectFx(el);
         } );
+
+
       })();
+
+    script.
+      $(document).ready(function(){
+
+      $('select.cs-select').on('change', function() {
+
+        console.log(this.val());
+        console.log(this.data());
+
+      });
+
+      //$('#choose-department').on('submit', function(){
+
+        //return false;
+      //});
+
+      $("#choose-department").submit(function(e) {
+
+        //prevent Default functionality
+        e.preventDefault();
+
+        //get the action-url of the form
+        //var actionurl = e.currentTarget.action;
+
+        var groceryId    = $('#grocery').val();
+        var departmentId = $('select').val();
+       
+        var path = "/todo/" + groceryId + '/' + departmentId;        
+
+        window.location.replace(path);
+
+      });
+
+      });      
