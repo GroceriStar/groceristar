@@ -3,7 +3,7 @@ form#choose-department(name="formsubmit", method="post")
   select.cs-select.cs-skin-border#departmentList
     option(value='', disabled='', selected='') Department
 
-    each val, index in data
+    each val, index in departments
       if (val.ingredients.length !== 0)
         option(value=val.id)= val.name 
 

@@ -80,7 +80,7 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, response){
 
-      console.log(response.data);
+      // console.log(response.data);
       // _.pluck(response.data, function(item){
       //   console.log(item);
       // });
@@ -88,13 +88,12 @@ module.exports = function(app) {
       // :todo remove ingredients from this list.
       // but this will cause issue in select field
       var departments = _.map(response.data, function(obj) { 
+        // maybe it'll be better to just from an object by hands
         return _.pick(obj, 'id', 'name', 'type', 'ingredients'); 
       });
-      
+
       var currentDepartmentCollection = _.where(response.data, {id:departmentId});
       currentDepartmentCollection = currentDepartmentCollection[0];
-      // console.log(jekaPidor);
-
 
       // console.log( _.where(response.data, {id:departmentId}) );
 
