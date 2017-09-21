@@ -37,6 +37,7 @@ module.exports = function(app) {
 
 
 
+
   // :todo this must be moved to departments
   router.get('/select/:groceryId', function(req, res, next){
     var groceryId = req.params.groceryId;
@@ -49,7 +50,7 @@ module.exports = function(app) {
       res.render('pages/select-only-delete-later', {
         user: req.user,
         url: req.url,
-        data: response.data,
+        departments: response.data,
         groceryId: groceryId
       });
 
@@ -69,24 +70,59 @@ module.exports = function(app) {
 
   router.get('/todo/:groceryId/:departmentId', 
     function(req, res, next){
-    // var Grocery      = app.models.Grocery;
+    var Grocery      = app.models.Grocery;
     // var userId    = req.user.id;
     var groceryId    = req.params.groceryId;
     var departmentId = req.params.departmentId;
 
     var Department   = app.models.Department;
 
-    Department.findById(departmentId, function(err, model){
+
+    Grocery.fetchById(groceryId, function(err, response){
+
+      console.log(response.data);
+      // _.pluck(response.data, function(item){
+      //   console.log(item);
+      // });
+
+      // :todo remove ingredients from this list.
+      // but this will cause issue in select field
+      var departments = _.map(response.data, function(obj) { 
+        return _.pick(obj, 'id', 'name', 'type', 'ingredients'); 
+      });
+      
+      var currentDepartmentCollection = _.where(response.data, {id:departmentId});
+      currentDepartmentCollection = currentDepartmentCollection[0];
+      // console.log(jekaPidor);
+
+
+      // console.log( _.where(response.data, {id:departmentId}) );
 
       res.render('pages/grocery3', {
         user        : req.user,
         url         : req.url,
         groceryId   : groceryId,
         departmentId: departmentId,
-        name        : model.name
+        name        : currentDepartmentCollection.name,
+        departments: departments
+
       });
 
     });
+
+
+
+    // Department.findById(departmentId, function(err, model){
+
+    //   res.render('pages/grocery3', {
+    //     user        : req.user,
+    //     url         : req.url,
+    //     groceryId   : groceryId,
+    //     departmentId: departmentId,
+    //     name        : model.name
+    //   });
+
+    // });
 
     // var departmentId = '59b6e8efbdfb0c292068e55c';
 
