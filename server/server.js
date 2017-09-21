@@ -104,7 +104,7 @@ app.use(flash());
 
 
 passportConfigurator.setupModels({
-  userModel: app.models.user, //:todo we'll change later model have to Upper
+  userModel: app.models.user, 
   userIdentityModel: app.models.userIdentity,
   userCredentialModel: app.models.userCredential,
 });
