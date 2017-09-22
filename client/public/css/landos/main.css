@@ -10,6 +10,7 @@
 .ctas-button {
 	color: #444;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 *,
@@ -381,6 +382,45 @@ address {
 .feature2 .col-4 {
 	padding: 40px 0;
 }
+
+
+.facebook-login {
+	background-color: #4267b2;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+
+    border-radius: 4px;
+    max-width: 400px;
+    min-width: 240px;
+
+    height: 40px;
+
+
+
+    padding-top: 4px;
+    padding-left: 7px;
+    padding-right: 10px;
+
+    border: none;
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: .25px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: clip;
+    white-space: nowrap;
+
+}
+
+.facebook-login .fa.fa-facebook-square {
+
+    font-size: 27px;
+    margin-right: 15px;
+    padding-top: 7px;
+
+}
+
 
 @media (max-width: 900px) {
 	.feature2 .emoji {

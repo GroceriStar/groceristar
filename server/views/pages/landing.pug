@@ -28,8 +28,9 @@ html
 
             a.nav-link(href='#')
               | Home
-            a.nav-link(href='#')
-              | Login
+            a.nav-link.facebook-login(href='#')
+              i.fa.fa-facebook-square(aria-hidden="true")
+              | Continue with Facebook
             a.nav-link(href='#')
               | Signup
                             
@@ -243,52 +244,8 @@ html
             | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
 
 
+    include ../partials/science          
 
-
-    .socialproof.feature2
-      .container-techniq
-        .flex.text-center
-          .col-12
-            h4.subheading
-              | "Prior studies employing a variety of designs and measures provide mixed evidence that using a list is associated with improved dietary quality or weight."
-            p.authors
-              | Crawford D, Ball K, Mishra G, Salmon J, Timperio A
-            p.description
-              | Which food-related behaviours are associated with healthier intakes of fruits and vegetables among women?
-            p.description
-              | Public Health Nutr. 2007 Mar; 10(3):256-65.
-
-    .socialproof
-      .container-techniq
-        .flex.text-center
-          .col-12
-            h4.subheading
-              | Food shoppers who reported “always” using a shopping list had significantly higher dietary quality. ...
-              | After applying a Bonferroni correction ... the association between those who always used a list and knowledge of eating fruits and vegetables, and trying to eat fewer calories [was eliminated].
-            p.description
-              | Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults
-            address.authors
-              strong RAND Health
-              br
-              |  Corresponding Author: Tamara Dubowitz,
-              br
-              |  RAND Corporation,
-              br
-              |  4570 Fifth Avenue, Suite 600,
-              br
-              |  Pittsburgh, PA 15213
-              br
-              abbr(title='Phone') P:
-              |  412 683 2300 x4400
-              br
-              abbr(title='Fax') F:
-              |  412 683 2800
-              br
-              |  gro.dnar@ztiwobud
-            //
-              <p class="authors">
-              , Phone: 412 683 2300 x4400, Fax: 412 683 2800,
-              </p>
 
 
     .footer
@@ -305,10 +262,14 @@ html
       .container-lrg.footer-nav
         .col-12.spread
           div
-            a.nav-link
+            a.nav-link(href="#")
               | Twitter
-            a.nav-link
+            a.nav-link(href="#")
               | Facebook
           div
-            a.nav-link
+            a.nav-link(href="#")
               | Email Us
+            a.nav-link(href="#")
+              | Credits  
+
+    script(src='https://use.fontawesome.com/8b5217f583.js')

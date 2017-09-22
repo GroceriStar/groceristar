@@ -118,22 +118,6 @@ module.exports = function(app) {
 
     });
 
-
-
-    // Department.findById(departmentId, function(err, model){
-
-    //   res.render('pages/grocery3', {
-    //     user        : req.user,
-    //     url         : req.url,
-    //     groceryId   : groceryId,
-    //     departmentId: departmentId,
-    //     name        : model.name
-    //   });
-
-    // });
-
-    // var departmentId = '59b6e8efbdfb0c292068e55c';
-
     
   });
 
