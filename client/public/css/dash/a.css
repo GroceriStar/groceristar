@@ -47,23 +47,45 @@ body {
   background-color: #f1f4f5;
 }*/
 
-/*.list-group.round-border {
-    font-size: 2em;
-    font-weight: 700;
-    max-width: 600px;
+.round-border .border-item {
+  font-size: 2em;
+  font-weight: 700;
+  max-width: 600px;
 
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  background: #fff;
+  z-index: 100;
+  width: 100%;
+  max-width: 500px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  color: black;
+
+  box-shadow: 0 10px 0 -5px rgba(0,0,0,0.1);
+
+    border: 5px solid #000;
+    /* border: 0px; */
+    border-color: inherit;
+    -webkit-transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s, border-color 0.2s;
+
+
+    padding-right: 3em;
+    display: block;
     position: relative;
-    text-align: left;
-    background: #fff;
-    z-index: 100;
-    width: 100%;
-    max-width: 500px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}*/
+    cursor: pointer;
+    padding: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 15px;
+}

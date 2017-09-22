@@ -30,6 +30,23 @@ mixin view_groceries_short(array)
         a(href='/view/grocery/' + val.id, class="btn") link
       a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
 
+
+mixin view_groceries_short2(array)
+  br
+  .col-xlg-4.col-md-6
+    .round-border
+      each val, index in array
+        if( index == 0)
+          a.border-item.active('/view/grocery/' + val.id)
+            h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
+        else 
+          a.border-item('/view/grocery/' + val.id)
+            h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
+      
+
+  
+
+
 mixin view_groceries_departments(array)
 
   br
