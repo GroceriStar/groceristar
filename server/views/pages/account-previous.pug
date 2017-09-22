@@ -16,10 +16,9 @@ block content
   include ../partials/list-items
 
 
-  br
-  br
 
 
+  
 
   a.btn.btn-primary(href="/select/59b72480f6d6fb0744f2e5fd")  Select
 
@@ -36,3 +35,19 @@ block content
   hr
   +button_clone_ultimate(clone)  
   hr
+
+
+
+  h2 Linked Account(s)
+  ul.list-inline.list-unstyled
+    li
+      a.btn.btn-primary(href="/link/facebook") Link Facebook
+
+
+  p.small
+    if user.accounts.length !== 0
+      each val in user.accounts
+        h4= val.provider + ':'
+        p.small= JSON.stringify(val)
+    else
+      | NONE

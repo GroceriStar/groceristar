@@ -44,7 +44,7 @@ module.exports = function(app) {
     var Grocery   = app.models.Grocery;
 
     Grocery.fetchById(groceryId, function(err, response){
-      console.log(response);
+      // console.log(response);
       // we don't need response.ingredients. But this is keeped from this method.
       // we'll need to create our own method for this  tasks. :todo
       res.render('pages/select-only-delete-later', {
