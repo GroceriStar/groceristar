@@ -32,6 +32,8 @@ module.exports = function(app) {
 
     Grocery.fetchById(groceryId, function(err, response){
 
+      // console.log(response);
+
       // :todo make all data came from method
       res.render('pages/grocery-new', {
           name: response.name,
@@ -39,6 +41,9 @@ module.exports = function(app) {
           groceryId: groceryId,
           // url: req.url,
           messages: {},
+
+          departments: response.data,
+        
         }); 
 
 
@@ -199,7 +204,7 @@ module.exports = function(app) {
 
     var Grocery = app.models.Grocery;
     var groceryId = req.params.groceryId;
-    
+
     res.render('pages/change-grocery-list-name', {  
     });
   });

@@ -55,51 +55,9 @@ html(lang='en', data-framework='jquery')
         ul#todo-list
       footer#footer
     footer#info
-      p Double-click to edit an ingredient
+      p Double-click to edit an ingredient 
 
 
+    include ../static/scripts-todo.pug  
 
-
-
-
-    //script(src='base.js')
-    //script(src='/javascript/home/js/plugins/jquery1.11.0.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
-    
-    script(src='/javascript/jquery/director.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
-    
-    script(src='/javascript/jquery/app.js')
-    
-    //script(src='/javascript/grocery/Sortable.min.js')
-    //script(src='/javascript/grocery/sortable-init.js')
-
-
-
-    script(src='/javascript/select-demo/classie.js')
-    script(src='/javascript/select-demo/selectFx.js')
-    script.
-
-      (function() {
-
-        
-       
-       
-        //var path = "/todo/" + groceryId + '/' + departmentId;        
-
-        //window.location.replace(path);
-
-         var groceryId = document.getElementById('grocery').value;
-         //console.log(groceryId);
-
-         var selectElement = document.querySelector('select');
-          myFXSelect = new SelectFx(selectElement, {
-            onChange: function(val) {
-              //console.log('val', val); 
-              // val is departmentId value
-              var path = "/todo/" + groceryId + '/' + val;
-              window.location.replace(path);
-            }
-          });
-
-      })();  
+    include ../static/scripts-select.pug

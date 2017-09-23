@@ -73,6 +73,7 @@ module.exports = function(app) {
       res.render('pages/credits', {
         user        : req.user,
         url         : req.url,
+        title: "Credits"
       });
 
   });
