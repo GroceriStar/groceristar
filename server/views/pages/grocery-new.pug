@@ -7,10 +7,27 @@ block content
 
       
       +link('/remove/grocery/' + groceryId, 'Remove GL FROM THIS USER')
-      
+      +link('/change/grocery/name/' + groceryId, 'Change name')
+
+    section
+      .col-md-12  
+        include ../partials/departments-select
+    
 
 
-      include ../forms/update-name
+
+    .col-md-12
+      .round-border
+        each val, index in elements
+          a.border-item(href='/todo/' + groceryId + '/' + val.id)
+            h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
+              i.fa.fa-long-arrow-right(aria-hidden="true")
+              if val.ingredients.length
+                i.fa.fa-eye-slash
+              else    
+                i.fa.fa-eye
+
+
 
     .col-md-12
       each val, index in elements
@@ -45,3 +62,18 @@ block content
           hr  
 
     hr       
+
+
+
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
+  
+    script(src='/javascript/select-demo/classie.js')
+    script(src='/javascript/select-demo/selectFx.js')
+    script.
+      (function() {
+      [].slice.call(
+     document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    new SelectFx(el);
+    } );
+    })();

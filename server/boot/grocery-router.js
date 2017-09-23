@@ -9,19 +9,7 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
 
   
-  // Update grocery list name
-  router.post('/update/name', function(req, res, next){
-    var groceryId = req.body.groceryId;
-    var name      = req.body.name;
-    var Grocery   = app.models.Grocery;
 
-    Grocery.findById(groceryId, {}, function(err, model){
-      model.updateAttribute('name', name);
-      res.redirect('/auth/account');
-    });
-
-
-  });
 
 
 
@@ -203,11 +191,29 @@ module.exports = function(app) {
 
  });
 
+ // Change Grocery Name functionality
+
  router.get('/change/grocery/name', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
 
+    var Grocery = app.models.Grocery;
+    var groceryId = req.params.groceryId;
     
+    res.render('pages/change-grocery-list-name', {  
+    });
+  });
+  // Update grocery list name
+  router.post('/update/name', function(req, res, next){
+    var groceryId = req.body.groceryId;
+    var name      = req.body.name;
+    var Grocery   = app.models.Grocery;
+
+    Grocery.findById(groceryId, {}, function(err, model){
+      model.updateAttribute('name', name);
+      res.redirect('/auth/account');
+    });
+
 
   });
 
