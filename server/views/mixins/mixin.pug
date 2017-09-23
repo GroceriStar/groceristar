@@ -22,13 +22,13 @@ mixin view_departments_awesome(array, groceryId)
             i.fa.fa-bell.fa-4x
             SHOW   
 
-mixin view_groceries_short(array)
-  br
-  ul
-    each val, index in array
-      li= val.name + '( ' + val.id + ' ) '
-        a(href='/view/grocery/' + val.id, class="btn") link
-      a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
+//mixin view_groceries_short(array)
+  //br
+  //ul
+    //each val, index in array
+      //li= val.name + '( ' + val.id + ' ) '
+        //a(href='/view/grocery/' + val.id, class="btn") link
+      //a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
 
 
 mixin view_groceries_short2(array)
@@ -37,11 +37,14 @@ mixin view_groceries_short2(array)
     .round-border
       each val, index in array
         if( index == 0)
-          a.border-item.active('/view/grocery/' + val.id)
+          a.border-item.active(href='/view/grocery/' + val.id)
             h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
+              i.fa.fa-long-arrow-right(aria-hidden="true")
+
         else 
-          a.border-item('/view/grocery/' + val.id)
+          a.border-item(href='/view/grocery/' + val.id)
             h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
+              i.fa.fa-long-arrow-right(aria-hidden="true")
       
 
   
@@ -66,8 +69,6 @@ mixin view_departments_ingredients(array)
         li= val.name
           a(href='/#' + val.id) view
 
-
-
           a(href='/visibility/department/' + val.id)
             i.fa.fa-bell.fa-4x
             SHOW         
@@ -82,7 +83,7 @@ mixin link2(href, name)
   a.btn(class!=attributes.class title=name href=href target="_blank")= name
 
 mixin button_clone_ultimate(object)
-  +link('/clone/' + object.id, 'CLONE GROCERY:  ' + object.name)(class="btn-primary")            
+  +link('/clone/' + object.id, 'Create new grocery by cloning Grocery Template:  ' + object.name)(class="btn-primary")            
 
 mixin button_department(id, groceryId)
   +link('/department/' + id + '/' + groceryId, 'view')

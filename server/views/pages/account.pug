@@ -21,7 +21,7 @@ block content
 
   a.btn.btn-primary(href="/select/59b72480f6d6fb0744f2e5fd")  Select
   hr
-  
+
   br
   include ../partials/account-inside-buttons
   br
@@ -29,8 +29,12 @@ block content
 
   if groceries
     .col-md-12
+      h1 Your Grocery Lists
+    .col-md-12
       +view_groceries_short2(groceries)
-
+  else 
+    .col-md-12
+      h1 You don't clone any grocery list yet.
   br
 
 

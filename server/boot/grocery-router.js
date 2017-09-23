@@ -45,7 +45,7 @@ module.exports = function(app) {
     Grocery.fetchById(groceryId, function(err, response){
 
       // :todo make all data came from method
-      res.render('pages/grocery', {
+      res.render('pages/grocery-new', {
           name: response.name,
           elements: response.data, // [data>> department >> ingredient]
           groceryId: groceryId,
@@ -202,6 +202,14 @@ module.exports = function(app) {
     });
 
  });
+
+ router.get('/change/grocery/name', 
+  ensureLoggedIn('/auth/account'), 
+  function(req, res, next){
+
+    
+
+  });
 
 
   app.use(router);
