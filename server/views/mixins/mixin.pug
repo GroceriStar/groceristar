@@ -28,7 +28,7 @@ mixin view_departments_awesome(array, groceryId)
     //each val, index in array
       //li= val.name + '( ' + val.id + ' ) '
         //a(href='/view/grocery/' + val.id, class="btn") link
-      //a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
+      //+button_change_name(val.id)
 
 
 mixin view_groceries_short2(array)
@@ -57,8 +57,7 @@ mixin view_groceries_departments(array)
     each val, index in array
       li= val.name + '( ' + val.id + ' ) '
         a(href='/view/grocery/' + val.id, class="btn") link
-      a(href='/change-the-name/grocery/' + val.id, class="btn") [change name beatch2!]
-
+      +button_change_name(val.id)
       +view_departments_awesome(val.departments, val.id)
       hr 
 
@@ -100,3 +99,6 @@ mixin button_view_grocery(groceryId, title)
 
 mixin button_ingredients_list(groceryId, departmentId)
   +link('/todo/' + groceryId + '/' + departmentId, 'TODOLIST')
+
+mixin button_change_name(groceryId)
+  +link('/change-the-name/grocery/' + groceryId, '[change name !]')(class="btn")

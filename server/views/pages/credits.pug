@@ -1,28 +1,35 @@
 extends ../layouts/dashboard
 
 block content
-  h1 this is content title
+  h1 Copyright credits page
   
-  div
+  div#credits-styles-wrapper
 
-    | Credits page:
-    | Data was a steal from Ultimate grocery list: www.grocerylists.org/ultimatest/
+    h4 Where we get template data.
+    |  Ingredients and departments data, was exported from
+      a(href="www.grocerylists.org/ultimatest/") FREE: The Ultimatest Grocery Lists from grocerylists.org
     br
-
-    | Get the copy of this project and start to build your own shopping list project. https://github.com/atherdon/loopback-fb-login
+    
+    h4 This project is open-source*. 
+    | Copy this project and start to build your own shopping list project. 
+      a(href="https://github.com/atherdon/loopback-fb-login")
+    | * Owner can change this permissions, but current version will be available on github.
     br 
 
-    | Build with Loopback https://loopback.io/
+    | Build with Loopback
+      a(href="https://loopback.io/") The Node.js API Framework
     br
 
-    | Todo list from todomvc.com
+    | Ingredients list template based on 
+      a(href="https://todomvc.com/") TodoMVC
     br
 
-    | Grocery information based on research ...
+    h4 Science data based on this researches
+    
     | "Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults"
-    | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4430323/
+    | a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4430323/") Main article
 
-    | Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults
+    | "Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults"
     address.authors
       strong RAND Health
       br
@@ -47,7 +54,7 @@ block content
       </p>
 
 
-    | Which food-related behaviours are associated with healthier intakes of fruits and vegetables among women?
+    | "Which food-related behaviours are associated with healthier intakes of fruits and vegetables among women?"
     p.authors
     | Crawford D, Ball K, Mishra G, Salmon J, Timperio A
         

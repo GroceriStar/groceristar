@@ -43,6 +43,8 @@ module.exports = function(app) {
           messages: {},
 
           departments: response.data,
+
+          title: "Grocery list " + response.name
         
         }); 
 
