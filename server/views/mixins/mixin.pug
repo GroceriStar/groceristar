@@ -102,3 +102,20 @@ mixin button_ingredients_list(groceryId, departmentId)
 
 mixin button_change_name(groceryId)
   +link('/change-the-name/grocery/' + groceryId, '[change name !]')(class="btn")
+
+
+mixin dropdown
+  .btn-group
+    button(type="button", class="btn btn-default dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+      | Grocery List Actions 
+      span.caret
+    ul.dropdown-menu.dropdown-menu-right
+      li
+        a(href="/") Remove 
+      li
+        a(href="/") Change name
+      li
+        a(href="/") Manage Departments
+      li
+        a(href="/") Clone List
+
