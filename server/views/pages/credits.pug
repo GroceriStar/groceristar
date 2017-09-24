@@ -1,4 +1,4 @@
-extends ../layouts/dashboard
+extends ../layouts/dash2-meke-it-better
 
 block content
   h1 Copyright credits page
@@ -6,80 +6,82 @@ block content
   div#credits-styles-wrapper
 
     h4 Where we get template data.
-    |  Ingredients and departments data, was exported from
-      a(href="www.grocerylists.org/ultimatest/") FREE: The Ultimatest Grocery Lists from grocerylists.org
+    div Ingredients and departments data, was exported from 
+      a(href="www.grocerylists.org/ultimatest/") The Ultimatest Grocery Lists from grocerylists.org
+
+
+    div Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
+    br
+    div You can purchase it from Amazon: 
+      a(href="https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/") Link
+
     br
     
-    h4 This project is open-source*. 
-    | Copy this project and start to build your own shopping list project. 
+    h4 This project is open-source *. 
+    p Copy this project and start to build your own shopping list project. 
       a(href="https://github.com/atherdon/loopback-fb-login")
-    | * Owner can change this permissions, but current version will be available on github.
+    p 
+      mark *
+      |  Owner can change this permissions, but current version will be available on github.
     br 
 
-    | Build with Loopback
+    div Build with Loopback 
       a(href="https://loopback.io/") The Node.js API Framework
     br
 
-    | Ingredients list template based on 
+    div Ingredients list template based on 
       a(href="https://todomvc.com/") TodoMVC
     br
 
     h4 Science data based on this researches
     
-    | "Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults"
-    | a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4430323/") Main article
+    div "Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults"
+      a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4430323/") Main article
 
-    | "Using a Grocery List Is Associated with a Healthier Diet and Lower BMI Among Very High Risk Adults"
-    address.authors
-      strong RAND Health
-      br
-      |  Corresponding Author: Tamara Dubowitz,
-      br
-      |  RAND Corporation,
-      br
-      |  4570 Fifth Avenue, Suite 600,
-      br
-      |  Pittsburgh, PA 15213
-      br
-      abbr(title='Phone') P:
-      |  412 683 2300 x4400
-      br
-      abbr(title='Fax') F:
-      |  412 683 2800
-      br
-      |  gro.dnar@ztiwobud
-    //
-      <p class="authors">
-      , Phone: 412 683 2300 x4400, Fax: 412 683 2800,
-      </p>
+      address.authors
+        strong RAND Health
+        br
+        |  Corresponding Author: Tamara Dubowitz,
+        br
+        |  RAND Corporation,
+        br
+        |  4570 Fifth Avenue, Suite 600,
+        br
+        |  Pittsburgh, PA 15213
+        br
+        abbr(title='Phone') P:
+        |  412 683 2300 x4400
+        br
+        abbr(title='Fax') F:
+        |  412 683 2800
+        br
+        |  gro.dnar@ztiwobud
 
 
-    | "Which food-related behaviours are associated with healthier intakes of fruits and vegetables among women?"
+    p "Which food-related behaviours are associated with healthier intakes of fruits and vegetables among women?"
     p.authors
     | Crawford D, Ball K, Mishra G, Salmon J, Timperio A
         
     p.description
     | Public Health Nutr. 2007 Mar; 10(3):256-65.      
 
-
+    br
+    br
+    h4 Free to use fronted tools
+    div Icons from Font Awesome 
+      a(href="https://fontawesome.io/") Website
+    br
+    div Icons from 7 Stroke 
+      a(href="http://themes-pixeden.com/font-demos/7-stroke/") Website
     br
 
-    | Icons from Font Awesome and 7 Stroke fontawesome.io & http://themes-pixeden.com/font-demos/7-stroke/
+    div Google Fonts 
+      a(href="https://fonts.google.com/specimen/Roboto") Website
+    br
+    div Dropdown list from Codrops tutorial  
+      a(href="https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/") Article
     br
 
-    | Dropdown list from Codrops tutorial https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/
+    div Landing page prototype was build with Launchaco 
+      a(href="http://launchaco.com/build/") Website    
     br
-
-    | Landing page prototype was with Launchaco http://launchaco.com/build/
-    br
-
-    | All ingredients, based on content, from this website - http:// www.grocerylists.org/
-
-    br
-    | Author of this website cool book
-    br
-    | Owned by Bill Keaggy
-    br
-    | You can purchase it from Amazon.
-    br
-    //https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/
