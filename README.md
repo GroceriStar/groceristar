@@ -133,6 +133,45 @@ $ node .
 
 Grocery List Frontend Copyright: [http://todomvc.com/](https://github.com/tastejs/todomvc)
 
-And jsblocks Copyright: [http://jsblocks.com](https://github.com/astoilkov/jsblocks)
 
 [FontAwesome](http://fontawesome.io)
+
+    ### Where we get template data.
+    Ingredients and departments data, was exported from 
+[The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
+
+Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
+    
+     You can purchase it from Amazon: 
+      a(href="https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/") Link [FontAwesome](http://fontawesome.io)
+
+    
+    
+
+     Build with Loopback 
+      a(href="https://loopback.io/") The Node.js API Framework [FontAwesome](http://fontawesome.io)
+    
+
+     Ingredients list template based on 
+      a(href="https://todomvc.com/") TodoMVC [FontAwesome](http://fontawesome.io)
+    
+
+    
+    ### Free to use fronted tools
+     Icons from Font Awesome 
+      a(href="https://fontawesome.io/") Website [FontAwesome](http://fontawesome.io)
+    
+     Icons from 7 Stroke 
+      a(href="http://themes-pixeden.com/font-demos/7-stroke/") Website [FontAwesome](http://fontawesome.io)
+    
+
+     Google Fonts 
+      a(href="https://fonts.google.com/specimen/Roboto") Website [FontAwesome](http://fontawesome.io)
+    
+     Dropdown list from Codrops tutorial  
+      a(href="https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/") Article [FontAwesome](http://fontawesome.io)
+    
+
+     Landing page prototype was build with Launchaco 
+      a(href="http://launchaco.com/build/") Website [FontAwesome](http://fontawesome.io)   
+    
