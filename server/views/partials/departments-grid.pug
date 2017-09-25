@@ -13,12 +13,22 @@
         ul
           each ing, j in val.ingredients
           
-            li= ing[0] + ' | ' + ing[1]
-            a(href='/'+ing[0], class="btn btn-default btn-small") empty
-            a(href='/'+ing[0], class="btn btn-default btn-small") move
-            a(href=ing[2], class="btn btn-default btn-small") delete
-            a(href='/'+ing[0], class="btn btn-default btn-small") purchase
+            li= ing[1]           
+            +links(ing[0], ing[2]) 
+            //ing[0] = id, ing[2] = delete link 
      
-      hr  
+      hr
+
+
+
+      if val.ingredients.length
+        ul
+          each ing, j in val.ingredients
+          
+            li= ing[1]           
+            +links(ing[0], ing[2]) 
+            //ing[0] = id, ing[2] = delete link 
+      else
+        h2 | You don't have any ingredients   
 
 hr      

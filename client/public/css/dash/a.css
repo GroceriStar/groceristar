@@ -1,4 +1,4 @@
-li:nth-child(1) {
+/*li:nth-child(1) {
   color: #0d0d0d;
 }
 
@@ -37,7 +37,7 @@ li:nth-child(9) {
 li:nth-child(10) {
   color: gray;
 }
-
+*/
 
 body {
   background-color: #fafafa;

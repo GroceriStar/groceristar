@@ -6,14 +6,16 @@ block content
     .col-md-12
     
       h1= name
-      a(href="/remove/department/" + id + "/" + groceryId) Remove Department from Grocery list
+      +link_remove_department(id, groceryId)
+
       br
-      a(href="/visibility/department/" + id + "/" + groceryId) Visiblity this link can control
+      +link_visibility(id, groceryId)
+
       h1= description
       h1= id
     
 
-      include ../forms/add-ingredient    
+      //include ../forms/add-ingredient    
 
 
 
@@ -22,6 +24,6 @@ block content
           li= val.name + '( ' + val.id + ' )'
 
 
-
+      include ../partials/department-grid
 
 

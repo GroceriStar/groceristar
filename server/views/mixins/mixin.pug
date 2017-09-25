@@ -84,6 +84,9 @@ mixin link2(href, name)
 mixin button_clone_ultimate(object)
   +link('/clone/' + object.id, 'Create new grocery by cloning Grocery Template:  ' + object.name)(class="btn-primary")            
 
+mixin link_clone_ultimate(groceryId)
+  +link('/clone/' + groceryId, 'Clone Ultimate GL')
+  
 mixin button_department(id, groceryId)
   +link('/department/' + id + '/' + groceryId, 'view')
 
@@ -98,10 +101,26 @@ mixin button_view_grocery(groceryId, title)
 //  a(href='/auth/facebook', class=class) 'Login with Facebook'
 
 mixin button_ingredients_list(groceryId, departmentId)
-  +link('/todo/' + groceryId + '/' + departmentId, 'TODOLIST')
+  +link('/shopping/' + groceryId + '/' + departmentId, 'TODOLIST')
+
+
+mixin link_shopping(groceryId, departmentId)
+  +link('/shopping/' + groceryId + '/' + departmentId, 'Open shopping list')  
+
+
 
 mixin button_change_name(groceryId)
   +link('/change-the-name/grocery/' + groceryId, '[change name !]')(class="btn")
+
+
+
+
+mixin link_remove_department(id, groceryId)
+  +link("/remove/department/" + id + "/" + groceryId, "Remove Department from Grocery list")
+
+mixin link_visibility(id, groceryId)  
+  +link("/visibility/department/" + id + "/" + groceryId, "Visiblity this link can control")
+
 
 
 mixin dropdown(groceryId)
@@ -137,6 +156,14 @@ mixin dropdown2(groceryId, departmentId, flag)
       li
         a(href='/department/' + departmentId + '/' + groceryId) Manage Ingredients old-way
       li
-        a(href='/todo/' + groceryId + '/' + departmentId) Open shopping list
+        +link_shopping()
+        //a(href='/shopping/' + groceryId + '/' + departmentId) Open shopping list
       li
         a(href="/") Delete Department with ingredients
+
+
+mixin links(id, delete_link)        
+  a.btn.btn-default.btn-small(href='/' + id) empty
+  a.btn.btn-default.btn-small(href='/' + id) move
+  a.btn.btn-default.btn-small(href=delete_link) delete
+  a.btn.btn-default.btn-small(href='/' + id) purchase
