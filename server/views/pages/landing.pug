@@ -28,7 +28,7 @@ html
 
             a.nav-link(href='#')
               | Home
-            a.nav-link.facebook-login(href='#')
+            a.nav-link.facebook-login(href='/auth/facebook')
               i.fa.fa-facebook-square(aria-hidden="true")
               | Continue with Facebook
             a.nav-link(href='#')
@@ -48,8 +48,9 @@ html
             | We're creating the best place to go when starting a new business or company. With Launchaco you can instantly search domain names, social media handles, and see your logo in beautiful logotypes.
 
 
-          include ../partials/home-links
-
+          //include ../partials/home-links
+  
+          a(href='/clone/' + data.id, class="btn")= 'Clone >' + data.name
 
           .ctas
             input.ctas-input(type='text', placeholder='Grocery List Name')

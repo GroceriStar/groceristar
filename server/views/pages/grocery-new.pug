@@ -4,11 +4,8 @@ block content
   .row
     .col-md-6.col-md-offset-3
       h2= name
-      +dropdown
+      +dropdown(groceryId)
       
-      +link('/remove/grocery/' + groceryId, 'Remove GL FROM THIS USER')
-      +link('/change/grocery/name/' + groceryId, 'Change name')
-      +link('/change/grocery/name/' + groceryId, 'Manage Departments')
 
     section
       .col-md-12  
