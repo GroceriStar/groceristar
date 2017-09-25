@@ -242,7 +242,7 @@ module.exports = function(User) {
         }, cb);
     };
 
-    User.withAdminAndUltimate = function(cb){
+    User.withAdminAndUltimate = function(){
         User.findOne({
             where: {
                 name: 'admin'
@@ -256,7 +256,9 @@ module.exports = function(User) {
                      fields: [ 'id', 'name' ],
                  }
             }
-        }, cb);
+        }, function(err, model){
+            return model;
+        });
     };
 
 

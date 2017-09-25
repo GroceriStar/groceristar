@@ -19,6 +19,30 @@ module.exports = function(app) {
 
 
 
+  router.get('/view/grocery2/:groceryId', 
+    ensureLoggedIn('/auth/account'),
+    async  (req, res, next) => {
+
+      try {
+
+        var Grocery   = app.models.Grocery;
+        var User      = app.models.user;
+        var groceryId = req.params.groceryId;  
+
+        const userz = await User.withAdminAndUltimate();
+        console.log(userz);
+
+         // getUserFromDb({ id: req.params.id })
+
+        res.json(userz);
+      } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+      }
+
+    });
+
+
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
  router.get('/view/grocery/:groceryId', 
@@ -28,6 +52,20 @@ module.exports = function(app) {
     var User      = app.models.user;
     var groceryId = req.params.groceryId;
     // var userId    = req.user.id; 
+
+
+    //     var User    = app.models.user;
+
+    // User.withAdminAndUltimate(function(err, admin){
+
+    //     var json     = admin.toJSON();
+    //     var ultimate = json.groceries[0];
+    //     var data = {
+    //       id: ultimate.id,
+    //       name: ultimate.name
+
+    //     };
+    // };
 
 
     Grocery.fetchById(groceryId, function(err, response){

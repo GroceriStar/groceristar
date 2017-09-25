@@ -20,18 +20,18 @@ $(window).load(function() {
    LOGIN-SIGNUP MODAL                     
 =================================== */
 
-function showRegisterForm(){
-    "use strict";
-    $('.loginBox').fadeOut('fast',function(){
-        $('.registerBox').fadeIn('fast');
-        $('.login-footer').fadeOut('fast',function(){
-            $('.register-footer').fadeIn('fast');
-        });
-        $('.modal-title').html('Create an Account');
-        $('.modal-subtitle').html('Begin a 30-day free trial of SmartMVP');
-    });
-    $('.error').removeClass('alert alert-danger').html('');
-}
+// function showRegisterForm(){
+//     "use strict";
+//     $('.loginBox').fadeOut('fast',function(){
+//         $('.registerBox').fadeIn('fast');
+//         $('.login-footer').fadeOut('fast',function(){
+//             $('.register-footer').fadeIn('fast');
+//         });
+//         $('.modal-title').html('Create an Account');
+//         $('.modal-subtitle').html('Begin a 30-day free trial of SmartMVP');
+//     });
+//     $('.error').removeClass('alert alert-danger').html('');
+// }
 
 
 // function showLoginForm(){
@@ -49,18 +49,18 @@ function showRegisterForm(){
 // }
 
 
-function openLoginModal(){
-    "use strict";
-    showLoginForm();
-    $('#loginModal').modal('show');
-}
+// function openLoginModal(){
+//     "use strict";
+//     showLoginForm();
+//     $('#loginModal').modal('show');
+// }
 
 
-function openRegisterModal(){
-    "use strict";
-    showRegisterForm();
-    $('#loginModal').modal('show');
-}
+// function openRegisterModal(){
+//     "use strict";
+//     showRegisterForm();
+//     $('#loginModal').modal('show');
+// }
 
 
 /* =================================

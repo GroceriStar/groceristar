@@ -1,10 +1,10 @@
 'use strict';
 
-var request        = require('request');
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-var path           = require('path');
-
-var _ = require('underscore');
+const request        = require('request');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const path           = require('path');
+const async          = require('async');
+const _              = require('underscore');
 
 // var UserExtended = require(path.resolve(__dirname, '../../bin/import/users'));
 // var loopback = require('loopback');
@@ -78,7 +78,7 @@ module.exports = function(app) {
 
   });
 
-  router.get('/todo/:groceryId/:departmentId', 
+  router.get('/shopping/:groceryId/:departmentId', 
     function(req, res, next){
     var Grocery      = app.models.Grocery;
     // var userId    = req.user.id;
