@@ -106,7 +106,7 @@ module.exports = function(Grocery) {
             // resolve(cb(response));
             // return response;
             // сb(response);
-			// cb(null, response);
+			cb(null, response);
 
 		});
 

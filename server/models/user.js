@@ -199,6 +199,7 @@ module.exports = function(User) {
                 
             });
 
+
             User.withAdminAndUltimate(function(err, admin){
 
                 var json     = admin.toJSON();
@@ -229,34 +230,12 @@ module.exports = function(User) {
 
 
     User.withAdmin = function(cb){
-        User.findOne({
-            where: {
-                name: 'admin'
-            },
-            include: {
-                 relation: 'groceries'
-                 // scope: {
-                     
-                 // }
-            }
-        }, cb);
+        User.findOne(User.queryAdmin(), cb);
     };
 
+
     User.withAdminAndUltimate = function(cb){
-        User.findOne({
-            where: {
-                name: 'admin'
-            },
-            include: {
-                 relation: 'groceries',
-                 scope: {
-                     where: {
-                        name: "Ultimate Grocery List"
-                     },
-                     fields: [ 'id', 'name' ],
-                 }
-            }
-        }, cb);
+        User.findOne(queryUltimateAdmin(), cb);
     };
 
 
@@ -277,5 +256,19 @@ module.exports = function(User) {
         };
     }
 
+
+    User.queryAdmin = function(){
+        return {
+            where: {
+                name: 'admin'
+            },
+            include: {
+                 relation: 'groceries'
+                 // scope: {
+                     
+                 // }
+            }
+        };
+    };
 
 };

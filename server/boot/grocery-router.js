@@ -18,18 +18,18 @@ module.exports = function(app) {
 
 
 
-
+ //:todo add relations and display whole information about 
+ //:todo make it more protected from view
   router.get('/view/grocery/:groceryId', 
     ensureLoggedIn('/auth/account'),
     async  (req, res, next) => {
       var groceryId = req.params.groceryId;
       var data      = {};
+      var response  = {};
       let admin
       try {
 
-        // var Grocery   = app.models.Grocery;
         var User = app.models.user;
-        // var groceryId = req.params.groceryId;  
 
         // this is a duplicated code. :todo
         admin    = await User.findOne(User.queryUltimateAdmin());
@@ -40,9 +40,6 @@ module.exports = function(app) {
           id: ultimate.id,
           name: ultimate.name
         };
-
-        console.log(data);
-
 
         
       } catch (e) {
@@ -56,74 +53,34 @@ module.exports = function(app) {
          var Grocery   = app.models.Grocery;
          // grocery = await Grocery.fetchById(groceryId);
          grocery = await Grocery.findById(groceryId, Grocery.query1());
-         var a = Grocery.convertCollectionData(grocery);
+         response = Grocery.convertCollectionData(grocery);
 
-
-         console.log(grocery);
-
-         console.log(a);
 
       } catch (e) {
         //this will eventually be handled by your error handling middleware
         next(e) 
       }
 
+      // console.log(response);
 
+      res.render('pages/grocery-new', {
+        name: response.name,
+        //elements: response.data, // [data>> department >> ingredient]
+        groceryId: groceryId,
 
-// res.render('pages/grocery-new', {
-//           name: grocery.name,
-//           elements: grocery.data, // [data>> department >> ingredient]
-//           groceryId: groceryId,
+        messages: {},
 
-//           messages: {},
+        departments: response.data, // [data>> department >> ingredient]
 
-//           departments: grocery.data,
-
-//           title: "Grocery list " + grocery.name
-        
-//         }); 
+        title: "Grocery list " + response.name
+      
+      }); 
 
 
     });
 
 
 
- //:todo add relations and display whole information about 
- //:todo make it more protected from view
- // router.get('/view/grocery/:groceryId', 
- //  ensureLoggedIn('/auth/account'), 
- //  function(req, res, next){
- //    var Grocery   = app.models.Grocery;
- //    var User      = app.models.user;
- //    var groceryId = req.params.groceryId;
-
-
-
- //    Grocery.fetchById(groceryId, function(err, response){
-
- //      // console.log(response);
-
- //      // :todo make all data came from method
- //      res.render('pages/grocery-new', {
- //          name: response.name,
- //          elements: response.data, // [data>> department >> ingredient]
- //          groceryId: groceryId,
- //          // url: req.url,
- //          messages: {},
-
- //          departments: response.data,
-
- //          title: "Grocery list " + response.name
-        
- //        }); 
-
-
-
-
- //    });
-
-
- // });
 
  router.get('/view/grocery/hidden/:groceryId',
   ensureLoggedIn('/auth/account'),
@@ -240,7 +197,7 @@ module.exports = function(app) {
     User.methodofAllMethods(userId, function(err, data){
       // console.log(data);
       res.render('pages/grocery-list', {
-        title: 'GrocerIES ATTACHED TO THIS USER ' + userId,
+        title: 'GrocerIES ATTACHED TO THIS USER ' + userId, //:todo update that
         // url: req.url,
         messages: {},
         groceries: data.response,
