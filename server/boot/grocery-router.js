@@ -54,9 +54,14 @@ module.exports = function(app) {
       let grocery
       try {      
          var Grocery   = app.models.Grocery;
-         grocery = await Grocery.fetchById(groceryId);
+         // grocery = await Grocery.fetchById(groceryId);
+         grocery = await Grocery.findById(groceryId, Grocery.query1());
+         var a = Grocery.convertCollectionData(grocery);
+
 
          console.log(grocery);
+
+         console.log(a);
 
       } catch (e) {
         //this will eventually be handled by your error handling middleware

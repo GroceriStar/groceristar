@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('underscore');
+const _ = require('underscore');
+const async          = require('async');
 
 
 module.exports = function(Grocery) {
@@ -53,6 +54,8 @@ module.exports = function(Grocery) {
 			}
 
 		}, function(err, grocery){
+
+
 			var g       = grocery.toJSON();
 			let arr     = _.map(grocery.hideThisIds, item => item.toString());
 
@@ -100,7 +103,8 @@ module.exports = function(Grocery) {
                 data: uniques
             };
 
-            return response;
+            // resolve(cb(response));
+            // return response;
             // сb(response);
 			// cb(null, response);
 
@@ -109,6 +113,61 @@ module.exports = function(Grocery) {
 
 
 	};
+
+	Grocery.convertCollectionData = function(grocery){
+
+		var g       = grocery.toJSON();
+		let arr     = _.map(grocery.hideThisIds, item => item.toString());
+
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);           	
+          return item.department.id.toString();
+        }), function(grouped){
+
+        	var departmentId = grouped[0].departmentId.toString();
+        	var flag = _.contains(arr, departmentId);
+        	
+
+    		 var ja = _.map(grouped, function(item){
+    		 	return [
+        		 	item.id, 
+        		 	item.name,
+        		 	'/del/ing/' + item.id + '/' + g.id
+    		 	] // :todo change this to an object
+    		 });
+
+        	
+
+        	if ( !flag ) { 
+
+        		return { id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: ja,                        
+                };
+
+        	}
+
+        	return { id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: [],                        
+                };
+            
+
+        });
+        
+        var response = {
+            id: g.id,
+            name: g.name,
+            data: uniques
+        };
+        return response;
+
+	};
+
+
+
 
 	// hidden Only
 	// :todo update this, using withDepartments method
