@@ -19,96 +19,106 @@ module.exports = function(app) {
 
 
 
-  router.get('/view/grocery2/:groceryId', 
+  router.get('/view/grocery/:groceryId', 
     ensureLoggedIn('/auth/account'),
     async  (req, res, next) => {
-
+      var groceryId = req.params.groceryId;
+      var data      = {};
+      let admin
       try {
 
-        var Grocery   = app.models.Grocery;
-        var User      = app.models.user;
-        var groceryId = req.params.groceryId;  
+        // var Grocery   = app.models.Grocery;
+        var User = app.models.user;
+        // var groceryId = req.params.groceryId;  
 
-        const userz = await User.withAdminAndUltimate2();
-        console.log(userz);
+        // this is a duplicated code. :todo
+        admin    = await User.findOne(User.queryUltimateAdmin());
 
-         // getUserFromDb({ id: req.params.id })
+        var json     = admin.toJSON();
+        var ultimate = json.groceries[0];
+        data = {
+          id: ultimate.id,
+          name: ultimate.name
+        };
 
-        res.json(userz);
+        console.log(data);
+
+
+        
       } catch (e) {
         //this will eventually be handled by your error handling middleware
         next(e) 
       }
 
+
+      let grocery
+      try {      
+         var Grocery   = app.models.Grocery;
+         grocery = await Grocery.fetchById(groceryId);
+
+         console.log(grocery);
+
+      } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+      }
+
+
+
+// res.render('pages/grocery-new', {
+//           name: grocery.name,
+//           elements: grocery.data, // [data>> department >> ingredient]
+//           groceryId: groceryId,
+
+//           messages: {},
+
+//           departments: grocery.data,
+
+//           title: "Grocery list " + grocery.name
+        
+//         }); 
+
+
     });
+
 
 
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
- router.get('/view/grocery/:groceryId', 
-  ensureLoggedIn('/auth/account'), 
-  function(req, res, next){
-    var Grocery   = app.models.Grocery;
-    var User      = app.models.user;
-    var groceryId = req.params.groceryId;
-    // var userId    = req.user.id; 
+ // router.get('/view/grocery/:groceryId', 
+ //  ensureLoggedIn('/auth/account'), 
+ //  function(req, res, next){
+ //    var Grocery   = app.models.Grocery;
+ //    var User      = app.models.user;
+ //    var groceryId = req.params.groceryId;
 
 
-    //     var User    = app.models.user;
 
-    // User.withAdminAndUltimate(function(err, admin){
+ //    Grocery.fetchById(groceryId, function(err, response){
 
-    //     var json     = admin.toJSON();
-    //     var ultimate = json.groceries[0];
-    //     var data = {
-    //       id: ultimate.id,
-    //       name: ultimate.name
+ //      // console.log(response);
 
-    //     };
-    // };
+ //      // :todo make all data came from method
+ //      res.render('pages/grocery-new', {
+ //          name: response.name,
+ //          elements: response.data, // [data>> department >> ingredient]
+ //          groceryId: groceryId,
+ //          // url: req.url,
+ //          messages: {},
 
+ //          departments: response.data,
 
-    Grocery.fetchById(groceryId, function(err, response){
-
-      // console.log(response);
-
-      // :todo make all data came from method
-      res.render('pages/grocery-new', {
-          name: response.name,
-          elements: response.data, // [data>> department >> ingredient]
-          groceryId: groceryId,
-          // url: req.url,
-          messages: {},
-
-          departments: response.data,
-
-          title: "Grocery list " + response.name
+ //          title: "Grocery list " + response.name
         
-        }); 
-
-
-   
-
-
-    //   // :todo make all data came from method
-    //   // res.render('pages/grocery', {
-    //   //     title: response.title,
-    //   //     elements: response.data, // [data>> department >> ingredient]
-    //   //     groceryId: groceryId,
-    //   //     // url: req.url,
-    //   //     messages: {},
-    //   //     // departments: grocery.departmentsList
-    //   //   }); 
+ //        }); 
 
 
 
-    	
+
+ //    });
 
 
-    });
-
-
- });
+ // });
 
  router.get('/view/grocery/hidden/:groceryId',
   ensureLoggedIn('/auth/account'),

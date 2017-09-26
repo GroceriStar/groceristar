@@ -259,8 +259,9 @@ module.exports = function(User) {
         }, cb);
     };
 
-    User.withAdminAndUltimate2 = function(){
-        User.findOne({
+
+    User.queryUltimateAdmin = function(){
+        return {
             where: {
                 name: 'admin'
             },
@@ -273,12 +274,8 @@ module.exports = function(User) {
                      fields: [ 'id', 'name' ],
                  }
             }
-        }, function(err, model){
-            // cb(model);
-
-            return model;
-        });
-    };
+        };
+    }
 
 
 };

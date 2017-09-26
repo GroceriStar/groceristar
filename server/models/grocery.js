@@ -100,7 +100,9 @@ module.exports = function(Grocery) {
                 data: uniques
             };
 
-			cb(null, response);
+            return response;
+            // сb(response);
+			// cb(null, response);
 
 		});
 
