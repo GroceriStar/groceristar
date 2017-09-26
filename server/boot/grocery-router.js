@@ -1,9 +1,9 @@
 'use strict';
 
-var request        = require('request');
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const request        = require('request');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 // var loopback = require('loopback');
-
+const async          = require('async');
 
 module.exports = function(app) {
   var router  = app.loopback.Router();
@@ -29,7 +29,7 @@ module.exports = function(app) {
         var User      = app.models.user;
         var groceryId = req.params.groceryId;  
 
-        const userz = await User.withAdminAndUltimate();
+        const userz = await User.withAdminAndUltimate2();
         console.log(userz);
 
          // getUserFromDb({ id: req.params.id })

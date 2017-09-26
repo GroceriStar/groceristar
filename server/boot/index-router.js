@@ -123,66 +123,103 @@ module.exports = function(app) {
   });
 
 
-  router.get('/', function(req, res, next) {
-    var User    = app.models.user;
+  router.get('/', async  (req, res, next) => {
 
-    User.withAdminAndUltimate(function(err, admin){
+      let userz
+      try {
 
-        var json     = admin.toJSON();
-        var ultimate = json.groceries[0];
-        var data = {
-          id: ultimate.id,
-          name: ultimate.name
+        // var Grocery   = app.models.Grocery;
+        var User      = app.models.user;
+        // var groceryId = req.params.groceryId;  
 
-        };
-        // console.log(data);        
-
-        // res.render('pages/index', {
-        //     user: req.user,
-        //     url: req.url,
-        //     data: data, 
-        // });
-
-        res.render('pages/landing', {
-          user: req.user,
-          url: req.url,
-          data: data,
-          title: "There will be a new title sometime"
-          
+        userz = await User.findOne({
+            where: {
+                name: 'admin'
+            },
+            include: {
+                 relation: 'groceries',
+                 scope: {
+                     where: {
+                        name: "Ultimate Grocery List"
+                     },
+                     fields: [ 'id', 'name' ],
+                 }
+            }
         });
+        console.log(userz);
 
-        //       // res.render('pages/grocery2', {
-        //       //   user: req.user,
-        //       //   url: req.url,
-        //       //   data: response
-        //       // });
+         // getUserFromDb({ id: req.params.id })
 
-        //       // res.render('pages/home', {
-        //       //   user: req.user,
-        //       //   url: req.url,
-        //       //   data: response
-        //       // });
-
-
-        //       // res.render('pages/dashboard', {
-        //       //   user: req.user,
-        //       //   url: req.url,
-        //       //   data: response
-        //       // });
-        // console.log(UserExtended);
+        res.json(userz);
+      } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+      }
 
     });
 
 
-    
+
+  // router.get('/', function(req, res, next) {
+  //   var User    = app.models.user;
+
+  //   User.withAdminAndUltimate(function(err, admin){
+
+  //       var json     = admin.toJSON();
+  //       var ultimate = json.groceries[0];
+  //       var data = {
+  //         id: ultimate.id,
+  //         name: ultimate.name
+
+  //       };
+  //       // console.log(data);        
+
+  //       // res.render('pages/index', {
+  //       //     user: req.user,
+  //       //     url: req.url,
+  //       //     data: data, 
+  //       // });
+
+  //       res.render('pages/landing', {
+  //         user: req.user,
+  //         url: req.url,
+  //         data: data,
+  //         title: "There will be a new title sometime"
+          
+  //       });
+
+  //       //       // res.render('pages/grocery2', {
+  //       //       //   user: req.user,
+  //       //       //   url: req.url,
+  //       //       //   data: response
+  //       //       // });
+
+  //       //       // res.render('pages/home', {
+  //       //       //   user: req.user,
+  //       //       //   url: req.url,
+  //       //       //   data: response
+  //       //       // });
+
+
+  //       //       // res.render('pages/dashboard', {
+  //       //       //   user: req.user,
+  //       //       //   url: req.url,
+  //       //       //   data: response
+  //       //       // });
+  //       // console.log(UserExtended);
+
+  //   });
+
 
     
 
+    
 
 
 
 
-  });
+
+  // });
 
 
   //  app.use(function(req, res, next) {

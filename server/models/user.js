@@ -242,7 +242,24 @@ module.exports = function(User) {
         }, cb);
     };
 
-    User.withAdminAndUltimate = function(){
+    User.withAdminAndUltimate = function(cb){
+        User.findOne({
+            where: {
+                name: 'admin'
+            },
+            include: {
+                 relation: 'groceries',
+                 scope: {
+                     where: {
+                        name: "Ultimate Grocery List"
+                     },
+                     fields: [ 'id', 'name' ],
+                 }
+            }
+        }, cb);
+    };
+
+    User.withAdminAndUltimate2 = function(){
         User.findOne({
             where: {
                 name: 'admin'
@@ -257,6 +274,8 @@ module.exports = function(User) {
                  }
             }
         }, function(err, model){
+            // cb(model);
+
             return model;
         });
     };
