@@ -15,8 +15,11 @@ const _              = require('underscore');
 module.exports = function(app) {
 
   var router  = app.loopback.Router();
+  var mainController = require('../controllers/main-controller');
+  
+  // routers 
 
-
+  
   // router.get('/home', function(req, res, next){
 
   //   res.render('pages/home', {
@@ -68,15 +71,7 @@ module.exports = function(app) {
   //   });
   // });
 
-  router.get('/credits', function(req, res, next){
-
-      res.render('pages/credits', {
-        user        : req.user,
-        url         : req.url,
-        title: "Credits"
-      });
-
-  });
+  router.get('/credits', mainController.getCreditsPage);
 
   router.get('/shopping/:groceryId/:departmentId', 
     function(req, res, next){
@@ -123,44 +118,7 @@ module.exports = function(app) {
   });
 
 
-  router.get('/', async  (req, res, next) => {
-      var data = {};
-      let admin
-      try {
-
-        // var Grocery   = app.models.Grocery;
-        var User = app.models.user;
-        // var groceryId = req.params.groceryId;  
-
-        // this is a duplicated code. :todo
-        admin    = await User.findOne(User.queryUltimateAdmin());
-
-        var json     = admin.toJSON();
-        var ultimate = json.groceries[0];
-        data = {
-          id: ultimate.id,
-          name: ultimate.name
-        };
-
-        // console.log(data);
-
-        res.render('pages/landing', {
-          user: req.user,
-          url : req.url,
-          data: data,
-          title: "Online Grocery Lists" //:todo
-          
-        });
-
-        
-      } catch (e) {
-        //this will eventually be handled by your error handling middleware
-        next(e) 
-      }
-
-
-
-    });
+  router.get('/', mainController.getHomepage);
 
 
   
