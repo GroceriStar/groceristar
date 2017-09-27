@@ -12,18 +12,25 @@ html
 
 
   body
+
+
+
     header.header
       .container-lrg
         .col-12.spread
           div
             a.logo
-              | Groceristar            
-              img(src="/images/logo46.svg", alt="Go to home page")
+              | Groceristar
+              svg.icon
+                use(xlink:href="#icon-logo46")
+              //svg.icon
+                use(xlink:href="#icon-logo47")    
+              //- img(src="/images/logo46.svg", alt="Go to home page")
 
           div
 
             //a.nav-link(href='#')
-              //| Facebook Login
+              | Facebook Login
 
             //+button_facebook_login('nav-link')  
 
@@ -275,5 +282,9 @@ html
               | Email Us
             a.nav-link(href="/credits")
               | Credits  
+
+    
+    include ../static/svg.html
+
 
     script(src='https://use.fontawesome.com/8b5217f583.js')

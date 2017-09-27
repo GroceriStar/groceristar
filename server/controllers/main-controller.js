@@ -4,7 +4,7 @@
 const path      = require('path');
 // var validator = require('express-validator');
 
-let server    = require(path.resolve(__dirname, '../server'));
+let app    = require(path.resolve(__dirname, '../server'));
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 

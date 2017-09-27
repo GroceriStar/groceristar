@@ -235,7 +235,7 @@ module.exports = function(User) {
 
 
     User.withAdminAndUltimate = function(cb){
-        User.findOne(queryUltimateAdmin(), cb);
+        User.findOne(User.queryUltimateAdmin(), cb);
     };
 
 
