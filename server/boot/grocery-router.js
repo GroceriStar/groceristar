@@ -7,7 +7,8 @@ const async          = require('async');
 
 module.exports = function(app) {
   var router  = app.loopback.Router();
-
+  var groceryController = require('../controllers/grocery-controller');
+  
   
 
 
@@ -96,7 +97,7 @@ module.exports = function(app) {
       // :todo make all data came from method
       res.render('pages/grocery', {
           name: 'Hidden departments of ' + response.name,
-          elements: response.data, // [data>> department >> ingredient]
+          departments: response.data, // [data>> department >> ingredient]
           groceryId: groceryId,
           messages: {},
 
@@ -212,27 +213,11 @@ module.exports = function(app) {
 
  router.get('/change/grocery/name', 
   ensureLoggedIn('/auth/account'), 
-  function(req, res, next){
+  groceryController.changeName);
 
-    var Grocery = app.models.Grocery;
-    var groceryId = req.params.groceryId;
 
-    res.render('pages/change-grocery-list-name', {  
-    });
-  });
   // Update grocery list name
-  router.post('/update/name', function(req, res, next){
-    var groceryId = req.body.groceryId;
-    var name      = req.body.name;
-    var Grocery   = app.models.Grocery;
-
-    Grocery.findById(groceryId, {}, function(err, model){
-      model.updateAttribute('name', name);
-      res.redirect('/auth/account');
-    });
-
-
-  });
+  router.post('/update/name', groceryController.postUpdateName);
 
 
   app.use(router);
