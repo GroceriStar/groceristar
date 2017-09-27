@@ -53,7 +53,7 @@ module.exports = function(app) {
       try {      
          var Grocery   = app.models.Grocery;
          // grocery = await Grocery.fetchById(groceryId);
-         grocery = await Grocery.findById(groceryId, Grocery.query1());
+         grocery  = await Grocery.findById(groceryId, Grocery.query1());
          response = Grocery.convertCollectionData(grocery);
 
 
@@ -62,7 +62,7 @@ module.exports = function(app) {
         next(e) 
       }
 
-      // console.log(response);
+      console.log(response);
 
       res.render('pages/grocery-new', {
         name: response.name,
@@ -154,15 +154,7 @@ module.exports = function(app) {
 
 
 
-  router.get('/clone/:groceryId', function(req, res, next) {
-    var userId    = req.user.id;    
-    var groceryId = req.params.groceryId;  
-    var Grocery   = app.models.Grocery;
-    // console.log(typeof userId);
-    Grocery.cloner( groceryId, userId );
-
-    res.redirect('/auth/account');
-  });
+  router.get('/clone/:groceryId', groceryController.cloneGrocery);
 
 
 
@@ -171,22 +163,7 @@ module.exports = function(app) {
 // :todo finish
  router.get('create-new-grocery', 
   ensureLoggedIn('/auth/account'), 
-  function(req, res, next){
-
-    // console.log( req.user.id );
-    var Grocery = app.models.Grocery;
-    var data = {
-      title: data.title,
-      desc:  data.desc,
-      slug:  '',
-      img :  '',
-      // departmentIds: [], // not sure if we need this
-      // hideThisIds:   [],
-    }
-    Grocery.createnew(req.user.id, data, function(){});
-    // res.redirect('/');
-
- });
+  groceryController.createNewGrocery);
 
 // :todo finish
  router.get('/view/groceries', 

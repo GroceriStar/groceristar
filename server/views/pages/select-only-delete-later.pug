@@ -15,31 +15,22 @@ block content
   
   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
   
-  script(src='/javascript/select-demo/classie.js')
-  script(src='/javascript/select-demo/selectFx.js')
-  script.
-    (function() {
-    [].slice.call(
-     document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
-    new SelectFx(el);
-    } );
-    })();
+  include ../static/scripts-select
+
+
+
 
 
   script.
     $(document).ready(function(){
 
-      $('select').on('change', function() {
+      //- $('select').on('change', function() {
 
-        console.log(this.value);
-        console.log(this.data());
+      //-   console.log(this.value);
+      //-   console.log(this.data());
 
-      });
+      //- });
 
-      //$('#choose-department').on('submit', function(){
-
-        //return false;
-      //});
 
       $("#choose-department").submit(function(e) {
 
@@ -56,7 +47,6 @@ block content
 
         window.location.replace(path);
 
-    });
+      });
 
     });
-

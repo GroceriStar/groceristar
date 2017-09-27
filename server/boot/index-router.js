@@ -20,23 +20,7 @@ module.exports = function(app) {
   // routers 
 
   
-  // router.get('/home', function(req, res, next){
 
-  //   res.render('pages/home', {
-  //     user: req.user,
-  //     url: req.url,
-  //     // data: response
-  //   });
-  // });
-
- // router.get('/sortable', function(req, res, next){
-
- //    res.render('pages/grocery2', {
- //      user: req.user,
- //      url: req.url,
- //      // data: response
- //    });
- //  });
 
 
 
@@ -62,14 +46,7 @@ module.exports = function(app) {
 
   });
 
-  // router.get('/landosik', function(req, res, next){
 
-  //   res.render('pages/landing', {
-  //     user: req.user,
-  //     url: req.url,
-  //     // data: response
-  //   });
-  // });
 
   router.get('/credits', mainController.getCreditsPage);
 
@@ -120,8 +97,32 @@ module.exports = function(app) {
 
   router.get('/', mainController.getHomepage);
 
+  // router.get('/home', function(req, res, next){
 
-  
+  //   res.render('pages/home', {
+  //     user: req.user,
+  //     url: req.url,
+  //     // data: response
+  //   });
+  // });
+
+ // router.get('/sortable', function(req, res, next){
+
+ //    res.render('pages/grocery2', {
+ //      user: req.user,
+ //      url: req.url,
+ //      // data: response
+ //    });
+ //  });
+
+  // router.get('/landosik', function(req, res, next){
+
+  //   res.render('pages/landing', {
+  //     user: req.user,
+  //     url: req.url,
+  //     // data: response
+  //   });
+  // });  
 
   //  app.use(function(req, res, next) {
   //   res.status(404).send('Sorry cant find that!');

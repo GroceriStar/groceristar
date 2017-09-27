@@ -29,6 +29,31 @@ exports.postUpdateName = (req, res, next) => {
     });
 };
 
+exports.cloneGrocery = (req, res, next) => {
+    var userId    = req.user.id;    
+    var groceryId = req.params.groceryId;  
+    // var Grocery   = app.models.Grocery;
+    // console.log(typeof userId);
+    Grocery.cloner( groceryId, userId );
+
+    res.redirect('/auth/account');
+};
+
+exports.createNewGrocery = (req, res, next) => {
+    // console.log( req.user.id );
+    // var Grocery = app.models.Grocery;
+    var data = {
+      title: data.title,
+      desc:  data.desc,
+      slug:  '',
+      img :  '',
+      // departmentIds: [], // not sure if we need this
+      // hideThisIds:   [],
+    }
+    Grocery.createnew(req.user.id, data, function(){});
+    // res.redirect('/');
+};
+
 
 // Fancy console.log
 function output (err, data) {
