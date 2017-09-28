@@ -15,7 +15,8 @@
     "watch": "nodemon server/server.js",
     "test": "mocha",
     "import": "node bin/import/import.js",
-    "migrate": "node bin/automigrate.js"
+    "migrate": "node bin/automigrate.js",
+    "prod" : "NODE_ENV=production node server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.9.0",
