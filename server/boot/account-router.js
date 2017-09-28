@@ -6,6 +6,7 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 module.exports = function(app) {
 
 	var router  = app.loopback.Router();
+    // var accountController = require('../controllers/account-controller');
 
 	router.get('/local', function(req, res, next) {
 		res.render('pages/local', {
@@ -69,18 +70,26 @@ module.exports = function(app) {
 	});
 
 
-	router.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
+	router.get('/auth/account', 
+		ensureLoggedIn('/login'),
+		// accountController.getAccount 
+		function(req, res, next) {
 	    var Grocery = app.models.Grocery;
 	    var User    = app.models.user; 
 	    var userId  = req.user.id;
 
+
+
         User.methodofAllMethods(userId, function(err, data){
+
+        	// console.log(data.clone);
+
 			res.render('pages/account', {
 				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,
 				// url: req.url,
 				messages  : {},
 				groceries : data.response,
-				clone     : data.clone,
+				ultimate  : data.clone, // :todo change this
 				user      : req.user,
 				url       : req.url
 			  

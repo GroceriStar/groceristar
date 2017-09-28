@@ -86,7 +86,11 @@ mixin button_clone_ultimate(object)
 
 mixin link_clone_ultimate(groceryId)
   +link('/clone/' + groceryId, 'Clone Ultimate GL')
-  
+
+// :todo change this
+mixin link_clone_ultimate2(id, name)
+  +link('/clone/' + id, name)  
+
 mixin button_department(id, groceryId)
   +link('/department/' + id + '/' + groceryId, 'view')
 
