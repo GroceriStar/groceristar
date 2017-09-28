@@ -4,8 +4,9 @@
 const path      = require('path');
 // var validator = require('express-validator');
 
-let app    = require(path.resolve(__dirname, '../server'));
+let app       = require(path.resolve(__dirname, '../server'));
 var Grocery   = app.models.Grocery;
+var User      = app.models.user;
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
@@ -54,6 +55,26 @@ exports.createNewGrocery = (req, res, next) => {
     // res.redirect('/');
 };
 
+exports.removeGrocery = (req, res, next) => {
+
+  var groceryId = req.params.groceryId;
+  var userId    = req.user.id;    
+  
+  // var Grocery   = app.models.Grocery;
+
+  // this is a duplicated function from Grocery :todo think about it, real talk   
+  var options = {
+    type  : 'detach',
+    field : 'groceryIds',
+    userId: userId,
+    secondArray: [ groceryId ]
+  };
+  User.proceed(options);
+
+  Grocery.destroyById(groceryId, function(err){});
+  res.redirect('/auth/account');
+
+};
 
 // Fancy console.log
 function output (err, data) {

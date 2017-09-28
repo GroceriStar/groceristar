@@ -60,7 +60,8 @@ html
 
           //include ../partials/home-links
   
-          a(href='/clone/' + data.id, class="btn")= 'Clone >' + data.name
+
+          a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
 
           .ctas
             input.ctas-input(type='text', placeholder='Grocery List Name')
@@ -71,7 +72,8 @@ html
 
           a.nav-link(href='#')
             | Review <Ultimate Grocery List>    
-          +button_view_grocery(data.id, 'Review ' + data.name)
+          +button_view_grocery(ultimate.id, 'Review ' + ultimate.name)
+          
           
 
         .col-6.sidedevices
@@ -80,32 +82,44 @@ html
               .mask
                 img.mask-img(src='/images/Michelangelo_shopping_list.jpg')
                 // 2098182380_60d5ea00de_b.jpg
-                // Michelangelo_shopping_list.jpg
+
+
+    //.feature2
+      .container-lrg.flex
+        .col-12
+          h1 Features
+
+
+    .feature2
+      .container-lrg.flex
+
+        .col-6
+          .icon-large       
+            i.icon.pe-shopbag
+
+          h3.subheading
+            | Organize your shopping experience
+          p.paragraph
+            | You want to spend less? You want to reduce your impulse purchases? So grocery lists can help you. You'll buy only foods that you need
+
+
+        .col-6
+          .icon-large       
+            i.icon.pe-phone   
+       
+
+          h3.subheading
+            | Mobile oriented design
+
+          p.paragraph
+            | You can manage all data from your phone. You always carry your smartphone, instead of paper lists. Your lists on your phone, period.
 
 
 
 
     .feature2
       .container-lrg.flex
-        .col-6
-          .icon-large       
-            i.icon.pe-shopbag
-
-          //i.icon.pe-shopbag(style="font-size: 60px;")
-          //i.icon.pe-search(style="font-size: 60px;")
-          //i.icon.pe-note2(style="font-size: 60px;")
-          //i.icon.pe-pen(style="font-size: 60px;")
-          //i.icon.pe-phone(style="font-size: 60px;")
-          //i.icon.pe-like(style="font-size: 60px;")
-          //i.icon.pe-edit(style="font-size: 60px;")
-          //i.icon.pe-download(style="font-size: 60px;")
-
-
-          h3.subheading
-            //| Brilliant Domain Names.
-          p.paragraph
-            //| Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
-
+        
         .col-6
           .icon-large       
             i.icon.pe-edit     
@@ -113,41 +127,20 @@ html
           h3.subheading
             | Customization
           p.paragraph
-            | Clone and customize your own lists. 
+            | This is your own lists. You can do anything.
+
 
         .col-6
    
           .icon-large       
-            i.icon.pe-edit       
-
-         
-
+            i.icon.pe-search      
 
           h3.subheading
-            //| Brilliant Domain Names.
+            | Quick access 
           p.paragraph
-            //| Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!            
-
-    .feature2
-      .container-lrg.flex
-        
-
-        .col-6
-          .icon-large       
-            i.icon.pe-phone   
-       
-
-       
+            | Search ingredients in database, at your lists       
 
 
-          h3.subheading
-            | Mobile oriented design
-          p.paragraph
-            | You can manage all data from your phone.
-
-        .col-6
-          .icon-large       
-            i.icon.pe-note2  
 
     .feature2
       .container-lrg.flex
@@ -156,35 +149,21 @@ html
           .icon-large       
             i.icon.pe-pen       
 
-         
-
-
           h3.subheading
-            | Brilliant Domain Names.
+            | Save time by cloning Ultimate Template or your previous lists
           p.paragraph
             | Don't forget anything on your next shopping session
 
         .col-6
           .icon-large       
-            i.icon.pe-loop(style="font-size: 60px;") 
+            i.icon.pe-loop 
         
           h3.subheading
-            | Having a grocery list improves your HEALTH!
+            | Improve your health and live longer!
           p.paragraph
-            | This is simple (Coming soon)
+            | When you planning your shopping trips you can avoid this perfect cup cake or ice cream. 
 
-        .col-6
-   
-          .icon-large       
-            i.icon.pe-search      
-
-         
-
-
-          h3.subheading
-            | Quick access 
-          p.paragraph
-            | Search ingredients in database, at your lists    
+ 
 
     .feature2
       .container-lrg.flex
@@ -192,8 +171,6 @@ html
           .icon-large       
             i.icon.pe-like 
           
-          
-
 
           h3.subheading
             | Favourite ingredients
@@ -205,19 +182,13 @@ html
           .icon-large       
             i.icon.pe-download       
 
-         
-
-
           h3.subheading
             | Save and share your lists with family
           p.paragraph
             | Love paper lists? You can print them! (Coming soon)
 
 
-    .feature2
-      .container-lrg.flex
-        .col-12
-        | Features
+
 
     .feature2
       .container-lrg.flex
@@ -225,9 +196,6 @@ html
           
           .icon-large
             i.icon.pe-cash
-
-         
-
 
           h3.subheading
             | Plan your family budget
@@ -243,18 +211,8 @@ html
           p.paragraph
             | Plan your budget from your previous purchased items history handles. (coming soon)                                               
 
-        //.col-6
-   
-          .icon-large       
-            i.icon.pe-cash       
-
-         
 
 
-          h3.subheading
-            | Brilliant Domain Names.
-          p.paragraph
-            | Launchaco instantly shows you the most relevant domain names. Followed by hundreds of new gtlds. Get your .gold domain name today!
 
 
     include ../partials/science          
@@ -265,12 +223,11 @@ html
       .container-sml.text-center
         .col-12
           h5.heading
-            | Create Grocery Lists in few minutes
+            | Create Grocery Lists in a few minutes
           .ctas
-            a.ctas-button(href='')
-              | Sign Up
-            a.ctas-button-2(href='')
-              | Sign Up
+            a.ctas-button(href='/auth/facebook')
+              | Continue with Facebook
+
               
       .container-lrg.footer-nav
         .col-12.spread

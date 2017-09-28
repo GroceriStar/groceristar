@@ -11,7 +11,7 @@ let app    = require(path.resolve(__dirname, '../server'));
 
 exports.getHomepage = async (req, res, next) => {
 
-      var data = {};
+      var ultimateGL = {};
       let admin
       try {
 
@@ -24,7 +24,7 @@ exports.getHomepage = async (req, res, next) => {
 
         var json     = admin.toJSON();
         var ultimate = json.groceries[0];
-        data = {
+        ultimateGL = {
           id: ultimate.id,
           name: ultimate.name
         };
@@ -34,8 +34,10 @@ exports.getHomepage = async (req, res, next) => {
         res.render('pages/landing', {
           user: req.user,
           url : req.url,
-          data: data,
-          title: "Online Grocery Lists" //:todo
+          
+          title: "Online Grocery Lists", //:todo
+
+          ultimate: ultimateGL
           
         });
 

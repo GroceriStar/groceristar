@@ -24,9 +24,9 @@ module.exports = function(app) {
   router.get('/view/grocery/:groceryId', 
     ensureLoggedIn('/auth/account'),
     async  (req, res, next) => {
-      var groceryId = req.params.groceryId;
-      var data      = {};
-      var response  = {};
+      var groceryId  = req.params.groceryId;
+      var ultimateGL = {};
+      var response   = {};
       let admin
       try {
 
@@ -37,7 +37,7 @@ module.exports = function(app) {
 
         var json     = admin.toJSON();
         var ultimate = json.groceries[0];
-        data = {
+        ultimateGL = {
           id: ultimate.id,
           name: ultimate.name
         };
@@ -73,7 +73,9 @@ module.exports = function(app) {
 
         departments: response.data, // [data>> department >> ingredient]
 
-        title: "Grocery list " + response.name
+        title: "Grocery list " + response.name,
+
+        ultimate: ultimateGL
       
       }); 
 
@@ -132,25 +134,7 @@ module.exports = function(app) {
  
  router.get('/remove/grocery/:groceryId', 
   ensureLoggedIn('/auth/account'), 
-  function(req, res, next){
-    var groceryId = req.params.groceryId;
-    var userId    = req.user.id;    
-    var User      = app.models.user;
-    var Grocery   = app.models.Grocery;
-
-    // this is a duplicated function from Grocery :todo think about it, real talk   
-    var options = {
-      type  : 'detach',
-      field : 'groceryIds',
-      userId: userId,
-      secondArray: [ groceryId ]
-    };
-    User.proceed(options);
-
-    Grocery.destroyById(groceryId, function(err){});
-    res.redirect('/auth/account');
-
-});
+  groceryController.removeGrocery);
 
 
 

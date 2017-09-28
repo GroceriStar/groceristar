@@ -386,7 +386,7 @@ address {
 
 
 .facebook-login {
-	background-color: #4267b2;
+	/*background-color: #4267b2;*/
     color: #fff;
     cursor: pointer;
     display: inline-block;
@@ -400,7 +400,7 @@ address {
 
 
 
-    padding-top: 4px;
+    /*padding-top: 4px;*/
     padding-left: 7px;
     padding-right: 10px;
 
@@ -422,6 +422,37 @@ address {
 
 }
 
+
+.sidedevices .browserwrapper .browser {
+	height: 550px;
+}
+.sidedevices .browserwrapper .mask-img {
+	width: initial;
+}
+.sidedevices .browserwrapper .browser {
+	width: 605px;
+}
+
+
+svg.icon {
+	width: 100px;
+	height: 60px;
+	color: white;
+}
+
+#icon-logo46 {
+	width: 100px;
+	height: 60px;
+	color: white;
+}
+.nav-link2, .nav-link {
+	line-height: 48px
+}
+
+.feature2 .col-6 {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
 
 @media (max-width: 900px) {
 	.feature2 .emoji {
