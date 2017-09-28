@@ -61,7 +61,9 @@ html
           //include ../partials/home-links
   
 
-          a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
+          //- a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
+          a(href='/auth/facebook', class="btn")= 'Sign Up via Facebook'
+
 
           .ctas
             input.ctas-input(type='text', placeholder='Grocery List Name')
@@ -74,7 +76,7 @@ html
             | Review <Ultimate Grocery List>    
           +button_view_grocery(ultimate.id, 'Review ' + ultimate.name)
           
-          
+
 
         .col-6.sidedevices
           .browserwrapper

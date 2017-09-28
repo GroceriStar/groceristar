@@ -423,13 +423,13 @@ address {
 }
 
 
-.sidedevices .browserwrapper .browser {
+.header .sidedevices .browserwrapper .browser {
 	height: 550px;
 }
-.sidedevices .browserwrapper .mask-img {
+.header .sidedevices .browserwrapper .mask-img {
 	width: initial;
 }
-.sidedevices .browserwrapper .browser {
+.header .sidedevices .browserwrapper .browser {
 	width: 605px;
 }
 

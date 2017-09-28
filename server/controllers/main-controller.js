@@ -15,7 +15,6 @@ exports.getHomepage = async (req, res, next) => {
       let admin
       try {
 
-        // var Grocery   = app.models.Grocery;
         var User = app.models.user;
         // var groceryId = req.params.groceryId;  
 
