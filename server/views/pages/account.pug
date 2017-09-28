@@ -4,6 +4,10 @@ block content
 
   include ../partials/fb-login-info
 
+  if groceries
+    h1 Your current Grocery List is: 
+    +view_groceries_short2(groceries[0]) 
+
 
   if groceries
     .col-md-12

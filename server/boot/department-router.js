@@ -156,6 +156,9 @@ module.exports = function(app) {
 	});
 
 
+
+
+
 	// visibility for a few departments at one time
 
 	// router.get('/remove/department/:id/:groceryId', function(req, res, next){
@@ -205,6 +208,9 @@ module.exports = function(app) {
 	// 	res.redirect('/view/grocery/' + groceryId);
 
 	// });
+
+
+
 
 
 	router.get('/remove/department/:id/:groceryId', function(req, res, next){
