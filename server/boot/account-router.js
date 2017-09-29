@@ -82,7 +82,7 @@ module.exports = function(app) {
 
         User.methodofAllMethods(userId, function(err, data){
 
-        	console.log(data.response);
+        	// console.log(data.response);
 
 			res.render('pages/account', {
 				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,

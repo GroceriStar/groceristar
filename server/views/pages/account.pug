@@ -1,27 +1,23 @@
 extends ../layouts/dashboard
 
 block content
+  .row.mt-120 
+    if groceries.length !== 0
+      .col-md-6
+        h1 Your current Grocery List is: 
+        //+view_groceries_short2(groceries[0]) 
+      .col-md-6
+        +button_clone_ultimate(ultimate)
 
-  include ../partials/fb-login-info
-
-  if groceries
-    h1 Your current Grocery List is: 
-    //+view_groceries_short2(groceries[0]) 
-
-
-  if groceries
-    .col-md-12
-      h1 Your Grocery Lists
-    .col-md-12
-      +view_groceries_short2(groceries)
-  else 
-    .col-md-12
-      h1 You don't clone any grocery list yet.
-  br
+    else
+      .col-md-6
+        h3 You don't clone any grocery list yet.
+        +link_clone_ultimate2(ultimate.id, 'Start to work by clonning Ultimate Grocery template')
+    
 
 
-
-
-  hr
-  +button_clone_ultimate(ultimate)  
-  hr
+    if groceries.length !== 0
+      .col-md-6
+        h1 Your Grocery Lists
+      .col-md-6
+        +view_groceries_short2(groceries)

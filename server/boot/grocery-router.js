@@ -66,7 +66,7 @@ module.exports = function(app) {
 
       res.render('pages/grocery-new', {
         name: response.name,
-        //elements: response.data, // [data>> department >> ingredient]
+        
         groceryId: groceryId,
 
         messages: {},

@@ -112,3 +112,20 @@ body {
   font-weight: 300;
   /*text-align: center;*/
 }
+
+.mt-120 {
+  margin-top: 120px;
+}
+
+ /*duplicate*/
+svg.icon {
+  width: 100px;
+  height: 60px;
+  color: white;
+}
+
+#icon-logo46 {
+  width: 100px;
+  height: 60px;
+  color: white;
+}
