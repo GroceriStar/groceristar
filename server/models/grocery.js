@@ -347,10 +347,28 @@ module.exports = function(Grocery) {
 
 	};
 
+	Grocery.getObjectForClone = function(grocery){
+
+		var object = {
+			name: 'Clone of < ' + grocery.name + ' >',
+			desc: grocery.desc,
+			slug: grocery.slug,
+			img : grocery.img,
+			hideThisIds  : grocery.hideThisIds,
+			ingredientIds: grocery.ingredientIds,
+			created_at   : new Date(),
+			updated_at   : new Date(),
+		};
+		
+		return object;
+	};
+
+
 	//:todo add remote method for enable API calls for this method
 
 
 	Grocery.cloner = function(groceryId, userId){
+
 		Grocery.findById(groceryId, {
 			include: ['ingredients', 'departmentsToHide']
 			
@@ -481,6 +499,12 @@ module.exports = function(Grocery) {
 		}, cb);
 	};
 
+
+	Grocery.queryNotHidden = function(){
+		return {
+			include: ['ingredients', 'departmentsToHide']			
+		}
+	};
 
 
 

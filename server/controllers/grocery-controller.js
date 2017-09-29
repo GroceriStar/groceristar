@@ -1,12 +1,14 @@
 'use strict';
 
 
-const path      = require('path');
+const path    = require('path');
 // var validator = require('express-validator');
 
 let app       = require(path.resolve(__dirname, '../server'));
-var Grocery   = app.models.Grocery;
-var User      = app.models.user;
+const async   = require('async');
+
+const Grocery = app.models.Grocery;
+const User    = app.models.user;
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
@@ -35,11 +37,22 @@ exports.cloneGrocery = (req, res, next) => {
     var groceryId = req.params.groceryId;  
 
     
-    // var Grocery   = app.models.Grocery;
+    var Grocery   = app.models.Grocery;
     // console.log(typeof userId);
-    Grocery.cloner( groceryId, userId );
+    let grocery
+    //Grocery.cloner( groceryId, userId );
 
-    res.redirect('/auth/account');
+    try {
+      grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
+
+        // console.log(grocery);
+    } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
+
+    // res.redirect('/auth/account');
+    // res.send({redirect: '/auth/account'});
 };
 
 exports.createNewGrocery = (req, res, next) => {
