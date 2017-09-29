@@ -131,47 +131,40 @@ $ node .
 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
 
-Grocery List Frontend Copyright: [http://todomvc.com/](https://github.com/tastejs/todomvc)
-
-
-[FontAwesome](http://fontawesome.io)
+Credits Data
 
     ### Where we get template data.
     Ingredients and departments data, was exported from 
-[The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
+    [The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
 
-Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
+    Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
     
-     You can purchase it from Amazon: 
-      a(href="https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/") Link [FontAwesome](http://fontawesome.io)
+    You can purchase [it from Amazon: ](https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/)
 
-    
     
 
      Build with Loopback 
-      a(href="https://loopback.io/") The Node.js API Framework [FontAwesome](http://fontawesome.io)
+     [The Node.js API Framework](https://loopback.io/)
     
 
      Ingredients list template based on 
-      a(href="https://todomvc.com/") TodoMVC [FontAwesome](http://fontawesome.io)
+     [TodoMVC](https://todomvc.com)
     
 
     
     ### Free to use fronted tools
-     Icons from Font Awesome 
-      a(href="https://fontawesome.io/") Website [FontAwesome](http://fontawesome.io)
+    [Icons from Font Awesome](http://fontawesome.io)
     
-     Icons from 7 Stroke 
-      a(href="http://themes-pixeden.com/font-demos/7-stroke/") Website [FontAwesome](http://fontawesome.io)
-    
-
-     Google Fonts 
-      a(href="https://fonts.google.com/specimen/Roboto") Website [FontAwesome](http://fontawesome.io)
-    
-     Dropdown list from Codrops tutorial  
-      a(href="https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/") Article [FontAwesome](http://fontawesome.io)
+     
+    [Icons from 7 Stroke](http://themes-pixeden.com/font-demos/7-stroke/)
     
 
-     Landing page prototype was build with Launchaco 
-      a(href="http://launchaco.com/build/") Website [FontAwesome](http://fontawesome.io)   
+     
+    [Google Fonts](https://fonts.google.com/specimen/Roboto)
     
+       
+    [Dropdown list from Codrops tutorial](https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/)
+    
+
+    
+    [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
