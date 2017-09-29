@@ -9,16 +9,6 @@ module.exports = function(app) {
   var router  = app.loopback.Router();
   var groceryController = require('../controllers/grocery-controller');
   
-  
-
-
-
-
-
-
-
-
-
  //:todo add relations and display whole information about 
  //:todo make it more protected from view
   router.get('/view/grocery/:groceryId', 
@@ -140,7 +130,7 @@ module.exports = function(app) {
 
   router.get('/clone/:groceryId', groceryController.cloneGrocery);
 
-
+  router.get('/afterclone', groceryController.justRedirect);
 
 
 

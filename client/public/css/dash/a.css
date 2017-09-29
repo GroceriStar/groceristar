@@ -59,7 +59,7 @@ body {
   background: #fff;
   z-index: 100;
   width: 100%;
-  max-width: 500px;
+  /*max-width: 500px;*/
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -116,7 +116,12 @@ body {
 .mt-120 {
   margin-top: 120px;
 }
-
+.mt-90 {
+  margin-top: 90px;  
+}
+.mt-80 {
+  margin-top: 80px;  
+}
 
  /*duplicate*/
 svg.icon {

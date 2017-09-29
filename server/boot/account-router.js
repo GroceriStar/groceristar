@@ -16,7 +16,6 @@ module.exports = function(app) {
 		});
 	});
 	
-
 	router.get('/signup', function(req, res, next) {
 		res.render('pages/signup', {
 		  user: req.user,
@@ -24,7 +23,6 @@ module.exports = function(app) {
 		  messages: {}
 		});
 	});
-
 
 	router.post('/signup', function(req, res, next) {
 		var User = app.models.user;
@@ -54,7 +52,6 @@ module.exports = function(app) {
 		});
 	});
 
-
 	router.get('/login', function(req, res, next) {
 		res.render('pages/login', {
 		  user: req.user,
@@ -62,7 +59,6 @@ module.exports = function(app) {
 		  messages: {}
 		});
 	});
-
 
 	router.get('/auth/logout', function(req, res, next) {
 		req.logout();
@@ -82,7 +78,7 @@ module.exports = function(app) {
 
         User.methodofAllMethods(userId, function(err, data){
 
-        	// console.log(data.response);
+        	// console.log(data.response[0]);
 
 			res.render('pages/account', {
 				title     : 'GrocerIES ATTACHED TO THIS USER ' + userId,

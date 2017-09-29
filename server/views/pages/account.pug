@@ -4,10 +4,16 @@ block content
   .row.mt-120 
     if groceries.length !== 0
       .col-md-8
-        h1 Your current Grocery List is: 
-        //+view_groceries_short2(groceries[0]) 
+        h1 Your current Grocery List is:
+        .row
+          .col-md-8 
+            +view_groceries_short_one(groceries[0]) 
+
       .col-md-4
-        +button_clone_ultimate(ultimate)
+        p.mt-90
+          +link_clone_ultimate3(ultimate.id, 'Create new grocery') 
+          | &nbsp;by cloning Grocery Template
+        //+button_clone_ultimate(ultimate)
 
     else
       .col-md-8
@@ -17,7 +23,9 @@ block content
 
 
     if groceries.length !== 0
-      .col-md-8
+      .col-md-8.mt-80
         h1 Your Grocery Lists
       .col-md-8
-        +view_groceries_short2(groceries)
+        .row
+          .col-md-8
+            +view_groceries_short2(groceries)

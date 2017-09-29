@@ -2,10 +2,10 @@
 
 
 const path    = require('path');
-// var validator = require('express-validator');
 
 let app       = require(path.resolve(__dirname, '../server'));
-const async   = require('async');
+
+var async   = require('async');
 
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
@@ -14,7 +14,7 @@ const User    = app.models.user;
 
 exports.changeName = (req, res, next) => {
 
-    // var Grocery = app.models.Grocery;
+    var Grocery = app.models.Grocery;
     var groceryId = req.params.groceryId;
 
     res.render('pages/change-grocery-list-name', {});
@@ -24,7 +24,7 @@ exports.changeName = (req, res, next) => {
 exports.postUpdateName = (req, res, next) => {
 	var groceryId = req.body.groceryId;
     var name      = req.body.name;
-    // var Grocery   = app.models.Grocery;
+    var Grocery   = app.models.Grocery;
 
     Grocery.findById(groceryId, {}, function(err, model){
       model.updateAttribute('name', name);
@@ -32,32 +32,47 @@ exports.postUpdateName = (req, res, next) => {
     });
 };
 
-exports.cloneGrocery = (req, res, next) => {
+exports.cloneGrocery = async (req, res, next) => {
     var userId    = req.user.id;    
     var groceryId = req.params.groceryId;  
-
     
-    var Grocery   = app.models.Grocery;
-    // console.log(typeof userId);
     let grocery
-    //Grocery.cloner( groceryId, userId );
-
     try {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
 
-        // console.log(grocery);
     } catch (e) {
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
 
-    // res.redirect('/auth/account');
-    // res.send({redirect: '/auth/account'});
+    let cloned
+    try {   
+      var newObject = Grocery.getObjectForClone(grocery);
+      cloned = await Grocery.create(newObject);
+
+    } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
+
+    var options = {
+      type  : 'attach',
+      field : 'groceryIds',
+      userId: userId,
+      secondArray: [ cloned.id ]
+    };
+    User.proceed(options);
+
+    res.redirect('/afterclone');
+};
+
+exports.justRedirect = (req, res, next) => {
+  res.redirect('/auth/account');
 };
 
 exports.createNewGrocery = (req, res, next) => {
     // console.log( req.user.id );
-    // var Grocery = app.models.Grocery;
+    var Grocery = app.models.Grocery;
     var data = {
       title: data.title,
       desc:  data.desc,
@@ -70,12 +85,14 @@ exports.createNewGrocery = (req, res, next) => {
     // res.redirect('/');
 };
 
+
 exports.removeGrocery = (req, res, next) => {
 
   var groceryId = req.params.groceryId;
   var userId    = req.user.id;    
   
-  // var Grocery   = app.models.Grocery;
+  var Grocery   = app.models.Grocery;
+  var User   = app.models.user;
 
   // this is a duplicated function from Grocery :todo think about it, real talk   
   var options = {
