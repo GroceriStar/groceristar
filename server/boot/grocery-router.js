@@ -14,6 +14,14 @@ module.exports = function(app) {
   router.get('/view/grocery/:groceryId', 
     ensureLoggedIn('/auth/account'),
     async  (req, res, next) => {
+
+      console.log(req.originalUrl);
+      console.log(req.originalUrl.includes('/view/grocery/'));
+
+      //console.log(req.get('host'));
+
+      // res.locals.current_path= req.path;
+
       var groceryId  = req.params.groceryId;
       var ultimateGL = {};
       var response   = {};

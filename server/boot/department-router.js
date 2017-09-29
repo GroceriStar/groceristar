@@ -7,7 +7,7 @@ var _ = require('underscore');
 module.exports = function(app) {
 
 	var router  = app.loopback.Router();
-	
+	var departmentController = require('../controllers/department-controller');
 	
 
 	//:todo decide which method is better - grocery version or controller version
@@ -39,6 +39,8 @@ module.exports = function(app) {
 	  
 
 	});
+
+	router.get('/departments/show/:groceryId', departmentController.departmentsList);
 
 
 	// :todo make it work 
