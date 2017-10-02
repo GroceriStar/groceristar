@@ -1,0 +1,7 @@
+form#updateName(name="formsubmit", method="post", action="/cloneform")
+  input(type="text", name="name", value=name, placeholder="Grocery Name")  
+  br
+  input(type="hidden", name="groceryId", value=ultimate.id)
+  input(type="hidden", name="userId", value=user.id)
+  br
+  input.btn.btn-primary(type='submit', value='Create')  	

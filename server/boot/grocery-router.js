@@ -138,6 +138,8 @@ module.exports = function(app) {
 
   router.get('/clone/:groceryId', groceryController.cloneGrocery);
 
+  router.post('/cloneform', groceryController.cloneForm);
+
   router.get('/afterclone', groceryController.justRedirect);
 
 

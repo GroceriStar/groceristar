@@ -21,15 +21,16 @@ exports.changeName = (req, res, next) => {
 
 };
 
+// :todo duplicated stuff
 exports.postUpdateName = (req, res, next) => {
 	var groceryId = req.body.groceryId;
-    var name      = req.body.name;
-    var Grocery   = app.models.Grocery;
+  var name      = req.body.name;
+  var Grocery   = app.models.Grocery;
 
-    Grocery.findById(groceryId, {}, function(err, model){
-      model.updateAttribute('name', name);
-      res.redirect('/auth/account');
-    });
+  Grocery.findById(groceryId, {}, function(err, model){
+    model.updateAttribute('name', name);
+    res.redirect('/auth/account');
+  });
 };
 
 exports.cloneGrocery = async (req, res, next) => {
@@ -64,6 +65,53 @@ exports.cloneGrocery = async (req, res, next) => {
     User.proceed(options);
 
     res.redirect('/afterclone');
+};
+
+exports.cloneForm = async (req, res, next) => {
+
+  var groceryId = req.body.groceryId;
+  var userId    = req.body.userId;
+  var name      = req.body.name;
+  // var Grocery   = app.models.Grocery;
+
+  // Grocery.findById(groceryId, {}, function(err, model){
+  //   model.updateAttribute('name', name);
+  //   // res.redirect('/auth/account');
+  // });
+    let grocery
+    try {
+      grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
+
+    } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
+
+    let cloned
+    try {   
+      var newObject = Grocery.getObjectForClone(grocery);
+      // console.log(newObject);
+      newObject.name = name;
+      cloned = await Grocery.create(newObject);
+      console.log(cloned);
+      console.log(userId)
+    } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
+
+    var options = {
+      type  : 'attach',
+      field : 'groceryIds',
+      userId: userId,
+      secondArray: [ cloned.id ]
+    };
+    User.proceed(options);
+
+    res.redirect('/afterclone');
+
+
+  // res.redirect('/afterclone');
 };
 
 exports.justRedirect = (req, res, next) => {

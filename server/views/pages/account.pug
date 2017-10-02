@@ -10,10 +10,12 @@ block content
             +view_groceries_short_one(groceries[0]) 
 
       .col-md-4
-        p.mt-90
-          +link_clone_ultimate3(ultimate.id, 'Create new grocery') 
-          | &nbsp;by cloning Grocery Template
-        //+button_clone_ultimate(ultimate)
+        .panel.panel-bordered
+          .panel-body
+            h4 Сreate new list by cloning Grocery Template
+          .panel-footer 
+            include ../forms/clone-grocery
+              
 
     else
       .col-md-8
