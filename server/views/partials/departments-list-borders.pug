@@ -1,9 +1,9 @@
 .col-md-12
   .round-border
-    each val, index in elements
+    each val, index in departments
       a.border-item(href='/shopping/' + groceryId + '/' + val.id)
         h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
-          i.fa.fa-long-arrow-right(aria-hidden="true")
+          i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
           if val.ingredients.length
             i.fa.fa-eye-slash
           else    

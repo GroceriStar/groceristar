@@ -185,10 +185,10 @@ mixin dropdown2(groceryId, departmentId, flag)
       li
         a(href='/department/' + departmentId + '/' + groceryId) Manage Ingredients old-way
       li
-        +link_shopping()
-        //a(href='/shopping/' + groceryId + '/' + departmentId) Open shopping list
+        +link_shopping(groceryId, departmentId)
+        
       li
-        a(href="/") Delete Department with ingredients
+        a(href="/remove/department/:id/:groceryId") Delete Department with ingredients
 
 
 mixin links(id, delete_link)        
