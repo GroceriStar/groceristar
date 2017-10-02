@@ -40,12 +40,12 @@ mixin view_groceries_short2(array)
         if( index == 0)
           a.border-item.active(href='/view/grocery/' + val.id)
             h4.list-group-item-heading= val.name
-              i.fa.fa-long-arrow-right(aria-hidden="true")
+              i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
 
         else 
           a.border-item(href='/view/grocery/' + val.id)
             h4.list-group-item-heading= val.name
-              i.fa.fa-long-arrow-right(aria-hidden="true")
+              i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
       
 
 mixin view_groceries_short_one(item)
@@ -55,7 +55,7 @@ mixin view_groceries_short_one(item)
 
       a.border-item.active(href='/view/grocery/' + item.id)
         h4.list-group-item-heading= item.name
-          i.fa.fa-long-arrow-right(aria-hidden="true")
+          i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
 
 
       //each val, index in array
@@ -153,7 +153,7 @@ mixin link_visibility(id, groceryId)
 
 
 mixin dropdown(groceryId)
-  .btn-group
+  .btn-group.pull-right
     button(type="button", class="btn btn-primary dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
       | Grocery List Actions 
       span.caret
@@ -163,9 +163,9 @@ mixin dropdown(groceryId)
       li
         a(href='/change/grocery/name/' + groceryId) Change name
       li
-        a(href='/change/grocery/name/' + groceryId) Manage Departments
+        a(href='/departments/show/' + groceryId) Manage Departments
       li
-        a(href="/") Clone List
+        a(href='/clone/' + groceryId) Clone List
 
 
 

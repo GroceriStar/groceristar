@@ -1,5 +1,6 @@
 nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
   .container
+
     .navbar-header
       button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
         span.sr-only Toggle navigation
@@ -10,6 +11,7 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
         //svg.icon
           use(xlink:href="#icon-logo46")
         | Groceristar
+
     #navbar.navbar-collapse.collapse
       if user
         //- User *is* logged In
@@ -19,14 +21,18 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
             a(href='/auth/account') View Account
 
 
-          //if( url== '/view/grocery/')  
-          li
-            a= url
-            //a= ultimate.id
+            
+          
+          if isGrocery
+            li
+              +link_clone_ultimate2(groceryId, 'Clone current list') 
+               
           li
             +link_clone_ultimate2(ultimate.id, 'Clone Ultimate Grocery List')
+
           li
             //- +link_clone_ultimate(groceryId)  
+
           li
             a(href='/auth/logout') Log Out
       else
@@ -37,7 +43,10 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
           li
             a(href='/auth/facebook') Login with Facebook
 
+
           //li(class=url=='/login'?'active':undefined)
             //a(href='/login') Log in
           //li(class=url=='/signup'?'active':undefined)
             //a(href='/signup') Sign Up
+
+

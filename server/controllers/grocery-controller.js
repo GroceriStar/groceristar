@@ -156,6 +156,12 @@ exports.removeGrocery = (req, res, next) => {
 
 };
 
+exports.viewGrocery = async (req, res, next) => {
+
+
+
+};
+
 // Fancy console.log
 function output (err, data) {
   console.dir (err || data, {

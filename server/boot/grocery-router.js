@@ -15,8 +15,8 @@ module.exports = function(app) {
     ensureLoggedIn('/auth/account'),
     async  (req, res, next) => {
 
-      console.log(req.originalUrl);
-      console.log(req.originalUrl.includes('/view/grocery/'));
+      // console.log(req.originalUrl);
+      // console.log(req.originalUrl.includes('/view/grocery/'));
 
       //console.log(req.get('host'));
 
@@ -73,7 +73,9 @@ module.exports = function(app) {
 
         title: "Grocery list " + response.name,
 
-        ultimate: ultimateGL
+        ultimate: ultimateGL,
+
+        isGrocery: req.originalUrl.includes('/view/grocery/')        
       
       }); 
 
