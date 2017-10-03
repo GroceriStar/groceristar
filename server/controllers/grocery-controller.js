@@ -158,7 +158,69 @@ exports.removeGrocery = (req, res, next) => {
 
 exports.viewGrocery = async (req, res, next) => {
 
+// console.log(req.originalUrl);
+// console.log(req.originalUrl.includes('/view/grocery/'));
 
+//console.log(req.get('host'));
+
+// res.locals.current_path= req.path;
+
+      var groceryId  = req.params.groceryId;
+      var ultimateGL = {};
+      var response   = {};
+      let admin
+      try {
+
+        var User = app.models.user;
+
+        // this is a duplicated code. :todo
+        admin    = await User.findOne(User.queryUltimateAdmin());
+
+        var json     = admin.toJSON();
+        var ultimate = json.groceries[0];
+        ultimateGL = {
+          id: ultimate.id,
+          name: ultimate.name
+        };
+
+        
+      } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+      }
+
+
+      let grocery
+      try {      
+         var Grocery   = app.models.Grocery;
+         // grocery = await Grocery.fetchById(groceryId);
+         grocery  = await Grocery.findById(groceryId, Grocery.query1());
+         response = Grocery.convertCollectionData(grocery);
+
+
+      } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+      }
+
+      console.log(response);
+
+      res.render('pages/grocery-new', {
+        name: response.name,
+        
+        groceryId: groceryId,
+
+        messages: {},
+
+        departments: response.data, // [data>> department >> ingredient]
+
+        title: "Grocery list " + response.name,
+
+        ultimate: ultimateGL,
+
+        isGrocery: req.originalUrl.includes('/view/grocery/')        
+      
+      }); 
 
 };
 

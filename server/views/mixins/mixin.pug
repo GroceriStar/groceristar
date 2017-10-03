@@ -155,8 +155,9 @@ mixin link_visibility(id, groceryId)
 mixin dropdown(groceryId)
   .btn-group.pull-right
     button(type="button", class="btn btn-primary dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-      | Grocery List Actions 
-      span.caret
+      //| Grocery List Actions 
+      i.fa.fa-bell.fa-4x
+      //span.caret
     ul.dropdown-menu.dropdown-menu-right
       li
         a(href='/remove/grocery/' + groceryId) Remove 
@@ -174,8 +175,9 @@ mixin dropdown(groceryId)
 mixin dropdown2(groceryId, departmentId, flag)
   .btn-group
     button(type="button", class="btn btn-default dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-      | Department Actions 
-      span.caret
+      //| Department Actions 
+      i.fa.fa-bell.fa-4x
+      //span.caret
     ul.dropdown-menu.dropdown-menu-right
       li
         if flag
