@@ -156,7 +156,7 @@ mixin dropdown(groceryId)
   .btn-group.pull-right
     button(type="button", class="btn btn-primary dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
       //| Grocery List Actions 
-      i.fa.fa-bell.fa-4x
+      i.fa.fa-ellipsis-v
       //span.caret
     ul.dropdown-menu.dropdown-menu-right
       li
@@ -173,10 +173,10 @@ mixin dropdown(groceryId)
 
 
 mixin dropdown2(groceryId, departmentId, flag)
-  .btn-group
+  .btn-group.pull-right
     button(type="button", class="btn btn-default dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
       //| Department Actions 
-      i.fa.fa-bell.fa-4x
+      i.fa.fa-ellipsis-v
       //span.caret
     ul.dropdown-menu.dropdown-menu-right
       li
