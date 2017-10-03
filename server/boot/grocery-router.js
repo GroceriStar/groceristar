@@ -85,7 +85,8 @@ module.exports = function(app) {
   ensureLoggedIn('/auth/account'), 
   groceryController.createNewGrocery);
 
-// :todo finish
+
+// :todo finish Not used functionality right now
  router.get('/view/groceries', 
   ensureLoggedIn('/auth/account'), 
   function(req, res, next){
@@ -105,6 +106,7 @@ module.exports = function(app) {
     });
 
  });
+
 
  // Change Grocery Name functionality
 
