@@ -40,10 +40,10 @@ exports.departmentsList = async (req, res, next) => {
     groceryId   : groceryId
   };
 
-  console.log(renderObject)
+  // console.log(renderObject)
 
       
-  // res.render('pages/change-grocery-list-name', renderObject);
+  res.render('pages/managedepartments', renderObject);
 
 };
 

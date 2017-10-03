@@ -4,7 +4,7 @@
       a.border-item(href='/shopping/' + groceryId + '/' + val.id)
         h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
           i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
-          if val.ingredients.length
+          if val.ingredients && val.ingredients.length
             i.fa.fa-eye-slash
           else    
             i.fa.fa-eye
