@@ -35,7 +35,7 @@ exports.departmentsList = async (req, res, next) => {
   var renderObject = {
     name: response.name,     
 
-    departments : response,    
+    departments : response.data,    
     // description : d.desc,
     groceryId   : groceryId
   };
