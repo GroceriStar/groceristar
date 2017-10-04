@@ -221,3 +221,27 @@ mixin ingredients_list(groceryId, item)
     //ing[0] = id, ing[2] = delete link 
   else
     h2 | You don't have any ingredients  
+
+mixin ingredients_only(groceryId, item)    
+  a.border-item(href='/shopping/' + groceryId + '/' + item.id)
+    h4.list-group-item-heading= 'Open shopping list'
+      i.fa.fa-long-arrow-right(aria-hidden="true")
+      if item.ingredients.length
+        i.fa.fa-eye-slash
+      else    
+        i.fa.fa-eye
+  h4= item.ingredients
+  h4= item.ingredients.length != 0  
+      
+  if item.ingredients && item.ingredients.length != 0
+
+    .col-md-12
+
+      ul
+        each ing, j in item.ingredients
+  
+          li= ing[1]           
+          +links(ing[0], ing[2]) 
+
+  else
+    h2 | You don't have any ingredients           

@@ -21,14 +21,26 @@ module.exports = function(app) {
 
 	    var d = department.toJSON();
 
+	    // var data = {
+	    // 	id: d.id,
+	    // 	name: d.name,
+	    // 	ingredients : d.ingredients,
+	    // };
+
+	    console.log(d.ingredients);
+
 	    var renderObject = {
-	    	id: d.id,
+	    	
 	    	departmentId:  d.id, // :change that
-	    	name: d.name,
-			ingredients : d.ingredients,		
+	    	
+					
 			description : d.desc,
-			groceryId   : groceryId
+			groceryId   : groceryId,
+
+			data : d
 	    };
+
+
 
 	    // console.log(renderObject)
 

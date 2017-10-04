@@ -6,6 +6,8 @@ block content
     .col-md-9.col-md-offset-3
     
       h2= data.name
+        if data.ingredients.length
+          |  (hidden department)  
         +dropdown2(groceryId, data.id)
 
 
@@ -34,5 +36,5 @@ block content
 
 
 
-      +ingredients_list(groceryId, data)
+      +ingredients_only(groceryId, data)
 
