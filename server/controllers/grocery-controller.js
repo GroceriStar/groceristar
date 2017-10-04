@@ -221,7 +221,7 @@ exports.viewGrocery = async (req, res, next) => {
         next(e) 
       }
 
-      console.log(response);
+      // console.log(response);
 
       res.render('pages/grocery-new', {
         name: response.name,
