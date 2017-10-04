@@ -24,9 +24,9 @@
 
 .col-md-12
   .round-border
-    each val, index in departments
-
-      include ../departments/single-department-ingredients-list
+    each item, index in departments
+      +ingredients_list(groceryId, item)
+      
 
       //a.border-item(href='/shopping/' + groceryId + '/' + val.id)
         h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '

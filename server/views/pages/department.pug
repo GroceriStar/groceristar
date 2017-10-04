@@ -5,8 +5,8 @@ block content
   .row
     .col-md-9.col-md-offset-3
     
-      h2= name
-        +dropdown2(groceryId, id)
+      h2= data.name
+        +dropdown2(groceryId, data.id)
 
 
       //+link_remove_department(id, groceryId)
@@ -28,7 +28,11 @@ block content
 
 
       //include ../partials/department-grid
+      
+      //include ../partials/department/single-department-ingredients-list
 
-      include ../partials/department/single-department-ingredients-list
 
+
+
+      +ingredients_list(groceryId, data)
 
