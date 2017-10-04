@@ -3,27 +3,32 @@ extends ../layouts/dashboard
 block content
 
   .row
-    .col-md-12
+    .col-md-9.col-md-offset-3
     
-      h1= name
-      +link_remove_department(id, groceryId)
+      h2= name
+        +dropdown2(groceryId, id)
+
+
+      //+link_remove_department(id, groceryId)
 
       br
-      +link_visibility(id, groceryId)
+      //+link_visibility(id, groceryId)
 
-      h1= description
-      h1= id
+      //h1= description
+      //h1= id
     
 
       //include ../forms/add-ingredient    
 
 
 
-      ul
+      //ul
         each val, index in ingredients
           li= val.name + '( ' + val.id + ' )'
 
 
       //include ../partials/department-grid
+
+      include ../partials/department/single-department-ingredients-list
 
 

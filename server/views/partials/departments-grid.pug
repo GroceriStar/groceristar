@@ -20,10 +20,15 @@
       hr
 
 
+
+
 .col-md-12
   .round-border
     each val, index in departments
-      a.border-item(href='/shopping/' + groceryId + '/' + val.id)
+
+      include ../departments/single-department-ingredients-list
+
+      //a.border-item(href='/shopping/' + groceryId + '/' + val.id)
         h4.list-group-item-heading= val.name + '( ' + val.id + ' ) '
           i.fa.fa-long-arrow-right(aria-hidden="true")
           if val.ingredients.length
@@ -31,7 +36,7 @@
           else    
             i.fa.fa-eye
       
-      if val.ingredients && val.ingredients.length
+      //if val.ingredients && val.ingredients.length
    
 
         .col-md-12
@@ -42,7 +47,7 @@
               li= ing[1]           
               +links(ing[0], ing[2]) 
             //ing[0] = id, ing[2] = delete link 
-      else
+      //else
         h2 | You don't have any ingredients   
 
 hr      

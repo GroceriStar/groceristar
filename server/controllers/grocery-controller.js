@@ -5,7 +5,7 @@ const path    = require('path');
 
 let app       = require(path.resolve(__dirname, '../server'));
 
-var async   = require('async');
+var async     = require('async');
 
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
@@ -21,21 +21,21 @@ exports.changeName = async (req, res, next) => {
     try {
 
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
-
+      console.log(grocery)
     } catch (e) {
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
 
-    var renderObject = {
-      name: response.name,     
+    // var renderObject = {
+    //   name: response.name,     
 
-      departments : response.data,    
-      // description : d.desc,
-      groceryId   : groceryId
-    };
+    //   departments : response.data,    
+    //   // description : d.desc,
+    //   groceryId   : groceryId
+    // };
 
-    res.render('pages/change-grocery-list-name', {});
+    // res.render('pages/change-grocery-list-name', {});
 
 };
 
@@ -223,7 +223,7 @@ exports.viewGrocery = async (req, res, next) => {
 
       // console.log(response);
 
-      res.render('pages/grocery-new', {
+      res.render('pages/view-grocery-new', {
         name: response.name,
         
         groceryId: groceryId,
