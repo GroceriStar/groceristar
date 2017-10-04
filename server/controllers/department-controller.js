@@ -33,7 +33,7 @@ exports.departmentsList = async (req, res, next) => {
 
   // departments: response.data,
   var renderObject = {
-    name: response.name,     
+    name: response.name + '`s Departments',     
 
     departments : response.data,    
     // description : d.desc,

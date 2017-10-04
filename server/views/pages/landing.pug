@@ -6,7 +6,8 @@ html
     meta(name='viewport', content='width=device-width,initial-scale=1')
 
     //- link(rel='stylesheet', href='/css/landos/main.css')
-    link(rel='stylesheet', href='/css/dash/bootstrap.min.css')  
+    //link(rel='stylesheet', href='/css/dash/bootstrap.min.css')  
+
     link(rel='stylesheet', href='/css/landos/main.css')
     link(rel='stylesheet', href='/css/landos/devices.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic')
@@ -37,7 +38,7 @@ html
 
             //+button_facebook_login('nav-link')  
 
-            a.nav-link(href='#')
+            //a.nav-link(href='#')
               | Home
             a.nav-link.facebook-login(href='/auth/facebook')
               i.fa.fa-facebook-square(aria-hidden="true")
@@ -64,6 +65,7 @@ html
 
           //- a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
           a(href='/auth/facebook', class="btn ctas-button")= 'Sign Up via Facebook'
+          br
           | * We don't post anything to Facebook
 
           //.ctas

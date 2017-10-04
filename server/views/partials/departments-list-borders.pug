@@ -1,4 +1,4 @@
-.col-md-12
+.col-md-7.col-md-offset-3
   .round-border
     each val, index in departments
       a.border-item(href='/shopping/' + groceryId + '/' + val.id)
@@ -8,3 +8,6 @@
             i.fa.fa-eye-slash
           else    
             i.fa.fa-eye
+      +dropdown2(groceryId, val.id, true)      	
+      //a(href="#").pull-right
+        i.fa.fa-eye     	

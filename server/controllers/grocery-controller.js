@@ -12,10 +12,28 @@ const User    = app.models.user;
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
-exports.changeName = (req, res, next) => {
+exports.changeName = async (req, res, next) => {
 
-    var Grocery = app.models.Grocery;
+    // var Grocery   = app.models.Grocery;
     var groceryId = req.params.groceryId;
+
+    let grocery
+    try {
+
+      grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
+
+    } catch (e) {
+        //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
+
+    var renderObject = {
+      name: response.name,     
+
+      departments : response.data,    
+      // description : d.desc,
+      groceryId   : groceryId
+    };
 
     res.render('pages/change-grocery-list-name', {});
 
@@ -72,7 +90,7 @@ exports.cloneForm = async (req, res, next) => {
   var groceryId = req.body.groceryId;
   var userId    = req.body.userId;
   var name      = req.body.name;
-  // var Grocery   = app.models.Grocery;
+  var Grocery   = app.models.Grocery;
 
   // Grocery.findById(groceryId, {}, function(err, model){
   //   model.updateAttribute('name', name);

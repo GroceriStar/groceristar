@@ -110,7 +110,7 @@ module.exports = function(app) {
 
  // Change Grocery Name functionality
 
- router.get('/change/grocery/name', 
+ router.get('/change/grocery/name/:groceryId', 
   ensureLoggedIn('/auth/account'), 
   groceryController.changeName);
 
