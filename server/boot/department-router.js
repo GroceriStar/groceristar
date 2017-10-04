@@ -17,7 +17,7 @@ module.exports = function(app) {
 	  var groceryId    = req.params.groceryId;
 	  var Department   = app.models.Department;
 
-	  Department.methodA(departmentId, function(department){
+	  Department.getOne(departmentId, function(department){
 
 	    var d = department.toJSON();
 

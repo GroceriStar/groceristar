@@ -57,7 +57,7 @@ module.exports = function(Department) {
 
 
 
-  Department.methodA = function( departmentId, cb ){
+  Department.getOne = function( departmentId, cb ){
 
       Department.findById(departmentId, {
         include: {
@@ -76,6 +76,7 @@ module.exports = function(Department) {
     .then(cb);
 
   };
+
 
   Department.methodB = function( departmentId, cb ){
 

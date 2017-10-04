@@ -6,6 +6,7 @@ const path      = require('path');
 
 let app    = require(path.resolve(__dirname, '../server'));
 var async   = require('async');
+var Department = app.models.Department;
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
@@ -43,7 +44,7 @@ exports.departmentsList = async (req, res, next) => {
   // console.log(renderObject)
 
       
-  res.render('pages/managedepartments', renderObject);
+  res.render('pages/departmentsshow', renderObject);
 
 };
 
@@ -95,6 +96,48 @@ exports.deleteDepartment = async (req, res, next) => {
 
 };
 
+//:todo decide which method is better - grocery version or controller version
+exports.getDepartment = async (req, res, next) => {
+
+  var departmentId = req.params.id;
+  var groceryId    = req.params.groceryId;
+
+  // var Grocery      = app.models.Grocery;
+
+  let department
+  let response
+  try {      
+     // var Grocery   = app.models.Grocery;
+     // grocery = await Grocery.fetchById(groceryId);
+
+     department = await Department.getOne(departmentId)
+
+     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
+     // response = Grocery.convertCollectionData(grocery);
+     // console.log(response);
+
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
+
+  // console.log(d.ingredients);
+
+  var renderObject = {
+    
+    departmentId:  d.id, // :change that
+      
+        
+    description : d.desc,
+    groceryId   : groceryId,
+
+    data : d
+  };
+  res.render('pages/department', renderObject);
+
+
+
+};
 // Fancy console.log
 function output (err, data) {
   console.dir (err || data, {
