@@ -44,7 +44,7 @@ module.exports = function(app) {
 
 	    // console.log(renderObject)
 
-	    res.render('pages/department', renderObject);
+	    
 	    
 	  });
 

@@ -110,7 +110,9 @@ exports.getDepartment = async (req, res, next) => {
      // var Grocery   = app.models.Grocery;
      // grocery = await Grocery.fetchById(groceryId);
 
-     department = await Department.getOne(departmentId)
+     department = await Department.getOne(departmentId);
+     // response   = Department.convertData(department);
+     // console.log(response);
 
      // grocery  = await Grocery.findById(groceryId, Grocery.query1());
      // response = Grocery.convertCollectionData(grocery);
@@ -121,6 +123,25 @@ exports.getDepartment = async (req, res, next) => {
     next(e) 
   }
 
+  let grocery
+  try {      
+     // var Grocery   = app.models.Grocery;
+     grocery = await Grocery.fetchById(groceryId);
+     
+     let arr     = _.map(grocery.hideThisIds, item => item.toString());
+     console.log(arr);
+     // department = await Department.getOne(departmentId);
+     // response   = Department.convertData(department);
+     // console.log(response);
+
+     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
+     // response = Grocery.convertCollectionData(grocery);
+     // console.log(response);
+
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
   // console.log(d.ingredients);
 
   var renderObject = {

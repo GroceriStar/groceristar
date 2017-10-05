@@ -76,7 +76,9 @@ module.exports = function(Department) {
     .then(cb);
 
   };
-
+  Department.convertData = function(department){
+    
+  };
 
   Department.methodB = function( departmentId, cb ){
 
