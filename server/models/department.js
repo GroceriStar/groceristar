@@ -57,9 +57,42 @@ module.exports = function(Department) {
 
 
 
-  Department.getOne = function( departmentId, cb ){
+  // Department.getOne = function( departmentId, cb ){
 
-      Department.findById(departmentId, {
+  //     Department.findById(departmentId, {
+  //       include: {
+  //         relation: 'ingredients',
+  //         scope: {
+  //           fields: [ 'name', 'id' ]
+  //         }
+  //       },
+  //       // where: 
+
+
+  //   })
+  //   // .then(function(department){
+  //   //   console.log(department);
+  //   // })
+  //   .then(cb);
+
+  // };
+
+  // :todo think about try to filter data inside ingredients field
+  Department.convertData = function(department){
+    var d = department.toJSON();
+
+    var data = {
+      id: d.id,
+      name: d.name,
+      ingredients : d.ingredients,
+    };
+
+    return data;
+
+  };
+
+  Department.queryOne = function(){
+    return {
         include: {
           relation: 'ingredients',
           scope: {
@@ -67,18 +100,9 @@ module.exports = function(Department) {
           }
         },
         // where: 
-
-
-    })
-    // .then(function(department){
-    //   console.log(department);
-    // })
-    .then(cb);
-
+    };
   };
-  Department.convertData = function(department){
-    
-  };
+
 
   Department.methodB = function( departmentId, cb ){
 

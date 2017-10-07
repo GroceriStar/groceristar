@@ -10,47 +10,52 @@ module.exports = function(app) {
 	var departmentController = require('../controllers/department-controller');
 	
 
+
 	//:todo decide which method is better - grocery version or controller version
-	router.get('/department/:id/:groceryId', function(req, res, next){
 
-	  var departmentId = req.params.id;
-	  var groceryId    = req.params.groceryId;
-	  var Department   = app.models.Department;
+	router.get('/department/:id/:groceryId', departmentController.getDepartment);
 
-	  Department.getOne(departmentId, function(department){
 
-	    var d = department.toJSON();
+	// router.get('/department/:id/:groceryId', function(req, res, next){
 
-	    // var data = {
-	    // 	id: d.id,
-	    // 	name: d.name,
-	    // 	ingredients : d.ingredients,
-	    // };
+	//   var departmentId = req.params.id;
+	//   var groceryId    = req.params.groceryId;
+	//   var Department   = app.models.Department;
 
-	    console.log(d.ingredients);
+	//   Department.getOne(departmentId, function(department){
 
-	    var renderObject = {
+	//     var d = department.toJSON();
+
+	//     // var data = {
+	//     // 	id: d.id,
+	//     // 	name: d.name,
+	//     // 	ingredients : d.ingredients,
+	//     // };
+
+	//     console.log(d.ingredients);
+
+	//     var renderObject = {
 	    	
-	    	departmentId:  d.id, // :change that
+	//     	departmentId:  d.id, // :change that
 	    	
 					
-			description : d.desc,
-			groceryId   : groceryId,
+	// 		description : d.desc,
+	// 		groceryId   : groceryId,
 
-			data : d
-	    };
+	// 		data : d
+	//     };
 
 
 
-	    // console.log(renderObject)
+	//     // console.log(renderObject)
 
 	    
 	    
-	  });
+	//   });
 
 	  
 
-	});
+	// });
 
 	router.get('/departments/show/:groceryId', departmentController.departmentsList);
 

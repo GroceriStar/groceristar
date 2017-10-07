@@ -4,9 +4,11 @@
 const path      = require('path');
 // var validator = require('express-validator');
 
-let app    = require(path.resolve(__dirname, '../server'));
-var async   = require('async');
+let app        = require(path.resolve(__dirname, '../server'));
+const async      = require('async');
+const _ = require('underscore');
 var Department = app.models.Department;
+var Grocery    = app.models.Grocery;
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
@@ -102,16 +104,14 @@ exports.getDepartment = async (req, res, next) => {
   var departmentId = req.params.id;
   var groceryId    = req.params.groceryId;
 
-  // var Grocery      = app.models.Grocery;
-
   let department
   let response
   try {      
      // var Grocery   = app.models.Grocery;
      // grocery = await Grocery.fetchById(groceryId);
 
-     department = await Department.getOne(departmentId);
-     // response   = Department.convertData(department);
+     department = await Department.findById(departmentId, Department.queryOne());
+     response   = Department.convertData(department);
      // console.log(response);
 
      // grocery  = await Grocery.findById(groceryId, Grocery.query1());
@@ -127,9 +127,9 @@ exports.getDepartment = async (req, res, next) => {
   try {      
      // var Grocery   = app.models.Grocery;
      grocery = await Grocery.fetchById(groceryId);
-     
-     let arr     = _.map(grocery.hideThisIds, item => item.toString());
-     console.log(arr);
+     console.log(grocery);
+     // let arr     = _.map(grocery.hideThisIds, item => item.toString());
+     // console.log(arr);
      // department = await Department.getOne(departmentId);
      // response   = Department.convertData(department);
      // console.log(response);
@@ -144,17 +144,17 @@ exports.getDepartment = async (req, res, next) => {
   }
   // console.log(d.ingredients);
 
-  var renderObject = {
+  // var renderObject = {
     
-    departmentId:  d.id, // :change that
+  //   departmentId:  d.id, // :change that
       
         
-    description : d.desc,
-    groceryId   : groceryId,
+  //   description : d.desc,
+  //   groceryId   : groceryId,
 
-    data : d
-  };
-  res.render('pages/department', renderObject);
+  //   data : d
+  // };
+  // res.render('pages/department', renderObject);
 
 
 
