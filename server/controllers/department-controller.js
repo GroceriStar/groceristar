@@ -38,7 +38,7 @@ exports.departmentsList = async (req, res, next) => {
   var renderObject = {
     name: response.name + '`s Departments',     
 
-    departments : response.data,    
+    departments : response.data,   // :todo on other template we're using `data`, not departments 
     // description : d.desc,
     groceryId   : groceryId
   };
@@ -105,55 +105,57 @@ exports.getDepartment = async (req, res, next) => {
   var groceryId    = req.params.groceryId;
 
   let department
-  let response
-  try {      
-     // var Grocery   = app.models.Grocery;
-     // grocery = await Grocery.fetchById(groceryId);
+  // let response
+  // try {      
 
-     department = await Department.findById(departmentId, Department.queryOne());
-     response   = Department.convertData(department);
-     // console.log(response);
 
-     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
-     // response = Grocery.convertCollectionData(grocery);
-     // console.log(response);
+  //    department = await Department.findById(departmentId, Department.queryOne());
+  //    response   = Department.convertData(department);
+  //    // console.log(response);
 
-  } catch (e) {
-    //this will eventually be handled by your error handling middleware
-    next(e) 
-  }
+
+  // } catch (e) {
+  //   //this will eventually be handled by your error handling middleware
+  //   next(e) 
+  // }
 
   let grocery
+  let response1
   try {      
-     // var Grocery   = app.models.Grocery;
-     grocery = await Grocery.fetchById(groceryId);
-     console.log(grocery);
-     // let arr     = _.map(grocery.hideThisIds, item => item.toString());
-     // console.log(arr);
-     // department = await Department.getOne(departmentId);
-     // response   = Department.convertData(department);
-     // console.log(response);
+     
+     grocery  = await Grocery.findById(groceryId, Grocery.query1());
+     
+     // :todo make response more lightweight
+     response1 = Grocery.convertCollectionData(grocery);
 
-     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
-     // response = Grocery.convertCollectionData(grocery);
-     // console.log(response);
+     // console.log(response1.data[departmentId]);
+     // department = _.where(response1.data, {id: departmentId});  
+     var arr = _.where(response1.data, {id: departmentId})[0];
+     // console.log(arr)
+
+     _.map(arr, (item)=>{ console.log(item) })
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
+
+
   // console.log(d.ingredients);
 
   // var renderObject = {
     
-  //   departmentId:  d.id, // :change that
+  //   departmentId:  departmentId,
       
         
-  //   description : d.desc,
+  //   // description : response.desc,
   //   groceryId   : groceryId,
 
-  //   data : d
+  //   data : response,
   // };
+
+
+
   // res.render('pages/department', renderObject);
 
 

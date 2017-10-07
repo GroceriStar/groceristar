@@ -225,15 +225,29 @@ mixin ingredients_list(groceryId, item)
 mixin ingredients_only(groceryId, item)    
   a.border-item(href='/shopping/' + groceryId + '/' + item.id)
     h4.list-group-item-heading= 'Open shopping list'
-      i.fa.fa-long-arrow-right(aria-hidden="true")
+      i.fa.fa-long-arrow-right.pull-right(aria-hidden="true")
       if item.ingredients.length
-        i.fa.fa-eye-slash
+        i.fa.fa-eye-slash.pull-right
       else    
-        i.fa.fa-eye
-  h4= item.ingredients
-  h4= item.ingredients.length != 0  
-      
-  if item.ingredients && item.ingredients.length != 0
+        i.fa.fa-eye.pull-right
+
+  //h4= item.ingredients
+  //h4= item.ingredients.length != 0  
+    
+
+  .col-md-12
+
+    ul
+      each ing, j in item.ingredients
+  
+        //li= ing[1] + ing[0] + ing[2]
+        li=ing.name           
+        +links(ing[0], ing[2]) 
+
+  
+
+
+  //if item.ingredients && item.ingredients.length != 0
 
     .col-md-12
 
@@ -243,5 +257,5 @@ mixin ingredients_only(groceryId, item)
           li= ing[1]           
           +links(ing[0], ing[2]) 
 
-  else
+  //else
     h2 | You don't have any ingredients           
