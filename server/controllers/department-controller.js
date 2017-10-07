@@ -128,12 +128,11 @@ exports.getDepartment = async (req, res, next) => {
      // :todo make response more lightweight
      response1 = Grocery.convertCollectionData(grocery);
 
-     // console.log(response1.data[departmentId]);
-     // department = _.where(response1.data, {id: departmentId});  
-     var arr = _.where(response1.data, {id: departmentId})[0];
-     // console.log(arr)
+     
 
-     _.map(arr, (item)=>{ console.log(item) })
+     // we're getting a first element 
+     department = _.where(response1.data, {id: departmentId})[0];
+
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
@@ -141,22 +140,22 @@ exports.getDepartment = async (req, res, next) => {
   }
 
 
-  // console.log(d.ingredients);
+  console.log(department);
 
-  // var renderObject = {
+  var renderObject = {
     
-  //   departmentId:  departmentId,
+    departmentId:  departmentId,
       
         
-  //   // description : response.desc,
-  //   groceryId   : groceryId,
+    // description : response.desc,
+    groceryId   : groceryId,
 
-  //   data : response,
-  // };
+    data : department,
+  };
 
 
 
-  // res.render('pages/department', renderObject);
+  res.render('pages/department', renderObject);
 
 
 

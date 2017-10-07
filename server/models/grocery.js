@@ -129,8 +129,9 @@ module.exports = function(Grocery) {
         	
 
     		 var ja = _.map(grouped, function(item){
+    		 	
     		 	return [
-        		 	item.id, 
+        		 	item.id.toString(), //item.id, - we have this value before
         		 	item.name,
         		 	'/del/ing/' + item.id + '/' + g.id
     		 	] // :todo change this to an object

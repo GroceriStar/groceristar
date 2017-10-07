@@ -241,7 +241,7 @@ mixin ingredients_only(groceryId, item)
       each ing, j in item.ingredients
   
         //li= ing[1] + ing[0] + ing[2]
-        li=ing.name           
+        li=ing[1]           
         +links(ing[0], ing[2]) 
 
   
