@@ -34,12 +34,10 @@ exports.departmentsList = async (req, res, next) => {
     next(e) 
   }
 
-  // departments: response.data,
+
   var renderObject = {
     name: response.name + '`s Departments',     
-
     departments : response.data,   // :todo on other template we're using `data`, not departments 
-    // description : d.desc,
     groceryId   : groceryId
   };
 
