@@ -141,22 +141,25 @@ module.exports = function(app) {
 
 
   // :todo I think we don't use this method anymore
+  // :todo maybe remove this functionality. it's enabled only for old 
+  // fashioned add to purchased indredient by click on button
   // router.get('/remove-from-purchased/:groceryId/:ingId', function(req, res, next){
 
   // 	var Grocery = app.models.Grocery;
 
   // 		// console.log( req.user.id );		
 
-  //  	var ingredients = req.params.ingId;
+  //  	var ingredient = req.params.ingId;
   // 	var groceryId   = req.params.groceryId;
 
   //   var options = {
   //     groceryId: groceryId,
-  //     secondArray: ingredients 
+  //     secondArray: [ingredient] 
   //   };
   //   Grocery.removePurchased(options);
 
   // });
+
 
   app.use(router);
 };

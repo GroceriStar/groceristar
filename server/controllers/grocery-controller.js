@@ -9,8 +9,7 @@ var async     = require('async');
 
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
-// var Video     = server.models.VideoModel;
-// var Example   = server.models.ExampleModel;
+
 
 exports.changeName = async (req, res, next) => {
 
@@ -20,22 +19,22 @@ exports.changeName = async (req, res, next) => {
     let grocery
     try {
 
-      grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
-      console.log(grocery)
+      grocery = await Grocery.findById(groceryId);
     } catch (e) {
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
 
-    // var renderObject = {
-    //   name: response.name,     
+    var renderObject = {
+      name: 'Change Grocery list name: ' + grocery.name,     
 
-    //   departments : response.data,    
-    //   // description : d.desc,
-    //   groceryId   : groceryId
-    // };
+      // departments : response.data,    
+      // description : d.desc,
+      groceryId   : grocery.id
+    };
+    // console.log(grocery)
 
-    // res.render('pages/change-grocery-list-name', {});
+    res.render('pages/change-grocery-list-name', renderObject);
 
 };
 
@@ -175,13 +174,6 @@ exports.removeGrocery = (req, res, next) => {
 };
 
 exports.viewGrocery = async (req, res, next) => {
-
-// console.log(req.originalUrl);
-// console.log(req.originalUrl.includes('/view/grocery/'));
-
-//console.log(req.get('host'));
-
-// res.locals.current_path= req.path;
 
       var groceryId  = req.params.groceryId;
       var ultimateGL = {};

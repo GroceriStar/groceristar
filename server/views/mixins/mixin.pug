@@ -184,7 +184,7 @@ mixin dropdown2(groceryId, departmentId, flag)
           a(href='/visibility/department/' + departmentId + '/' + groceryId) Hide this department 
         else
           a(href='/visibility/department/' + departmentId + '/' + groceryId) Show this department   
-      li
+      //li
         a(href='/department/' + departmentId + '/' + groceryId) Manage Ingredients old-way
       li
         a(href='/shopping/' + groceryId + '/' + departmentId) Open shopping list
@@ -262,4 +262,4 @@ mixin ingredients_only(groceryId, item)
 
 
 mixin undo_purchased(groceryId, ingredientId)
- +link('remove-from-purchased/'+ groceryId + '/' + ingredientId, "Undo purchased"
+ +link('remove-from-purchased/'+ groceryId + '/' + ingredientId, "Undo purchased")

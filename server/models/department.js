@@ -79,13 +79,13 @@ module.exports = function(Department) {
 
   // :todo think about try to filter data inside ingredients field
   Department.convertData = function(department){
-    var d = department.toJSON();
+    var departmentJSON = department.toJSON();
 
     var data = {
-      id: d.id,
-      name: d.name,
-      ingredients : d.ingredients,
-    };
+      id          : departmentJSON.id,
+      name        : departmentJSON.name,
+      ingredients : departmentJSON.ingredients,
+    }; // :todo umpdate to underscore method
 
     return data;
 

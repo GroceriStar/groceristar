@@ -16,47 +16,6 @@ module.exports = function(app) {
 	router.get('/department/:id/:groceryId', departmentController.getDepartment);
 
 
-	// router.get('/department/:id/:groceryId', function(req, res, next){
-
-	//   var departmentId = req.params.id;
-	//   var groceryId    = req.params.groceryId;
-	//   var Department   = app.models.Department;
-
-	//   Department.getOne(departmentId, function(department){
-
-	//     var d = department.toJSON();
-
-	//     // var data = {
-	//     // 	id: d.id,
-	//     // 	name: d.name,
-	//     // 	ingredients : d.ingredients,
-	//     // };
-
-	//     console.log(d.ingredients);
-
-	//     var renderObject = {
-	    	
-	//     	departmentId:  d.id, // :change that
-	    	
-					
-	// 		description : d.desc,
-	// 		groceryId   : groceryId,
-
-	// 		data : d
-	//     };
-
-
-
-	//     // console.log(renderObject)
-
-	    
-	    
-	//   });
-
-	  
-
-	// });
-
 	router.get('/departments/show/:groceryId', departmentController.departmentsList);
 
 

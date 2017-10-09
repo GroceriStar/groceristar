@@ -105,19 +105,6 @@ exports.getDepartment = async (req, res, next) => {
   var groceryId    = req.params.groceryId;
 
   let department
-  // let response
-  // try {      
-
-
-  //    department = await Department.findById(departmentId, Department.queryOne());
-  //    response   = Department.convertData(department);
-  //    // console.log(response);
-
-
-  // } catch (e) {
-  //   //this will eventually be handled by your error handling middleware
-  //   next(e) 
-  // }
 
   let grocery
   let response1
@@ -140,7 +127,7 @@ exports.getDepartment = async (req, res, next) => {
   }
 
 
-  console.log(department);
+  // console.log(department);
 
   var renderObject = {
     
