@@ -1,39 +1,62 @@
 {
   "_meta": {
     "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
       "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
+      "../server/models",
+      "./models",
+      "./node_modules/loopback-component-passport/lib/models"
     ]
   },
-  "DepartmentModel": {
-    "dataSource": "recipeDS",
+  "user": {
+    "dataSource": "groceryDS",
     "public": true
   },
-  "GroceryModel": {
-    "dataSource": "recipeDS",
-    "public": true
-  },
-  "IngredientModel": {
-    "dataSource": "recipeDS",
-    "public": true
-  },
-  "MenuModel": {
-    "dataSource": "recipeDS",
-    "public": true
-  },
-  
-  
-  "User": {
-    "dataSource": "recipeDS",
+  "accessToken": {
+    "dataSource": "groceryDS",
     "public": false
+  },
+  "userCredential": {
+    "dataSource": "groceryDS",
+    "public": false
+  },
+  "userIdentity": {
+    "dataSource": "groceryDS",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "groceryDS",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "groceryDS",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "groceryDS",
+    "public": false
+  },
+  "Department": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "Grocery": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "Ingredient": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "Item": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "userFav": {
+    "dataSource": "groceryDS",
+    "public": true
+  },
+  "userGrocery": {
+    "dataSource": "groceryDS",
+    "public": true
   }
-  
 }

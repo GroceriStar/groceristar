@@ -1,5 +1,5 @@
 {
-  "name": "loopback-example-passport",
+  "name": "groceristar",
   "version": "2.0.0",
   "main": "server/server.js",
   "engines": {
