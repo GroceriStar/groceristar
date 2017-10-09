@@ -13,10 +13,12 @@ module.exports = function(app) {
 
 	//:todo decide which method is better - grocery version or controller version
 
-	router.get('/department/:id/:groceryId', departmentController.getDepartment);
+	router.get('/department/:id/:groceryId', 
+	 departmentController.getDepartment);
 
 
-	router.get('/departments/show/:groceryId', departmentController.departmentsList);
+	router.get('/departments/show/:groceryId',
+	 departmentController.departmentsList);
 
 
 	// :todo make it work 
