@@ -22,7 +22,7 @@ html(lang='en', data-framework='jquery')
 
 
 
-  body(data-grocery-id=groceryId)
+  body(data-grocery-id=groceryId,data-isUltimate=0)
 
 
     //ul#foo
@@ -43,14 +43,14 @@ html(lang='en', data-framework='jquery')
     section#todoapp
       header#header
         //h1= name
-        input#new-todo(placeholder='Ingredient name', autofocus='', data-department-id=departmentId)
+        input#new-todo(placeholder='Item name', autofocus='', data-department-id=departmentId)
       section#main
         input#toggle-all(type='checkbox')
         label(for='toggle-all') Mark all as complete
         ul#todo-list
       footer#footer
     footer#info
-      p Double-click to edit an ingredient 
+      p Double-click to edit an item 
 
 
     include ../static/scripts-todo.pug  

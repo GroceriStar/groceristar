@@ -10,22 +10,7 @@ jQuery(function ($) {
 
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
-		},
-
-
-		// store: function (namespace, data) {
-		// 	if (arguments.length > 1) {
-		// 		// console.log('added');
-		// 		// return localStorage.setItem(namespace, JSON.stringify(data));
-
-		// 	} else {
-
-		// 		var store = localStorage.getItem(namespace);
-		// 		return (store && JSON.parse(store)) || [];
-
-		// 	}
-		// },
-
+		}
 
 		
 	};
@@ -33,7 +18,10 @@ jQuery(function ($) {
 
 
 	var App = {
-		
+		isUltimate: function(){
+			var flag = $('body').data().isUltimate;
+			return flag;			
+		},
 		getDepartmentId: function(){
 			var departmentId = $('#new-todo').data().departmentId;
 			return departmentId;			
