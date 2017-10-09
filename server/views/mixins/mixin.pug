@@ -195,8 +195,8 @@ mixin dropdown2(groceryId, departmentId, flag)
 
 
 mixin links(id, delete_link)        
-  a.btn.btn-default.btn-small(href='/' + id) empty
-  a.btn.btn-default.btn-small(href='/' + id) move
+  //a.btn.btn-default.btn-small(href='/' + id) empty
+  //a.btn.btn-default.btn-small(href='/' + id) move
   a.btn.btn-default.btn-small(href=delete_link) delete
   a.btn.btn-default.btn-small(href='/' + id) purchase
 
@@ -259,3 +259,7 @@ mixin ingredients_only(groceryId, item)
 
   //else
     h2 | You don't have any ingredients           
+
+
+mixin undo_purchased(groceryId, ingredientId)
+ +link('remove-from-purchased/'+ groceryId + '/' + ingredientId, "Undo purchased"
