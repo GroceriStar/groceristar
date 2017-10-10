@@ -30,8 +30,8 @@ jQuery(function ($) {
 		},
 		init: function () {
 
-			var groceryId    = this.getGroceryId();
-			var departmentId = this.getDepartmentId();	
+			// var groceryId    = this.getGroceryId();
+			// var departmentId = this.getDepartmentId();	
 
 			let options
 			let myVariable
@@ -46,6 +46,8 @@ jQuery(function ($) {
 					'get-ingredients', 
 					myVariable
 				);
+
+			console.log(myVariable)	;
 
 			// $.ajax({
 			// 	type: "GET",
@@ -534,7 +536,7 @@ jQuery(function ($) {
 			// don't save if it for demo purposes only
 			this.ajax_Unattach(toRemove);
 			this.ajax_call('unattach', toRemove);
-			
+
 			// $.ajax({
 			// 	type: "POST",
 			// 	url: '/unattach/',
