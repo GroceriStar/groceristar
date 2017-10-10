@@ -158,7 +158,7 @@ jQuery(function ($) {
 				toPurchase.type = 'add';
 				// this.ajax_TogglePurchased(toPurchase);
 
-				this.ajax_call('toggle', toPurchase);
+				// this.ajax_call('toggle', toPurchase);
 				// $.ajax({
 				// 	type: "POST",
 				// 	url: '/togglepurchased/',
@@ -179,7 +179,7 @@ jQuery(function ($) {
 				toPurchase.type = 'remove';
 				// this.ajax_TogglePurchased(toPurchase);
 
-				this.ajax_call('toggle', toPurchase);
+				// this.ajax_call('toggle', toPurchase);
 				// $.ajax({
 				// 	type: "POST",
 				// 	url: '/togglepurchased/',
@@ -195,7 +195,7 @@ jQuery(function ($) {
 				// });
 			}
 
-
+			this.ajax_call('toggle', toPurchase);
 			
 
 			// move this to another place, please :todo
@@ -318,7 +318,7 @@ jQuery(function ($) {
 
 			var new_id = false;
 
-			var new_id = this.ajax_CreateIngredient(toSave);
+			// var new_id = this.ajax_CreateIngredient(toSave);
 			var new_id = this.ajax_call('create-ingredient', toSave);
 
 			// $.ajax({
@@ -385,8 +385,8 @@ jQuery(function ($) {
 
 				// move this to another place, please :todo
 				// var result = false;
-				this.ajax_TogglePurchased(toPurchase);
-				this.ajax_call('toggle', toPurchase);
+				// this.ajax_TogglePurchased(toPurchase);
+				// this.ajax_call('toggle', toPurchase);
 
 				// $.ajax({
 				// 	type: "POST",
@@ -417,8 +417,8 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_TogglePurchased(toPurchase);
-			this.ajax_call('toggle', toPurchase);
+			// this.ajax_TogglePurchased(toPurchase);
+			// this.ajax_call('toggle', toPurchase);
 
 			// move this to another place, please :todo
 			// var result = false;
@@ -440,7 +440,7 @@ jQuery(function ($) {
 
 
 			}
-
+			this.ajax_call('toggle', toPurchase);
 
 
 
