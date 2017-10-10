@@ -27,33 +27,6 @@ module.exports = function(app) {
 
 
 
-	// :todo this must be a remote method
-	// router.post('/del/ing/', function(req, res, next){
-	// 	// var ingredientId = req.params.id;
-	// 	// var groceryId = req.params.groceryId;
-	// 	var ingredients    = req.body.ingredients;
- //    	var groceryId      = req.body.groceryId;
- //    	console.log(req.body);
-	// 	var Grocery   = app.models.Grocery;
-		
-	// 	var options = {
-
-	//       groceryId: groceryId,
-	//       secondArray: ingredients
-	//     };
-	// 	// console.log(options);
-	    
-	// 	Grocery.removeIngredient(options);
-	// 	res.json('success');
-	// 	// res.redirect('/view/grocery/' + groceryId);
-
-	// });
-
-
-
-
-
-
 	// Ing change Department ID
 	router.get('/changedepartmentid/:id/:departmentId', function(req, res, next){
 		var Ingredient   = app.models.Ingredient;
@@ -66,18 +39,6 @@ module.exports = function(app) {
 	});
 
 
-	// :todo this maybe not used function
-	// router.post('/remove-department-from-ingredient', function(req, res, next){
-
-	// 	var Ingredient   = app.models.Ingredient;
-	// 	var ingredientId = req.params.id;
-	// 	var departmentId = req.params.departmentId;
-
-	// 	Ingredient.findById(ingredientId, function(err, model){
-	// 		model.updateAttribute('departmentId', false);
-	// 	})
-
-	// });
 
 
 	// Ing change name
@@ -141,8 +102,7 @@ module.exports = function(app) {
       //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
       // ]
   // :todo think about making this post instead of get
-  // router.get('/getingredients/:groceryId/:departmentId/', 
-	router.get('/getingredients/:groceryId/:departmentId/', 
+  	router.get('/getingredients/:groceryId/:departmentId/', 
 		ensureLoggedIn('/auth/account'),  // :todo get back this 
 		function(req, res, next){    
 		var Grocery      = app.models.Grocery;

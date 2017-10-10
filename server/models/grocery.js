@@ -351,7 +351,7 @@ module.exports = function(Grocery) {
 	Grocery.getObjectForClone = function(grocery){
 
 		var object = {
-			name: 'Clone of < ' + grocery.name + ' >',
+			// name: 'Clone of < ' + grocery.name + ' >',
 			desc: grocery.desc,
 			slug: grocery.slug,
 			img : grocery.img,
@@ -480,6 +480,30 @@ module.exports = function(Grocery) {
 			where: { id:groceryId }
 
 		};
+	};
+
+	Grocery.queryOneDepartment = function(departmentId){
+		return {		
+			include: {
+				relation: 'ingredients',
+				scope: {
+
+					// fields: [ 'id', 'name', 'department' ],
+					include: {
+						relation: 'department',
+						scope: {
+							// fields: [ 'id', 'name' ],
+							// fields: [ 'name' ],
+							where: {
+								id: departmentId
+							}
+						}
+					}
+
+				}
+			}
+
+		}
 	};
 
 	Grocery.withDepartments = function(groceryId, cb){

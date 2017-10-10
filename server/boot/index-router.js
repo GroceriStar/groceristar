@@ -26,74 +26,33 @@ module.exports = function(app) {
 
 
   // :todo this must be moved to departments
-  router.get('/select/:groceryId', function(req, res, next){
-    var groceryId = req.params.groceryId;
-    var Grocery   = app.models.Grocery;
+  // router.get('/select/:groceryId', function(req, res, next){
+  //   var groceryId = req.params.groceryId;
+  //   var Grocery   = app.models.Grocery;
 
-    Grocery.fetchById(groceryId, function(err, response){
-      // console.log(response);
-      // we don't need response.ingredients. But this is keeped from this method.
-      // we'll need to create our own method for this  tasks. :todo
-      res.render('pages/select-only-delete-later', {
-        user: req.user,
-        url: req.url,
-        departments: response.data,
-        groceryId: groceryId
-      });
+  //   Grocery.fetchById(groceryId, function(err, response){
+  //     // console.log(response);
+  //     // we don't need response.ingredients. But this is keeped from this method.
+  //     // we'll need to create our own method for this  tasks. :todo
+  //     res.render('pages/select-only-delete-later', {
+  //       user: req.user,
+  //       url: req.url,
+  //       departments: response.data,
+  //       groceryId: groceryId
+  //     });
 
-    });
+  //   });
 
 
-  });
+  // });
 
 
 
   router.get('/credits', mainController.getCreditsPage);
 
-  router.get('/shopping/:groceryId/:departmentId', 
-    function(req, res, next){
-    var Grocery      = app.models.Grocery;
-    // var userId    = req.user.id;
-    var groceryId    = req.params.groceryId;
-    var departmentId = req.params.departmentId;
+  router.get('/privacy', mainController.getPrivacyPage);
 
-    var Department   = app.models.Department;
-
-
-    Grocery.fetchById(groceryId, function(err, response){
-
-      // console.log(response.data);
-      // _.pluck(response.data, function(item){
-      //   console.log(item);
-      // });
-
-      // :todo remove ingredients from this list.
-      // but this will cause issue in select field
-      var departments = _.map(response.data, function(obj) { 
-        // maybe it'll be better to just from an object by hands
-        return _.pick(obj, 'id', 'name', 'type', 'ingredients'); 
-      });
-
-      var currentDepartmentCollection = _.where(response.data, {id:departmentId});
-      currentDepartmentCollection = currentDepartmentCollection[0];
-
-      // console.log( _.where(response.data, {id:departmentId}) );
-
-      res.render('pages/grocery3', {
-        user        : req.user,
-        url         : req.url,
-        groceryId   : groceryId,
-        departmentId: departmentId,
-        name        : currentDepartmentCollection.name,
-        departments: departments
-
-      });
-
-    });
-
-    
-  });
-
+  router.get('/terms', mainController.getTermsPage);
 
   router.get('/', mainController.getHomepage);
 

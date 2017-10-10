@@ -52,11 +52,31 @@ exports.getHomepage = async (req, res, next) => {
 
 exports.getCreditsPage = function(req, res, next){
 
-	res.render('pages/credits', {
-		user        : req.user,
-		url         : req.url,
-		title: "Credits"
-	});
+  res.render('pages/credits', {
+    user        : req.user,
+    url         : req.url,
+    title: "Credits"
+  });
+
+};
+
+exports.getPrivacyPage = function(req, res, next){
+  console.log(req.url);
+  res.render('pages/static/privacy', {
+    user        : req.user,
+    url         : req.url,
+    title: "Privacy"
+  });
+
+};
+
+exports.getTermsPage = function(req, res, next){
+
+  res.render('pages/static/terms', {
+    user        : req.user,
+    url         : req.url,
+    title: "Terms"
+  });
 
 };
 
