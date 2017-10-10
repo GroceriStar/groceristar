@@ -41,7 +41,7 @@ jQuery(function ($) {
 			var myVariable;
 
 
-
+			this.ajax_GetIngredients
 			$.ajax({
 				type: "GET",
 				url: '/getingredients/' + groceryId + '/' + departmentId,
@@ -144,7 +144,7 @@ jQuery(function ($) {
 
             // don't save if it for demo purposes only 
 
-
+            this.ajax_TogglePurchased
 
 			if( isChecked ){
 
@@ -239,6 +239,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
+			this.ajax_Unattach
 
 
 			$.ajax({
@@ -299,7 +300,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-
+			this.ajax_CreateIngredient
 
 
 
@@ -365,7 +366,7 @@ jQuery(function ($) {
 
 
 				// don't save if it for demo purposes only
-
+				this.ajax_TogglePurchased
 
 
 
@@ -400,7 +401,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-
+			this.ajax_TogglePurchased
 
 
 			// move this to another place, please :todo
@@ -481,7 +482,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-
+			this.ajax_ChangeName
 			$.ajax({
 				type: "POST",
 				url: '/changename/',
@@ -513,7 +514,7 @@ jQuery(function ($) {
 			};
 
 			// don't save if it for demo purposes only
-
+			this.ajax_Unattach
 			$.ajax({
 				type: "POST",
 				url: '/unattach/',
@@ -570,7 +571,7 @@ jQuery(function ($) {
 			});
 			return html;
 		},
-		footerTemplate : function(data){
+		footerTemplate: function(data){
 			// <script id="footer-template"
 			var html = '<span id="todo-count">' +
 					'<strong>' + data.activeTodoCount + ' </strong>' +
@@ -611,32 +612,43 @@ jQuery(function ($) {
 		// template related stuff
 
 		//methods, related to ajax calls
-		ajax_call : function(type){
-	
+		ajax_call: function(type, options){
+			this.ajax_GetIngredients(options);
+			this.ajax_CreateIngredient(options);
+			
+			this.ajax_ChangeName(options);
+			this.ajax_Unattach(options);
+
 			switch (type) {
-			  case value1:
+			  case '':
 			    
 			    break;
-			  case value2:
+
+			  case '':
 			    
 			    break;
 			 
-			  case valueN:
+			  case '':
 			    
 			    break;
-			  default:
 			    
+  			  case '':
+			    
+			    break;  
+
+			  default:
+			    this.ajax_TogglePurchased(options);
 			    break;
 			}
 
 		},
-		ajax_GetIngredients :  function(groceryId, departmentId){
+		ajax_GetIngredients:  function(options){
 
 			let myVariable
 			
 			$.ajax({
 				type: "GET",
-				url: '/getingredients/' + groceryId + '/' + departmentId,
+				url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
 				dataType: 'json',
 				'async': false
 			}).done(function(data){
@@ -651,37 +663,9 @@ jQuery(function ($) {
 			// return myVariable
 		},
 
-		ajax_TogglePurchased2 : function(toPurchase){
+		
 
-			$.ajax({
-				type: "POST",
-				url: '/togglepurchased/',
-				dataType: 'json',
-				data: toPurchase,
-				
-				'async': false
-			}).done(function(data){
-				
-				//console.log('success add all ingredients');
-				// console.log(data);
-
-			});
-		},
-
-		ajax_Unattach2 : function(toRemove){
-			$.ajax({
-				type: "POST",
-				url: '/unattach/',
-				dataType: 'json',
-				data: toRemove,
-				
-				'async': false
-			}).done(function(data){
-				
-				// console.log('success destroyCompleted');
-
-			});
-		},
+		
 
 		ajax_CreateIngredient: function(toSave){
 			var new_id = false;
@@ -698,6 +682,53 @@ jQuery(function ($) {
 				new_id = data.id;
 			});
 			// console.log(new_id);
+		},
+
+		ajax_TogglePurchased: function(toPurchase){
+			$.ajax({
+				type: "POST",
+				url: '/togglepurchased/',
+				dataType: 'json',
+				data: toPurchase,
+				
+				'async': false
+			}).done(function(data){
+				
+				//console.log('success AddToPurchased');
+				// console.log(data);
+
+				// result = data.id;
+			});
+		},
+
+		ajax_ChangeName: function(toRename){
+			$.ajax({
+				type: "POST",
+				url: '/changename/',
+				dataType: 'json',
+				data: toRename,
+				
+				'async': false
+			}).done(function(data){
+				
+				//console.log('success update name');
+
+			});
+		},
+
+		ajax_Unattach: function(toRemove){
+			$.ajax({
+				type: "POST",
+				url: '/unattach/',
+				dataType: 'json',
+				data: toRemove,
+				
+				'async': false
+			}).done(function(data){
+				
+				//console.log('success destroy one ingredient');
+
+			});
 		},
 
 	};
