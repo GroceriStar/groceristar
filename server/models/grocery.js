@@ -488,16 +488,13 @@ module.exports = function(Grocery) {
 				relation: 'ingredients',
 				scope: {
 
-					// fields: [ 'id', 'name', 'department' ],
+					fields: [ 'id', 'name', 'departmentId' ],
+					where: {
+						departmentId: departmentId
+					},
 					include: {
 						relation: 'department',
-						scope: {
-							// fields: [ 'id', 'name' ],
-							// fields: [ 'name' ],
-							where: {
-								id: departmentId
-							}
-						}
+						
 					}
 
 				}

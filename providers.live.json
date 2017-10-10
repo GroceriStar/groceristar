@@ -18,8 +18,8 @@
       "timezone",      
       "email"       
     ],
-    "clientID": "291799974652971",
-    "clientSecret": "7473cfc3bc4cb7dcafe8b6c409e02770",
+    "clientID": "1346208388827737",
+    "clientSecret": "0d3c819091738111cde679138eeff176",
     "callbackURL": "/auth/facebook/callback",
     "authPath": "/auth/facebook",
     "callbackPath": "/auth/facebook/callback",
@@ -31,8 +31,8 @@
   "facebook-link": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "clientID": "291799974652971",
-    "clientSecret": "7473cfc3bc4cb7dcafe8b6c409e02770",
+    "clientID": "1346208388827737",
+    "clientSecret": "0d3c819091738111cde679138eeff176",
     "callbackURL": "/link/facebook/callback",
     "authPath": "/link/facebook",
     "callbackPath": "/link/facebook/callback",

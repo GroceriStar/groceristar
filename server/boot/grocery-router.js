@@ -2,8 +2,9 @@
 
 const request        = require('request');
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-// var loopback = require('loopback');
+
 const async          = require('async');
+const _              = require('underscore');
 
 module.exports = function(app) {
   var router  = app.loopback.Router();
@@ -131,13 +132,16 @@ module.exports = function(app) {
 
     var Department   = app.models.Department;
 
-    Grocery.findById(groceryId, Grocery.queryOneDepartment(), (err, res)=>{
+    Grocery.findById(groceryId, Grocery.queryOneDepartment(departmentId), (err, res)=>{
 
       console.log(res);
-
+console.log('-----');
     });
 
+    
 
+
+    
     Grocery.fetchById(groceryId, function(err, response){
 
       console.log(response.data);
