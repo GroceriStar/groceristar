@@ -22,6 +22,8 @@ jQuery(function ($) {
 			var flag = $('body').data().isUltimate;
 			return flag;			
 		},
+
+
 		getDepartmentId: function(){
 			var departmentId = $('#new-todo').data().departmentId;
 			return departmentId;			
@@ -37,6 +39,9 @@ jQuery(function ($) {
 			var departmentId = this.getDepartmentId();	
 
 			var myVariable;
+
+
+
 			$.ajax({
 				type: "GET",
 				url: '/getingredients/' + groceryId + '/' + departmentId,
@@ -111,14 +116,15 @@ jQuery(function ($) {
 				filter: this.filter
 			});
 
-			$('#footer').toggle(todoCount > 0).html(template);
+			$('#footer').toggle(todoCount > 0)
+				.html(template);
 		},
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-			console.log( isChecked );
+			// console.log( isChecked );
 
-			console.log(this.todos);
+			// console.log(this.todos);
 
 			this.todos.forEach(function (todo) {
 				todo.completed = isChecked;
@@ -134,6 +140,11 @@ jQuery(function ($) {
 				groceryId: this.getGroceryId()
 			};
 			console.log(toPurchase);
+
+
+            // don't save if it for demo purposes only 
+
+
 
 			if( isChecked ){
 
@@ -185,9 +196,6 @@ jQuery(function ($) {
 		},
 		getActiveTodos: function () {
 
-			// console.log(this.todos);
-			// console.log(typeof this.todos);
-
 			if(typeof this.todos !== 'string'){
 				return this.todos.filter(function (todo) {
 					return !todo.completed;
@@ -228,6 +236,10 @@ jQuery(function ($) {
 
 			// console.log(difference);
 			// console.log(toRemove);
+
+
+			// don't save if it for demo purposes only
+
 
 			$.ajax({
 				type: "POST",
@@ -283,6 +295,13 @@ jQuery(function ($) {
 
 			var order_for_new_element = ITEM.order + 1;
 			// console.log(order_for_new_element);
+
+
+
+			// don't save if it for demo purposes only
+
+
+
 
 			var new_id = false;
 			$.ajax({
@@ -344,6 +363,12 @@ jQuery(function ($) {
 				};
 				// console.log(toPurchase)
 
+
+				// don't save if it for demo purposes only
+
+
+
+
 				// move this to another place, please :todo
 				// var result = false;
 				$.ajax({
@@ -372,6 +397,11 @@ jQuery(function ($) {
 					type: 'remove'
 				};
 			// console.log(toPurchase)
+
+
+			// don't save if it for demo purposes only
+
+
 
 			// move this to another place, please :todo
 			// var result = false;
@@ -446,6 +476,12 @@ jQuery(function ($) {
 				name: val
 			};
 			// console.log(toRename);
+
+
+
+
+			// don't save if it for demo purposes only
+
 			$.ajax({
 				type: "POST",
 				url: '/changename/',
@@ -475,6 +511,8 @@ jQuery(function ($) {
 				ingredients: [ id ],
 				groceryId: this.getGroceryId()
 			};
+
+			// don't save if it for demo purposes only
 
 			$.ajax({
 				type: "POST",
@@ -571,6 +609,96 @@ jQuery(function ($) {
 			return html;
 		}
 		// template related stuff
+
+		//methods, related to ajax calls
+		ajax_call : function(type){
+	
+			switch (type) {
+			  case value1:
+			    
+			    break;
+			  case value2:
+			    
+			    break;
+			 
+			  case valueN:
+			    
+			    break;
+			  default:
+			    
+			    break;
+			}
+
+		},
+		ajax_GetIngredients :  function(groceryId, departmentId){
+
+			let myVariable
+			
+			$.ajax({
+				type: "GET",
+				url: '/getingredients/' + groceryId + '/' + departmentId,
+				dataType: 'json',
+				'async': false
+			}).done(function(data){
+				
+                myVariable = JSON.stringify(data);
+                myVariable = JSON.parse(myVariable);
+               
+			
+			});
+
+			console.log(myVariable);
+			// return myVariable
+		},
+
+		ajax_TogglePurchased2 : function(toPurchase){
+
+			$.ajax({
+				type: "POST",
+				url: '/togglepurchased/',
+				dataType: 'json',
+				data: toPurchase,
+				
+				'async': false
+			}).done(function(data){
+				
+				//console.log('success add all ingredients');
+				// console.log(data);
+
+			});
+		},
+
+		ajax_Unattach2 : function(toRemove){
+			$.ajax({
+				type: "POST",
+				url: '/unattach/',
+				dataType: 'json',
+				data: toRemove,
+				
+				'async': false
+			}).done(function(data){
+				
+				// console.log('success destroyCompleted');
+
+			});
+		},
+
+		ajax_CreateIngredient: function(toSave){
+			var new_id = false;
+			$.ajax({
+				type: "POST",
+				url: '/create/ing/',
+				dataType: 'json',
+				data: toSave,
+				
+				'async': false
+			}).done(function(data){
+				
+				// console.log('success');
+				new_id = data.id;
+			});
+			// console.log(new_id);
+		},
 
 	};
 
