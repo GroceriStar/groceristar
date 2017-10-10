@@ -19,7 +19,6 @@ jQuery(function ($) {
 			return flag;			
 		},
 
-
 		getDepartmentId: function(){
 			var departmentId = $('#new-todo').data().departmentId;
 			return departmentId;			
@@ -34,26 +33,32 @@ jQuery(function ($) {
 			var groceryId    = this.getGroceryId();
 			var departmentId = this.getDepartmentId();	
 
-			var myVariable;
-
+			let options
+			let myVariable
 			// :todo redo getters, because we're using them few times
-			myVariable = this.ajax_GetIngredients({
-				groceryId: this.getGroceryId(),
+			options = this.ajax_GetIngredients({
+				groceryId   : this.getGroceryId(),
 				departmentId: this.getDepartmentId();
 			});
 
-			$.ajax({
-				type: "GET",
-				url: '/getingredients/' + groceryId + '/' + departmentId,
-				dataType: 'json',
-				'async': false
-			}).done(function(data){
+			myVariable = 
+				this.ajax_call(
+					'get-ingredients', 
+					myVariable
+				);
+
+			// $.ajax({
+			// 	type: "GET",
+			// 	url: '/getingredients/' + groceryId + '/' + departmentId,
+			// 	dataType: 'json',
+			// 	'async': false
+			// }).done(function(data){
 				
-                myVariable = JSON.stringify(data);
-                myVariable = JSON.parse(myVariable);
+   //              myVariable = JSON.stringify(data);
+   //              myVariable = JSON.parse(myVariable);
                
 			
-			});
+			// });
 
 			
 			this.todos = myVariable || [];		
@@ -130,16 +135,17 @@ jQuery(function ($) {
 				todo.completed = isChecked;
 			});
 
-			console.log(this.todos);
+			// console.log(this.todos);
 
 			var ingredientIds = _.pluck(this.todos, 'id');
-			console.log(ingredientIds);
+			// console.log(ingredientIds);
+
 			// move all ids to purchased.
 			var toPurchase = {
 				ingredients: ingredientIds,
 				groceryId: this.getGroceryId()
 			};
-			console.log(toPurchase);
+			// console.log(toPurchase);
 
 
             // don't save if it for demo purposes only 
@@ -150,40 +156,43 @@ jQuery(function ($) {
 
 				//add ingredients to purchased
 				toPurchase.type = 'add';
-				this.ajax_TogglePurchased(toPurchase);
-				$.ajax({
-					type: "POST",
-					url: '/togglepurchased/',
-					dataType: 'json',
-					data: toPurchase,
-					
-					'async': false
-				}).done(function(data){
-					
-					//console.log('success add all ingredients');
-					// console.log(data);
+				// this.ajax_TogglePurchased(toPurchase);
 
-				});
+				this.ajax_call('toggle', toPurchase);
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: '/togglepurchased/',
+				// 	dataType: 'json',
+				// 	data: toPurchase,
+					
+				// 	'async': false
+				// }).done(function(data){
+					
+				// 	//console.log('success add all ingredients');
+				// 	// console.log(data);
+
+				// });
 
 			} else {
 
 				//remove ingredients from purchased
 				toPurchase.type = 'remove';
-				this.ajax_TogglePurchased(toPurchase);
-				
-				$.ajax({
-					type: "POST",
-					url: '/togglepurchased/',
-					dataType: 'json',
-					data: toPurchase,
-					
-					'async': false
-				}).done(function(data){
-					
-					//console.log('success remove all ingredients from purchased');
-					// console.log(data);
+				// this.ajax_TogglePurchased(toPurchase);
 
-				});
+				this.ajax_call('toggle', toPurchase);
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: '/togglepurchased/',
+				// 	dataType: 'json',
+				// 	data: toPurchase,
+					
+				// 	'async': false
+				// }).done(function(data){
+					
+				// 	//console.log('success remove all ingredients from purchased');
+				// 	// console.log(data);
+
+				// });
 			}
 
 
@@ -241,21 +250,22 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_Unattach
+			// this.ajax_Unattach(toRemove);
 
+			this.ajax_call('unattach', toRemove);
 
-			$.ajax({
-				type: "POST",
-				url: '/unattach/',
-				dataType: 'json',
-				data: toRemove,
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/unattach/',
+			// 	dataType: 'json',
+			// 	data: toRemove,
 				
-				'async': false
-			}).done(function(data){
+			// 	'async': false
+			// }).done(function(data){
 				
-				// console.log('success destroyCompleted');
+			// 	// console.log('success destroyCompleted');
 
-			});
+			// });
 
 			this.render();
 		},
@@ -302,23 +312,27 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_CreateIngredient
+			
 
 
 
 			var new_id = false;
-			$.ajax({
-				type: "POST",
-				url: '/create/ing/',
-				dataType: 'json',
-				data: toSave,
+
+			var new_id = this.ajax_CreateIngredient(toSave);
+			var new_id = this.ajax_call('create-ingredient', toSave);
+
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/create/ing/',
+			// 	dataType: 'json',
+			// 	data: toSave,
 				
-				'async': false
-			}).done(function(data){
+			// 	'async': false
+			// }).done(function(data){
 				
-				// console.log('success');
-				new_id = data.id;
-			});
+			// 	// console.log('success');
+			// 	new_id = data.id;
+			// });
 
 			var new_object = {
 				id: new_id,
@@ -368,26 +382,26 @@ jQuery(function ($) {
 
 
 				// don't save if it for demo purposes only
-				this.ajax_TogglePurchased
-
-
 
 				// move this to another place, please :todo
 				// var result = false;
-				$.ajax({
-					type: "POST",
-					url: '/togglepurchased/',
-					dataType: 'json',
-					data: toPurchase,
-					
-					'async': false
-				}).done(function(data){
-					
-					//console.log('success AddToPurchased');
-					// console.log(data);
+				this.ajax_TogglePurchased(toPurchase);
+				this.ajax_call('toggle', toPurchase);
 
-					// result = data.id;
-				});
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: '/togglepurchased/',
+				// 	dataType: 'json',
+				// 	data: toPurchase,
+					
+				// 	'async': false
+				// }).done(function(data){
+					
+				// 	//console.log('success AddToPurchased');
+				// 	// console.log(data);
+
+				// 	// result = data.id;
+				// });
 				// console.log(result);
 
 
@@ -403,25 +417,25 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_TogglePurchased
-
+			this.ajax_TogglePurchased(toPurchase);
+			this.ajax_call('toggle', toPurchase);
 
 			// move this to another place, please :todo
 			// var result = false;
-				$.ajax({
-					type: "POST",
-					url: '/togglepurchased/',
-					dataType: 'json',
-					data: toPurchase,
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: '/togglepurchased/',
+				// 	dataType: 'json',
+				// 	data: toPurchase,
 					
-					'async': false
-				}).done(function(data){
+				// 	'async': false
+				// }).done(function(data){
 					
-					//console.log('success removed Purchased');
-					// console.log(data);
+				// 	//console.log('success removed Purchased');
+				// 	// console.log(data);
 
-					// result = data.id;
-				});
+				// 	// result = data.id;
+				// });
 				// console.log(result);
 
 
@@ -485,18 +499,20 @@ jQuery(function ($) {
 
 			// don't save if it for demo purposes only
 			this.ajax_ChangeName(toRename);
-			$.ajax({
-				type: "POST",
-				url: '/changename/',
-				dataType: 'json',
-				data: toRename,
-				
-				'async': false
-			}).done(function(data){
-				
-				//console.log('success update name');
+			this.ajax_call('rename', toRename);
 
-			});
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/changename/',
+			// 	dataType: 'json',
+			// 	data: toRename,
+				
+			// 	'async': false
+			// }).done(function(data){
+				
+			// 	//console.log('success update name');
+
+			// });
 
 
 			if ($el.data('abort')) {
@@ -517,18 +533,20 @@ jQuery(function ($) {
 
 			// don't save if it for demo purposes only
 			this.ajax_Unattach(toRemove);
-			$.ajax({
-				type: "POST",
-				url: '/unattach/',
-				dataType: 'json',
-				data: toRemove,
+			this.ajax_call('unattach', toRemove);
+			
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/unattach/',
+			// 	dataType: 'json',
+			// 	data: toRemove,
 				
-				'async': false
-			}).done(function(data){
+			// 	'async': false
+			// }).done(function(data){
 				
-				//console.log('success destroy one ingredient');
+			// 	//console.log('success destroy one ingredient');
 
-			});
+			// });
 
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
@@ -615,27 +633,22 @@ jQuery(function ($) {
 
 		//methods, related to ajax calls
 		ajax_call: function(type, options){
-			this.ajax_GetIngredients(options);
-			this.ajax_CreateIngredient(options);
-			
-			this.ajax_ChangeName(options);
-			this.ajax_Unattach(options);
 
 			switch (type) {
-			  case '':
-			    
+			  case 'create-ingredient':
+			    return this.ajax_CreateIngredient(options);
 			    break;
 
-			  case '':
-			    
+			  case 'rename':
+			    this.ajax_ChangeName(options);
 			    break;
 			 
-			  case '':
-			    
+			  case 'unattach':
+			    this.ajax_Unattach(options);
 			    break;
 
-  			  case '':
-			    
+  			  case 'get-ingredients':
+			    return this.ajax_GetIngredients(options);
 			    break;  
 
 			  default:
@@ -664,10 +677,6 @@ jQuery(function ($) {
 			console.log(myVariable);
 			// return myVariable
 		},
-
-		
-
-		
 
 		ajax_CreateIngredient: function(toSave){
 			var new_id = false;
