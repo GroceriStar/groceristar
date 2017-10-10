@@ -6,13 +6,9 @@ jQuery(function ($) {
 	var ESCAPE_KEY = 27;
 
 	var util = {
-
-
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
-		}
-
-		
+		}		
 	};
 
 
@@ -40,8 +36,12 @@ jQuery(function ($) {
 
 			var myVariable;
 
+			// :todo redo getters, because we're using them few times
+			myVariable = this.ajax_GetIngredients({
+				groceryId: this.getGroceryId(),
+				departmentId: this.getDepartmentId();
+			});
 
-			this.ajax_GetIngredients
 			$.ajax({
 				type: "GET",
 				url: '/getingredients/' + groceryId + '/' + departmentId,
@@ -144,13 +144,13 @@ jQuery(function ($) {
 
             // don't save if it for demo purposes only 
 
-            this.ajax_TogglePurchased
+            // this.ajax_TogglePurchased(toPurchase);
 
 			if( isChecked ){
 
 				//add ingredients to purchased
 				toPurchase.type = 'add';
-
+				this.ajax_TogglePurchased(toPurchase);
 				$.ajax({
 					type: "POST",
 					url: '/togglepurchased/',
@@ -169,6 +169,8 @@ jQuery(function ($) {
 
 				//remove ingredients from purchased
 				toPurchase.type = 'remove';
+				this.ajax_TogglePurchased(toPurchase);
+				
 				$.ajax({
 					type: "POST",
 					url: '/togglepurchased/',
@@ -482,7 +484,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_ChangeName
+			this.ajax_ChangeName(toRename);
 			$.ajax({
 				type: "POST",
 				url: '/changename/',
@@ -514,7 +516,7 @@ jQuery(function ($) {
 			};
 
 			// don't save if it for demo purposes only
-			this.ajax_Unattach
+			this.ajax_Unattach(toRemove);
 			$.ajax({
 				type: "POST",
 				url: '/unattach/',
@@ -631,7 +633,7 @@ jQuery(function ($) {
 			  case '':
 			    
 			    break;
-			    
+
   			  case '':
 			    
 			    break;  
