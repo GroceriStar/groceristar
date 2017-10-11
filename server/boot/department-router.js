@@ -38,10 +38,6 @@ module.exports = function(app) {
 
 		Grocery.addDepartment(options);
 
-
-		// .findById(departmentId, {}, function(err, model){
-		//   model.updateAttribute('visible', false);
-		// });
 	});
 
 

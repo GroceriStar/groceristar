@@ -109,9 +109,12 @@ module.exports = function(app) {
 		// var userId    = req.user.id;
 		var groceryId    = req.params.groceryId;
 		var departmentId = req.params.departmentId;
+		
+		// console.log(departmentId);
+		// console.log(groceryId);
 
 		Grocery.fetchById3(groceryId, departmentId, function(err, response){
-		  // console.log(response);
+		  console.log(response);
 		  // console.log(response.data.ingredients);
 		  res.json(response.data.ingredients);
 		});

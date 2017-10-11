@@ -203,8 +203,12 @@ exports.viewGrocery = async (req, res, next) => {
       let grocery
       try {      
          var Grocery   = app.models.Grocery;
-         // grocery = await Grocery.fetchById(groceryId);
+         
+         // :todo this is not an awesome method. we're getting to much data by this query
          grocery  = await Grocery.findById(groceryId, Grocery.query1());
+
+         // :todo this is not a best way to catch only departments name(main goal)
+         // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
          response = Grocery.convertCollectionData(grocery);
 
 
@@ -236,7 +240,41 @@ exports.viewGrocery = async (req, res, next) => {
 
 
 
+
+
 exports.shopping = async (req, res, next) => {
+  var groceryId    = req.params.groceryId; 
+  var departmentId = req.params.departmentId; 
+  var response     = {};
+  let grocery
+  try {      
+     var Grocery   = app.models.Grocery;
+     
+     // :todo this is not an awesome method. we're getting to much data by this query
+     // :todo we're using more efficient method, but it must be tested better
+     grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
+
+     // :todo this is not a best way to catch only departments name(main goal)
+     // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
+     response = Grocery.convertCollectionDataEfficient(grocery);
+
+
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
+
+
+  res.render('pages/shopping/shopping-list', {
+        user        : req.user,
+        url         : req.url,
+        groceryId   : groceryId,
+        departmentId: departmentId,
+        name        : response.name,
+        departments : response.data
+
+  });
+
 
 };
 

@@ -120,9 +120,9 @@ module.exports = function(app) {
   router.post('/update/name', groceryController.postUpdateName);
 
 
+  router.get('/shopping1/:groceryId/:departmentId', groceryController.shopping);
 
-
-
+  //:todo delete this
   router.get('/shopping/:groceryId/:departmentId', 
     function(req, res, next){
     var Grocery      = app.models.Grocery;
@@ -132,13 +132,21 @@ module.exports = function(app) {
 
     var Department   = app.models.Department;
 
-    Grocery.findById(groceryId, Grocery.queryOneDepartment(departmentId), (err, res)=>{
+//     Grocery.findById(groceryId, Grocery.queryOneDepartment(departmentId), (err, res)=>{
 
-      console.log(res);
-console.log('-----');
-    });
+//       console.log(res);
+// console.log('-----');
+//     });
 
-    
+      // res.render('pages/shopping/shopping-list', {
+      //   user        : req.user,
+      //   url         : req.url,
+      //   groceryId   : groceryId,
+      //   departmentId: departmentId,
+      //   name        : currentDepartmentCollection.name,
+      //   departments: departments
+
+      // });
 
 
     
@@ -158,6 +166,8 @@ console.log('-----');
 
       var currentDepartmentCollection = _.where(response.data, {id:departmentId});
       currentDepartmentCollection = currentDepartmentCollection[0];
+
+      console.log(currentDepartmentCollection);
 
       // console.log( _.where(response.data, {id:departmentId}) );
 

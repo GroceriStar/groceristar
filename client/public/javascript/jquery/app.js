@@ -30,24 +30,21 @@ jQuery(function ($) {
 		},
 		init: function () {
 
-			// var groceryId    = this.getGroceryId();
-			// var departmentId = this.getDepartmentId();	
-
 			let options
 			let myVariable
 			// :todo redo getters, because we're using them few times
-			options = this.ajax_GetIngredients({
+			options = {
 				groceryId   : this.getGroceryId(),
-				departmentId: this.getDepartmentId();
-			});
+				departmentId: this.getDepartmentId()
+			};
 
 			myVariable = 
 				this.ajax_call(
 					'get-ingredients', 
-					myVariable
+					options
 				);
 
-			console.log(myVariable)	;
+			// console.log(myVariable)	;
 
 			// $.ajax({
 			// 	type: "GET",
@@ -500,7 +497,7 @@ jQuery(function ($) {
 
 
 			// don't save if it for demo purposes only
-			this.ajax_ChangeName(toRename);
+			// this.ajax_ChangeName(toRename);
 			this.ajax_call('rename', toRename);
 
 			// $.ajax({
@@ -534,7 +531,7 @@ jQuery(function ($) {
 			};
 
 			// don't save if it for demo purposes only
-			this.ajax_Unattach(toRemove);
+			// this.ajax_Unattach(toRemove);
 			this.ajax_call('unattach', toRemove);
 
 			// $.ajax({
@@ -630,7 +627,7 @@ jQuery(function ($) {
 
 			// console.log(html);
 			return html;
-		}
+		},
 		// template related stuff
 
 		//methods, related to ajax calls
@@ -662,22 +659,21 @@ jQuery(function ($) {
 		ajax_GetIngredients:  function(options){
 
 			let myVariable
-			
 			$.ajax({
 				type: "GET",
 				url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
 				dataType: 'json',
 				'async': false
 			}).done(function(data){
-				
+				// console.log('get ingredients success');
                 myVariable = JSON.stringify(data);
                 myVariable = JSON.parse(myVariable);
                
 			
 			});
 
-			console.log(myVariable);
-			// return myVariable
+			// console.log(myVariable);
+			return myVariable;
 		},
 
 		ajax_CreateIngredient: function(toSave){

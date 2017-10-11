@@ -168,6 +168,55 @@ module.exports = function(Grocery) {
 	};
 
 
+	Grocery.convertCollectionDataEfficient = function(grocery){
+
+		var g       = grocery.toJSON();
+		let arr     = _.map(grocery.hideThisIds, item => item.toString());
+
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);           	
+          return item.department.id.toString();
+        }), function(grouped){
+
+        	var departmentId = grouped[0].departmentId.toString();
+        	var flag = _.contains(arr, departmentId);
+        	
+
+
+
+
+        	// :todo we don't need this ingredients at this particular case.
+        	// we only have a statement for checking array length. and I'm lazy to change that
+    		 var ja = _.map(grouped, function(item){
+    		 	
+    		 	return [
+        		 	item.id.toString(), //item.id, - we have this value before
+        		 	// item.name,
+        		 	// '/del/ing/' + item.id + '/' + g.id
+    		 	] // :todo change this to an object
+    		 });
+
+
+        	return { 
+        			id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: ( !flag ) ? ja : [],                        
+                };
+            
+
+        });
+        
+        var response = {
+            id: g.id,
+            name: g.name,
+            data: uniques
+        };
+        return response;
+
+	};
+
+
 
 
 	// hidden Only
@@ -503,6 +552,25 @@ module.exports = function(Grocery) {
 		}
 	};
 
+	Grocery.queryDepartmentsOnly = function(){
+		return {		
+			include: {
+				relation: 'ingredients',
+				scope: {
+					fields: [ 'departmentId' ],
+					include: {
+						relation: 'department',
+						// scope: {
+
+						// }
+					}
+
+				}
+			}
+
+		};
+	};
+
 	Grocery.withDepartments = function(groceryId, cb){
 		Grocery.findById(groceryId, {		
 			include: {
@@ -562,44 +630,6 @@ module.exports = function(Grocery) {
 	Grocery.withPurchased = function(groceryId, cb){
 		Grocery.findOne(Grocery.query2(groceryId), cb);
 	};
-
-
-	// Grocery.secondWave = function(groceryId, cb){
-
-	// 	var Department = Grocery.app.models.Department;
-
-	// 	Grocery.findById(groceryId, {
-
-	// 	}, function(err, grocery){
-
-	// 		console.log(grocery.ingredientIds);
-
-	// 		var ingArr = grocery.ingredientIds;
-
-	// 		Department.find({
-	// 			include: {
-	// 				relation: 'ingredients',
-	// 				scope: {
-	// 					where : {
-	// 						id: {
-	// 							inq: ingArr
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		}, function(err, model){
-
-	// 			console.log(model);
-	// 			console.log(model.ingredientIds);
-	// 			var m = model.toJSON();
-	// 			console.log(m.ingredients);
-
-	// 		});
-
-	// 	});
-
-
-	// };
 
 
 	Grocery.addPurchased = function(options){
@@ -726,6 +756,44 @@ module.exports = function(Grocery) {
    //          		 	'/del/ing/' + ingredient.id + '/' + groceryId
    //      		 	] // :todo change this to an object
 		}
+
+	};
+
+
+	Grocery.notUsedButCoolWay = function(groceryId){
+
+	    Grocery.fetchById(groceryId, function(err, response){
+
+      console.log(response.data);
+      // _.pluck(response.data, function(item){
+      //   console.log(item);
+      // });
+
+      // :todo remove ingredients from this list.
+      // but this will cause issue in select field
+      var departments = _.map(response.data, function(obj) { 
+        // maybe it'll be better to just from an object by hands
+        return _.pick(obj, 'id', 'name', 'type', 'ingredients'); 
+      });
+
+      var currentDepartmentCollection = _.where(response.data, {id:departmentId});
+      currentDepartmentCollection = currentDepartmentCollection[0];
+
+      console.log(currentDepartmentCollection);
+
+      // console.log( _.where(response.data, {id:departmentId}) );
+
+      // res.render('pages/shopping/shopping-list', {
+      //   user        : req.user,
+      //   url         : req.url,
+      //   groceryId   : groceryId,
+      //   departmentId: departmentId,
+      //   name        : currentDepartmentCollection.name,
+      //   departments: departments
+
+      // });
+
+    });
 
 	};
 
