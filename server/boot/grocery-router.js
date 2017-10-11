@@ -120,10 +120,10 @@ module.exports = function(app) {
   router.post('/update/name', groceryController.postUpdateName);
 
 
-  router.get('/shopping1/:groceryId/:departmentId', groceryController.shopping);
+  router.get('/shopping/:groceryId/:departmentId', groceryController.shopping);
 
   //:todo delete this
-  router.get('/shopping/:groceryId/:departmentId', 
+  router.get('/shopping2/:groceryId/:departmentId', 
     function(req, res, next){
     var Grocery      = app.models.Grocery;
     // var userId    = req.user.id;
@@ -152,7 +152,7 @@ module.exports = function(app) {
     
     Grocery.fetchById(groceryId, function(err, response){
 
-      console.log(response.data);
+      // console.log(response.data);
       // _.pluck(response.data, function(item){
       //   console.log(item);
       // });
@@ -167,7 +167,7 @@ module.exports = function(app) {
       var currentDepartmentCollection = _.where(response.data, {id:departmentId});
       currentDepartmentCollection = currentDepartmentCollection[0];
 
-      console.log(currentDepartmentCollection);
+      // console.log(currentDepartmentCollection);
 
       // console.log( _.where(response.data, {id:departmentId}) );
 

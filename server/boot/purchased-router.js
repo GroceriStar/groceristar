@@ -46,56 +46,15 @@ module.exports = function(app) {
   });
 
 
-    // Ing change name
-  // router.post('/unattach/', function(req, res, next){
-  //   var Grocery        = app.models.Grocery;
-  //   var Ingredient   = app.models.Ingredient;
-    
-  //   var ingredients    = req.body.ingredients;
-  //   var groceryId      = req.body.groceryId;
-
-  //   var options = {
-  //     groceryId: groceryId,
-  //     secondArray: ingredients 
-  //   };
-
-  //   Ingredient.find({
-  //     where : {
-  //       id : { inq : ingredients }
-  //     }
-  //   }, function(err, models){
-
-  //     // console.log(models);
-      
-  //     _.map(models, function(model){
-
-  //       console.log(model);
-
-  //       if(model.custom){
-   
-  //         model.updateAttribute('departmentId', false);    
-
-  //       }
-  //       console.log(model);
-
-  //     });
-  //     res.json('success');
-
-  //   });
-
-
-
-  // });
-
-
   // used for ajax call from todo list
   router.post('/unattach', function(req, res, next){
     var Grocery        = app.models.Grocery;
     var Ingredient     = app.models.Ingredient;
+
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
 
-    // console.log(ingredients);
+    console.log(req.body);
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 
@@ -129,6 +88,8 @@ module.exports = function(app) {
         
 
       });
+
+      
       res.json('success');
 
     });

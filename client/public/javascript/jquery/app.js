@@ -44,21 +44,6 @@ jQuery(function ($) {
 					options
 				);
 
-			// console.log(myVariable)	;
-
-			// $.ajax({
-			// 	type: "GET",
-			// 	url: '/getingredients/' + groceryId + '/' + departmentId,
-			// 	dataType: 'json',
-			// 	'async': false
-			// }).done(function(data){
-				
-   //              myVariable = JSON.stringify(data);
-   //              myVariable = JSON.parse(myVariable);
-               
-			
-			// });
-
 			
 			this.todos = myVariable || [];		
 			this.bindEvents();
@@ -149,59 +134,20 @@ jQuery(function ($) {
 
             // don't save if it for demo purposes only 
 
-            // this.ajax_TogglePurchased(toPurchase);
+            
 
 			if( isChecked ){
 
 				//add ingredients to purchased
-				toPurchase.type = 'add';
-				// this.ajax_TogglePurchased(toPurchase);
-
-				// this.ajax_call('toggle', toPurchase);
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: '/togglepurchased/',
-				// 	dataType: 'json',
-				// 	data: toPurchase,
-					
-				// 	'async': false
-				// }).done(function(data){
-					
-				// 	//console.log('success add all ingredients');
-				// 	// console.log(data);
-
-				// });
-
+				toPurchase.type = 'add';				
 			} else {
 
 				//remove ingredients from purchased
-				toPurchase.type = 'remove';
-				// this.ajax_TogglePurchased(toPurchase);
-
-				// this.ajax_call('toggle', toPurchase);
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: '/togglepurchased/',
-				// 	dataType: 'json',
-				// 	data: toPurchase,
-					
-				// 	'async': false
-				// }).done(function(data){
-					
-				// 	//console.log('success remove all ingredients from purchased');
-				// 	// console.log(data);
-
-				// });
+				toPurchase.type = 'remove';				
 			}
-
+			// console.log('toggle');
 			this.ajax_call('toggle', toPurchase);
 			
-
-			// move this to another place, please :todo
-			// var result = false;
-			
-
-
 			this.render();
 		},
 		getActiveTodos: function () {
@@ -240,7 +186,7 @@ jQuery(function ($) {
 			var difference = _.difference(array1, array2);
 
 			var toRemove = {
-				ingredients: _.pluck(difference, 'id'),
+				secondArray: _.pluck(difference, 'id'),
 				groceryId: this.getGroceryId()
 			};
 
@@ -525,8 +471,10 @@ jQuery(function ($) {
 		destroy: function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
 			var id = $ingredient.data('id');
+
+
 			var toRemove = {
-				ingredients: [ id ],
+				secondArray: [ id ],
 				groceryId: this.getGroceryId()
 			};
 
@@ -726,6 +674,7 @@ jQuery(function ($) {
 		},
 
 		ajax_Unattach: function(toRemove){
+
 			$.ajax({
 				type: "POST",
 				url: '/unattach/',
@@ -735,7 +684,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				//console.log('success destroy one ingredient');
+				console.log('success destroy ingredient or ingredients');
 
 			});
 		},
