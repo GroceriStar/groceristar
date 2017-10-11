@@ -58,18 +58,18 @@ module.exports = function(app) {
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 
-    var options = {
-      groceryId: groceryId,
-      secondArray: ingredients 
-    };
+    // var options = {
+    //   groceryId: groceryId,
+    //   secondArray: ingredients 
+    // };
 
-    Grocery.removePurchased(options);
+    Grocery.removePurchased(req.body);
       
-    Grocery.removeIngredient(options);
+    Grocery.removeIngredient(req.body);
 
     Ingredient.find({
       where : {
-        id : { inq : ingredients }
+        id : { inq : req.body.ingredients }
       }
     }, function(err, models){
 

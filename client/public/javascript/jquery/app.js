@@ -679,8 +679,7 @@ jQuery(function ($) {
 				type: "POST",
 				url: '/unattach/',
 				dataType: 'json',
-				data: toRemove,
-				
+				data: toRemove,				
 				'async': false
 			}).done(function(data){
 				
