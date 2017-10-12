@@ -6,6 +6,7 @@ const path           = require('path');
 const async          = require('async');
 const _              = require('underscore');
 
+const middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 // var UserExtended = require(path.resolve(__dirname, '../../bin/import/users'));
 // var loopback = require('loopback');
 // let server          = require(path.resolve(__dirname, '../../server/server'));
@@ -48,7 +49,7 @@ module.exports = function(app) {
 
 
 
-  router.get('/credits', mainController.getCreditsPage);
+  router.get('/credits', middlewarez, mainController.getCreditsPage);
 
   router.get('/privacy', mainController.getPrivacyPage);
 
