@@ -49,7 +49,7 @@ module.exports = function(app) {
 
 
 
-  router.get('/credits', middlewarez, mainController.getCreditsPage);
+  router.get('/credits', mainController.getCreditsPage);
 
   router.get('/privacy', mainController.getPrivacyPage);
 

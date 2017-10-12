@@ -8,7 +8,7 @@ let app    = require(path.resolve(__dirname, '../server'));
 // var Video     = server.models.VideoModel;
 // var Example   = server.models.ExampleModel;
 
-// let middleware = require(path.resolve(__dirname, '../like-middleware-helper'));
+let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 
 exports.getHomepage = async (req, res, next) => {
 
@@ -51,10 +51,11 @@ exports.getHomepage = async (req, res, next) => {
 
 };
 
-exports.getCreditsPage = function(req, res, next){
-  console.log(req.user);
-
-
+exports.getCreditsPage = async function(req, res, next){
+  // console.log(req.user);
+  
+  var ultimateGL = await middlewarez(next);
+// console.log(z)
 
   res.render('pages/credits', {
     user        : req.user,
