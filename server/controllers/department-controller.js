@@ -36,6 +36,7 @@ exports.departmentsList = async (req, res, next) => {
 
 
   var renderObject = {
+    user        : req.user,
     name: response.name + '`s Departments',     
     departments : response.data,   // :todo on other template we're using `data`, not departments 
     groceryId   : groceryId
@@ -128,7 +129,7 @@ exports.getDepartment = async (req, res, next) => {
   // console.log(department);
 
   var renderObject = {
-    
+    user        : req.user,
     departmentId:  departmentId,
       
         

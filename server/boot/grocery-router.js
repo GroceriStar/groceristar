@@ -117,74 +117,13 @@ module.exports = function(app) {
 
 
   // Update grocery list name
-  router.post('/update/name', groceryController.postUpdateName);
+  router.post('/update/name', 
+    groceryController.postUpdateName);
 
 
-  router.get('/shopping/:groceryId/:departmentId', groceryController.shopping);
+  router.get('/shopping/:groceryId/:departmentId', 
+    groceryController.shopping);
 
-  //:todo delete this
-  router.get('/shopping2/:groceryId/:departmentId', 
-    function(req, res, next){
-    var Grocery      = app.models.Grocery;
-    // var userId    = req.user.id;
-    var groceryId    = req.params.groceryId;
-    var departmentId = req.params.departmentId;
-
-    var Department   = app.models.Department;
-
-//     Grocery.findById(groceryId, Grocery.queryOneDepartment(departmentId), (err, res)=>{
-
-//       console.log(res);
-// console.log('-----');
-//     });
-
-      // res.render('pages/shopping/shopping-list', {
-      //   user        : req.user,
-      //   url         : req.url,
-      //   groceryId   : groceryId,
-      //   departmentId: departmentId,
-      //   name        : currentDepartmentCollection.name,
-      //   departments: departments
-
-      // });
-
-
-    
-    Grocery.fetchById(groceryId, function(err, response){
-
-      // console.log(response.data);
-      // _.pluck(response.data, function(item){
-      //   console.log(item);
-      // });
-
-      // :todo remove ingredients from this list.
-      // but this will cause issue in select field
-      var departments = _.map(response.data, function(obj) { 
-        // maybe it'll be better to just from an object by hands
-        return _.pick(obj, 'id', 'name', 'type', 'ingredients'); 
-      });
-
-      var currentDepartmentCollection = _.where(response.data, {id:departmentId});
-      currentDepartmentCollection = currentDepartmentCollection[0];
-
-      // console.log(currentDepartmentCollection);
-
-      // console.log( _.where(response.data, {id:departmentId}) );
-
-      res.render('pages/shopping/shopping-list', {
-        user        : req.user,
-        url         : req.url,
-        groceryId   : groceryId,
-        departmentId: departmentId,
-        name        : currentDepartmentCollection.name,
-        departments: departments
-
-      });
-
-    });
-
-    
-  });
 
   app.use(router);
 

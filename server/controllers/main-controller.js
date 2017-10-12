@@ -51,7 +51,7 @@ exports.getHomepage = async (req, res, next) => {
 };
 
 exports.getCreditsPage = function(req, res, next){
-
+  console.log(req.user);
   res.render('pages/credits', {
     user        : req.user,
     url         : req.url,
@@ -62,6 +62,7 @@ exports.getCreditsPage = function(req, res, next){
 
 exports.getPrivacyPage = function(req, res, next){
   console.log(req.url);
+  console.log(req.user);
   res.render('pages/static/privacy', {
     user        : req.user,
     url         : req.url,
@@ -71,7 +72,7 @@ exports.getPrivacyPage = function(req, res, next){
 };
 
 exports.getTermsPage = function(req, res, next){
-
+  console.log(req.user);
   res.render('pages/static/terms', {
     user        : req.user,
     url         : req.url,

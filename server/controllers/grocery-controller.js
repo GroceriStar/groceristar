@@ -26,6 +26,7 @@ exports.changeName = async (req, res, next) => {
     }
 
     var renderObject = {
+      user        : req.user,
       name: 'Change Grocery list name: ' + grocery.name,     
 
       // departments : response.data,    
@@ -220,6 +221,8 @@ exports.viewGrocery = async (req, res, next) => {
       // console.log(response);
 
       res.render('pages/view-grocery-new', {
+        
+        user: req.user,
         name: response.name,
         
         groceryId: groceryId,
