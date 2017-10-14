@@ -194,23 +194,9 @@ jQuery(function ($) {
 			// console.log(toRemove);
 
 
-			// don't save if it for demo purposes only
-			// this.ajax_Unattach(toRemove);
 
 			this.ajax_call('unattach', toRemove);
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/unattach/',
-			// 	dataType: 'json',
-			// 	data: toRemove,
-				
-			// 	'async': false
-			// }).done(function(data){
-				
-			// 	// console.log('success destroyCompleted');
-
-			// });
 
 			this.render();
 		},
@@ -256,28 +242,13 @@ jQuery(function ($) {
 
 
 
-			// don't save if it for demo purposes only
-			
-
 
 
 			var new_id = false;
 
-			// var new_id = this.ajax_CreateIngredient(toSave);
 			var new_id = this.ajax_call('create-ingredient', toSave);
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/create/ing/',
-			// 	dataType: 'json',
-			// 	data: toSave,
-				
-			// 	'async': false
-			// }).done(function(data){
-				
-			// 	// console.log('success');
-			// 	new_id = data.id;
-			// });
+			
 
 			var new_object = {
 				id: new_id,
@@ -326,29 +297,7 @@ jQuery(function ($) {
 				// console.log(toPurchase)
 
 
-				// don't save if it for demo purposes only
-
-				// move this to another place, please :todo
-				// var result = false;
-				// this.ajax_TogglePurchased(toPurchase);
-				// this.ajax_call('toggle', toPurchase);
-
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: '/togglepurchased/',
-				// 	dataType: 'json',
-				// 	data: toPurchase,
-					
-				// 	'async': false
-				// }).done(function(data){
-					
-				// 	//console.log('success AddToPurchased');
-				// 	// console.log(data);
-
-				// 	// result = data.id;
-				// });
-				// console.log(result);
-
+				
 
 			} else {
 
@@ -361,27 +310,6 @@ jQuery(function ($) {
 			// console.log(toPurchase)
 
 
-			// don't save if it for demo purposes only
-			// this.ajax_TogglePurchased(toPurchase);
-			// this.ajax_call('toggle', toPurchase);
-
-			// move this to another place, please :todo
-			// var result = false;
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: '/togglepurchased/',
-				// 	dataType: 'json',
-				// 	data: toPurchase,
-					
-				// 	'async': false
-				// }).done(function(data){
-					
-				// 	//console.log('success removed Purchased');
-				// 	// console.log(data);
-
-				// 	// result = data.id;
-				// });
-				// console.log(result);
 
 
 			}
@@ -442,23 +370,10 @@ jQuery(function ($) {
 
 
 
-			// don't save if it for demo purposes only
-			// this.ajax_ChangeName(toRename);
+		
 			this.ajax_call('rename', toRename);
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/changename/',
-			// 	dataType: 'json',
-			// 	data: toRename,
-				
-			// 	'async': false
-			// }).done(function(data){
-				
-			// 	//console.log('success update name');
-
-			// });
-
+		
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);
@@ -478,22 +393,10 @@ jQuery(function ($) {
 				groceryId: this.getGroceryId()
 			};
 
-			// don't save if it for demo purposes only
-			// this.ajax_Unattach(toRemove);
+			
 			this.ajax_call('unattach', toRemove);
 
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/unattach/',
-			// 	dataType: 'json',
-			// 	data: toRemove,
-				
-			// 	'async': false
-			// }).done(function(data){
-				
-			// 	//console.log('success destroy one ingredient');
-
-			// });
+			
 
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
@@ -683,7 +586,7 @@ jQuery(function ($) {
 				'async': false
 			}).done(function(data){
 				
-				console.log('success destroy ingredient or ingredients');
+				//console.log('success destroy ingredient or ingredients');
 
 			});
 		},

@@ -19,11 +19,11 @@ block content
 
     else
       .col-md-8
-        h3 You don't clone any grocery list yet.
+        h3 You don't have any grocery list yet.
         +link_clone_ultimate2(ultimate.id, 'Start to work by clonning Ultimate Grocery template')
     
 
-    if groceries.length >= 1
+    if groceries.length > 1
       .col-md-8.mt-80
         h1 Your Grocery Lists
       .col-md-8

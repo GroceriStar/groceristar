@@ -54,7 +54,7 @@ module.exports = function(app) {
     var ingredients    = req.body.ingredients;
     var groceryId      = req.body.groceryId;
 
-    console.log(req.body);
+    // console.log(req.body);
     // var ingredients = req.params.ingId;
     // var groceryId   = req.params.groceryId;
 
