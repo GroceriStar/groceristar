@@ -13,6 +13,9 @@ let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 exports.getHomepage = async (req, res, next) => {
 
       var ultimateGL = {};
+
+      var ultimateGL2 = await middlewarez(next);
+
       let admin
       try {
 
@@ -65,9 +68,12 @@ exports.getCreditsPage = async function(req, res, next){
 
 };
 
-exports.getPrivacyPage = function(req, res, next){
+exports.getPrivacyPage = async function(req, res, next){
   console.log(req.url);
   console.log(req.user);
+
+  var ultimateGL = await middlewarez(next);
+
   res.render('pages/static/privacy', {
     user        : req.user,
     url         : req.url,
@@ -76,8 +82,11 @@ exports.getPrivacyPage = function(req, res, next){
 
 };
 
-exports.getTermsPage = function(req, res, next){
+exports.getTermsPage = async function(req, res, next){
   console.log(req.user);
+
+  var ultimateGL = await middlewarez(next);
+
   res.render('pages/static/terms', {
     user        : req.user,
     url         : req.url,

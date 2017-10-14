@@ -6,7 +6,7 @@ const path    = require('path');
 let app       = require(path.resolve(__dirname, '../server'));
 
 var async     = require('async');
-
+let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
 
@@ -177,6 +177,11 @@ exports.removeGrocery = (req, res, next) => {
 exports.viewGrocery = async (req, res, next) => {
 
       var groceryId  = req.params.groceryId;
+
+      var ultimateGL2 = await middlewarez(next);
+
+
+      
       var ultimateGL = {};
       var response   = {};
       let admin

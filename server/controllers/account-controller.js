@@ -8,9 +8,14 @@ let app     = require(path.resolve(__dirname, '../server'));
 const async = require('async');
 // var Grocery = app.models.Grocery;
 // var User    = app.models.user;
+let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 
 exports.getAccount = (req, res, next) => {
 	var groceryId  = req.params.groceryId;
+
+	var ultimateGL2 = await middlewarez(next);
+
+
     var ultimateGL = {};
 	var response   = {};
 	let admin
