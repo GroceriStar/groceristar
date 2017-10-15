@@ -60,10 +60,12 @@ exports.getCreditsPage = async function(req, res, next){
   var ultimateGL = await middlewarez(next);
 // console.log(z)
 
-  res.render('pages/credits', {
+  res.render('pages/static/credits', {
     user        : req.user,
     url         : req.url,
-    title: "Credits"
+    title: "Credits",
+
+    ultimate: ultimateGL
   });
 
 };
@@ -77,7 +79,9 @@ exports.getPrivacyPage = async function(req, res, next){
   res.render('pages/static/privacy', {
     user        : req.user,
     url         : req.url,
-    title: "Privacy"
+    title: "Privacy",
+
+    ultimate: ultimateGL
   });
 
 };
@@ -90,7 +94,9 @@ exports.getTermsPage = async function(req, res, next){
   res.render('pages/static/terms', {
     user        : req.user,
     url         : req.url,
-    title: "Terms"
+    title: "Terms",
+
+    ultimate: ultimateGL
   });
 
 };

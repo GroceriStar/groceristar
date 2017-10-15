@@ -285,34 +285,40 @@ jQuery(function ($) {
 			this.todos[i].completed = !this.todos[i].completed;
 
 
-			// checked 
-			if (flag){
-
-				//add to purchased
-				var toPurchase = {
+			var toPurchase = {
 					ingredients: [ $ingredient.data().id ],
 					groceryId: this.getGroceryId(),
-					type: 'add' 
+					type:  (flag) ? 'add' :'remove' 
 				};
-				// console.log(toPurchase)
+
+				console.log(toPurchase);
+
+			// checked 
+			// if (flag){
+
+			// 	//add to purchased
+			// 	var toPurchase = {
+			// 		ingredients: [ $ingredient.data().id ],
+			// 		groceryId: this.getGroceryId(),
+			// 		type: 'add' 
+			// 	};
+			// 	// console.log(toPurchase)
 
 
 				
 
-			} else {
+			// } else {
 
-				// remove from purchased
-				var toPurchase = {
-					ingredients: [ $ingredient.data().id ],
-					groceryId: this.getGroceryId(),
-					type: 'remove'
-				};
-			// console.log(toPurchase)
+			// 	// remove from purchased
+			// 	var toPurchase = {
+			// 		ingredients: [ $ingredient.data().id ],
+			// 		groceryId: this.getGroceryId(),
+			// 		type: 'remove'
+			// 	};
+			// // console.log(toPurchase)
 
-
-
-
-			}
+			// }
+			
 			this.ajax_call('toggle', toPurchase);
 
 
@@ -367,13 +373,8 @@ jQuery(function ($) {
 			};
 			// console.log(toRename);
 
-
-
-
-		
 			this.ajax_call('rename', toRename);
 
-		
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);

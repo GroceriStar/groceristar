@@ -85,7 +85,24 @@ exports.cloneGrocery = async (req, res, next) => {
     res.redirect('/afterclone');
 };
 
-exports.cloneForm = async (req, res, next) => {
+//:todo #182
+exports.getCloneForm = async (req, res, next) => {
+  var groceryId = req.body.groceryId;
+
+  var renderObject = {
+    user: req.user,
+    title: "Clone Ultimate template and have your own list",
+
+    groceryId   : groceryId
+  };
+
+  // console.log(renderObject)
+
+      
+  res.render('pages/grocery/clone-form-page', renderObject);
+};
+
+exports.postCloneForm = async (req, res, next) => {
 
   var groceryId = req.body.groceryId;
   var userId    = req.body.userId;

@@ -12,16 +12,24 @@ block content
       .col-md-4
         .panel.panel-bordered
           .panel-body
-            h4 Сreate new list by cloning Grocery Template
+            h4 Сreate a new list by cloning Grocery Template
           .panel-footer 
             include ../forms/clone-grocery
               
 
     else
-      .col-md-8
-        h3 You don't have any grocery list yet.
-        +link_clone_ultimate2(ultimate.id, 'Start to work by clonning Ultimate Grocery template')
+      .col-md-5.col-md-offset-3
+        .panel.panel-bordered
+          .panel-body
+            h3 You don't have any grocery list yet.
+            h5 Start to work by clonning Ultimate Grocery template
+          .panel-footer 
+            include ../forms/clone-grocery
+        
     
+
+
+
 
     if groceries.length > 1
       .col-md-8.mt-80

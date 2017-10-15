@@ -73,11 +73,14 @@ module.exports = function(app) {
 
 
 
+
   router.get('/clone/:groceryId', groceryController.cloneGrocery);
 
-  router.post('/cloneform', groceryController.cloneForm);
+  router.post('/cloneform', groceryController.postCloneForm);
 
   router.get('/afterclone', groceryController.justRedirect);
+
+  router.get('/clone-grocery/:groceryId', groceryController.getCloneForm);
 
 
 
