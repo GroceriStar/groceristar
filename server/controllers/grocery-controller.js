@@ -60,8 +60,8 @@ exports.cloneGrocery = async (req, res, next) => {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
 
     } catch (e) {
-        //this will eventually be handled by your error handling middleware
-        next(e) 
+      //this will eventually be handled by your error handling middleware
+      next(e) 
     }
 
     let cloned
@@ -70,8 +70,8 @@ exports.cloneGrocery = async (req, res, next) => {
       cloned = await Grocery.create(newObject);
 
     } catch (e) {
-        //this will eventually be handled by your error handling middleware
-        next(e) 
+      //this will eventually be handled by your error handling middleware
+      next(e) 
     }
 
     var options = {

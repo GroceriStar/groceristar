@@ -127,25 +127,11 @@ jQuery(function ($) {
 			// move all ids to purchased.
 			var toPurchase = {
 				ingredients: ingredientIds,
-				groceryId: this.getGroceryId()
+				groceryId: this.getGroceryId(),
+				type:  (isChecked) ? 'add' :'remove'
 			};
 			// console.log(toPurchase);
 
-
-            // don't save if it for demo purposes only 
-
-            
-
-			if( isChecked ){
-
-				//add ingredients to purchased
-				toPurchase.type = 'add';				
-			} else {
-
-				//remove ingredients from purchased
-				toPurchase.type = 'remove';				
-			}
-			// console.log('toggle');
 			this.ajax_call('toggle', toPurchase);
 			
 			this.render();
@@ -189,11 +175,6 @@ jQuery(function ($) {
 				secondArray: _.pluck(difference, 'id'),
 				groceryId: this.getGroceryId()
 			};
-
-			// console.log(difference);
-			// console.log(toRemove);
-
-
 
 			this.ajax_call('unattach', toRemove);
 
@@ -277,10 +258,6 @@ jQuery(function ($) {
 
 			var flag =  $(event.target).prop('checked');
 
-
-
-			// console.log(e);
-
 			// console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
 
@@ -291,33 +268,8 @@ jQuery(function ($) {
 					type:  (flag) ? 'add' :'remove' 
 				};
 
-				console.log(toPurchase);
+				// console.log(toPurchase);
 
-			// checked 
-			// if (flag){
-
-			// 	//add to purchased
-			// 	var toPurchase = {
-			// 		ingredients: [ $ingredient.data().id ],
-			// 		groceryId: this.getGroceryId(),
-			// 		type: 'add' 
-			// 	};
-			// 	// console.log(toPurchase)
-
-
-				
-
-			// } else {
-
-			// 	// remove from purchased
-			// 	var toPurchase = {
-			// 		ingredients: [ $ingredient.data().id ],
-			// 		groceryId: this.getGroceryId(),
-			// 		type: 'remove'
-			// 	};
-			// // console.log(toPurchase)
-
-			// }
 			
 			this.ajax_call('toggle', toPurchase);
 

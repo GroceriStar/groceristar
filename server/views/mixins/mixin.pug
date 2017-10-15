@@ -116,6 +116,10 @@ mixin link_clone_ultimate2(id, name)
 mixin link_clone_ultimate3(id, name)
   +link('/clone/' + id, name)(class="btn btn-primary")    
 
+// :todo #182
+mixin link_clone_page(id, name)
+  +link('/clone-grocery/' + id, name) 
+
 mixin button_department(id, groceryId)
   +link('/department/' + id + '/' + groceryId, 'view')
 

@@ -13,31 +13,31 @@ let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 exports.getAccount = (req, res, next) => {
 	var groceryId  = req.params.groceryId;
 
-	var ultimateGL2 = await middlewarez(next);
+	var ultimateGL = await middlewarez(next);
 
 
-    var ultimateGL = {};
+    // var ultimateGL = {};
 	var response   = {};
-	let admin
-	try {
+	// let admin
+	// try {
 
-		var User = app.models.user;
+	// 	var User = app.models.user;
 
-		// this is a duplicated code. :todo
-		admin    = await User.findOne(User.queryUltimateAdmin());
+	// 	// this is a duplicated code. :todo
+	// 	admin    = await User.findOne(User.queryUltimateAdmin());
 
-		var json     = admin.toJSON();
-		var ultimate = json.groceries[0];
-		ultimateGL = {
-		  id: ultimate.id,
-		  name: ultimate.name
-		};
+	// 	var json     = admin.toJSON();
+	// 	var ultimate = json.groceries[0];
+	// 	ultimateGL = {
+	// 	  id: ultimate.id,
+	// 	  name: ultimate.name
+	// 	};
 
 
-	} catch (e) {
-		//this will eventually be handled by your error handling middleware
-		next(e) 
-	}
+	// } catch (e) {
+	// 	//this will eventually be handled by your error handling middleware
+	// 	next(e) 
+	// }
 
 	
 
