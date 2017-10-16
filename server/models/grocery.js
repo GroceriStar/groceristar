@@ -347,13 +347,13 @@ module.exports = function(Grocery) {
 
             		if ( !flag ) { 
 
-            		return { id: grouped[0].department.id.toString(),
-                        name: grouped[0].department.name,
-                        type: grouped[0].department.type,
-                        ingredients: ja,                        
-                    };
+	            		return { id: grouped[0].department.id.toString(),
+	                        name: grouped[0].department.name,
+	                        type: grouped[0].department.type,
+	                        ingredients: ja,                        
+	                    };
 
-            	}
+            		}
             	return {};
             	// return { id: grouped[0].department.id.toString(),
              //            name: grouped[0].department.name,
@@ -396,6 +396,84 @@ module.exports = function(Grocery) {
 
 
 	};
+
+	// This function will return ingredients
+	Grocery.convertDepartmentItems = (grocery) => {
+
+		var g       = grocery.toJSON();
+		let arr     = _.map(grocery.hideThisIds, item => item.toString());
+
+		// change this names later, please :todo
+		let purchasedArray    = _.map(grocery.purchasedIds, item => item.toString());
+		
+
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);           	
+          return item.department.id.toString();
+        }), function(grouped){
+
+        	
+        	var currentDepartmentId = grouped[0].departmentId.toString();
+
+        	var flag = _.contains(arr, currentDepartmentId);
+
+        	//if( currentDepartmentId !== departmentId ) { return ;}
+
+    		var ja = _.map(grouped, function(item){
+
+		 	// console.log( _.indexOf(grouped, item) )
+		 	// Grocery.customIngredientsArray('todo', item, g.id);
+
+    		 	return {
+					id: item.id,
+					name: item.name, 
+					completed: _.contains(purchasedArray, item.id.toString()),
+					departmentId: currentDepartmentId,
+					order: _.indexOf(grouped, item)
+					
+				}
+		 	});
+
+
+        		// if ( !flag ) { 
+
+    		return { id: currentDepartmentId,
+                name: grouped[0].department.name,
+                type: grouped[0].department.type,
+                ingredients: ja,                        
+            };
+
+        		// }
+        	// return {};
+
+        	// return { id: grouped[0].department.id.toString(),
+         //            name: grouped[0].department.name,
+         //            type: grouped[0].department.type,
+         //            ingredients: [],                        
+         //        };
+            
+
+        	
+
+
+
+        });
+        
+        // console.log( uniques );
+        // console.log( _.compact(uniques) );
+
+        // uniques = _.compact(uniques);
+		var response = {
+            id: g.id,
+            name: g.name,
+            data: uniques[0]
+        };
+        console.log(response);
+        return response;
+
+
+	};
+
 
 	Grocery.getObjectForClone = function(grocery){
 
@@ -554,33 +632,16 @@ module.exports = function(Grocery) {
 
 
 
-	//:todo think about adding count(to departments). 
+	// :todo think about adding count(to departments). 
+
 	// So if ingredients in dep = 0 - don't show it
-	Grocery.element = function(groceryId, cb){
 
-		Grocery.withDepartments(groceryId, function(err, model){
 
-			var g = grocery.toJSON();
-			
-			var departments = [];
-			// console.log(g.desc);
-			// console.log(g.departmentsList);
 
-			// case #1 return only dep name with id for link creation
-			g.departmentsList.forEach(function(item, i){
 
-				if( item.visible ) {
-					departments.push({
-						 id: item.id,
-						 name: item.name 
-					});
-				}	
 
-				
-			});
-		})
 
-	}
+
 
 
 	Grocery.withPurchased = function(groceryId, cb){

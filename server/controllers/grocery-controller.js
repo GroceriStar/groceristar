@@ -5,7 +5,9 @@ const path    = require('path');
 
 let app       = require(path.resolve(__dirname, '../server'));
 
-var async     = require('async');
+const async   = require('async');
+const _       = require('underscore');
+
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
@@ -250,6 +252,7 @@ exports.viewGrocery = async (req, res, next) => {
         name: response.name,
         
         groceryId: groceryId,
+        // departmentId: departmentId,
 
         messages: {},
 
@@ -272,7 +275,7 @@ exports.viewGrocery = async (req, res, next) => {
 exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
-
+  // console.log(departmentId);
   // This part is work for creating dropdown list only
   var response     = {};
   let grocery
@@ -294,33 +297,68 @@ exports.shopping = async (req, res, next) => {
   }
 
 
-
+  // I think this is can be improved
   // this is a duplicated code
   let grocery2
+  let ingredients
   try {      
      var Grocery   = app.models.Grocery;
      
+    // console.log(departmentId)     ;
+     // grocery2 = await Grocery.fetchById3(groceryId, departmentId);
+     grocery2  = await Grocery.findById(groceryId, 
+                    Grocery.queryOneDepartment(departmentId)
+                  );
+     ingredients = Grocery.convertDepartmentItems(grocery2);
+     // console.log(grocery2);
      
-     grocery2 = await Grocery.fetchById3(groceryId, departmentId);
-     console.log(grocery2);
-     // console.log(grocery2.data);
      // console.log(grocery2.data.ingredients);
-       
-     // console.log(grocery);
+     // console.log(ingredients)
      
-     // response = Grocery.convertCollectionDataEfficient(grocery);
-     // console.log(response.data);
+     // ingredients = grocery2.data.ingredients;
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
 
-  // Grocery.fetchById3(groceryId, departmentId, function(err, response){
-  //     console.log(response);
-  //     // console.log(response.data.ingredients);
-  //     res.json(response.data.ingredients);
-  //   }); 
+  // :todo change this later. it'll work but this bad, really bad
+  var html = '';
+  _.each(ingredients, function(element){
+        // console.log(ingredients);
+
+        var single = '';
+
+        if( element.completed ){
+          single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
+        } else {
+          single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
+        }
+
+          single += '<div class="view">' ;
+          if( element.completed ){
+            single += '<input class="toggle" type="checkbox" checked>';
+          } else {
+            single += '<input class="toggle" type="checkbox" >';
+          }
+
+            
+          single += '<label>' + element.name + '</label>'+
+                '<button class="destroy"></button>'+
+            '</div>'+
+            '<input class="edit" value="' + element.name + '">'
+          // single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+          //      '<button class="destroy"></button>'+
+          //  '</div>'+
+          //  '<input class="edit" value="' + element.name + '">' 
+
+        single += '</li>';
+
+        html += single;
+
+        
+      });
+
 
 
   res.render('pages/shopping/shopping-list', {
