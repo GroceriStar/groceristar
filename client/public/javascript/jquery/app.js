@@ -38,14 +38,16 @@ jQuery(function ($) {
 				departmentId: this.getDepartmentId()
 			};
 
-			myVariable = 
-				this.ajax_call(
-					'get-ingredients', 
-					options
-				);
+
+			// myVariable = 
+			// 	this.ajax_call(
+			// 		'get-ingredients', 
+			// 		options
+			// 	);
 
 			
-			this.todos = myVariable || [];		
+			// this.todos = myVariable || [];		
+			// this.todos = [];	
 			this.bindEvents();
 
 

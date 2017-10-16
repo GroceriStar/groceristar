@@ -459,17 +459,17 @@ module.exports = function(Grocery) {
 
         });
         
-        // console.log( uniques );
+        // console.log( uniques[0] );
         // console.log( _.compact(uniques) );
 
         // uniques = _.compact(uniques);
-		var response = {
-            id: g.id,
-            name: g.name,
-            data: uniques[0]
-        };
-        console.log(response);
-        return response;
+		// var response = {
+  //           id: g.id,
+  //           name: g.name,
+  //           data: uniques[0]
+  //       };
+        // console.log(response);
+        return uniques[0].ingredients;
 
 
 	};

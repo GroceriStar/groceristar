@@ -47,10 +47,25 @@ html(lang='en', data-framework='jquery')
       section#main
         input#toggle-all(type='checkbox')
         label(for='toggle-all') Mark all as complete
-        ul#todo-list
+        .col-md-8
+          each element in list
+            .col-md-8= element
 
-
+        ul#todo-list2
           
+          each element in list
+            if element.completed
+              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
+            else
+              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
+
+              div.view | Tata
+                if element.completed
+                  input.toggle(type="checkbox", checked="checked")
+                else
+                  input.toggle(type="checkbox", checked="checked") 
+
+
       footer#footer
     footer#info
       p Double-click to edit an item 

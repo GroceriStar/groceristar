@@ -275,7 +275,7 @@ exports.viewGrocery = async (req, res, next) => {
 exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
-  // console.log(departmentId);
+  
   // This part is work for creating dropdown list only
   var response     = {};
   let grocery
@@ -303,19 +303,11 @@ exports.shopping = async (req, res, next) => {
   let ingredients
   try {      
      var Grocery   = app.models.Grocery;
-     
-    // console.log(departmentId)     ;
-     // grocery2 = await Grocery.fetchById3(groceryId, departmentId);
+
      grocery2  = await Grocery.findById(groceryId, 
                     Grocery.queryOneDepartment(departmentId)
                   );
      ingredients = Grocery.convertDepartmentItems(grocery2);
-     // console.log(grocery2);
-     
-     // console.log(grocery2.data.ingredients);
-     // console.log(ingredients)
-     
-     // ingredients = grocery2.data.ingredients;
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
@@ -325,7 +317,7 @@ exports.shopping = async (req, res, next) => {
   // :todo change this later. it'll work but this bad, really bad
   var html = '';
   _.each(ingredients, function(element){
-        // console.log(ingredients);
+        // console.log(element);
 
         var single = '';
 
@@ -360,6 +352,9 @@ exports.shopping = async (req, res, next) => {
       });
 
 
+      // console.log(html)
+      // var pug = require('pug');
+      // html = pug.render(html, {text:firstName});
 
   res.render('pages/shopping/shopping-list', {
         user        : req.user,
@@ -367,7 +362,9 @@ exports.shopping = async (req, res, next) => {
         groceryId   : groceryId,
         departmentId: departmentId,
         name        : response.name,
-        departments : response.data
+        departments : response.data,
+
+        list        : ingredients 
 
   });
 
