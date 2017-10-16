@@ -101,25 +101,26 @@ module.exports = function(app) {
       //   {"title":"333", "completed":false, "departmentId": "0"},
       //   {"title":"Ingredos", "completed":false, "departmentId": "0"}
       // ]
+      
   // :todo think about making this post instead of get
-  	router.get('/getingredients/:groceryId/:departmentId/', 
-		ensureLoggedIn('/auth/account'),  // :todo get back this 
-		function(req, res, next){    
-		var Grocery      = app.models.Grocery;
-		// var userId    = req.user.id;
-		var groceryId    = req.params.groceryId;
-		var departmentId = req.params.departmentId;
+ //  	router.get('/getingredients/:groceryId/:departmentId/', 
+	// 	ensureLoggedIn('/auth/account'),  // :todo get back this 
+	// 	function(req, res, next){    
+	// 	var Grocery      = app.models.Grocery;
+	// 	// var userId    = req.user.id;
+	// 	var groceryId    = req.params.groceryId;
+	// 	var departmentId = req.params.departmentId;
 		
-		// console.log(departmentId);
-		// console.log(groceryId);
+	// 	// console.log(departmentId);
+	// 	// console.log(groceryId);
 
-		Grocery.fetchById3(groceryId, departmentId, function(err, response){
-		  console.log(response);
-		  // console.log(response.data.ingredients);
-		  res.json(response.data.ingredients);
-		});
+	// 	Grocery.fetchById3(groceryId, departmentId, function(err, response){
+	// 	  console.log(response);
+	// 	  // console.log(response.data.ingredients);
+	// 	  res.json(response.data.ingredients);
+	// 	});
 
-	});
+	// });
 
 
 

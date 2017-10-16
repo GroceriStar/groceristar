@@ -5,6 +5,7 @@ jQuery(function ($) {
 	var ENTER_KEY  = 13;
 	var ESCAPE_KEY = 27;
 
+
 	var util = {
 		pluralize: function (count, word) {
 			return count === 1 ? word : word + 's';
@@ -31,29 +32,11 @@ jQuery(function ($) {
 		getingredients: function(){
 			return $('body').data().ingredients;
 		},
-		init: function () {
+		init: () => {
 
-			let options
-			let myVariable
-			// :todo redo getters, because we're using them few times
-			options = {
-				groceryId   : this.getGroceryId(),
-				departmentId: this.getDepartmentId()
-			};
+			this.todos = this.getingredients() || [];		
 
-
-			myVariable = this.getingredients()
-				this.ajax_call(
-					'get-ingredients', 
-					options
-				);
-			console.log(myVariable)	
-			
-			this.todos = myVariable || [];		
-			// this.todos = [];	
 			this.bindEvents();
-
-
 
 			new Router({
 				'/:filter': function (filter) {
@@ -61,8 +44,6 @@ jQuery(function ($) {
 					this.render();
 				}.bind(this)
 			}).init('/all');
-
-
 
 		},
 		bindEvents: function () {
@@ -84,7 +65,7 @@ jQuery(function ($) {
 
 			if( todos ){
 
-				$('#todo-list').html( this.todoTemplate(todos) );
+				// $('#todo-list').html( this.todoTemplate(todos) );
 
 			
 				$('#main').toggle(todos.length > 0);
@@ -232,7 +213,7 @@ jQuery(function ($) {
 
 			var new_id = this.ajax_call('create-ingredient', toSave);
 
-			
+			// if( !new_id ) 
 
 			var new_object = {
 				id: new_id,
@@ -359,44 +340,7 @@ jQuery(function ($) {
 		},
 
 		// templates related stuff
-		todoTemplate: function(elements, index){
-
-			var html = '';
-			_.each(elements, function(element){
-
-				var single = '';
-
-				if( element.completed ){
-					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
-				} else {
-					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
-				}
-
-				  single += '<div class="view">' ;
-					if( element.completed ){
-						single += '<input class="toggle" type="checkbox" checked>';
-					} else {
-						single += '<input class="toggle" type="checkbox" >';
-					}
-
-						
-					single += '<label>' + element.name + '</label>'+
-								'<button class="destroy"></button>'+
-						'</div>'+
-						'<input class="edit" value="' + element.name + '">'
-					// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
-					// 			'<button class="destroy"></button>'+
-					// 	'</div>'+
-					// 	'<input class="edit" value="' + element.name + '">'	
-
-				single += '</li>';
-
-				html += single;
-
-				
-			});
-			return html;
-		},
+		
 		footerTemplate: function(data){
 			// <script id="footer-template"
 			var html = '<span id="todo-count">' +
@@ -438,7 +382,9 @@ jQuery(function ($) {
 		// template related stuff
 
 		//methods, related to ajax calls
-		ajax_call: function(type, options){
+		ajax_call: (type, options) => {
+
+
 
 			switch (type) {
 			  case 'create-ingredient':
@@ -453,9 +399,9 @@ jQuery(function ($) {
 			    this.ajax_Unattach(options);
 			    break;
 
-  			  case 'get-ingredients':
-			    return this.ajax_GetIngredients(options);
-			    break;  
+  			  // case 'get-ingredients':
+			    // return this.ajax_GetIngredients(options);
+			    // break;  
 
 			  default:
 			    this.ajax_TogglePurchased(options);
@@ -463,25 +409,25 @@ jQuery(function ($) {
 			}
 
 		},
-		ajax_GetIngredients:  function(options){
+		// ajax_GetIngredients:  function(options){
 
-			let myVariable
-			$.ajax({
-				type: "GET",
-				url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
-				dataType: 'json',
-				'async': false
-			}).done(function(data){
-				// console.log('get ingredients success');
-                myVariable = JSON.stringify(data);
-                myVariable = JSON.parse(myVariable);
+		// 	let myVariable
+		// 	$.ajax({
+		// 		type: "GET",
+		// 		url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
+		// 		dataType: 'json',
+		// 		'async': false
+		// 	}).done(function(data){
+		// 		// console.log('get ingredients success');
+  //               myVariable = JSON.stringify(data);
+  //               myVariable = JSON.parse(myVariable);
                
 			
-			});
+		// 	});
 
-			// console.log(myVariable);
-			return myVariable;
-		},
+		// 	// console.log(myVariable);
+		// 	return myVariable;
+		// },
 
 		ajax_CreateIngredient: function(toSave){
 			var new_id = false;

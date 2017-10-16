@@ -300,7 +300,7 @@ module.exports = function(Grocery) {
 
 	};
 
-
+	// :todo remove this. right now i just keep this method for some reasons
 	Grocery.fetchById3 = function(groceryId, departmentId, cb){
 
 		Grocery.findById(groceryId, Grocery.query1(), function(err, grocery){
@@ -417,11 +417,9 @@ module.exports = function(Grocery) {
 
         	var flag = _.contains(arr, currentDepartmentId);
 
-        	//if( currentDepartmentId !== departmentId ) { return ;}
-
     		var ja = _.map(grouped, function(item){
 
-		 	// console.log( _.indexOf(grouped, item) )
+
 		 	// Grocery.customIngredientsArray('todo', item, g.id);
 
     		 	return {
@@ -459,16 +457,7 @@ module.exports = function(Grocery) {
 
         });
         
-        // console.log( uniques[0] );
-        // console.log( _.compact(uniques) );
-
-        // uniques = _.compact(uniques);
-		// var response = {
-  //           id: g.id,
-  //           name: g.name,
-  //           data: uniques[0]
-  //       };
-        // console.log(response);
+        
         return uniques[0].ingredients;
 
 
