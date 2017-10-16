@@ -18,7 +18,7 @@ jQuery(function ($) {
 			var flag = $('body').data().isUltimate;
 			return flag;			
 		},
-
+		// :todo update that
 		getDepartmentId: function(){
 			var departmentId = $('#new-todo').data().departmentId;
 			return departmentId;			
@@ -27,6 +27,9 @@ jQuery(function ($) {
 
 			var groceryId = $('body').data().groceryId;
 			return groceryId;
+		},
+		getingredients: function(){
+			return $('body').data().ingredients;
 		},
 		init: function () {
 
@@ -39,14 +42,14 @@ jQuery(function ($) {
 			};
 
 
-			myVariable = 
+			myVariable = this.getingredients()
 				this.ajax_call(
 					'get-ingredients', 
 					options
 				);
 			console.log(myVariable)	
 			
-			// this.todos = myVariable || [];		
+			this.todos = myVariable || [];		
 			// this.todos = [];	
 			this.bindEvents();
 
@@ -144,9 +147,7 @@ jQuery(function ($) {
 				return this.todos.filter(function (todo) {
 					return !todo.completed;
 				});	
-			}
-
-			
+			}			
 		},
 		getCompletedTodos: function () {
 			return this.todos.filter(function (todo) {

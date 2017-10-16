@@ -315,6 +315,9 @@ exports.shopping = async (req, res, next) => {
   }
 
 
+  // This another bad functionality, written for this method.
+  let ultimate = await middlewarez(next);
+
 
   res.render('pages/shopping/shopping-list', {
         user        : req.user,
@@ -324,7 +327,9 @@ exports.shopping = async (req, res, next) => {
         name        : response.name,
         departments : response.data,
 
-        list        : ingredients 
+        list        : ingredients,
+
+        isUltimate  : ultimate.id == groceryId
 
   });
 
