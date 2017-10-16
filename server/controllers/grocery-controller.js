@@ -88,12 +88,14 @@ exports.cloneGrocery = async (req, res, next) => {
 //:todo #182
 exports.getCloneForm = async (req, res, next) => {
   var groceryId = req.body.groceryId;
+  var ultimate  = await middlewarez(next);
 
   var renderObject = {
     user: req.user,
     title: "Clone Ultimate template and have your own list",
 
-    groceryId   : groceryId
+    groceryId : groceryId,
+    ultimate  : ultimate
   };
 
   // console.log(renderObject)
@@ -195,32 +197,32 @@ exports.viewGrocery = async (req, res, next) => {
 
       var groceryId  = req.params.groceryId;
 
-      var ultimateGL2 = await middlewarez(next);
+      var ultimate   = await middlewarez(next);
 
 
       
-      var ultimateGL = {};
+      // var ultimateGL = {};
       var response   = {};
-      let admin
-      try {
+      // let admin
+      // try {
 
-        var User = app.models.user;
+      //   var User = app.models.user;
 
-        // this is a duplicated code. :todo
-        admin    = await User.findOne(User.queryUltimateAdmin());
+      //   // this is a duplicated code. :todo
+      //   admin    = await User.findOne(User.queryUltimateAdmin());
 
-        var json     = admin.toJSON();
-        var ultimate = json.groceries[0];
-        ultimateGL = {
-          id: ultimate.id,
-          name: ultimate.name
-        };
+      //   var json     = admin.toJSON();
+      //   var ultimate = json.groceries[0];
+      //   ultimateGL = {
+      //     id: ultimate.id,
+      //     name: ultimate.name
+      //   };
 
         
-      } catch (e) {
-        //this will eventually be handled by your error handling middleware
-        next(e) 
-      }
+      // } catch (e) {
+      //   //this will eventually be handled by your error handling middleware
+      //   next(e) 
+      // }
 
 
       let grocery
@@ -255,7 +257,7 @@ exports.viewGrocery = async (req, res, next) => {
 
         title: "Grocery list " + response.name,
 
-        ultimate: ultimateGL,
+        ultimate: ultimate,
 
         isGrocery: req.originalUrl.includes('/view/grocery/')        
       
@@ -282,7 +284,7 @@ exports.shopping = async (req, res, next) => {
      // :todo this is not a best way to catch only departments name(main goal)
      // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
      response = Grocery.convertCollectionDataEfficient(grocery);
-
+     console.log(response.data);
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
