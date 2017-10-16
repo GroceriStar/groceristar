@@ -39,12 +39,12 @@ jQuery(function ($) {
 			};
 
 
-			// myVariable = 
-			// 	this.ajax_call(
-			// 		'get-ingredients', 
-			// 		options
-			// 	);
-
+			myVariable = 
+				this.ajax_call(
+					'get-ingredients', 
+					options
+				);
+			console.log(myVariable)	
 			
 			// this.todos = myVariable || [];		
 			// this.todos = [];	

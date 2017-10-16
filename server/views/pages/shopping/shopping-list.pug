@@ -48,7 +48,7 @@ html(lang='en', data-framework='jquery')
         input#toggle-all(type='checkbox')
         label(for='toggle-all') Mark all as complete
 
-        ul
+        //ul
           each element in list
             if element.completed
               li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
@@ -64,19 +64,22 @@ html(lang='en', data-framework='jquery')
                   button.destroy
                 input.edit(value=element.name)
 
-        ul#todo-list2
+        ul#todo-list
           
-          each element in list
+           each element in list
             if element.completed
               li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
             else
               li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
 
-              div.view | Tata
-                if element.completed
-                  input.toggle(type="checkbox", checked="checked")
-                else
-                  input.toggle(type="checkbox", checked="checked") 
+                div.view
+                  if element.completed
+                    input.toggle(type="checkbox", checked="checked")
+                  else
+                    input.toggle(type="checkbox", checked="checked")
+                  label= element.name
+                  button.destroy
+                input.edit(value=element.name)
 
 
       footer#footer
