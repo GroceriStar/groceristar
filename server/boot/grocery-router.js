@@ -124,6 +124,8 @@ module.exports = function(app) {
     groceryController.postUpdateName);
 
 
+
+  // Shopping part, i.e. TODO list
   router.get('/shopping/:groceryId/:departmentId', 
     groceryController.shopping);
 

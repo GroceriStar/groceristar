@@ -272,6 +272,8 @@ exports.viewGrocery = async (req, res, next) => {
 exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
+
+  // This part is work for creating dropdown list only
   var response     = {};
   let grocery
   try {      
@@ -280,16 +282,45 @@ exports.shopping = async (req, res, next) => {
      // :todo this is not an awesome method. we're getting to much data by this query
      // :todo we're using more efficient method, but it must be tested better
      grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
-
+     // console.log(grocery);
      // :todo this is not a best way to catch only departments name(main goal)
      // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
      response = Grocery.convertCollectionDataEfficient(grocery);
-     console.log(response.data);
+     // console.log(response.data);
 
   } catch (e) {
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
+
+
+
+  // this is a duplicated code
+  let grocery2
+  try {      
+     var Grocery   = app.models.Grocery;
+     
+     
+     grocery2 = await Grocery.fetchById3(groceryId, departmentId);
+     console.log(grocery2);
+     // console.log(grocery2.data);
+     // console.log(grocery2.data.ingredients);
+       
+     // console.log(grocery);
+     
+     // response = Grocery.convertCollectionDataEfficient(grocery);
+     // console.log(response.data);
+
+  } catch (e) {
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
+
+  // Grocery.fetchById3(groceryId, departmentId, function(err, response){
+  //     console.log(response);
+  //     // console.log(response.data.ingredients);
+  //     res.json(response.data.ingredients);
+  //   }); 
 
 
   res.render('pages/shopping/shopping-list', {
@@ -312,3 +343,4 @@ function output (err, data) {
     colors: true
   });
 }
+
