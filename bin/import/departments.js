@@ -115,11 +115,7 @@ function getDepartments(){
 	
 		 name: "Office supplies",
 		 type: 'household'
-		},{
-	
-		 name: "Carcinogens",
-		 type: 'household'
-		},{
+		},,{
 	
 		 name: "Other stuff",
 		 type: 'household'

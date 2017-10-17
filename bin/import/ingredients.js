@@ -561,7 +561,7 @@ function getIngredients(departments){
     },
     {  
          
-      name:'Eggs / Fake eggs',departmentId: departments[14].id
+      name:'Eggs',departmentId: departments[14].id
     },
     {  
          
@@ -894,47 +894,37 @@ function getIngredients(departments){
     name:'Postage stamps',departmentId: departments[24].id
     },
     ///
-    {         
-    name:'Arsenic',departmentId: departments[25].id
-    },
-    {         
-    name:'Asbestos',departmentId: departments[25].id
-    },
-    {         
-    name:'Cigarettes',departmentId: departments[25].id
-    },
-    {         
-    name:'Radionuclides',departmentId: departments[25].id
-    },
-    {         
-    name:'Vinyl chloride',departmentId: departments[25].id
-    },
+    
+
+    
+
+
     ///
     {         
-    name:'Automotive',departmentId: departments[26].id
+    name:'Automotive',departmentId: departments[25].id
   
     },
     {         
-    name:'Batteries',departmentId: departments[26].id
+    name:'Batteries',departmentId: departments[25].id
   
     },
     {         
-    name:'Charcoal / Propane',departmentId: departments[26].id
+    name:'Charcoal / Propane',departmentId: departments[25].id
     },
     {         
-    name:'Flowers / Greeting card',departmentId: departments[26].id
+    name:'Flowers / Greeting card',departmentId: departments[25].id
     },
     {         
-    name:'Insect repellent',departmentId: departments[26].id
+    name:'Insect repellent',departmentId: departments[25].id
     },
     {         
-    name:'Light bulbs',departmentId: departments[26].id
+    name:'Light bulbs',departmentId: departments[25].id
     },
     {         
-    name:'Newspaper / Magazine',departmentId: departments[26].id
+    name:'Newspaper / Magazine',departmentId: departments[25].id
     },
     {         
-    name:'Random impulse buy',departmentId: departments[26].id
+    name:'Random impulse buy',departmentId: departments[25].id
     }
     ///
 

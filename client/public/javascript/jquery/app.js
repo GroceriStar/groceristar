@@ -16,8 +16,7 @@ jQuery(function ($) {
 
 	var App = {
 		isUltimate: function(){
-			var flag = $('body').data().isUltimate;
-			return flag;			
+			return $('body').data().flag;
 		},
 		// :todo update that
 		getDepartmentId: function(){
@@ -29,12 +28,12 @@ jQuery(function ($) {
 			var groceryId = $('body').data().groceryId;
 			return groceryId;
 		},
-		getingredients: function(){
+		getIngredients: function(){
 			return $('body').data().ingredients;
 		},
-		init: () => {
+		init: function() {
 
-			this.todos = this.getingredients() || [];		
+			this.todos = this.getIngredients() || [];		
 
 			this.bindEvents();
 
@@ -61,7 +60,7 @@ jQuery(function ($) {
 
 			var todos = this.getFilteredTodos();
 
-			// console.log(todos);
+			console.log(todos);
 
 			if( todos ){
 
@@ -70,7 +69,9 @@ jQuery(function ($) {
 			
 				$('#main').toggle(todos.length > 0);
 
-				$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
+				$('#toggle-all').prop('checked', 
+					this.getActiveTodos().length === 0
+				);
 
 				this.renderFooter();
 
@@ -202,16 +203,16 @@ jQuery(function ($) {
 			var ITEM = _.last(this.todos);
 			// console.log(ITEM.order);
 
-			var order_for_new_element = ITEM.order + 1;
+			// var order_for_new_element = ;
 			// console.log(order_for_new_element);
 
 
 
 
 
-			var new_id = false;
+			// var new_id = false;
 
-			var new_id = this.ajax_call('create-ingredient', toSave);
+			var new_id = this.ajax_call('create-ingredient', toSave) || 'fake-id-for-ultimate-gl';
 
 			// if( !new_id ) 
 
@@ -223,7 +224,7 @@ jQuery(function ($) {
 
 				groceryId: this.getGroceryId(),
 				departmentId: departmentId,
-				order: order_for_new_element
+				order: ITEM.order + 1
 			}
 
 			// console.log(new_object);
@@ -340,7 +341,44 @@ jQuery(function ($) {
 		},
 
 		// templates related stuff
-		
+		// todoTemplate: function(elements, index){
+
+		// 	var html = '';
+		// 	_.each(elements, function(element){
+
+		// 		var single = '';
+
+		// 		if( element.completed ){
+		// 			single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
+		// 		} else {
+		// 			single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
+		// 		}
+
+		// 		  single += '<div class="view">' ;
+		// 			if( element.completed ){
+		// 				single += '<input class="toggle" type="checkbox" checked>';
+		// 			} else {
+		// 				single += '<input class="toggle" type="checkbox" >';
+		// 			}
+
+						
+		// 			single += '<label>' + element.name + '</label>'+
+		// 						'<button class="destroy"></button>'+
+		// 				'</div>'+
+		// 				'<input class="edit" value="' + element.name + '">'
+		// 			// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+		// 			// 			'<button class="destroy"></button>'+
+		// 			// 	'</div>'+
+		// 			// 	'<input class="edit" value="' + element.name + '">'	
+
+		// 		single += '</li>';
+
+		// 		html += single;
+
+				
+		// 	});
+		// 	return html;
+		// },
 		footerTemplate: function(data){
 			// <script id="footer-template"
 			var html = '<span id="todo-count">' +
@@ -382,9 +420,9 @@ jQuery(function ($) {
 		// template related stuff
 
 		//methods, related to ajax calls
-		ajax_call: (type, options) => {
+		ajax_call: function(type, options) {
 
-
+			if(this.isUltimate()) return false;
 
 			switch (type) {
 			  case 'create-ingredient':
