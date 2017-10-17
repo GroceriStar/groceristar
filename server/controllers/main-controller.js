@@ -58,7 +58,7 @@ exports.getHomepage = async (req, res, next) => {
 exports.getCreditsPage = async function(req, res, next){
   // console.log(req.user);
   
-  var ultimateGL = await middlewarez(next);
+  var ultimate = await middlewarez(next);
 // console.log(z)
 
   res.render('pages/static/credits', {
@@ -66,7 +66,7 @@ exports.getCreditsPage = async function(req, res, next){
     url         : req.url,
     title: "Credits",
 
-    ultimate: ultimateGL
+    ultimate: ultimate
   });
 
 };
@@ -75,14 +75,15 @@ exports.getPrivacyPage = async function(req, res, next){
   console.log(req.url);
   console.log(req.user);
 
-  var ultimateGL = await middlewarez(next);
+  var ultimate = await middlewarez(next);
 
   res.render('pages/static/privacy', {
     user        : req.user,
     url         : req.url,
-    title: "Privacy",
-
-    ultimate: ultimateGL
+  
+    title: "Groceristar Privacy Policy",
+    companyName: "Groceristar",
+    ultimate: ultimate
   });
 
 };
@@ -90,14 +91,15 @@ exports.getPrivacyPage = async function(req, res, next){
 exports.getTermsPage = async function(req, res, next){
   console.log(req.user);
 
-  var ultimateGL = await middlewarez(next);
+  var ultimate = await middlewarez(next);
 
   res.render('pages/static/terms', {
     user        : req.user,
     url         : req.url,
-    title: "Terms",
+    title: "Terms & Conditions",
+    companyName: "Groceristar",
 
-    ultimate: ultimateGL
+    ultimate: ultimate
   });
 
 };

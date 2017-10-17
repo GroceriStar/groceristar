@@ -1,15 +1,15 @@
 extends ../../layouts/dash2-meke-it-better
 
 block content
-  h1 Groceristar Privacy Policy
+  h1= title
   
   div#credits-styles-wrapper
 
     
-    p Groceristar (the “Company”) is committed to maintaining robust privacy protections for its users.  Our Privacy Policy (“Privacy Policy”) is designed to help you understand how we collect, use and safeguard the information you provide to us and to assist you in making informed decisions when using our Service.  
+    p #{companyName} (the “Company”) is committed to maintaining robust privacy protections for its users.  Our Privacy Policy (“Privacy Policy”) is designed to help you understand how we collect, use and safeguard the information you provide to us and to assist you in making informed decisions when using our Service.  
 
     p For purposes of this Agreement, “Service” refers to the Company’s service which can be accessed via our website at groceristar.herokuapp.com. in which users can create grocery lists.  The terms “we,” “us,” and “our” refer to the Company. “You” refers to you, as a user of Service. By accepting our Privacy Policy and Terms of Use (found here: 
-      a(href="http://launchaco.com/build/") Terms &amp; Conditions, 
+      a(href="/terms") Terms &amp; Conditions, 
       | you consent to our collection, storage, use and disclosure of your personal information as described in this Privacy Policy.
 
     h4 I.               INFORMATION WE COLLECT
