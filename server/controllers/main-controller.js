@@ -34,7 +34,7 @@ exports.getHomepage = async (req, res, next) => {
 
         // console.log(data);
 
-        res.render('pages/landing', {
+        res.render('pages/static/landing', {
           user: req.user,
           url : req.url,
           

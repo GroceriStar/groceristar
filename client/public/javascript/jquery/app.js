@@ -56,7 +56,7 @@ jQuery(function ($) {
 				.on('focusout', '.edit',    this.update.bind(this))
 				.on('click',    '.destroy', this.destroy.bind(this));
 		},
-		render: function () {
+		render: function (flag=true) {
 
 			var todos = this.getFilteredTodos();
 
@@ -75,7 +75,7 @@ jQuery(function ($) {
 
 				this.renderFooter();
 
-				$('#new-todo').focus();
+				if( flag ) $('#new-todo').focus();
 
 			}
 

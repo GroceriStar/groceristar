@@ -12,4 +12,8 @@ form#choose-department(name="formsubmit", method="post")
       br
       br
       input#grocery(type="hidden", name="grocery", value=groceryId)
+      
+      if mobile  
+        input#mobile-detector(type="hidden", name="mobile")  
+        
     //  input.btn.btn-success(type='submit', value='Open Department') 
