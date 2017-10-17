@@ -47,6 +47,7 @@ module.exports = function(Department) {
 
     })
     .catch(function(err){
+       Raven.captureException(e);
       throw err;
     });
 

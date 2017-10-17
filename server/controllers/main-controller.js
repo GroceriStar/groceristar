@@ -46,6 +46,7 @@ exports.getHomepage = async (req, res, next) => {
 
         
       } catch (e) {
+         Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
         next(e) 
       }

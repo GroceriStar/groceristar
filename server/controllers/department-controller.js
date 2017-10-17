@@ -30,6 +30,7 @@ exports.departmentsList = async (req, res, next) => {
      // console.log(response);
 
   } catch (e) {
+     Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
@@ -121,6 +122,7 @@ exports.getDepartment = async (req, res, next) => {
 
 
   } catch (e) {
+     Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
     next(e) 
   }

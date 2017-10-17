@@ -41,6 +41,7 @@
     "passport-oauth2": "^1.1.2",
     "passport-twitter": "^1.0.2",
     "pug": "^2.0.0-rc.3",
+    "raven": "^2.2.1",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.2.0",
     "underscore": "^1.8.3"

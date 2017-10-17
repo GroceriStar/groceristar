@@ -463,11 +463,11 @@ module.exports = function(Grocery) {
 
 	};
 
-
+	// :todo maybe we can get rid of this, because we're just moving same data between fuctions
 	Grocery.getObjectForClone = function(grocery){
 
 		var object = {
-			// name: 'Clone of < ' + grocery.name + ' >',
+			name: grocery.name,
 			desc: grocery.desc,
 			slug: grocery.slug,
 			img : grocery.img,

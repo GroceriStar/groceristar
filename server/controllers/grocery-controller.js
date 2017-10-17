@@ -23,6 +23,7 @@ exports.changeName = async (req, res, next) => {
 
       grocery = await Grocery.findById(groceryId);
     } catch (e) {
+       Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
@@ -62,6 +63,7 @@ exports.cloneGrocery = async (req, res, next) => {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
 
     } catch (e) {
+       Raven.captureException(e);
       //this will eventually be handled by your error handling middleware
       next(e) 
     }
@@ -72,6 +74,7 @@ exports.cloneGrocery = async (req, res, next) => {
       cloned = await Grocery.create(newObject);
 
     } catch (e) {
+       Raven.captureException(e);
       //this will eventually be handled by your error handling middleware
       next(e) 
     }
@@ -122,6 +125,7 @@ exports.postCloneForm = async (req, res, next) => {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
 
     } catch (e) {
+       Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
@@ -135,6 +139,7 @@ exports.postCloneForm = async (req, res, next) => {
       console.log(cloned);
       console.log(userId)
     } catch (e) {
+       Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
         next(e) 
     }
@@ -240,6 +245,7 @@ exports.viewGrocery = async (req, res, next) => {
 
 
       } catch (e) {
+         Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
         next(e) 
       }
@@ -292,6 +298,7 @@ exports.shopping = async (req, res, next) => {
      // console.log(response.data);
 
   } catch (e) {
+     Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
@@ -310,6 +317,7 @@ exports.shopping = async (req, res, next) => {
      ingredients = Grocery.convertDepartmentItems(grocery2);
 
   } catch (e) {
+     Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
