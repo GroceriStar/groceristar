@@ -47,10 +47,18 @@ const flash      = require('express-flash');
 // attempt to build the providers/passport config
 var config = {};
 try {
-  config = require('../providers.json');
+
+  if (process.env.NODE_ENV === 'development') {
+    // only use in development 
+    config = require('../providers.json');  
+  } else {
+    config = require('../providers.production.json');  
+  }
+
+  
 } catch (err) {
   console.trace(err);
-   Raven.captureException(e);
+   Raven.captureException(err);
   process.exit(1); // fatal
 }
 

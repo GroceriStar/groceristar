@@ -11,14 +11,20 @@ module.exports = function(app) {
   var groceryController = require('../controllers/grocery-controller');
   
 
- //:todo add relations and display whole information about 
- //:todo make it more protected from view
+ // :todo add relations and display whole information about 
+ // :todo make it more protected from view
   router.get('/view/grocery/:groceryId', 
     ensureLoggedIn('/auth/account'),
     groceryController.viewGrocery);
 
-
-
+  
+  // :todo Handle this later. just want to fix issue fast.
+  // This is a clone of /view/grocery functionality for reviewing 
+  // as not logged in user a data from ultimate grocery list
+  // for simplifying things i'll just duplicate a lot stuff 
+  // and make it work as quicker as i can
+  router.get('/view/grocery/:groceryId',    
+    groceryController.viewUltimateGrocery);
 
  router.get('/view/grocery/hidden/:groceryId',
   ensureLoggedIn('/auth/account'),

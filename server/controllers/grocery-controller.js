@@ -202,79 +202,57 @@ exports.removeGrocery = (req, res, next) => {
 
 exports.viewGrocery = async (req, res, next) => {
 
-      var groceryId  = req.params.groceryId;
+  var groceryId  = req.params.groceryId;
 
-      var ultimate   = await middlewarez(next);
+  var ultimate   = await middlewarez(next);
 
+  var response   = {};
 
-      
-      // var ultimateGL = {};
-      var response   = {};
-      // let admin
-      // try {
+  let grocery
+  try {      
+     var Grocery   = app.models.Grocery;
+     
+     // :todo this is not an awesome method. we're getting to much data by this query
+     grocery  = await Grocery.findById(groceryId, Grocery.query1());
 
-      //   var User = app.models.user;
-
-      //   // this is a duplicated code. :todo
-      //   admin    = await User.findOne(User.queryUltimateAdmin());
-
-      //   var json     = admin.toJSON();
-      //   var ultimate = json.groceries[0];
-      //   ultimateGL = {
-      //     id: ultimate.id,
-      //     name: ultimate.name
-      //   };
-
-        
-      // } catch (e) {
-      //   //this will eventually be handled by your error handling middleware
-      //   next(e) 
-      // }
+     // :todo this is not a best way to catch only departments name(main goal)
+     // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
+     response = Grocery.convertCollectionData(grocery);
 
 
-      let grocery
-      try {      
-         var Grocery   = app.models.Grocery;
-         
-         // :todo this is not an awesome method. we're getting to much data by this query
-         grocery  = await Grocery.findById(groceryId, Grocery.query1());
-
-         // :todo this is not a best way to catch only departments name(main goal)
-         // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
-         response = Grocery.convertCollectionData(grocery);
+  } catch (e) {
+     Raven.captureException(e);
+    //this will eventually be handled by your error handling middleware
+    next(e) 
+  }
 
 
-      } catch (e) {
-         Raven.captureException(e);
-        //this will eventually be handled by your error handling middleware
-        next(e) 
-      }
+  res.render('pages/view-grocery-new', {
+    
+    user: req.user,
+    name: response.name,
+    
+    groceryId: groceryId,
+    // departmentId: departmentId,
 
-      // console.log(response);
+    messages: {},
 
-      res.render('pages/view-grocery-new', {
-        
-        user: req.user,
-        name: response.name,
-        
-        groceryId: groceryId,
-        // departmentId: departmentId,
+    departments: response.data, // [data>> department >> ingredient]
 
-        messages: {},
+    title: "Grocery list " + response.name,
 
-        departments: response.data, // [data>> department >> ingredient]
+    ultimate: ultimate,
 
-        title: "Grocery list " + response.name,
-
-        ultimate: ultimate,
-
-        isGrocery: req.originalUrl.includes('/view/grocery/')        
-      
-      }); 
+    isGrocery: req.originalUrl.includes('/view/grocery/')        
+  
+  }); 
 
 };
 
 
+exports.viewUltimateGrocery = async (req, res, next) => {
+
+};
 
 
 
