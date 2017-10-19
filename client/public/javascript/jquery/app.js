@@ -64,7 +64,7 @@ jQuery(function ($) {
 
 			if( todos ){
 
-				// $('#todo-list').html( this.todoTemplate(todos) );
+				$('#todo-list').html( this.todoTemplate(todos) );
 
 			
 				$('#main').toggle(todos.length > 0);
@@ -79,6 +79,44 @@ jQuery(function ($) {
 
 			}
 
+		},
+		todoTemplate: function(elements, index){
+
+			var html = '';
+			_.each(elements, function(element){
+
+				var single = '';
+
+				if( element.completed ){
+					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
+				} else {
+					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
+				}
+
+				  single += '<div class="view">' ;
+					if( element.completed ){
+						single += '<input class="toggle" type="checkbox" checked>';
+					} else {
+						single += '<input class="toggle" type="checkbox" >';
+					}
+
+						
+					single += '<label>' + element.name + '</label>'+
+								'<button class="destroy"></button>'+
+						'</div>'+
+						'<input class="edit" value="' + element.name + '">'
+					// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+					// 			'<button class="destroy"></button>'+
+					// 	'</div>'+
+					// 	'<input class="edit" value="' + element.name + '">'	
+
+				single += '</li>';
+
+				html += single;
+
+				
+			});
+			return html;
 		},
 		// :todo move it to server-render
 		renderFooter: function () {

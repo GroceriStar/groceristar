@@ -35,7 +35,7 @@ html(lang='en', data-framework='jquery')
       li item1
 
 
-
+    
     include ../../partials/departments-select2
 
 
@@ -47,22 +47,6 @@ html(lang='en', data-framework='jquery')
       section#main
         input#toggle-all(type='checkbox')
         label(for='toggle-all') Mark all as complete
-
-        //ul
-          each element in list
-            if element.completed
-              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
-            else
-              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
-
-                div.view
-                  if element.completed
-                    input.toggle(type="checkbox", checked="checked")
-                  else
-                    input.toggle(type="checkbox", checked="checked")
-                  label= element.name
-                  button.destroy
-                input.edit(value=element.name)
 
         ul#todo-list
           
