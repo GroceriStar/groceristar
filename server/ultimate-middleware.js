@@ -28,6 +28,6 @@ module.exports = async function(next){
 		next(e) 
 	}
 	
-	return ultimate.id;
+	return ultimate;
 
 };

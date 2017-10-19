@@ -10,6 +10,8 @@ const _       = require('underscore');
 
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 let copy_middlewarez = require(path.resolve(__dirname, '../ultimate-middleware'));
+// :todo bad name, change it
+let all_ultimate_grocery = require(path.resolve(__dirname, '../grocery-middleware'));
 
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
@@ -251,11 +253,15 @@ exports.viewGrocery = async (req, res, next) => {
 
 
 exports.viewUltimateGrocery = async (req, res, next) => {
-  var groceryId  = req.params.groceryId;
-  var Grocery   = app.models.Grocery;
-  var ultimate   = await copy_middlewarez(next);
+  // var groceryId     = req.params.groceryId;
+  var Grocery       = app.models.Grocery;
+  var ultimate    = await copy_middlewarez(next);
+  // console.log(ultimateId);
+  var response = await all_ultimate_grocery(ultimate.id, next);
+
+  // console.log(whole_grocery);
   // var aaa = Grocery.convertCollectionData(ultimate);
-  console.log(ultimate);
+  // console.log(ultimate);
 
 
   // var response   = {};
@@ -277,23 +283,23 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   //   next(e) 
   // }
 
-  // var renderObject = {   
-  //   user: req.user,
-  //   name: response.name,
+  var renderObject = {   
+    user: req.user,
+    name: response.name,
     
-  //   groceryId: groceryId,
+    groceryId: ultimateId,
 
-  //   messages: {},
+    messages: {},
 
-  //   departments: response.data, // [data>> department >> ingredient]
+    departments: response.data, // [data>> department >> ingredient]
 
-  //   title: "Grocery list " + response.name,
+    title: "Grocery list " + response.name,
 
-  //   ultimate: ultimate,
+    ultimate: ultimate,
 
-  //   isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        
+    isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        
   
-  // };
+  };
   // // this is a duplicated template
   // res.render('pages/view-ultimate-grocery', renderObject); 
 
