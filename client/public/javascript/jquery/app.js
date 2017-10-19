@@ -80,6 +80,7 @@ jQuery(function ($) {
 			}
 
 		},
+		// :todo move it to server-render
 		renderFooter: function () {
 
 			var todoCount       = this.todos.length;
