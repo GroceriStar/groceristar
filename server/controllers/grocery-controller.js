@@ -9,6 +9,8 @@ const async   = require('async');
 const _       = require('underscore');
 
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
+let copy_middlewarez = require(path.resolve(__dirname, '../ultimate-middleware'));
+
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
 
@@ -225,15 +227,11 @@ exports.viewGrocery = async (req, res, next) => {
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
-
-
-  res.render('pages/view-grocery-new', {
-    
+  var renderObject = {   
     user: req.user,
     name: response.name,
     
     groceryId: groceryId,
-    // departmentId: departmentId,
 
     messages: {},
 
@@ -245,12 +243,59 @@ exports.viewGrocery = async (req, res, next) => {
 
     isGrocery: req.originalUrl.includes('/view/grocery/')        
   
-  }); 
+  };
+
+  res.render('pages/view-grocery-new', renderObject); 
 
 };
 
 
 exports.viewUltimateGrocery = async (req, res, next) => {
+  var groceryId  = req.params.groceryId;
+  var Grocery   = app.models.Grocery;
+  var ultimate   = await copy_middlewarez(next);
+  // var aaa = Grocery.convertCollectionData(ultimate);
+  console.log(ultimate);
+
+
+  // var response   = {};
+
+  // let grocery
+  // try {      
+  //    var Grocery   = app.models.Grocery;
+     
+  //    // :todo this is not an awesome method. we're getting to much data by this query
+  //    grocery  = await Grocery.findById(groceryId, Grocery.query1());
+
+  //    // :todo this is not a best way to catch only departments name(main goal)
+  //    // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
+  //    response = Grocery.convertCollectionData(grocery);
+
+  // } catch (e) {
+  //    Raven.captureException(e);
+  //   //this will eventually be handled by your error handling middleware
+  //   next(e) 
+  // }
+
+  // var renderObject = {   
+  //   user: req.user,
+  //   name: response.name,
+    
+  //   groceryId: groceryId,
+
+  //   messages: {},
+
+  //   departments: response.data, // [data>> department >> ingredient]
+
+  //   title: "Grocery list " + response.name,
+
+  //   ultimate: ultimate,
+
+  //   isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        
+  
+  // };
+  // // this is a duplicated template
+  // res.render('pages/view-ultimate-grocery', renderObject); 
 
 };
 

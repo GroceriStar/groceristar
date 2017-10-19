@@ -23,7 +23,7 @@ module.exports = function(app) {
   // as not logged in user a data from ultimate grocery list
   // for simplifying things i'll just duplicate a lot stuff 
   // and make it work as quicker as i can
-  router.get('/view/grocery/:groceryId',    
+  router.get('/view/ultimategrocery/',    
     groceryController.viewUltimateGrocery);
 
  router.get('/view/grocery/hidden/:groceryId',
