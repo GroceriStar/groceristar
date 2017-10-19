@@ -9,9 +9,10 @@ const async   = require('async');
 const _       = require('underscore');
 
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
+// :todo check copy and above function. I think they return a same values
 let copy_middlewarez = require(path.resolve(__dirname, '../ultimate-middleware'));
 // :todo bad name, change it
-let all_ultimate_grocery = require(path.resolve(__dirname, '../grocery-middleware'));
+let dropdown_departments = require(path.resolve(__dirname, '../grocery-middleware'));
 
 const Grocery = app.models.Grocery;
 const User    = app.models.user;
@@ -257,7 +258,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   var Grocery       = app.models.Grocery;
   var ultimate    = await copy_middlewarez(next);
   // console.log(ultimateId);
-  var response = await all_ultimate_grocery(ultimate.id, next);
+  var response = await dropdown_departments(ultimate.id, next);
 
   var renderObject = {   
     user: req.user,
@@ -287,27 +288,35 @@ exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
   
+  // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
-  var response     = {};
-  let grocery
-  try {      
-     var Grocery   = app.models.Grocery;
+  var response = await dropdown_departments(groceryId, next);
+
+  // :todo check my notes here, and then we'll be able to delete it
+//---------------------------
+  // This part is work for creating dropdown list only
+  // var response     = {};
+  // let grocery
+  // try {      
+  //    var Grocery   = app.models.Grocery;
      
-     // :todo this is not an awesome method. we're getting to much data by this query
-     // :todo we're using more efficient method, but it must be tested better
-     grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
-     // console.log(grocery);
-     // :todo this is not a best way to catch only departments name(main goal)
-     // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
-     response = Grocery.convertCollectionDataEfficient(grocery);
-     // console.log(response.data);
+  //    // :todo this is not an awesome method. we're getting to much data by this query
+  //    // :todo we're using more efficient method, but it must be tested better
+  //    grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
+  //    // console.log(grocery);
+  //    // :todo this is not a best way to catch only departments name(main goal)
+  //    // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
+  //    response = Grocery.convertCollectionDataEfficient(grocery);
+  //    // console.log(response.data);
+  //    console.log(response);
+  // } catch (e) {
+  //    Raven.captureException(e);
+  //   //this will eventually be handled by your error handling middleware
+  //   next(e) 
+  // }
 
-  } catch (e) {
-     Raven.captureException(e);
-    //this will eventually be handled by your error handling middleware
-    next(e) 
-  }
-
+//--------------------
+  
 
   // I think this is can be improved
   // this is a duplicated code

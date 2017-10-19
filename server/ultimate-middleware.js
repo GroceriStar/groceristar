@@ -15,7 +15,6 @@ module.exports = async function(next){
 	let ultimateGL
 	let admin
 	try {	    
-
 	    // this is a duplicated code. :todo
 	    admin    = await User.findOne(User.queryUltimateAdmin());
 
