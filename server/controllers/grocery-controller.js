@@ -259,35 +259,11 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   // console.log(ultimateId);
   var response = await all_ultimate_grocery(ultimate.id, next);
 
-  // console.log(whole_grocery);
-  // var aaa = Grocery.convertCollectionData(ultimate);
-  // console.log(ultimate);
-
-
-  // var response   = {};
-
-  // let grocery
-  // try {      
-  //    var Grocery   = app.models.Grocery;
-     
-  //    // :todo this is not an awesome method. we're getting to much data by this query
-  //    grocery  = await Grocery.findById(groceryId, Grocery.query1());
-
-  //    // :todo this is not a best way to catch only departments name(main goal)
-  //    // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
-  //    response = Grocery.convertCollectionData(grocery);
-
-  // } catch (e) {
-  //    Raven.captureException(e);
-  //   //this will eventually be handled by your error handling middleware
-  //   next(e) 
-  // }
-
   var renderObject = {   
     user: req.user,
     name: response.name,
     
-    groceryId: ultimateId,
+    groceryId: ultimate.id,
 
     messages: {},
 
@@ -301,7 +277,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   
   };
   // // this is a duplicated template
-  // res.render('pages/view-ultimate-grocery', renderObject); 
+  res.render('pages/grocery/view-ultimate-grocery', renderObject); 
 
 };
 
