@@ -1,9 +1,3 @@
-<!--
-Questions:
-  
-Immediate support:
-  
--->
 
 # Description/Steps to reproduce
 
