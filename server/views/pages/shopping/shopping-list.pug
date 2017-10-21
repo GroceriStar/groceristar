@@ -70,15 +70,17 @@ html(lang='en', data-framework='jquery')
     footer#info
       p Double-click to edit an item 
 
-    // :todo change this
-    if isMobile 
-      include ../../static/scripts-todo-read-only-delete-later.pug  
-    else
-      include ../../static/scripts-todo.pug
+
       
     if isUltimate 
       include ../../static/scripts-todo-read-only-delete-later.pug  
     else
       include ../../static/scripts-todo.pug
 
-    include ../../static/scripts-select.pug
+
+    // :todo change this
+    if isMobile
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js') 
+      include ../../static/scripts-mobile-select.pug  
+    else
+      include ../../static/scripts-select.pug

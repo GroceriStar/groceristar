@@ -220,8 +220,6 @@ exports.viewGrocery = async (req, res, next) => {
 
   var md = new MobileDetect(req.headers['user-agent']);
 
-  // console.log(md);
-  console.log(md.mobile());
 
   let grocery
   try {      

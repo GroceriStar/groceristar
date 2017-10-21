@@ -1,23 +1,13 @@
 script.
-  (function() {
+  $( document ).ready(function() {
 
-     var groceryId = document.getElementById('grocery').value;
+    var groceryId = $('grocery').val();
      console.log(groceryId);
 
-     var isMobile = document.getElementById('mobile-detector');
+     $('select').on('change', function() {
+	  alert( this.value );
 
-     if (typeof isMobile !== 'undefined') {
-      // your code here
-    }
-
-     var selectElement = document.querySelector('select');
-      myFXSelect = new SelectFx(selectElement, {
-        onChange: function(val) {
-          //console.log('val', val); 
-          // val is departmentId value
-          var path = "/shopping/" + groceryId + '/' + val;
-          window.location.replace(path);
-        }
-      });
-
-  })();  
+	  //- var path = "/shopping/" + groceryId + '/' + this.value;
+   //-    window.location.replace(path);
+	})
+  });

@@ -23,3 +23,10 @@ html.no-js.css-menubar(lang='en')
       block content 
 
     include ../static/scripts-dash
+
+
+    if isMobile
+      <!-- mobile script enabled --> 
+      include ../static/scripts-mobile-select.pug  
+    else
+      include ../static/scripts-select.pug
