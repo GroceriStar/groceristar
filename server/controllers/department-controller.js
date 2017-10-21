@@ -4,14 +4,12 @@
 const path      = require('path');
 // var validator = require('express-validator');
 
-let app        = require(path.resolve(__dirname, '../server'));
-const async      = require('async');
-const _ = require('underscore');
-var Department = app.models.Department;
-var Grocery    = app.models.Grocery;
-// var Video     = server.models.VideoModel;
-// var Example   = server.models.ExampleModel;
-
+let app         = require(path.resolve(__dirname, '../server'));
+const async     = require('async');
+const _         = require('underscore');
+var Department  = app.models.Department;
+var Grocery     = app.models.Grocery;
+let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 // :todo make it more lightWeight
 // :todo some of fucntionality are duplicated
 exports.departmentsList = async (req, res, next) => {
@@ -19,6 +17,8 @@ exports.departmentsList = async (req, res, next) => {
 	var groceryId = req.params.groceryId;
 		
 	var Grocery   = app.models.Grocery;
+
+  var ultimate   = await middlewarez(next);
 
 	let grocery
   let response
@@ -40,13 +40,14 @@ exports.departmentsList = async (req, res, next) => {
     user        : req.user,
     name: response.name + '`s Departments',     
     departments : response.data,   // :todo on other template we're using `data`, not departments 
-    groceryId   : groceryId
+    groceryId   : groceryId,
+    ultimate: ultimate
   };
 
   // console.log(renderObject)
 
       
-  res.render('pages/departmentsshow', renderObject);
+  res.render('pages/departments/departments-show', renderObject);
 
 };
 

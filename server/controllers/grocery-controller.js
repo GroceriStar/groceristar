@@ -286,7 +286,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
 
     ultimate: ultimate,
 
-    isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        ,
+    isGrocery: req.originalUrl.includes('/view/ultimategrocery/'),
    isMobile: (md.mobile()) ? true : false
 
   };

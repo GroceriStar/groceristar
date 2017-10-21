@@ -14,10 +14,12 @@ module.exports = function(app) {
 	//:todo decide which method is better - grocery version or controller version
 
 	router.get('/department/:id/:groceryId', 
+		ensureLoggedIn('/auth/account'),
 	 departmentController.getDepartment);
 
 
 	router.get('/departments/show/:groceryId',
+		ensureLoggedIn('/auth/account'),
 	 departmentController.departmentsList);
 
 
