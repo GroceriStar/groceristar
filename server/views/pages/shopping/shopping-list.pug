@@ -76,5 +76,9 @@ html(lang='en', data-framework='jquery')
     else
       include ../../static/scripts-todo.pug
       
+    if isUltimate 
+      include ../../static/scripts-todo-read-only-delete-later.pug  
+    else
+      include ../../static/scripts-todo.pug
 
     include ../../static/scripts-select.pug

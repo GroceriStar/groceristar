@@ -23,10 +23,13 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
 
             
           
-          if isGrocery
+          //if isGrocery
             li
               +link_clone_ultimate2(groceryId, 'Clone current list') 
-               
+
+          if isGrocery
+            +dropdown_list_actions(groceryId)
+            
           li
             +link_clone_page(ultimate.id, 'Clone Ultimate Grocery List')
             //+link_clone_ultimate2(ultimate.id, 'Clone Ultimate Grocery List')

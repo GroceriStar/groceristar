@@ -230,6 +230,7 @@ exports.viewGrocery = async (req, res, next) => {
     //this will eventually be handled by your error handling middleware
     next(e) 
   }
+
   var renderObject = {   
     user: req.user,
     name: response.name,
@@ -248,7 +249,7 @@ exports.viewGrocery = async (req, res, next) => {
   
   };
 
-  res.render('pages/view-grocery-new', renderObject); 
+  res.render('pages/grocery/view-grocery-new', renderObject); 
 
 };
 

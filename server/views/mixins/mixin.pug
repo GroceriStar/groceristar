@@ -155,7 +155,7 @@ mixin link_visibility(id, groceryId)
   +link("/visibility/department/" + id + "/" + groceryId, "Visiblity this link can control")
 
 
-
+// :todo understand if we're using this method
 mixin dropdown(groceryId)
   .btn-group.pull-right
     button(type="button", class="btn btn-primary dropdown-toggle", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
@@ -267,3 +267,19 @@ mixin ingredients_only(groceryId, item)
 
 mixin undo_purchased(groceryId, ingredientId)
  +link('remove-from-purchased/'+ groceryId + '/' + ingredientId, "Undo purchased")
+
+mixin dropdown_list_actions(groceryId)
+  li.dropdown
+    a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+      Actions
+      span.caret
+    ul.dropdown-menu
+      li
+        +link('/departments/show/' + groceryId, 'Manage Departments')
+      li
+        +link('/change/grocery/name/' + groceryId, 'Change name')  
+      
+      li
+        +link('/clone/' + groceryId, 'Clone List')
+      li
+        +link('/remove/grocery/' + groceryId, 'Remove')
