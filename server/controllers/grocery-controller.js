@@ -270,6 +270,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   var ultimate    = await copy_middlewarez(next);
   // console.log(ultimateId);
   var response = await dropdown_departments(ultimate.id, next);
+  var md = new MobileDetect(req.headers['user-agent']);
 
   var renderObject = {   
     user: req.user,
@@ -285,8 +286,9 @@ exports.viewUltimateGrocery = async (req, res, next) => {
 
     ultimate: ultimate,
 
-    isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        
-  
+    isGrocery: req.originalUrl.includes('/view/ultimategrocery/')        ,
+   isMobile: (md.mobile()) ? true : false
+
   };
   // // this is a duplicated template
   res.render('pages/grocery/view-ultimate-grocery', renderObject); 
@@ -302,6 +304,7 @@ exports.shopping = async (req, res, next) => {
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
   var response = await dropdown_departments(groceryId, next);
+  var md = new MobileDetect(req.headers['user-agent']);
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
@@ -362,7 +365,8 @@ exports.shopping = async (req, res, next) => {
 
         list        : ingredients,
 
-        isUltimate  : (ultimate.id == groceryId) ? 1 : 0
+        isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
+ isMobile: (md.mobile()) ? true : false
 
   }
   

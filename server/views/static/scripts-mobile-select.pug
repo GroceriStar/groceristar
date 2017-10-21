@@ -1,13 +1,13 @@
 script.
   $( document ).ready(function() {
 
-    var groceryId = $('grocery').val();
-     console.log(groceryId);
+    var groceryId = $('#grocery').val();
+     //- console.log(groceryId);
 
-     $('select').on('change', function() {
-	  alert( this.value );
+  $('select').on('change', function() {
+  //- alert( this.value );
 
-	  //- var path = "/shopping/" + groceryId + '/' + this.value;
-   //-    window.location.replace(path);
-	})
+  var path = "/shopping/" + groceryId + '/' + this.value;
+  window.location.replace(path);
+  })
   });
