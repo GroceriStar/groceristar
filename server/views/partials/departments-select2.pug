@@ -31,7 +31,7 @@ style(type="text/css").
 form#choose-department(name="formsubmit", method="post")
 
   //select.cs-select.cs-mobile-select.cs-skin-border#departmentList.hide
-  select.cs-select.cs-mobile-select.cs-skin-border#departmentList
+  select.cs-select.cs-skin-border#departmentList(class=isMobile ? 'cs-mobile-select' : 'hide')
     option(value='', disabled='', selected='') Department
 
     each val, index in departments

@@ -18,6 +18,11 @@ const Grocery = app.models.Grocery;
 const User    = app.models.user;
 
 
+// for just easy understanding is mobile or not.
+// :todo remove if we'll switch the way of using templates
+const MobileDetect = require('mobile-detect');
+    
+
 exports.changeName = async (req, res, next) => {
 
     // var Grocery   = app.models.Grocery;
@@ -213,6 +218,11 @@ exports.viewGrocery = async (req, res, next) => {
 
   var response   = {};
 
+  var md = new MobileDetect(req.headers['user-agent']);
+
+  // console.log(md);
+  console.log(md.mobile());
+
   let grocery
   try {      
      var Grocery   = app.models.Grocery;
@@ -245,7 +255,9 @@ exports.viewGrocery = async (req, res, next) => {
 
     ultimate: ultimate,
 
-    isGrocery: req.originalUrl.includes('/view/grocery/')        
+    isGrocery: req.originalUrl.includes('/view/grocery/'),
+    isMobile: (md.mobile()) ? true : false
+
   
   };
 
