@@ -150,19 +150,13 @@ module.exports = function(app) {
 			custom: true
 		};
 
-		// console.log(req.body);
-		// console.log(object);
-
-
 		Ingredient.create(object, function(err, model){
-
-			// console.log(model);
 
 			var options = {
 		      groceryId: groceryId,
 		      secondArray: [ model.id ]
 		    };
-		    // console.log(options);
+		    // console.log(model.id);
 			Grocery.addIngredient(options);
 			// res.json('success');
 			res.json({ id: model.id });

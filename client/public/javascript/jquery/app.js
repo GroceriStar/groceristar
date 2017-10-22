@@ -370,7 +370,7 @@ jQuery(function ($) {
 			} else {
 
 				// console.log(val);
-				console.log($ingredient.data().id);
+				// console.log($ingredient.data().id);
 
 				// var toSave = {
 				// 	name: val,
@@ -380,7 +380,7 @@ jQuery(function ($) {
 				// console.log(toSave);
 				var id = this._create(val);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
-				console.log(id);
+				// console.log(id);
 
 				// var toRemove = {
 				// 	secondArray: [ $ingredient.data().id ],
@@ -389,6 +389,8 @@ jQuery(function ($) {
 
 				this._unattach( $ingredient.data().id );
 				
+
+				console.log(this.todos[index])
 
 			}	
 
@@ -569,6 +571,7 @@ jQuery(function ($) {
 				// console.log('success');
 				new_id = data.id;
 			});
+			return new_id;
 			// console.log(new_id);
 		},
 
