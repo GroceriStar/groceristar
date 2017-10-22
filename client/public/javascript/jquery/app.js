@@ -342,14 +342,20 @@ jQuery(function ($) {
 			// console.log($ingredient.data().id)
 
 			// console.log(val);
+            
+			console.log('zzzz');
 
 			var toRename = {
 				id  : $ingredient.data().id,
-				name: val
+				name: val,
+				departmentId: this.getDepartmentId(), // :todo this can be improved
+				groceryId: this.getGroceryId()
 			};
 			// console.log(toRename);
 
 			this.ajax_call('rename', toRename);
+
+
 
 
 			if ($el.data('abort')) {
