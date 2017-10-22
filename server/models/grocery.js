@@ -706,7 +706,7 @@ module.exports = function(Grocery) {
 
 		Grocery.findById(options.groceryId, {}, function(err, model){
 
-			console.log(model);
+			// console.log(model);
 			if( options.type == 'clear' || options.type ==  'all'){
 
 				model.updateAttribute(options.field, []);	
@@ -740,7 +740,7 @@ module.exports = function(Grocery) {
 			}
 
 			// console.log(model.hideThisIds);
-			console.log(model);
+			// console.log(model);
 			
 
 		});

@@ -52,9 +52,9 @@ try {
     // only use in development 
     config = require('../providers.json');  
   // } 
-  //else {
-    //config = require('../providers.production.json');  
-  //}
+  else {
+    config = require('../providers.production.json');  
+  }
 
   // console.log(config);
 } catch (err) {

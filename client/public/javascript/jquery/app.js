@@ -344,40 +344,51 @@ jQuery(function ($) {
 			var $ingredient = this.getElementFromEvent(e.target);
 
 			// console.log($ingredient.data());
-			console.log(this.todos);
+			// console.log(this.todos);
 
 			if (!val) {
 				this.destroy(e);
 				return;
 			}
 
+			if ($el.data('abort')) {
+				$el.data('abort', false);
+				this.render();
+				return;
+			} 
+
+
 			// this is a brand new ingredient - we'll update the name
-			if( $ingredient.data() ){
+			if( $ingredient.data().custom ){
 				var toRename = {
 					id  : $ingredient.data().id,
-					name: val,
-				
+					name: val			
 				};
+
 				this.ajax_call('rename', toRename);
 
 			} else {
 
-				console.log(val);
-				var toSave = {
-					name: val,
-					groceryId: this.getGroceryId(),
-					departmentId: this.getDepartmentId(),
-				};			
+				// console.log(val);
+				console.log($ingredient.data().id);
 
-				var new_id = this.ajax_call('create-ingredient', toSave);
-				console.log(new_id);
+				// var toSave = {
+				// 	name: val,
+				// 	groceryId: this.getGroceryId(),
+				// 	departmentId: this.getDepartmentId(),
+				// };			
+				// console.log(toSave);
+				var id = this._create(val);
+				// var new_id = this.ajax_call('create-ingredient', toSave);
+				console.log(id);
 
-				var toRemove = {
-					secondArray: [ $ingredient.data().id ],
-					groceryId: this.getGroceryId()
-				};
+				// var toRemove = {
+				// 	secondArray: [ $ingredient.data().id ],
+				// 	groceryId: this.getGroceryId()
+				// };
 
-				this.ajax_call('unattach', toRemove);
+				this._unattach( $ingredient.data().id );
+				
 
 			}	
 
@@ -388,7 +399,7 @@ jQuery(function ($) {
 
 			// console.log(val);
             
-			console.log('zzzz');
+			// console.log('zzzz');
 
 			// var toRename = {
 			// 	id  : $ingredient.data().id,
@@ -403,13 +414,13 @@ jQuery(function ($) {
 
 
 
-			if ($el.data('abort')) {
-				$el.data('abort', false);
-			} else {
+			// if ($el.data('abort')) {
+			// 	$el.data('abort', false);
+			// } else {
 
-				console.log(this.todos[index]);
+				// console.log(this.todos[index]);
 				this.todos[index].name = val;
-			}
+			// }
 
 			this.render();
 		},
@@ -472,6 +483,29 @@ jQuery(function ($) {
 			return html;
 		},
 		// template related stuff
+		_create: function(name){
+			var options = {
+				name: name,
+				groceryId: this.getGroceryId(),
+				departmentId: this.getDepartmentId(),
+			};
+			return this.ajax_CreateIngredient(options);
+		},
+		_rename: function(){
+			var options = {};
+			this.ajax_ChangeName(options);
+		},
+		_unattach: function(id){
+			var options = {			
+				secondArray: [ id ],
+				groceryId: this.getGroceryId()
+			};
+			this.ajax_Unattach(options);
+		},
+		_toggle: function(){
+			var options = {};
+			this.ajax_TogglePurchased(options);
+		},
 
 		//methods, related to ajax calls
 		ajax_call: function(type, options) {

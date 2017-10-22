@@ -60,6 +60,7 @@ module.exports = function(app) {
 		var name         = req.body.name;
 		// var departmentId = req.body.departmentId;
 		// var groceryId    = req.body.groceryId;
+
 	// :todo change this and remoe asycn from this file
 	  let ingredient
 	  let response
@@ -78,7 +79,7 @@ module.exports = function(app) {
 	    //this will eventually be handled by your error handling middleware
 	    next(e) 
 	  }
-	  
+
 	  ingredient.updateAttribute('name', name);
 	  res.json('success');
 
@@ -120,7 +121,7 @@ module.exports = function(app) {
 	  // we need to create a new ingredient with a new name
 	  // 2. remove previous ingredient from GL
 	  // 3. add a new ingredient
-		res.json('success');
+		// res.json('success');
 		// Ingredient.findById(ingredientId, function(err, model){
 
 		// 	console.log(model);
@@ -149,9 +150,14 @@ module.exports = function(app) {
 			custom: true
 		};
 
+		// console.log(req.body);
+		// console.log(object);
+
+
 		Ingredient.create(object, function(err, model){
 
 			// console.log(model);
+
 			var options = {
 		      groceryId: groceryId,
 		      secondArray: [ model.id ]
