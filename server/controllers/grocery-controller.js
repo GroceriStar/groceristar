@@ -354,7 +354,7 @@ exports.shopping = async (req, res, next) => {
   // This is another bad functionality, written for this method.
   let ultimate = await middlewarez(next);
   
-console.log(ingredients)
+// console.log(ingredients)
   let renderObject = {
     user        : req.user,
     url         : req.url,

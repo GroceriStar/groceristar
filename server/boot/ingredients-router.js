@@ -58,8 +58,8 @@ module.exports = function(app) {
 		var ingredientId = req.body.id;
 
 		var name         = req.body.name;
-		var departmentId = req.body.departmentId;
-		var groceryId    = req.body.groceryId;
+		// var departmentId = req.body.departmentId;
+		// var groceryId    = req.body.groceryId;
 	// :todo change this and remoe asycn from this file
 	  let ingredient
 	  let response
@@ -68,6 +68,7 @@ module.exports = function(app) {
 	     // var Grocery   = app.models.Grocery;
 	     // grocery = await Grocery.fetchById(groceryId);
 	     ingredient  = await Ingredient.findById(ingredientId);
+	     
 	     // console.log(ingredient);
 	     // response = Grocery.convertCollectionData(grocery);
 	     // console.log(response);
@@ -77,11 +78,14 @@ module.exports = function(app) {
 	    //this will eventually be handled by your error handling middleware
 	    next(e) 
 	  }
+	  
+	  ingredient.updateAttribute('name', name);
+	  res.json('success');
 
-	  if (ingredient.custom){
-			ingredient.updateAttribute('name', name);
-			res.json('success');	  	
-	  }
+	  // if (ingredient.custom){
+			// ingredient.updateAttribute('name', name);
+			// res.json('success');	  	
+	  // }
 
 	  // let response
 	  // try {

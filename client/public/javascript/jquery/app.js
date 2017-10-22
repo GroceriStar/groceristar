@@ -40,7 +40,7 @@ jQuery(function ($) {
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
-					this.render(false);
+					this.render();
 				}.bind(this)
 			}).init('/all');
 
@@ -48,7 +48,8 @@ jQuery(function ($) {
 		bindEvents: function () {
 			$('#new-todo').on('keyup', this.create.bind(this));
 			$('#toggle-all').on('change', this.toggleAll.bind(this));
-			$('#footer').on('click', '#clear-completed', this.destroyCompleted.bind(this));
+			$('#footer').on('click', '#clear-completed', 
+				this.destroyCompleted.bind(this));
 			$('#todo-list')
 				.on('change',   '.toggle',  this.toggle.bind(this))
 				.on('dblclick', 'label',    this.editingMode.bind(this))
@@ -67,11 +68,11 @@ jQuery(function ($) {
 
 
 
-				if( flag ){
+				// if( flag ){
 					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
 					$('#todo-list').html( this.todoTemplate(todos) );
-					console.log(todos);	
-				}
+					// console.log(todos);	
+				// }
 				
 
 			
@@ -333,6 +334,7 @@ jQuery(function ($) {
 				$(e.target).data('abort', true).blur();
 			}
 		},
+		// This is Rename function
 		update: function (e) {
 			var el = e.target;
 			var $el = $(el);
@@ -341,12 +343,43 @@ jQuery(function ($) {
 			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
 
-			console.log($ingredient.data());
+			// console.log($ingredient.data());
+			console.log(this.todos);
 
 			if (!val) {
 				this.destroy(e);
 				return;
 			}
+
+			// this is a brand new ingredient - we'll update the name
+			if( $ingredient.data() ){
+				var toRename = {
+					id  : $ingredient.data().id,
+					name: val,
+				
+				};
+				this.ajax_call('rename', toRename);
+
+			} else {
+
+				console.log(val);
+				var toSave = {
+					name: val,
+					groceryId: this.getGroceryId(),
+					departmentId: this.getDepartmentId(),
+				};			
+
+				var new_id = this.ajax_call('create-ingredient', toSave);
+				console.log(new_id);
+
+				var toRemove = {
+					secondArray: [ $ingredient.data().id ],
+					groceryId: this.getGroceryId()
+				};
+
+				this.ajax_call('unattach', toRemove);
+
+			}	
 
 			// console.log(index)
 			// console.log()
@@ -373,6 +406,8 @@ jQuery(function ($) {
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else {
+
+				console.log(this.todos[index]);
 				this.todos[index].name = val;
 			}
 

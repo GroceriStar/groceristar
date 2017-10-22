@@ -59,6 +59,7 @@ html(lang='en', data-framework='jquery')
         ul#todo-list
           
            each element in list
+            //h2=element.completed
             if element.completed
               li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
             else
@@ -68,7 +69,7 @@ html(lang='en', data-framework='jquery')
                   if element.completed
                     input.toggle(type="checkbox", checked="checked")
                   else
-                    input.toggle(type="checkbox", checked="checked")
+                    input.toggle(type="checkbox")
                   label= element.name
                   button.destroy
                 input.edit(value=element.name)
