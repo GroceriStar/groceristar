@@ -62,20 +62,27 @@ html
   
 
           //- a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
-          a(href='/auth/facebook', class="btn ctas-button")= 'Sign Up via Facebook'
+          
           br
-          | * We don't post anything to Facebook
+          
+          .ctas
+            a(href='/auth/facebook', class="btn ctas-button")
+              | Sign Up via Facebook
+          br
+          p * We don't post anything to Facebook  
 
+          .ctas
+            +button_view_grocery('Review ' + ultimate.name)(class="btn ctas-button")
+
+          
           //.ctas
             input.ctas-input(type='text', placeholder='Grocery List Name')
             button.ctas-button
               | Create Grocery List 
             span.hint
               | We'll clone Grocery List Template and you'll be able to customize it  
-
-          a.nav-link(href='#')
-            | Review <Ultimate Grocery List>    
-          +button_view_grocery(ultimate.id, 'Review ' + ultimate.name)
+  
+          
           
 
 

@@ -209,7 +209,7 @@ p.paragraph {
 	border-radius: 3px;
 	font-size: 15px;
 	font-weight: 600;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	letter-spacing: .3px;
 	border: 1px solid white;
 	text-decoration: none;
@@ -236,7 +236,7 @@ p.paragraph {
 	border-radius: 3px;
 	font-size: 15px;
 	font-weight: 600;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	letter-spacing: .3px;
 	border: 1px solid white;
 	text-decoration: none;
@@ -271,7 +271,7 @@ p.paragraph {
 	border-radius: 3px;
 	font-size: 15px;
 	font-weight: 600;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	letter-spacing: .3px;
 	border: 1px solid white;
 	text-decoration: none;

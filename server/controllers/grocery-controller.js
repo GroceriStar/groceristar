@@ -300,7 +300,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
 exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
-  
+  // console.log()
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
   var response = await dropdown_departments(groceryId, next);
@@ -366,7 +366,8 @@ exports.shopping = async (req, res, next) => {
         list        : ingredients,
 
         isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
- isMobile: (md.mobile()) ? true : false
+ isMobile: (md.mobile()) ? true : false,
+ back:req.get('Referrer')
 
   }
   

@@ -127,8 +127,8 @@ mixin button_department_awesome(id, groceryId)
   a(href='/department/' + id + '/' + groceryId)
     i.fa.fa-ellipsis-v
 
-mixin button_view_grocery(groceryId, title)    
-  +link('/view/grocery/' + groceryId, title)('btn btn-default')
+mixin button_view_grocery(title)    
+  +link('/view/ultimategrocery/', title)(class='btn ctas-button')
 
 //mixin button_facebook_login(class)
 //  a(href='/auth/facebook', class=class) 'Login with Facebook'
