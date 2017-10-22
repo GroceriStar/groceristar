@@ -421,13 +421,14 @@ module.exports = function(Grocery) {
 
 
 		 	// Grocery.customIngredientsArray('todo', item, g.id);
-
+		 		// console.log(item);
     		 	return {
 					id: item.id,
 					name: item.name, 
 					completed: _.contains(purchasedArray, item.id.toString()),
 					departmentId: currentDepartmentId,
-					order: _.indexOf(grouped, item)
+					order: _.indexOf(grouped, item),
+					custom: item.custom
 					
 				}
 		 	});
@@ -560,7 +561,7 @@ module.exports = function(Grocery) {
 				relation: 'ingredients',
 				scope: {
 
-					fields: [ 'id', 'name', 'departmentId' ],
+					fields: [ 'id', 'name', 'departmentId', 'custom' ],
 					where: {
 						departmentId: departmentId
 					},

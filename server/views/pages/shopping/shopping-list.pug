@@ -60,9 +60,9 @@ html(lang='en', data-framework='jquery')
           
            each element in list
             if element.completed
-              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
+              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
             else
-              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order)
+              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
 
                 div.view
                   if element.completed

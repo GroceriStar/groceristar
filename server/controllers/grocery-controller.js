@@ -354,22 +354,22 @@ exports.shopping = async (req, res, next) => {
   // This is another bad functionality, written for this method.
   let ultimate = await middlewarez(next);
   
-
+console.log(ingredients)
   let renderObject = {
-        user        : req.user,
-        url         : req.url,
-        groceryId   : groceryId,
-        departmentId: departmentId,
-        name        : response.name,
-        departments : response.data,
+    user        : req.user,
+    url         : req.url,
+    groceryId   : groceryId,
+    departmentId: departmentId,
+    name        : response.name,
+    departments : response.data,
 
-        list        : ingredients,
+    list        : ingredients,
 
-        isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
- isMobile: (md.mobile()) ? true : false,
- back:req.get('Referrer')
+    isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
+    isMobile: (md.mobile()) ? true : false,
+    back:req.get('Referrer')
 
-  }
+  };
   
   res.render('pages/shopping/shopping-list', renderObject);
 

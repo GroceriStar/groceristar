@@ -40,7 +40,7 @@ jQuery(function ($) {
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
-					this.render();
+					this.render(false);
 				}.bind(this)
 			}).init('/all');
 
@@ -60,11 +60,19 @@ jQuery(function ($) {
 
 			var todos = this.getFilteredTodos();
 
-			console.log(todos);
+			
 
 			if( todos ){
 
-				$('#todo-list').html( this.todoTemplate(todos) );
+
+
+
+				if( flag ){
+					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
+					$('#todo-list').html( this.todoTemplate(todos) );
+					console.log(todos);	
+				}
+				
 
 			
 				$('#main').toggle(todos.length > 0);
@@ -88,9 +96,12 @@ jQuery(function ($) {
 				var single = '';
 
 				if( element.completed ){
-					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
+					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
+					 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
 				} else {
-					single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
+					single += '<li data-id="' + element.id + 
+					'" data-department-id="' + element.departmentId + 
+					'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
 				}
 
 				  single += '<div class="view">' ;
@@ -330,6 +341,7 @@ jQuery(function ($) {
 			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
 
+			console.log($ingredient.data());
 
 			if (!val) {
 				this.destroy(e);
@@ -345,15 +357,15 @@ jQuery(function ($) {
             
 			console.log('zzzz');
 
-			var toRename = {
-				id  : $ingredient.data().id,
-				name: val,
-				departmentId: this.getDepartmentId(), // :todo this can be improved
-				groceryId: this.getGroceryId()
-			};
+			// var toRename = {
+			// 	id  : $ingredient.data().id,
+			// 	name: val,
+			// 	// departmentId: this.getDepartmentId(), // :todo this can be improved
+			// 	// groceryId: this.getGroceryId()
+			// };
 			// console.log(toRename);
 
-			this.ajax_call('rename', toRename);
+			// this.ajax_call('rename', toRename);
 
 
 
@@ -385,45 +397,7 @@ jQuery(function ($) {
 			this.render();
 		},
 
-		// templates related stuff
-		// todoTemplate: function(elements, index){
-
-		// 	var html = '';
-		// 	_.each(elements, function(element){
-
-		// 		var single = '';
-
-		// 		if( element.completed ){
-		// 			single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '">';
-		// 		} else {
-		// 			single += '<li data-id="' + element.id + '" data-department-id="' + element.departmentId + '", data-order="' + element.order + '" >';
-		// 		}
-
-		// 		  single += '<div class="view">' ;
-		// 			if( element.completed ){
-		// 				single += '<input class="toggle" type="checkbox" checked>';
-		// 			} else {
-		// 				single += '<input class="toggle" type="checkbox" >';
-		// 			}
-
-						
-		// 			single += '<label>' + element.name + '</label>'+
-		// 						'<button class="destroy"></button>'+
-		// 				'</div>'+
-		// 				'<input class="edit" value="' + element.name + '">'
-		// 			// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
-		// 			// 			'<button class="destroy"></button>'+
-		// 			// 	'</div>'+
-		// 			// 	'<input class="edit" value="' + element.name + '">'	
-
-		// 		single += '</li>';
-
-		// 		html += single;
-
-				
-		// 	});
-		// 	return html;
-		// },
+	
 		footerTemplate: function(data){
 			// <script id="footer-template"
 			var html = '<span id="todo-count">' +
