@@ -236,6 +236,24 @@ jQuery(function ($) {
 			var $ingredient = $(element).closest('li');
 			return $ingredient;
 		},
+		getMaxOrderNumber: function(){
+			var ITEM = _.last(this.todos);
+			return ITEM.order;
+		},
+		getItemObject: function(id, name){
+			return {
+				id  : id,
+				name: name,
+
+				completed: false,
+
+				groceryId   : this.getGroceryId(),
+				departmentId: this.getDepartmentId(),
+				order       : this.getMaxOrderNumber() + 1,
+
+				custom: true
+			};
+		},
 		create: function (e) {
 
 			var $input       = $(e.target);
@@ -250,7 +268,7 @@ jQuery(function ($) {
 
 			if (e.which !== ENTER_KEY || !val) { return; }
 
-			
+			// :todo switch to fucntion
 			var ITEM = _.last(this.todos);
 			// console.log(ITEM.order);
 
@@ -334,7 +352,7 @@ jQuery(function ($) {
 				$(e.target).data('abort', true).blur();
 			}
 		},
-		// This is Rename function
+		// This is a Rename function
 		update: function (e) {
 			var el = e.target;
 			var $el = $(el);
@@ -366,6 +384,8 @@ jQuery(function ($) {
 				};
 
 				this.ajax_call('rename', toRename);
+				this.todos[index].name = val;
+				this.render();
 
 			} else {
 
@@ -378,6 +398,14 @@ jQuery(function ($) {
 				// 	departmentId: this.getDepartmentId(),
 				// };			
 				// console.log(toSave);
+				// 1_ we delete an ultimate ingredient from GL
+				this._unattach( $ingredient.data().id );
+
+				// console.log(this.todos);
+				// this.todos.splice(index, 1);
+				console.log(this.todos);
+
+				// 2_ we create a new element and attach it to a GL
 				var id = this._create(val);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
 				// console.log(id);
@@ -387,10 +415,11 @@ jQuery(function ($) {
 				// 	groceryId: this.getGroceryId()
 				// };
 
-				this._unattach( $ingredient.data().id );
 				
 
-				console.log(this.todos[index])
+				// console.log(this.todos[index])
+
+				// var last_order = this.getMaxOrderNumber();
 
 			}	
 

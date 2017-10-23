@@ -27,11 +27,14 @@ style(type="text/css").
     padding: 0.5em 3.5em 0.5em 1em;
     color: black;
   }
+  select#departmentList {
+    display:none;
+  }
 
 form#choose-department(name="formsubmit", method="post")
 
-  //select.cs-select.cs-mobile-select.cs-skin-border#departmentList.hide
-  select.cs-select.cs-skin-border#departmentList(class=isMobile ? 'cs-mobile-select' : 'hide')
+
+  select.cs-select.cs-skin-border#departmentList(class=isMobile ? 'cs-mobile-select' : '')
     option(value='', disabled='', selected='') Department
 
     each val, index in departments
