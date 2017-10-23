@@ -356,7 +356,7 @@ jQuery(function ($) {
 		update: async function (e) {
 			var el = e.target;
 			var $el = $(el);
-			var val = $el.val().trim();
+			var val = $el.val().trim(); // :todo remove to name
 
 			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
@@ -400,26 +400,30 @@ jQuery(function ($) {
 				// console.log(toSave);
 				// 1_ we delete an ultimate ingredient from GL
 				// this._unattach( $ingredient.data().id );
-				console.log(this.todos);
+				// console.log(this.todos);
 
 				await this._unattach_async($ingredient.data().id);
 				// promise.then(function(){
 
 				// });
 
-				console.log(index);
-				var car = this.todos;
+				// console.log(index);
+				// var car = this.todos;
 				// console.log(this.todos);
 				// console.log(index);
-				car.splice(index, 1);
-				console.log(car);
+				this.todos.splice(index, 1);
+				// console.log(this.todos);
 
 				// this.render();
 				// 2_ we create a new element and attach it to a GL
-				// var id = this._create(val);
+				var id = this._create(val);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
 				// console.log(id);
+				var obj = this.getItemObject(id, val);
+				// console.log(obj)
+				this.todos.push(obj);
 
+					
 				// var toRemove = {
 				// 	secondArray: [ $ingredient.data().id ],
 				// 	groceryId: this.getGroceryId()
@@ -460,7 +464,7 @@ jQuery(function ($) {
 			// } else {
 
 				// console.log(this.todos[index]);
-				this.todos[index].name = val;
+				// this.todos[index].name = val;
 			// }
 
 			this.render();
@@ -543,29 +547,35 @@ jQuery(function ($) {
 			};
 			this.ajax_Unattach(options);
 		},
-		_unattach_async: function( id ){
+		_unattach_async: async function( id ){
 			var options = {			
 				secondArray: [ id ],
 				groceryId: this.getGroceryId()
 			};
-			//return
-			 $.ajax({
+			return new Promise(function(resolve){
+				 $.ajax({
 				type: "POST",
 				url: '/unattach/',
 				dataType: 'json',
 				data: options,				
 				// 'async': false
 			})
-			.done(function(response){
-				// console.log(response.id);
-			});
+			.done(
+				// function(response){
+				resolve()
+			// }
+			);
+		})
+
+
+			
 
 		},
-		_uno: function(response){
-			// console.log(response);
-			// console.log(this.todos);
-			console.log(this.getActiveTodos());
-		},
+		// _uno: function(response){
+		// 	// console.log(response);
+		// 	// console.log(this.todos);
+		// 	console.log(this.getActiveTodos());
+		// },
 		_toggle: function(){
 			var options = {};
 			this.ajax_TogglePurchased(options);
