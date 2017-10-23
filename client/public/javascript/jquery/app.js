@@ -258,30 +258,21 @@ jQuery(function ($) {
 
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
-			var departmentId = $input.data().departmentId;
+			// var departmentId = this.getDepartmentId();
 
 			var toSave = {
-				name: val,
-				groceryId: this.getGroceryId(),
-				departmentId: departmentId,
+				name        : val,
+				groceryId   : this.getGroceryId(),
+				departmentId: this.getDepartmentId(),
 			};
 
 			if (e.which !== ENTER_KEY || !val) { return; }
 
 			// :todo switch to fucntion
-			var ITEM = _.last(this.todos);
-			// console.log(ITEM.order);
+			var ITEM   = _.last(this.todos);
 
-			// var order_for_new_element = ;
-			// console.log(order_for_new_element);
-
-
-
-
-
-			// var new_id = false;
-
-			var new_id = this.ajax_call('create-ingredient', toSave) || 'fake-id-for-ultimate-gl';
+			var new_id = this.ajax_call('create-ingredient', toSave) 
+							|| 'fake-id-for-ultimate-gl';
 
 			// if( !new_id ) 
 
@@ -391,12 +382,7 @@ jQuery(function ($) {
 
 				// console.log(val);
 				// console.log($ingredient.data().id);
-
-				// var toSave = {
-				// 	name: val,
-				// 	groceryId: this.getGroceryId(),
-				// 	departmentId: this.getDepartmentId(),
-				// };			
+				
 				// console.log(toSave);
 				// 1_ we delete an ultimate ingredient from GL
 				// this._unattach( $ingredient.data().id );
@@ -407,56 +393,35 @@ jQuery(function ($) {
 
 				// });
 
-				// console.log(index);
-				// var car = this.todos;
-				// console.log(this.todos);
-				// console.log(index);
+				
 				this.todos.splice(index, 1);
 				// console.log(this.todos);
+
 
 				// this.render();
 				// 2_ we create a new element and attach it to a GL
 				var id = this._create(val);
+
+				console.log(id);
+
+				var datka = await this._create_async(val);
+				console.log(datka);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
 				// console.log(id);
 				var obj = this.getItemObject(id, val);
 				// console.log(obj)
 				this.todos.push(obj);
 
-					
-				// var toRemove = {
-				// 	secondArray: [ $ingredient.data().id ],
-				// 	groceryId: this.getGroceryId()
-				// };
+
 
 				
 
 				// console.log(this.todos[index])
 
-				// var last_order = this.getMaxOrderNumber();
 
 			}	
 
-			// console.log(index)
-			// console.log()
-
-			// console.log($ingredient.data().id)
-
-			// console.log(val);
-            
-			// console.log('zzzz');
-
-			// var toRename = {
-			// 	id  : $ingredient.data().id,
-			// 	name: val,
-			// 	// departmentId: this.getDepartmentId(), // :todo this can be improved
-			// 	// groceryId: this.getGroceryId()
-			// };
-			// console.log(toRename);
-
-			// this.ajax_call('rename', toRename);
-
-
+		
 
 
 			// if ($el.data('abort')) {
@@ -466,6 +431,8 @@ jQuery(function ($) {
 				// console.log(this.todos[index]);
 				// this.todos[index].name = val;
 			// }
+
+
 
 			this.render();
 		},
@@ -536,6 +503,36 @@ jQuery(function ($) {
 			};
 			return this.ajax_CreateIngredient(options);
 		},
+		_create_async: async function(name){
+			var options = {
+				name: name,
+				groceryId: this.getGroceryId(),
+				departmentId: this.getDepartmentId(),
+			};
+			return new Promise(function(cb){
+				$.ajax({
+					type: "POST",
+					url: '/create/ing/',
+					dataType: 'json',
+					data: options,				
+					
+				})
+				.done(cb());
+			});
+
+			// var new_id = false;
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: '/create/ing/',
+			// 	dataType: 'json',
+			// 	data: toSave,
+				
+			// 	'async': false
+			// }).done(resolve());
+			// return new_id;
+			// this.ajax_CreateIngredient(options);
+
+		},
 		_rename: function(){
 			var options = {};
 			this.ajax_ChangeName(options);
@@ -552,7 +549,7 @@ jQuery(function ($) {
 				secondArray: [ id ],
 				groceryId: this.getGroceryId()
 			};
-			return new Promise(function(resolve){
+			return new Promise(function(cb){
 				 $.ajax({
 				type: "POST",
 				url: '/unattach/',
@@ -562,7 +559,7 @@ jQuery(function ($) {
 			})
 			.done(
 				// function(response){
-				resolve()
+				cb()
 			// }
 			);
 		})

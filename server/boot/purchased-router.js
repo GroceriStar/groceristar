@@ -46,7 +46,9 @@ module.exports = function(app) {
   });
 
 
+
   // used for ajax call from todo list
+  // :todo maybe move to shopping controller, for easy keeping all things in one place?
   router.post('/unattach', function(req, res, next){
     var Grocery        = app.models.Grocery;
     var Ingredient     = app.models.Ingredient;
