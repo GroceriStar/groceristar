@@ -353,7 +353,7 @@ jQuery(function ($) {
 			}
 		},
 		// This is a Rename function
-		update: function (e) {
+		update: async function (e) {
 			var el = e.target;
 			var $el = $(el);
 			var val = $el.val().trim();
@@ -399,14 +399,23 @@ jQuery(function ($) {
 				// };			
 				// console.log(toSave);
 				// 1_ we delete an ultimate ingredient from GL
-				this._unattach( $ingredient.data().id );
-
-				// console.log(this.todos);
-				// this.todos.splice(index, 1);
+				// this._unattach( $ingredient.data().id );
 				console.log(this.todos);
 
+				await this._unattach_async($ingredient.data().id);
+				// promise.then(function(){
+
+				// });
+
+
+
+				// console.log(this.todos);
+				// console.log(index);
+				this.todos.splice(index, 1);
+				console.log(this.todos);
+				this.render();
 				// 2_ we create a new element and attach it to a GL
-				var id = this._create(val);
+				// var id = this._create(val);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
 				// console.log(id);
 
@@ -532,6 +541,29 @@ jQuery(function ($) {
 				groceryId: this.getGroceryId()
 			};
 			this.ajax_Unattach(options);
+		},
+		_unattach_async: function( id ){
+			var options = {			
+				secondArray: [ id ],
+				groceryId: this.getGroceryId()
+			};
+			//return
+			 $.ajax({
+				type: "POST",
+				url: '/unattach/',
+				dataType: 'json',
+				data: options,				
+				// 'async': false
+			})
+			.done(function(response){
+				// console.log(response.id);
+			});
+
+		},
+		_uno: function(response){
+			// console.log(response);
+			// console.log(this.todos);
+			console.log(this.getActiveTodos());
 		},
 		_toggle: function(){
 			var options = {};
