@@ -407,13 +407,14 @@ jQuery(function ($) {
 
 				// });
 
-
-
+				console.log(index);
+				var car = this.todos;
 				// console.log(this.todos);
 				// console.log(index);
-				this.todos.splice(index, 1);
-				console.log(this.todos);
-				this.render();
+				car.splice(index, 1);
+				console.log(car);
+
+				// this.render();
 				// 2_ we create a new element and attach it to a GL
 				// var id = this._create(val);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
