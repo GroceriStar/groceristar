@@ -388,29 +388,62 @@ jQuery(function ($) {
 				// this._unattach( $ingredient.data().id );
 				// console.log(this.todos);
 
-				await this._unattach_async($ingredient.data().id);
+				
 				// promise.then(function(){
 
 				// });
 
-				
-				this.todos.splice(index, 1);
+				// await this._unattach_async($ingredient.data().id);
+				// this.todos.splice(index, 1);
 				// console.log(this.todos);
 
 
 				// this.render();
 				// 2_ we create a new element and attach it to a GL
-				var id = this._create(val);
+				// var id = this._create(val);
 
-				console.log(id);
+				// console.log(id);
+				// var IDIDIDIDIIDID;
+				// try {     
 
-				var datka = await this._create_async(val);
-				console.log(datka);
+					// IDIDIDIDIIDID = this._create_async(val);
+				     // var Grocery   = app.models.Grocery;
+				     // grocery = await Grocery.fetchById(groceryId);
+				     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
+				     // response = Grocery.convertCollectionData(grocery);
+				     // console.log(response);
+
+				  // } catch (e) {
+				  //    Raven.captureException(e);
+				    
+				  // }
+
+				await this._unattach_async($ingredient.data().id);	
+				this.todos.splice(index, 1);
+
+				var response = await this._create_async(val);
+
+
+				 // console.log(response);
+
+				// this._create_async(val).then(function(response){
+				// 	console.log(response.id);
+
+				// 	// 
+				// 	// 
+
+					var obj = this.getItemObject(response.id, val);
+					this.todos.push(obj);
+					this.render();
+				// });
+				// console.log(datka);
 				// var new_id = this.ajax_call('create-ingredient', toSave);
 				// console.log(id);
-				var obj = this.getItemObject(id, val);
-				// console.log(obj)
-				this.todos.push(obj);
+				
+
+				// var obj = this.getItemObject(id, val);
+				
+				// this.todos.push(obj);
 
 
 
@@ -418,7 +451,7 @@ jQuery(function ($) {
 
 				// console.log(this.todos[index])
 
-
+				// this.render();
 			}	
 
 		
@@ -434,7 +467,7 @@ jQuery(function ($) {
 
 
 
-			this.render();
+			// this.render();
 		},
 		destroy: function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
@@ -505,8 +538,8 @@ jQuery(function ($) {
 		},
 		_create_async: async function(name){
 			var options = {
-				name: name,
-				groceryId: this.getGroceryId(),
+				name        : name,
+				groceryId   : this.getGroceryId(),
 				departmentId: this.getDepartmentId(),
 			};
 			return new Promise(function(cb){
@@ -517,20 +550,11 @@ jQuery(function ($) {
 					data: options,				
 					
 				})
-				.done(cb());
+				.done(function(response){
+					cb(response);
+				});
 			});
 
-			// var new_id = false;
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: '/create/ing/',
-			// 	dataType: 'json',
-			// 	data: toSave,
-				
-			// 	'async': false
-			// }).done(resolve());
-			// return new_id;
-			// this.ajax_CreateIngredient(options);
 
 		},
 		_rename: function(){
