@@ -84,7 +84,13 @@ jQuery(function ($) {
 
 				this.renderFooter();
 
+
+
+
 				if( flag ) $('#new-todo').focus();
+
+
+
 
 			}
 
@@ -201,7 +207,7 @@ jQuery(function ($) {
 
 			return this.todos;
 		},
-		destroyCompleted: function () {
+		destroyCompleted: async function () {
 
 			var array1  = this.todos;
 			this.todos  = this.getActiveTodos();
@@ -290,7 +296,7 @@ jQuery(function ($) {
 				completed: false,
 
 				groceryId: this.getGroceryId(),
-				departmentId: departmentId,
+				departmentId: this.getDepartmentId(),
 				order: ITEM.order + 1
 			}
 
@@ -364,7 +370,6 @@ jQuery(function ($) {
 			if( $ingredient.data().custom ){
 
 				this._rename_async($ingredient.data().id, val);
-
 				this.todos[index].name = val;
 				this.render();
 
@@ -406,7 +411,7 @@ jQuery(function ($) {
 
 			// this.render();
 		},
-		destroy: function (e) {
+		destroy: async function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
 			// var id = $ingredient.data('id');
 
@@ -423,7 +428,7 @@ jQuery(function ($) {
 
 			await this._unattach_async( [ $ingredient.data('id') ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
-			this.render();
+			this.render(false);
 		},
 
 	
@@ -515,8 +520,7 @@ jQuery(function ($) {
 					url: '/unattach/',
 					dataType: 'json',
 					data: options			
-				})
-				.done(cb);
+				}).done(cb);
 			});
 		},
 		_toggle: async function(ids, flag){
