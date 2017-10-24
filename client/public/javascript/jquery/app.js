@@ -170,9 +170,9 @@ jQuery(function ($) {
 			};
 			// console.log(toPurchase);
 
-			this.ajax_call('toggle', toPurchase);
+			// this.ajax_call('toggle', toPurchase);
 			
-
+			this._toggle(ingredientIds, isChecked)
 
 
 			this.render();
@@ -312,23 +312,9 @@ jQuery(function ($) {
 
 			// console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
-
-
-			var toPurchase = {
-					ingredients: [ $ingredient.data().id ],
-					groceryId: this.getGroceryId(),
-					type:  (flag) ? 'add' :'remove' 
-				};
-
-				// console.log(toPurchase);
-
-			
-			this.ajax_call('toggle', toPurchase);
-
-
-
-
+			this._toggle( [ $ingredient.data().id ], flag );
 			this.render();
+
 		},
 		editingMode: function (e) {
 
@@ -376,12 +362,9 @@ jQuery(function ($) {
 
 			// this is a brand new ingredient - we'll update the name
 			if( $ingredient.data().custom ){
-				var toRename = {
-					id  : $ingredient.data().id,
-					name: val			
-				};
 
-				this.ajax_call('rename', toRename);
+				this._rename_async($ingredient.data().id, val);
+
 				this.todos[index].name = val;
 				this.render();
 
@@ -396,7 +379,6 @@ jQuery(function ($) {
 				// 2_ we create a new element and attach it to a GL
 				var response;
 				try {     
-
 					response = await this._create_async(val);
 
 				} catch (e) {
@@ -440,7 +422,6 @@ jQuery(function ($) {
 			// this.ajax_call('unattach', toRemove);
 
 			await this._unattach_async( [ $ingredient.data('id') ] );
-
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
 		},
@@ -507,48 +488,54 @@ jQuery(function ($) {
 
 
 		},
-		_rename: function(){
-			var options = {};
-			this.ajax_ChangeName(options);
+		_rename_async: async function(id, name){
+			var options = {			
+				id  : id,
+				name: name
+			};
+			return new Promise(function(cb){
+				$.ajax({
+					type: "POST",
+					url: '/changename/',
+					dataType: 'json',
+					data: options			
+				})
+				.done(cb);
+			});
+
 		},
-		// _unattach: function(id){
-		// 	var options = {			
-		// 		secondArray: [ id ],
-		// 		groceryId: this.getGroceryId()
-		// 	};
-		// 	this.ajax_Unattach(options);
-		// },
 		_unattach_async: async function( ids ){
-
-			// console.log( id.length );
-
 			var options = {			
 				secondArray:  ids,
 				groceryId: this.getGroceryId()
 			};
 			return new Promise(function(cb){
-				 $.ajax({
-				type: "POST",
-				url: '/unattach/',
-				dataType: 'json',
-				data: options,				
-				// 'async': false
-			})
-			.done(cb);
-		})
-
-
-			
-
+				$.ajax({
+					type: "POST",
+					url: '/unattach/',
+					dataType: 'json',
+					data: options			
+				})
+				.done(cb);
+			});
 		},
-		// _uno: function(response){
-		// 	// console.log(response);
-		// 	// console.log(this.todos);
-		// 	console.log(this.getActiveTodos());
-		// },
-		_toggle: function(){
-			var options = {};
-			this.ajax_TogglePurchased(options);
+		_toggle: async function(ids, flag){
+			var options = {
+				ingredients: ids,
+				groceryId  : this.getGroceryId(),
+				type       : (flag) ? 'add' :'remove'
+			};
+
+			return new Promise(function(cb){
+				$.ajax({
+					type: "POST",
+					url: '/togglepurchased/',
+					dataType: 'json',
+					data: options			
+				})
+				.done(cb);
+			});
+			
 		},
 
 		//methods, related to ajax calls
@@ -556,32 +543,13 @@ jQuery(function ($) {
 
 			if(this.isUltimate()) return false;
 
-			switch (type) {
-			  case 'create-ingredient':
-			    return this.ajax_CreateIngredient(options);
-			    break;
-
-			  case 'rename':
-			    this.ajax_ChangeName(options);
-			    break;
-			 
-			  case 'unattach':
-			    this.ajax_Unattach(options);
-			    break;
-
-  			  // case 'get-ingredients':
-			    // return this.ajax_GetIngredients(options);
-			    // break;  
-
-			  default:
-			    this.ajax_TogglePurchased(options);
-			    break;
+			if( type == 'create-ingredient' ){
+				return this.ajax_CreateIngredient(options);
 			}
 
 		},
-		// ajax_GetIngredients:  function(options){
 
-		// 	let myVariable
+
 		// 	$.ajax({
 		// 		type: "GET",
 		// 		url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
@@ -591,13 +559,7 @@ jQuery(function ($) {
 		// 		// console.log('get ingredients success');
   //               myVariable = JSON.stringify(data);
   //               myVariable = JSON.parse(myVariable);
-               
-			
-		// 	});
-
-		// 	// console.log(myVariable);
-		// 	return myVariable;
-		// },
+ 
 
 		ajax_CreateIngredient: function(toSave){
 			var new_id = false;
@@ -617,52 +579,52 @@ jQuery(function ($) {
 			// console.log(new_id);
 		},
 
-		ajax_TogglePurchased: function(toPurchase){
-			$.ajax({
-				type: "POST",
-				url: '/togglepurchased/',
-				dataType: 'json',
-				data: toPurchase,
+		// ajax_TogglePurchased: function(toPurchase){
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		url: '/togglepurchased/',
+		// 		dataType: 'json',
+		// 		data: toPurchase,
 				
-				'async': false
-			}).done(function(data){
+		// 		'async': false
+		// 	}).done(function(data){
 				
-				//console.log('success AddToPurchased');
-				// console.log(data);
+		// 		//console.log('success AddToPurchased');
+		// 		// console.log(data);
 
-				// result = data.id;
-			});
-		},
+		// 		// result = data.id;
+		// 	});
+		// },
 
-		ajax_ChangeName: function(toRename){
-			$.ajax({
-				type: "POST",
-				url: '/changename/',
-				dataType: 'json',
-				data: toRename,
+		// ajax_ChangeName: function(toRename){
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		url: '/changename/',
+		// 		dataType: 'json',
+		// 		data: toRename,
 				
-				'async': false
-			}).done(function(data){
+		// 		'async': false
+		// 	}).done(function(data){
 				
-				//console.log('success update name');
+		// 		//console.log('success update name');
 
-			});
-		},
+		// 	});
+		// },
 
-		ajax_Unattach: function(toRemove){
+		// ajax_Unattach: function(toRemove){
 
-			$.ajax({
-				type: "POST",
-				url: '/unattach/',
-				dataType: 'json',
-				data: toRemove,				
-				'async': false
-			}).done(function(data){
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		url: '/unattach/',
+		// 		dataType: 'json',
+		// 		data: toRemove,				
+		// 		'async': false
+		// 	}).done(function(data){
 				
-				//console.log('success destroy ingredient or ingredients');
+		// 		//console.log('success destroy ingredient or ingredients');
 
-			});
-		},
+		// 	});
+		// },
 
 	};
 
