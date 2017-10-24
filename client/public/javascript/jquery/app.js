@@ -380,70 +380,33 @@ jQuery(function ($) {
 
 			} else {
 
-				// console.log(val);
-				// console.log($ingredient.data().id);
 				
-				// console.log(toSave);
 				// 1_ we delete an ultimate ingredient from GL
-				// this._unattach( $ingredient.data().id );
-				// console.log(this.todos);
-
-				
-				// promise.then(function(){
-
-				// });
-
-				// await this._unattach_async($ingredient.data().id);
-				// this.todos.splice(index, 1);
-				// console.log(this.todos);
-
-
-				// this.render();
-				// 2_ we create a new element and attach it to a GL
-				// var id = this._create(val);
-
-				// console.log(id);
-				// var IDIDIDIDIIDID;
-				// try {     
-
-					// IDIDIDIDIIDID = this._create_async(val);
-				     // var Grocery   = app.models.Grocery;
-				     // grocery = await Grocery.fetchById(groceryId);
-				     // grocery  = await Grocery.findById(groceryId, Grocery.query1());
-				     // response = Grocery.convertCollectionData(grocery);
-				     // console.log(response);
-
-				  // } catch (e) {
-				  //    Raven.captureException(e);
-				    
-				  // }
 
 				await this._unattach_async($ingredient.data().id);	
 				this.todos.splice(index, 1);
 
-				var response = await this._create_async(val);
+
+				// 2_ we create a new element and attach it to a GL
+
+				var response;
+				try {     
+
+					response = await this._create_async(val);
+
+				} catch (e) {
+					Raven.captureException(e);
+
+				}
+
+				
 
 
-				 // console.log(response);
-
-				// this._create_async(val).then(function(response){
-				// 	console.log(response.id);
-
-				// 	// 
-				// 	// 
 
 					var obj = this.getItemObject(response.id, val);
 					this.todos.push(obj);
 					this.render();
-				// });
-				// console.log(datka);
-				// var new_id = this.ajax_call('create-ingredient', toSave);
-				// console.log(id);
 				
-
-				// var obj = this.getItemObject(id, val);
-				
-				// this.todos.push(obj);
 
 
 
@@ -528,14 +491,14 @@ jQuery(function ($) {
 			return html;
 		},
 		// template related stuff
-		_create: function(name){
-			var options = {
-				name: name,
-				groceryId: this.getGroceryId(),
-				departmentId: this.getDepartmentId(),
-			};
-			return this.ajax_CreateIngredient(options);
-		},
+		// _create: function(name){
+		// 	var options = {
+		// 		name: name,
+		// 		groceryId: this.getGroceryId(),
+		// 		departmentId: this.getDepartmentId(),
+		// 	};
+		// 	return this.ajax_CreateIngredient(options);
+		// },
 		_create_async: async function(name){
 			var options = {
 				name        : name,
@@ -561,13 +524,13 @@ jQuery(function ($) {
 			var options = {};
 			this.ajax_ChangeName(options);
 		},
-		_unattach: function(id){
-			var options = {			
-				secondArray: [ id ],
-				groceryId: this.getGroceryId()
-			};
-			this.ajax_Unattach(options);
-		},
+		// _unattach: function(id){
+		// 	var options = {			
+		// 		secondArray: [ id ],
+		// 		groceryId: this.getGroceryId()
+		// 	};
+		// 	this.ajax_Unattach(options);
+		// },
 		_unattach_async: async function( id ){
 			var options = {			
 				secondArray: [ id ],
@@ -581,11 +544,7 @@ jQuery(function ($) {
 				data: options,				
 				// 'async': false
 			})
-			.done(
-				// function(response){
-				cb()
-			// }
-			);
+			.done(cb);
 		})
 
 
