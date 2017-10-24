@@ -168,3 +168,5 @@ Credits Data
 
     
     [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
+	
+	10.23 Get a copy in local machine -- xy1994
