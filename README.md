@@ -169,4 +169,10 @@ Credits Data
     
     [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
 	
-	10.23 Get a copy in local machine -- xy1994
+	10.23
+	Fork the repo
+	npm init and npm run watch on local machine
+	error: "async function something(next) {
+	^^^^^^^^
+	SyntaxError: Unexpected token function"
+	reason: node version is not updated. Fixed by re-install updated node and npm.
