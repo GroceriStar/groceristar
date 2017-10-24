@@ -4,7 +4,7 @@ module.exports = function(Ingredient) {
     
     //:todo add to done & delete default false
 	Ingredient.validatesPresenceOf(
-		'name', 
+		'name'
         // 'type', 
         // 'done', 'delete'
 
