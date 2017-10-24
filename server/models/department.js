@@ -2,7 +2,7 @@
 
 module.exports = function(Department) {
 	Department.validatesPresenceOf(
-    'name', 
+    'name'
     // 'items'
   );
 
