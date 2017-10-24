@@ -54,14 +54,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atherdon/loopback-fb-login.git"
+    "url": "git+https://github.com/atherdon/groceristar.git"
   },
   "license": "MIT",
   "description": "A tutorial for setting up a basic passport example.",
   "bugs": {
-    "url": "https://github.com/atherdon/loopback-fb-login/issues"
+    "url": "https://github.com/atherdon/groceristar/issues"
   },
-  "homepage": "https://github.com/atherdon/loopback-fb-login#readme",
+  "homepage": "https://github.com/atherdon/groceristar#readme",
   "bin": {
     "groceristar": "automigrate-small.js"
   },
