@@ -133,46 +133,51 @@ $ node .
 
 Credits Data
 
-    ### Where we get template data.
-    Ingredients and departments data, was exported from 
-    [The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
+### Where we get template data.
+Ingredients and departments data, was exported from 
+[The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
 
-    Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
-    
-    You can purchase [it from Amazon: ](https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/)
+Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
 
-    
+You can purchase [it from Amazon: ](https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/)
 
-     Build with Loopback 
-     [The Node.js API Framework](https://loopback.io/)
-    
 
-     Ingredients list template based on 
-     [TodoMVC](https://todomvc.com)
-    
+Build with Loopback 
+[The Node.js API Framework](https://loopback.io/)
 
-    
-    ### Free to use fronted tools
-    [Icons from Font Awesome](http://fontawesome.io)
-    
-     
-    [Icons from 7 Stroke](http://themes-pixeden.com/font-demos/7-stroke/)
-    
 
-     
-    [Google Fonts](https://fonts.google.com/specimen/Roboto)
-    
-       
-    [Dropdown list from Codrops tutorial](https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/)
-    
+Ingredients list template based on 
+[TodoMVC](https://todomvc.com)
 
-    
-    [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
-	
-	10.23
-	Fork the repo
-	npm init and npm run watch on local machine
-	error: "async function something(next) {
-	^^^^^^^^
-	SyntaxError: Unexpected token function"
-	reason: node version is not updated. Fixed by re-install updated node and npm.
+
+### Free to use fronted tools
+[Icons from Font Awesome](http://fontawesome.io)
+
+
+[Icons from 7 Stroke](http://themes-pixeden.com/font-demos/7-stroke/)
+
+
+
+[Google Fonts](https://fonts.google.com/specimen/Roboto)
+
+
+[Dropdown list from Codrops tutorial](https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/)
+
+
+
+[Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
+
+10.23
+How to setup project on local machine
+Fork the repo
+npm init 
+npm run watch 
+**If you got an issue**
+error: "async function something(next) {
+^^^^^^^^
+SyntaxError: Unexpected token function"
+**reason**: node version is not updated. Fixed by re-install updated node and npm.
+### Why
+Async functions are not supported by Node versions older than version 7.6
+
+At package.json we specified:  node v.8.1.4
