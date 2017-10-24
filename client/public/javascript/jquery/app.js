@@ -172,6 +172,9 @@ jQuery(function ($) {
 
 			this.ajax_call('toggle', toPurchase);
 			
+
+
+
 			this.render();
 		},
 		getActiveTodos: function () {
@@ -207,12 +210,16 @@ jQuery(function ($) {
 
 			var difference = _.difference(array1, array2);
 
-			var toRemove = {
-				secondArray: _.pluck(difference, 'id'),
-				groceryId: this.getGroceryId()
-			};
+			// var toRemove = {
+			// 	secondArray: _.pluck(difference, 'id'),
+			// 	groceryId: this.getGroceryId()
+			// };
 
-			this.ajax_call('unattach', toRemove);
+			var array_of_ids = _.pluck(difference, 'id');
+
+			// this.ajax_call('unattach', toRemove);
+
+			await this._unattach_async(array_of_ids);
 
 
 			this.render();
@@ -382,13 +389,11 @@ jQuery(function ($) {
 
 				
 				// 1_ we delete an ultimate ingredient from GL
-
-				await this._unattach_async($ingredient.data().id);	
+				await this._unattach_async( [ $ingredient.data().id ] );	
 				this.todos.splice(index, 1);
 
 
 				// 2_ we create a new element and attach it to a GL
-
 				var response;
 				try {     
 
@@ -396,25 +401,12 @@ jQuery(function ($) {
 
 				} catch (e) {
 					Raven.captureException(e);
-
 				}
 
-				
+				var obj = this.getItemObject(response.id, val);
+				this.todos.push(obj);
+				this.render();
 
-
-
-					var obj = this.getItemObject(response.id, val);
-					this.todos.push(obj);
-					this.render();
-				
-
-
-
-				
-
-				// console.log(this.todos[index])
-
-				// this.render();
 			}	
 
 		
@@ -434,18 +426,20 @@ jQuery(function ($) {
 		},
 		destroy: function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
-			var id = $ingredient.data('id');
+			// var id = $ingredient.data('id');
 
+			// var toRemove = {
+			// 	secondArray: [ id ],
+			// 	groceryId: this.getGroceryId()
+			// };
+		
+			// this.ajax_call('unattach', toRemove);
 
-			var toRemove = {
-				secondArray: [ id ],
-				groceryId: this.getGroceryId()
-			};
+			// var array_of_ids = _.pluck(difference, 'id');
 
-			
-			this.ajax_call('unattach', toRemove);
+			// this.ajax_call('unattach', toRemove);
 
-			
+			await this._unattach_async( [ $ingredient.data('id') ] );
 
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
@@ -491,14 +485,7 @@ jQuery(function ($) {
 			return html;
 		},
 		// template related stuff
-		// _create: function(name){
-		// 	var options = {
-		// 		name: name,
-		// 		groceryId: this.getGroceryId(),
-		// 		departmentId: this.getDepartmentId(),
-		// 	};
-		// 	return this.ajax_CreateIngredient(options);
-		// },
+
 		_create_async: async function(name){
 			var options = {
 				name        : name,
@@ -531,9 +518,12 @@ jQuery(function ($) {
 		// 	};
 		// 	this.ajax_Unattach(options);
 		// },
-		_unattach_async: async function( id ){
+		_unattach_async: async function( ids ){
+
+			// console.log( id.length );
+
 			var options = {			
-				secondArray: [ id ],
+				secondArray:  ids,
 				groceryId: this.getGroceryId()
 			};
 			return new Promise(function(cb){
