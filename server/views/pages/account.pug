@@ -5,9 +5,13 @@ block content
     if groceries.length !== 0
       .col-md-8
         h1 Your current Grocery List is:
+        //-  :todo fix
+        h4(style="font-weight:300;") Click on this list and you'll be redirected to departments page.
+        h4(style="font-weight:300;") You can choose department and review your shopping list, on that page
         .row
           .col-md-8 
-            +view_groceries_short_one(groceries[0]) 
+            +view_groceries_short_one(groceries[0])
+
 
       .col-md-4
         .panel.panel-bordered
