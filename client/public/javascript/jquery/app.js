@@ -155,9 +155,6 @@ jQuery(function ($) {
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-			// console.log( isChecked );
-
-			// console.log(this.todos);
 
 			this.todos.forEach(function (todo) {
 				todo.completed = isChecked;
@@ -166,21 +163,7 @@ jQuery(function ($) {
 			// console.log(this.todos);
 
 			var ingredientIds = _.pluck(this.todos, 'id');
-			// console.log(ingredientIds);
-
-			// move all ids to purchased.
-			var toPurchase = {
-				ingredients: ingredientIds,
-				groceryId: this.getGroceryId(),
-				type:  (isChecked) ? 'add' :'remove'
-			};
-			// console.log(toPurchase);
-
-			// this.ajax_call('toggle', toPurchase);
-			
 			this._toggle(ingredientIds, isChecked)
-
-
 			this.render();
 		},
 		getActiveTodos: function () {
@@ -215,11 +198,8 @@ jQuery(function ($) {
 			this.filter = 'all';
 
 			var difference = _.difference(array1, array2);
-
 			var array_of_ids = _.pluck(difference, 'id');
-
 			await this._unattach_async(array_of_ids);
-
 			this.render();
 		},
 		// accepts an element from inside the `.item` div and
@@ -517,8 +497,8 @@ jQuery(function ($) {
 					url: '/unattach/',
 					dataType: 'json',
 					data: options			
-				});
-				// .done(cb);
+				})
+				.done(cb);
 			});
 		},
 		_toggle: async function(ids, flag){

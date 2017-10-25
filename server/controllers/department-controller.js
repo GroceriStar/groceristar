@@ -76,14 +76,14 @@ exports.deleteDepartment = async (req, res, next) => {
 
     }, function(err, grocery){
 
-      console.log(grocery);
+      // console.log(grocery);
 
       var g = grocery.toJSON();
 
       var toRemove = _.pluck(g.ingredients, 'id');
       toRemove     = _.map(toRemove, item => item.toString());
 
-      console.log(toRemove);
+      // console.log(toRemove);
 
 
 

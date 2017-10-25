@@ -148,8 +148,8 @@ exports.postCloneForm = async (req, res, next) => {
       // console.log(newObject);
       newObject.name = name;
       cloned = await Grocery.create(newObject);
-      console.log(cloned);
-      console.log(userId)
+      // console.log(cloned);
+      // console.log(userId)
     } catch (e) {
        Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
