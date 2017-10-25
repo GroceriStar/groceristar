@@ -288,7 +288,6 @@ jQuery(function ($) {
 
 			var flag =  $(event.target).prop('checked');
 
-			// console.log(this.todos);
 			this.todos[i].completed = !this.todos[i].completed;
 			this._toggle( [ $ingredient.data().id ], flag );
 			this.render();
@@ -296,8 +295,19 @@ jQuery(function ($) {
 		},
 		editingMode: function (e) {
 
-			var $input = $(e.target).closest('li').addClass('editing').find('.edit');
-			var val = $input.val();
+			// console.log($(e.target).closest('li'));
+			// var $li = $(e.target).closest('li');
+			// console.log($li.hasClas('completed'));
+			// // if (data.custom)
+			// :todo maybe, just maybe, we need to remove this hack. so we can edit name of purchased element too.
+			// but for this moment it'll require a lot of changes on backend, so i gave up
+
+
+
+			var $input = $(e.target).closest('li')
+									.addClass('editing').find('.edit');
+
+			var val    = $input.val();
 
 			// console.log($input);
 			//console.log($input.val());
@@ -323,10 +333,17 @@ jQuery(function ($) {
 			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
 
-			// console.log($ingredient.data());
-			console.log(val == this.todos[index].name);
 
-			if (!val || val == this.todos[index].name ) {
+			// case 1
+
+
+
+
+
+			// console.log($ingredient.data());
+			// console.log(val == this.todos[index].name);
+
+			if ( !val ) {
 				this.destroy(e);
 				return;
 			}
@@ -390,18 +407,6 @@ jQuery(function ($) {
 		},
 		destroy: async function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
-			// var id = $ingredient.data('id');
-
-			// var toRemove = {
-			// 	secondArray: [ id ],
-			// 	groceryId: this.getGroceryId()
-			// };
-		
-			// this.ajax_call('unattach', toRemove);
-
-			// var array_of_ids = _.pluck(difference, 'id');
-
-			// this.ajax_call('unattach', toRemove);
 
 			await this._unattach_async( [ $ingredient.data('id') ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
@@ -559,54 +564,8 @@ jQuery(function ($) {
 			});
 			return new_id;
 			// console.log(new_id);
-		},
+		}
 
-		// ajax_TogglePurchased: function(toPurchase){
-		// 	$.ajax({
-		// 		type: "POST",
-		// 		url: '/togglepurchased/',
-		// 		dataType: 'json',
-		// 		data: toPurchase,
-				
-		// 		'async': false
-		// 	}).done(function(data){
-				
-		// 		//console.log('success AddToPurchased');
-		// 		// console.log(data);
-
-		// 		// result = data.id;
-		// 	});
-		// },
-
-		// ajax_ChangeName: function(toRename){
-		// 	$.ajax({
-		// 		type: "POST",
-		// 		url: '/changename/',
-		// 		dataType: 'json',
-		// 		data: toRename,
-				
-		// 		'async': false
-		// 	}).done(function(data){
-				
-		// 		//console.log('success update name');
-
-		// 	});
-		// },
-
-		// ajax_Unattach: function(toRemove){
-
-		// 	$.ajax({
-		// 		type: "POST",
-		// 		url: '/unattach/',
-		// 		dataType: 'json',
-		// 		data: toRemove,				
-		// 		'async': false
-		// 	}).done(function(data){
-				
-		// 		//console.log('success destroy ingredient or ingredients');
-
-		// 	});
-		// },
 
 	};
 
