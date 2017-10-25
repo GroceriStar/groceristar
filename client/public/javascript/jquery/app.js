@@ -333,16 +333,6 @@ jQuery(function ($) {
 			var index       = this.getIndexFromEl(el);
 			var $ingredient = this.getElementFromEvent(e.target);
 
-
-			// case 1
-
-
-
-
-
-			// console.log($ingredient.data());
-			// console.log(val == this.todos[index].name);
-
 			if ( !val ) {
 				this.destroy(e);
 				return;
@@ -366,6 +356,7 @@ jQuery(function ($) {
 				this._rename_async($ingredient.data().id, val);
 				this.todos[index].name = val;
 				this.render();
+				return ;
 
 			} else {
 
@@ -392,7 +383,7 @@ jQuery(function ($) {
 
 		
 
-
+			//jsue in case, if something go wrong
 			// if ($el.data('abort')) {
 			// 	$el.data('abort', false);
 			// } else {
@@ -400,9 +391,6 @@ jQuery(function ($) {
 				// console.log(this.todos[index]);
 				// this.todos[index].name = val;
 			// }
-
-
-
 			// this.render();
 		},
 		destroy: async function (e) {
@@ -526,6 +514,7 @@ jQuery(function ($) {
 		},
 
 		//methods, related to ajax calls
+		// :todo finish this stuff and get rid of this function
 		ajax_call: function(type, options) {
 
 			if(this.isUltimate()) return false;

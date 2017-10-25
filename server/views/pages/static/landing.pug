@@ -56,12 +56,11 @@ html
         .col-6.centervertical
           h2.paragraph
             | You're one step from creating your grocery list
+          h2.paragraph  
             | The easiest way to create the new list by cloning template
 
           //include ../partials/home-links
   
-
-          //- a(href='/clone/' + ultimate.id, class="btn")= 'Clone >' + ultimate.name
           
           br
           
@@ -71,6 +70,12 @@ html
           br
           p * We don't post anything to Facebook  
 
+          br
+          br
+          br  
+
+          h2.paragraph
+            | Check what do we have before sign up
           .ctas
             +button_view_grocery('Review ' + ultimate.name)(class="btn ctas-button")
 
@@ -238,6 +243,9 @@ html
           .ctas
             a.ctas-button(href='/auth/facebook')
               | Continue with Facebook
+
+          .ctas
+            +button_view_grocery('Review ' + ultimate.name)(class="btn ctas-button")    
 
               
       .container-lrg.footer-nav
