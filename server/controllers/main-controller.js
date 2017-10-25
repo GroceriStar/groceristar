@@ -9,7 +9,8 @@ let app    = require(path.resolve(__dirname, '../server'));
 // var Example   = server.models.ExampleModel;
 
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
-
+const Raven = require('raven');
+Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 exports.getHomepage = async (req, res, next) => {
 
       var ultimateGL = {};

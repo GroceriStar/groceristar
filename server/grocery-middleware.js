@@ -5,7 +5,8 @@ const path  = require('path');
 const app   = require(path.resolve(__dirname, '../server/server'));
 const User  = app.models.user;
 const async = require('async');
-
+const Raven = require('raven');
+Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 // :todo this is a partly copied functionality from other midleware funciton.
 // this is a duplicated code, and we need to change that.
 // in order to not renaming a few functions we did this.

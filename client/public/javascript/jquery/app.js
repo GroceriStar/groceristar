@@ -216,17 +216,9 @@ jQuery(function ($) {
 
 			var difference = _.difference(array1, array2);
 
-			// var toRemove = {
-			// 	secondArray: _.pluck(difference, 'id'),
-			// 	groceryId: this.getGroceryId()
-			// };
-
 			var array_of_ids = _.pluck(difference, 'id');
 
-			// this.ajax_call('unattach', toRemove);
-
 			await this._unattach_async(array_of_ids);
-
 
 			this.render();
 		},
@@ -352,9 +344,9 @@ jQuery(function ($) {
 			var $ingredient = this.getElementFromEvent(e.target);
 
 			// console.log($ingredient.data());
-			// console.log(this.todos);
+			console.log(val == this.todos[index].name);
 
-			if (!val) {
+			if (!val || val == this.todos[index].name ) {
 				this.destroy(e);
 				return;
 			}
@@ -365,6 +357,11 @@ jQuery(function ($) {
 				return;
 			} 
 
+
+			if( val == this.todos[index].name ){
+				this.render();
+				return;
+			}
 
 			// this is a brand new ingredient - we'll update the name
 			if( $ingredient.data().custom ){
@@ -520,7 +517,8 @@ jQuery(function ($) {
 					url: '/unattach/',
 					dataType: 'json',
 					data: options			
-				}).done(cb);
+				});
+				// .done(cb);
 			});
 		},
 		_toggle: async function(ids, flag){
