@@ -7,7 +7,7 @@ A tutorial for setting up a basic passport example.
 - [Client ids/secrets from third party](#client-idssecrets-from-third-party)
 - [Tutorial - Facebook](#tutorial---facebook)
 
-
+https://sentry-brand.storage.googleapis.com/sentry-logo-black.png
 ## Overview
 
 LoopBack example for [loopback-passport](https://github.com/strongloop/loopback-passport) module. It demonstrates how to use
