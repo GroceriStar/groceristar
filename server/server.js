@@ -43,11 +43,11 @@ var passportConfigurator = new PassportConfigurator(app);
  * can make the most accurate determination of why authentication failed.
  */
 const flash      = require('express-flash');
-
+ console.log( process.env.NODE_ENV )
 // attempt to build the providers/passport config
 var config = {};
 try {
-
+  console.log( process.env.NODE_ENV )
   // if (process.env.NODE_ENV === 'development') {
     // only use in development 
     config = require('../providers.json');  
