@@ -46,9 +46,10 @@ const flash      = require('express-flash');
 
 // attempt to build the providers/passport config
 var config = {};
+
 try {
 
-  if (process.env.NODE_ENV === 'development') {
+  if ( process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ) {
     // only use in development 
     config = require('../providers.json');  
   } else {

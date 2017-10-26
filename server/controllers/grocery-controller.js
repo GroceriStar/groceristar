@@ -305,6 +305,7 @@ exports.shopping = async (req, res, next) => {
   // console.log()
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
+
   var response = await dropdown_departments(groceryId, next);
   var md = new MobileDetect(req.headers['user-agent']);
 
@@ -356,7 +357,11 @@ exports.shopping = async (req, res, next) => {
   // This is another bad functionality, written for this method.
   let ultimate = await middlewarez(next);
   
-// console.log(ingredients)
+
+
+
+  var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
+
   let renderObject = {
     user        : req.user,
     url         : req.url,
@@ -369,8 +374,7 @@ exports.shopping = async (req, res, next) => {
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
     isMobile: (md.mobile()) ? true : false,
-    back:req.get('Referrer')
-
+    back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
   };
   
   res.render('pages/shopping/shopping-list', renderObject);
