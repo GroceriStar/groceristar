@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title></title>
+
+  <link rel="apple-touch-icon" href="../../assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/bootstrap-extend.min.css">
+  <link rel="stylesheet" href="../../assets/css/site.min.css">
+
+  <!-- Plugins -->
+  <link rel="stylesheet" href="../../assets/vendor/animsition/animsition.css">
+  <link rel="stylesheet" href="../../assets/vendor/asscrollable/asScrollable.css">
+  <link rel="stylesheet" href="../../assets/vendor/switchery/switchery.css">
+  <link rel="stylesheet" href="../../assets/vendor/intro-js/introjs.css">
+  <link rel="stylesheet" href="../../assets/vendor/slidepanel/slidePanel.css">
+  <link rel="stylesheet" href="../../assets/vendor/flag-icon-css/flag-icon.css">
+
+  <!-- Plugins For This Page -->
+  <link rel="stylesheet" href="../../assets/vendor/select2/select2.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-tokenfield/bootstrap-tokenfield.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-select/bootstrap-select.css">
+  <link rel="stylesheet" href="../../assets/vendor/icheck/icheck.css">
+  <link rel="stylesheet" href="../../assets/vendor/switchery/switchery.css">
+  <link rel="stylesheet" href="../../assets/vendor/asrange/asRange.css">
+  <link rel="stylesheet" href="../../assets/vendor/asspinner/asSpinner.css">
+  <link rel="stylesheet" href="../../assets/vendor/clockpicker/clockpicker.css">
+  <link rel="stylesheet" href="../../assets/vendor/ascolorpicker/asColorPicker.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-touchspin/bootstrap-touchspin.css">
+  <link rel="stylesheet" href="../../assets/vendor/card/card.css">
+  <link rel="stylesheet" href="../../assets/vendor/jquery-labelauty/jquery-labelauty.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="../../assets/vendor/bootstrap-maxlength/bootstrap-maxlength.css">
+  <link rel="stylesheet" href="../../assets/vendor/jt-timepicker/jquery-timepicker.css">
+  <link rel="stylesheet" href="../../assets/vendor/jquery-strength/jquery-strength.css">
+  <link rel="stylesheet" href="../../assets/vendor/multi-select/multi-select.css">
+  <link rel="stylesheet" href="../../assets/vendor/typeahead-js/typeahead.css">
+
+  <!-- Page -->
+  <link rel="stylesheet" href="../../assets/examples/css/forms/advanced.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="../../assets/fonts/web-icons/web-icons.min.css">
+  <link rel="stylesheet" href="../../assets/fonts/brand-icons/brand-icons.min.css">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+  <!--[if lt IE 9]>
+    <script src="../../assets/vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+  <!--[if lt IE 10]>
+    <script src="../../assets/vendor/media-match/media.match.min.js"></script>
+    <script src="../../assets/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- Scripts -->
+  <script src="../../assets/vendor/modernizr/modernizr.js"></script>
+  <script src="../../assets/vendor/breakpoints/breakpoints.js"></script>
+  <script>
+    Breakpoints();
+  </script>
+</head>
+<body>
+  <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+ 
+
+
+  <!-- Page -->
+  <div class="page animsition">
+
+    <!-- <div class="page-header">
+      <h1 class="page-title">
+      Form Advanced Elements
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="javascript:void(0)">Forms</a></li>
+        <li class="active">Advanced</li>
+      </ol>
+      <div class="page-header-actions">
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round"
+        data-toggle="tooltip" data-original-title="Edit">
+          <i class="icon wb-pencil" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round"
+        data-toggle="tooltip" data-original-title="Refresh">
+          <i class="icon wb-refresh" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round"
+        data-toggle="tooltip" data-original-title="Setting">
+          <i class="icon wb-settings" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div> -->
+
+    <div class="page-content container-fluid">
+      <!-- Panel Select 2 -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Select 2
+            
+          </h3>
+        </div>
+        <div class="panel-body container-fluid">
+          <div class="row row-lg">
+            <div class="col-sm-6 col-lg-4">
+              <!-- Example Basic -->
+              <div class="example-wrap">
+                <h4 class="example-title">Basic</h4>
+                <p>Create a basic select2 by using <code>data-plugin="select2"</code>.</p>
+                <div class="example">
+                  <select class="form-control" data-plugin="select2">
+                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                      <option value="AK">Alaska</option>
+                      <option value="HI">Hawaii</option>
+                    </optgroup>
+                    <optgroup label="Pacific Time Zone">
+                      <option value="CA">California</option>
+                      <option value="NV">Nevada</option>
+                      <option value="OR">Oregon</option>
+                      <option value="WA">Washington</option>
+                    </optgroup>
+                    <optgroup label="Mountain Time Zone">
+                      <option value="AZ">Arizona</option>
+                      <option value="CO">Colorado</option>
+                      <option value="ID">Idaho</option>
+                      <option value="MT">Montana</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="UT">Utah</option>
+                      <option value="WY">Wyoming</option>
+                    </optgroup>
+                    
+                    
+                  </select>
+                </div>
+              </div>
+              <!-- End Example Basic -->
+            </div>
+
+            
+
+            <div class="clearfix visible-sm-block visible-md-bock"></div>
+
+            
+          </div>  
+            
+
+
+      <!-- Panel Toggle Switches -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Toggle Switches
+            <small><a class="example-plugin-link" href="http://abpetkov.github.io/switchery/"
+              target="_blank">official website</a></small>
+          </h3>
+        </div>
+        <div class="panel-body container-fluid">
+          <div class="row row-lg">
+            <div class="col-sm-6 col-lg-4">
+              <!-- Example Basic -->
+              <div class="example-wrap margin-lg-0">
+                <h4 class="example-title">Basic</h4>
+                <p>Use <code>data-plugin="switchery"</code> and <code>type="checkbox"</code>                  to create a basic switcher.</p>
+                
+                <div class="example">
+                  <div class="pull-left margin-right-20">
+                    <input type="checkbox" id="inputBasicOff" name="inputiCheckBasicCheckboxes" data-plugin="switchery"
+                    />
+                  </div>
+                  <label class="padding-top-3" for="inputBasicOff">Off</label>
+                </div>
+                <div class="example">
+                  <div class="pull-left margin-right-20">
+                    <input type="checkbox" id="inputBasicOn" name="inputiCheckBasicCheckboxes" data-plugin="switchery"
+                    checked />
+                  </div>
+                  <label class="padding-top-3" for="inputBasicOn">On</label>
+                </div>
+                <div class="example">
+                  <div class="pull-left margin-right-20">
+                    <input type="checkbox" id="inputBasicDisabledOff" name="inputiCheckBasicCheckboxes"
+                    data-plugin="switchery" data-disabled="true" />
+                  </div>
+                  <label class="padding-top-3" for="inputBasicDisabledOff">Disabled Off</label>
+                </div>
+                <div class="example">
+                  <div class="pull-left margin-right-20">
+                    <input type="checkbox" id="inputBasicDisabledOn" name="inputiCheckBasicCheckboxes"
+                    data-plugin="switchery" data-disabled="true" checked />
+                  </div>
+                  <label class="padding-top-3" for="inputBasicDisabledOn">Disabled On</label>
+                </div>
+              </div>
+              <!-- End Example Basic -->
+            </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+      <!-- End Panel Toggle Switches -->
+
+
+
+
+
+
+
+
+      <div class="row row-lg">
+        <div class="col-lg-6">
+          <!-- Panel Labelauty -->
+          <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+          Search Results
+            
+          </h3>
+        </div>
+              <div class="example">
+                        
+                <form method="post" role="form">
+
+                  <div class="form-group">
+                    <label class="sr-only" for="inputEmail">your <u>existing</u> email</label>
+                    <input type="text" class="form-control" id="domain" name="domain"       placeholder="{{domain}}">
+                    <span class="help-block">
+                      Yes! Your domains is available. Buy it before someone else does.
+                    </span>
+                  </div>
+                  
+                
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Search Again
+                  </button>
+                </form>
+
+                <hr />  
+
+
+                <div class="col-sm-12">
+                  <!-- Example Non Labeled Radio -->
+                  <div class="example-wrap">
+                    <h4 class="example-title">
+                      Use Easymail with these domains:
+                    </h4>
+                    <div class="example">
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" />
+                        <span>Domainname.com</span>
+                        <span class="">
+                          <i class="icon wb-medium-point green-600 margin-right-5" aria-hidden="true"></i>
+                          Available
+                        </span> - or - 
+                        <span class="green-600">(available)</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" checked />
+                        <span>Domainname.net</span>
+                        <span class="">
+                          <i class="icon wb-medium-point green-600 margin-right-5" aria-hidden="true"></i>
+                          Available
+                        </span> - or - 
+                        <span class="green-600">(available)</span> - or - 
+                        <span class="label label-outline label-success">Available</span>
+- or - 
+                        <span class="label label-round label-success">Available</span> - or - 
+                        <span class="label label-success">Available</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" disabled checked
+                        />
+                        <span>Domainname.me</span>
+                        <span class="">
+                          <i class="icon wb-medium-point red-600 margin-right-5" aria-hidden="true"></i>
+                          Unavailable
+                        </span> - or - 
+                        <span class="red-600">(unavailable)</span> - or - 
+                        <span class="label label-outline label-danger">Unavailable</span> - or - 
+                        <span class="label label-round label-danger">Unavailable</span> - or - 
+                        <span class="label label-danger">Unavailable</span>
+
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" disabled />
+                        <span>Domainname.disabled</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Example Non Labeled Radio -->
+                </div>
+
+
+
+              </div>
+
+          </div>
+          <!-- End Panel Labelauty -->
+        </div>
+
+      </div>
+
+
+
+      <div class="row row-lg">
+        <div class="col-lg-6">
+          <!-- Panel Labelauty -->
+          <div class="panel">
+            <header class="panel-heading">
+              <h3 class="panel-title">Labelauty
+                <small><a class="example-plugin-link" href="https://github.com/fntneves/jquery-labelauty"
+                  target="_blank">official website</a></small>
+              </h3>
+            </header>
+            <div class="panel-body container-fluid">
+              <p>Add <code>data-plugin="labelauty"</code> to use it.</p>
+              <div class="row row-lg">
+                <div class="col-sm-6">
+                  <!-- Example Labeled Checkbox -->
+                  <div class="example-wrap">
+                    <h4 class="example-title">Labeled Checkbox</h4>
+                    <div class="example">
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty" name="inputLableautyCheckbox" data-plugin="labelauty"
+                        data-labelauty="Don't synchronize|Synchronize" checked/>
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty" name="inputLableautyCheckbox" data-plugin="labelauty"
+                        data-labelauty="I don't accept|I accept" />
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty" name="inputLableautyCheckbox" data-plugin="labelauty"
+                        data-labelauty="I am disabled!" disabled/>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Example Labeled Check -->
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- Example Labeled Radio -->
+                  <div class="example-wrap">
+                    <h4 class="example-title">Labeled Radio</h4>
+                    <div class="example">
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty" name="inputLableautyRadio" data-plugin="labelauty"
+                        data-labelauty="Don't synchronize|Synchronize" checked/>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty" name="inputLableautyRadio" data-plugin="labelauty"
+                        data-labelauty="I don't accept|I accept" />
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty" name="inputLableautyRadio" data-plugin="labelauty"
+                        data-labelauty="I am disabled!" disabled/>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Example Labeled Radio -->
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- Example Non Labeled Checkbox -->
+                  <div class="example-wrap">
+                    <h4 class="example-title">Non-Labeled Checkbox</h4>
+                    <div class="example">
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty-icon" name="inputLableautyNoLabeledCheckbox"
+                        data-plugin="labelauty" data-label="false" />
+                        <span>Unchecked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty-icon" name="inputLableautyNoLabeledCheckbox"
+                        data-plugin="labelauty" data-label="false" checked/>
+                        <span>Checked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty-icon" name="inputLableautyNoLabeledCheckbox"
+                        data-plugin="labelauty" data-label="false" disabled checked/>
+                        <span>Disabled Checked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" class="to-labelauty-icon" name="inputLableautyNoLabeledCheckbox"
+                        data-plugin="labelauty" data-label="false" disabled/>
+                        <span>Disabled Unchecked</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Example Non Labeled Checkbox -->
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- Example Non Labeled Radio -->
+                  <div class="example-wrap">
+                    <h4 class="example-title">Non-Labeled Radio</h4>
+                    <div class="example">
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" />
+                        <span>Unchecked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" checked />
+                        <span>Checked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" disabled checked
+                        />
+                        <span>Disabled Checked</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="radio" class="to-labelauty-icon" name="inputLableautyNoLabeledRadio"
+                        data-plugin="labelauty" data-label="false" disabled />
+                        <span>Disabled Unchecked</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Example Non Labeled Radio -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Panel Labelauty -->
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- End Page -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    
+  </footer>
+
+  <!-- Core  -->
+  <script src="../../assets/vendor/jquery/jquery.js"></script>
+  <script src="../../assets/vendor/bootstrap/bootstrap.js"></script>
+
+  <script src="../../assets/vendor/animsition/jquery.animsition.js"></script>
+  <script src="../../assets/vendor/asscroll/jquery-asScroll.js"></script>
+  <script src="../../assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+  <script src="../../assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+  <script src="../../assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+  <!-- Plugins -->
+  <script src="../../assets/vendor/switchery/switchery.min.js"></script>
+
+
+  <script src="../../assets/vendor/intro-js/intro.js"></script>
+  <script src="../../assets/vendor/screenfull/screenfull.js"></script>
+  <script src="../../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+  <!-- Plugins For This Page -->
+  <script src="../../assets/vendor/select2/select2.min.js"></script>
+  <script src="../../assets/vendor/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+  <script src="../../assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+  <script src="../../assets/vendor/bootstrap-select/bootstrap-select.js"></script>
+
+
+  <script src="../../assets/vendor/icheck/icheck.min.js"></script>
+
+  <script src="../../assets/vendor/switchery/switchery.min.js"></script>
+
+
+  <script src="../../assets/vendor/asrange/jquery-asRange.min.js"></script>
+  <script src="../../assets/vendor/asspinner/jquery-asSpinner.min.js"></script>
+  <script src="../../assets/vendor/clockpicker/bootstrap-clockpicker.min.js"></script>
+  <script src="../../assets/vendor/ascolor/jquery-asColor.min.js"></script>
+  <script src="../../assets/vendor/asgradient/jquery-asGradient.min.js"></script>
+  <script src="../../assets/vendor/ascolorpicker/jquery-asColorPicker.min.js"></script>
+  <script src="../../assets/vendor/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+  <script src="../../assets/vendor/jquery-knob/jquery.knob.js"></script>
+  <script src="../../assets/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
+  <script src="../../assets/vendor/card/jquery.card.js"></script>
+
+
+  <script src="../../assets/vendor/jquery-labelauty/jquery-labelauty.js"></script>
+
+
+  <script src="../../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+  <script src="../../assets/vendor/jt-timepicker/jquery.timepicker.min.js"></script>
+  <script src="../../assets/vendor/datepair-js/datepair.min.js"></script>
+  <script src="../../assets/vendor/datepair-js/jquery.datepair.min.js"></script>
+  <script src="../../assets/vendor/jquery-strength/jquery-strength.min.js"></script>
+  <script src="../../assets/vendor/multi-select/jquery.multi-select.js"></script>
+  <script src="../../assets/vendor/typeahead-js/bloodhound.min.js"></script>
+  <script src="../../assets/vendor/typeahead-js/typeahead.jquery.min.js"></script>
+  <script src="../../assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/core.js"></script>
+  <script src="../../assets/js/site.js"></script>
+
+  <script src="../../assets/js/sections/menu.js"></script>
+  <script src="../../assets/js/sections/menubar.js"></script>
+  <script src="../../assets/js/sections/gridmenu.js"></script>
+  <script src="../../assets/js/sections/sidebar.js"></script>
+
+  <script src="../../assets/js/configs/config-colors.js"></script>
+  <script src="../../assets/js/configs/config-tour.js"></script>
+
+  <script src="../../assets/js/components/asscrollable.js"></script>
+  <script src="../../assets/js/components/animsition.js"></script>
+  <script src="../../assets/js/components/slidepanel.js"></script>
+  <script src="../../assets/js/components/switchery.js"></script>
+
+  <!-- Scripts For This Page -->
+  <script src="../../assets/js/components/select2.js"></script>
+  <script src="../../assets/js/components/bootstrap-tokenfield.js"></script>
+  <script src="../../assets/js/components/bootstrap-tagsinput.js"></script>
+  <script src="../../assets/js/components/bootstrap-select.js"></script>
+  <script src="../../assets/js/components/icheck.js"></script>
+  <script src="../../assets/js/components/switchery.js"></script>
+  <script src="../../assets/js/components/asrange.js"></script>
+  <script src="../../assets/js/components/asspinner.js"></script>
+  <script src="../../assets/js/components/clockpicker.js"></script>
+  <script src="../../assets/js/components/ascolorpicker.js"></script>
+  <script src="../../assets/js/components/bootstrap-maxlength.js"></script>
+  <script src="../../assets/js/components/jquery-knob.js"></script>
+  <script src="../../assets/js/components/bootstrap-touchspin.js"></script>
+  <script src="../../assets/js/components/card.js"></script>
+  <script src="../../assets/js/components/jquery-labelauty.js"></script>
+  <script src="../../assets/js/components/bootstrap-datepicker.js"></script>
+  <script src="../../assets/js/components/jt-timepicker.js"></script>
+  <script src="../../assets/js/components/datepair-js.js"></script>
+  <script src="../../assets/js/components/jquery-strength.js"></script>
+  <script src="../../assets/js/components/multi-select.js"></script>
+  <script src="../../assets/js/components/jquery-placeholder.js"></script>
+
+  <script src="../../assets/examples/js/forms/advanced.js"></script>
+
+
+</body>
+
+</html>

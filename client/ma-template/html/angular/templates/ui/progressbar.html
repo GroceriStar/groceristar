@@ -1,0 +1,60 @@
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Progressbar  -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+            <h4 class="example-title">Progressbar <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/progressbar">ui.bootstrap.progressbar</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid" ng-controller="ProgressbarDemoController">
+                  <h4>Static</h4>
+                    <div class="row">
+                        <div class="col-sm-4"><progressbar value="55"></progressbar></div>
+                        <div class="col-sm-4"><progressbar class="progress-striped" value="22" type="warning">22%</progressbar></div>
+                        <div class="col-sm-4"><progressbar class="progress-striped active" max="200" value="166" type="danger"><i>166 / 200</i></progressbar></div>
+                    </div>
+
+                    <hr />
+                    <h4>Dynamic <button class="btn btn-sm btn-primary" type="button" ng-click="random()">Randomize</button></h4>
+                    <progressbar max="max" value="dynamic"><span style="white-space:nowrap;">{{dynamic}} / {{max}}</span></progressbar>
+                    
+                    <small><em>No animation</em></small>
+                    <progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
+
+                    <small><em>Object (changes type based on value)</em></small>
+                    <progressbar class="progress-striped active" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></progressbar>
+                    
+                    <hr />
+                    <h4>Stacked <button class="btn btn-sm btn-primary" type="button" ng-click="randomStacked()">Randomize</button></h4>
+                    <progress><bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span></bar></progress>
+                </div>
+                <div class="col-md-6">
+                  <p>A progress bar directive that is focused on providing feedback on the progress of a workflow or action.</p>
+
+                  <p>It supports multiple (stacked) bars into the same <code>&lt;progress&gt;</code> element or a single <code>&lt;progressbar&gt;</code> elemtnt with optional <code>max</code> attribute and transition animations.</p>
+
+                  <h4>Settings</h4>
+
+                  <code>&lt;progressbar&gt;</code>
+
+                  <ul>
+                    <li><p><code>value</code><i class="glyphicon glyphicon-eye-open"></i> : The current value of progress completed.</p></li>
+                    <li><p><code>type</code><em>(Default: null)</em> : Style type. Possible values are 'success', 'warning' etc.</p></li>
+                    <li><p><code>max</code><em>(Default: 100)</em> : A number that specifies the total value of bars that is required.</p></li>
+                    <li><p><code>animate</code><em>(Default: true)</em> : Whether bars use transitions to achieve the width change.</p></li>
+                  </ul>
+
+                  <h4>Stacked</h4>
+
+                  <p>Place multiple <code>&lt;bars&gt;</code> into the same <code>&lt;progress&gt;</code> element to stack them.
+                  <code>&lt;progress&gt;</code> supports <code>max</code> and <code>animate</code> &amp;  <code>&lt;bar&gt;</code> supports  <code>value</code> and <code>type</code> attributes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Progressbar  -->
+    </div>
+  </div>
+</div>

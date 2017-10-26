@@ -1,0 +1,47 @@
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+          <!--Buttons -->
+          <div class="example-wrap">
+            <h4 class="example-title">Buttons<small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/buttons">ui.bootstrap.buttons</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid" ng-controller="ButtonsDemoController">
+                  <h4>Single toggle</h4>
+                  <pre>{{singleModel}}</pre>
+                  <button type="button" class="btn btn-primary" ng-model="singleModel" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                    Single Toggle
+                  </button>
+                  <h4 class="margin-top-15">Checkbox</h4>
+                  <pre>{{checkModel}}</pre>
+                  <div class="btn-group">
+                    <label class="btn btn-primary" ng-model="checkModel.left" btn-checkbox>Left</label>
+                    <label class="btn btn-primary" ng-model="checkModel.middle" btn-checkbox>Middle</label>
+                    <label class="btn btn-primary" ng-model="checkModel.right" btn-checkbox>Right</label>
+                  </div>
+                  <h4 class="margin-top-15">Radio &amp; Uncheckable Radio</h4>
+                  <pre>{{radioModel || 'null'}}</pre>
+                  <div class="btn-group margin-bottom-10">
+                    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</label>
+                    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</label>
+                    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</label>
+                  </div>
+                  <div class="btn-group margin-bottom-10">
+                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Left</label>
+                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Middle</label>
+                    <label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Right</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <p>There are two directives that can make a group of buttons behave like a set of checkboxes, radio buttons, or a hybrid where radio buttons can be unchecked.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Buttons -->
+      </div>
+    </div>
+  </div>
+</div>

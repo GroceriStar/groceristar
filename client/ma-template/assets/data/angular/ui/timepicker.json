@@ -1,0 +1,10 @@
+{
+  "hstep" : 1,
+  "mstep" : 15,
+
+  "options" : {
+    "hstep": [1, 2, 3],
+    "mstep": [1, 5, 10, 15, 25, 30]
+  },
+  "ismeridian" : true
+}

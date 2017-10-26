@@ -1,0 +1,35 @@
+<script id="template/alert/alert.html" type="text/ng-template">
+    <div class="alert" ng-class="['alert-' + (type || 'warning'), closeable ? 'alert-dismissible' : null]" role="alert">
+        <button ng-show="closeable" type="button" class="close" ng-click="close()">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <div ng-transclude></div>
+    </div>
+</script>
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Alert -->
+      <div class="col-lg-12">
+        <div class="example-wrap">
+          <h4 class="example-title">Alert<small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/alert">ui.bootstrap.alert</a>)</small></h4>
+          <div class="example">
+            <div class="row">
+              <div class="col-md-6 show-grid" ng-controller="AlertDemoController">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+              </div>
+              <div class="col-md-6">
+                <p>Alert is an AngularJS-version of bootstrap's alert.</p>
+                <p>This directive can be used to generate alerts from the dynamic model data (using the <code>ng-repeat</code> directive);</p>
+                <p>The presence of the <code>close</code> attribute determines if a close button is displayed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Alert -->
+    </div>
+  </div>
+</div>

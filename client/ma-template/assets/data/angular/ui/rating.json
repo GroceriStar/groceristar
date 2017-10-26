@@ -1,0 +1,12 @@
+{
+    "rate" : 7,
+    "max"  :10,
+    "isReadonly"  :false,
+    "ratingStates" : [
+      { "stateOn": "glyphicon-ok-sign", "stateOff": "glyphicon-ok-circle"},
+      { "stateOn": "glyphicon-star", "stateOff": "glyphicon-star-empty"},
+      { "stateOn": "glyphicon-heart", "stateOff": "glyphicon-ban-circle"},
+      { "stateOn": "glyphicon-heart"},
+      { "stateOff": "glyphicon-off"}
+    ]
+  }

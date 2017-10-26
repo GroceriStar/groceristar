@@ -1,0 +1,57 @@
+<script id="template/carousel/carousel.html" type="text/ng-template">
+   <div class="carousel slide" ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+        <ol class="carousel-indicators carousel-indicators-fall" ng-show="slides.length > 1">
+            <li ng-repeat="slide in slides | orderBy:'index' track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
+        </ol>
+        <div class="carousel-inner" ng-transclude></div>
+        <a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="icon wb-chevron-left"></span></a>
+        <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="icon wb-chevron-right"></span></a>
+    </div>
+</script>
+<style>
+  .carousel{
+    display:inline-block;
+  }
+</style>
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+       <!-- Carousel -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+					  <h4 class="example-title">Carousel  <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/carousel">ui.bootstrap.carousel</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid" ng-controller="CarouselDemoController">
+                  <div class="margin-bottom-10" style="text-align:center;">
+                    <carousel interval="myInterval">
+                      <slide ng-repeat="slide in slides" active="slide.active">
+                      <img ng-src="{{slide.image}}" style="margin:auto;">
+                      <div class="carousel-caption">
+                        <h4>Slide {{$index}}</h4>
+                        <p>{{slide.text}}</p>
+                      </div>
+                      </slide>
+                    </carousel>
+                  </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+                    </div>
+                    <div class="col-md-6">
+                      Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+                      <br />Enter a negative number or 0 to stop the interval.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <p>Carousel creates a carousel similar to bootstrap's image carousel.</p>
+                  <p>The carousel also offers support for touchscreen devices in the form of swiping. To enable swiping, load the <code>ngTouch</code> module as a dependency.</p>
+                  <p>Use a <code>&lt;carousel&gt;</code> element with <code>&lt;slide&gt;</code> elements inside it.  It will automatically cycle through the slides at a given rate, and a current-index variable will be kept in sync with the currently visible slide.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Carousel -->
+    </div>
+  </div>
+</div>

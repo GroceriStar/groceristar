@@ -1,0 +1,55 @@
+<script id="template/rating/rating.html" type="text/ng-template">
+	 <span ng-class="rating" ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="{{range.length}}" aria-valuenow="{{value}}">
+    <i ng-repeat="r in range track by $index" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="icon" ng-class="$index < value && (r.stateOn || 'wb-star orange-600') || (r.stateOff || 'wb-star')">
+      <span class="sr-only">({{ $index < value ? '*' : ' ' }})</span>
+    </i>
+  </span>
+</script>
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Rating  -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+            <h4 class="example-title">Rating <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/rating">ui.bootstrap.rating</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+
+                <div class="col-md-6 show-grid" ng-controller="RatingDemoController">
+                  <h4>Default</h4>
+                    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+                    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+                    <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+
+                    <button class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+                    <button class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+                    <hr />
+                </div>
+                <div class="col-md-6">
+
+                  <p>Rating directive that will take care of visualising a star rating bar.</p>
+
+                  <h4>Settings</h4>
+
+                  <code>&lt;rating&gt;</code>
+
+                  <ul>
+                    <li><p><code>ng-model</code> <i class="glyphicon glyphicon-eye-open"></i> : The current rate.</p></li>
+                    <li><p><code>max</code><em>(Defaults: 5)</em> : Changes the number of icons.</p></li>
+                    <li><p><code>readonly</code> <i class="icon-eye-open"></i><em>(Defaults: false)</em> : Prevent user's interaction.</p></li>
+                    <li><p><code>on-hover(value)</code> : An optional expression called when user's mouse is over a particular icon.</p></li>
+                    <li><p><code>on-leave()</code> : An optional expression called when user's mouse leaves the control altogether.</p></li>
+                    <li><p><code>state-on</code><em>(Defaults: null)</em> : A variable used in template to specify the state (class, src, etc) for selected icons.</p></li>
+                    <li><p><code>state-off</code><em>(Defaults: null)</em> : A variable used in template to specify the state for unselected icons.</p></li>
+                    <li><p><code>rating-states</code><em>(Defaults: null)</em> : An array of objects defining properties for all icons. In default template, <code>stateOn</code> &amp; <code>stateOff</code> property is used to specify the icon's class.</p></li>
+                  </ul>     
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Rating -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+{
+	"sortable" : {
+		"items" : [
+			{
+				"text" : "Cras justo odio",
+				"value" : 14,
+				"type" : "success"
+			},
+			{
+				"text" : "Dapibus ac facilisis in",
+				"value" : 2,
+				"type" : "info"
+			},
+			{
+				"text" : "Morbi leo risus",
+				"value" : 1,
+				"type" : "danger"
+			},
+			{
+				"text" : "Porta ac consectetur ac",
+				"value" : 5,
+				"type" : "info"
+			},
+			{
+				"text" : "Vestibulum at eros",
+				"value" : 11,
+				"type" : "warning"
+			},
+			{
+				"text" : "Dapibus ac facilisis in",
+				"value" : 21,
+				"type" : "danger"
+			}
+		],
+		"left" : [
+			{
+				"text" : "Inbox",
+				"value" : 1
+			},
+			{
+				"text" : "Profile visits",
+				"value" : 2
+			},
+			{
+				"text" : "Call",
+				"value" : 3
+			}
+		],
+		"right" : [
+			{
+				"text" : "Messages",
+				"value" : 4
+			},
+			{
+				"text" : "Bookmarks",
+				"value" : 5
+			},
+			{
+				"text" : "Notifications",
+				"value" : 6
+			}
+		]
+	}
+}

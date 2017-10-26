@@ -1,0 +1,65 @@
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+       <!-- Typeahead -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+            <h4 class="example-title">Typeahead   <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/typeahead">ui.bootstrap.typeahead</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid">
+                  <script type="text/ng-template" id="customTemplate.html">
+                    <a>
+                        <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+                        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                    </a>
+                  </script>
+                  <div ng-controller="TypeaheadDemoController">
+
+                      <h4>Static arrays</h4>
+                      <pre>Model: {{selected | json}}</pre>
+                      <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+
+                      <h4>Custom templates for results</h4>
+                      <pre>Model: {{customSelected | json}}</pre>
+                      <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <p>Typeahead is a AngularJS version of <a href="http://getbootstrap.com/2.3.2/javascript.html#typeahead">Bootstrap v2's typeahead plugin</a>. This directive can be used to quickly create elegant typeaheads with any form text input.</p>
+
+                  <p>It is very well integrated into AngularJS as it uses a subset of the <a href="http://docs.angularjs.org/api/ng.directive:select">select directive</a> syntax, which is very flexible. Supported expressions are:</p>
+
+                  <ul>
+                    <li><em>label</em> for <em>value</em> in <em>sourceArray</em></li>
+                    <li><em>select</em> as <em>label</em> for <em>value</em> in <em>sourceArray</em></li>
+                  </ul>
+
+                  <p>The <code>sourceArray</code> expression can use a special <code>$viewValue</code> variable that corresponds to the value entered inside the input.</p>
+
+                  <p>This directive works with promises, meaning you can retrieve matches using the <code>$http</code> service with minimal effort.</p>
+
+                  <p>The typeahead directives provide several attributes:</p>
+
+                  <ul>
+                    <li><p><code>ng-model</code> <i class="glyphicon glyphicon-eye-open"></i> : Assignable angular expression to data-bind to</p></li>
+                    <li><p><code>typeahead</code> <i class="glyphicon glyphicon-eye-open"></i> : Comprehension Angular expression (see <a href="http://docs.angularjs.org/api/ng.directive:select">select directive</a>)</p></li>
+                    <li><p><code>typeahead-append-to-body</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: false)</em> : Should the typeahead popup be appended to $body instead of the parent element?</p></li>
+                    <li><p><code>typeahead-editable</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: true)</em> : Should it restrict model values to the ones selected from the popup only ?</p></li>
+                    <li><p><code>typeahead-input-formatter</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: undefined)</em> : Format the ng-model result after selection</p></li>
+                    <li><p><code>typeahead-loading</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: angular.noop)</em> : Binding to a variable that indicates if matches are being retrieved asynchronously</p></li>
+                    <li><p><code>typeahead-min-length</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: 1)</em> : Minimal no of characters that needs to be entered before typeahead kicks-in</p></li>
+                    <li><p><code>typeahead-on-select($item, $model, $label)</code><em>(Defaults: null)</em> : A callback executed when a match is selected</p></li>
+                    <li><p><code>typeahead-template-url</code> <i class="glyphicon glyphicon-eye-open"></i> : Set custom item template</p></li>
+                    <li><p><code>typeahead-wait-ms</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: 0)</em> : Minimal wait time after last character typed before typeahead kicks-in</p></li>
+                    <li><p><code>typeahead-focus-first</code><em>(Defaults: true)</em> : Should the first match automatically be focused as you type?</p></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Typeahead -->
+    </div>
+  </div>
+</div>

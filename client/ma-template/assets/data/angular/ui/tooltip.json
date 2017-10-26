@@ -1,0 +1,5 @@
+{
+    "dynamicTooltip" : "Hello, World!",
+    "dynamicTooltipText" : "dynamic",
+    "htmlTooltip" : "I've been made <b>bold</b>!"
+  }

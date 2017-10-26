@@ -1,0 +1,84 @@
+<script id="template/timepicker/timepicker.html" type="text/ng-template">
+    <table>
+    	<tbody>
+    		<tr class="text-center">
+    			<td><a ng-click="incrementHours()" class="btn btn-link"><span class="wb-chevron-up"></span></a></td>
+    			<td>&nbsp;</td>
+    			<td><a ng-click="incrementMinutes()" class="btn btn-link"><span class="wb-chevron-up"></span></a></td>
+    			<td ng-show="showMeridian"></td>
+    		</tr>
+    		<tr>
+    			<td class="form-group" ng-class="{'has-error': invalidHours}">
+    				<input style="width:50px;" type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
+    			</td>
+    			<td>:</td>
+    			<td class="form-group" ng-class="{'has-error': invalidMinutes}">
+    				<input style="width:50px;" type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
+    			</td>
+    			<td ng-show="showMeridian"><button type="button" class="btn btn-default text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
+    		</tr>
+    		<tr class="text-center">
+    			<td><a ng-click="decrementHours()" class="btn btn-link"><span class="wb-chevron-down"></span></a></td>
+    			<td>&nbsp;</td>
+    			<td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="wb-chevron-down"></span></a></td>
+    			<td ng-show="showMeridian"></td>
+    		</tr>
+    	</tbody>
+    </table>
+</script>
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Timepicker  -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+            <h4 class="example-title">Timepicker   <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/timepicker">ui.bootstrap.timepicker</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid" ng-controller="TimepickerDemoController">
+                  <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                  <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+
+                  <div class="row"> 
+                      <div class="col-xs-6">
+                          Hours step is:
+                        <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                      </div>
+                      <div class="col-xs-6">
+                          Minutes step is:
+                        <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                      </div>
+                  </div>
+
+                  <hr>
+
+                  <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+                  <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+                  <button class="btn btn-danger" ng-click="clear()">Clear</button>
+                </div>
+                <div class="col-md-6">
+                  <p>A lightweight &amp; configurable timepicker directive.</p>
+
+                  <h4>Settings</h4>
+
+                  <p>All settings can be provided as attributes in the <code>&lt;timepicker&gt;</code> or globally configured through the <code>timepickerConfig</code>.</p>
+
+                  <ul>
+                    <li><p><code>ng-model</code> <i class="glyphicon glyphicon-eye-open"></i> : The Date object that provides the time state.</p></li>
+                    <li><p><code>hour-step</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: 1)</em> : Number of hours to increase or decrease when using a button.</p></li>
+                    <li><p><code>minute-step</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: 1)</em> : Number of minutes to increase or decrease when using a button.</p></li>
+                    <li><p><code>show-meridian</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: true)</em> : Whether to display 12H or 24H mode.</p></li>
+                    <li><p><code>meridians</code><em>(Defaults: null)</em> : Meridian labels based on locale. To override you must supply an array like ['AM', 'PM'].</p></li>
+                    <li><p><code>readonly-input</code><em>(Defaults: false)</em> : Whether user can type inside the hours &amp; minutes input.</p></li>
+                    <li><p><code>mousewheel</code><em>(Defaults: true)</em> : Whether user can scroll inside the hours &amp; minutes input to increase or decrease it's values.</p></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Timepicker  -->
+    </div>
+  </div>
+</div>

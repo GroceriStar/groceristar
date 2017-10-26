@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="../../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css" type="text/css" media="screen" charset="utf-8">
+<script id="template/datepicker/datepicker.html" type="text/ng-template">
+  <div class="datepicker" ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)">
+    <daypicker ng-switch-when="day" tabindex="0"></daypicker>
+    <monthpicker ng-switch-when="month" tabindex="0"></monthpicker>
+    <yearpicker ng-switch-when="year" tabindex="0"></yearpicker>
+  </div>"
+</script>
+<script id="template/datepicker/day.html" type="text/ng-template">
+    <table class=" table-condensed" role="grid" aria-labelledby="{{uniqueId}}-title" aria-activedescendant="{{activeDateId}}">
+      <thead>
+        <tr>
+          <th class="prev" ng-click="move(-1)" tabindex="-1">«</th>
+          <th class="datepicker-switch" colspan="{{5}}" id="{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" ng-click="toggleMode()" ng-disabled="datepickerMode === maxMode" tabindex="-1" style="width:100%;">{{title}}</th>
+          <th class="next" ng-click="move(1)" tabindex="-1">»</button></th>
+        </tr>
+        <tr>
+          <th ng-repeat="label in labels track by $index" class="dow text-center">{{label.abbr}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rows track by $index">
+          <td ng-repeat="dt in row track by dt.date" class="text-center day" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}" ng-class="{'active': dt.selected, old: !isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1">
+            {{dt.label}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</script>
+<script id="template/datepicker/month.html" type="text/ng-template">
+<table role="grid" aria-labelledby="{{uniqueId}}-title" aria-activedescendant="{{activeDateId}}">
+    <thead>
+       <tr>
+        <th class="prev" ng-click="move(-1)" tabindex="-1">«</th>
+        <th class="datepicker-switch" id="{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" ng-click="toggleMode()" ng-disabled="datepickerMode === maxMode" tabindex="-1" style="width:100%;">{{title}}</th>
+        <th class="next" ng-click="move(1)" tabindex="-1">»</button></th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rows track by $index">
+        <td ng-repeat="dt in row track by dt.date" class="text-center month" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}" ng-class="{'active': dt.selected, old: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1" style="cursor:pointer">
+            {{dt.label}}
+        </td>
+       </tr>
+    </tbody>
+</table>
+</script>
+<script id="template/datepicker/year.html" type="text/ng-template">
+<table role="grid" aria-labelledby="{{uniqueId}}-title" aria-activedescendant="{{activeDateId}}">
+    <thead>
+       <tr>
+        <th class="prev" ng-click="move(-1)" tabindex="-1">«</th>
+        <th colspan="3" class="datepicker-switch" id="{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" ng-click="toggleMode()" ng-disabled="datepickerMode === maxMode" tabindex="-1" style="width:100%;">{{title}}</th>
+        <th class="next" ng-click="move(1)" tabindex="-1">»</button></th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rows track by $index">
+        <td ng-repeat="dt in row track by dt.date" class="text-center year" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}" ng-class="{'active': dt.selected, old: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1" style="cursor:pointer">
+            {{dt.label}}
+        </td>
+       </tr>
+    </tbody>
+</table>
+</script>
+<div class="panel animation-fade">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Datepicker -->
+        <div class="col-lg-12">
+          <div class="example-wrap">
+            <h4 class="example-title">Datepicker  <small>(<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/datepicker">ui.bootstrap.datepicker</a>)</small></h4>
+            <div class="example">
+              <div class="row">
+                <div class="col-md-6 show-grid" ng-controller="DatepickerDemoController">
+                  <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+                  <h4>Inline</h4>
+                  <div style="max-width:250px;">
+                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
+                  </div>
+                  <h4>Popup</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="input-group">
+                         <span class="input-group-addon" ng-click="open($event)">
+                          <i class="wb-calendar"></i>
+                        </span>
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+                    </div>
+                  </div>
+
+                  <hr />
+                  <button type="button" class="btn btn-sm btn-info margin-bottom-10" ng-click="today()">Today</button>
+                  <button type="button" class="btn btn-sm btn-default margin-bottom-10" ng-click="dt = '2009-08-24'">2009-08-24</button>
+                  <button type="button" class="btn btn-sm btn-danger margin-bottom-10" ng-click="clear()">Clear</button>
+                  <button type="button" class="btn btn-sm btn-default margin-bottom-10" ng-click="toggleMin()" tooltip="After today restriction">Min date</button>
+                </div>
+                <div class="col-md-6">
+                  <p>A clean, flexible, and fully customizable date picker.</p>
+
+                  <p>User can navigate through months and years.
+                  The datepicker shows dates that come from other than the main month being displayed. These other dates are also selectable.</p>
+
+                  <p>Everything is formatted using the <a href="http://docs.angularjs.org/api/ng.filter:date">date filter</a> and thus is also localized.</p>
+
+                  <h4>Datepicker Settings</h4>
+
+                  <p>All settings can be provided as attributes in the <code>datepicker</code> or globally configured through the <code>datepickerConfig</code>.</p>
+
+                  <ul>
+                    <li><p><code>ng-model</code> <i class="glyphicon glyphicon-eye-open"></i> : The date object.</p></li>
+                    <li><p><code>datepicker-mode</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Defaults: 'day')</em> : Current mode of the datepicker <em>(day|month|year)</em>. Can be used to initialize datepicker to specific mode.</p></li>
+                    <li><p><code>min-date</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Default: null)</em> : Defines the minimum available date.</p></li>
+                    <li><p><code>max-date</code> <i class="glyphicon glyphicon-eye-open"></i><em>(Default: null)</em> : Defines the maximum available date.</p></li>
+                    <li><p><code>date-disabled (date, mode)</code><em>(Default: null)</em> : An optional expression to disable visible options based on passing date and current mode <em>(day|month|year)</em>.</p></li>
+                    <li><p><code>show-weeks</code><em>(Defaults: true)</em> : Whether to display week numbers.</p></li>
+                    <li><p><code>starting-day</code><em>(Defaults: 0)</em> : Starting day of the week from 0-6 (0=Sunday, ..., 6=Saturday).</p></li>
+                    <li><p><code>init-date</code> : The initial date view when no model value is not specified.</p></li>
+                    <li><p><code>min-mode</code><em>(Defaults: 'day')</em> : Set a lower limit for mode.</p></li>
+                    <li><p><code>max-mode</code><em>(Defaults: 'year')</em> : Set an upper limit for mode.</p></li>
+                    <li><p><code>format-day</code><em>(Default: 'dd')</em> : Format of day in month.</p></li>
+                    <li><p><code>format-month</code><em>(Default: 'MMMM')</em> : Format of month in year.</p></li>
+                    <li><p><code>format-year</code><em>(Default: 'yyyy')</em> : Format of year in year range.</p></li>
+                    <li><p><code>format-day-header</code><em>(Default: 'EEE')</em> : Format of day in week header.</p></li>
+                    <li><p><code>format-day-title</code><em>(Default: 'MMMM yyyy')</em> : Format of title when selecting day.</p></li>
+                    <li><p><code>format-month-title</code><em>(Default: 'yyyy')</em> : Format of title when selecting month.</p></li>
+                    <li><p><code>year-range</code><em>(Default: 20)</em> : Number of years displayed in year selection.</p></li>
+                  </ul>
+
+                  <h4>Popup Settings</h4>
+
+                  <p>Options for datepicker can be passed as JSON using the <code>datepicker-options</code> attribute.
+                  Specific settings for the <code>datepicker-popup</code>, that can globally configured through the <code>datepickerPopupConfig</code>, are:</p>
+
+                  <ul>
+                    <li><p><code>datepicker-popup</code><em>(Default: 'yyyy-MM-dd')</em> : The format for displayed dates.</p></li>
+                    <li><p><code>show-button-bar</code><em>(Default: true)</em> : Whether to display a button bar underneath the datepicker.</p></li>
+                    <li><p><code>current-text</code><em>(Default: 'Today')</em> : The text to display for the current day button.</p></li>
+                    <li><p><code>clear-text</code><em>(Default: 'Clear')</em> : The text to display for the clear button.</p></li>
+                    <li><p><code>close-text</code><em>(Default: 'Done')</em> : The text to display for the close button.</p></li>
+                    <li><p><code>close-on-date-selection</code><em>(Default: true)</em> : Whether to close calendar when a date is chosen.</p></li>
+                    <li><p><code>datepicker-append-to-body</code><em>(Default: false)</em>: Append the datepicker popup element to <code>body</code>, rather than inserting after <code>datepicker-popup</code>. For global configuration, use <code>datepickerPopupConfig.appendToBody</code>.</p></li>
+                  </ul>
+
+                  <h4>Keyboard Support</h4>
+
+                  <p>Depending on datepicker's current mode, the date may reffer either to day, month or year. Accordingly, the term view reffers either to a month, year or year range.</p>
+
+                  <ul>
+                    <li><code>Left</code>: Move focus to the previous date. Will move to the last date of the previous view, if the current date is the first date of a view.</li>
+                    <li><code>Right</code>: Move focus to the next date. Will move to the first date of the following view, if the current date is the last date of a view.</li>
+                    <li><code>Up</code>: Move focus to the same column of the previous row. Will wrap to the appropriate row in the previous view.</li>
+                    <li><code>Down</code>: Move focus to the same column of the following row. Will wrap to the appropriate row in the following view.</li>
+                    <li><code>PgUp</code>: Move focus to the same date of the previous view. If that date does not exist, focus is placed on the last date of the month.</li>
+                    <li><code>PgDn</code>: Move focus to the same date of the following view. If that date does not exist, focus is placed on the last date of the month.</li>
+                    <li><code>Home</code>: Move to the first date of the view.</li>
+                    <li><code>End</code>: Move to the last date of the view.</li>
+                    <li><code>Enter</code>/<code>Space</code>: Select date.</li>
+                    <li><code>Ctrl</code>+<code>Up</code>: Move to an upper mode.</li>
+                    <li><code>Ctrl</code>+<code>Down</code>: Move to a lower mode.</li>
+                    <li><code>Esc</code>: Will close popup, and move focus to the input.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Datepicker -->
+     </div>
+  </div>
+</div>
