@@ -170,3 +170,13 @@ SyntaxError: Unexpected token function"
 Async functions are not supported by Node versions older than version 7.6
 
 At package.json we specified:  node v.8.1.4
+
+10.25
+Facebook authorization on local machine
+- register a developer account on developers.facebook.com
+- Settings - Site URL - http://localhost:3000/
+- Facebook Login - Valid OAuth redirect URIs - http://localhost:3000/
+- providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
+
+error: Can't Load URL: The domain of this URL isn't included in the app's domains.
+Fixed: Facebook Login - Client OAuth Settings - Use Strict Mode for Redirect URIs - No
