@@ -844,12 +844,7 @@ function getIngredients(departments){
     {         
     name:'Wax paper',departmentId: departments[21].id
     },
-    ///
-
-
-
-
-    ///
+   
     {         
     name:'Air freshener',departmentId: departments[23].id
     },
@@ -895,10 +890,6 @@ function getIngredients(departments){
     },
     ///
     
-
-    
-
-
     ///
     {         
     name:'Automotive',departmentId: departments[25].id
@@ -926,8 +917,6 @@ function getIngredients(departments){
     {         
     name:'Random impulse buy',departmentId: departments[25].id
     }
-    ///
-
     ///
     
 

@@ -8,6 +8,8 @@ var Department  = server.models.Department;
 
 // var relation1   = 'departmentId';
 // var relation2   = 'departmentIds';
+const Raven = require('raven');
+Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
 
 function getDepartments(){
@@ -115,7 +117,7 @@ function getDepartments(){
 	
 		 name: "Office supplies",
 		 type: 'household'
-		},,{
+		},{
 	
 		 name: "Other stuff",
 		 type: 'household'
@@ -132,7 +134,10 @@ function getDepartments(){
 
 function createDepartments(cb){
 	database.autoupdate('Department', function(err){
-		if (err) return cb(err);
+		if (err) {
+			Raven.captureException(err);
+			return cb(err);
+		}
 
 		Department.create(getDepartments(), cb);
 	

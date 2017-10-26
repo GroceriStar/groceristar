@@ -4,7 +4,7 @@ Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41
 
 module.exports = function(Department) {
 	Department.validatesPresenceOf(
-    'name'
+    'name',
     // 'items'
   );
 
