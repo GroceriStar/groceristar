@@ -35,7 +35,7 @@ Edit your list - create open to any userlist
  Search on ingredients???
  Print functionlaity
  Grocery List page template
- add link to github issues
+
  
  A lot of things was covered at: https://github.com/atherdon/recipe-api-only/issues/99
 
@@ -47,10 +47,13 @@ upload or edit on app
 
 Simple HTML template
 Do we have ability to change something?
+
 Open department list - delete department(with all ingredients)
+
 change quantity -> change ingredient name
+
 Then HTML move to clients folders
-Create content for homepage
+
 Get free images to put on backgrounds
 Think about adding Ad sense block
 
