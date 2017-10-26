@@ -13,11 +13,13 @@
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
-    "test": "mocha",
     "import": "node bin/import/import.js",
     "migrate": "node bin/automigrate.js",
-    "prod": "NODE_ENV=production && node server/server.js",
-    "win": "set NODE_ENV=development && nodemon server/server.js"
+    "prod": "set NODE_ENV=production && nodemon server/server.js",
+    "develes": "set NODE_ENV=development && nodemon server/server.js",
+    "test_win": "NODE_ENV=test && mocha --reporter spec",
+    "test_unix":"NODE_ENV=test mocha --reporter spec",
+    "unix": "export NODE_ENV=development"
   },
   "dependencies": {
     "body-parser": "^1.9.0",
