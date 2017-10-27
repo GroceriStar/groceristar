@@ -1,249 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+<!doctype html>
+<html lang="en" data-framework="jquery">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="css/app.css">
+
+
+
+		<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
 
-  <style type="text/css">
-  	
-  </style>
 
-  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
 
   <script src="https://use.fontawesome.com/8b5217f583.js"></script>
 
-</head>
-<body>
-  <script>
-    $(function(){
-      // Initialization code
-      $('ons-button').on('click', function(e) {
-        ons.notification.alert('Button is tapped!');
-      })
-    });
-  </script>
-
-
-  <ons-button>Click me!</ons-button>
-
-<!-- <select class="select-input select-input--material" style="width:100%">
-  <option>Option 1</option>
-  <option>Option 2</option>
-  <option>Option 3</option>
-</select>
-<br>
-<br>
-<br>
-<br>
-<span>
-  <div>
-  	<input class="text-input text-input--material" placeholder="Username" type="text" required style="width:100%">
-  </div>
-  <br />
-  <div>
-  	<input class="text-input text-input--material" placeholder="Password" type="password" required>
-  </div>
-</span>
-
-
-
-  <ul class="list">
-	  <li class="list-item">
-	    <div class="list-item__center">
-	    
-	    <label class="checkbox">
-		  <input type="checkbox" class="checkbox__input">
-		  <div class="checkbox__checkmark"></div>
-		  OFF
-		</label>
-		Dog
-		  <button class="toolbar-button">
-			  <i class="fa fa-bell" style="font-size:17px"></i>
-			</button>
-	</div>
-	  </li>
-	  <li class="list-item">
-	    <div class="list-item__center">Cat</div>
-	  </li>
-	  <li class="list-item">
-	    <div class="list-item__center">Hamster</div>
-	  </li>
-  </ul>
-
-  <button class="toolbar-button">
-  <i class="fa fa-bell" style="font-size:17px"></i>
-</button>
-
-<button class="toolbar-button">
-  Label
-</button>
-
-<button class="toolbar-button toolbar-button--outline">
-  <i class="fa fa-bell" style="font-size:17px"></i> Label
-</button>
-
-<ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
-      <div class="title">Pull Hook</div>
-      <div class="content">Simple "pull to refresh" functionality to update data.</div>
-    </ons-card>
- -->
 
 
 
 
-<!-- <style type="text/css">
-	.button-bar {
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 17px;
-  display: table;
-  table-layout: fixed;
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  margin: 0;
-  border: none;
-}
-.button-bar__item {
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 17px;
-  display: table-cell;
-  width: auto;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  position: relative;
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-}
-.button-bar__item > input {
-  position: absolute;
-  overflow: hidden;
-  right: 0px;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  padding: 0;
-  border: 0;
-  opacity: 0.001;
-  z-index: 1;
-  vertical-align: top;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
-}
-.button-bar__item:first-child > .button-bar__button {
-  border-left: 1px solid rgba(18,114,224,0.77);
-  border-right: 1px solid rgba(18,114,224,0.77);
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.button-bar__item:last-child > .button-bar__button {
-  border-right: 1px solid rgba(18,114,224,0.77);
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.button-bar__button {
-  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 17px;
-  -webkit-border-radius: inherit;
-  border-radius: inherit;
-  background-color: transparent;
-  color: rgba(18,114,224,0.77);
-  border: 0px solid rgba(18,114,224,0.77);
-  border-top: 1px solid rgba(18,114,224,0.77);
-  border-bottom: 1px solid rgba(18,114,224,0.77);
-  border-right: 1px solid rgba(18,114,224,0.77);
-  font-weight: 400;
-  padding: 0 8px;
-  height: 27px;
-  line-height: 27px;
-  font-size: 13px;
-  width: 100%;
-  -webkit-transition: background-color 0.2s linear, color 0.2s linear;
-  -moz-transition: background-color 0.2s linear, color 0.2s linear;
-  -o-transition: background-color 0.2s linear, color 0.2s linear;
-  transition: background-color 0.2s linear, color 0.2s linear;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.button-bar__button:active,
-:active + .button-bar__button {
-  background-color: rgba(18,114,224,0.77);
-  border: 0px solid rgba(18,114,224,0.77);
-  border-top: 1px solid rgba(18,114,224,0.77);
-  border-bottom: 1px solid rgba(18,114,224,0.77);
-  border-right: 1px solid rgba(18,114,224,0.77);
-  height: 27px;
-  line-height: 27px;
-  font-size: 13px;
-  width: 100%;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-.button-bar__item.active > .button-bar__button,
-:checked + .button-bar__button {
-  background-color: rgba(18,114,224,0.77);
-  color: #fff;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-.button-bar__button:disabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-.button-bar__button:hover {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-.button-bar__button:focus {
-  outline: 0;
-}
-</style>
-
-<div class="button-bar" style="width:280px;margin:0 auto;">
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a" checked>
-    <button class="button-bar__button">One</button>
-  </div>
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a">
-    <button class="button-bar__button">Two</button>
-  </div>
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a">
-    <button class="button-bar__button">Three</button>
-  </div>
-</div> -->
+	</head>
+	<body>
+		<section id="todoapp">
+			<header id="header">
+				<h1>todos</h1>
+				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todo-list"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</section>
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+		<script id="todo-template" type="text/x-handlebars-template">
+			{{#this}}
+			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+				<div class="view">
+					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+					<label>{{title}}</label>
+					<button class="destroy"></button>
+				</div>
+				<input class="edit" value="{{title}}">
+			</li>
+		{{/this}}
+		</script>
+		<script id="footer-template" type="text/x-handlebars-template">
+			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
+			<ul id="filters">
+				<li>
+					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
+				</li>
+				<li>
+					<a {{#eq filter 'active'}}class="selected"{{/eq}}href="#/active">Active</a>
+				</li>
+				<li>
+					<a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
+				</li>
+			</ul>
+			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
+		</script>
 
 
+
+		<section>
+			
 <style type="text/css">
 	.switch {
   position: relative;
@@ -784,10 +613,207 @@ input:disabled + .switch__toggle {
       Checkbox
     </label>
   </li>
+
+  <li class="list__item">
+    <div class="list__item__center">
+      4 items left
+    </div>
+    <div class="list__item__right">
+      <div class="list__item__label">
+      
+      	<a href="#">
+      		Clear
+      	</a>
+  	</div>
+    </div>
+  </li>
 </ul>
 
 
 
-</body>
 
+
+<style type="text/css">
+	.button-bar {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table;
+  table-layout: fixed;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  border: none;
+}
+.button-bar__item {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table-cell;
+  width: auto;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  position: relative;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.button-bar__item > input {
+  position: absolute;
+  overflow: hidden;
+  right: 0px;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  padding: 0;
+  border: 0;
+  opacity: 0.001;
+  z-index: 1;
+  vertical-align: top;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.button-bar__item:first-child > .button-bar__button {
+  border-left: 1px solid rgba(18,114,224,0.77);
+  border-right: 1px solid rgba(18,114,224,0.77);
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.button-bar__item:last-child > .button-bar__button {
+  border-right: 1px solid rgba(18,114,224,0.77);
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.button-bar__button {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  background-color: transparent;
+  color: rgba(18,114,224,0.77);
+  border: 0px solid rgba(18,114,224,0.77);
+  border-top: 1px solid rgba(18,114,224,0.77);
+  border-bottom: 1px solid rgba(18,114,224,0.77);
+  border-right: 1px solid rgba(18,114,224,0.77);
+  font-weight: 400;
+  padding: 0 8px;
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: background-color 0.2s linear, color 0.2s linear;
+  -moz-transition: background-color 0.2s linear, color 0.2s linear;
+  -o-transition: background-color 0.2s linear, color 0.2s linear;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.button-bar__button:active,
+:active + .button-bar__button {
+  background-color: rgba(18,114,224,0.77);
+  border: 0px solid rgba(18,114,224,0.77);
+  border-top: 1px solid rgba(18,114,224,0.77);
+  border-bottom: 1px solid rgba(18,114,224,0.77);
+  border-right: 1px solid rgba(18,114,224,0.77);
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__item.active > .button-bar__button,
+:checked + .button-bar__button {
+  background-color: rgba(18,114,224,0.77);
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.button-bar__button:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:focus {
+  outline: 0;
+}
+</style>
+<br />
+<div class="button-bar" style="width:280px;margin:0 auto;">
+  <div class="button-bar__item">
+    <input type="radio" name="segment-a" checked>
+    <button class="button-bar__button">All</button>
+  </div>
+  <div class="button-bar__item">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">Active</button>
+  </div>
+  <div class="button-bar__item">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">Purchased</button>
+  </div>
+</div>
+
+		</section>
+
+
+
+
+
+
+
+
+
+
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="node_modules/handlebars/dist/handlebars.js"></script>
+		<script src="node_modules/director/build/director.js"></script>
+		<script src="js/app.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>
 </html>
