@@ -1,6 +1,7 @@
-# loopback-example-passport
+# GroceriStar 
 
 A tutorial for setting up a basic passport example.
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
@@ -9,14 +10,14 @@ A tutorial for setting up a basic passport example.
 
 
 ## Overview
-
+This project is basically clone from Loopback Passport Example.
 LoopBack example for [loopback-passport](https://github.com/strongloop/loopback-passport) module. It demonstrates how to use
 LoopBack's user/userIdentity/userCredential models and [passport](http://passportjs.org) to interact with other auth providers.
 
 - Log in or sign up to LoopBack using third party providers (aka social logins)
 - Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated facebook).
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
+
 
 ## Prerequisites
 
@@ -27,10 +28,9 @@ Before starting this tutorial, make sure you have the following installed:
 - [StrongLoop Controller](https://github.com/strongloop/strongloop)
 
 ## Client ids/secrets from third party
-
+You can create your own app here
 - [facebook](https://developers.facebook.com/apps)
-- [google](https://console.developers.google.com/project)
-- [twitter](https://apps.twitter.com/)
+
 
 
 ## Tutorial - Facebook
@@ -45,6 +45,17 @@ $ npm install
 
 ### 2. Get your client ids/secrets from third party(social logins)
 
+
+## Facebook authorization on local machine
+- register a developer account on developers.facebook.com
+- Settings - Site URL - http://localhost:3000/
+- Facebook Login - Valid OAuth redirect URIs - http://localhost:3000/
+- providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
+
+error: Can't Load URL: The domain of this URL isn't included in the app's domains.
+Fixed: Facebook Login - Client OAuth Settings - Use Strict Mode for Redirect URIs - No
+
+or 
 - To get your app info: [facebook](https://developers.facebook.com/apps)
 - Click on My Apps, then on Add a new App
 - Pick the platform [iOS, Android, Facebook Canvas, Website]
@@ -53,6 +64,8 @@ $ npm install
 - Skip the quick start to get your "App ID" and "App Secret", which is in "Settings"
 - Your app may not work if the settings are missing a contact email and/or "Site URL".
 - if you are testing locally, you can simply use `localhost:[port#]` as your "Site URL".
+
+
 
 ### 3. Create providers.json
 
@@ -101,21 +114,22 @@ The current template contains:
 ```
 We recommend modifying the fields to suit your needs. For more information regarding the providers template, see http://loopback.io/doc/en/lb2/Configuring-providers.json.html.
 
-### 5. Data file
 
-- If you need to see your account info for testing purposes, in `server\datasources.json`, add:
+### 5. How to setup project on local machine
+- Fork the repo
+- `npm init` 
+- `npm run watch` 
+**If you got an issue**
+error: "async function something(next) {
+^^^^^^^^
+SyntaxError: Unexpected token function"
+**reason**: node version is not updated. Fixed by re-install updated node and npm.
+### Why
+Async functions are not supported by Node versions older than version 7.6
 
-```
-"file":"db.json"
-```
+At package.json we specified:  node v.8.1.4
 
-after
 
-```
-"connector": "memory",
-```
-
-- The account info will be saved into this file.
 
 ### 6. Run the application
 
@@ -123,13 +137,21 @@ after
 $ node .
 ```
 
+or 
+
+```
+$ npm run watch
+```
+
+
 - Open your browser to `http://localhost:3000`
-- Click on 'Log in' (in the header, on the rigth)
 - Click on 'Login with Facebook'.
-- Sign up using a local account, then link to your Facebook account.
+
 
 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
+
+:todo move credits to a separate file
 
 ## Credits 
 
@@ -155,28 +177,3 @@ Ingredients list template based on
 
 
 [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
-
-10.23
-How to setup project on local machine
-- Fork the repo
-- `npm init` 
-- `npm run watch` 
-**If you got an issue**
-error: "async function something(next) {
-^^^^^^^^
-SyntaxError: Unexpected token function"
-**reason**: node version is not updated. Fixed by re-install updated node and npm.
-### Why
-Async functions are not supported by Node versions older than version 7.6
-
-At package.json we specified:  node v.8.1.4
-
-10.25
-Facebook authorization on local machine
-- register a developer account on developers.facebook.com
-- Settings - Site URL - http://localhost:3000/
-- Facebook Login - Valid OAuth redirect URIs - http://localhost:3000/
-- providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
-
-error: Can't Load URL: The domain of this URL isn't included in the app's domains.
-Fixed: Facebook Login - Client OAuth Settings - Use Strict Mode for Redirect URIs - No
