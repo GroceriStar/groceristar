@@ -180,15 +180,27 @@ module.exports = function(User) {
             // :todo update to single function, without duplicates.
             _.map( g.groceries, function(grocery){
 
-                var uniques = _.map(_.groupBy(grocery.ingredients, function(item){
-                  return item.department.id.toString();
-                }), function(grouped){
+                var uniques = 
+                    _.map(
+                        _.groupBy(grocery.ingredients, (item) => {
+                            // console.log(item);
+                          if (item.department)
+                            return item.department.id.toString();
 
-                    return { id: grouped[0].department.id.toString(),
-                            name: grouped[0].department.name };
+                        }), 
+                        (grouped) => {
 
-                });
+                         if( grouped[0].department )   
+
+                            return { 
+                                    id: grouped[0].department.id.toString(),
+                                    name: grouped[0].department.name 
+                                };
+
+                    });
                 
+
+                console.log(uniques);
 
                 response.push({
                     id: grocery.id,

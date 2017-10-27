@@ -18,10 +18,8 @@ jQuery(function ($) {
 		isUltimate: function(){
 			return $('body').data().flag;
 		},
-		// :todo update that
-		getDepartmentId: function(){
-			var departmentId = $('#new-todo').data().departmentId;
-			return departmentId;			
+		getDepartmentId: function(){		
+			return $('body').data().departmentId;			
 		},
 		getGroceryId: function(){
 
@@ -120,7 +118,7 @@ jQuery(function ($) {
 				var single = '';
 				var dataAttrs = 'data-id="' + element.id + 
 				                 '" data-department-id="' + element.departmentId +
-				 	             '" data-order="' + element.order + '"' + 
+				 	             '" data-order="' + element.order + '" ' + 
 				 	             'data-custom="' + element.custom + '"';
 				
 				single += 
@@ -175,7 +173,7 @@ jQuery(function ($) {
 			    '</div>' +
 			  '</li>';
 
-			  console.log(single);
+			  // console.log(single);
 
 
 				// if( element.completed ){
@@ -322,12 +320,14 @@ jQuery(function ($) {
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
 			// var departmentId = this.getDepartmentId();
-
+			console.log($input.val());
 			var toSave = {
 				name        : val,
 				groceryId   : this.getGroceryId(),
 				departmentId: this.getDepartmentId(),
 			};
+
+			console.log(toSave);
 
 			if (e.which !== ENTER_KEY || !val) { return; }
 
@@ -338,6 +338,7 @@ jQuery(function ($) {
 							|| 'fake-id-for-ultimate-gl';
 
 			// if( !new_id ) 
+			console.log(new_id);
 
 			var new_object = {
 				id: new_id,
@@ -350,7 +351,7 @@ jQuery(function ($) {
 				order: ITEM.order + 1
 			}
 
-			// console.log(new_object);
+			console.log(new_object);
 			this.todos.push(new_object);
 
 
