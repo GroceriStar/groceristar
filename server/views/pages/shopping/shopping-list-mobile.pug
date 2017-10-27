@@ -28,8 +28,8 @@ html(lang='en', data-framework='jquery')
 
     section#todoapp
       //- ons-card
-      ul.list
-        include ../../partials/department/best-select-update-my-name
+      ul.list#footer-link
+        //include ../../partials/department/best-select-update-my-name
 
         li.list__item#todo-er
           .list__item__left
@@ -41,9 +41,10 @@ html(lang='en', data-framework='jquery')
           label.list__item__center
             input#new-todo(type="text", class="text-input", placeholder='Item name', autofocus='') 
 
+      //- footer part
+      //#filters.button-bar(style="width:280px;margin:0 auto;") 
 
-
-      section#main
+      //section#main
 
         //ul#todo-list
           
@@ -64,7 +65,11 @@ html(lang='en', data-framework='jquery')
                 input.edit(value=element.name)
 
 
-      footer#footer
+      //footer#footer
+       #filters.button-bar(style="width:280px;margin:0 auto;") 
+				
+
+
     footer#info
       p Double-click to edit an item 
 

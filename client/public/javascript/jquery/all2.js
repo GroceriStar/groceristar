@@ -51,7 +51,7 @@ jQuery(function ($) {
 
 			$('#footer').on('click', '#clear-completed', 
 				this.destroyCompleted.bind(this));
-			
+
 			$('#todo-list')
 				.on('change',   '.toggle',  this.toggle.bind(this))
 				.on('dblclick', 'label',    this.editingMode.bind(this))
@@ -62,7 +62,14 @@ jQuery(function ($) {
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
-            // $()    
+
+            // click on filters    
+            $('#filters .button-bar__button')
+            	.on('click', function(e){
+
+            		console.log( $(this) );
+
+            });  
 
 
 		},
@@ -111,15 +118,19 @@ jQuery(function ($) {
 			_.each(elements, function(element){
 
 				var single = '';
-
+				var dataAttrs = 'data-id="' + element.id + 
+				                 '" data-department-id="' + element.departmentId +
+				 	             '" data-order="' + element.order + '"' + 
+				 	             'data-custom="' + element.custom + '"';
+				
 				single += 
 				  '<li class="list__item list__item--tappable ';
 
 				  if( element.completed ){
 				  	single += 'completed' // :todo reod later this thng with ES6 stuff because i hate current setup
 				  }
-			  	
-			    single += '">' +
+			  		single += '" ' + dataAttrs;
+			    single += '>' +
 			    '<div class="list__item__left">' +
 			      '<label class="checkbox">' +
 			        '<input type="checkbox" id="checkbox' + element.order + '"'+ 
@@ -214,8 +225,10 @@ jQuery(function ($) {
 				filter         : this.filter
 			});
 
-			$('#footer').toggle(todoCount > 0)
-				.html(template);
+			// $('#footer').toggle(todoCount > 0)
+			// 	.html(template);
+
+			$('#footer-link').after(template);	
 		},
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
