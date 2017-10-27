@@ -56,6 +56,11 @@ jQuery(function ($) {
 				.on('keyup',    '.edit',    this.editKeyup.bind(this))
 				.on('focusout', '.edit',    this.update.bind(this))
 				.on('click',    '.destroy', this.destroy.bind(this));
+
+            $('#departmentList')
+                .on('change', this.redirectToOtherDepartment.bind(this));
+
+
 		},
 		render: function (flag=true) {
 
@@ -553,6 +558,12 @@ jQuery(function ($) {
 			});
 			return new_id;
 			// console.log(new_id);
+		},
+
+
+		redirectToOtherDepartment: function(){
+			var path = "/shopping/" + this.getGroceryId() + '/' + this.value;
+  			window.location.replace(path);
 		}
 
 

@@ -6,23 +6,12 @@ html(lang='en', data-framework='jquery')
 
     link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
 
-    //if isMobile
-      <!-- don't have mobile styles for this moment -->
-    //else
 
-      link(rel='stylesheet', href='/css/select-demo/normalize.css')
-      link(rel='stylesheet', href='/css/select-demo/demo.css')
+    link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsenui.css')
 
-      link(rel='stylesheet', href='/css/select-demo/cs-select.css')
-      link(rel='stylesheet', href='/css/select-demo/cs-skin-border.css')
+    link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsen-css-components.min.css')
 
-
-
-    link(rel='stylesheet', href='/css/jquery/base.css')
-
-    link(rel='stylesheet', href='/css/jquery/index.css')
-
-    link(rel='stylesheet', href='/css/one.css')
+    link(rel='stylesheet', href='/css/onsenUI/addon.css')
 
 
 
@@ -82,15 +71,20 @@ html(lang='en', data-framework='jquery')
 
 
       
-    if isUltimate 
-      //include ../../static/scripts-todo-read-only-delete-later.pug  
-    else
-      include ../../static/scripts-todo.pug
 
 
+    script(src='https://use.fontawesome.com/8b5217f583.js')
 
-    script(src='/javascript/select-demo/classie.js')
-    script(src='/javascript/select-demo/selectFx.js')
+    script(src='https://unpkg.com/onsenui/js/onsenui.min.js')
+    //script(src='https://unpkg.com/jquery/dist/jquery.min.js')	
+      
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
+
+    script(src='/javascript/jquery/director.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
+
+    script(src='/javascript/jquery/app2.js')
+
   
     //script.
       (function() {
@@ -100,8 +94,8 @@ html(lang='en', data-framework='jquery')
         var selectElement = document.querySelector('select');
          myFXSelect = new SelectFx(selectElement, {
           onChange: function(val) {
-          //console.log('val', val); 
-          // val is departmentId value
+          console.log('val', val); 
+           val is departmentId value
             var path = "/shopping/" + groceryId + '/' + val;
           window.location.replace(path);
          }
