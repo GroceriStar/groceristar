@@ -13,15 +13,18 @@ html(lang='en', data-framework='jquery')
 
     link(rel='stylesheet', href='/css/onsenUI/addon.css')
 
+    link(rel='stylesheet', href='/css/onsenUI/items-center-only.css')
+
 
 
   body(data-grocery-id=groceryId, data-flag=isUltimate, data-ingredients=list, data-department-id=departmentId)
 
-    h3 
+    //h3 
       a(href=back).pull-right 
         | Go Back 
         i.fa.fa-long-arrow-left.pull-right
 
+    
 
     section#todoapp
       //- ons-card
@@ -45,7 +48,7 @@ html(lang='en', data-framework='jquery')
         //ul#todo-list
           
            each element in list
-            //h2=element.completed
+            h2=element.completed
             if element.completed
               li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
             else
@@ -69,14 +72,14 @@ html(lang='en', data-framework='jquery')
 
       
 
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
 
     script(src='https://use.fontawesome.com/8b5217f583.js')
 
     script(src='https://unpkg.com/onsenui/js/onsenui.min.js')
     //script(src='https://unpkg.com/jquery/dist/jquery.min.js')	
       
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
-
+    
     script(src='/javascript/jquery/director.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
 

@@ -48,8 +48,10 @@ jQuery(function ($) {
 		bindEvents: function () {
 			$('#new-todo').on('keyup', this.create.bind(this));
 			$('#toggle-all').on('change', this.toggleAll.bind(this));
+
 			$('#footer').on('click', '#clear-completed', 
 				this.destroyCompleted.bind(this));
+			
 			$('#todo-list')
 				.on('change',   '.toggle',  this.toggle.bind(this))
 				.on('dblclick', 'label',    this.editingMode.bind(this))
@@ -60,7 +62,7 @@ jQuery(function ($) {
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
-            $()    
+            // $()    
 
 
 		},
@@ -114,13 +116,14 @@ jQuery(function ($) {
 				  '<li class="list__item list__item--tappable ';
 
 				  if( element.completed ){
-				  	single += 'completed">' // :todo reod later this thng with ES6 stuff because i hate current setup
+				  	single += 'completed' // :todo reod later this thng with ES6 stuff because i hate current setup
 				  }
 			  	
-			    single += '<div class="list__item__left">' +
+			    single += '">' +
+			    '<div class="list__item__left">' +
 			      '<label class="checkbox">' +
-			        '<input type="checkbox" id="checkbox2"'+ 
-			        'class="checkbox__input" name="c";
+			        '<input type="checkbox" id="checkbox' + element.order + '"'+ 
+			        'class="checkbox__input" name="c"';
     				  if( element.completed ){
 				  	single += ' checked="checked"' // :todo reod later this thng with ES6 stuff because i hate current setup
 				  }    
@@ -131,23 +134,25 @@ jQuery(function ($) {
 			    '</div>' +
 
 			      	
-			    '<label for="checkbox2" '+
+			    '<label for="checkbox' + element.order + '"'+
 			        '"class="list__item__center"' +
 			    	
 			    '>' +
-			      '<span' ;
+			      '<span';
 
 			    
 			    if( element.completed ){
-				  	single += ' style="text-decoration: line-through;" ' // :todo reod later this thng with ES6 stuff because i hate current setup
+				  	single += ' style="text-decoration: line-through;" ';
+				  	// :todo reod later this thng with ES6 stuff because i hate current setup
 				}  
 
-        single +=  '>' +
-			      	element.title
+       		 single +=  '>' +
+			      	element.name +
+			      
 			      '</span>' +
 			      
 			      '<input type="text" class="text-input edit" '+ 
-      					  'value="' + element.title + '" style="display: none;">' +
+      					  'value="' + element.name + '" style="display: none;">' +
 			    '</label>' +
 			    '<div class="list__item__right">' +
 			      '<div class="list__item__label">' +
@@ -468,8 +473,8 @@ jQuery(function ($) {
 
 			'<ul class="list" id="footer">'+
 			  '<li class="list__item" style="padding-top: 15px;">'+
-			    '<div class="list__item__center">'+
-			      data.activeTodoCount + data.activeTodoWord + ' left'+
+			    '<div class="list__item__center"> '+
+			      data.activeTodoCount + ' ' + data.activeTodoWord + ' left'+
 			    '</div>'+
 			    '<div class="list__item__right">'+
 			      '<div class="list__item__label">'; 
@@ -479,7 +484,7 @@ jQuery(function ($) {
 			}
 			    
 			      	
-		html +=   '</div>'+
+			html +=   '</div>'+
 			    '</div>'+
 			  '</li>'+
 			'</ul>'+
