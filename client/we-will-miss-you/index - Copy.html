@@ -24,8 +24,55 @@
 
 	</head>
 	<body>
+		<section id="todoapp">
+			<header id="header">
+				<h1>todos</h1>
+				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todo-list"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</section>
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+		<script id="todo-template" type="text/x-handlebars-template">
+			{{#this}}
+			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+				<div class="view">
+					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+					<label>{{title}}</label>
+					<button class="destroy"></button>
+				</div>
+				<input class="edit" value="{{title}}">
+			</li>
+		{{/this}}
+		</script>
+		<script id="footer-template" type="text/x-handlebars-template">
+			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
+			<ul id="filters">
+				<li>
+					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
+				</li>
+				<li>
+					<a {{#eq filter 'active'}}class="selected"{{/eq}}href="#/active">Active</a>
+				</li>
+				<li>
+					<a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
+				</li>
+			</ul>
+			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
+		</script>
 
 
+
+		<section>
+			
 <style type="text/css">
 	.switch {
 	  position: relative;
@@ -542,118 +589,36 @@
 
 </style>
 
+<ul class="list">
+	<li class="list__item">
 
 
-
-		<section id="todoapp">
-			<header id="header">
-				<!-- <h1>todos</h1> -->
-				<!-- <input id="new-todo" placeholder="What needs to be done?" autofocus> -->
-
-
-				<ul class="list">
-					<li class="list__item">
-						<div class="list__item__center">
-					      <select class="select-input " style="width:95%">
-							  <option>Option 1</option>
-							  <option>Option 2</option>
-							  <option>Option 3</option>
-						  </select>
-					    </div>
-					</li>
-					
-				    <li class="list__item">
-					    <div class="list__item__left">
-					      <label class="checkbox">
-					        <input type="checkbox" id="checkbox0" 
-					        class="checkbox__input" name="c" >
-					        <div class="checkbox__checkmark"></div>
-					      </label>
-					    </div>
-					    <label for="checkbox1" class="list__item__center">
-					      <input id="new-todo" type="text" class="text-input" 
-					      placeholder="Please, Do something" autofocus>
-					    </label>
-				  	</li>
-				</ul>  
-
-
-			</header>
-			<section id="main">
-				<input id="toggle-all" type="checkbox">
-				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list"></ul>
-			</section>
-			<footer id="footer"></footer>
-		</section>
-		<footer id="info">
-			<p>Double-click to edit a todo</p>
-			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-		</footer>
-
-		<script id="todo-template" type="text/x-handlebars-template">
-			{{#this}}
-			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
-				<div class="view">
-					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-					<label>{{title}}</label>
-					<button class="destroy"></button>
-				</div>
-				<input class="edit" value="{{title}}">
-			</li>
-
-			<li class="list__item list__item--tappable {{#if completed}} completed  {{/if}}">
-			    <div class="list__item__left">
-			      <label class="checkbox">
-			        <input type="checkbox" id="checkbox1" 
-			        class="checkbox__input" name="c" checked="checked">
-			        <div class="checkbox__checkmark"></div>
-			      </label>
-			    </div>
-			    <label for="checkbox1" class="list__item__center">
-			      <span style="text-decoration: line-through;">Checkbox</span>
-			      <input type="text" class="text-input" 
-			      placeholder="Please, Do something" style="display: none;">
-			    </label>
-			    <div class="list__item__right">
-			      <div class="list__item__label">
-			      
-			      	<!-- <a href="#">
-			      		Clear
-			      	</a> -->
-			      	  <button class="toolbar-button">
-					  <i class="fa fa-times" style="font-size:17px"></i>
-					</button>
-			  	</div>
-			    </div>
-			  </li>
-
-		{{/this}}
-		</script>
-
-
-		<script id="footer-template" type="text/x-handlebars-template">
-			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
-			<ul id="filters">
-				<li>
-					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
-				</li>
-				<li>
-					<a {{#eq filter 'active'}}class="selected"{{/eq}}href="#/active">Active</a>
-				</li>
-				<li>
-					<a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
-				</li>
-			</ul>
-			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
-		</script>
-
-
-
-		<section id="todoapp">
-			
-
+<div class="list__item__center">
+      <select class="select-input " style="width:95%">
+  <option>Option 1</option>
+  <option>Option 2</option>
+  <option>Option 3</option>
+</select>
+    </div>
+		<!-- <select class="select-input select-input--material" style="width:95%">
+  <option>Option 1</option>
+  <option>Option 2</option>
+  <option>Option 3</option>
+</select> -->
+	</li>
+	
+    <li class="list__item">
+    <div class="list__item__left">
+      <label class="checkbox">
+        <input type="checkbox" id="checkbox0" class="checkbox__input" name="c" >
+        <div class="checkbox__checkmark"></div>
+      </label>
+    </div>
+    <label for="checkbox1" class="list__item__center">
+      <input type="text" class="text-input" placeholder="Please, Do something">
+    </label>
+  </li>
+</ul>  
 
 
 
@@ -662,15 +627,13 @@
   <li class="list__item list__item--tappable">
     <div class="list__item__left">
       <label class="checkbox">
-        <input type="checkbox" id="checkbox1" 
-        class="checkbox__input" name="c" checked="checked">
+        <input type="checkbox" id="checkbox1" class="checkbox__input" name="c" checked="checked">
         <div class="checkbox__checkmark"></div>
       </label>
     </div>
     <label for="checkbox1" class="list__item__center">
       <span>Checkbox</span>
-      <input type="text" class="text-input" 
-      placeholder="Please, Do something" style="display: none;">
+      <input type="text" class="text-input" placeholder="Please, Do something" style="display: none;">
     </label>
     <div class="list__item__right">
       <div class="list__item__label">
@@ -687,8 +650,7 @@
   <li class="list__item list__item--tappable">
     <div class="list__item__left">
       <label class="checkbox">
-        <input type="checkbox" id="checkbox2" 
-        class="checkbox__input" name="c">
+        <input type="checkbox" id="checkbox2" class="checkbox__input" name="c">
         <div class="checkbox__checkmark"></div>
       </label>
     </div>
@@ -698,6 +660,9 @@
     <div class="list__item__right">
       <div class="list__item__label">
       
+      	<!-- <a href="#">
+      		Clear
+      	</a> -->
       	<button class="toolbar-button">
 		  <i class="fa fa-times" style="font-size:17px"></i>
 		</button>
@@ -860,7 +825,7 @@
 	}
 </style>
 <br />
-<div id="info" class="button-bar" style="width:280px;margin:0 auto;">
+<div class="button-bar" style="width:280px;margin:0 auto;">
   <div class="button-bar__item">
     <input type="radio" name="segment-a" checked>
     <button class="button-bar__button">All</button>
