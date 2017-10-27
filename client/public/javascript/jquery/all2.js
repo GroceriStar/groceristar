@@ -409,41 +409,69 @@ jQuery(function ($) {
 
 	
 		footerTemplate: function(data){
-			// <script id="footer-template"
-			var html = '<span id="todo-count">' +
-					'<strong>' + data.activeTodoCount + ' </strong>' +
-					data.activeTodoWord + ' left' +
-			 	'</span>';
+ 
+			var html = 
 
-			html += '<ul id="filters">' +
-					'<li>';
+			'<ul class="list" id="footer">'+
+			  '<li class="list__item" style="padding-top: 15px;">'+
+			    '<div class="list__item__center">'+
+			      data.activeTodoCount + data.activeTodoWord + ' left'+
+			    '</div>'+
+			    '<div class="list__item__right">'+
+			      '<div class="list__item__label">'; 
 
-			if( data.filter === 'all'){
-				html += '<a class="selected" href="#/all">All</a>';
-			} else {
-				html += '<a href="#/all">All</a>';
+			if (data.completedTodos) {
+				html += '<button id="clear-completed">Clear purchased </button>';
 			}
+			    
+			      	
+		html +=   '</div>'+
+			    '</div>'+
+			  '</li>'+
+			'</ul>'+
 
-			if( data.filter === 'active'){
-				html += '<a class="selected" href="#/active">Active</a>';
-			} else {
-				html += '<a href="#/active">Active</a>';
+			'<br />';
+
+
+
+			html += 
+			'<div id="filters" class="button-bar" ' +
+				'style="width:280px;margin:0 auto;">' +
+			  '<div class="button-bar__item">'+
+			    '<input type="radio" name="segment-filter" ';
+
+			if (data.filter === 'all') {
+				html += 'checked';
 			}
+			
+			html += '>' +    
+			    '<button class="button-bar__button" data-href="#/all">All</button>'	    +
+			  
+			  '</div>'+
+			  '<div class="button-bar__item">'+
+			  	'<input type="radio" name="segment-filter" ';
 
-			if( data.filter === 'completed'){
-				html += '<a class="selected" href="#/completed">Purchased</a>';
-			} else {
-				html += '<a href="#/completed">Purchased</a>';
-			}	
-
-			html += '</ul>';				
-
-			if (data.completedTodos){
-				html += '<button id="clear-completed">Clear purchased</button>';
+			if (data.filter === 'active') {
+				html += 'checked';
 			}
+			
+			html += '>' + 
+				'<button class="button-bar__button" data-href="#/active">Active</button>'+
+			  
+			  '</div>'+
+			  '<div class="button-bar__item">'+
+			  	'<input type="radio" name="segment-filter" ';
 
+			if (data.filter === 'completed') {
+				html += 'checked';
+			}
+			
+			html += '>' +  	
+				'<button class="button-bar__button" data-href="#/completed">Purchased</button>' +
 
-			// console.log(html);
+			  '</div>'+
+			'</div>';
+
 			return html;
 		},
 		// template related stuff

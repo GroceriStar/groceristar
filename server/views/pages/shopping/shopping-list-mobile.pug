@@ -4,7 +4,7 @@ html(lang='en', data-framework='jquery')
     meta(charset='utf-8')
     title= 'Shopping List: ' + groceryId
 
-    link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
+    //link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
 
 
     link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsenui.css')
@@ -22,24 +22,21 @@ html(lang='en', data-framework='jquery')
         | Go Back 
         i.fa.fa-long-arrow-left.pull-right
 
-    
-
-
 
     section#todoapp
-
+      //- ons-card
       ul.list
-      	include ../../partials/department/best-select-update-my-name
+        include ../../partials/department/best-select-update-my-name
 
-      	li.list__item
-		  .list__item__left
-		    label.checkbox
-			  input#toggle-all.checkbox__input(type="checkbox", name="c") 
+        li.list__item#todo-er
+          .list__item__left
+            label.checkbox
+              input#toggle-all.checkbox__input(type="checkbox", name="c") 
 					        
-			  .checkbox__checkmark
+              .checkbox__checkmark
 					      
-		  label.list__item__center#todo-er
-		    input#new-todo(type="text", class="text-input", placeholder='Item name', autofocus='') 
+          label.list__item__center
+            input#new-todo(type="text", class="text-input", placeholder='Item name', autofocus='') 
 
 
 
