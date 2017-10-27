@@ -3,18 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<title>jQuery • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<!-- <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
-		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/app.css"> -->
 
 
 
 		<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+<link rel="stylesheet" href="css/onsen-css-components.css">
 
 
-    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+    
 
   <script src="https://use.fontawesome.com/8b5217f583.js"></script>
 
@@ -542,188 +543,7 @@
 
 </style>
 
-
-
-
-		<section id="todoapp">
-			<header id="header">
-				<!-- <h1>todos</h1> -->
-				<!-- <input id="new-todo" placeholder="What needs to be done?" autofocus> -->
-
-
-				<ul class="list">
-					<li class="list__item">
-						<div class="list__item__center">
-					      <select class="select-input " style="width:95%">
-							  <option>Option 1</option>
-							  <option>Option 2</option>
-							  <option>Option 3</option>
-						  </select>
-					    </div>
-					</li>
-					
-				    <li class="list__item">
-					    <div class="list__item__left">
-					      <label class="checkbox">
-					        <input type="checkbox" id="checkbox0" 
-					        class="checkbox__input" name="c" >
-					        <div class="checkbox__checkmark"></div>
-					      </label>
-					    </div>
-					    <label for="checkbox1" class="list__item__center">
-					      <input id="new-todo" type="text" class="text-input" 
-					      placeholder="Please, Do something" autofocus>
-					    </label>
-				  	</li>
-				</ul>  
-
-
-			</header>
-			<section id="main">
-				<input id="toggle-all" type="checkbox">
-				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list"></ul>
-			</section>
-			<footer id="footer"></footer>
-		</section>
-		<footer id="info">
-			<p>Double-click to edit a todo</p>
-			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-		</footer>
-
-		<script id="todo-template" type="text/x-handlebars-template">
-			{{#this}}
-			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
-				<div class="view">
-					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-					<label>{{title}}</label>
-					<button class="destroy"></button>
-				</div>
-				<input class="edit" value="{{title}}">
-			</li>
-
-			<li class="list__item list__item--tappable {{#if completed}} completed  {{/if}}">
-			    <div class="list__item__left">
-			      <label class="checkbox">
-			        <input type="checkbox" id="checkbox1" 
-			        class="checkbox__input" name="c" checked="checked">
-			        <div class="checkbox__checkmark"></div>
-			      </label>
-			    </div>
-			    <label for="checkbox1" class="list__item__center">
-			      <span style="text-decoration: line-through;">Checkbox</span>
-			      <input type="text" class="text-input" 
-			      placeholder="Please, Do something" style="display: none;">
-			    </label>
-			    <div class="list__item__right">
-			      <div class="list__item__label">
-			      
-			      	<!-- <a href="#">
-			      		Clear
-			      	</a> -->
-			      	  <button class="toolbar-button">
-					  <i class="fa fa-times" style="font-size:17px"></i>
-					</button>
-			  	</div>
-			    </div>
-			  </li>
-
-		{{/this}}
-		</script>
-
-
-		<script id="footer-template" type="text/x-handlebars-template">
-			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
-			<ul id="filters">
-				<li>
-					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
-				</li>
-				<li>
-					<a {{#eq filter 'active'}}class="selected"{{/eq}}href="#/active">Active</a>
-				</li>
-				<li>
-					<a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
-				</li>
-			</ul>
-			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
-		</script>
-
-
-
-		<section id="todoapp">
-			
-
-
-
-
-<ul class="list">
-
-  <li class="list__item list__item--tappable">
-    <div class="list__item__left">
-      <label class="checkbox">
-        <input type="checkbox" id="checkbox1" 
-        class="checkbox__input" name="c" checked="checked">
-        <div class="checkbox__checkmark"></div>
-      </label>
-    </div>
-    <label for="checkbox1" class="list__item__center">
-      <span>Checkbox</span>
-      <input type="text" class="text-input" 
-      placeholder="Please, Do something" style="display: none;">
-    </label>
-    <div class="list__item__right">
-      <div class="list__item__label">
-      
-      	<!-- <a href="#">
-      		Clear
-      	</a> -->
-      	  <button class="toolbar-button">
-		  <i class="fa fa-times" style="font-size:17px"></i>
-		</button>
-  	</div>
-    </div>
-  </li>
-  <li class="list__item list__item--tappable">
-    <div class="list__item__left">
-      <label class="checkbox">
-        <input type="checkbox" id="checkbox2" 
-        class="checkbox__input" name="c">
-        <div class="checkbox__checkmark"></div>
-      </label>
-    </div>
-    <label for="checkbox2" class="list__item__center">
-      Checkbox
-    </label>
-    <div class="list__item__right">
-      <div class="list__item__label">
-      
-      	<button class="toolbar-button">
-		  <i class="fa fa-times" style="font-size:17px"></i>
-		</button>
-  	</div>
-    </div>
-  </li>
-
-  <li class="list__item" style="padding-top: 15px;">
-    <div class="list__item__center">
-      4 items left
-    </div>
-    <div class="list__item__right">
-      <div class="list__item__label">
-      
-      	<a href="#">
-      		Clear
-      	</a>
-  	</div>
-    </div>
-  </li>
-</ul>
-
-
-
-
-
+<!-- segment with 3 buttons  styless start -->
 <style type="text/css">
 	.button-bar {
 	  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
@@ -859,46 +679,159 @@
 	  outline: 0;
 	}
 </style>
-<br />
-<div id="info" class="button-bar" style="width:280px;margin:0 auto;">
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a" checked>
-    <button class="button-bar__button">All</button>
-  </div>
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a">
-    <button class="button-bar__button">Active</button>
-  </div>
-  <div class="button-bar__item">
-    <input type="radio" name="segment-a">
-    <button class="button-bar__button">Purchased</button>
-  </div>
-</div>
 
+
+
+<!-- me custom styles becana -->
+
+		<section id="todoapp">
+			
+
+
+				<ul class="list">
+					<li class="list__item">
+						<div class="list__item__center">
+					      <select class="select-input " style="width:95%">
+							  <option>Option 1</option>
+							  <option>Option 2</option>
+							  <option>Option 3</option>
+						  </select>
+					    </div>
+					</li>
+					
+				    <li class="list__item">
+					    <div class="list__item__left">
+					      <label class="checkbox">
+					        <input type="checkbox" id="toggle-all" 
+					        class="checkbox__input" name="c" >
+					        <div class="checkbox__checkmark"></div>
+					      </label>
+					    </div>
+					    <label class="list__item__center">
+					      <input id="new-todo" type="text" class="text-input" 
+					      placeholder="Please, Do something" autofocus>
+					    </label>
+				  	</li>
+				</ul>  
+
+				<ul id="todo-list" class="list"></ul>
+			</section>
+			<footer id="footer"></footer>
 		</section>
+		<footer id="info">
+			
+		</footer>
+
+		<script id="todo-template" type="text/x-handlebars-template">
+			{{#this}}
+			<!-- <li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+				<div class="view">
+					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+					<label>{{title}}</label>
+					<button class="destroy"></button>
+				</div>
+				<input class="edit" value="{{title}}">
+			</li> -->
 
 
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<br>
-<br>
-<br>
+			  <li class="list__item list__item--tappable 
+			  	{{#if completed}} completed  {{/if}}">
+			    <div class="list__item__left">
+			      <label class="checkbox">
+			        <input type="checkbox" id="checkbox2" 
+			        class="checkbox__input" name="c" 
+			        	{{#if completed}}checked="checked"{{/if}}
+			        >
+			        <div class="checkbox__checkmark"></div>
+			      </label>
+			    </div>
+
+			      	
+			    <label for="checkbox2" 
+			        class="list__item__center"
+			    	
+			    >
+			      <span
+			      	{{#if completed}}
+		    		style="text-decoration: line-through;"
+			    	{{/if}}
+			      >
+			      	{{title}}
+			      </span>
+			      
+			      <input type="text" class="text-input edit" 
+      					  value="{{title}}" style="display: none;">
+			    </label>
+			    <div class="list__item__right">
+			      <div class="list__item__label">
+			      
+			      	<button class="toolbar-button destroy">
+					  <i class="fa fa-times" style="font-size:17px"></i>
+					</button>
+			  	</div>
+			    </div>
+			  </li>
 
 
+			 
+
+
+			
+
+		{{/this}}
+		</script>
+
+
+		<script id="footer-template" type="text/x-handlebars-template">
+			
+			<ul class="list">
+			  <li class="list__item" style="padding-top: 15px;">
+			    <div class="list__item__center">
+			      {{activeTodoCount}} {{activeTodoWord}} left
+			    </div>
+			    <div class="list__item__right">
+			      <div class="list__item__label">
+			        {{#if completedTodos}}
+			        <button id="clear-completed">Clear </button>
+			        {{/if}}
+			      	
+			  	</div>
+			    </div>
+			  </li>
+			</ul>
+
+			<div id="info" class="button-bar" 
+				style="width:280px;margin:0 auto;">
+			  <div class="button-bar__item">
+			    <input type="radio" name="segment-{{filter}}" {{#eq filter 'all'}}checked{{/eq}}>
+			   <button class="button-bar__button" data-href="#/all">All</button>	    
+			  </div>
+			  <div class="button-bar__item">
+			  	<input type="radio" name="segment-{{filter}}" {{#eq filter 'active'}}checked{{/eq}}>
+				<button class="button-bar__button" data-href="#/active">Active</button>
+			  </div>
+			  <div class="button-bar__item">
+			  	<input type="radio" name="segment-{{filter}}" {{#eq filter 'completed'}}checked{{/eq}}>
+				<button class="button-bar__button" data-href="#/completed">Purchased</button>
+
+			  </div>
+			</div>
+
+
+
+		</script>
 
 
 
 
 
 		<script src="node_modules/todomvc-common/base.js"></script>
-		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<!-- <script src="node_modules/jquery/dist/jquery.js"></script> -->
+
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+
 		<script src="node_modules/handlebars/dist/handlebars.js"></script>
 		<script src="node_modules/director/build/director.js"></script>
 		<script src="js/app.js"></script>
