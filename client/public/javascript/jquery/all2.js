@@ -60,6 +60,8 @@ jQuery(function ($) {
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
+            $()    
+
 
 		},
 		render: function (flag=true) {
@@ -108,33 +110,85 @@ jQuery(function ($) {
 
 				var single = '';
 
-				if( element.completed ){
-					single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
-					 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-				} else {
-					single += '<li data-id="' + element.id + 
-					'" data-department-id="' + element.departmentId + 
-					'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-				}
+				single += 
+				  '<li class="list__item list__item--tappable ';
 
-				  single += '<div class="view">' ;
-					if( element.completed ){
-						single += '<input class="toggle" type="checkbox" checked>';
-					} else {
-						single += '<input class="toggle" type="checkbox" >';
-					}
+				  if( element.completed ){
+				  	single += 'completed">' // :todo reod later this thng with ES6 stuff because i hate current setup
+				  }
+			  	
+			    single += '<div class="list__item__left">' +
+			      '<label class="checkbox">' +
+			        '<input type="checkbox" id="checkbox2"'+ 
+			        'class="checkbox__input" name="c";
+    				  if( element.completed ){
+				  	single += ' checked="checked"' // :todo reod later this thng with ES6 stuff because i hate current setup
+				  }    
+			        	
+			single += '>' +
+			        '<div class="checkbox__checkmark"></div>' +
+			      '</label>' +
+			    '</div>' +
+
+			      	
+			    '<label for="checkbox2" '+
+			        '"class="list__item__center"' +
+			    	
+			    '>' +
+			      '<span' ;
+
+			    
+			    if( element.completed ){
+				  	single += ' style="text-decoration: line-through;" ' // :todo reod later this thng with ES6 stuff because i hate current setup
+				}  
+
+        single +=  '>' +
+			      	element.title
+			      '</span>' +
+			      
+			      '<input type="text" class="text-input edit" '+ 
+      					  'value="' + element.title + '" style="display: none;">' +
+			    '</label>' +
+			    '<div class="list__item__right">' +
+			      '<div class="list__item__label">' +
+			      
+			      	'<button class="toolbar-button destroy">' +
+					  '<i class="fa fa-times" style="font-size:17px"></i>' +
+					'</button>' +
+			  	'</div>' +
+			    '</div>' +
+			  '</li>';
+
+			  console.log(single);
+
+
+				// if( element.completed ){
+				// 	single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
+				// 	 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
+				// } else {
+				// 	single += '<li data-id="' + element.id + 
+				// 	'" data-department-id="' + element.departmentId + 
+				// 	'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
+				// }
+
+				//   single += '<div class="view">' ;
+				// 	if( element.completed ){
+				// 		single += '<input class="toggle" type="checkbox" checked>';
+				// 	} else {
+				// 		single += '<input class="toggle" type="checkbox" >';
+				// 	}
 
 						
-					single += '<label>' + element.name + '</label>'+
-								'<button class="destroy"></button>'+
-						'</div>'+
-						'<input class="edit" value="' + element.name + '">'
-					// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
-					// 			'<button class="destroy"></button>'+
-					// 	'</div>'+
-					// 	'<input class="edit" value="' + element.name + '">'	
+				// 	single += '<label>' + element.name + '</label>'+
+				// 				'<button class="destroy"></button>'+
+				// 		'</div>'+
+				// 		'<input class="edit" value="' + element.name + '">'
+				// 	// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+				// 	// 			'<button class="destroy"></button>'+
+				// 	// 	'</div>'+
+				// 	// 	'<input class="edit" value="' + element.name + '">'	
 
-				single += '</li>';
+				// single += '</li>';
 
 				html += single;
 
@@ -150,9 +204,9 @@ jQuery(function ($) {
 
 			var template = this.footerTemplate({
 				activeTodoCount: activeTodoCount,
-				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
-				completedTodos: todoCount - activeTodoCount,
-				filter: this.filter
+				activeTodoWord : util.pluralize(activeTodoCount, 'item'),
+				completedTodos : todoCount - activeTodoCount,
+				filter         : this.filter
 			});
 
 			$('#footer').toggle(todoCount > 0)
@@ -558,18 +612,6 @@ jQuery(function ($) {
 			}
 
 		},
-
-
-		// 	$.ajax({
-		// 		type: "GET",
-		// 		url: '/getingredients/' + options.groceryId + '/' + options.departmentId,
-		// 		dataType: 'json',
-		// 		'async': false
-		// 	}).done(function(data){
-		// 		// console.log('get ingredients success');
-  //               myVariable = JSON.stringify(data);
-  //               myVariable = JSON.parse(myVariable);
- 
 
 		ajax_CreateIngredient: function(toSave){
 			var new_id = false;
