@@ -75,7 +75,8 @@ jQuery(function ($) {
 
 				// if( flag ){
 					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
-					$('#todo-list').html( this.todoTemplate(todos) );
+					$('#todo-er').after(this.todoTemplate(todos))
+					// $('#todo-list').html(  );
 					// console.log(todos);	
 				// }
 				
