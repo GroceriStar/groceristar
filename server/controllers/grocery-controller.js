@@ -377,7 +377,8 @@ exports.shopping = async (req, res, next) => {
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
   };
   
-  res.render('pages/shopping/shopping-list', renderObject);
+  res.render('pages/shopping/shopping-list-mobile', renderObject);
+  // res.render('pages/shopping/shopping-list', renderObject);
 
 
 };

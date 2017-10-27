@@ -11,8 +11,9 @@
 
 		<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-<link rel="stylesheet" href="css/onsen-css-components.css">
+
+ <!--  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"> -->
+<!-- <link rel="stylesheet" href="css/onsen-css-components.css"> -->
 
 
     
@@ -687,6 +688,10 @@
 		<section id="todoapp">
 			
 
+		<ons-card>
+
+
+
 
 				<ul class="list">
 					<li class="list__item">
@@ -717,6 +722,14 @@
 				<ul id="todo-list" class="list"></ul>
 			</section>
 			<footer id="footer"></footer>
+
+
+
+			</ons-card>
+
+
+
+
 		</section>
 		<footer id="info">
 			
@@ -724,17 +737,7 @@
 
 		<script id="todo-template" type="text/x-handlebars-template">
 			{{#this}}
-			<!-- <li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
-				<div class="view">
-					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-					<label>{{title}}</label>
-					<button class="destroy"></button>
-				</div>
-				<input class="edit" value="{{title}}">
-			</li> -->
-
-
-
+			
 			  <li class="list__item list__item--tappable 
 			  	{{#if completed}} completed  {{/if}}">
 			    <div class="list__item__left">
@@ -785,7 +788,7 @@
 
 		<script id="footer-template" type="text/x-handlebars-template">
 			
-			<ul class="list">
+			<ul class="list" id="footer">
 			  <li class="list__item" style="padding-top: 15px;">
 			    <div class="list__item__center">
 			      {{activeTodoCount}} {{activeTodoWord}} left
@@ -793,7 +796,7 @@
 			    <div class="list__item__right">
 			      <div class="list__item__label">
 			        {{#if completedTodos}}
-			        <button id="clear-completed">Clear </button>
+			        	<button id="clear-completed">Clear </button>
 			        {{/if}}
 			      	
 			  	</div>
@@ -801,7 +804,9 @@
 			  </li>
 			</ul>
 
-			<div id="info" class="button-bar" 
+			<br />
+
+			<div id="filters" class="button-bar" 
 				style="width:280px;margin:0 auto;">
 			  <div class="button-bar__item">
 			    <input type="radio" name="segment-{{filter}}" {{#eq filter 'all'}}checked{{/eq}}>

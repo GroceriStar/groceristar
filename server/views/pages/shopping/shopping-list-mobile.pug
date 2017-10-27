@@ -1,0 +1,120 @@
+doctype html
+html(lang='en', data-framework='jquery')
+  head
+    meta(charset='utf-8')
+    title= 'Shopping List: ' + groceryId
+
+    link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
+
+    if isMobile
+      <!-- don't have mobile styles for this moment -->
+    else
+
+      link(rel='stylesheet', href='/css/select-demo/normalize.css')
+      link(rel='stylesheet', href='/css/select-demo/demo.css')
+
+      link(rel='stylesheet', href='/css/select-demo/cs-select.css')
+      link(rel='stylesheet', href='/css/select-demo/cs-skin-border.css')
+
+
+
+    link(rel='stylesheet', href='/css/jquery/base.css')
+
+    link(rel='stylesheet', href='/css/jquery/index.css')
+
+    link(rel='stylesheet', href='/css/one.css')
+
+
+
+  body(data-grocery-id=groceryId, data-flag=isUltimate, data-ingredients=list)
+
+
+    //ul#foo
+      li item1
+      li item1
+      li item1
+      li item1
+      li item1
+      li item1
+      li item1
+
+
+    h3 
+      a(href=back).pull-right 
+        | Go Back 
+        i.fa.fa-long-arrow-left.pull-right
+
+    //include ../../partials/departments-select2
+
+
+
+    section#todoapp
+      header#header
+        //h1= name
+        input#new-todo(placeholder='Item name', autofocus='', data-department-id=departmentId)
+      section#main
+        input#toggle-all(type='checkbox')
+        label(for='toggle-all') Mark all as complete
+
+        ul#todo-list
+          
+           each element in list
+            //h2=element.completed
+            if element.completed
+              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+            else
+              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+
+                div.view
+                  if element.completed
+                    input.toggle(type="checkbox", checked="checked")
+                  else
+                    input.toggle(type="checkbox")
+                  label= element.name
+                  button.destroy
+                input.edit(value=element.name)
+
+
+      footer#footer
+    footer#info
+      p Double-click to edit an item 
+
+
+
+      
+    if isUltimate 
+      //include ../../static/scripts-todo-read-only-delete-later.pug  
+    else
+      include ../../static/scripts-todo.pug
+
+
+
+    script(src='/javascript/select-demo/classie.js')
+    script(src='/javascript/select-demo/selectFx.js')
+  
+    //script.
+      (function() {
+
+        var groceryId = document.getElementById('grocery').value;
+
+        var selectElement = document.querySelector('select');
+         myFXSelect = new SelectFx(selectElement, {
+          onChange: function(val) {
+          //console.log('val', val); 
+          // val is departmentId value
+            var path = "/shopping/" + groceryId + '/' + val;
+          window.location.replace(path);
+         }
+       });
+
+       })();  
+
+
+
+
+    // :todo change this
+    //if isMobile
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js') 
+      include ../../static/scripts-mobile-select.pug  
+    //else
+      include ../../static/scripts-select.pug
