@@ -15,6 +15,10 @@ jQuery(function ($) {
 
 
 	var App = {
+		rrroute: '',
+		get: function(){
+			return this.rrroute;
+		},
 		isUltimate: function(){
 			return $('body').data().flag;
 		},
@@ -34,14 +38,23 @@ jQuery(function ($) {
 			this.todos = this.getIngredients() || [];		
 
 			this.bindEvents();
-			$('.button-bar').hide()
+			// 
  // console.log();
-			new Router({
+			this.rrroute = new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
 					this.render();
 				}.bind(this)
 			}).init('/all');
+
+			
+
+			$('input[type=radio][name=segment-filter]').change(function() {
+		        
+		        $(this).next()[0].click();
+		        
+
+		    });
 
 		},
 		bindEvents: function () {
@@ -65,17 +78,16 @@ jQuery(function ($) {
 
             // click on filters     #filters
 
-            
+            // $('#filters .button-bar__button')
+            //   .on('click', '.button-bar__button', this.filterClick.bind(this));  
 
-            // console.log($('#filters .button-bar__button'));
-            // 	.on('click', function(e){
 
-            // 		console.log( $(this) );
-
-            // });  
 
 
 		},
+		// filterClick: function(event){
+		// 	console.log($(event.target));
+		// },
 		render: function (flag=true) {
 
 			var todos = this.getFilteredTodos();
@@ -525,8 +537,9 @@ jQuery(function ($) {
 			}
 			
 			html += '>' +    
+			    '<a href="#/all" style="display:none;">All</a>'+
 			    '<button class="button-bar__button" data-href="#/all">All</button>'	    +
-			  
+			    
 			  '</div>'+
 			  '<div class="button-bar__item">'+
 			  	'<input type="radio" name="segment-filter" ';
@@ -536,6 +549,7 @@ jQuery(function ($) {
 			}
 			
 			html += '>' + 
+				'<a href="#/active" style="display:none;">Active</a>'+
 				'<button class="button-bar__button" data-href="#/active">Active</button>'+
 			  
 			  '</div>'+
@@ -547,7 +561,9 @@ jQuery(function ($) {
 			}
 			
 			html += '>' +  	
-				'<button class="button-bar__button" data-href="#/completed">Purchased</button>' +
+				
+				'<a href="#/completed" style="display:none;">Purchased</a>'+
+				'<button class="button-bar__button">Purchased</button>' +
 
 			  '</div>'+
 			'</div>';
