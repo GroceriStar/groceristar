@@ -375,6 +375,12 @@ exports.shopping = async (req, res, next) => {
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
     isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
+
+    activeTodoCount: '',
+    text: '',
+    have_completed_items: false,
+
+    filter: 'all'
   };
   // console.log(renderObject);
   res.render('pages/shopping/shopping-list-mobile', renderObject);

@@ -1,0 +1,43 @@
+ul.list#footer
+  li.list__item(style="padding-top: 15px;")
+    .list__item__center
+      span.count= activeTodoCount
+      | #{text} 
+    //#activeTodoCount + #activeTodoWord + ' left'
+	  
+
+    .list__item__right
+      .list__item__label
+        if (have_completed_items)
+          button#clear-completed Clear purchased 
+
+br
+			    
+#filters.button-bar(style="width:280px;margin:0 auto;") 
+	
+  .button-bar__item
+    if( filter == 'all' )
+      input(type="radio", name="segment-filter", checked="checked") 
+    else
+      input(type="radio", name="segment-filter")
+	
+    a(href="#/all", style="display:none;") All
+    button.button-bar__button All
+	    
+  .button-bar__item
+    if( filter == 'active' )
+      input(type="radio", name="segment-filter", checked="checked") 
+    else
+      input(type="radio", name="segment-filter")
+	  
+    a(href="#/active", style="display:none;") Active
+    button.button-bar__button Active
+	
+  .button-bar__item
+    if( filter == 'completed' )
+      input(type="radio", name="segment-filter", checked="checked") 
+    else
+      input(type="radio", name="segment-filter")
+	  
+    a(href="#/completed", style="display:none;") Purchased
+    button.button-bar__button Purchased
