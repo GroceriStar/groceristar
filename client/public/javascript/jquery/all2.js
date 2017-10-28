@@ -15,10 +15,7 @@ jQuery(function ($) {
 
 
 	var App = {
-		rrroute: '',
-		get: function(){
-			return this.rrroute;
-		},
+
 		isUltimate: function(){
 			return $('body').data().flag;
 		},
@@ -38,9 +35,8 @@ jQuery(function ($) {
 			this.todos = this.getIngredients() || [];		
 
 			this.bindEvents();
-			// 
- // console.log();
-			this.rrroute = new Router({
+
+			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
 					this.render();
@@ -56,6 +52,7 @@ jQuery(function ($) {
 
 		    });
 
+
 		},
 		bindEvents: function () {
 			// :todo i dont think that keyup its an awesome approach. it can work, but why?
@@ -64,25 +61,19 @@ jQuery(function ($) {
 
 			$('#footer').on('click', '#clear-completed', 
 				this.destroyCompleted.bind(this));
-
-			$('#todo-list')
+// #todo-list
+			$('#todoapp')
 				.on('change',   '.toggle',  this.toggle.bind(this))
 				.on('dblclick', 'label',    this.editingMode.bind(this))
 				.on('keyup',    '.edit',    this.editKeyup.bind(this))
 				.on('focusout', '.edit',    this.update.bind(this))
-				.on('click',    '.destroy', this.destroy.bind(this));
+				.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
 
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
 
-            // click on filters     #filters
-
-            // $('#filters .button-bar__button')
-            //   .on('click', '.button-bar__button', this.filterClick.bind(this));  
-
-
-
+            
 
 		},
 		// filterClick: function(event){
@@ -493,7 +484,7 @@ jQuery(function ($) {
 		},
 		destroy: async function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
-
+			console.log('cliiiiiiiiiiiiiiiiiii')
 			await this._unattach_async( [ $ingredient.data('id') ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render(false);

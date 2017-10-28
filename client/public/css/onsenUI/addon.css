@@ -653,10 +653,12 @@ input:disabled + .switch__toggle {
 }
 
 
-#todoapp #footer-link li .toolbar-button.destroy {
+/*#todoapp #footer-link li .toolbar-button.destroy {
   display: none;
+      transition: color 0.2s ease-out;
+      cursor: pointer;
 }
 
 #todoapp #footer-link li:hover .toolbar-button.destroy {
   display: block;
-}
+}*/
