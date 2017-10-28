@@ -376,7 +376,7 @@ exports.shopping = async (req, res, next) => {
     isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
   };
-  console.log(renderObject);
+  // console.log(renderObject);
   res.render('pages/shopping/shopping-list-mobile', renderObject);
   // res.render('pages/shopping/shopping-list', renderObject);
 

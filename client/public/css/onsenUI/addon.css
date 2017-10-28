@@ -651,3 +651,12 @@ input:disabled + .switch__toggle {
 .button-bar__button:focus {
   outline: 0;
 }
+
+
+#todoapp #footer-link li .toolbar-button.destroy {
+  display: none;
+}
+
+#todoapp #footer-link li:hover .toolbar-button.destroy {
+  display: block;
+}

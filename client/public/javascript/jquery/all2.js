@@ -34,7 +34,8 @@ jQuery(function ($) {
 			this.todos = this.getIngredients() || [];		
 
 			this.bindEvents();
-
+			$('.button-bar').hide()
+ // console.log();
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
@@ -44,6 +45,7 @@ jQuery(function ($) {
 
 		},
 		bindEvents: function () {
+			// :todo i dont think that keyup its an awesome approach. it can work, but why?
 			$('#new-todo').on('keyup', this.create.bind(this));
 			$('#toggle-all').on('change', this.toggleAll.bind(this));
 
@@ -61,13 +63,16 @@ jQuery(function ($) {
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
 
-            // click on filters    
-            $('#filters .button-bar__button')
-            	.on('click', function(e){
+            // click on filters     #filters
 
-            		console.log( $(this) );
+            
 
-            });  
+            // console.log($('#filters .button-bar__button'));
+            // 	.on('click', function(e){
+
+            // 		console.log( $(this) );
+
+            // });  
 
 
 		},
@@ -320,14 +325,14 @@ jQuery(function ($) {
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
 			// var departmentId = this.getDepartmentId();
-			console.log($input.val());
+			// console.log($input.val());
 			var toSave = {
 				name        : val,
 				groceryId   : this.getGroceryId(),
 				departmentId: this.getDepartmentId(),
 			};
 
-			console.log(toSave);
+			// console.log(toSave);
 
 			if (e.which !== ENTER_KEY || !val) { return; }
 
@@ -338,7 +343,7 @@ jQuery(function ($) {
 							|| 'fake-id-for-ultimate-gl';
 
 			// if( !new_id ) 
-			console.log(new_id);
+			// console.log(new_id);
 
 			var new_object = {
 				id: new_id,
@@ -348,10 +353,12 @@ jQuery(function ($) {
 
 				groceryId: this.getGroceryId(),
 				departmentId: this.getDepartmentId(),
-				order: ITEM.order + 1
+				order: ITEM.order + 1,
+
+				custom: true
 			}
 
-			console.log(new_object);
+			// console.log(new_object);
 			this.todos.push(new_object);
 
 
