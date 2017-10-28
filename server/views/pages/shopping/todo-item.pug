@@ -1,0 +1,56 @@
+//ul#todo-list
+  
+   each element in list
+    h2=element.completed
+    if element.completed
+      li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+    else
+      li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+
+        div.view
+          if element.completed
+            input.toggle(type="checkbox", checked="checked")
+          else
+            input.toggle(type="checkbox")
+          label= element.name
+          button.destroy
+        input.edit(value=element.name)
+
+
+<li class="list__item list__item--tappable 
+	  	{{#if completed}} completed  {{/if}}">
+	    <div class="list__item__left">
+	      <label class="checkbox">
+	        <input type="checkbox" id="checkbox2" 
+	        class="checkbox__input" name="c" 
+	        	{{#if completed}}checked="checked"{{/if}}
+	        >
+	        <div class="checkbox__checkmark"></div>
+	      </label>
+	    </div>
+
+	      	
+	    <label for="checkbox2" 
+	        class="list__item__center"
+	    	
+	    >
+	      <span
+	      	{{#if completed}}
+    		style="text-decoration: line-through;"
+	    	{{/if}}
+	      >
+	      	{{title}}
+	      </span>
+	      
+	      <input type="text" class="text-input edit" 
+					  value="{{title}}" style="display: none;">
+	    </label>
+	    <div class="list__item__right">
+	      <div class="list__item__label">
+	      
+	      	<button class="toolbar-button destroy">
+			  <i class="fa fa-times" style="font-size:17px"></i>
+			</button>
+	  	</div>
+	    </div>
+	  </li>
