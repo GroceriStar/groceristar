@@ -44,7 +44,7 @@ jQuery(function ($) {
 			}).init('/all');
 
 			
-
+			// :todo make it work inside bind events method
 			$('input[type=radio][name=segment-filter]').change(function() {
 		        
 		        $(this).next()[0].click();
@@ -101,11 +101,13 @@ jQuery(function ($) {
 			
 				$('#main').toggle(todos.length > 0);
 
-				$('#toggle-all').prop('checked', 
-					this.getActiveTodos().length === 0
-				);
 
-				this.renderFooter();
+				// explore this stuff
+				// $('#toggle-all').prop('checked', 
+				// 	this.getActiveTodos().length === 0
+				// );
+
+				// this.renderFooter();
 
 
 
@@ -250,30 +252,40 @@ jQuery(function ($) {
 			this._toggle(ingredientIds, isChecked)
 			this.render();
 		},
+
+
 		getActiveTodos: function () {
 
-			if(typeof this.todos !== 'string'){
-				return this.todos.filter(function (todo) {
-					return !todo.completed;
-				});	
-			}			
+			// if(typeof this.todos !== 'string'){
+			// 	return this.todos.filter(function (todo) {
+			// 		return !todo.completed;
+			// 	});	
+			// }	
+
+
+			return this.todos;		
 		},
 		getCompletedTodos: function () {
-			return this.todos.filter(function (todo) {
-				return todo.completed;
-			});
-		},
-		getFilteredTodos: function () {
-			if (this.filter === 'active') {
-				return this.getActiveTodos();
-			}
+			// return this.todos.filter(function (todo) {
+			// 	return todo.completed;
+			// });
 
-			if (this.filter === 'completed') {
-				return this.getCompletedTodos();
-			}
 
 			return this.todos;
 		},
+		getFilteredTodos: function () {
+			// if (this.filter === 'active') {
+			// 	return this.getActiveTodos();
+			// }
+
+			// if (this.filter === 'completed') {
+			// 	return this.getCompletedTodos();
+			// }
+
+			return this.todos;
+		},
+
+
 		destroyCompleted: async function () {
 
 			var array1  = this.todos;
