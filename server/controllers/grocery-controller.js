@@ -363,12 +363,13 @@ exports.shopping = async (req, res, next) => {
 
   
 
-  // console.log(ingredients);
+  console.log(ingredients);
   // console.log(count(_.where(ingredients, {completed: false}))
 
   var count_not_purchased = _.where(ingredients, {completed: false}).length;
-  console.log(count_not_purchased);
-  console.log(!count_not_purchased);
+  // console.log(count_not_purchased);
+  // console.log(!count_not_purchased);
+
 
   let renderObject = {
     user        : req.user,

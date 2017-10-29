@@ -27,22 +27,18 @@ html(lang='en', data-framework='jquery')
     
     
     section#todoapp
+
+
       //- ons-card
       ul.list#footer-link
         //include ../../partials/department/best-select-update-my-name
+        
+        include new-item
 
-        li.list__item#todo-er
-          .list__item__left
-            label.checkbox
-              input#toggle-all.checkbox__input(type="checkbox", name="c") 
-					        
-              .checkbox__checkmark
-					      
-          label.list__item__center
-            input#new-todo(type="text", class="text-input", placeholder='Item name', autofocus='') 
   
 
-      // include todo-item.pug
+        include todo-item.pug
+
       include footer.pug
 
 
@@ -76,8 +72,7 @@ html(lang='en', data-framework='jquery')
                 input.edit(value=element.name)
 
 
-      //footer#footer
-       #filters.button-bar(style="width:280px;margin:0 auto;") 
+
 				
 
 

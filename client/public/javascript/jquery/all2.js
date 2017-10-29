@@ -91,14 +91,26 @@ jQuery(function ($) {
 
 
 				// if( flag ){
+
+
+
 					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
-					$('#todo-er').after(this.todoTemplate(todos))
+					// $('#todo-er').after(this.todoTemplate(todos))
+
+
+
+
 					// $('#todo-list').html(  );
 					// console.log(todos);	
 				// }
 				
 
-			
+
+
+
+
+
+			// explore this stuff
 				$('#main').toggle(todos.length > 0);
 
 
@@ -120,6 +132,7 @@ jQuery(function ($) {
 			}
 
 		},
+
 		todoTemplate: function(elements, index){
 
 			var html = '';
@@ -220,6 +233,7 @@ jQuery(function ($) {
 			});
 			return html;
 		},
+		
 		// :todo move it to server-render
 		renderFooter: function () {
 

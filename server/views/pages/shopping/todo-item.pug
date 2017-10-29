@@ -1,56 +1,10 @@
-ul#todo-list
-  
-   each element in list
-    h2=element.completed
-    if element.completed
-      li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
-    else
-      li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+each element in list
+  //h2=element.completed
+  if( element.completed )
+    li.list__item.list__item--tappable.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+  else
+    li.list__item.list__item--tappable(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
 
-        div.view
-          if element.completed
-            input.toggle(type="checkbox", checked="checked")
-          else
-            input.toggle(type="checkbox")
-          label= element.name
-          button.destroy
-        input.edit(value=element.name)
-
-
-
-if( completed )
-  li.list__item.list__item--tappable 
-else
-  li.list__item.list__item--tappable.completed 
-
-    .list__item__left
-      label.checkbox
-      	if( completed )
-          input#checkbox2.checkbox__input(type="checkbox", name="c")
-
-      	else	
-          input#checkbox2.checkbox__input(type="checkbox", name="c")
-
-        .checkbox__checkmark
-
-
-	      	
-  label.list__item__center(for="checkbox2") 
-	        
-    if( completed )
-      // change it :todo
-      span(style="text-decoration: line-through;")
-    else	    	
-      span
-
-    #{title}
-
-	// :todo change it      
-    input.text-input.edit(type="text", value=title, style="display: none;")
-	    
-  .list__item__right
-    .list__item__label
-	      
-	      	button.toolbar-button.destroy
-	      	  // :todo change this	
-			  i.fa.fa-times(style="font-size:17px")
+      include item-checkbox
+      include item-center
+      include item-right

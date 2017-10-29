@@ -1,0 +1,12 @@
+label.list__item__center(for="checkbox2") 
+    
+  if( completed )
+    // change it :todo
+    span(style="text-decoration: line-through;")
+  else	    	
+    span
+
+  #{element.name}
+
+  // :todo change it      
+  input.text-input.edit(type="text", value=element.name, style="display: none;")
