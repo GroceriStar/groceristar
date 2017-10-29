@@ -363,7 +363,7 @@ exports.shopping = async (req, res, next) => {
 
   
 
-  console.log(ingredients);
+  // console.log(ingredients);
   // console.log(count(_.where(ingredients, {completed: false}))
 
   var count_not_purchased = _.where(ingredients, {completed: false}).length;
@@ -380,6 +380,7 @@ exports.shopping = async (req, res, next) => {
     departments : response.data,
 
     list        : ingredients,
+
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
     isMobile: (md.mobile()) ? true : false,

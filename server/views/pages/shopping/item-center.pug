@@ -1,12 +1,10 @@
 label.list__item__center(for="checkbox2") 
     
-  if( completed )
+  if( element.completed )
     // change it :todo
-    span(style="text-decoration: line-through;")
+    span(style="text-decoration: line-through;")=element.name
   else	    	
-    span
-
-  #{element.name}
+    span=element.name
 
   // :todo change it      
   input.text-input.edit(type="text", value=element.name, style="display: none;")

@@ -32,7 +32,15 @@ jQuery(function ($) {
 		},
 		init: function() {
 
-			this.todos = this.getIngredients() || [];		
+			var selector = '#todoapp li.list__item.list__item--tappable';
+
+			this.todos   = $(selector).map(function() {
+				
+			    return $(this).data().element;
+			}).get();
+
+
+			console.log(this.todos )
 
 			this.bindEvents();
 
@@ -133,112 +141,113 @@ jQuery(function ($) {
 
 		},
 
-		todoTemplate: function(elements, index){
+		// todoTemplate: function(elements, index){
 
-			var html = '';
-			_.each(elements, function(element){
+		// 	var html = '';
+		// 	_.each(elements, function(element){
 
-				var single = '';
-				var dataAttrs = 'data-id="' + element.id + 
-				                 '" data-department-id="' + element.departmentId +
-				 	             '" data-order="' + element.order + '" ' + 
-				 	             'data-custom="' + element.custom + '"';
+		// 		var single = '';
+		// 		var dataAttrs = 'data-id="' + element.id + 
+		// 		                 '" data-department-id="' + element.departmentId +
+		// 		 	             '" data-order="' + element.order + '" ' + 
+		// 		 	             'data-custom="' + element.custom + '"';
 				
-				single += 
-				  '<li class="list__item list__item--tappable ';
+		// 		single += 
+		// 		  '<li class="list__item list__item--tappable ';
 
-				  if( element.completed ){
-				  	single += 'completed' // :todo reod later this thng with ES6 stuff because i hate current setup
-				  }
-			  		single += '" ' + dataAttrs;
-			    single += '>' +
-			    '<div class="list__item__left">' +
-			      '<label class="checkbox">' +
-			        '<input type="checkbox" id="checkbox' + element.order + '"'+ 
-			        'class="checkbox__input" name="c"';
-    				  if( element.completed ){
-				  	single += ' checked="checked"' // :todo reod later this thng with ES6 stuff because i hate current setup
-				  }    
+		// 		  if( element.completed ){
+		// 		  	single += 'completed' // :todo reod later this thng with ES6 stuff because i hate current setup
+		// 		  }
+		// 	  		single += '" ' + dataAttrs;
+		// 	    single += '>' +
+		// 	    '<div class="list__item__left">' +
+		// 	      '<label class="checkbox">' +
+		// 	        '<input type="checkbox" id="checkbox' + element.order + '"'+ 
+		// 	        'class="checkbox__input" name="c"';
+  //   				  if( element.completed ){
+		// 		  	single += ' checked="checked"' // :todo reod later this thng with ES6 stuff because i hate current setup
+		// 		  }    
 			        	
-			single += '>' +
-			        '<div class="checkbox__checkmark"></div>' +
-			      '</label>' +
-			    '</div>' +
+		// 	single += '>' +
+		// 	        '<div class="checkbox__checkmark"></div>' +
+		// 	      '</label>' +
+		// 	    '</div>' +
 
 			      	
-			    '<label for="checkbox' + element.order + '"'+
-			        '"class="list__item__center"' +
+		// 	    '<label for="checkbox' + element.order + '"'+
+		// 	        '"class="list__item__center"' +
 			    	
-			    '>' +
-			      '<span';
+		// 	    '>' +
+		// 	      '<span';
 
 			    
-			    if( element.completed ){
-				  	single += ' style="text-decoration: line-through;" ';
-				  	// :todo reod later this thng with ES6 stuff because i hate current setup
-				}  
+		// 	    if( element.completed ){
+		// 		  	single += ' style="text-decoration: line-through;" ';
+		// 		  	// :todo reod later this thng with ES6 stuff because i hate current setup
+		// 		}  
 
-       		 single +=  '>' +
-			      	element.name +
+  //      		 single +=  '>' +
+		// 	      	element.name +
 			      
-			      '</span>' +
+		// 	      '</span>' +
 			      
-			      '<input type="text" class="text-input edit" '+ 
-      					  'value="' + element.name + '" style="display: none;">' +
-			    '</label>' +
-			    '<div class="list__item__right">' +
-			      '<div class="list__item__label">' +
+		// 	      '<input type="text" class="text-input edit" '+ 
+  //     					  'value="' + element.name + '" style="display: none;">' +
+		// 	    '</label>' +
+		// 	    '<div class="list__item__right">' +
+		// 	      '<div class="list__item__label">' +
 			      
-			      	'<button class="toolbar-button destroy">' +
-					  '<i class="fa fa-times" style="font-size:17px"></i>' +
-					'</button>' +
-			  	'</div>' +
-			    '</div>' +
-			  '</li>';
+		// 	      	'<button class="toolbar-button destroy">' +
+		// 			  '<i class="fa fa-times" style="font-size:17px"></i>' +
+		// 			'</button>' +
+		// 	  	'</div>' +
+		// 	    '</div>' +
+		// 	  '</li>';
 
-			  // console.log(single);
+		// 	  // console.log(single);
 
 
-				// if( element.completed ){
-				// 	single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
-				// 	 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-				// } else {
-				// 	single += '<li data-id="' + element.id + 
-				// 	'" data-department-id="' + element.departmentId + 
-				// 	'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-				// }
+		// 		// if( element.completed ){
+		// 		// 	single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
+		// 		// 	 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
+		// 		// } else {
+		// 		// 	single += '<li data-id="' + element.id + 
+		// 		// 	'" data-department-id="' + element.departmentId + 
+		// 		// 	'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
+		// 		// }
 
-				//   single += '<div class="view">' ;
-				// 	if( element.completed ){
-				// 		single += '<input class="toggle" type="checkbox" checked>';
-				// 	} else {
-				// 		single += '<input class="toggle" type="checkbox" >';
-				// 	}
+		// 		//   single += '<div class="view">' ;
+		// 		// 	if( element.completed ){
+		// 		// 		single += '<input class="toggle" type="checkbox" checked>';
+		// 		// 	} else {
+		// 		// 		single += '<input class="toggle" type="checkbox" >';
+		// 		// 	}
 
 						
-				// 	single += '<label>' + element.name + '</label>'+
-				// 				'<button class="destroy"></button>'+
-				// 		'</div>'+
-				// 		'<input class="edit" value="' + element.name + '">'
-				// 	// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
-				// 	// 			'<button class="destroy"></button>'+
-				// 	// 	'</div>'+
-				// 	// 	'<input class="edit" value="' + element.name + '">'	
+		// 		// 	single += '<label>' + element.name + '</label>'+
+		// 		// 				'<button class="destroy"></button>'+
+		// 		// 		'</div>'+
+		// 		// 		'<input class="edit" value="' + element.name + '">'
+		// 		// 	// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
+		// 		// 	// 			'<button class="destroy"></button>'+
+		// 		// 	// 	'</div>'+
+		// 		// 	// 	'<input class="edit" value="' + element.name + '">'	
 
-				// single += '</li>';
+		// 		// single += '</li>';
 
-				html += single;
+		// 		html += single;
 
 				
-			});
-			return html;
-		},
-		
+		// 	});
+		// 	return html;
+		// },
+
 		// :todo move it to server-render
 		renderFooter: function () {
 
 			var todoCount       = this.todos.length;
 			var activeTodoCount = this.getActiveTodos().length;
+
 
 			var template = this.footerTemplate({
 				activeTodoCount: activeTodoCount,
@@ -247,10 +256,18 @@ jQuery(function ($) {
 				filter         : this.filter
 			});
 
+
 			// $('#footer').toggle(todoCount > 0)
 			// 	.html(template);
 
-			$('#footer-link').after(template);	
+
+
+
+
+
+
+			// $('#footer-link').after(template);
+
 		},
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');

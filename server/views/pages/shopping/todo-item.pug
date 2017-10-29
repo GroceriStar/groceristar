@@ -1,9 +1,9 @@
 each element in list
   //h2=element.completed
   if( element.completed )
-    li.list__item.list__item--tappable.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+    li.list__item.list__item--tappable.completed(data-element=element)
   else
-    li.list__item.list__item--tappable(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
+    li.list__item.list__item--tappable(data-element=element)
 
       include item-checkbox
       include item-center

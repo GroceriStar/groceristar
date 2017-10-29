@@ -19,6 +19,8 @@ html(lang='en', data-framework='jquery')
 
   body(data-grocery-id=groceryId, data-flag=isUltimate, data-ingredients=list, data-department-id=departmentId)
 
+
+
     //h3 
       a(href=back).pull-right 
         | Go Back 
@@ -46,31 +48,6 @@ html(lang='en', data-framework='jquery')
 
 
 			
-
-
-
-      //#filters.button-bar(style="width:280px;margin:0 auto;") 
-
-      //section#main
-
-        //ul#todo-list
-          
-           each element in list
-            h2=element.completed
-            if element.completed
-              li.completed(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
-            else
-              li(data-id=element.id, data-department-id=element.departmentId, data-order=element.order, data-custom=element.custom)
-
-                div.view
-                  if element.completed
-                    input.toggle(type="checkbox", checked="checked")
-                  else
-                    input.toggle(type="checkbox")
-                  label= element.name
-                  button.destroy
-                input.edit(value=element.name)
-
 
 
 				
