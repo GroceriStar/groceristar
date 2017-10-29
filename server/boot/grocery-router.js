@@ -134,7 +134,8 @@ module.exports = function(app) {
   // Shopping part, i.e. TODO list
   router.get('/shopping/:groceryId/:departmentId', 
     groceryController.shopping);
-
+  router.get('/shopping2/:groceryId/:departmentId', 
+    groceryController.shopping2);
 
   app.use(router);
 

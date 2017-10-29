@@ -3,26 +3,25 @@ extends ../../layouts/dashboard
 block content
 
   .row
-    .col-md-7.col-md-offset-3
+    .col-md-7.col-md-offset-3.mt-120
       .panel.panel-bordered
-          .panel-heading= 'Title: ' + name
+          .panel-heading
+            h1.panel-title= name
+  
           .panel-body
-            h4 Сreate a new list by cloning Grocery Template
+
+            //- :todo fix this
             h4(style="font-weight:300;") Click on departments select box
             h4(style="font-weight:300;") You will go to particular Department after selecting it
+            include ../../partials/departments-select
 
-      h2= 'Title: ' + name
-        //+dropdown(groceryId)
       
       //h2= current_path
+
     section
       .col-md-7.col-md-offset-3
 
-        //- :todo fix this
-        h4(style="font-weight:300;") Click on departments select box
-        h4(style="font-weight:300;") You will go to particular Department after selecting it 
-        include ../../partials/departments-select
-
+       
         
         
     //section

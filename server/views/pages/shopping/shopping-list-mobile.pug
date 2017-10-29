@@ -1,0 +1,74 @@
+doctype html
+html(lang='en', data-framework='jquery')
+  head
+    meta(charset='utf-8')
+    title= 'Shopping List: ' + groceryId
+
+    //link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
+
+
+    link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsenui.css')
+
+    link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsen-css-components.min.css')
+
+    link(rel='stylesheet', href='/css/onsenUI/addon.css')
+
+    link(rel='stylesheet', href='/css/onsenUI/items-center-only.css')
+
+
+
+  body(data-grocery-id=groceryId, data-flag=isUltimate, data-ingredients=list, data-department-id=departmentId)
+
+
+
+    //h3 
+      a(href=back).pull-right 
+        | Go Back 
+        i.fa.fa-long-arrow-left.pull-right
+
+    
+    
+    section#todoapp
+
+
+      //- ons-card
+      ul.list#footer-link
+        //include ../../partials/department/best-select-update-my-name
+        
+        include new-item
+
+  
+
+        include todo-item.pug
+
+      include footer.pug
+
+
+
+
+
+			
+
+
+				
+
+
+    footer#info
+      p Double-click to edit an item 
+
+
+
+      
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
+
+    script(src='https://use.fontawesome.com/8b5217f583.js')
+
+    script(src='https://unpkg.com/onsenui/js/onsenui.min.js')
+    //script(src='https://unpkg.com/jquery/dist/jquery.min.js')	
+      
+    
+    script(src='/javascript/jquery/director.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
+
+    script(src='/javascript/jquery/all2.js')

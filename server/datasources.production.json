@@ -1,8 +1,6 @@
 {
   "groceryDS": {
-    
-    
-    "url": "mongodb://heroku_1b88s5ll:l546cgtnm3f76e6dcjdihdbqcc@ds155424.mlab.com:55424/heroku_1b88s5ll",
+    "url": "mongodb://heroku_p3w65n77:h3ab8q3uaqdk7tjrauhbl7dd6r@ds235065.mlab.com:35065/heroku_p3w65n77",
     "name": "groceryDS",
     "connector": "loopback-connector-mongodb"
   }

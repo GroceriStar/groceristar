@@ -4,13 +4,15 @@ module.exports = function(Ingredient) {
     
     //:todo add to done & delete default false
 	Ingredient.validatesPresenceOf(
-		'name'
+		'name',
         // 'type', 
         // 'done', 'delete'
 
         // 'term',
         // 'description',
         // 'searchValue',
+        'departmentId'
+        
 	);
 
     Ingredient.observe("before save", function updateTimestamp(ctx, next) {
