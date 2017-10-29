@@ -2,21 +2,18 @@ ul.list#footer
   li.list__item(style="padding-top: 15px;")
     .list__item__center
       span.count= activeTodoCount
-      | #{text} 
-    //#activeTodoCount + #activeTodoWord + ' left'
-	  
-
+      	 
     .list__item__right
       .list__item__label
         if (have_completed_items)
           button#clear-completed Clear purchased 
 
 br
-			    
+h2=(filter == 'all')			    
 #filters.button-bar(style="width:280px;margin:0 auto;") 
 	
   .button-bar__item
-    if( filter == 'all' )
+    if(filter == 'all')
       input(type="radio", name="segment-filter", checked="checked") 
     else
       input(type="radio", name="segment-filter")
@@ -25,7 +22,7 @@ br
     button.button-bar__button All
 	    
   .button-bar__item
-    if( filter == 'active' )
+    if(filter == 'active')
       input(type="radio", name="segment-filter", checked="checked") 
     else
       input(type="radio", name="segment-filter")
@@ -34,7 +31,7 @@ br
     button.button-bar__button Active
 	
   .button-bar__item
-    if( filter == 'completed' )
+    if(filter == 'completed')
       input(type="radio", name="segment-filter", checked="checked") 
     else
       input(type="radio", name="segment-filter")

@@ -305,6 +305,7 @@ exports.shopping = async (req, res, next) => {
   // console.log()
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
+  var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
 
   var response = await dropdown_departments(groceryId, next);
   var md = new MobileDetect(req.headers['user-agent']);
@@ -360,7 +361,14 @@ exports.shopping = async (req, res, next) => {
 
 
 
-  var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
+  
+
+  // console.log(ingredients);
+  // console.log(count(_.where(ingredients, {completed: false}))
+
+  var count_not_purchased = _.where(ingredients, {completed: false}).length;
+  console.log(count_not_purchased);
+  console.log(!count_not_purchased);
 
   let renderObject = {
     user        : req.user,
@@ -376,9 +384,9 @@ exports.shopping = async (req, res, next) => {
     isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
 
-    activeTodoCount: '',
+    activeTodoCount: count_not_purchased + ' items left',
     text: '',
-    have_completed_items: false,
+    have_completed_items: !count_not_purchased,
 
     filter: 'all'
   };

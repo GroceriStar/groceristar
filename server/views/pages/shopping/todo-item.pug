@@ -1,4 +1,4 @@
-//ul#todo-list
+ul#todo-list
   
    each element in list
     h2=element.completed
@@ -17,40 +17,40 @@
         input.edit(value=element.name)
 
 
-<li class="list__item list__item--tappable 
-	  	{{#if completed}} completed  {{/if}}">
-	    <div class="list__item__left">
-	      <label class="checkbox">
-	        <input type="checkbox" id="checkbox2" 
-	        class="checkbox__input" name="c" 
-	        	{{#if completed}}checked="checked"{{/if}}
-	        >
-	        <div class="checkbox__checkmark"></div>
-	      </label>
-	    </div>
+
+if( completed )
+  li.list__item.list__item--tappable 
+else
+  li.list__item.list__item--tappable.completed 
+
+    .list__item__left
+      label.checkbox
+      	if( completed )
+          input#checkbox2.checkbox__input(type="checkbox", name="c")
+
+      	else	
+          input#checkbox2.checkbox__input(type="checkbox", name="c")
+
+        .checkbox__checkmark
+
 
 	      	
-	    <label for="checkbox2" 
-	        class="list__item__center"
-	    	
-	    >
-	      <span
-	      	{{#if completed}}
-    		style="text-decoration: line-through;"
-	    	{{/if}}
-	      >
-	      	{{title}}
-	      </span>
+  label.list__item__center(for="checkbox2") 
+	        
+    if( completed )
+      // change it :todo
+      span(style="text-decoration: line-through;")
+    else	    	
+      span
+
+    #{title}
+
+	// :todo change it      
+    input.text-input.edit(type="text", value=title, style="display: none;")
+	    
+  .list__item__right
+    .list__item__label
 	      
-	      <input type="text" class="text-input edit" 
-					  value="{{title}}" style="display: none;">
-	    </label>
-	    <div class="list__item__right">
-	      <div class="list__item__label">
-	      
-	      	<button class="toolbar-button destroy">
-			  <i class="fa fa-times" style="font-size:17px"></i>
-			</button>
-	  	</div>
-	    </div>
-	  </li>
+	      	button.toolbar-button.destroy
+	      	  // :todo change this	
+			  i.fa.fa-times(style="font-size:17px")
