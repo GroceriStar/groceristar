@@ -23,13 +23,11 @@ jQuery(function ($) {
 			return $('body').data().departmentId;			
 		},
 		getGroceryId: function(){
-
-			var groceryId = $('body').data().groceryId;
-			return groceryId;
+			return $('body').data().groceryId;
 		},
-		getIngredients: function(){
-			return $('body').data().ingredients;
-		},
+		// getIngredients: function(){
+		// 	return $('body').data().ingredients;
+		// },
 		init: function() {
 
 			var selector = '#todoapp li.list__item.list__item--tappable';
@@ -39,8 +37,9 @@ jQuery(function ($) {
 			    return $(this).data().element;
 			}).get();
 
-
-			console.log(this.todos )
+			this.groceryId    = this.getGroceryId();
+			this.departmentId = this.getDepartmentId(); 
+			// console.log(this.todos )
 
 			this.bindEvents();
 
@@ -63,22 +62,30 @@ jQuery(function ($) {
 
 		},
 		bindEvents: function () {
-			// :todo i dont think that keyup its an awesome approach. it can work, but why?
-			$('#new-todo').on('keyup', this.create.bind(this));
-			$('#toggle-all').on('change', this.toggleAll.bind(this));
 
-			$('#footer').on('click', '#clear-completed', 
-				this.destroyCompleted.bind(this));
-// #todo-list
-			$('#todoapp')
-				.on('change',   '.toggle',  this.toggle.bind(this))
-				.on('dblclick', 'label',    this.editingMode.bind(this))
-				.on('keyup',    '.edit',    this.editKeyup.bind(this))
-				.on('focusout', '.edit',    this.update.bind(this))
-				.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
-
+			// works well & tested			
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
+
+            $('#toggle-all')
+				.on('change', this.toggleAll.bind(this));    
+
+
+			// :todo i dont think that keyup its an awesome approach. it can work, but why?
+			$('#new-todo')
+				.on('keyup', this.create.bind(this));
+
+
+			// $('#footer').on('click', '#clear-completed', 
+			// 	this.destroyCompleted.bind(this));
+
+			// #todo-list
+			// $('#todoapp')
+			// 	.on('change',   '.toggle',  this.toggle.bind(this))
+			// 	.on('dblclick', 'label',    this.editingMode.bind(this))
+			// 	.on('keyup',    '.edit',    this.editKeyup.bind(this))
+			// 	.on('focusout', '.edit',    this.update.bind(this))
+			// 	.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
 
 
             
@@ -91,7 +98,7 @@ jQuery(function ($) {
 
 			var todos = this.getFilteredTodos();
 
-			
+				
 
 			if( todos ){
 
@@ -272,12 +279,9 @@ jQuery(function ($) {
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-
 			this.todos.forEach(function (todo) {
 				todo.completed = isChecked;
 			});
-
-			// console.log(this.todos);
 
 			var ingredientIds = _.pluck(this.todos, 'id');
 			this._toggle(ingredientIds, isChecked)
@@ -305,6 +309,9 @@ jQuery(function ($) {
 			return this.todos;
 		},
 		getFilteredTodos: function () {
+
+			// console.log(this.filter)
+
 			// if (this.filter === 'active') {
 			// 	return this.getActiveTodos();
 			// }
@@ -374,19 +381,21 @@ jQuery(function ($) {
 			// console.log($input.val());
 			var toSave = {
 				name        : val,
-				groceryId   : this.getGroceryId(),
-				departmentId: this.getDepartmentId(),
+				// groceryId   : this.getGroceryId(),
+				// departmentId: this.getDepartmentId(),
+				groceryId   : this.groceryId,
+				departmentId: this.departmentId,
 			};
 
-			// console.log(toSave);
-
+// 			console.log(toSave);
+// return ;
 			if (e.which !== ENTER_KEY || !val) { return; }
 
 			// :todo switch to fucntion
 			var ITEM   = _.last(this.todos);
 
-			var new_id = this.ajax_call('create-ingredient', toSave) 
-							|| 'fake-id-for-ultimate-gl';
+			var new_id = this.ajax_call('create-ingredient', toSave); 
+							// || 'fake-id-for-ultimate-gl';
 
 			// if( !new_id ) 
 			// console.log(new_id);
@@ -406,7 +415,7 @@ jQuery(function ($) {
 
 			// console.log(new_object);
 			this.todos.push(new_object);
-
+			// console.log(this.todos);
 
 			$input.val('');
 
@@ -709,7 +718,7 @@ jQuery(function ($) {
 
 
 		redirectToOtherDepartment: function(){
-			var path = "/shopping/" + this.getGroceryId() + '/' + this.value;
+			var path = "/shopping/" + this.groceryId + '/' + this.value;
   			window.location.replace(path);
 		}
 

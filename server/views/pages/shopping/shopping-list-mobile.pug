@@ -17,7 +17,7 @@ html(lang='en', data-framework='jquery')
 
 
 
-  body(data-grocery-id=groceryId, data-flag=isUltimate, data-ingredients=list, data-department-id=departmentId)
+  body(data-grocery-id=groceryId, data-flag=isUltimate,  data-department-id=departmentId)
 
 
 
@@ -31,17 +31,17 @@ html(lang='en', data-framework='jquery')
     section#todoapp
 
 
-      //- ons-card
-      ul.list#footer-link
-        //include ../../partials/department/best-select-update-my-name
+      ons-card
+        ul.list#footer-link
+          include ../../partials/department/best-select-update-my-name
         
-        include new-item
+          include new-item
 
   
 
-        include todo-item.pug
+          include todo-item.pug
 
-      include footer.pug
+        include footer.pug
 
 
 
