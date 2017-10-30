@@ -25,9 +25,7 @@ jQuery(function ($) {
 		getGroceryId: function(){
 			return $('body').data().groceryId;
 		},
-		// getIngredients: function(){
-		// 	return $('body').data().ingredients;
-		// },
+
 		init: function() {
 
 			var selector = '#todoapp li.list__item.list__item--tappable';
@@ -52,12 +50,15 @@ jQuery(function ($) {
 
 			
 			// :todo make it work inside bind events method
-			$('input[type=radio][name=segment-filter]').change(function() {
+			$('input[type=radio][name=segment-filter]')
+				.change(function() {
 		        
-		        $(this).next()[0].click();
-		        
+		        	$(this).parent().find('.hide')[0].click()
 
-		    });
+
+			        
+
+		    	});
 
 
 		},
@@ -67,6 +68,8 @@ jQuery(function ($) {
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
+
+            // NOT WORKING!!!!!!!!    
             $('#toggle-all')
 				.on('change', this.toggleAll.bind(this));    
 
@@ -176,6 +179,12 @@ jQuery(function ($) {
 			var completedTodos  = todoCount - activeTodoCount;
 			$('span.count').html(activeTodoCount);
 
+
+			// add pluralize stuff
+
+
+
+
 			if( completedTodos ){
 				$('#clear-completed').show();
 			}
@@ -241,6 +250,10 @@ jQuery(function ($) {
 			this.filter = 'all';
 
 			var difference = _.difference(array1, array2);
+			console.log(array1);
+			console.log(array2);
+			console.log(difference);
+
 			var array_of_ids = _.pluck(difference, 'id');
 			await this._unattach_async(array_of_ids);
 			this.render();
@@ -248,9 +261,9 @@ jQuery(function ($) {
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
 		getIndexFromEl: function (element) {
-			var $ingredient = this.getElementFromEvent(element);
-			var id    = $ingredient.data('id');
-
+			// var $ingredient = this.getElementFromEvent(element);
+			// var id    = $ingredient.data('id');
+			var id    = this.getDataField(e, 'id');
 			var todos = this.todos;
 			var i     = todos.length;
 
@@ -275,8 +288,8 @@ jQuery(function ($) {
 
 				completed: false,
 
-				groceryId   : this.getGroceryId(),
-				departmentId: this.getDepartmentId(),
+				groceryId   : this.groceryId,
+				departmentId: this.departmentId,
 				order       : this.getMaxOrderNumber() + 1,
 
 				custom: true
@@ -315,8 +328,8 @@ jQuery(function ($) {
 
 				completed: false,
 
-				groceryId: this.getGroceryId(),
-				departmentId: this.getDepartmentId(),
+				groceryId: this.groceryId,
+				departmentId: this.departmentId,
 				order: ITEM.order + 1,
 
 				custom: true
@@ -331,15 +344,15 @@ jQuery(function ($) {
 			this.render();
 		},
 		toggle: function (event) {
-			var i = this.getIndexFromEl(event.target);
-			var $ingredient = this.getElementFromEvent(event.target);
-
+			var index  = this.getIndexFromEl(event.target);
+			// var $ingredient = this.getElementFromEvent(event.target);
+			var id = this.getDataField(e, 'id');
 			// console.log( $(event.target).prop('checked') );
 
 			var flag =  $(event.target).prop('checked');
 
-			this.todos[i].completed = !this.todos[i].completed;
-			this._toggle( [ $ingredient.data().id ], flag );
+			this.todos[index].completed = !this.todos[index].completed;
+			this._toggle( [ id ], flag );
 			this.render();
 
 		},
@@ -376,12 +389,17 @@ jQuery(function ($) {
 		},
 		// This is a Rename function
 		update: async function (e) {
-			var el = e.target;
+			var el  = e.target;
 			var $el = $(el);
 			var val = $el.val().trim(); // :todo remove to name
 
 			var index       = this.getIndexFromEl(el);
-			var $ingredient = this.getElementFromEvent(e.target);
+			// var $ingredient = this.getElementFromEvent(e.target);
+
+			var id        = this.getDataField(e, 'id');
+			var is_custom = this.getDataField(e, 'custom');
+
+			console.log(id, is_custom)
 
 			if ( !val ) {
 				this.destroy(e);
@@ -401,9 +419,9 @@ jQuery(function ($) {
 			}
 
 			// this is a brand new ingredient - we'll update the name
-			if( $ingredient.data().custom ){
+			if( is_custom ){
 
-				this._rename_async($ingredient.data().id, val);
+				this._rename_async( id, val );
 				this.todos[index].name = val;
 				this.render();
 				return ;
@@ -412,7 +430,7 @@ jQuery(function ($) {
 
 				
 				// 1_ we delete an ultimate ingredient from GL
-				await this._unattach_async( [ $ingredient.data().id ] );	
+				await this._unattach_async( [ id ] );	
 				this.todos.splice(index, 1);
 
 
@@ -444,7 +462,7 @@ jQuery(function ($) {
 			// this.render();
 		},
 		destroy: async function (e) {
-			var $ingredient = this.getElementFromEvent(e.target);
+			// var $ingredient = this.getElementFromEvent(e.target);
 
 			var id = this.getDataField(e, 'id');
 			await this._unattach_async( [ id ] );
@@ -453,21 +471,18 @@ jQuery(function ($) {
 			// not using false anymore
 			// this.render(false);
 		},
-
 		getDataField: function(e, field){
 			var $item = this.getElementFromEvent(e.target);
 
 			// maybe later we'll exclude few items, so pick will be helpful
 			var value = _.pick($item.data().element, field);
-			// console.log(value[field]);
 			return value[field];
 		},
-
 		_create_async: async function(name){
 			var options = {
 				name        : name,
-				groceryId   : this.getGroceryId(),
-				departmentId: this.getDepartmentId(),
+				groceryId   : this.groceryId,
+				departmentId: this.departmentId,
 			};
 			return new Promise(function(cb){
 				$.ajax({
@@ -503,7 +518,7 @@ jQuery(function ($) {
 		_unattach_async: async function( ids ){
 			var options = {			
 				secondArray:  ids,
-				groceryId: this.getGroceryId()
+				groceryId: this.groceryId
 			};
 			return new Promise(function(cb){
 				$.ajax({
@@ -518,7 +533,7 @@ jQuery(function ($) {
 		_toggle: async function(ids, flag){
 			var options = {
 				ingredients: ids,
-				groceryId  : this.getGroceryId(),
+				groceryId  : this.groceryId,
 				type       : (flag) ? 'add' :'remove'
 			};
 

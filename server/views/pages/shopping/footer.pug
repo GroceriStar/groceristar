@@ -23,8 +23,9 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	
-    a(href="#/all", style="display:none;") All
+    
     button.button-bar__button All
+    a.hide(href="#/all") All
 	    
   .button-bar__item
     if(filter == 'active')
@@ -32,8 +33,9 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	  
-    a(href="#/active", style="display:none;") Active
+    
     button.button-bar__button Active
+    a.hide(href="#/active") Active
 	
   .button-bar__item
     if(filter == 'completed')
@@ -41,5 +43,8 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	  
-    a(href="#/completed", style="display:none;") Purchased
+    
     button.button-bar__button Purchased
+    a.hide(href="#/completed") Purchased
+
+// zzzzzzzz    

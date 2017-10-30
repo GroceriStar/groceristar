@@ -662,3 +662,7 @@ input:disabled + .switch__toggle {
 #todoapp #footer-link li:hover .toolbar-button.destroy {
   display: block;
 }*/
+
+.hide {
+  display: none;
+}
