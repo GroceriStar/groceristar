@@ -70,8 +70,8 @@ jQuery(function ($) {
 
 
             // NOT WORKING!!!!!!!!    
-            $('#toggle-all')
-				.on('change', this.toggleAll.bind(this));    
+    //         $('#toggle-all')
+				// .on('change', this.toggleAll.bind(this));    
 
 
 			// :todo i dont think that keyup its an awesome approach. it can work, but why?
@@ -84,7 +84,7 @@ jQuery(function ($) {
 
 			// #todo-list
 			$('#todoapp')
-			// 	.on('change',   '.toggle',  this.toggle.bind(this))
+				.on('change',   '.checkbox__input',  this.toggle.bind(this))
 			// 	.on('dblclick', 'label',    this.editingMode.bind(this))
 			// 	.on('keyup',    '.edit',    this.editKeyup.bind(this))
 			// 	.on('focusout', '.edit',    this.update.bind(this))
@@ -179,15 +179,17 @@ jQuery(function ($) {
 			var completedTodos  = todoCount - activeTodoCount;
 			$('span.count').html(activeTodoCount);
 
-
+			// console.log(todo)
 			// add pluralize stuff
 
 
 
 
-			if( completedTodos ){
+			// if( completedTodos ){
+				// console.log($('#clear-completed'));
 				$('#clear-completed').show();
-			}
+				// $('#clear-completed').removeClass('hide');
+			// }
 
 		},
 
@@ -260,10 +262,17 @@ jQuery(function ($) {
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
-		getIndexFromEl: function (element) {
-			// var $ingredient = this.getElementFromEvent(element);
-			// var id    = $ingredient.data('id');
-			var id    = this.getDataField(e, 'id');
+		getIndexFromEl: function (e) {
+			// can be li
+			var $element = this.getElementFromEvent(e);
+			var id    = $element.data('id');
+
+			// console.log($element.data())
+
+			// console.log(this.getDataField(e, 'id'))
+
+			// :todo to understand why below line not working
+			// var id    = this.getDataField(e, 'id');
 			var todos = this.todos;
 			var i     = todos.length;
 
@@ -309,8 +318,8 @@ jQuery(function ($) {
 				departmentId: this.departmentId,
 			};
 
-// 			console.log(toSave);
-// return ;
+			// 			console.log(toSave);
+			// return ;
 			if (e.which !== ENTER_KEY || !val) { return; }
 
 			// :todo switch to fucntion
@@ -344,16 +353,21 @@ jQuery(function ($) {
 			this.render();
 		},
 		toggle: function (event) {
-			var index  = this.getIndexFromEl(event.target);
-			// var $ingredient = this.getElementFromEvent(event.target);
-			var id = this.getDataField(e, 'id');
+			var index       = this.getIndexFromEl(event.target);
+			var $ingredient = this.getElementFromEvent(event.target);
+
+			// console.log($ingredient)
+
+			// var id = this.getDataField(e, 'id');
 			// console.log( $(event.target).prop('checked') );
 
 			var flag =  $(event.target).prop('checked');
 
-			this.todos[index].completed = !this.todos[index].completed;
-			this._toggle( [ id ], flag );
-			this.render();
+			this.updateFooterCount();
+
+			// this.todos[index].completed = !this.todos[index].completed;
+			// this._toggle( [ id ], flag );
+			// this.render();
 
 		},
 		editingMode: function (e) {
@@ -473,10 +487,14 @@ jQuery(function ($) {
 		},
 		getDataField: function(e, field){
 			var $item = this.getElementFromEvent(e.target);
-
+			// console.log(e);
 			// maybe later we'll exclude few items, so pick will be helpful
-			var value = _.pick($item.data().element, field);
-			return value[field];
+			if( $item.data().element ){
+				var value = _.pick($item.data().element, field);
+				return value[field];	
+			}
+			return false;
+			
 		},
 		_create_async: async function(name){
 			var options = {

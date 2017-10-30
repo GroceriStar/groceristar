@@ -11,7 +11,7 @@ ul.list#footer
           button#clear-completed Clear purchased 
         else  
           // :todo fix this later
-          button#clear-completed(style="display:none;") Clear purchased 
+          button#clear-completed.hide Clear purchased 
 
 br
 h2=(filter == 'all')			    
@@ -23,7 +23,6 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	
-    
     button.button-bar__button All
     a.hide(href="#/all") All
 	    
@@ -33,7 +32,6 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	  
-    
     button.button-bar__button Active
     a.hide(href="#/active") Active
 	
@@ -43,8 +41,5 @@ h2=(filter == 'all')
     else
       input(type="radio", name="segment-filter")
 	  
-    
     button.button-bar__button Purchased
-    a.hide(href="#/completed") Purchased
-
-// zzzzzzzz    
+    a.hide(href="#/completed") Purchased   
