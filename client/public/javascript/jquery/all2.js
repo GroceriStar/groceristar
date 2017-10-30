@@ -79,8 +79,8 @@ jQuery(function ($) {
 				.on('keyup', this.create.bind(this));
 
 
-			// $('#footer').on('click', '#clear-completed', 
-			// 	this.destroyCompleted.bind(this));
+			$('#footer').on('click', '#clear-completed', 
+				this.destroyCompleted.bind(this));
 
 			// #todo-list
 			$('#todoapp')
@@ -211,14 +211,14 @@ jQuery(function ($) {
 
 		getActiveTodos: function () {
 
-			// if(typeof this.todos !== 'string'){
-			// 	return this.todos.filter(function (todo) {
-			// 		return !todo.completed;
-			// 	});	
-			// }	
+			if(typeof this.todos !== 'string'){
+				return this.todos.filter(function (todo) {
+					return !todo.completed;
+				});	
+			}	
 
 
-			return this.todos;		
+			// return this.todos;		
 		},
 		getCompletedTodos: function () {
 			// return this.todos.filter(function (todo) {
@@ -249,23 +249,25 @@ jQuery(function ($) {
 			var array1  = this.todos;
 			this.todos  = this.getActiveTodos();
 			var array2  = this.getActiveTodos();
-			this.filter = 'all';
+			
 
 			var difference = _.difference(array1, array2);
 			console.log(array1);
 			console.log(array2);
 			console.log(difference);
 
-			var array_of_ids = _.pluck(difference, 'id');
-			await this._unattach_async(array_of_ids);
-			this.render();
+			// var array_of_ids = _.pluck(difference, 'id');
+			// await this._unattach_async(array_of_ids);
+
+			// this.filter = 'all';
+			// this.render();
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
 		getIndexFromEl: function (e) {
 			// can be li
 			var $element = this.getElementFromEvent(e);
-			var id    = $element.data('id');
+			var id       = $element.data().element.id;
 
 			// console.log($element.data())
 
@@ -355,17 +357,23 @@ jQuery(function ($) {
 		toggle: function (event) {
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
-
+			var id          = $ingredient.data().element.id;
 			// console.log($ingredient)
+			// console.log(id);
+			// console.log(index);
 
 			// var id = this.getDataField(e, 'id');
 			// console.log( $(event.target).prop('checked') );
 
 			var flag =  $(event.target).prop('checked');
 
+			console.log(this.todos[index]);
+			console.log(flag)
+
 			this.updateFooterCount();
 
-			// this.todos[index].completed = !this.todos[index].completed;
+			this.todos[index].completed = flag;
+			console.log(this.todos[index]);
 			// this._toggle( [ id ], flag );
 			// this.render();
 
@@ -608,3 +616,4 @@ jQuery(function ($) {
 
 	App.init();
 });
+
