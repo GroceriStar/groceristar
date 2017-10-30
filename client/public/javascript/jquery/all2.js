@@ -148,106 +148,6 @@ jQuery(function ($) {
 
 		},
 
-		// todoTemplate: function(elements, index){
-
-		// 	var html = '';
-		// 	_.each(elements, function(element){
-
-		// 		var single = '';
-		// 		var dataAttrs = 'data-id="' + element.id + 
-		// 		                 '" data-department-id="' + element.departmentId +
-		// 		 	             '" data-order="' + element.order + '" ' + 
-		// 		 	             'data-custom="' + element.custom + '"';
-				
-		// 		single += 
-		// 		  '<li class="list__item list__item--tappable ';
-
-		// 		  if( element.completed ){
-		// 		  	single += 'completed' // :todo reod later this thng with ES6 stuff because i hate current setup
-		// 		  }
-		// 	  		single += '" ' + dataAttrs;
-		// 	    single += '>' +
-		// 	    '<div class="list__item__left">' +
-		// 	      '<label class="checkbox">' +
-		// 	        '<input type="checkbox" id="checkbox' + element.order + '"'+ 
-		// 	        'class="checkbox__input" name="c"';
-  //   				  if( element.completed ){
-		// 		  	single += ' checked="checked"' // :todo reod later this thng with ES6 stuff because i hate current setup
-		// 		  }    
-			        	
-		// 	single += '>' +
-		// 	        '<div class="checkbox__checkmark"></div>' +
-		// 	      '</label>' +
-		// 	    '</div>' +
-
-			      	
-		// 	    '<label for="checkbox' + element.order + '"'+
-		// 	        '"class="list__item__center"' +
-			    	
-		// 	    '>' +
-		// 	      '<span';
-
-			    
-		// 	    if( element.completed ){
-		// 		  	single += ' style="text-decoration: line-through;" ';
-		// 		  	// :todo reod later this thng with ES6 stuff because i hate current setup
-		// 		}  
-
-  //      		 single +=  '>' +
-		// 	      	element.name +
-			      
-		// 	      '</span>' +
-			      
-		// 	      '<input type="text" class="text-input edit" '+ 
-  //     					  'value="' + element.name + '" style="display: none;">' +
-		// 	    '</label>' +
-		// 	    '<div class="list__item__right">' +
-		// 	      '<div class="list__item__label">' +
-			      
-		// 	      	'<button class="toolbar-button destroy">' +
-		// 			  '<i class="fa fa-times" style="font-size:17px"></i>' +
-		// 			'</button>' +
-		// 	  	'</div>' +
-		// 	    '</div>' +
-		// 	  '</li>';
-
-		// 	  // console.log(single);
-
-
-		// 		// if( element.completed ){
-		// 		// 	single += '<li class="completed" data-id="' + element.id + '" data-department-id="' + element.departmentId +
-		// 		// 	 '", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-		// 		// } else {
-		// 		// 	single += '<li data-id="' + element.id + 
-		// 		// 	'" data-department-id="' + element.departmentId + 
-		// 		// 	'", data-order="' + element.order + '"' + 'data-custom="' + element.custom + '">';
-		// 		// }
-
-		// 		//   single += '<div class="view">' ;
-		// 		// 	if( element.completed ){
-		// 		// 		single += '<input class="toggle" type="checkbox" checked>';
-		// 		// 	} else {
-		// 		// 		single += '<input class="toggle" type="checkbox" >';
-		// 		// 	}
-
-						
-		// 		// 	single += '<label>' + element.name + '</label>'+
-		// 		// 				'<button class="destroy"></button>'+
-		// 		// 		'</div>'+
-		// 		// 		'<input class="edit" value="' + element.name + '">'
-		// 		// 	// single += '<label>' + element.name + '<span class="drag-handle">☰</span></label>'+
-		// 		// 	// 			'<button class="destroy"></button>'+
-		// 		// 	// 	'</div>'+
-		// 		// 	// 	'<input class="edit" value="' + element.name + '">'	
-
-		// 		// single += '</li>';
-
-		// 		html += single;
-
-				
-		// 	});
-		// 	return html;
-		// },
 
 		// :todo move it to server-render
 		renderFooter: function () {
@@ -545,86 +445,23 @@ jQuery(function ($) {
 		},
 		destroy: async function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
-			console.log('cliiiiiiiiiiiiiiiiiii');
-			// console.log($ingredient.data('id'));
-			console.log($ingredient);
-			// await this._unattach_async( [ $ingredient.data('id') ] );
-			// this.todos.splice(this.getIndexFromEl(e.target), 1);
+
+			var id = this.getDataField(e, 'id');
+			await this._unattach_async( [ id ] );
+			this.todos.splice(this.getIndexFromEl(e.target), 1);
+
+			// not using false anymore
 			// this.render(false);
 		},
 
-	
-		footerTemplate: function(data){
- 
-			var html = 
+		getDataField: function(e, field){
+			var $item = this.getElementFromEvent(e.target);
 
-			'<ul class="list" id="footer">'+
-			  '<li class="list__item" style="padding-top: 15px;">'+
-			    '<div class="list__item__center"> '+
-			      data.activeTodoCount + ' ' + data.activeTodoWord + ' left'+
-			    '</div>'+
-			    '<div class="list__item__right">'+
-			      '<div class="list__item__label">'; 
-
-			if (data.completedTodos) {
-				html += '<button id="clear-completed">Clear purchased </button>';
-			}
-			    
-			      	
-			html +=   '</div>'+
-			    '</div>'+
-			  '</li>'+
-			'</ul>'+
-
-			'<br />';
-
-
-
-			html += 
-			'<div id="filters" class="button-bar" ' +
-				'style="width:280px;margin:0 auto;">' +
-			  '<div class="button-bar__item">'+
-			    '<input type="radio" name="segment-filter" ';
-
-			if (data.filter === 'all') {
-				html += 'checked';
-			}
-			
-			html += '>' +    
-			    '<a href="#/all" style="display:none;">All</a>'+
-			    '<button class="button-bar__button" data-href="#/all">All</button>'	    +
-			    
-			  '</div>'+
-			  '<div class="button-bar__item">'+
-			  	'<input type="radio" name="segment-filter" ';
-
-			if (data.filter === 'active') {
-				html += 'checked';
-			}
-			
-			html += '>' + 
-				'<a href="#/active" style="display:none;">Active</a>'+
-				'<button class="button-bar__button" data-href="#/active">Active</button>'+
-			  
-			  '</div>'+
-			  '<div class="button-bar__item">'+
-			  	'<input type="radio" name="segment-filter" ';
-
-			if (data.filter === 'completed') {
-				html += 'checked';
-			}
-			
-			html += '>' +  	
-				
-				'<a href="#/completed" style="display:none;">Purchased</a>'+
-				'<button class="button-bar__button">Purchased</button>' +
-
-			  '</div>'+
-			'</div>';
-
-			return html;
+			// maybe later we'll exclude few items, so pick will be helpful
+			var value = _.pick($item.data().element, field);
+			// console.log(value[field]);
+			return value[field];
 		},
-		// template related stuff
 
 		_create_async: async function(name){
 			var options = {
