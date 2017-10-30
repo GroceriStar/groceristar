@@ -1,12 +1,17 @@
 ul.list#footer
   li.list__item(style="padding-top: 15px;")
-    .list__item__center= activeTodoCount
+    .list__item__center
+      span.count= activeTodoCount
+      | &nbsp;items left
       
       	 
     .list__item__right
       .list__item__label
         if (have_completed_items)
           button#clear-completed Clear purchased 
+        else  
+          // :todo fix this later
+          button#clear-completed(style="display:none;") Clear purchased 
 
 br
 h2=(filter == 'all')			    

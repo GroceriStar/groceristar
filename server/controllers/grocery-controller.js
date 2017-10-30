@@ -385,7 +385,8 @@ exports.shopping = async (req, res, next) => {
     isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
 
-    activeTodoCount: count_not_purchased + ' items left',
+    activeTodoCount: count_not_purchased,
+      // '<span class="count">' + count_not_purchased + '</span>' + ' items left',
     text: '',
     have_completed_items: !count_not_purchased,
 

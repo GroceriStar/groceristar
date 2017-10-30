@@ -80,12 +80,12 @@ jQuery(function ($) {
 			// 	this.destroyCompleted.bind(this));
 
 			// #todo-list
-			// $('#todoapp')
+			$('#todoapp')
 			// 	.on('change',   '.toggle',  this.toggle.bind(this))
 			// 	.on('dblclick', 'label',    this.editingMode.bind(this))
 			// 	.on('keyup',    '.edit',    this.editKeyup.bind(this))
 			// 	.on('focusout', '.edit',    this.update.bind(this))
-			// 	.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
+				.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
 
 
             
@@ -142,7 +142,7 @@ jQuery(function ($) {
 				if( flag ) $('#new-todo').focus();
 
 
-
+				// this.updateFooterCount();
 
 			}
 
@@ -252,30 +252,36 @@ jQuery(function ($) {
 		// :todo move it to server-render
 		renderFooter: function () {
 
-			var todoCount       = this.todos.length;
-			var activeTodoCount = this.getActiveTodos().length;
+			// var todoCount       = this.todos.length;
+			// var activeTodoCount = this.getActiveTodos().length;
 
 
-			var template = this.footerTemplate({
-				activeTodoCount: activeTodoCount,
-				activeTodoWord : util.pluralize(activeTodoCount, 'item'),
-				completedTodos : todoCount - activeTodoCount,
-				filter         : this.filter
-			});
+			// var template = this.footerTemplate({
+			// 	activeTodoCount: activeTodoCount,
+			// 	activeTodoWord : util.pluralize(activeTodoCount, 'item'),
+			// 	completedTodos : todoCount - activeTodoCount,
+			// 	filter         : this.filter
+			// });
 
-
+			// investigate this toggle
 			// $('#footer').toggle(todoCount > 0)
 			// 	.html(template);
 
 
+		},
 
+		updateFooterCount: function(){
+			var todoCount       = this.todos.length;
+			var activeTodoCount = this.getActiveTodos().length;
+			var completedTodos  = todoCount - activeTodoCount;
+			$('span.count').html(activeTodoCount);
 
-
-
-
-			// $('#footer-link').after(template);
+			if( completedTodos ){
+				$('#clear-completed').show();
+			}
 
 		},
+
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
@@ -285,6 +291,9 @@ jQuery(function ($) {
 
 			var ingredientIds = _.pluck(this.todos, 'id');
 			this._toggle(ingredientIds, isChecked)
+
+
+
 			this.render();
 		},
 
@@ -536,10 +545,12 @@ jQuery(function ($) {
 		},
 		destroy: async function (e) {
 			var $ingredient = this.getElementFromEvent(e.target);
-			console.log('cliiiiiiiiiiiiiiiiiii')
-			await this._unattach_async( [ $ingredient.data('id') ] );
-			this.todos.splice(this.getIndexFromEl(e.target), 1);
-			this.render(false);
+			console.log('cliiiiiiiiiiiiiiiiiii');
+			// console.log($ingredient.data('id'));
+			console.log($ingredient);
+			// await this._unattach_async( [ $ingredient.data('id') ] );
+			// this.todos.splice(this.getIndexFromEl(e.target), 1);
+			// this.render(false);
 		},
 
 	
