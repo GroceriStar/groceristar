@@ -174,14 +174,20 @@ jQuery(function ($) {
 		},
 
 		updateFooterCount: function(){
+
+			// console.log(this.todos);
+
 			var todoCount       = this.todos.length;
 			var activeTodoCount = this.getActiveTodos().length;
-			var completedTodos  = todoCount - activeTodoCount;
+			var completedTodos  = this.getCompletedTodos();
 			$('span.count').html(activeTodoCount);
 
 			// console.log(todo)
 			// add pluralize stuff
 
+			// console.log(todoCount)
+			// console.log(activeTodoCount)
+			// console.log(completedTodos)
 
 
 
@@ -213,6 +219,9 @@ jQuery(function ($) {
 
 			if(typeof this.todos !== 'string'){
 				return this.todos.filter(function (todo) {
+
+					console.log(todo)
+
 					return !todo.completed;
 				});	
 			}	
@@ -221,12 +230,15 @@ jQuery(function ($) {
 			// return this.todos;		
 		},
 		getCompletedTodos: function () {
-			// return this.todos.filter(function (todo) {
-			// 	return todo.completed;
-			// });
+			return this.todos.filter(function (todo) {
+
+				console.log(todo)
+
+				return todo.completed;
+			});
 
 
-			return this.todos;
+			// return this.todos;
 		},
 		getFilteredTodos: function () {
 
@@ -246,15 +258,17 @@ jQuery(function ($) {
 
 		destroyCompleted: async function () {
 
-			var array1  = this.todos;
-			this.todos  = this.getActiveTodos();
-			var array2  = this.getActiveTodos();
+			// var array1  = this.todos;
+			// this.todos  = this.getActiveTodos();
+			// var array2  = this.getActiveTodos();
 			
 
-			var difference = _.difference(array1, array2);
-			console.log(array1);
-			console.log(array2);
-			console.log(difference);
+			// var difference = _.difference(array1, array2);
+			// console.log(array1);
+			// console.log(array2);
+			// console.log(difference);
+
+
 
 			// var array_of_ids = _.pluck(difference, 'id');
 			// await this._unattach_async(array_of_ids);
@@ -363,19 +377,24 @@ jQuery(function ($) {
 			// console.log(index);
 
 			// var id = this.getDataField(e, 'id');
-			// console.log( $(event.target).prop('checked') );
+		
 
 			var flag =  $(event.target).prop('checked');
 
-			console.log(this.todos[index]);
-			console.log(flag)
-
-			this.updateFooterCount();
+			// console.log(this.todos[index]);
+			// console.log(flag)
+			 console.log(this.todos);
+			// this.updateFooterCount();
 
 			this.todos[index].completed = flag;
-			console.log(this.todos[index]);
+			// console.log(this.todos[index]);
+
+			console.log(this.todos);
+
+
 			// this._toggle( [ id ], flag );
-			// this.render();
+
+			this.render();
 
 		},
 		editingMode: function (e) {
