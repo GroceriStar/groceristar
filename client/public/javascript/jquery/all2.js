@@ -59,8 +59,7 @@ jQuery(function ($) {
             $('#departmentList')
                 .on('change', this.redirectToOtherDepartment.bind(this));
 
-
-            // NOT WORKING!!!!!!!!    
+  
             $('#toggle-all')
 				.on('change', this.toggleAll.bind(this));    
 
@@ -88,7 +87,7 @@ jQuery(function ($) {
 		// filterClick: function(event){
 		// 	console.log($(event.target));
 		// },
-		render: function (flag=true) {
+		render: function () {
 
 			var todos = this.getFilteredTodos();
 
@@ -104,7 +103,7 @@ jQuery(function ($) {
 
 
 					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
-					// $('#todo-er').after(this.todoTemplate(todos))
+					$('#todo-er').after(this.todoTemplate(todos))
 
 
 
@@ -133,7 +132,8 @@ jQuery(function ($) {
 
 
 
-				if( flag ) $('#new-todo').focus();
+				// if( flag ) 
+					$('#new-todo').focus();
 
 
 				this.updateFooterCount();
@@ -144,22 +144,22 @@ jQuery(function ($) {
 
 
 		// :todo move it to server-render
-		renderFooter: function () {
+		// renderFooter: function () {
 
 
-			// var template = this.footerTemplate({
-			// 	activeTodoCount: activeTodoCount,
-			// 	activeTodoWord : util.pluralize(activeTodoCount, 'item'),
-			// 	completedTodos : todoCount - activeTodoCount,
-			// 	filter         : this.filter
-			// });
+		// 	// var template = this.footerTemplate({
+		// 	// 	activeTodoCount: activeTodoCount,
+		// 	// 	activeTodoWord : util.pluralize(activeTodoCount, 'item'),
+		// 	// 	completedTodos : todoCount - activeTodoCount,
+		// 	// 	filter         : this.filter
+		// 	// });
 
-			// investigate this toggle
-			// $('#footer').toggle(todoCount > 0)
-			// 	.html(template);
+		// 	// investigate this toggle
+		// 	// $('#footer').toggle(todoCount > 0)
+		// 	// 	.html(template);
 
 
-		},
+		// },
 
 		updateFooterCount: function(){
 
@@ -186,19 +186,16 @@ jQuery(function ($) {
 		},
 
 		toggleAll: function (e) {
-			var isChecked = $(e.target).prop('checked');
+			var flag = $(e.target).prop('checked');
 
-			console.log(isChecked);
-			console.log(this.todos);
-			
-			// this.todos.forEach(function (todo) {
-			// 	todo.completed = isChecked;
-			// });
+			_.each(this.todos, function(value, key, obj) { 
+					obj[key].completed = flag; 
+			})
 
-			// var ingredientIds = _.pluck(this.todos, 'id');
-			// this._toggle(ingredientIds, isChecked)
+			var ingredientIds = _.pluck(this.todos, 'id');
+			this._toggle(ingredientIds, flag)
 
-			// this.render();
+			this.render();
 		},
 
 
@@ -268,6 +265,7 @@ jQuery(function ($) {
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
+		// :todo maybe we can use order value for this type of feature?
 		getIndexFromEl: function (e) {
 			// can be li
 			var $element = this.getElementFromEvent(e);
