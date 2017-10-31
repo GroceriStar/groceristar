@@ -5,15 +5,6 @@ jQuery(function ($) {
 	var ENTER_KEY  = 13;
 	var ESCAPE_KEY = 27;
 
-
-	var util = {
-		pluralize: function (count, word) {
-			return count === 1 ? word : word + 's';
-		}		
-	};
-
-
-
 	var App = {
 
 		isUltimate: function(){
@@ -70,8 +61,8 @@ jQuery(function ($) {
 
 
             // NOT WORKING!!!!!!!!    
-    //         $('#toggle-all')
-				// .on('change', this.toggleAll.bind(this));    
+            $('#toggle-all')
+				.on('change', this.toggleAll.bind(this));    
 
 
 			// :todo i dont think that keyup its an awesome approach. it can work, but why?
@@ -145,7 +136,7 @@ jQuery(function ($) {
 				if( flag ) $('#new-todo').focus();
 
 
-				// this.updateFooterCount();
+				this.updateFooterCount();
 
 			}
 
@@ -154,9 +145,6 @@ jQuery(function ($) {
 
 		// :todo move it to server-render
 		renderFooter: function () {
-
-			// var todoCount       = this.todos.length;
-			// var activeTodoCount = this.getActiveTodos().length;
 
 
 			// var template = this.footerTemplate({
@@ -175,88 +163,84 @@ jQuery(function ($) {
 
 		updateFooterCount: function(){
 
-			console.log(this.todos);
+			var activeTodoCount = this.getActiveTodos().length;
+			var completedTodos  = this.getCompletedTodos().length;
 
-			console.log( _.where(this.todos, { completed:false }) )	;
-			console.log( _.where(this.todos, { completed:true }) )	;
+			var html = '<span class="count">' + activeTodoCount + '</span>';
 
-
-			// var todoCount       = this.todos.length;
-			// var activeTodoCount = this.getActiveTodos().length;
-			// var completedTodos  = this.getCompletedTodos();
-			$('span.count').html(activeTodoCount);
-
-			// console.log(todo)
-			// add pluralize stuff
-
-			// console.log(todoCount)
-			// console.log(activeTodoCount)
-			// console.log(completedTodos)
+			// bad but work
+			if( completedTodos === 1 ) {
+				html += ' &nbsp;item left';
+			} else {
+				html += ' &nbsp;items left';
+			}
+			$('.count-wrapper').html(html);
 
 
-
-			// if( completedTodos ){
-				// console.log($('#clear-completed'));
+			if ( completedTodos ) {			    
 				$('#clear-completed').show();
-				// $('#clear-completed').removeClass('hide');
-			// }
+			} else {
+				$('#clear-completed').hide();
+			}
 
 		},
 
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-			this.todos.forEach(function (todo) {
-				todo.completed = isChecked;
-			});
+			console.log(isChecked);
+			console.log(this.todos);
+			
+			// this.todos.forEach(function (todo) {
+			// 	todo.completed = isChecked;
+			// });
 
-			var ingredientIds = _.pluck(this.todos, 'id');
-			this._toggle(ingredientIds, isChecked)
+			// var ingredientIds = _.pluck(this.todos, 'id');
+			// this._toggle(ingredientIds, isChecked)
 
-
-
-			this.render();
+			// this.render();
 		},
 
 
 		getActiveTodos: function () {
-			// console.log
-			_.where	
+			
 
-			if(typeof this.todos !== 'string'){
-				return this.todos.filter(function (todo) {
+			return _.where(this.todos, { completed:false });
 
-					console.log(todo)
+			// if(typeof this.todos !== 'string'){
+			// 	return this.todos.filter(function (todo) {
 
-					return !todo.completed;
-				});	
-			}	
+			// 		console.log(todo)
+
+			// 		return !todo.completed;
+			// 	});	
+			// }	
 
 
 			// return this.todos;		
 		},
 		getCompletedTodos: function () {
-			return this.todos.filter(function (todo) {
+			return _.where(this.todos, { completed: true });
 
-				console.log(todo)
+			// return this.todos.filter(function (todo) {
 
-				return todo.completed;
-			});
+			// 	console.log(todo)
+
+			// 	return todo.completed;
+			// });
 
 
 			// return this.todos;
 		},
 		getFilteredTodos: function () {
 
-			// console.log(this.filter)
+			if (this.filter === 'active') {
+				return this.getActiveTodos();
+			}
 
-			// if (this.filter === 'active') {
-			// 	return this.getActiveTodos();
-			// }
-
-			// if (this.filter === 'completed') {
-			// 	return this.getCompletedTodos();
-			// }
+			if (this.filter === 'completed') {
+				return this.getCompletedTodos();
+			}
 
 			return this.todos;
 		},
@@ -390,16 +374,16 @@ jQuery(function ($) {
 			// console.log(this.todos[index]);
 			// console.log(flag)
 			// console.log(this.todos);
-			this.updateFooterCount();
+			
 
 			this.todos[index].completed = flag;
 			// console.log(this.todos[index]);
 
-			console.log(this.todos);
+			// console.log(this.todos);
 
 
 			// this._toggle( [ id ], flag );
-
+			this.updateFooterCount();
 			this.render();
 
 		},
