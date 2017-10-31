@@ -35,6 +35,7 @@ jQuery(function ($) {
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
+					console.log('im work - faggot');
 					this.render();
 				}.bind(this)
 			}).init('/all');
@@ -97,6 +98,63 @@ jQuery(function ($) {
 			results = _.indexBy(results, 'id');
 			// console.log();
 
+			// related to changing states
+			switch (this.filter) {
+			  case 'active':
+			    alert('bitch');
+			    break;
+			  case 'completed':
+			  	alert('i m fucking find you');
+			    break;
+
+			  // case '':
+
+			  //   break;
+			  // this is all flag relates
+			  default:
+			  	alert('So what?');
+			    break;
+			}
+
+
+			// related to update/delete/destroy all events
+
+			// switch (this.filter) {
+			//   case 'active':
+			//     // alert('bitch');
+			//     break;
+			//   case 'completed':
+			//   	// alert('i m fucking find you');
+			//     break;
+
+			//   // case '':
+
+			//   //   break;
+			//   // this is all flag relates
+			//   default:
+			//   	// alert('So what?');
+			//     break;
+			// }
+
+			// related to toggles
+
+			// switch (this.filter) {
+			//   case 'active':
+			//     // alert('bitch');
+			//     break;
+			//   case 'completed':
+			//   	// alert('i m fucking find you');
+			//     break;
+
+			//   // case '':
+
+			//   //   break;
+			//   // this is all flag relates
+			//   default:
+			//   	// alert('So what?');
+			//     break;
+			// }
+
 			if( todos ){
 
 
@@ -113,12 +171,16 @@ jQuery(function ($) {
 
 				// console.log($(this.selector));
 
-				$(this.selector).map(function() {
 
-					var id = $(this).data().element.id;
-					$(this).find('.checkbox__input')
-						   .prop("checked", results[id].completed)
-				});
+				// WE NEED TO COVVER CASE WHERE WE ADD A NEW ITEM OR DELETE ONE ITEM
+				// :todo maybe we need to cover situation when we don't have any items inside the department
+
+				// $(this.selector).map(function() {
+
+				// 	var id = $(this).data().element.id;
+				// 	$(this).find('.checkbox__input')
+				// 		   .prop("checked", results[id].completed)
+				// });
 
 
 					// $('#todo-list').html(  );
@@ -130,7 +192,7 @@ jQuery(function ($) {
 
 
 				// explore this stuff
-				$('#main').toggle(todos.length > 0);
+				// $('#main').toggle(todos.length > 0);
 
 
 
@@ -258,7 +320,7 @@ jQuery(function ($) {
 				custom: true
 			};
 		},
-		create: function (e) {
+		create: async function (e) {
 
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
@@ -282,7 +344,7 @@ jQuery(function ($) {
 			this.todos.push(obj);
 
 			console.log(this.todos);
-				
+
 			// $input.val('');
 
 			// this.render();
