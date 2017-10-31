@@ -104,9 +104,14 @@ jQuery(function ($) {
 			switch (flag) {
 			  case 'active':
 			    alert('bitch');
+
+			    console.log(this.getActiveTodos());
+
+
 			    break;
 			  case 'completed':
 			  	alert('i m fucking find you');
+			  	console.log(this.getCompletedTodos());
 			    break;
 
 			  // case '':
@@ -115,6 +120,7 @@ jQuery(function ($) {
 			  // this is all flag relates
 			  default:
 			  	alert('So what?');
+			  	console.log(this.todos);
 			    break;
 			}
 
@@ -126,7 +132,7 @@ jQuery(function ($) {
 			    // alert('bitch');
 			    // we add no focus on destroy one event
 			    break;
-			  case 'completed':
+			  case 'xx':
 			  	// alert('i m fucking find you');
 			    break;
 
@@ -157,9 +163,9 @@ jQuery(function ($) {
 			  	// alert('i m fucking find you');
 			    break;
 
-			  // case '':
-
-			  //   break;
+			  case 'new':
+			  	$('#new-todo').focus();
+			    break;
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
