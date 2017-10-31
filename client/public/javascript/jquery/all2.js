@@ -112,17 +112,17 @@ jQuery(function ($) {
 					// $(this.selector).find('.checkbox__input')
 					console.log($(this.selector));
 
-					// $(this.selector).map(function() {
+					$(this.selector).map(function() {
 
-					// 	// console.log($(this).data().element.id)
-							// var id = $(this).data().element.id
+						// console.log($(this).data().element.id)
+						var id = $(this).data().element.id;
 						// if ( results[id].completed )
-						// $(this).find('.checkbox__input').prop(checked, results[id].completed)
-					//     // return $(this).data().element;
+						$(this).find('.checkbox__input').prop("checked", results[id].completed)
+					    // return $(this).data().element;
 
-					// })
+					})
 
-					
+
 					// $('#todo-list').html(  );
 					// console.log(todos);	
 				// }
