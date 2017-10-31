@@ -141,22 +141,30 @@ jQuery(function ($) {
 
 			// related to toggles
 
-			// switch (this.filter) {
-			//   case 'active':
-			//     // alert('bitch');
-			//     break;
-			//   case 'completed':
-			//   	// alert('i m fucking find you');
-			//     break;
+			switch (flag) {
+			  case 'toggle':
+			    
+			  	$(this.selector).map(function() {
 
-			//   // case '':
+					var id = $(this).data().element.id;
+					$(this).find('.checkbox__input')
+						   .prop("checked", results[id].completed)
+				});
 
-			//   //   break;
-			//   // this is all flag relates
-			//   default:
-			//   	// alert('So what?');
-			//     break;
-			// }
+
+			    break;
+			  case 'completed':
+			  	// alert('i m fucking find you');
+			    break;
+
+			  // case '':
+
+			  //   break;
+			  // this is all flag relates
+			  default:
+			  	// alert('So what?');
+			    break;
+			}
 
 			if( todos ){
 
@@ -232,18 +240,6 @@ jQuery(function ($) {
 			}
 
 		},
-		toggleAll: function (e) {
-			var flag = $(e.target).prop('checked');
-
-			_.each(this.todos, function(value, key, obj) { 
-					obj[key].completed = flag; 
-			})
-
-			var ingredientIds = _.pluck(this.todos, 'id');
-			this._toggle(ingredientIds, flag)
-
-			this.render();
-		},
 		getActiveTodos: function () {
 			return _.where(this.todos, { completed:false });		
 		},
@@ -275,7 +271,7 @@ jQuery(function ($) {
 			var array_of_ids = _.pluck(difference, 'id');
 			await this._unattach_async(array_of_ids);
 			this.filter = 'all';
-			this.render();
+			this.render(this.filter);
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
@@ -354,7 +350,22 @@ jQuery(function ($) {
 
 
 		},
+		toggleAll: function (e) {
+			var flag = $(e.target).prop('checked');
+
+			_.each(this.todos, function(value, key, obj) { 
+					obj[key].completed = flag; 
+			})
+
+			var ingredientIds = _.pluck(this.todos, 'id');
+			this._toggle(ingredientIds, flag)
+
+			this.render('toggle-all');
+		},
 		toggle: function (event) {
+
+			console.log(event.target);
+
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
 			var id          = $ingredient.data().element.id;
@@ -366,7 +377,7 @@ jQuery(function ($) {
 
 			this.todos[index].completed = flag;
 			this._toggle( [ id ], flag );
-			this.render();
+			this.render('toggle');
 
 		},
 		editingMode: function (e) {
@@ -476,7 +487,7 @@ jQuery(function ($) {
 		},
 		destroy: async function (e) {
 			var id = this.getDataField(e, 'id');
-			
+
 			await this._unattach_async( [ id ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render('destroyOne');
