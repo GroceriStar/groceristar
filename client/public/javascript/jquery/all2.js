@@ -107,11 +107,24 @@ jQuery(function ($) {
 
 			    console.log(this.getActiveTodos());
 
+			 //    $(this.selector).map(function() {
+
+				// 	var id = $(this).data().element.id;
+				// 	$(this).find('.checkbox__input')
+				// 		   .prop("checked", results[id].completed)
+				// });
+
 
 			    break;
 			  case 'completed':
 			  	alert('i m fucking find you');
 			  	console.log(this.getCompletedTodos());
+			 //  	$(this.selector).map(function() {
+
+				// 	var id = $(this).data().element.id;
+				// 	$(this).find('.checkbox__input')
+				// 		   .prop("checked", results[id].completed)
+				// });
 			    break;
 
 			  // case '':
@@ -121,6 +134,14 @@ jQuery(function ($) {
 			  default:
 			  	alert('So what?');
 			  	console.log(this.todos);
+
+			 //  	$(this.selector).map(function() {
+
+				// 	var id = $(this).data().element.id;
+				// 	$(this).find('.checkbox__input')
+				// 		   .prop("checked", results[id].completed)
+				// });
+				
 			    break;
 			}
 
