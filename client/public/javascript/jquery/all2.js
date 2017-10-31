@@ -88,7 +88,7 @@ jQuery(function ($) {
 
 			var todos = this.getFilteredTodos();
 
-			console.log(todos);	
+			// console.log(todos);	
 			// console.log(_.pluck(todos, 'id', 'completed') );	
 			// console.log(_.pick(todos, 'id', 'completed') );	
 			var results = _.map(todos, function(obj) {
@@ -110,17 +110,15 @@ jQuery(function ($) {
 					// $('#todo-er').after(this.todoTemplate(todos))
 
 					// $(this.selector).find('.checkbox__input')
-					console.log($(this.selector));
 
-					$(this.selector).map(function() {
+				// console.log($(this.selector));
 
-						// console.log($(this).data().element.id)
-						var id = $(this).data().element.id;
-						// if ( results[id].completed )
-						$(this).find('.checkbox__input').prop("checked", results[id].completed)
-					    // return $(this).data().element;
+				$(this.selector).map(function() {
 
-					})
+					var id = $(this).data().element.id;
+					$(this).find('.checkbox__input')
+						   .prop("checked", results[id].completed)
+				});
 
 
 					// $('#todo-list').html(  );
@@ -131,24 +129,13 @@ jQuery(function ($) {
 
 
 
-
-
-			// explore this stuff
-				$('#main').toggle(todos.length > 0);
-
-
 				// explore this stuff
-				// $('#toggle-all').prop('checked', 
-				// 	this.getActiveTodos().length === 0
-				// );
-
-				// this.renderFooter();
-
+				$('#main').toggle(todos.length > 0);
 
 
 
 				// if( flag ) 
-					$('#new-todo').focus();
+				$('#new-todo').focus();
 
 
 				this.updateFooterCount();
@@ -214,24 +201,16 @@ jQuery(function ($) {
 
 		destroyCompleted: async function () {
 
-			var array1  = this.todos;
-			this.todos  = this.getActiveTodos();
-			var array2  = this.getActiveTodos();
+			var array1       = this.todos;
+			this.todos       = this.getActiveTodos();
+			var array2       = this.getActiveTodos();
 			
-
-			var difference = _.difference(array1, array2);
-			console.log(array1);
-			console.log(array2);
-			console.log(difference);
-
-
+			var difference   = _.difference(array1, array2);
 
 			var array_of_ids = _.pluck(difference, 'id');
-			console.log(array_of_ids);
-			// await this._unattach_async(array_of_ids);
-
-			// this.filter = 'all';
-			// this.render();
+			await this._unattach_async(array_of_ids);
+			this.filter = 'all';
+			this.render();
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
@@ -247,6 +226,7 @@ jQuery(function ($) {
 
 			// :todo to understand why below line not working
 			// var id    = this.getDataField(e, 'id');
+
 			var todos = this.todos;
 			var i     = todos.length;
 
@@ -282,75 +262,45 @@ jQuery(function ($) {
 
 			var $input       = $(e.target);
 			var val          = $input.val().trim();
-			// var departmentId = this.getDepartmentId();
-			// console.log($input.val());
-			var toSave = {
-				name        : val,
-				// groceryId   : this.getGroceryId(),
-				// departmentId: this.getDepartmentId(),
-				groceryId   : this.groceryId,
-				departmentId: this.departmentId,
-			};
 
-			// 			console.log(toSave);
-			// return ;
 			if (e.which !== ENTER_KEY || !val) { return; }
 
-			// :todo switch to fucntion
-			var ITEM   = _.last(this.todos);
 
-			var new_id = this.ajax_call('create-ingredient', toSave); 
-							// || 'fake-id-for-ultimate-gl';
+			// new version
+			var response;
+			try {     
+				response = await this._create_async(val);
 
-			// if( !new_id ) 
-			// console.log(new_id);
-
-			var new_object = {
-				id: new_id,
-				name: val,
-
-				completed: false,
-
-				groceryId: this.groceryId,
-				departmentId: this.departmentId,
-				order: ITEM.order + 1,
-
-				custom: true
+			} catch (e) {
+				Raven.captureException(e);
 			}
 
-			// console.log(new_object);
-			this.todos.push(new_object);
-			// console.log(this.todos);
+			var obj = this.getItemObject(response.id, val);
 
-			$input.val('');
+			console.log(this.todos);
 
-			this.render();
+			this.todos.push(obj);
+
+			console.log(this.todos);
+				
+			// $input.val('');
+
+			// this.render();
+
+
 		},
 		toggle: function (event) {
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
 			var id          = $ingredient.data().element.id;
-			// console.log($ingredient)
-			// console.log(id);
-			// console.log(index);
 
 			// var id = this.getDataField(e, 'id');
 		
 			var flag =  $(event.target).prop('checked');
 
-			// console.log(this.todos[index]);
-			// console.log(flag)
-			// console.log(this.todos);
-			
 
 			this.todos[index].completed = flag;
-			// console.log(this.todos[index]);
-
-			// console.log(this.todos);
-
-
 			this._toggle( [ id ], flag );
-			// this.updateFooterCount();
 			this.render();
 
 		},
@@ -463,8 +413,13 @@ jQuery(function ($) {
 			// var $ingredient = this.getElementFromEvent(e.target);
 
 			var id = this.getDataField(e, 'id');
-			await this._unattach_async( [ id ] );
-			this.todos.splice(this.getIndexFromEl(e.target), 1);
+			console.log(id);
+
+
+
+
+			// await this._unattach_async( [ id ] );
+			// this.todos.splice(this.getIndexFromEl(e.target), 1);
 
 			// not using false anymore
 			// this.render(false);
