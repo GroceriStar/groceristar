@@ -175,11 +175,15 @@ jQuery(function ($) {
 
 		updateFooterCount: function(){
 
-			// console.log(this.todos);
+			console.log(this.todos);
 
-			var todoCount       = this.todos.length;
-			var activeTodoCount = this.getActiveTodos().length;
-			var completedTodos  = this.getCompletedTodos();
+			console.log( _.where(this.todos, { completed:false }) )	;
+			console.log( _.where(this.todos, { completed:true }) )	;
+
+
+			// var todoCount       = this.todos.length;
+			// var activeTodoCount = this.getActiveTodos().length;
+			// var completedTodos  = this.getCompletedTodos();
 			$('span.count').html(activeTodoCount);
 
 			// console.log(todo)
@@ -216,6 +220,8 @@ jQuery(function ($) {
 
 
 		getActiveTodos: function () {
+			// console.log
+			_.where	
 
 			if(typeof this.todos !== 'string'){
 				return this.todos.filter(function (todo) {
@@ -383,8 +389,8 @@ jQuery(function ($) {
 
 			// console.log(this.todos[index]);
 			// console.log(flag)
-			 console.log(this.todos);
-			// this.updateFooterCount();
+			// console.log(this.todos);
+			this.updateFooterCount();
 
 			this.todos[index].completed = flag;
 			// console.log(this.todos[index]);
