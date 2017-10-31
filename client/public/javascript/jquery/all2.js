@@ -36,7 +36,7 @@ jQuery(function ($) {
 				'/:filter': function (filter) {
 					this.filter = filter;
 					console.log('im work - faggot');
-					this.render();
+					this.render(this.filter);
 				}.bind(this)
 			}).init('/all');
 
@@ -85,7 +85,9 @@ jQuery(function ($) {
 		// filterClick: function(event){
 		// 	console.log($(event.target));
 		// },
-		render: function () {
+		// :todo right now i think it'll be better to just separate things to a few small methods.
+		// this way is old-fashione, and i keep it only to follow previous version installation
+		render: function (flag=false) {
 
 			var todos = this.getFilteredTodos();
 
@@ -99,7 +101,7 @@ jQuery(function ($) {
 			// console.log();
 
 			// related to changing states
-			switch (this.filter) {
+			switch (flag) {
 			  case 'active':
 			    alert('bitch');
 			    break;
@@ -119,22 +121,23 @@ jQuery(function ($) {
 
 			// related to update/delete/destroy all events
 
-			// switch (this.filter) {
-			//   case 'active':
-			//     // alert('bitch');
-			//     break;
-			//   case 'completed':
-			//   	// alert('i m fucking find you');
-			//     break;
+			switch (flag) {
+			  case 'destroyOne':
+			    // alert('bitch');
+			    // we add no focus on destroy one event
+			    break;
+			  case 'completed':
+			  	// alert('i m fucking find you');
+			    break;
 
-			//   // case '':
+			  // case '':
 
-			//   //   break;
-			//   // this is all flag relates
-			//   default:
-			//   	// alert('So what?');
-			//     break;
-			// }
+			  //   break;
+			  // this is all flag relates
+			  default:
+			  	// alert('So what?');
+			    break;
+			}
 
 			// related to toggles
 
@@ -472,19 +475,11 @@ jQuery(function ($) {
 			// this.render();
 		},
 		destroy: async function (e) {
-			// var $ingredient = this.getElementFromEvent(e.target);
-
 			var id = this.getDataField(e, 'id');
-			console.log(id);
-
-
-
-
-			// await this._unattach_async( [ id ] );
-			// this.todos.splice(this.getIndexFromEl(e.target), 1);
-
-			// not using false anymore
-			// this.render(false);
+			
+			await this._unattach_async( [ id ] );
+			this.todos.splice(this.getIndexFromEl(e.target), 1);
+			this.render('destroyOne');
 		},
 		getDataField: function(e, field){
 			var $item = this.getElementFromEvent(e.target);
