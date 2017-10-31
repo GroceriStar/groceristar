@@ -6,7 +6,7 @@ jQuery(function ($) {
 	var ESCAPE_KEY = 27;
 
 	var App = {
-
+		selector: '',
 		isUltimate: function(){
 			return $('body').data().flag;
 		},
@@ -19,9 +19,9 @@ jQuery(function ($) {
 
 		init: function() {
 
-			var selector = '#todoapp li.list__item.list__item--tappable';
+			this.selector = '#todoapp li.list__item.list__item--tappable';
 
-			this.todos   = $(selector).map(function() {
+			this.todos    = $(this.selector).map(function() {
 				
 			    return $(this).data().element;
 			}).get();
@@ -41,15 +41,11 @@ jQuery(function ($) {
 
 			
 			// :todo make it work inside bind events method
-			$('input[type=radio][name=segment-filter]')
-				.change(function() {
+			$('input[type=radio][name=segment-filter]').change(function() {
 		        
-		        	$(this).parent().find('.hide')[0].click()
+		        $(this).parent().find('.hide')[0].click()
 
-
-			        
-
-		    	});
+		    });
 
 
 		},
@@ -73,6 +69,7 @@ jQuery(function ($) {
 				this.destroyCompleted.bind(this));
 
 			// #todo-list
+			// TOGGLE IS NOT FINISHED 
 			$('#todoapp')
 				.on('change',   '.checkbox__input',  this.toggle.bind(this))
 			// 	.on('dblclick', 'label',    this.editingMode.bind(this))
@@ -91,7 +88,14 @@ jQuery(function ($) {
 
 			var todos = this.getFilteredTodos();
 
-				
+			console.log(todos);	
+			// console.log(_.pluck(todos, 'id', 'completed') );	
+			// console.log(_.pick(todos, 'id', 'completed') );	
+			var results = _.map(todos, function(obj) {
+			 return _.pick(obj, 'id', 'completed'); 
+			});
+			results = _.indexBy(results, 'id');
+			// console.log();
 
 			if( todos ){
 
@@ -103,11 +107,22 @@ jQuery(function ($) {
 
 
 					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
-					$('#todo-er').after(this.todoTemplate(todos))
+					// $('#todo-er').after(this.todoTemplate(todos))
 
+					// $(this.selector).find('.checkbox__input')
+					console.log($(this.selector));
 
+					// $(this.selector).map(function() {
 
+					// 	// console.log($(this).data().element.id)
+							// var id = $(this).data().element.id
+						// if ( results[id].completed )
+						// $(this).find('.checkbox__input').prop(checked, results[id].completed)
+					//     // return $(this).data().element;
 
+					// })
+
+					
 					// $('#todo-list').html(  );
 					// console.log(todos);	
 				// }
@@ -142,25 +157,6 @@ jQuery(function ($) {
 
 		},
 
-
-		// :todo move it to server-render
-		// renderFooter: function () {
-
-
-		// 	// var template = this.footerTemplate({
-		// 	// 	activeTodoCount: activeTodoCount,
-		// 	// 	activeTodoWord : util.pluralize(activeTodoCount, 'item'),
-		// 	// 	completedTodos : todoCount - activeTodoCount,
-		// 	// 	filter         : this.filter
-		// 	// });
-
-		// 	// investigate this toggle
-		// 	// $('#footer').toggle(todoCount > 0)
-		// 	// 	.html(template);
-
-
-		// },
-
 		updateFooterCount: function(){
 
 			var activeTodoCount = this.getActiveTodos().length;
@@ -184,7 +180,6 @@ jQuery(function ($) {
 			}
 
 		},
-
 		toggleAll: function (e) {
 			var flag = $(e.target).prop('checked');
 
@@ -197,40 +192,14 @@ jQuery(function ($) {
 
 			this.render();
 		},
-
-
 		getActiveTodos: function () {
-			
-
-			return _.where(this.todos, { completed:false });
-
-			// if(typeof this.todos !== 'string'){
-			// 	return this.todos.filter(function (todo) {
-
-			// 		console.log(todo)
-
-			// 		return !todo.completed;
-			// 	});	
-			// }	
-
-
-			// return this.todos;		
+			return _.where(this.todos, { completed:false });		
 		},
 		getCompletedTodos: function () {
 			return _.where(this.todos, { completed: true });
-
-			// return this.todos.filter(function (todo) {
-
-			// 	console.log(todo)
-
-			// 	return todo.completed;
-			// });
-
-
-			// return this.todos;
 		},
 		getFilteredTodos: function () {
-
+			// console.log(this.filter);
 			if (this.filter === 'active') {
 				return this.getActiveTodos();
 			}
@@ -245,19 +214,20 @@ jQuery(function ($) {
 
 		destroyCompleted: async function () {
 
-			// var array1  = this.todos;
-			// this.todos  = this.getActiveTodos();
-			// var array2  = this.getActiveTodos();
+			var array1  = this.todos;
+			this.todos  = this.getActiveTodos();
+			var array2  = this.getActiveTodos();
 			
 
-			// var difference = _.difference(array1, array2);
-			// console.log(array1);
-			// console.log(array2);
-			// console.log(difference);
+			var difference = _.difference(array1, array2);
+			console.log(array1);
+			console.log(array2);
+			console.log(difference);
 
 
 
-			// var array_of_ids = _.pluck(difference, 'id');
+			var array_of_ids = _.pluck(difference, 'id');
+			console.log(array_of_ids);
 			// await this._unattach_async(array_of_ids);
 
 			// this.filter = 'all';
@@ -366,7 +336,6 @@ jQuery(function ($) {
 
 			// var id = this.getDataField(e, 'id');
 		
-
 			var flag =  $(event.target).prop('checked');
 
 			// console.log(this.todos[index]);
@@ -380,8 +349,8 @@ jQuery(function ($) {
 			// console.log(this.todos);
 
 
-			// this._toggle( [ id ], flag );
-			this.updateFooterCount();
+			this._toggle( [ id ], flag );
+			// this.updateFooterCount();
 			this.render();
 
 		},
