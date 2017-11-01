@@ -38,7 +38,7 @@ jQuery(function ($) {
 					// console.log('im work - faggot');
 					// console.log(this.filter);
 					// console.log($('#maList').data());
-					// // $('#maList').data('filter', this.filter)
+					$('#maList').addClass(this.filter);
 					// $('#maList').prop('data-filter', this.filter)
 					// console.log($('#maList').data());
 					// this.render(this.filter);
@@ -121,90 +121,6 @@ jQuery(function ($) {
 			// console.log();
 
 			// related to changing states
-			switch (flag) {
-			  case 'active':
-			    // alert('bitch');
-
-			    
-
-			 //    var zzz = this.getActiveTodos()
-			 //    var activeResults = _.map(zzz, function(obj) {
-				//  return _.pick(obj, 'id', 'completed'); 
-				// });
-				// activeResults = _.indexBy(activeResults, 'id');
-				// console.log(activeResults)
-				// console.log(this.getActiveTodos());
-
-			 //    $(this.selector).map(function() {
-
-			 //    	var id = $(this).data().element.id;
-
-			 //    	if(activeResults[id].completed)
-			 //    		console.log(id)
-
-				// 	// 
-				// 	// $(this).find('.checkbox__input')
-				// 	// 	   .prop("checked", results[id].completed)
-				// });
-
-
-			    break;
-			  case 'completed':
-			  	// alert('i m fucking find you');
-
-			 //  	var zzz1 = this.getCompletedTodos()
-			 //    var activeResults1 = _.map(zzz1, function(obj) {
-				//  return _.pick(obj, 'id', 'completed'); 
-				// });
-				// activeResults1 = _.indexBy(activeResults1, 'id');
-				// console.log(activeResults1)
-
-			 //  	console.log(this.getCompletedTodos());
-			 //  	$(this.selector).map(function() {
-
-			 //    	var id = $(this).data().element.id;
-
-			 //    	if(!activeResults[id].completed)
-			 //    		console.log(id)
-
-				// 	// 
-				// 	// $(this).find('.checkbox__input')
-				// 	// 	   .prop("checked", results[id].completed)
-				// });
-
-			 //  	$(this.selector).map(function() {
-
-				// 	var id = $(this).data().element.id;
-				// 	$(this).find('.checkbox__input')
-				// 		   .prop("checked", results[id].completed)
-				// });
-			    break;
-
-			  // case '':
-
-			  //   break;
-			  // this is all flag relates
-			  default:
-			  	// alert('So what?');
-			 //  	var zzz2 = this.todos;
-			 //    var activeResults2 = _.map(zzz2, function(obj) {
-				//  return _.pick(obj, 'id', 'completed'); 
-				// });
-				// activeResults2 = _.indexBy(activeResults2, 'id');
-				// console.log(activeResults2)
-
-			 //  	console.log(this.todos);
-
-			 //  	$(this.selector).map(function() {
-
-				// 	var id = $(this).data().element.id;
-				// 	$(this).find('.checkbox__input')
-				// 		   .prop("checked", results[id].completed)
-				// });
-
-			    break;
-			}
-
 
 			// related to update/delete/destroy all events
 

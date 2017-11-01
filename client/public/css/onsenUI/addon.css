@@ -923,10 +923,25 @@ input:disabled + .switch__toggle {
   display: none;
 }
 
-#maList.active{
+#maList.active {
   display: none;
 }
 
-#maList.all{
+#maList.all .list__item.list__item--tappable,
+#maList.all .list__item.list__item--tappable.completed {
+  /*display: block;*/
+}
+/*
+#maList.active .list__item.list__item--tappable {
   display: block;
 }
+#maList.active .list__item.list__item--tappable.completed {
+  display: none;
+}
+
+#maList.completed .list__item.list__item--tappable {
+  display: none;
+}
+#maList.completed .list__item.list__item--tappable.completed {
+  display: block;
+}*/

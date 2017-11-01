@@ -35,12 +35,14 @@ html(lang='en', data-framework='jquery')
 
       ons-card
         include header
-        ul#maList.list(data-filter=filter, class=filter)
+        ul#maList.list
           include ../../partials/department/best-select-update-my-name
         
           include new-item
 
           include todo-item.pug
+
+          //include empty-item.pug
 
         include footer.pug
 
