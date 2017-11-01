@@ -923,6 +923,7 @@ input:disabled + .switch__toggle {
   display: none;
 }
 
+
 #maList.all .list__item.list__item--tappable,
 #maList.all .list__item.list__item--tappable.completed {
   display: flex;

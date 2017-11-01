@@ -18,17 +18,7 @@ html(lang='en', data-framework='jquery')
 
 
   body(data-grocery-id=groceryId, data-flag=isUltimate,  data-department-id=departmentId)
-
-
-
-    //h3 
-      a(href=back).pull-right 
-        | Go Back 
-        i.fa.fa-long-arrow-left.pull-right
-
-    //- include header    	
-
-    
+  
     
     section#todoapp.container
       .row
@@ -42,7 +32,7 @@ html(lang='en', data-framework='jquery')
 
             include todo-item.pug
 
-            //include empty-item.pug
+            include empty-item.pug
 
           include footer.pug
 
@@ -59,8 +49,7 @@ html(lang='en', data-framework='jquery')
     script(src='https://use.fontawesome.com/8b5217f583.js')
 
     script(src='https://unpkg.com/onsenui/js/onsenui.min.js')
-    //script(src='https://unpkg.com/jquery/dist/jquery.min.js')	
-      
+          
     
     script(src='/javascript/jquery/director.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
