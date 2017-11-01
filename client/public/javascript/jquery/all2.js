@@ -39,6 +39,10 @@ jQuery(function ($) {
 					// console.log(this.filter);
 					// console.log($('#maList').data());
 					$('#maList').addClass(this.filter);
+					console.log( )
+
+					$('input[type=radio][data-filter='+this.filter+']').prop('checked', true)
+
 					// $('#maList').prop('data-filter', this.filter)
 					// console.log($('#maList').data());
 					// this.render(this.filter);

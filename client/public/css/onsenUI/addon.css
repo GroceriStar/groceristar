@@ -923,17 +923,13 @@ input:disabled + .switch__toggle {
   display: none;
 }
 
-#maList.active {
-  display: none;
-}
-
 #maList.all .list__item.list__item--tappable,
 #maList.all .list__item.list__item--tappable.completed {
-  /*display: block;*/
+  display: flex;
 }
-/*
+
 #maList.active .list__item.list__item--tappable {
-  display: block;
+  display: flex;
 }
 #maList.active .list__item.list__item--tappable.completed {
   display: none;
@@ -943,5 +939,5 @@ input:disabled + .switch__toggle {
   display: none;
 }
 #maList.completed .list__item.list__item--tappable.completed {
-  display: block;
-}*/
+  display: flex;
+}
