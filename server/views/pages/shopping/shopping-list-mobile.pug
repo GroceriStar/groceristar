@@ -4,8 +4,8 @@ html(lang='en', data-framework='jquery')
     meta(charset='utf-8')
     title= 'Shopping List: ' + groceryId
 
-    //link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
 
+    link(rel='stylesheet', href='/css/onsenUI/bootstrap-grid-only.css')
 
     link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsenui.css')
 
@@ -30,25 +30,25 @@ html(lang='en', data-framework='jquery')
 
     
     
-    section#todoapp
-
-
-      ons-card
-        include header
-        ul#maList.list
-          include ../../partials/department/best-select-update-my-name
+    section#todoapp.container
+      .row
+  
+        ons-card
+          include header
+          ul#maList.list
+            include ../../partials/department/best-select-update-my-name
         
-          include new-item
+            include new-item
 
-          include todo-item.pug
+            include todo-item.pug
 
-          //include empty-item.pug
+            //include empty-item.pug
 
-        include footer.pug
+          include footer.pug
 
 				
-    footer#info
-      p Double-click to edit an item 
+        footer#info
+          p Double-click to edit an item 
 
 
 

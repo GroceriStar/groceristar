@@ -114,7 +114,9 @@ jQuery(function ($) {
 		render: function (flag=false) {
 
 			
-			// console.log();
+				// WE NEED TO COVVER CASE WHERE WE ADD A NEW ITEM OR DELETE ONE ITEM
+				// :todo maybe we need to cover situation when we don't have any items inside the department
+
 
 			// related to changing states
 
@@ -142,9 +144,7 @@ jQuery(function ($) {
 			    		$(this).remove();
 			    	}
 
-					// 
-					// $(this).find('.checkbox__input')
-					// 	   .prop("checked", results[id].completed)
+					
 				});
 
 			    break;
@@ -163,12 +163,11 @@ jQuery(function ($) {
 
 			switch (flag) {
 			  case 'toggle':
-			  
+
 			    var todos = this.getFilteredTodos();
 
 			// console.log(todos);	
-			// console.log(_.pluck(todos, 'id', 'completed') );	
-			// console.log(_.pick(todos, 'id', 'completed') );	
+				
 			var results = _.map(todos, function(obj) {
 			 return _.pick(obj, 'id', 'completed'); 
 			});
@@ -178,13 +177,13 @@ jQuery(function ($) {
 					var id = $(this).data().element.id;
 					$(this).find('.checkbox__input')
 						   .prop("checked", results[id].completed)
+
+					console.log(results[id].completed)	   
 				});
 
 
 			    break;
-			  case 'completed':
-			  	// alert('i m fucking find you');
-			    break;
+			  
 
 			  case 'new':
 			  	$('#new-todo').focus();
@@ -195,37 +194,15 @@ jQuery(function ($) {
 			    break;
 			}
 
-			if( todos ){
+			this.updateFooterCount();
+
+
+			// if( todos ){
 
 
 
 
-				// if( flag ){
 
-
-
-					// :todo BAD BAD BAD BAD BAD BAD BAD BAD method. HATE IT!
-					// $('#todo-er').after(this.todoTemplate(todos))
-
-					// $(this.selector).find('.checkbox__input')
-
-				// console.log($(this.selector));
-
-
-				// WE NEED TO COVVER CASE WHERE WE ADD A NEW ITEM OR DELETE ONE ITEM
-				// :todo maybe we need to cover situation when we don't have any items inside the department
-
-				// $(this.selector).map(function() {
-
-				// 	var id = $(this).data().element.id;
-				// 	$(this).find('.checkbox__input')
-				// 		   .prop("checked", results[id].completed)
-				// });
-
-
-					// $('#todo-list').html(  );
-					// console.log(todos);	
-				// }
 				
 
 
@@ -237,12 +214,11 @@ jQuery(function ($) {
 
 
 				// if( flag ) 
-				$('#new-todo').focus();
+				//$('#new-todo').focus();
 
 
-				this.updateFooterCount();
-
-			}
+				
+			// }
 
 		},
 
@@ -388,7 +364,6 @@ jQuery(function ($) {
 
 			var ingredientIds = _.pluck(this.todos, 'id');
 			this._toggle(ingredientIds, flag)
-
 			this.render('toggle');
 		},
 		toggle: function (event) {
@@ -402,7 +377,6 @@ jQuery(function ($) {
 			// var id = this.getDataField(e, 'id');
 		
 			var flag =  $(event.target).prop('checked');
-
 
 			this.todos[index].completed = flag;
 			this._toggle( [ id ], flag );
