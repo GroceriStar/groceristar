@@ -150,9 +150,11 @@ jQuery(function ($) {
 			    break;
 			  
 
-			  // case '':
+			  case 'new':
 
-			  //   break;
+
+
+			    break;
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
@@ -343,15 +345,30 @@ jQuery(function ($) {
 
 			var obj = this.getItemObject(response.id, val);
 
-			console.log(this.todos);
+			console.log(obj);
+			// console.log(this.todos);
 
 			this.todos.push(obj);
 
-			console.log(this.todos);
+			// console.log(this.todos);
 
 			// $input.val('');
 
-			// this.render();
+			console.log($(this.selector).last());
+		  	var $clonee = $(this.selector).last().clone();
+			// $clonee.data('element', obj);
+			$clonee.removeClass('hide');
+			$clonee.find('.list__item__center span')
+				.html(obj.name).affter('<div>ZZAAAAA</div>').;
+			// $clonee.find('.text-input.edit').prop('value', 'SHALAVA')
+			// console.log($clonee.data())  	
+			console.log($clonee.html()) 
+			console.log($clonee.find('.text-input.edit')) 	
+
+			$(this.selector).last()
+				.before($clonee).end()
+				.find('.text-input.edit').val('ALAVA');
+			// this.render('new');
 
 
 		},

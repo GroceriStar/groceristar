@@ -371,9 +371,9 @@ exports.shopping = async (req, res, next) => {
   var display_destroy_all_button = all - count_not_purchased;
 
 
-  console.log(count_not_purchased);
+  // console.log(count_not_purchased);
   // console.log(all - count_not_purchased);
-  console.log(display_destroy_all_button)
+  // console.log(display_destroy_all_button)
 
 
   let renderObject = {
