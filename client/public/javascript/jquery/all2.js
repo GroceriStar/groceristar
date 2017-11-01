@@ -106,9 +106,9 @@ jQuery(function ($) {
 			// related to changing states
 			switch (flag) {
 			  case 'active':
-			    alert('bitch');
+			    // alert('bitch');
 
-			    // console.log(this.getActiveTodos());
+			    
 
 			    var zzz = this.getActiveTodos()
 			    var activeResults = _.map(zzz, function(obj) {
@@ -116,17 +116,24 @@ jQuery(function ($) {
 				});
 				activeResults = _.indexBy(activeResults, 'id');
 				console.log(activeResults)
-			 //    $(this.selector).map(function() {
+				console.log(this.getActiveTodos());
 
-				// 	var id = $(this).data().element.id;
-				// 	$(this).find('.checkbox__input')
-				// 		   .prop("checked", results[id].completed)
-				// });
+			    $(this.selector).map(function() {
+
+			    	var id = $(this).data().element.id;
+
+			    	if(activeResults[id].completed)
+			    		console.log(id)
+
+					// 
+					// $(this).find('.checkbox__input')
+					// 	   .prop("checked", results[id].completed)
+				});
 
 
 			    break;
 			  case 'completed':
-			  	alert('i m fucking find you');
+			  	// alert('i m fucking find you');
 
 			  	var zzz1 = this.getCompletedTodos()
 			    var activeResults1 = _.map(zzz1, function(obj) {
@@ -136,6 +143,18 @@ jQuery(function ($) {
 				console.log(activeResults1)
 
 			  	console.log(this.getCompletedTodos());
+			  	$(this.selector).map(function() {
+
+			    	var id = $(this).data().element.id;
+
+			    	if(!activeResults[id].completed)
+			    		console.log(id)
+
+					// 
+					// $(this).find('.checkbox__input')
+					// 	   .prop("checked", results[id].completed)
+				});
+
 			 //  	$(this.selector).map(function() {
 
 				// 	var id = $(this).data().element.id;
@@ -149,7 +168,7 @@ jQuery(function ($) {
 			  //   break;
 			  // this is all flag relates
 			  default:
-			  	alert('So what?');
+			  	// alert('So what?');
 			  	var zzz2 = this.todos;
 			    var activeResults2 = _.map(zzz2, function(obj) {
 				 return _.pick(obj, 'id', 'completed'); 
