@@ -653,6 +653,262 @@ input:disabled + .switch__toggle {
 }
 
 
+
+/* INLY HEADIR */
+.navigation-bar {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  white-space: nowrap;
+  overflow: hidden;
+  word-spacing: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+  display: block;
+  height: 44px;
+  padding-left: 0;
+  padding-right: 0;
+  background: #fff;
+  color: #1f1f21;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 400;
+  width: 100%;
+  white-space: nowrap;
+  border-bottom: none;
+  -webkit-background-size: 100% 1px;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-image: -webkit-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: -moz-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: -o-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: linear-gradient(0deg, #bbb, #bbb 100%);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .navigation-bar {
+    background-image: -webkit-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -moz-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -o-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #bbb, #bbb 50%, transparent 50%);
+  }
+}
+.navigation-bar__bg {
+  background: #fff;
+}
+.navigation-bar__item,
+.navigation-bar__left,
+.navigation-bar__right,
+.navigation-bar__center {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  height: 44px;
+  vertical-align: top;
+  overflow: visible;
+  display: block;
+  vertical-align: middle;
+  float: left;
+}
+.navigation-bar__left {
+  max-width: 50%;
+  width: 27%;
+  text-align: left;
+  line-height: 44px;
+}
+.navigation-bar__right {
+  max-width: 50%;
+  width: 27%;
+  text-align: right;
+  line-height: 44px;
+}
+.navigation-bar__center {
+  width: 46%;
+  text-align: center;
+  line-height: 44px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1f1f21;
+}
+.navigation-bar__title {
+  line-height: 44px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1f1f21;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+.navigation-bar__center:first-child:last-child {
+  width: 100%;
+}
+
+.toolbar-button,
+.toolbar-button--outline,
+.toolbar-button--quiet {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 4px 10px;
+  letter-spacing: 0;
+  color: rgba(38,100,171,0.81);
+  text-shadow: 0 1px none;
+  background-color: rgba(0,0,0,0);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.toolbar-button:active,
+.toolbar-button--outline:active,
+.toolbar-button--quiet:active {
+  background-color: rgba(0,0,0,0);
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  opacity: 0.2;
+}
+.toolbar-button:disabled,
+.toolbar-button[disabled] {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.toolbar-button:focus,
+.toolbar-button--outline:focus,
+.toolbar-button--quiet:focus {
+  outline: 0;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.toolbar-button:hover,
+.toolbar-button--outline:hover,
+.toolbar-button--quiet:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.toolbar-button--outline {
+  border: 1px solid rgba(38,100,171,0.81);
+  margin: auto 8px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.toolbar-button--material {
+  font-size: 22px;
+  color: #ffffff;
+  display: inline-block;
+  padding: 0 12px;
+  height: 100%;
+  margin: 0;
+  border: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  vertical-align: initial;
+}
+.toolbar-button--material:first-of-type {
+  margin-left: 4px;
+}
+.toolbar-button--material:last-of-type {
+  margin-right: 4px;
+}
+.toolbar-button--material:active {
+  opacity: 1;
+  background-color: rgba(255,255,255,0.15);
+}
+.back-button {
+  height: 44px;
+  line-height: 44px;
+  padding-left: 8px;
+  color: rgba(38,100,171,0.81);
+  background-color: rgba(0,0,0,0);
+}
+.back-button:active {
+  opacity: 0.2;
+}
+.back-button__label {
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+}
+.back-button__icon {
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  margin-right: 6px;
+}
+.back-button__icon:before {
+  font-family: 'Ionicons';
+  content: '\f3cf';
+  font-size: 32px;
+}
+.back-button--material {
+  font-size: 22px;
+  color: #ffffff;
+  display: inline-block;
+  padding: 0 12px;
+  height: 100%;
+  margin: 0 0 0 4px;
+  border: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  vertical-align: initial;
+  line-height: 56px;
+}
+.back-button--material__label {
+  display: none;
+  font-size: 20px;
+}
+.back-button--material__icon:before {
+  font-family: 'Material-Design-Iconic-Font';
+  content: '\f2ea';
+  font-size: 26px;
+}
+.back-button--material:active {
+  opacity: 1;
+  background-color: rgba(255,255,255,0.15);
+}
+
+
+
 /*#todoapp #footer-link li .toolbar-button.destroy {
   display: none;
       transition: color 0.2s ease-out;
