@@ -35,7 +35,7 @@ html(lang='en', data-framework='jquery')
 
       ons-card
         include header
-        ul.list#footer-link
+        ul#maList.list(data-filter=filter, class=filter)
           include ../../partials/department/best-select-update-my-name
         
           include new-item

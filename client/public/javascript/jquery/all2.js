@@ -35,8 +35,13 @@ jQuery(function ($) {
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
-					console.log('im work - faggot');
-					this.render(this.filter);
+					// console.log('im work - faggot');
+					// console.log(this.filter);
+					// console.log($('#maList').data());
+					// // $('#maList').data('filter', this.filter)
+					// $('#maList').prop('data-filter', this.filter)
+					// console.log($('#maList').data());
+					// this.render(this.filter);
 				}.bind(this)
 			}).init('/all');
 
@@ -45,6 +50,18 @@ jQuery(function ($) {
 			$('input[type=radio][name=segment-filter]').change(function() {
 		        
 		        $(this).parent().find('.hide')[0].click()
+		        var filter = $(this).data().filter;
+		        // $('#maList').prop('data-filter', filter)
+		        // $('#maList').data('filter', filter)
+		        // console.log($('#maList').data());
+		        
+		       	 $('#maList').removeClass('all') 
+		       	 $('#maList').removeClass('active')
+		       	 $('#maList').removeClass('completed')
+		        
+
+		        $('#maList').addClass(filter)
+		        // console.log($(this).data().filter);
 
 		    });
 
@@ -110,50 +127,50 @@ jQuery(function ($) {
 
 			    
 
-			    var zzz = this.getActiveTodos()
-			    var activeResults = _.map(zzz, function(obj) {
-				 return _.pick(obj, 'id', 'completed'); 
-				});
-				activeResults = _.indexBy(activeResults, 'id');
-				console.log(activeResults)
-				console.log(this.getActiveTodos());
+			 //    var zzz = this.getActiveTodos()
+			 //    var activeResults = _.map(zzz, function(obj) {
+				//  return _.pick(obj, 'id', 'completed'); 
+				// });
+				// activeResults = _.indexBy(activeResults, 'id');
+				// console.log(activeResults)
+				// console.log(this.getActiveTodos());
 
-			    $(this.selector).map(function() {
+			 //    $(this.selector).map(function() {
 
-			    	var id = $(this).data().element.id;
+			 //    	var id = $(this).data().element.id;
 
-			    	if(activeResults[id].completed)
-			    		console.log(id)
+			 //    	if(activeResults[id].completed)
+			 //    		console.log(id)
 
-					// 
-					// $(this).find('.checkbox__input')
-					// 	   .prop("checked", results[id].completed)
-				});
+				// 	// 
+				// 	// $(this).find('.checkbox__input')
+				// 	// 	   .prop("checked", results[id].completed)
+				// });
 
 
 			    break;
 			  case 'completed':
 			  	// alert('i m fucking find you');
 
-			  	var zzz1 = this.getCompletedTodos()
-			    var activeResults1 = _.map(zzz1, function(obj) {
-				 return _.pick(obj, 'id', 'completed'); 
-				});
-				activeResults1 = _.indexBy(activeResults1, 'id');
-				console.log(activeResults1)
+			 //  	var zzz1 = this.getCompletedTodos()
+			 //    var activeResults1 = _.map(zzz1, function(obj) {
+				//  return _.pick(obj, 'id', 'completed'); 
+				// });
+				// activeResults1 = _.indexBy(activeResults1, 'id');
+				// console.log(activeResults1)
 
-			  	console.log(this.getCompletedTodos());
-			  	$(this.selector).map(function() {
+			 //  	console.log(this.getCompletedTodos());
+			 //  	$(this.selector).map(function() {
 
-			    	var id = $(this).data().element.id;
+			 //    	var id = $(this).data().element.id;
 
-			    	if(!activeResults[id].completed)
-			    		console.log(id)
+			 //    	if(!activeResults[id].completed)
+			 //    		console.log(id)
 
-					// 
-					// $(this).find('.checkbox__input')
-					// 	   .prop("checked", results[id].completed)
-				});
+				// 	// 
+				// 	// $(this).find('.checkbox__input')
+				// 	// 	   .prop("checked", results[id].completed)
+				// });
 
 			 //  	$(this.selector).map(function() {
 
@@ -169,14 +186,14 @@ jQuery(function ($) {
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
-			  	var zzz2 = this.todos;
-			    var activeResults2 = _.map(zzz2, function(obj) {
-				 return _.pick(obj, 'id', 'completed'); 
-				});
-				activeResults2 = _.indexBy(activeResults2, 'id');
-				console.log(activeResults2)
+			 //  	var zzz2 = this.todos;
+			 //    var activeResults2 = _.map(zzz2, function(obj) {
+				//  return _.pick(obj, 'id', 'completed'); 
+				// });
+				// activeResults2 = _.indexBy(activeResults2, 'id');
+				// console.log(activeResults2)
 
-			  	console.log(this.todos);
+			 //  	console.log(this.todos);
 
 			 //  	$(this.selector).map(function() {
 

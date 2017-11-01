@@ -922,3 +922,11 @@ input:disabled + .switch__toggle {
 .hide {
   display: none;
 }
+
+#maList.active{
+  display: none;
+}
+
+#maList.all{
+  display: block;
+}

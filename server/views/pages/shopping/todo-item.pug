@@ -1,11 +1,7 @@
 each element in list
-  //h2=element.completed
-  //if( element.completed )
-    li.list__item.list__item--tappable.completed(data-element=element)
-  //else
-    li.list__item.list__item--tappable(data-element=element)
 
-  li.list__item.list__item--tappable(data-element=element)
+  - var isCompleted = element.completed ? 'completed' : '';
+  li.list__item.list__item--tappable(data-element=element, class=isCompleted)
       include item-checkbox
       include item-center
       include item-right
