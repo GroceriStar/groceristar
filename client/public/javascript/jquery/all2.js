@@ -39,7 +39,7 @@ jQuery(function ($) {
 					// console.log(this.filter);
 					// console.log($('#maList').data());
 					$('#maList').addClass(this.filter);
-					console.log( )
+					// console.log( )
 
 					$('input[type=radio][data-filter='+this.filter+']').prop('checked', true)
 
@@ -113,15 +113,7 @@ jQuery(function ($) {
 		// this way is old-fashione, and i keep it only to follow previous version installation
 		render: function (flag=false) {
 
-			var todos = this.getFilteredTodos();
-
-			// console.log(todos);	
-			// console.log(_.pluck(todos, 'id', 'completed') );	
-			// console.log(_.pick(todos, 'id', 'completed') );	
-			var results = _.map(todos, function(obj) {
-			 return _.pick(obj, 'id', 'completed'); 
-			});
-			results = _.indexBy(results, 'id');
+			
 			// console.log();
 
 			// related to changing states
@@ -129,13 +121,34 @@ jQuery(function ($) {
 			// related to update/delete/destroy all events
 
 			switch (flag) {
-			  case 'destroyOne':
+			  case 'destroy':
 			    // alert('bitch');
 			    // we add no focus on destroy one event
+
+			    // console.log(this.todos)
+				var updated = _.map(this.todos, function(obj) {
+					return _.pick(obj, 'id', 'completed'); 
+				});
+				updated = _.indexBy(updated, 'id');
+
+				// console.log(updated)
+				
+			   $(this.selector).map(function() {
+
+			    	var id = $(this).data().element.id;
+
+			    	if( !updated[id] ) {
+			    		console.log(id)
+			    		$(this).remove();
+			    	}
+
+					// 
+					// $(this).find('.checkbox__input')
+					// 	   .prop("checked", results[id].completed)
+				});
+
 			    break;
-			  case 'xx':
-			  	// alert('i m fucking find you');
-			    break;
+			  
 
 			  // case '':
 
@@ -150,7 +163,16 @@ jQuery(function ($) {
 
 			switch (flag) {
 			  case 'toggle':
-			    
+			  
+			    var todos = this.getFilteredTodos();
+
+			// console.log(todos);	
+			// console.log(_.pluck(todos, 'id', 'completed') );	
+			// console.log(_.pick(todos, 'id', 'completed') );	
+			var results = _.map(todos, function(obj) {
+			 return _.pick(obj, 'id', 'completed'); 
+			});
+			results = _.indexBy(results, 'id');
 			  	$(this.selector).map(function() {
 
 					var id = $(this).data().element.id;
@@ -278,7 +300,7 @@ jQuery(function ($) {
 			var array_of_ids = _.pluck(difference, 'id');
 			await this._unattach_async(array_of_ids);
 			this.filter = 'all';
-			this.render(this.filter);
+			this.render('destroy');
 		},
 		// accepts an element from inside the `.item` div and
 		// returns the corresponding index in the `todos` array
@@ -361,17 +383,17 @@ jQuery(function ($) {
 			var flag = $(e.target).prop('checked');
 
 			_.each(this.todos, function(value, key, obj) { 
-					obj[key].completed = flag; 
+				obj[key].completed = flag; 
 			})
 
 			var ingredientIds = _.pluck(this.todos, 'id');
 			this._toggle(ingredientIds, flag)
 
-			this.render('toggle-all');
+			this.render('toggle');
 		},
 		toggle: function (event) {
 
-			console.log(event.target);
+			// console.log(event.target);
 
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
@@ -497,7 +519,7 @@ jQuery(function ($) {
 
 			await this._unattach_async( [ id ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
-			this.render('destroyOne');
+			this.render('destroy');
 		},
 		getDataField: function(e, field){
 			var $item = this.getElementFromEvent(e.target);
@@ -580,44 +602,10 @@ jQuery(function ($) {
 			});
 			
 		},
-
-		//methods, related to ajax calls
-		// :todo finish this stuff and get rid of this function
-		ajax_call: function(type, options) {
-
-			if(this.isUltimate()) return false;
-
-			if( type == 'create-ingredient' ){
-				return this.ajax_CreateIngredient(options);
-			}
-
-		},
-
-		ajax_CreateIngredient: function(toSave){
-			var new_id = false;
-			$.ajax({
-				type: "POST",
-				url: '/create/ing/',
-				dataType: 'json',
-				data: toSave,
-				
-				'async': false
-			}).done(function(data){
-				
-				// console.log('success');
-				new_id = data.id;
-			});
-			return new_id;
-			// console.log(new_id);
-		},
-
-
 		redirectToOtherDepartment: function(){
 			var path = "/shopping/" + this.groceryId + '/' + this.value;
   			window.location.replace(path);
 		}
-
-
 	};
 
 	App.init();

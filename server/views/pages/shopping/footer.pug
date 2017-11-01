@@ -7,9 +7,9 @@ ul.list#footer
       	 
     .list__item__right
       .list__item__label
-        if (have_completed_items)
-          button#clear-completed Clear purchased 
-        else  
+        //if (have_completed_items)
+        button#clear-completed(class= have_completed_items ? '': 'hide') Clear purchased 
+        //else  
           // :todo fix this later
           button#clear-completed.hide Clear purchased 
 

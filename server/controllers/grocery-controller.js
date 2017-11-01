@@ -366,9 +366,14 @@ exports.shopping = async (req, res, next) => {
   // console.log(ingredients);
   // console.log(count(_.where(ingredients, {completed: false}))
 
+  var all = ingredients.length
   var count_not_purchased = _.where(ingredients, {completed: false}).length;
-  // console.log(count_not_purchased);
-  // console.log(!count_not_purchased);
+  var display_destroy_all_button = all - count_not_purchased;
+
+
+  console.log(count_not_purchased);
+  // console.log(all - count_not_purchased);
+  console.log(display_destroy_all_button)
 
 
   let renderObject = {
@@ -388,7 +393,7 @@ exports.shopping = async (req, res, next) => {
     activeTodoCount: count_not_purchased,
       // '<span class="count">' + count_not_purchased + '</span>' + ' items left',
     text: '',
-    have_completed_items: !count_not_purchased,
+    have_completed_items: display_destroy_all_button,
 
     // filter: 'all'
   };
