@@ -9,10 +9,7 @@ module.exports = function(app) {
 	var router  = app.loopback.Router();
 	var departmentController = require('../controllers/department-controller');
 	
-
-
 	//:todo decide which method is better - grocery version or controller version
-
 	router.get('/department/:id/:groceryId', 
 		ensureLoggedIn('/auth/account'),
 	 departmentController.getDepartment);
@@ -24,7 +21,7 @@ module.exports = function(app) {
 
 
 	// :todo make it work 
-	router.get('/hide/department/:id/:groceryId', function(req, res, next){
+	router.get('/hide/department/:id/:groceryId', function(req, res, next) {
 		var departmentId = req.params.id;
 		var groceryId = req.params.groceryId;
 		
@@ -44,32 +41,32 @@ module.exports = function(app) {
 
 
 
-	router.get('/show/department/:id/:groceryId', function(req, res, next){
-		var departmentId = req.params.id;
-		var groceryId = req.params.groceryId;
+	router.get('/show/department/:id/:groceryId', function(req, res, next) {
+      var departmentId = req.params.id;
+	  var groceryId = req.params.groceryId;
 
-		var Grocery   = app.models.Grocery;
+	  var Grocery   = app.models.Grocery;
 		
-		var options = {
+	  var options = {
 	      // type: 'show',
 	      // field: 'hideThisIds',
-	      groceryId: groceryId,
-	      secondArray: [ departmentId ]
-	    };
+	    groceryId: groceryId,
+	    secondArray: [ departmentId ]
+	  };
 		
 	    
-		Grocery.removeDepartment(options);
+	  Grocery.removeDepartment(options);
 
 	});
 
 
-// :todo test this
-// Not working i think
-	router.get('/show/all/:groceryId', function(req, res, next){
+  // :todo test this
+  // Not working i think
+	router.get('/show/all/:groceryId', function(req, res, next) {
 		var groceryId = req.params.groceryId;
 		var Grocery   = app.models.Grocery;	
 		var options = {
-	      groceryId: groceryId,
+	      groceryId: groceryId
 	    };
 			    
 		Grocery.showAllDepartments(options);
@@ -77,22 +74,21 @@ module.exports = function(app) {
 	});
 
 
-
 	// :todo make it work  or delete?
-// 			1) we got all information from grocery and check 
-// 	2) is this departmentId isset at hide array 
-// 3) depending on result we've add or remove it from it
+    // 	1) we got all information from grocery and check 
+    // 	2) is this departmentId isset at hide array 
+    //  3) depending on result we've add or remove it from it
 // :todo this function is suck.
 
-	router.get('/visibility/department/:id/:groceryId', function(req, res, next){		
-		var departmentId = req.params.id;
-		var groceryId = req.params.groceryId;
-		var Department   = app.models.Department;
-		var Grocery      = app.models.Grocery;
+	router.get('/visibility/department/:id/:groceryId', function(req, res, next) {		
+	  var departmentId = req.params.id;
+	  var groceryId = req.params.groceryId;
+	  var Department   = app.models.Department;
+	  var Grocery      = app.models.Grocery;
 
-		Grocery.findById(groceryId, {
+	  Grocery.findById(groceryId, {
 
-		}, function(err, grocery){
+		}, function(err, grocery) {
 
 			var g = grocery.toJSON();
 
@@ -129,7 +125,7 @@ module.exports = function(app) {
 
 		});
 
-		res.redirect('/view/grocery/' + groceryId);
+	  res.redirect('/view/grocery/' + groceryId);
 
 	});
 
@@ -143,4 +139,5 @@ module.exports = function(app) {
 
 	app.use(router);
 
-};  	
+}; 
+ 	

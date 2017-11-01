@@ -26,14 +26,14 @@ exports.departmentsList = async (req, res, next) => {
 	let grocery
   let response
   try {      
-     var Grocery   = app.models.Grocery;
-     // grocery = await Grocery.fetchById(groceryId);
-     grocery  = await Grocery.findById(groceryId, Grocery.query1());
-     response = Grocery.convertCollectionData(grocery);
+    var Grocery   = app.models.Grocery;
+    // grocery = await Grocery.fetchById(groceryId);
+    grocery  = await Grocery.findById(groceryId, Grocery.query1());
+    response = Grocery.convertCollectionData(grocery);
      // console.log(response);
 
   } catch (e) {
-     Raven.captureException(e);
+    Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
     next(e) 
   }

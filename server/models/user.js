@@ -12,10 +12,10 @@ module.exports = function(User) {
     	var UserGrocery  = User.app.models.userGrocery;
  		var UserFavorite = User.app.models.userFav;   	
 
-    	if( ctx.isNewInstance ) {   		
+    	if ( ctx.isNewInstance ) {   		
     		UserGrocery.create({
     			userId: ctx.instance.id,
-    			groceryIds: []	
+    			groceryIds: []
     		});
 
     		UserFavorite.create({
@@ -31,26 +31,26 @@ module.exports = function(User) {
     // :todo add remote method for this functionality
     // :todo update forEach to underscore, as we use it
     // :todo update for using with proceed
-    User.listFavorites = function(userId, cb){
+    User.listFavorites = function(userId, cb) {
 
         // var Ingredient = User.app.models.Ingredient;
         // :todo start to use this method getCurrentUserWithFavorites
-        User.findById(userId, {
-            include: {
+      User.findById(userId, {
+        include: {
                 relation: 'favorites',
                 scope: {
                     fields: [ 'name', 'created_at' ],
                 }
             }
-        }, function(err, model){
+        }, (err, model) => {
 
-            var data      = model.toJSON();
-            var favorites = [];
+        var data      = model.toJSON();
+        var favorites = [];
 
-            // console.log(data.favorites);
+      // console.log(data.favorites);
 
-            // :todo update this ot underscore
-            data.favorites.forEach(function(item, i){
+      // :todo update this ot underscore
+      data.favorites.forEach(function(item, i){
               
                 // console.log(item.name);
                 // console.log(item.id);
@@ -63,23 +63,23 @@ module.exports = function(User) {
             cb(null, favorites);
 
         });
-    }
+    };
 
 
-    User.addGrocery = function(options){
+    User.addGrocery = function(options) {
         options.type  = 'attach';
         options.field = 'groceryIds'
         User.proceed(options);
     };
 
-    User.cloneGrocery = function(options){
+    User.cloneGrocery = function(options) {
         // options.type  = 'attach';
         // options.field = 'groceryIds'
         // User.proceed(options);
     };
 
     // _map and toString is equal to model.toJSON
-    User.proceed = function(options){
+    User.proceed = function(options) {
 
         var type = options.type;
 
@@ -121,11 +121,11 @@ module.exports = function(User) {
 
         });
 
-    }
+    };
 
 
 
-    User.getCurrentUserWithFavorites = function(userId, cb){
+    User.getCurrentUserWithFavorites = function(userId, cb) {
 
         User.findById(userId, {
             include: {
@@ -140,7 +140,7 @@ module.exports = function(User) {
     };
 
 
-    User.withGroceries  = function(userId, cb){
+    User.withGroceries  = function(userId, cb) {
         User.findById(userId, {
         include: {
              relation: 'groceries',
@@ -157,7 +157,7 @@ module.exports = function(User) {
     };
     // User.withFavourites = function(userId, cb){};  
 
-    User.methodofAllMethods = function(userId, cb){
+    User.methodofAllMethods = function(userId, cb) {
 
 
         User.findById(userId, {
@@ -241,17 +241,17 @@ module.exports = function(User) {
 
 
 
-    User.withAdmin = function(cb){
+    User.withAdmin = function(cb) {
         User.findOne(User.queryAdmin(), cb);
     };
 
 
-    User.withAdminAndUltimate = function(cb){
+    User.withAdminAndUltimate = function(cb) {
         User.findOne(User.queryUltimateAdmin(), cb);
     };
 
 
-    User.queryUltimateAdmin = function(){
+    User.queryUltimateAdmin = function() {
         return {
             where: {
                 name: 'admin'
@@ -266,10 +266,10 @@ module.exports = function(User) {
                  }
             }
         };
-    }
+    };
 
 
-    User.queryAdmin = function(){
+    User.queryAdmin = function() {
         return {
             where: {
                 name: 'admin'

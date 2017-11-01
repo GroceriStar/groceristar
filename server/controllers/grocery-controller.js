@@ -390,7 +390,7 @@ exports.shopping = async (req, res, next) => {
     text: '',
     have_completed_items: !count_not_purchased,
 
-    filter: 'all'
+    // filter: 'all'
   };
   // console.log(renderObject);
   res.render('pages/shopping/shopping-list-mobile', renderObject);
