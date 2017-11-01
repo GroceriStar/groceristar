@@ -82,6 +82,9 @@ jQuery(function ($) {
             
 
 		},
+		returnPick: function (data) {
+
+		}, 
 		// filterClick: function(event){
 		// 	console.log($(event.target));
 		// },
@@ -105,8 +108,14 @@ jQuery(function ($) {
 			  case 'active':
 			    alert('bitch');
 
-			    console.log(this.getActiveTodos());
+			    // console.log(this.getActiveTodos());
 
+			    var zzz = this.getActiveTodos()
+			    var activeResults = _.map(zzz, function(obj) {
+				 return _.pick(obj, 'id', 'completed'); 
+				});
+				activeResults = _.indexBy(activeResults, 'id');
+				console.log(activeResults)
 			 //    $(this.selector).map(function() {
 
 				// 	var id = $(this).data().element.id;
@@ -118,6 +127,14 @@ jQuery(function ($) {
 			    break;
 			  case 'completed':
 			  	alert('i m fucking find you');
+
+			  	var zzz1 = this.getCompletedTodos()
+			    var activeResults1 = _.map(zzz1, function(obj) {
+				 return _.pick(obj, 'id', 'completed'); 
+				});
+				activeResults1 = _.indexBy(activeResults1, 'id');
+				console.log(activeResults1)
+
 			  	console.log(this.getCompletedTodos());
 			 //  	$(this.selector).map(function() {
 
@@ -133,6 +150,13 @@ jQuery(function ($) {
 			  // this is all flag relates
 			  default:
 			  	alert('So what?');
+			  	var zzz2 = this.todos;
+			    var activeResults2 = _.map(zzz2, function(obj) {
+				 return _.pick(obj, 'id', 'completed'); 
+				});
+				activeResults2 = _.indexBy(activeResults2, 'id');
+				console.log(activeResults2)
+
 			  	console.log(this.todos);
 
 			 //  	$(this.selector).map(function() {
@@ -141,7 +165,7 @@ jQuery(function ($) {
 				// 	$(this).find('.checkbox__input')
 				// 		   .prop("checked", results[id].completed)
 				// });
-				
+
 			    break;
 			}
 
