@@ -382,7 +382,7 @@ jQuery(function ($) {
 			var difference   = _.difference(array1, array2);
 
 			var array_of_ids = _.pluck(difference, 'id');
-			await this._unattach_async(array_of_ids);
+			// await this._unattach_async(array_of_ids);
 			this.filter = 'all';
 			this.render('destroy');
 		},
@@ -442,14 +442,9 @@ jQuery(function ($) {
 
 			// new version
 			var response;
-			try {     
-				response = await this._create_async(val);
+			
 
-			} catch (e) {
-				Raven.captureException(e);
-			}
-
-			var obj = this.getItemObject(response.id, val);
+			var obj = this.getItemObject('new-id', val);
 			this.todos.push(obj);
 
 			
@@ -480,7 +475,7 @@ jQuery(function ($) {
 			})
 
 			var ingredientIds = _.pluck(this.todos, 'id');
-			this._toggle(ingredientIds, flag)
+			// this._toggle(ingredientIds, flag)
 			this.render('toggle');
 		},
 		toggle: function (event) {
@@ -496,7 +491,7 @@ jQuery(function ($) {
 			var flag =  $(event.target).prop('checked');
 
 			this.todos[index].completed = flag;
-			this._toggle( [ id ], flag );
+			// this._toggle( [ id ], flag );
 			this.render('toggle');
 
 		},
@@ -565,7 +560,7 @@ jQuery(function ($) {
 			// this is a brand new ingredient - we'll update the name
 			if( is_custom ){
 
-				this._rename_async( id, val );
+				// this._rename_async( id, val );
 				this.todos[index].name = val;
 				this.render('rename');
 				return ;
@@ -574,20 +569,20 @@ jQuery(function ($) {
 
 				
 				// 1_ we delete an ultimate ingredient from GL
-				await this._unattach_async( [ id ] );	
+				// await this._unattach_async( [ id ] );	
 				this.todos.splice(index, 1);
 
 
 				// 2_ we create a new element and attach it to a GL
 				var response;
-				try {     
-					response = await this._create_async(val);
+				// try {     
+				// 	response = await this._create_async(val);
 
-				} catch (e) {
-					Raven.captureException(e);
-				}
+				// } catch (e) {
+				// 	Raven.captureException(e);
+				// }
 
-				var obj = this.getItemObject(response.id, val);
+				var obj = this.getItemObject('new-id', val);
 				// console.log(obj);
 				this.todos.push(obj);
 				// console.log(this.todos);
@@ -627,7 +622,7 @@ jQuery(function ($) {
 		destroy: async function (e) {
 			var id = this.getDataField(e, 'id');
 
-			await this._unattach_async( [ id ] );
+			// await this._unattach_async( [ id ] );
 			this.todos.splice(this.getIndexFromEl(e.target), 1);
 			this.render('destroy');
 		},
@@ -643,23 +638,23 @@ jQuery(function ($) {
 			
 		},
 		_create_async: async function(name){
-			var options = {
-				name        : name,
-				groceryId   : this.groceryId,
-				departmentId: this.departmentId,
-			};
-			return new Promise(function(cb){
-				$.ajax({
-					type: "POST",
-					url: '/create/ing/',
-					dataType: 'json',
-					data: options,				
+			// var options = {
+			// 	name        : name,
+			// 	groceryId   : this.groceryId,
+			// 	departmentId: this.departmentId,
+			// };
+			// return new Promise(function(cb){
+			// 	$.ajax({
+			// 		type: "POST",
+			// 		url: '/create/ing/',
+			// 		dataType: 'json',
+			// 		data: options,				
 					
-				})
-				.done(function(response){
-					cb(response);
-				});
-			});
+			// 	})
+			// 	.done(function(response){
+			// 		cb(response);
+			// 	});
+			// });
 
 
 		},
@@ -676,7 +671,7 @@ jQuery(function ($) {
 			// 		data: options			
 			// 	})
 			// 	.done(cb);
-			});
+			// });
 
 		},
 		_unattach_async: async function( ids ){
