@@ -28,14 +28,12 @@ jQuery(function ($) {
 
 			this.groceryId    = this.getGroceryId();
 			this.departmentId = this.getDepartmentId(); 
-			// console.log(this.todos )
-
 			this.bindEvents();
 
 			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
-					// console.log('im work - faggot');
+					
 					// console.log(this.filter);
 					// console.log($('#maList').data());
 					$('#maList').addClass(this.filter);
@@ -44,8 +42,7 @@ jQuery(function ($) {
 					$('input[type=radio][data-filter='+this.filter+']').prop('checked', true)
 
 					// $('#maList').prop('data-filter', this.filter)
-					// console.log($('#maList').data());
-					// this.render(this.filter);
+					
 				}.bind(this)
 			}).init('/all');
 
@@ -82,7 +79,8 @@ jQuery(function ($) {
 				.on('change', this.toggleAll.bind(this));    
 
 
-			// :todo i dont think that keyup its an awesome approach. it can work, but why?
+			// :todo i dont think that keyup its an awesome approach.
+			// it can work, but why to use it?
 			$('#new-todo')
 				.on('keyup', this.create.bind(this));
 
@@ -91,12 +89,14 @@ jQuery(function ($) {
 				this.destroyCompleted.bind(this));
 
 			// #todo-list
-			// TOGGLE IS NOT FINISHED 
+			
 			$('#todoapp')
 				.on('change',   '.checkbox__input',  this.toggle.bind(this))
-			// 	.on('dblclick', 'label',    this.editingMode.bind(this))
-			// 	.on('keyup',    '.edit',    this.editKeyup.bind(this))
-			// 	.on('focusout', '.edit',    this.update.bind(this))
+				//related to update feature
+				.on('dblclick', 'label',    this.editingMode.bind(this))
+				.on('keyup',    '.edit',    this.editKeyup.bind(this))
+				.on('focusout', '.edit',    this.update.bind(this))
+				// related to delete feature
 				.on('click',    '.toolbar-button.destroy', this.destroy.bind(this));
 
 
@@ -124,7 +124,7 @@ jQuery(function ($) {
 
 			switch (flag) {
 			  case 'destroy':
-			    // alert('bitch');
+			    
 			    // we add no focus on destroy one event
 
 			    // console.log(this.todos)
@@ -137,11 +137,11 @@ jQuery(function ($) {
 				
 			   $(this.selector).map(function() {
 					// this is related to empty item field
-					if( $(this).data() ){
+					if( !_.isEmpty($(this).data()) ){
 				    	var id = $(this).data().element.id;
 
 				    	if( !updated[id] ) {
-				    		console.log(id)
+				    		// console.log(id)
 				    		$(this).remove();
 				    	}
 				    }
@@ -159,7 +159,7 @@ jQuery(function ($) {
 			  //   break;
 			  // this is all flag relates
 			  default:
-			  	// alert('So what?');
+			  	
 			    break;
 			}
 
@@ -180,10 +180,7 @@ jQuery(function ($) {
 			  	$(this.selector).map(function() {
 
 					// this is related to empty item field
-
-					console.log( $(this).data() )
-
-					if( $(this).data() ){
+					if( !_.isEmpty($(this).data()) ){
 						var id = $(this).data().element.id;
 						$(this).find('.checkbox__input')
 						   .prop("checked", results[id].completed)
