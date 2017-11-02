@@ -52,9 +52,7 @@ jQuery(function ($) {
 		        
 		        $(this).parent().find('.hide')[0].click()
 		        var filter = $(this).data().filter;
-		        // $('#maList').prop('data-filter', filter)
-		        // $('#maList').data('filter', filter)
-		        // console.log($('#maList').data());
+		       
 		        
 		       	 $('#maList').removeClass('all') 
 		       	 $('#maList').removeClass('active')
@@ -190,16 +188,7 @@ jQuery(function ($) {
 				
 			   $(this.selector).map(function() {
 
-			   		// var id = $(this).data().element.id;
-			   		// console.log(id);
-			   		// console.log($(this).data().element.name)
-			   		// console.log(updated[id]);
-
-			   		// if( !updated[id] ) {
-				    // 		// console.log(id)
-			    	// 	$(this).remove();
-				    // }
-
+			   		
 					// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
 				    	var id = $(this).data().element.id;
@@ -216,6 +205,47 @@ jQuery(function ($) {
 					
 				});
 
+
+    			break;
+
+    			case 'rename':
+    			var updated = _.map(this.todos, function(obj) {
+					return _.pick(obj, 'id', 'name'); 
+				});
+				updated = _.indexBy(updated, 'id');
+
+				console.log(updated);
+
+				$(this.selector).map(function() {
+
+					// var id = $(this).data().element.id;
+					// var name = $(this).data().element.name;
+					// console.log($(this).data())
+					// if(name != updated[id].name){
+				 //    	if( $(this).hasClass('editing') ){
+				 //    		$(this).removeClass('editing')
+				 //    		$(this).find('span').html(name);
+
+				 //    		$(this).find('.text-input.edit')
+				 //    			   .addClass('hide')
+				 //    			   .val(name);
+				 //    	}
+					// }
+
+				// 	// this is related to empty item field
+					if( !_.isEmpty($(this).data()) ){
+
+						$(this).removeClass('editing')
+			    		$(this).find('span').html(name);
+
+			    		$(this).find('.text-input.edit')
+			    			   .addClass('hide')
+			    			   .val(name);
+
+				    }
+
+					
+				});
 
     			break;
 			  // this is all flag relates
@@ -512,25 +542,24 @@ jQuery(function ($) {
 			var id        = this.getDataField(e, 'id');
 			var is_custom = this.getDataField(e, 'custom');
 
-			console.log(id, is_custom)
-			// return ;
+			
 			// : suggestion - maybe it'll be better 
 			// to just keep previous value, when we delete all from input
 			if ( !val ) {
 				this.destroy(e);
-				return;
+				return ;
 			}
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 				this.render('abort');
-				return;
+				return ;
 			} 
 			
 
 			if( val == this.todos[index].name ){
 				this.render('abort');
-				return;
+				return ;
 			}
 			
 			// this is a brand new ingredient - we'll update the name
@@ -538,7 +567,7 @@ jQuery(function ($) {
 
 				this._rename_async( id, val );
 				this.todos[index].name = val;
-				this.render();
+				this.render('rename');
 				return ;
 
 			} else {
@@ -559,9 +588,9 @@ jQuery(function ($) {
 				}
 
 				var obj = this.getItemObject(response.id, val);
-				console.log(obj);
+				// console.log(obj);
 				this.todos.push(obj);
-				console.log(this.todos);
+				// console.log(this.todos);
 				
 
 
