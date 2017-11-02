@@ -950,7 +950,7 @@ span.completka {
 
 }
 #maList.all .list__item.list__item--tappable.editing .list__item__left {
-  width: 24px;
+  width: 38px;
   height: 24px;
 }
 #maList.all .list__item.list__item--tappable.editing .list__item__left .checkbox__checkmark {
@@ -959,6 +959,9 @@ span.completka {
 }
 #maList.all .list__item.list__item--tappable.editing label > span {
   display: none;
+}
+#maList.all .list__item.list__item--tappable.editing .list__item__right .destroy {
+ display: none; 
 }
 
 #maList.all .list__item.list__item--tappable.editing label > .hide {

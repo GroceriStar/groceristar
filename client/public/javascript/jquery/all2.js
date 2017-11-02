@@ -89,11 +89,11 @@ jQuery(function ($) {
 				this.destroyCompleted.bind(this));
 
 			// #todo-list
-			
+
 			$('#todoapp')
 				.on('change',   '.checkbox__input',  this.toggle.bind(this))
 				//related to update feature
-				.on('dblclick', 'label',    this.editingMode.bind(this))
+				.on('dblclick', 'li:not(.completed) label',    this.editingMode.bind(this))
 				.on('keyup',    '.edit',    this.editKeyup.bind(this))
 				.on('focusout', '.edit',    this.update.bind(this))
 				// related to delete feature
@@ -411,8 +411,8 @@ jQuery(function ($) {
 		},
 		editingMode: function (e) {
 
-			console.log($(e.target).closest('li'));
-			
+			// console.log($(e.target).closest('li'));
+
 			// var $li = $(e.target).closest('li');
 			// console.log($li.hasClas('completed'));
 			// // if (data.custom)
@@ -421,14 +421,13 @@ jQuery(function ($) {
 
 
 
-			var $input = $(e.target).closest('li')
-									.addClass('editing').find('.edit');
+			var $input = $(e.target)
+							.closest('li').addClass('editing')
+							.find('.edit').removeClass('hide');
 
 			var val    = $input.val();
 
-			// console.log($input);
-			//console.log($input.val());
-
+			// this is our hidden input
 			$input.val('').focus().val(val);
 
 		},
@@ -436,7 +435,7 @@ jQuery(function ($) {
 			if (e.which === ENTER_KEY) {
 				e.target.blur();
 			}
-
+			console.log('bleee');
 			if (e.which === ESCAPE_KEY) {
 				$(e.target).data('abort', true).blur();
 			}
