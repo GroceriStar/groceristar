@@ -20,10 +20,7 @@ const User    = app.models.user;
 const Raven = require('raven');
 Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
-// for just easy understanding is mobile or not.
-// :todo remove if we'll switch the way of using templates
-const MobileDetect = require('mobile-detect');
-    
+   
 
 exports.changeName = async (req, res, next) => {
 

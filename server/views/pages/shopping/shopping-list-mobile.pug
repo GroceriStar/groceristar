@@ -54,4 +54,9 @@ html(lang='en', data-framework='jquery')
     script(src='/javascript/jquery/director.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
 
-    script(src='/javascript/jquery/all2.js')
+    if isUltimate 
+      //include ../../static/scripts-todo-read-only-delete-later.pug  
+      script(src='/javascript/jquery/all-read-only.js')
+    else
+      //include ../../static/scripts-todo.pug
+      script(src='/javascript/jquery/all2.js')
