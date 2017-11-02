@@ -318,6 +318,7 @@ jQuery(function ($) {
 		editKeyup: function (e) {
 			if (e.which === ENTER_KEY) {
 				e.target.blur();
+				
 			}
 
 			if (e.which === ESCAPE_KEY) {

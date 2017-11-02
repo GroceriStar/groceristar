@@ -42,7 +42,7 @@ jQuery(function ($) {
 					$('input[type=radio][data-filter='+this.filter+']').prop('checked', true)
 
 					// $('#maList').prop('data-filter', this.filter)
-					
+					this.render();
 				}.bind(this)
 			}).init('/all');
 
@@ -113,7 +113,9 @@ jQuery(function ($) {
 		// this way is old-fashione, and i keep it only to follow previous version installation
 		render: function (flag=false) {
 
-			console.log('mi blur?')
+			// console.log('mi blur?')
+			// console.log(flag)
+
 			// :todo maybe we need to cover situation 
 			// when we don't have any items inside the department
 
@@ -123,6 +125,7 @@ jQuery(function ($) {
 			// related to update/delete/destroy all events
 
 			switch (flag) {
+
 			  case 'destroy':
 			    
 			    // we add no focus on destroy one event
@@ -152,11 +155,59 @@ jQuery(function ($) {
 			    break;
 			  
 
-			  // case 'new':
+			  case 'abort':
+
+				$(this.selector).map(function() {
+					// this is related to empty item field
+					if( !_.isEmpty($(this).data()) ){
+
+				    	// var id = $(this).data().element.id;
+
+				    	// if( !updated[id] ) {
+				    	// 	// console.log(id)
+				    	// 	$(this).remove();
+				    	// }
+				    	// console.log($(this).hasClass('editing'))
+
+				    	if( $(this).hasClass('editing') ){
+				    		$(this).removeClass('editing')
+				    		$(this).find('.text-input.edit').addClass('hide');
+				    	}
+
+				    }
+
+					
+				});
+
+			    break;
+    			case 'upd':
+				var updated = _.map(this.todos, function(obj) {
+					return _.pick(obj, 'id', 'completed'); 
+				});
+				updated = _.indexBy(updated, 'id');
+
+				console.log(updated)
+				
+			   $(this.selector).map(function() {
+
+			   		var id = $(this).data().element.id;
+			   		console.log(id);
+			   		console.log(updated[id]);
+					// this is related to empty item field
+					if( !_.isEmpty($(this).data()) ){
+				    	var id = $(this).data().element.id;
+
+				    	if( !updated[id] ) {
+				    		// console.log(id)
+				    		$(this).remove();
+				    	}
+				    }
+
+					
+				});
 
 
-
-			  //   break;
+    			break;
 			  // this is all flag relates
 			  default:
 			  	
@@ -434,16 +485,10 @@ jQuery(function ($) {
 		editKeyup: function (e) {
 			if (e.which === ENTER_KEY) {
 				e.target.blur();
-				console.log('bleh')
 			}
 			if (e.which === ESCAPE_KEY) {
 				$(e.target).data('abort', true).blur();
-				console.log('abortare')
 			}
-
-			// THIS IS A REALLY SHIT IMPLEMENTATION.
-			// YOU CAN PASS A VARIABLE INTO RENDER AT update method and redraw and hide all stuff there
-
 		},
 		// This is a Rename function
 		update: async function (e) {
@@ -459,6 +504,8 @@ jQuery(function ($) {
 
 			console.log(id, is_custom)
 			// return ;
+			// : suggestion - maybe it'll be better 
+			// to just keep previous value, when we delete all from input
 			if ( !val ) {
 				this.destroy(e);
 				return;
@@ -466,19 +513,16 @@ jQuery(function ($) {
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);
-				console.log('aborteeeee');
-				console.log($el);
-				console.log($el.val());
-				this.render();
+				this.render('abort');
 				return;
 			} 
-			return ;
+			
 
 			if( val == this.todos[index].name ){
-				this.render();
+				this.render('abort');
 				return;
 			}
-
+			
 			// this is a brand new ingredient - we'll update the name
 			if( is_custom ){
 
@@ -505,8 +549,10 @@ jQuery(function ($) {
 				}
 
 				var obj = this.getItemObject(response.id, val);
+				console.log(obj);
 				this.todos.push(obj);
-				this.render();
+				console.log(this.todos);
+				this.render('upd');
 
 			}	
 
