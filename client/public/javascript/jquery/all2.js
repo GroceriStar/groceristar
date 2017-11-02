@@ -34,10 +34,7 @@ jQuery(function ($) {
 				'/:filter': function (filter) {
 					this.filter = filter;
 					
-					// console.log(this.filter);
-					// console.log($('#maList').data());
 					$('#maList').addClass(this.filter);
-					// console.log( )
 
 					$('input[type=radio][data-filter='+this.filter+']').prop('checked', true)
 
@@ -60,7 +57,6 @@ jQuery(function ($) {
 		        
 
 		        $('#maList').addClass(filter)
-		        // console.log($(this).data().filter);
 
 		    });
 
@@ -86,7 +82,6 @@ jQuery(function ($) {
 			$('#footer').on('click', '#clear-completed', 
 				this.destroyCompleted.bind(this));
 
-			// #todo-list
 
 			$('#todoapp')
 				.on('change',   '.checkbox__input:not(.new-item)',  this.toggle.bind(this))
@@ -127,13 +122,11 @@ jQuery(function ($) {
 			    
 			    // we add no focus on destroy one event
 
-			    // console.log(this.todos)
 				var updated = _.map(this.todos, function(obj) {
 					return _.pick(obj, 'id', 'completed'); 
 				});
 				updated = _.indexBy(updated, 'id');
 
-				// console.log(updated)
 				
 			   $(this.selector).map(function() {
 					// this is related to empty item field
@@ -157,7 +150,6 @@ jQuery(function ($) {
 				$(this.selector).map(function() {
 					// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
-
 				    	
 				    	if( $(this).hasClass('editing') ){
 				    		$(this).removeClass('editing')
@@ -176,7 +168,6 @@ jQuery(function ($) {
 				});
 				updated = _.indexBy(updated, 'id');
 
-				console.log(updated)
 				
 			   $(this.selector).map(function() {
 
@@ -206,7 +197,6 @@ jQuery(function ($) {
 				});
 				updated = _.indexBy(updated, 'id');
 
-				console.log(updated);
 
 				$(this.selector).map(function() {
 
@@ -242,8 +232,6 @@ jQuery(function ($) {
 
 			    var todos = this.getFilteredTodos();
 
-				// console.log(todos);	
-				
 				var results = _.map(todos, function(obj) {
 				 return _.pick(obj, 'id', 'completed'); 
 				});
@@ -266,8 +254,7 @@ jQuery(function ($) {
 							$(this).removeClass('completed');
 							$(this).find('span').removeClass('completka');
 						}
-
-						// console.log(results[id].completed)	   
+	   
 					}
 					
 				});
@@ -322,7 +309,7 @@ jQuery(function ($) {
 			return _.where(this.todos, { completed: true });
 		},
 		getFilteredTodos: function () {
-			// console.log(this.filter);
+			
 			if (this.filter === 'active') {
 				return this.getActiveTodos();
 			}
@@ -474,7 +461,6 @@ jQuery(function ($) {
 			// but for this moment it'll require a lot of changes on backend, so i gave up
 
 
-
 			var $input = $(e.target)
 							.closest('li').addClass('editing')
 							.find('.edit').removeClass('hide');
@@ -560,7 +546,7 @@ jQuery(function ($) {
 				// :todo this can be moved to render, but how you'll get
 			
 			  	var $clonee = $(this.selector).last().clone();
-				// $clonee.data('element', obj);
+				
 				$clonee.removeClass('hide').attr('data-element', JSON.stringify(obj));
 				$clonee.find('.list__item__center span')
 					.html(obj.name).after('<input class="text-input edit hide" type="text" value="' + obj.name + '">');
@@ -575,17 +561,6 @@ jQuery(function ($) {
 
 			}	
 
-		
-
-			//jsue in case, if something go wrong
-			// if ($el.data('abort')) {
-			// 	$el.data('abort', false);
-			// } else {
-
-				// console.log(this.todos[index]);
-				// this.todos[index].name = val;
-			// }
-			// this.render();
 		},
 		destroy: async function (e) {
 			var id = this.getDataField(e, 'id');
@@ -596,7 +571,7 @@ jQuery(function ($) {
 		},
 		getDataField: function(e, field){
 			var $item = this.getElementFromEvent(e.target);
-			// console.log(e);
+			
 			// maybe later we'll exclude few items, so pick will be helpful
 			if( $item.data().element ){
 				var value = _.pick($item.data().element, field);
@@ -677,7 +652,6 @@ jQuery(function ($) {
 		},
 		
 		redirectToOtherDepartment: function(e){
-			
 			var value = $(e.target).val();
 			var path = "/shopping/" + this.groceryId + '/' + value;
   			window.location.replace(path);

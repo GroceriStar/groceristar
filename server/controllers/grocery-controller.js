@@ -297,7 +297,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
 exports.shopping = async (req, res, next) => {
   var groceryId    = req.params.groceryId; 
   var departmentId = req.params.departmentId; 
-  // console.log()
+  
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
   var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
@@ -353,23 +353,12 @@ exports.shopping = async (req, res, next) => {
   // This is another bad functionality, written for this method.
   let ultimate = await middlewarez(next);
   
-
-
-
-  
-
-  // console.log(ingredients);
-  // console.log(count(_.where(ingredients, {completed: false}))
 
   var all = ingredients.length
   var count_not_purchased = _.where(ingredients, {completed: false}).length;
   var display_destroy_all_button = all - count_not_purchased;
 
 
-  // console.log(count_not_purchased);
-  // console.log(all - count_not_purchased);
-  // console.log(display_destroy_all_button)
-
 
   let renderObject = {
     user        : req.user,
@@ -382,104 +371,19 @@ exports.shopping = async (req, res, next) => {
     list        : ingredients,
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
-    // isMobile: (md.mobile()) ? true : false,
+
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
 
     activeTodoCount: count_not_purchased,
-      // '<span class="count">' + count_not_purchased + '</span>' + ' items left',
+      
     text: '',
     have_completed_items: display_destroy_all_button,
 
-    // filter: 'all'
+
   };
-  // console.log(renderObject);
+
   res.render('pages/shopping/shopping-list-mobile', renderObject);
-  // res.render('pages/shopping/shopping-list', renderObject);
 
-
-};
-
-
-exports.shopping2 = async (req, res, next) => {
-  var groceryId    = req.params.groceryId; 
-  var departmentId = req.params.departmentId; 
-  // console.log()
-  // var ultimate    = await copy_middlewarez(next);
-  // This part is work for creating dropdown list only
-
-  var response = await dropdown_departments(groceryId, next);
-  
-
-  // :todo check my notes here, and then we'll be able to delete it
-//---------------------------
-  // This part is work for creating dropdown list only
-  // var response     = {};
-  // let grocery
-  // try {      
-  //    var Grocery   = app.models.Grocery;
-     
-  //    // :todo this is not an awesome method. we're getting to much data by this query
-  //    // :todo we're using more efficient method, but it must be tested better
-  //    grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
-  //    // console.log(grocery);
-  //    // :todo this is not a best way to catch only departments name(main goal)
-  //    // we can create another method, where we wouldn't have arraysfor ingredients and other stuff
-  //    response = Grocery.convertCollectionDataEfficient(grocery);
-  //    // console.log(response.data);
-  //    console.log(response);
-  // } catch (e) {
-  //    Raven.captureException(e);
-  //   //this will eventually be handled by your error handling middleware
-  //   next(e) 
-  // }
-
-//--------------------
-  
-
-  // I think this is can be improved
-  // this is a duplicated code
-  let grocery2
-  let ingredients
-  try {      
-     var Grocery   = app.models.Grocery;
-
-     grocery2  = await Grocery.findById(groceryId, 
-                    Grocery.queryOneDepartment(departmentId)
-                  );
-     ingredients = Grocery.convertDepartmentItems(grocery2);
-
-  } catch (e) {
-     Raven.captureException(e);
-    //this will eventually be handled by your error handling middleware
-    next(e) 
-  }
-
-
-  // This is another bad functionality, written for this method.
-  let ultimate = await middlewarez(next);
-  
-
-
-
-  var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
-
-  let renderObject = {
-    user        : req.user,
-    url         : req.url,
-    groceryId   : groceryId,
-    departmentId: departmentId,
-    name        : response.name,
-    departments : response.data,
-
-    list        : ingredients,
-
-    isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
-    
-    back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
-  };
-  
-  // res.render('pages/shopping/shopping-list-mobile', renderObject);
-  res.render('pages/shopping/shopping-list', renderObject);
 
 
 };
