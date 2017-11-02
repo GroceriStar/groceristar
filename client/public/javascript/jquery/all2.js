@@ -89,7 +89,7 @@ jQuery(function ($) {
 			// #todo-list
 
 			$('#todoapp')
-				.on('change',   '.checkbox__input',  this.toggle.bind(this))
+				.on('change',   '.checkbox__input:not(.new-item)',  this.toggle.bind(this))
 				//related to update feature
 				.on('dblclick', 'li:not(.completed) label',    this.editingMode.bind(this))
 				.on('keyup',    '.edit',    this.editKeyup.bind(this))
@@ -260,8 +260,10 @@ jQuery(function ($) {
 						// :todo maybe change to flag variable, huh?   
 						// + switch to a toggle
 						if( results[id].completed )	{
+							$(this).addClass('completed');
 							$(this).find('span').addClass('completka');
 						} else {
+							$(this).removeClass('completed');
 							$(this).find('span').removeClass('completka');
 						}
 
@@ -273,10 +275,10 @@ jQuery(function ($) {
 
 			    break;
 			  
-
-			  // case 'new':
-			  // 	$('#new-todo').focus();
-			  //   break;
+			    // did we use this case :todo
+			   case 'new':
+			  	$('#new-todo').focus();
+			   break;
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
@@ -286,35 +288,14 @@ jQuery(function ($) {
 			this.updateFooterCount();
 
 
-			// if( todos ){
-
-
-
-
-
-				
-
-
-
-
-				// explore this stuff
-				// $('#main').toggle(todos.length > 0);
-
-
-
-				// if( flag ) 
-				//$('#new-todo').focus();
-
-
-				
-			// }
-
 		},
 
 		updateFooterCount: function(){
 
 			var activeTodoCount = this.getActiveTodos().length;
 			var completedTodos  = this.getCompletedTodos().length;
+
+			
 
 			var html = '<span class="count">' + activeTodoCount + '</span>';
 
@@ -326,11 +307,11 @@ jQuery(function ($) {
 			}
 			$('.count-wrapper').html(html);
 
-
+			// :todo convert to toggle
 			if ( completedTodos ) {			    
-				$('#clear-completed').show();
+				$('#clear-completed').removeClass('hide');
 			} else {
-				$('#clear-completed').hide();
+				$('#clear-completed').addClass('hide');
 			}
 
 		},
@@ -374,7 +355,8 @@ jQuery(function ($) {
 			// can be li
 			var $element = this.getElementFromEvent(e);
 			var id       = $element.data().element.id;
-
+			console.log($element)
+			console.log($element.data())
 			// console.log($element.data())
 
 			// console.log(this.getDataField(e, 'id'))
@@ -466,7 +448,7 @@ jQuery(function ($) {
 		},
 		toggle: function (event) {
 
-			// console.log(event.target);
+			console.log(event.target);
 
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
@@ -693,9 +675,10 @@ jQuery(function ($) {
 			});
 			
 		},
-		// has a huge trobules with non-have data departments
-		redirectToOtherDepartment: function(){
-			var path = "/shopping/" + this.groceryId + '/' + this.value;
+		
+		redirectToOtherDepartment: function(e){
+			var value = $(e.target).prop('value');
+			var path = "/shopping/" + this.groceryId + '/' + value;
   			window.location.replace(path);
 		}
 	};
