@@ -448,7 +448,7 @@ jQuery(function ($) {
 		},
 		toggle: function (event) {
 
-			console.log(event.target);
+			
 
 			var index       = this.getIndexFromEl(event.target);
 			var $ingredient = this.getElementFromEvent(event.target);
@@ -677,7 +677,8 @@ jQuery(function ($) {
 		},
 		
 		redirectToOtherDepartment: function(e){
-			var value = $(e.target).prop('value');
+			
+			var value = $(e.target).val();
 			var path = "/shopping/" + this.groceryId + '/' + value;
   			window.location.replace(path);
 		}
