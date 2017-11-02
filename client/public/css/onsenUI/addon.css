@@ -922,6 +922,9 @@ input:disabled + .switch__toggle {
 .hide {
   display: none;
 }
+span.completka {
+  text-decoration: line-through;
+}
 
 
 #maList.all .list__item.list__item--tappable,

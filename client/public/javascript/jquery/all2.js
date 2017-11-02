@@ -114,8 +114,8 @@ jQuery(function ($) {
 		render: function (flag=false) {
 
 			
-				// WE NEED TO COVVER CASE WHERE WE ADD A NEW ITEM OR DELETE ONE ITEM
-				// :todo maybe we need to cover situation when we don't have any items inside the department
+			// :todo maybe we need to cover situation 
+			// when we don't have any items inside the department
 
 
 			// related to changing states
@@ -136,13 +136,15 @@ jQuery(function ($) {
 				// console.log(updated)
 				
 			   $(this.selector).map(function() {
+					// this is related to empty item field
+					if( $(this).data() ){
+				    	var id = $(this).data().element.id;
 
-			    	var id = $(this).data().element.id;
-
-			    	if( !updated[id] ) {
-			    		console.log(id)
-			    		$(this).remove();
-			    	}
+				    	if( !updated[id] ) {
+				    		console.log(id)
+				    		$(this).remove();
+				    	}
+				    }
 
 					
 				});
@@ -150,11 +152,11 @@ jQuery(function ($) {
 			    break;
 			  
 
-			  case 'new':
+			  // case 'new':
 
 
 
-			    break;
+			  //   break;
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
@@ -168,28 +170,44 @@ jQuery(function ($) {
 
 			    var todos = this.getFilteredTodos();
 
-			// console.log(todos);	
+				// console.log(todos);	
 				
-			var results = _.map(todos, function(obj) {
-			 return _.pick(obj, 'id', 'completed'); 
-			});
-			results = _.indexBy(results, 'id');
+				var results = _.map(todos, function(obj) {
+				 return _.pick(obj, 'id', 'completed'); 
+				});
+				results = _.indexBy(results, 'id');
+
 			  	$(this.selector).map(function() {
 
-					var id = $(this).data().element.id;
-					$(this).find('.checkbox__input')
+					// this is related to empty item field
+
+					console.log( $(this).data() )
+
+					if( $(this).data() ){
+						var id = $(this).data().element.id;
+						$(this).find('.checkbox__input')
 						   .prop("checked", results[id].completed)
 
-					console.log(results[id].completed)	   
+						// :todo maybe change to flag variable, huh?   
+						// + switch to a toggle
+						if( results[id].completed )	{
+							$(this).find('span').addClass('completka');
+						} else {
+							$(this).find('span').removeClass('completka');
+						}
+
+						// console.log(results[id].completed)	   
+					}
+					
 				});
 
 
 			    break;
 			  
 
-			  case 'new':
-			  	$('#new-todo').focus();
-			    break;
+			  // case 'new':
+			  // 	$('#new-todo').focus();
+			  //   break;
 			  // this is all flag relates
 			  default:
 			  	// alert('So what?');
@@ -344,31 +362,25 @@ jQuery(function ($) {
 			}
 
 			var obj = this.getItemObject(response.id, val);
-
-			console.log(obj);
-			// console.log(this.todos);
-
 			this.todos.push(obj);
 
-			// console.log(this.todos);
-
-			// $input.val('');
-
-			console.log($(this.selector).last());
+			
+			// :todo this can be moved to render, but how you'll get
+			
 		  	var $clonee = $(this.selector).last().clone();
 			// $clonee.data('element', obj);
-			$clonee.removeClass('hide');
+			$clonee.removeClass('hide').attr('data-element', JSON.stringify(obj));
 			$clonee.find('.list__item__center span')
-				.html(obj.name).affter('<div>ZZAAAAA</div>').;
-			// $clonee.find('.text-input.edit').prop('value', 'SHALAVA')
-			// console.log($clonee.data())  	
-			console.log($clonee.html()) 
-			console.log($clonee.find('.text-input.edit')) 	
+				.html(obj.name).after('<input class="text-input edit hide" type="text" value="' + obj.name + '">');
+			
 
 			$(this.selector).last()
-				.before($clonee).end()
-				.find('.text-input.edit').val('ALAVA');
-			// this.render('new');
+				.before($clonee);	
+			
+			// it's a new todo element
+			$input.val('');
+				
+			this.render();
 
 
 		},
