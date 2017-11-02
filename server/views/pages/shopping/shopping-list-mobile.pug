@@ -7,6 +7,7 @@ html(lang='en', data-framework='jquery')
 
     link(rel='stylesheet', href='/css/onsenUI/bootstrap-grid-only.css')
 
+    //- link(rel='stylesheet', href='/css/one.css')
     link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsenui.css')
 
     link(rel='stylesheet', href='https://unpkg.com/onsenui/css/onsen-css-components.min.css')
@@ -43,7 +44,7 @@ html(lang='en', data-framework='jquery')
 
 
       
-
+    // :todo move scripts to a right place      
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
 
     script(src='https://use.fontawesome.com/8b5217f583.js')
@@ -55,8 +56,6 @@ html(lang='en', data-framework='jquery')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js')
 
     if isUltimate 
-      //include ../../static/scripts-todo-read-only-delete-later.pug  
-      script(src='/javascript/jquery/all-read-only.js')
+      script(src='/javascript/jquery/app-old.js')
     else
-      //include ../../static/scripts-todo.pug
       script(src='/javascript/jquery/all2.js')
