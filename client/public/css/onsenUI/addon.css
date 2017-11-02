@@ -967,3 +967,11 @@ span.completka {
 #maList.all .list__item.list__item--tappable.editing label > .hide {
   display: block;
 }
+
+#maList.all .list__item.list__item--tappable .list__item__right .destroy {
+  display: none;
+}
+
+#maList.all .list__item.list__item--tappable .list__item__right .destroy:hover {
+  display: block;
+}

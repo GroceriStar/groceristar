@@ -217,7 +217,6 @@ exports.viewGrocery = async (req, res, next) => {
 
   var response   = {};
 
-  var md = new MobileDetect(req.headers['user-agent']);
 
 
   let grocery
@@ -253,7 +252,7 @@ exports.viewGrocery = async (req, res, next) => {
     ultimate: ultimate,
 
     isGrocery: req.originalUrl.includes('/view/grocery/'),
-    isMobile: (md.mobile()) ? true : false
+    
 
   
   };
@@ -269,7 +268,6 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   var ultimate    = await copy_middlewarez(next);
   // console.log(ultimateId);
   var response = await dropdown_departments(ultimate.id, next);
-  var md = new MobileDetect(req.headers['user-agent']);
 
   var renderObject = {   
     user: req.user,
@@ -286,7 +284,7 @@ exports.viewUltimateGrocery = async (req, res, next) => {
     ultimate: ultimate,
 
     isGrocery: req.originalUrl.includes('/view/ultimategrocery/'),
-   isMobile: (md.mobile()) ? true : false
+   // isMobile: (md.mobile()) ? true : false
 
   };
   // // this is a duplicated template
@@ -305,7 +303,7 @@ exports.shopping = async (req, res, next) => {
   var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
 
   var response = await dropdown_departments(groceryId, next);
-  // var md = new MobileDetect(req.headers['user-agent']);
+  
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
@@ -410,7 +408,7 @@ exports.shopping2 = async (req, res, next) => {
   // This part is work for creating dropdown list only
 
   var response = await dropdown_departments(groceryId, next);
-  // var md = new MobileDetect(req.headers['user-agent']);
+  
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
@@ -476,7 +474,7 @@ exports.shopping2 = async (req, res, next) => {
     list        : ingredients,
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
-    // isMobile: (md.mobile()) ? true : false,
+    
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
   };
   

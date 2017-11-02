@@ -111,8 +111,7 @@ jQuery(function ($) {
 		// this way is old-fashione, and i keep it only to follow previous version installation
 		render: function (flag=false) {
 
-			// console.log('mi blur?')
-			// console.log(flag)
+			
 
 			// :todo maybe we need to cover situation 
 			// when we don't have any items inside the department
@@ -159,14 +158,7 @@ jQuery(function ($) {
 					// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
 
-				    	// var id = $(this).data().element.id;
-
-				    	// if( !updated[id] ) {
-				    	// 	// console.log(id)
-				    	// 	$(this).remove();
-				    	// }
-				    	// console.log($(this).hasClass('editing'))
-
+				    	
 				    	if( $(this).hasClass('editing') ){
 				    		$(this).removeClass('editing')
 				    		$(this).find('.text-input.edit').addClass('hide');
@@ -219,17 +211,6 @@ jQuery(function ($) {
 				$(this.selector).map(function() {
 
 					
-					// console.log($(this).data())
-					// if(name != updated[id].name){
-				 //    	if( $(this).hasClass('editing') ){
-				 //    		$(this).removeClass('editing')
-				 //    		$(this).find('span').html(name);
-
-				 //    		$(this).find('.text-input.edit')
-				 //    			   .addClass('hide')
-				 //    			   .val(name);
-				 //    	}
-					// }
 
 				// 	// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
