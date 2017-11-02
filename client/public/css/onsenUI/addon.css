@@ -968,10 +968,15 @@ span.completka {
   display: block;
 }
 
+#maList.all .list__item__right {
+  width: 58px;
+  height: 52px;
+}
+
 #maList.all .list__item.list__item--tappable .list__item__right .destroy {
   display: none;
 }
 
-#maList.all .list__item.list__item--tappable .list__item__right .destroy:hover {
+#maList.all .list__item.list__item--tappable .list__item__right:hover .destroy {
   display: block;
 }

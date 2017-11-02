@@ -39,7 +39,7 @@ module.exports = function(Department) {
         departmentId: ctx.where.id
       }
     }).then(function(ingredients){
-      console.log(ingredients);
+      //console.log(ingredients);
 
       ingredients.forEach(function(ingredient){
         Ingredient.destroyById(ingredient.id, function(){

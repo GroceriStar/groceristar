@@ -500,7 +500,7 @@ module.exports = function(Grocery) {
 
 		Grocery.create(data, function(err, model){
 
-			console.log(model)
+			//console.log(model)
 			// :todo check relations with other sub models
 
 			// console.log( model.id );
@@ -786,7 +786,7 @@ module.exports = function(Grocery) {
       var currentDepartmentCollection = _.where(response.data, {id:departmentId});
       currentDepartmentCollection = currentDepartmentCollection[0];
 
-      console.log(currentDepartmentCollection);
+      //console.log(currentDepartmentCollection);
 
       // console.log( _.where(response.data, {id:departmentId}) );
 

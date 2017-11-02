@@ -11,6 +11,7 @@ let app    = require(path.resolve(__dirname, '../server'));
 let middlewarez = require(path.resolve(__dirname, '../like-middleware-helper'));
 const Raven = require('raven');
 Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
+
 exports.getHomepage = async (req, res, next) => {
 
       var ultimateGL = {};
@@ -73,8 +74,8 @@ exports.getCreditsPage = async function(req, res, next){
 };
 
 exports.getPrivacyPage = async function(req, res, next){
-  console.log(req.url);
-  console.log(req.user);
+  // console.log(req.url);
+  // console.log(req.user);
 
   var ultimate = await middlewarez(next);
 
@@ -90,7 +91,7 @@ exports.getPrivacyPage = async function(req, res, next){
 };
 
 exports.getTermsPage = async function(req, res, next){
-  console.log(req.user);
+  // console.log(req.user);
 
   var ultimate = await middlewarez(next);
 
