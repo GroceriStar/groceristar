@@ -190,9 +190,16 @@ jQuery(function ($) {
 				
 			   $(this.selector).map(function() {
 
-			   		var id = $(this).data().element.id;
-			   		console.log(id);
-			   		console.log(updated[id]);
+			   		// var id = $(this).data().element.id;
+			   		// console.log(id);
+			   		// console.log($(this).data().element.name)
+			   		// console.log(updated[id]);
+
+			   		// if( !updated[id] ) {
+				    // 		// console.log(id)
+			    	// 	$(this).remove();
+				    // }
+
 					// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
 				    	var id = $(this).data().element.id;
@@ -201,6 +208,9 @@ jQuery(function ($) {
 				    		// console.log(id)
 				    		$(this).remove();
 				    	}
+
+
+
 				    }
 
 					
@@ -552,6 +562,23 @@ jQuery(function ($) {
 				console.log(obj);
 				this.todos.push(obj);
 				console.log(this.todos);
+				
+
+
+				// :todo this can be moved to render, but how you'll get
+			
+			  	var $clonee = $(this.selector).last().clone();
+				// $clonee.data('element', obj);
+				$clonee.removeClass('hide').attr('data-element', JSON.stringify(obj));
+				$clonee.find('.list__item__center span')
+					.html(obj.name).after('<input class="text-input edit hide" type="text" value="' + obj.name + '">');
+				
+
+				$(this.selector).last()
+					.before($clonee);
+
+
+				// end duplicate		
 				this.render('upd');
 
 			}	
