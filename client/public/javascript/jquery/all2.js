@@ -113,7 +113,7 @@ jQuery(function ($) {
 		// this way is old-fashione, and i keep it only to follow previous version installation
 		render: function (flag=false) {
 
-			
+			console.log('mi blur?')
 			// :todo maybe we need to cover situation 
 			// when we don't have any items inside the department
 
@@ -434,11 +434,16 @@ jQuery(function ($) {
 		editKeyup: function (e) {
 			if (e.which === ENTER_KEY) {
 				e.target.blur();
+				console.log('bleh')
 			}
-			console.log('bleee');
 			if (e.which === ESCAPE_KEY) {
 				$(e.target).data('abort', true).blur();
+				console.log('abortare')
 			}
+
+			// THIS IS A REALLY SHIT IMPLEMENTATION.
+			// YOU CAN PASS A VARIABLE INTO RENDER AT update method and redraw and hide all stuff there
+
 		},
 		// This is a Rename function
 		update: async function (e) {
@@ -453,7 +458,7 @@ jQuery(function ($) {
 			var is_custom = this.getDataField(e, 'custom');
 
 			console.log(id, is_custom)
-
+			// return ;
 			if ( !val ) {
 				this.destroy(e);
 				return;
@@ -461,10 +466,13 @@ jQuery(function ($) {
 
 			if ($el.data('abort')) {
 				$el.data('abort', false);
+				console.log('aborteeeee');
+				console.log($el);
+				console.log($el.val());
 				this.render();
 				return;
 			} 
-
+			return ;
 
 			if( val == this.todos[index].name ){
 				this.render();
@@ -602,6 +610,7 @@ jQuery(function ($) {
 			});
 			
 		},
+		// has a huge trobules with non-have data departments
 		redirectToOtherDepartment: function(){
 			var path = "/shopping/" + this.groceryId + '/' + this.value;
   			window.location.replace(path);
