@@ -18,7 +18,7 @@
     "prod": "set NODE_ENV=production && nodemon server/server.js",
     "develes": "set NODE_ENV=development && nodemon server/server.js",
     "test_win": "NODE_ENV=test && mocha --reporter spec",
-    "test_unix":"NODE_ENV=test mocha --reporter spec",
+    "test_unix": "NODE_ENV=test mocha --reporter spec",
     "unix": "export NODE_ENV=development"
   },
   "dependencies": {
@@ -36,7 +36,6 @@
     "loopback-component-passport": "^3.4.0",
     "loopback-connector-mongodb": "^3.2.1",
     "loopback-mongo-aggregate-mixin": "^1.0.1",
-    "mobile-detect": "^1.3.7",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",

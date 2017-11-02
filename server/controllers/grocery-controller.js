@@ -308,7 +308,7 @@ exports.shopping = async (req, res, next) => {
   var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
 
   var response = await dropdown_departments(groceryId, next);
-  var md = new MobileDetect(req.headers['user-agent']);
+  // var md = new MobileDetect(req.headers['user-agent']);
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
@@ -387,7 +387,7 @@ exports.shopping = async (req, res, next) => {
     list        : ingredients,
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
-    isMobile: (md.mobile()) ? true : false,
+    // isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
 
     activeTodoCount: count_not_purchased,
@@ -413,7 +413,7 @@ exports.shopping2 = async (req, res, next) => {
   // This part is work for creating dropdown list only
 
   var response = await dropdown_departments(groceryId, next);
-  var md = new MobileDetect(req.headers['user-agent']);
+  // var md = new MobileDetect(req.headers['user-agent']);
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
@@ -479,7 +479,7 @@ exports.shopping2 = async (req, res, next) => {
     list        : ingredients,
 
     isUltimate  : (ultimate.id == groceryId) ? 1 : 0,
-    isMobile: (md.mobile()) ? true : false,
+    // isMobile: (md.mobile()) ? true : false,
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
   };
   
