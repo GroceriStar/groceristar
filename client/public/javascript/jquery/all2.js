@@ -218,8 +218,7 @@ jQuery(function ($) {
 
 				$(this.selector).map(function() {
 
-					// var id = $(this).data().element.id;
-					// var name = $(this).data().element.name;
+					
 					// console.log($(this).data())
 					// if(name != updated[id].name){
 				 //    	if( $(this).hasClass('editing') ){
@@ -234,7 +233,8 @@ jQuery(function ($) {
 
 				// 	// this is related to empty item field
 					if( !_.isEmpty($(this).data()) ){
-
+						var id   = $(this).data().element.id;
+						var name = updated[id].name;
 						$(this).removeClass('editing')
 			    		$(this).find('span').html(name);
 
