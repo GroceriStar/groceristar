@@ -411,7 +411,8 @@ jQuery(function ($) {
 		},
 		editingMode: function (e) {
 
-			// console.log($(e.target).closest('li'));
+			console.log($(e.target).closest('li'));
+			
 			// var $li = $(e.target).closest('li');
 			// console.log($li.hasClas('completed'));
 			// // if (data.custom)

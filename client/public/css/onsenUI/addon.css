@@ -945,3 +945,22 @@ span.completka {
 #maList.completed .list__item.list__item--tappable.completed {
   display: flex;
 }
+
+#maList.all .list__item.list__item--tappable.editing {
+
+}
+#maList.all .list__item.list__item--tappable.editing .list__item__left {
+  width: 24px;
+  height: 24px;
+}
+#maList.all .list__item.list__item--tappable.editing .list__item__left .checkbox__checkmark {
+  display: none;  
+
+}
+#maList.all .list__item.list__item--tappable.editing label > span {
+  display: none;
+}
+
+#maList.all .list__item.list__item--tappable.editing label > .hide {
+  display: block;
+}
