@@ -1,5 +1,5 @@
 # loopback-example-passport
-
+Latest version of readme available at: https://github.com/atherdon/groceristar/blob/develop/README.md
 A tutorial for setting up a basic passport example.
 
 - [Overview](#overview)
