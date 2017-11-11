@@ -1,4 +1,4 @@
-# loopback-example-passport
+# GroceriStar
 Latest version of readme available at: https://github.com/atherdon/groceristar/blob/develop/README.md
 A tutorial for setting up a basic passport example.
 
@@ -56,6 +56,7 @@ $ npm install
  - providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
  
  error: Can't Load URL: The domain of this URL isn't included in the app's domains.
+ 
  Fixed: Facebook Login - Client OAuth Settings - Use Strict Mode for Redirect URIs - No
  
  or 
@@ -123,17 +124,19 @@ We recommend modifying the fields to suit your needs. For more information regar
 error: "async function something(next) {
  ^^^^^^^^
  SyntaxError: Unexpected token function"
+ 
  **reason**: node version is not updated. Fixed by re-install updated node and npm.
+ 
  ### Why
  Async functions are not supported by Node versions older than version 7.6
   		  
- -```		 At package.json we specified:  node v.8.1.4
+ At package.json we specified:  node v.8.1.4
  
  ### 5. database logic
 
 In order to reproduce, you need to have your own database in cloud and import data. The database we used in this task is mlab.
 
-- Create a heroku application.
+- Create a heroku application. Note: we don't need heroku at this time, it's just a quick way to get your own database and for later stage.
 - Create a mlab addon in your heroku application, then you will have a new database.
 - Enter into the mlab page, copy the db link and replace the name, password and db name with your. Don't mistake the db user name with the mlab account name. If you are not sure you can create a new db user.
 - Paste the db link into the server/datasources.json:url and server/datasources.production.json:url
@@ -143,9 +146,9 @@ In order to reproduce, you need to have your own database in cloud and import da
 
 ### 6. Run the application
   		  
-  ```		  ```
-  $ node .		  $ node .
-  ```		  ```
+  ```	
+  $ node .
+  ```
   		  
  or 
  
