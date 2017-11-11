@@ -1,8 +1,9 @@
 # GroceriStar
-Latest version of readme available at: https://github.com/atherdon/groceristar/blob/develop/README.md
-A tutorial for setting up a basic passport example.
+Latest version is at develop branch: of readme available at: https://github.com/atherdon/groceristar/tree/develop
+It is a tutorial for setting GS on local machine.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade
+![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)
+https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
