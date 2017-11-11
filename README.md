@@ -155,3 +155,22 @@ error: "async function something(next) {
 ### Where we get template data.
 
 [Landing page prototype was build with Launchaco ](http://launchaco.com/build/)
+
+
+ deployment on heroku
+ 
+ - heroku login
+ - heroku create %your-app-name%
+ 
+ Will create an empty tables in database
+ ```
+ $ heroku run npm run migrate
+ ```
+ 
+ Will import data like admin user, ultimate grocery template
+ ```
+ $ heroku run npm run import
+ ```
+ 
+ finisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
+ 
