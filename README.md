@@ -1,11 +1,8 @@
 # GroceriStar
-Latest version is at develop branch: of readme available at: https://github.com/atherdon/groceristar/tree/develop
 
 It is a tutorial for setting GS on local machine.
 
-![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)
-
-https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
@@ -141,11 +138,17 @@ error: "async function something(next) {
 In order to reproduce, you need to have your own database in cloud and import data. The database we used in this task is mlab.
 
 - Create a heroku application. Note: we don't need heroku at this time, it's just a quick way to get your own database and for later stage.
+
 - Create a mlab addon in your heroku application, then you will have a new database.
+
 - Enter into the mlab page, copy the db link and replace the name, password and db name with your. Don't mistake the db user name with the mlab account name. If you are not sure you can create a new db user.
+
 - Paste the db link into the server/datasources.json:url and server/datasources.production.json:url
+
 - Open the command line
+
 - run "npm run migrate", using ctrl+c to terminate once table is created
+
 - run "npm run import", also using ctrl+c
 
 ### 6. Run the application
