@@ -128,6 +128,18 @@ error: "async function something(next) {
  Async functions are not supported by Node versions older than version 7.6
   		  
  -```		 At package.json we specified:  node v.8.1.4
+ 
+ ### 5. database logic
+
+In order to reproduce, you need to have your own database in cloud and import data. The database we used in this task is mlab.
+
+- Create a heroku application.
+- Create a mlab addon in your heroku application, then you will have a new database.
+- Enter into the mlab page, copy the db link and replace the name, password and db name with your. Don't mistake the db user name with the mlab account name. If you are not sure you can create a new db user.
+- Paste the db link into the server/datasources.json:url and server/datasources.production.json:url
+- Open the command line
+- run "npm run migrate", using ctrl+c to terminate once table is created
+- run "npm run import", also using ctrl+c
 
 ### 6. Run the application
   		  
