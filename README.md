@@ -170,3 +170,5 @@ SyntaxError: Unexpected token function"
 Async functions are not supported by Node versions older than version 7.6
 
 At package.json we specified:  node v.8.1.4
+
+11/10/2017 -- test
