@@ -173,11 +173,7 @@ In order to reproduce, you need to have your own database in cloud and import da
 
 :todo move credits to a separate file
 
-## Credits 
-
-### Where we get template data.
-
-[Landing page prototype was build with Launchaco ](http://launchaco.com/build/)
+## [Credits](/credits.md)
 
 
  deployment on heroku
