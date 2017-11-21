@@ -55,9 +55,12 @@ $ npm install
  - Facebook Login - Valid OAuth redirect URIs - http://localhost:3000/
  - providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
  
- error: Can't Load URL: The domain of this URL isn't included in the app's domains.
+ **error: Can't Load URL: The domain of this URL isn't included in the app's domains.**
  
- Fixed: Facebook Login - Client OAuth Settings - Use Strict Mode for Redirect URIs - No
+ **Fixed**: 
+ _ Facebook Developers Login
+ _ Client OAuth Settings
+ _ Use Strict Mode for Redirect URIs - No
  
  or 
 
@@ -117,10 +120,8 @@ The current template contains:
 ```
 We recommend modifying the fields to suit your needs. For more information regarding the providers template, see http://loopback.io/doc/en/lb2/Configuring-providers.json.html.
 
-- Fork the repo
- - `npm init` 
- - `npm run watch` 
- 
+
+
  **If you got an issue**
 error: "async function something(next) {
  ^^^^^^^^
@@ -132,7 +133,10 @@ error: "async function something(next) {
  Async functions are not supported by Node versions older than version 7.6
   		  
  At package.json we specified:  node v.8.1.4
- 
+
+
+
+
  ### 5. database logic
 
 In order to launch local version of project, you need to have your own mongo database in cloud and import data. 
@@ -171,14 +175,13 @@ The database we used in this task is mlab addon for heroku(it can be another mon
 - Click on 'Log in' (in the header, on the rigth)
 
 
-[More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
 
-:todo move credits to a separate file
+
 
 ## [Credits](/credits.md)
 
 
- deployment on heroku
+### Deployment on heroku
  
  - heroku login
  - heroku create %your-app-name%
@@ -193,5 +196,6 @@ The database we used in this task is mlab addon for heroku(it can be another mon
  $ heroku run npm run import
  ```
  
- finisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
+ FinisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
  
+[More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
