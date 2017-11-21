@@ -135,21 +135,23 @@ error: "async function something(next) {
  
  ### 5. database logic
 
-In order to reproduce, you need to have your own database in cloud and import data. The database we used in this task is mlab.
+In order to launch local version of project, you need to have your own mongo database in cloud and import data. 
+The database we used in this task is mlab addon for heroku(it can be another mongodb provider, or your own local setup - we need only full link to mongodb with username, dbname, password)
 
-- Create a heroku application. Note: we don't need heroku at this time, it's just a quick way to get your own database and for later stage.
+- Create a heroku application. Note: we don't need heroku at this time, it's just a quick way to get your own database and leave for later stage.
 
-- Create a mlab addon in your heroku application, then you will have a new database.
+- Create a mlab addon in your heroku application, then you will have a new database instance.
+- Go to settings page and find **Reveal Config Vars** button. Click on it and copy data of **MONGODB_URI** variable
 
-- Enter into the mlab page, copy the db link and replace the name, password and db name with your. Don't mistake the db user name with the mlab account name. If you are not sure you can create a new db user.
+- Paste the db link into the /server/datasources.json:url and(or) /server/datasources.production.json:url
 
-- Paste the db link into the server/datasources.json:url and server/datasources.production.json:url
-
-- Open the command line
+- Open the command line(bash, shell)
 
 - run "npm run migrate", using ctrl+c to terminate once table is created
+`Migrate will create an empty datatables and drop all previous data if require`
 
-- run "npm run import", also using ctrl+c
+- run "npm run import", using ctrl+c to terminate
+`Import will move sample data from json arrays to mongo documents`
 
 ### 6. Run the application
   		  
