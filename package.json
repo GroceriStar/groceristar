@@ -31,7 +31,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.5",
     "loopback": "^3.10.1",
-    "loopback-boot": "^2.26.1",
+    "loopback-boot": "^2.27.0",
     "loopback-component-explorer": "^5.0.0",
     "loopback-component-passport": "^3.4.0",
     "loopback-connector-mongodb": "^3.2.1",
