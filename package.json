@@ -50,7 +50,7 @@
     "eslint": "^4.12.1",
     "eslint-config-loopback": "^8.0.0",
     "mocha": "^4.0.0",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.12.4",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.9.5"
   },
