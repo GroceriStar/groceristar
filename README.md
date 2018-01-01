@@ -32,6 +32,9 @@ Before starting this tutorial, make sure you have the following installed:
 - NPM
 - [StrongLoop Controller](https://github.com/strongloop/strongloop)
 
+Note: this project also using Raven for error hanglers. So if you're cloning this repo - you must find and update the key.
+more info at: https://sentry.io
+
 ## Client ids/secrets from third party
 
 You can create your own app here
