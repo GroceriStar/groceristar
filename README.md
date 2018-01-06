@@ -1,6 +1,10 @@
-# loopback-example-passport
+# GroceriStar
 
-A tutorial for setting up a basic passport example.
+It is a tutorial for setting GS on local machine.
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
+
+<img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" alt="Drawing" width="150" height="40"/>
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
@@ -8,7 +12,10 @@ A tutorial for setting up a basic passport example.
 - [Tutorial - Facebook](#tutorial---facebook)
 
 
+
 ## Overview
+
+This project is basically clone from Loopback Passport Example.
 
 LoopBack example for [loopback-passport](https://github.com/strongloop/loopback-passport) module. It demonstrates how to use
 LoopBack's user/userIdentity/userCredential models and [passport](http://passportjs.org) to interact with other auth providers.
@@ -16,7 +23,6 @@ LoopBack's user/userIdentity/userCredential models and [passport](http://passpor
 - Log in or sign up to LoopBack using third party providers (aka social logins)
 - Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated facebook).
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
 
 ## Prerequisites
 
@@ -26,11 +32,14 @@ Before starting this tutorial, make sure you have the following installed:
 - NPM
 - [StrongLoop Controller](https://github.com/strongloop/strongloop)
 
+Note: this project also using Raven for error hanglers. So if you're cloning this repo - you must find and update the key.
+more info at: https://sentry.io
+
 ## Client ids/secrets from third party
 
+You can create your own app here
+
 - [facebook](https://developers.facebook.com/apps)
-- [google](https://console.developers.google.com/project)
-- [twitter](https://apps.twitter.com/)
 
 
 ## Tutorial - Facebook
@@ -44,6 +53,21 @@ $ npm install
 ```
 
 ### 2. Get your client ids/secrets from third party(social logins)
+
+## Facebook authorization on local machine
+ - register a developer account on developers.facebook.com
+ - Settings - Site URL - http://localhost:3000/
+ - Facebook Login - Valid OAuth redirect URIs - http://localhost:3000/
+ - providers.json : replace "clientID" "clientSecret" in "facebook-link" "facebook-login" with yours in settings
+ 
+ **error: Can't Load URL: The domain of this URL isn't included in the app's domains.**
+ 
+ **Fixed**: 
+ _ Facebook Developers Login
+ _ Client OAuth Settings
+ _ Use Strict Mode for Redirect URIs - No
+ 
+ or 
 
 - To get your app info: [facebook](https://developers.facebook.com/apps)
 - Click on My Apps, then on Add a new App
@@ -101,72 +125,82 @@ The current template contains:
 ```
 We recommend modifying the fields to suit your needs. For more information regarding the providers template, see http://loopback.io/doc/en/lb2/Configuring-providers.json.html.
 
-### 5. Data file
 
-- If you need to see your account info for testing purposes, in `server\datasources.json`, add:
 
-```
-"file":"db.json"
-```
+ **If you got an issue**
+error: "async function something(next) {
+ ^^^^^^^^
+ SyntaxError: Unexpected token function"
+ 
+ **reason**: node version is not updated. Fixed by re-install updated node and npm.
+ 
+ ### Why
+ Async functions are not supported by Node versions older than version 7.6
+  		  
+ At package.json we specified:  node v.8.1.4
 
-after
 
-```
-"connector": "memory",
-```
 
-- The account info will be saved into this file.
+
+ ### 5. database logic
+
+In order to launch local version of project, you need to have your own mongo database in cloud and import data. 
+The database we used in this task is mlab addon for heroku(it can be another mongodb provider, or your own local setup - we need only full link to mongodb with username, dbname, password)
+
+- Create a heroku application. Note: we don't need heroku at this time, it's just a quick way to get your own database and leave for later stage.
+
+- Create a mlab addon in your heroku application, then you will have a new database instance.
+- Go to settings page and find **Reveal Config Vars** button. Click on it and copy data of **MONGODB_URI** variable
+
+- Paste the db link into the /server/datasources.json:url and(or) /server/datasources.production.json:url
+
+- Open the command line(bash, shell)
+
+- run "npm run migrate", using ctrl+c to terminate once table is created
+`Migrate will create an empty datatables and drop all previous data if require`
+
+- run "npm run import", using ctrl+c to terminate
+`Import will move sample data from json arrays to mongo documents`
 
 ### 6. Run the application
-
-```
-$ node .
-```
+  		  
+  ```	
+  $ node .
+  ```
+  		  
+ or 
+ 
+ ```
+ $ npm run watch
+ ```
+ 
+ 
 
 - Open your browser to `http://localhost:3000`
 - Click on 'Log in' (in the header, on the rigth)
-- Click on 'Login with Facebook'.
-- Sign up using a local account, then link to your Facebook account.
 
 
+
+
+
+## [Credits](/credits.md)
+
+
+### Deployment on heroku
+ 
+ - heroku login
+ - heroku create %your-app-name%
+ 
+ Will create an empty tables in database
+ ```
+ $ heroku run npm run migrate
+ ```
+ 
+ Will import data like admin user, ultimate grocery template
+ ```
+ $ heroku run npm run import
+ ```
+ 
+ FinisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
+ 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
-
-## Credits 
-
-### Where we get template data.
-Ingredients and departments data, was exported from 
-[The Ultimatest Grocery Lists from grocerylists.org](www.grocerylists.org/ultimatest/)
-Author of this website(Bill Keaggy) write a cool book "Milk Eggs Vodka: Grocery Lists Lost and Found"
-You can purchase [it from Amazon: ](https://www.amazon.com/Milk-Eggs-Vodka-Grocery-Lists/dp/144031201X/)
-
-Build with Loopback 
-[The Node.js API Framework](https://loopback.io/)
-
-Ingredients list template based on 
-[TodoMVC](https://todomvc.com)
-
-
-### Free to use fronted tools
-[Icons from Font Awesome](http://fontawesome.io)
-[Icons from 7 Stroke](http://themes-pixeden.com/font-demos/7-stroke/)
-[Google Fonts](https://fonts.google.com/specimen/Roboto)
-[Dropdown list from Codrops tutorial](https://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/)
-
-
-
-[Landing page prototype was build with Launchaco ](http://launchaco.com/build/)   
-
-10.23
-How to setup project on local machine
-- Fork the repo
-- `npm init` 
-- `npm run watch` 
-**If you got an issue**
-error: "async function something(next) {
-^^^^^^^^
-SyntaxError: Unexpected token function"
-**reason**: node version is not updated. Fixed by re-install updated node and npm.
-### Why
-Async functions are not supported by Node versions older than version 7.6
-
-At package.json we specified:  node v.8.1.4
