@@ -11,7 +11,7 @@ var Grocery = server.models.Grocery;
 var UserTable = 'user';
 // var relation    = 'ingredients';
 
-function getUsers() {
+function getData() {
 	var accounts = [	
 		{
 		  name: 'john',	
@@ -40,7 +40,7 @@ function createUsers(cb){
 	database.automigrate(UserTable, function(err){
 		if (err) return cb(err);
 
-		User.create(getUsers(), cb);
+		User.create(getData(), cb);
 	});
 };
 
