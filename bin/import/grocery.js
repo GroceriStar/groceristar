@@ -6,7 +6,7 @@ var database    = server.datasources.groceryDS;
 
 var Grocery     = server.models.Grocery;
 
-function getGroceries(){
+function getData(){
 
 	var grocery = [
 		{
@@ -25,7 +25,7 @@ function createGroceries(cb){
 	database.autoupdate('Grocery', function(err){
 		if (err) return cb(err);
 
-		Grocery.create(getGroceries(), cb);
+		Grocery.create(getData(), cb);
 	
 	});
 };
