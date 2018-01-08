@@ -8,7 +8,7 @@ var Ingredient  = server.models.Ingredient;
 var relation    = 'ingredients';
 var relation2   = 'ingredientIds';
 
-function getIngredients(departments){
+function getData(departments){
 
 
 	var ingredients = [
@@ -978,7 +978,7 @@ function createIngredients(departments, cb){
   database.automigrate('Ingredient', function(err){
     if (err) return cb(err);
    
-    Ingredient.create(getIngredients( departments ), cb);
+    Ingredient.create(getData( departments ), cb);
   });
 };
 
