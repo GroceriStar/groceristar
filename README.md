@@ -201,6 +201,13 @@ The database we used in this task is mlab addon for heroku(it can be another mon
  $ heroku run npm run import
  ```
  
+ heroku run npm run migrate --app gs1
+ 
+ 
+ // recipes
+ heroku run npm run import --app gs1
+ 
+  
  FinisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
  
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
