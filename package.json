@@ -52,7 +52,7 @@
     "mocha": "^4.1.0",
     "nodemon": "^1.14.11",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.10.1"
+    "webpack-dev-server": "^2.11.0"
   },
   "repository": {
     "type": "git",
