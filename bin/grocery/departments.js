@@ -1,160 +1,155 @@
 'use strict';
 
-const path        = require('path');
-let server      = require(path.resolve(__dirname, '../../server/server'));
-var database    = server.datasources.groceryDS;
+const debug   = require('debug');
 
-var Department  = server.models.Department;
+let table_name = 'Department'
+let attributes  = [
+  'departmentIds', // #0
+];
 
-// var relation1   = 'departmentId';
-// var relation2   = 'departmentIds';
-const Raven = require('raven');
-Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
+const get = () => {
 
-
-function getData(){
-
-	var departments = [
+	var data = [
 		{
-	
+
 		 name: "Fresh vegetables",
 		 type: 'food'
 		},
 		{
-	
+
 		 name: "Condiments / Sauces",
 		 type: 'food'
 		},
 		{
-	
+
 		 name: "Dairy",
 		 type: 'food'
 		},{
-	
+
 		 name: "Cheese",
 		 type: 'food'
 		},{
-	
+
 		 name: "Meat",
 		 type: 'food'
 		},{
-	
+
 		 name: "Seafood",
 		 type: 'food'
 		},{
-	
+
 		 name: "Beverages",
 		 type: 'food'
 		},{
-	
+
 		 name: "Baked goods",
 		 type: 'food'
 		},{
-	
+
 		 name: "Baking",
 		 type: 'food'
 		},{
-	
+
 		 name: "Snacks",
 		 type: 'food'
 		},{
-	
+
 		 name: "Themed meals",
 		 type: 'food'
 		},{
-	
+
 		 name: "Baby stuff",
 		 type: 'non-food'
 		},{
-	
+
 		 name: "Pets",
 		 type: 'non-food'
 		},{
-	
+
 		 name: "Fresh fruits",
 		 type: 'food'
 		},{
-	
+
 		 name: "Refrigerated items",
 		 type: 'food'
 		},{
-	
+
 		 name: "Frozen",
 		 type: 'food'
 		},{
-	
+
 		 name: "Various groceries",
 		 type: 'food'
 		},{
-	
+
 		 name: "Canned foods",
 		 type: 'food'
 		},{
-	
+
 		 name: "Spices & herbs",
 		 type: 'food'
 		},{
-	
+
 		 name: "Personal care",
 		 type: 'household'
 		},{
-	
+
 		 name: "Medicine",
 		 type: 'household'
 		},{
-	
+
 		 name: "Kitchen",
 		 type: 'household'
 		},{
-	
+
 		 name: "Other",
 		 type: 'household'
 		},{
-	
+
 		 name: "Cleaning products",
 		 type: 'household'
 		},{
-	
+
 		 name: "Office supplies",
 		 type: 'household'
 		},{
-	
+
 		 name: "Other stuff",
 		 type: 'household'
 		},{
-	
+
 		 name: "To-do list",
 		 type: 'household'
 		}
 	];
 
-	return departments;
-
-};
-
-function createDepartments(cb){
-	database.autoupdate('Department', function(err){
-		if (err) {
-			Raven.captureException(err);
-			return cb(err);
-		}
-
-		Department.create(getData(), cb);
-	
-	});
-};
-
-
-
-function idsOnly(array){
-
-  var result = Object.keys(array).map(function(e) {
-    return array[e].id;
-    });
-
-  return result;    
+	return data;
 
 };
 
 
-module.exports.createDepartments = createDepartments;
+// @TODO think about it. GS using more advanced method of saving grocery to user array.
+// but in order to simplify stuff - we'll remove connection between import and methods from inner models.
+//@TODO replace stuff like cb to a simple console or debug log that relation was successfully created
+
+const relate = async (options, results, helper) => {
+
+  let server
+  let database
+  let raven
+  ( {server, database, raven} = options );
+
+
+
+  if( !results || !results.departments || !results.groceries ) {
+    raven.captureException("cannot attach additional data to recipes");
+  }
+
+  //@TODO create a method with foreach for each attribute in order to attach data to recipe
+  helper.attach( results.departments, results.groceries, attributes[0]);
+
+};
+
+module.exports.get        = get;
+module.exports.table_name = table_name;
+module.exports.relate     = relate;
