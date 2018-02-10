@@ -36,7 +36,7 @@ Edit your list - create open to any userlist
  Print functionlaity
  Grocery List page template
 
- 
+
  A lot of things was covered at: https://github.com/atherdon/recipe-api-only/issues/99
 
 Use other repo fork for creating first version of frontend: https://github.com/atherdon/grocery-list-app
@@ -57,4 +57,14 @@ Then HTML move to clients folders
 Get free images to put on backgrounds
 Think about adding Ad sense block
 
+* Add recipe categories
+* Add recipe search
+* Create automative grocery list structure template.
+* Add firebase for login storing users - https://github.com/FirstBuild/InventoryMgmt-GroceryList/blob/master/app/js/simpleLogin.js
+https://github.com/akhil110/Recipe-Book/blob/master/recipe-service.js
+https://www.sitepoint.com/building-recipe-search-site-angular-elasticsearch/
+http://openrecip.es
+http://codepen.io/jpokusa/pen/GBysb
+https://www.anylistapp.com
 
+add category management http://www.outofmilk.com/features.aspx
