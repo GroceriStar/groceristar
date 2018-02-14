@@ -1,4 +1,6 @@
 
+It is a tutorial for setting GS on local machine.
+
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Client ids/secrets from third party](#client-idssecrets-from-third-party)
