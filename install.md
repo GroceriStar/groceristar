@@ -4,19 +4,19 @@ It is a tutorial for setting GS on local machine.
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Client ids/secrets from third party](#client-idssecrets-from-third-party)
-- [Tutorial - Facebook](#tutorial---facebook)
+- [Tutorial - Facebook](#tutorial---Facebook)
 
 
 
 ## Overview
 
-This project is basically clone from Loopback Passport Example.
+This project is basically a clone from Loopback Passport Example.
 
 LoopBack example for [loopback-passport](https://github.com/strongloop/loopback-passport) module. It demonstrates how to use
 LoopBack's user/userIdentity/userCredential models and [passport](http://passportjs.org) to interact with other auth providers.
 
 - Log in or sign up to LoopBack using third party providers (aka social logins)
-- Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated facebook).
+- Link third party accounts with a LoopBack user (for example, a LoopBack user can have associated Facebook).
 
 
 ## Prerequisites
@@ -27,14 +27,14 @@ Before starting this tutorial, make sure you have the following installed:
 - NPM
 - [StrongLoop Controller](https://github.com/strongloop/strongloop)
 
-Note: this project also using Raven for error hanglers. So if you're cloning this repo - you must find and update the key.
+Note: this project also using Raven for error handlers. So if you're cloning this repo - you must find and update the key.
 more info at: https://sentry.io
 
 ## Client ids/secrets from third party
 
 You can create your own app here
 
-- [facebook](https://developers.facebook.com/apps)
+- [Facebook](https://developers.facebook.com/apps)
 
 
 ## Tutorial - Facebook
@@ -64,7 +64,7 @@ $ npm install
 
  or
 
-- To get your app info: [facebook](https://developers.facebook.com/apps)
+- To get your app info: [Facebook](https://developers.facebook.com/apps)
 - Click on My Apps, then on Add a new App
 - Pick the platform [iOS, Android, Facebook Canvas, Website]
 - Select proper category for your app.
@@ -137,7 +137,7 @@ error: "async function something(next) {
 
 
 
- ### 5. database logic
+ ### 5. Database logic
 
 In order to launch local version of project, you need to have your own mongo database in cloud and import data.
 The database we used in this task is mlab addon for heroku(it can be another mongodb provider, or your own local setup - we need only full link to mongodb with username, dbname, password)
@@ -175,11 +175,13 @@ The database we used in this task is mlab addon for heroku(it can be another mon
 - Click on 'Log in' (in the header, on the rigth)
 
 
-### Deployment on heroku
+### Deployment on Heroku
 
- - heroku login
- - heroku create %your-app-name%
-
+ ```
+ $ heroku login
+ $ heroku create %your-app-name%
+ ```
+ 
  Will create an empty tables in database
  ```
  $ heroku run npm run migrate
@@ -190,14 +192,14 @@ The database we used in this task is mlab addon for heroku(it can be another mon
  $ heroku run npm run import
  ```
 
- heroku run npm run migrate --app gs1
+ $ heroku run npm run migrate --app gs1
 
 
  // recipes
- heroku run npm run import --app gs1
+ $ heroku run npm run import --app gs1
 
 
- FinisH: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
+ Finish: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
 
