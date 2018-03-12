@@ -11,6 +11,8 @@
 - [Contributing](/CONTRIBUTING.md)
 - [FLOW](/FLOW.md)
 - [Static Pages](/PAGES.md)
+- [DB Schema dev mode](https://sqldbm.com/Project/MySQL/Share/v1Tcp4mXo3Gy1tmiICeBJg)
+
 
 ## DB Schema
 
