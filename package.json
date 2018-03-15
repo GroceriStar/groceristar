@@ -49,7 +49,7 @@
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-config-loopback": "^10.0.0",
-    "mocha": "^5.0.0",
+    "mocha": "^5.0.4",
     "nodemon": "^1.15.1"
 
   },
