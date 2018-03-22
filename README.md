@@ -16,5 +16,4 @@
 
 ## DB Schema
 
-Inline-style: 
 ![alt text](https://github.com/GroceriStar/groceristar/blob/master/Groceristar%20%20%20SqlDBM.png "Build with SqlDBM help")
