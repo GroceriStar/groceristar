@@ -7,9 +7,6 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "start2": "webpack --config webpack.config.js",
-    "start3": "webpack-dev-server --env development",
-    "build2": "webpack --env production",
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
