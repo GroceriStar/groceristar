@@ -38,7 +38,7 @@
     "passport-local": "^1.0.0",
     "passport-oauth2": "^1.1.2",
     "pug": "^2.0.3",
-    "raven": "^2.4.2",
+    "raven": "^2.5.0",
     "serve-favicon": "^2.5.0",
     "strong-error-handler": "^2.3.2",
     "underscore": "^1.8.3"
