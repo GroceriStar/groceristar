@@ -44,7 +44,7 @@
     "raven": "^2.5.0",
     "serve-favicon": "^2.5.0",
     "strong-error-handler": "^2.3.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.9.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
