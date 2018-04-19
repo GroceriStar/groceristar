@@ -29,7 +29,7 @@
     "express-session": "^1.15.6",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.27.1",
-    "loopback-component-explorer": "^5.4.0",
+    "loopback-component-explorer": "^6.0.0",
     "loopback-component-passport": "^3.8.0",
     "loopback-connector-mongodb": "^3.4.3",
     "loopback-mongo-aggregate-mixin": "^1.0.1",
@@ -41,7 +41,7 @@
     "raven": "^2.5.0",
     "serve-favicon": "^2.5.0",
     "strong-error-handler": "^2.3.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.9.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
