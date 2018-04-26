@@ -30,6 +30,7 @@
     "errorhandler": "^1.5.0",
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
+    "hoek": "^5.0.3",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.27.1",
     "loopback-component-explorer": "^6.0.0",
