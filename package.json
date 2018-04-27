@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "main": "server/server.js",
   "engines": {
-    "node": "8.1.4"
+    "node": "10.0.0"
   },
   "scripts": {
     "start": "node server/server.js",
