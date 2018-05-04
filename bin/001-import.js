@@ -2,10 +2,14 @@
 const path    = require('path');
 const async   = require('async');
 // const debug   = require('debug');
-const raven   = require('raven');
+const Raven   = require('raven');
+const cfg     = require('../../server/config.staging.js');
+
 const _       = require('underscore');
 
-raven.config('https://c1e3b55e6a1a4723b9cae2eb9ce56f2e:57e853a74f0e4db98e69a9cf034edcdd@sentry.io/265540').install();
+
+Raven.config(cfg.RAVEN_KEY).install();
+// raven.config('https://c1e3b55e6a1a4723b9cae2eb9ce56f2e:57e853a74f0e4db98e69a9cf034edcdd@sentry.io/265540').install();
 
 let server     = require(path.resolve(__dirname, '../server/server'));
 // @TODO update this, cause each time i need to pass a different sources.

@@ -14,10 +14,19 @@ const express      = require('express');
 
 const errorhandler = require('errorhandler');
 
-const Raven = require('raven');
+// i use this name in order to keep away from name convig
+// const cfg          = require('config.staging.js');
+
+const Raven        = require('raven');
+// Raven.config(cfg.RAVEN_KEY).install();
 Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
 var app            = module.exports = loopback();
+
+
+// console.log(app.datasources);
+// const cfg = require('../../server/config.staging.js');
+// Raven.config(cfg.RAVEN_KEY).install();
 
 
 
@@ -50,10 +59,10 @@ var config = {};
 try {
 
   if ( process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ) {
-    // only use in development 
-    config = require('../providers.json');  
+    // only use in development
+    config = require('../providers.json');
   } else {
-    config = require('../providers.production.json');  
+    config = require('../providers.production.json');
   }
 
   // console.log(config);
@@ -62,6 +71,11 @@ try {
   Raven.captureException(err);
   process.exit(1); // fatal
 }
+
+
+
+
+
 
 // -- Add your pre-processing middleware here --
 
@@ -76,7 +90,7 @@ var staticDir = path.join(__dirname + '/../client/public');
 app.use(express.static(staticDir));
 
 if (process.env.NODE_ENV === 'development') {
-  // only use in development 
+  // only use in development
   app.use(errorhandler());
 }
 
@@ -117,8 +131,8 @@ app.use(flash());
 
 
 passportConfigurator.setupModels({
-  userModel: app.models.user, 
-  userIdentityModel: app.models.userIdentity,
+  userModel:           app.models.user,
+  userIdentityModel:   app.models.userIdentity,
   userCredentialModel: app.models.userCredential,
 });
 

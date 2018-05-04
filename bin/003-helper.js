@@ -1,9 +1,11 @@
 const _     = require('underscore');
 const async = require('async');
-const raven = require('raven');
+const Raven = require('raven');
+
 
 // @TODO move id to config file. or we use it in a lot of places.
-raven.config('https://c1e3b55e6a1a4723b9cae2eb9ce56f2e:57e853a74f0e4db98e69a9cf034edcdd@sentry.io/265540').install();
+Raven.config(cfg.RAVEN_KEY).install();
+// raven.config('https://c1e3b55e6a1a4723b9cae2eb9ce56f2e:57e853a74f0e4db98e69a9cf034edcdd@sentry.io/265540').install();
 
 // let raven
 
