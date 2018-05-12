@@ -54,16 +54,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atherdon/groceristar.git"
+    "url": "git+https://github.com/GroceriStar/groceristar.git"
   },
   "license": "MIT",
-  "description": "A tutorial for setting up a basic passport example.",
+
   "bugs": {
-    "url": "https://github.com/atherdon/groceristar/issues"
+    "url": "https://github.com/GroceriStar/groceristar/issues"
   },
-  "homepage": "https://github.com/atherdon/groceristar#readme",
-  "bin": {
-    "groceristar": "automigrate-small.js"
-  },
-  "author": ""
+  "homepage": "https://github.com/GroceriStar/groceristar#readme",
+  "author": "",
+  "description": "GroceriStar API"
 }
