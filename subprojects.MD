@@ -10,5 +10,4 @@
 [](https://github.com/GroceriStar/account)
 [](https://github.com/GroceriStar/gs-gatsby-react-blog)
 [](https://github.com/GroceriStar/groceris-static)
-[](https://github.com/GroceriStar/gs-ml-nlp
-)
+[](https://github.com/GroceriStar/gs-ml-nlp)
