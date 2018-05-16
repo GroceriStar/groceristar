@@ -64,8 +64,3 @@ User can:
 * Use API to get detailed data for grocery items
 
 ## Models Used
-
-
-
-### Copyrights
-Art used:
