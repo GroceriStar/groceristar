@@ -4,6 +4,8 @@
 
 <img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" alt="Drawing" width="150" height="40"/>
 
+[![Waffle.io - Issues in progress](https://badge.waffle.io/GroceriStar/groceristar.png?label=in%20progress&title=In%20Progress)](http://waffle.io/GroceriStar/groceristar)
+
 
 - [Local install](/install.md#local)
 - [Heroku deploy](/install.md#heroku)
