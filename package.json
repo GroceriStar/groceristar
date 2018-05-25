@@ -49,7 +49,6 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-loopback": "^10.0.0",
-    "mocha": "^5.1.1",
     "nodemon": "^1.17.5"
   },
   "repository": {
@@ -57,7 +56,6 @@
     "url": "git+https://github.com/GroceriStar/groceristar.git"
   },
   "license": "MIT",
-
   "bugs": {
     "url": "https://github.com/GroceriStar/groceristar/issues"
   },
