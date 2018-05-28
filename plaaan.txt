@@ -1,0 +1,174 @@
+```
+Item
+ - new_item
+ - item_right
+ - item_center
+ - item_checkbox
+
+ todo_item
+ - header
+ - footer
+ - footer2
+
+ shoplist_mobile
+ empty-center
+ empty-checkbox
+ empty-item
+ ```
+Move data from Nishith repository
+ Validation + ACL stuff move to GS/CK
+ Image upload move to GS + recipe API
+
+ UserData -> How to make it like package? or not do this?
+ Try csv  import at GS/RAPI
+
+ Middlewarez -> strange thing, can be package too
+
+
+
+
+ ---
+Recipe Box 
+Header
+Jumbotron
+recipes in card
+put pagination
+put simple like a search form
+recipe page with router
+separated components for
+-ing
+-dir
+-recipe meta
+-  load from json stuff
+-  weekly menu
+-  recipes list
+
+Mack will be responsible for making standalone components using
+BS + recipe
+
+----
+GL simple page with checkboxes
+Meal plan page
+
+and recipe print
+add meal plan print
+add GL print
+
+----
+Login stuff is postponed for now.
+run npm test for react native stuff
+
+---
+on boarding as intro to CK use
+
+Use Icons from creative, use content from recipes data
+
+---
+add information about where is located live server,
+what are the default methods
+show API docs for FM release
+
+-----
+
+Grab recipe lists from API
+registration? sign up flow, FB sign up?
+
+---
+
+Khyati
+Next Steps
+
+---
+Review Nishith changes
+
+Ashish linkedin
+design
+
+flow for diets stuff - diet app.
+
+---
+
+Из diet app мы сделаем meal plan + diets stuff,
+описать след. шаги и сделать readme
+
+use iphone x - we'll use a react native for code, so screen size will be adjustable by code.
+
+
+
+---
+сделать больше readme по дизайну
+----
+упорядочить данные в search-react
+
+
+сделать дизайн красивій и сделать release с внутренними массивами и красиво віглядящими.
+
+для диет важно будет то, что присутствует в ZOE
+barcode scanner, chat, stuff for getStream. let's use that UI kit stuff for app.
+
+
+
+------------
+UI kits to use must have, file you'll need to share at Github, because we're using github at all situations.
+
+--------
+
+Import as package?
+Login as package?
+Default arrays ES6 style to package too.
+We'll be able to share all labels there too.
+----
+
+подумать, как Нишиту или Loise дать search-api changes.
+
+----
+Запилить api и тесті к нему на jest. Єто реально может помочь. Сделать список URL для АПИ тестер.
+
+МОжно и документацию брать
+и делать
+по GS например для react calls.
+
+---
+
+План по переходу от ingredients to Items + Qty.
+
+Закончить план по Saas c Nishith и короче все другое.
+
+
+Email templates move to package too.
+
+
+-------------
+
+https://github.com/GroceriStar/react-only-intern-17
+
+https://github.com/ChickenKyiv/loopback-tutor-intern-18
+----------------
+
+
+https://github.com/ChickenKyiv/loopback-tutor-intern-8
+
+https://github.com/ChickenKyiv/api-extended-database
+
+one girl tell me that she want to learn more about creating databases - so we're chatting about feature releases and what we need to do in order to make db structure better, easy and stable.
+
+
+https://github.com/GroceriStar/creative/blob/master/prev.%20design.screens/Shopping%20List%20%205a6fb00ef3909e0012274dab%20(1).png
+
+https://github.com/GroceriStar/creative/blob/master/prev.%20design.screens/Shopping%20List%20%205a6fb00ef3909e0012274dab.png
+
+
+
+https://github.com/GroceriStar/groceristar/tree/master/server/views/pages/shopping
+
+
+---------------
+
+
+
+
+
+
+
+
+
