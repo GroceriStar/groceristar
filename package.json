@@ -30,7 +30,7 @@
     "express-session": "^1.15.6",
     "hoek": "^5.0.3",
     "jest": "^23.0.1",
-    "loopback": "^3.19.2",
+    "loopback": "^3.19.3",
     "loopback-boot": "^3.1.0",
     "loopback-component-explorer": "^6.0.1",
     "loopback-component-passport": "^3.8.1",
