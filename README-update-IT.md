@@ -1,3 +1,15 @@
+// add favorites, meal done like array of recipe ids.
+
+//favorite/list
+//favorite/add/ - return id
+//favorite/delete
+
+//mealdone/add return id
+//mealdone/delete/:id
+//mealdone/list
+https://github.com/ChickenKyiv/recipe-api-only/issues/81
+
+
 # GroceriStar
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/76fe5b42fcc04691a06381ed1d26171b)](https://www.codacy.com/app/atherdon/loopback-fb-login?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atherdon/loopback-fb-login&amp;utm_campaign=Badge_Grade)
