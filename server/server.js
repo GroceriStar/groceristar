@@ -14,9 +14,6 @@ const express      = require('express');
 
 const errorhandler = require('errorhandler');
 
-const Raven = require('raven');
-Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
-
 var app            = module.exports = loopback();
 
 
@@ -59,7 +56,6 @@ try {
   // console.log(config);
 } catch (err) {
   console.trace(err);
-  Raven.captureException(err);
   process.exit(1); // fatal
 }
 
