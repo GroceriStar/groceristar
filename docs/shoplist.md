@@ -11,7 +11,7 @@ Item
  - footer2
 
  shoplist_mobile
- empty-center
- empty-checkbox
- empty-item
+ - empty-center
+ - empty-checkbox
+ - empty-item
  ```
