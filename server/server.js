@@ -106,6 +106,10 @@ boot(app, __dirname);
 // }));
 
 
+
+
+
+
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
   model: app.models.accessToken, // :todo change this when we'll update model names
@@ -124,11 +128,6 @@ passportConfigurator.init();
 
 // We need flash messages to see passport errors
 app.use(flash());
-
-
-
-
-
 
 passportConfigurator.setupModels({
   userModel:           app.models.user,
