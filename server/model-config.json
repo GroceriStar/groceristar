@@ -4,7 +4,7 @@
       "../common/models",
       "../server/models",
       "./models",
-      "./node_modules/loopback-component-passport/lib/models"
+      "../node_modules/loopback-component-passport/lib/models"
     ]
   },
   "user": {

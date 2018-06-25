@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
   var mainController = require('../controllers/main-controller');
-  
+
 
 
   // :todo this must be moved to departments

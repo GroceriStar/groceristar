@@ -14,6 +14,8 @@ const express      = require('express');
 
 const errorhandler = require('errorhandler');
 
+const app          = module.exports = loopback();
+
 // i use this name in order to keep away from name convig
 // const cfg          = require('config.staging.js');
 
@@ -21,8 +23,12 @@ const Raven        = require('raven');
 // Raven.config(cfg.RAVEN_KEY).install();
 Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
-var app            = module.exports = loopback();
 
+
+// Passport configurators..
+var loopbackPassport = require('loopback-component-passport');
+var PassportConfigurator = loopbackPassport.PassportConfigurator;
+var passportConfigurator = new PassportConfigurator(app);
 
 // console.log(app.datasources);
 // const cfg = require('../../server/config.staging.js');
@@ -30,10 +36,6 @@ var app            = module.exports = loopback();
 
 
 
-// Passport configurators..
-const loopbackPassport   = require('loopback-component-passport');
-var PassportConfigurator = loopbackPassport.PassportConfigurator;
-var passportConfigurator = new PassportConfigurator(app);
 
 /*
  * body-parser is a piece of express middleware that
@@ -71,10 +73,6 @@ try {
   Raven.captureException(err);
   process.exit(1); // fatal
 }
-
-
-
-
 
 
 // -- Add your pre-processing middleware here --
@@ -123,11 +121,22 @@ app.middleware('session', session({
   resave: true,
 }));
 
-passportConfigurator.init();
-
 
 // We need flash messages to see passport errors
-app.use(flash());
+// app.use(flash());
+
+passportConfigurator.init();
+//
+// // console.log(passportConfigurator);
+//
+
+console.log(app.models.user)
+console.log(app.models.userIdentity)
+console.log(app.models.userCredential)
+
+// process.on('exit', function(code) {
+//     return console.log(`About to exit with code ${code}`);
+// });
 
 passportConfigurator.setupModels({
   userModel:           app.models.user,
