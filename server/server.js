@@ -13,6 +13,7 @@ const path         = require('path');
 const express      = require('express');
 
 const errorhandler = require('errorhandler');
+require("dotenv").config();
 
 var app            = module.exports = loopback();
 

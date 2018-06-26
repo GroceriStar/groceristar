@@ -64,33 +64,25 @@ exports.cloneGrocery = async (req, res, next) => {
     var groceryId = req.params.groceryId;  
     
     let grocery
+    let cloned
     try {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
-
-    } catch (e) {
-      //this will eventually be handled by your error handling middleware
-      next(e) 
-    }
-
-    let cloned
-    try {   
       var newObject = Grocery.getObjectForClone(grocery);
       cloned = await Grocery.create(newObject);
+      var options = {
+        type  : 'attach',
+        field : 'groceryIds',
+        userId: userId,
+        secondArray: [ cloned.id ]
+      };
+      User.proceed(options)
+      res.redirect('/afterclone');
 
     } catch (e) {
       //this will eventually be handled by your error handling middleware
-      next(e) 
+      // res.redirect('/afterclone');
+      next(e); 
     }
-
-    var options = {
-      type  : 'attach',
-      field : 'groceryIds',
-      userId: userId,
-      secondArray: [ cloned.id ]
-    };
-    User.proceed(options);
-
-    res.redirect('/afterclone');
 };
 
 //:todo #182
