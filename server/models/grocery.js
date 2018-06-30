@@ -76,34 +76,48 @@ module.exports = function (Grocery) {
 					] // :todo change this to an object
 				});
 
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);
+              return item.department.id.toString();
+            }), function(grouped){
+
+            	var departmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, departmentId);
 
 
-				if (!flag) {
-
-					return {
-						id: grouped[0].department.id.toString(),
-						name: grouped[0].department.name,
-						type: grouped[0].department.type,
-						ingredients: ja,
-					};
-
-				}
-
-				return {
-					id: grouped[0].department.id.toString(),
-					name: grouped[0].department.name,
-					type: grouped[0].department.type,
-					ingredients: [],
-				};
+        		 var ja = _.map(grouped, function(item){
+        		 	return [
+            		 	item.id,
+            		 	item.name,
+            		 	'/del/ing/' + item.id + '/' + g.id
+        		 	] // :todo change this to an object
+        		 });
 
 
-			});
 
-			var response = {
-				id: g.id,
-				name: g.name,
-				data: uniques
-			};
+            	if ( !flag ) {
+
+            		return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: ja,
+                    };
+
+
+            	return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: [],
+                    };
+
+
+            });
+
+            var response = {
+                id: g.id,
+                name: g.name,
+                data: uniques
+            };
 
 			// resolve(cb(response));
 			// return response;
@@ -116,58 +130,57 @@ module.exports = function (Grocery) {
 
 	};
 
-	Grocery.convertCollectionData = function (grocery) {
+	//:todo we should think about updating this method. it's duplicated and sucks
+	Grocery.convertCollectionData = function(grocery){
 
-		var g = grocery.toJSON();
-		let arr = _.map(grocery.hideThisIds, item => item.toString());
+		var g       = grocery.toJSON();
+		let arr     = _.map(grocery.hideThisIds, item => item.toString());
 
-		var uniques = _.map(_.groupBy(g.ingredients, function (item) {
-			// console.log(item);           	
-			return item.department.id.toString();
-		}), function (grouped) {
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);
+          return item.department.id.toString();
+        }), function(grouped){
 
-			var departmentId = grouped[0].departmentId.toString();
-			var flag = _.contains(arr, departmentId);
-
-
-			var ja = _.map(grouped, function (item) {
-
-				return [
-					item.id.toString(), //item.id, - we have this value before
-					item.name,
-					'/del/ing/' + item.id + '/' + g.id
-				] // :todo change this to an object
-			});
+        	var departmentId = grouped[0].departmentId.toString();
+        	var flag = _.contains(arr, departmentId);
 
 
+    		 var ja = _.map(grouped, function(item){
 
-			if (!flag) {
-
-				return {
-					id: grouped[0].department.id.toString(),
-					name: grouped[0].department.name,
-					type: grouped[0].department.type,
-					ingredients: ja,
-				};
-
-			}
-
-			return {
-				id: grouped[0].department.id.toString(),
-				name: grouped[0].department.name,
-				type: grouped[0].department.type,
-				ingredients: [],
-			};
+    		 	return [
+        		 	item.id.toString(), //item.id, - we have this value before
+        		 	item.name,
+        		 	'/del/ing/' + item.id + '/' + g.id
+    		 	] // :todo change this to an object
+    		 });
 
 
-		});
 
-		var response = {
-			id: g.id,
-			name: g.name,
-			data: uniques
-		};
-		return response;
+        	if ( !flag ) {
+
+        		return { id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: ja,
+                };
+
+        	}
+
+        	return { id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: [],
+                };
+
+
+        });
+
+        var response = {
+            id: g.id,
+            name: g.name,
+            data: uniques
+        };
+        return response;
 
 	};
 
@@ -187,7 +200,13 @@ module.exports = function (Grocery) {
 
 
 
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);
+          return item.department.id.toString();
+        }), function(grouped){
 
+        	var departmentId = grouped[0].departmentId.toString();
+        	var flag = _.contains(arr, departmentId);
 
 			// :todo we don't need this ingredients at this particular case.
 			// we only have a statement for checking array length. and I'm lazy to change that
@@ -201,22 +220,34 @@ module.exports = function (Grocery) {
 			});
 
 
-			return {
-				id: grouped[0].department.id.toString(),
-				name: grouped[0].department.name,
-				type: grouped[0].department.type,
-				ingredients: (!flag) ? ja : [],
-			};
+        	// :todo we don't need this ingredients at this particular case.
+        	// we only have a statement for checking array length. and I'm lazy to change that
+    		 var ja = _.map(grouped, function(item){
+
+    		 	return [
+        		 	item.id.toString(), //item.id, - we have this value before
+        		 	// item.name,
+        		 	// '/del/ing/' + item.id + '/' + g.id
+    		 	] // :todo change this to an object
+    		 });
 
 
-		});
+        	return {
+        			id: grouped[0].department.id.toString(),
+                    name: grouped[0].department.name,
+                    type: grouped[0].department.type,
+                    ingredients: ( !flag ) ? ja : [],
+                };
 
-		var response = {
-			id: g.id,
-			name: g.name,
-			data: uniques
-		};
-		return response;
+
+        });
+
+        var response = {
+            id: g.id,
+            name: g.name,
+            data: uniques
+        };
+        return response;
 
 	};
 
@@ -252,49 +283,46 @@ module.exports = function (Grocery) {
 
 			let arr = _.map(grocery.hideThisIds, item => item.toString());
 
-			var uniques = _.map(_.groupBy(g.ingredients, function (item) {
-				// console.log(item);           	
-				return item.department.id.toString();
-			}), function (grouped) {
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);
+              return item.department.id.toString();
+            }), function(grouped){
 
-				var departmentId = grouped[0].departmentId.toString();
-				var flag = _.contains(arr, departmentId);
+            	var departmentId = grouped[0].departmentId.toString();
+            	var flag = _.contains(arr, departmentId);
 
 
-				var ja = _.map(grouped, function (item) {
-					return [
-						item.id,
-						item.name,
-						'/del/ing/' + item.id + '/' + g.id
-					] // :todo change this to an object
-				});
+        		 var ja = _.map(grouped, function(item){
+        		 	return [
+            		 	item.id,
+            		 	item.name,
+            		 	'/del/ing/' + item.id + '/' + g.id
+        		 	] // :todo change this to an object
+        		 });
 
+
+
+            	if ( !flag ) {
 
 
 				if (!flag) {
 
-					return false;
-
-				}
-
-				return {
-					id: grouped[0].department.id.toString(),
-					name: grouped[0].department.name,
-					type: grouped[0].department.type,
-					ingredients: ja,
-				};
+            	return { id: grouped[0].department.id.toString(),
+                        name: grouped[0].department.name,
+                        type: grouped[0].department.type,
+                        ingredients: ja,
+                    };
 
 
-			});
+            });
 
 
 
-			var response = {
-				id: g.id,
-				name: g.name,
-				data: _.compact(uniques)
-			};
-
+            var response = {
+                id: g.id,
+                name: g.name,
+                data: _.compact(uniques)
+            };
 
 
 			cb(null, response);
@@ -317,10 +345,10 @@ module.exports = function (Grocery) {
 			let purchasedArray = _.map(grocery.purchasedIds, item => item.toString());
 			// console.log(arr2);
 
-			var uniques = _.map(_.groupBy(g.ingredients, function (item) {
-				// console.log(item);           	
-				return item.department.id.toString();
-			}), function (grouped) {
+            var uniques = _.map(_.groupBy(g.ingredients, function(item){
+            	// console.log(item);
+              return item.department.id.toString();
+            }), function(grouped){
 
 
 				var currentDepartmentId = grouped[0].departmentId.toString();
@@ -339,59 +367,58 @@ module.exports = function (Grocery) {
 					// console.log( _.indexOf(grouped, item) )
 					// Grocery.customIngredientsArray('todo', item, g.id);
 
-					return {
-						id: item.id,
-						name: item.name,
-						completed: _.contains(purchasedArray, item.id.toString()),
-						departmentId: currentDepartmentId,
-						order: _.indexOf(grouped, item)
+	        		 	return {
+							id: item.id,
+							name: item.name,
+							completed: _.contains(purchasedArray, item.id.toString()),
+							departmentId: currentDepartmentId,
+							order: _.indexOf(grouped, item)
 
-					}
-				});
-
-
-				if (!flag) {
-
-					return {
-						id: grouped[0].department.id.toString(),
-						name: grouped[0].department.name,
-						type: grouped[0].department.type,
-						ingredients: ja,
-					};
-
-				}
-				return {};
-				// return { id: grouped[0].department.id.toString(),
-				//            name: grouped[0].department.name,
-				//            type: grouped[0].department.type,
-				//            ingredients: [],                        
-				//        };
+						}
+        		 	});
 
 
-				// } 
+            		if ( !flag ) {
 
-				// else {
-				// 	ja = [];
-				// }
+	            		return { id: grouped[0].department.id.toString(),
+	                        name: grouped[0].department.name,
+	                        type: grouped[0].department.type,
+	                        ingredients: ja,
+	                    };
+
+            		}
+            	return {};
+            	// return { id: grouped[0].department.id.toString(),
+             //            name: grouped[0].department.name,
+             //            type: grouped[0].department.type,
+             //            ingredients: [],
+             //        };
 
 
+            	// }
 
 				// console.log(departmentId);
 				// console.log(ja);
 
 
 
+        		 // console.log(departmentId);
+        		 // console.log(ja);
+
+
 
 			});
 
-			// console.log( uniques );
-			// console.log( _.compact(uniques) );
-			uniques = _.compact(uniques);
-			var response = {
-				id: g.id,
-				name: g.name,
-				data: uniques[0]
-			};
+            });
+
+            // console.log( uniques );
+            // console.log( _.compact(uniques) );
+            uniques = _.compact(uniques);
+            var response = {
+                id: g.id,
+                name: g.name,
+                data: uniques[0]
+            };
 
 			// console.log( response );
 
@@ -410,14 +437,16 @@ module.exports = function (Grocery) {
 		let arr = _.map(grocery.hideThisIds, item => item.toString());
 
 		// change this names later, please :todo
-		let purchasedArray = _.map(grocery.purchasedIds, item => item.toString());
+		let purchasedArray    = _.map(grocery.purchasedIds, item => item.toString());
 
 
-		var uniques = _.map(_.groupBy(g.ingredients, function (item) {
-			// console.log(item);           	
-			return item.department.id.toString();
-		}), function (grouped) {
+        var uniques = _.map(_.groupBy(g.ingredients, function(item){
+        	// console.log(item);
+          return item.department.id.toString();
+        }), function(grouped){
 
+
+        	var currentDepartmentId = grouped[0].departmentId.toString();
 
 			var currentDepartmentId = grouped[0].departmentId.toString();
 
@@ -458,7 +487,20 @@ module.exports = function (Grocery) {
 			//            ingredients: [],                        
 			//        };
 
+        		// if ( !flag ) {
 
+    		return { id: currentDepartmentId,
+                name: grouped[0].department.name,
+                type: grouped[0].department.type,
+                ingredients: ja,
+            };
+
+
+        	// return { id: grouped[0].department.id.toString(),
+         //            name: grouped[0].department.name,
+         //            type: grouped[0].department.type,
+         //            ingredients: [],
+         //        };
 
 
 
@@ -466,33 +508,34 @@ module.exports = function (Grocery) {
 		});
 
 
-		return uniques[0].ingredients;
+        });
+
+
+        return uniques[0].ingredients;
 
 
 	};
 
 	// :todo maybe we can get rid of this, because we're just moving same data between fuctions
-	Grocery.getObjectForClone = function (grocery) {
-		var object;
-		if (grocery) {
-			object = {
-				name: grocery.name,
-				desc: grocery.desc,
-				slug: grocery.slug,
-				img: grocery.img,
-				hideThisIds: grocery.hideThisIds,
-				ingredientIds: grocery.ingredientIds,
-				created_at: new Date(),
-				updated_at: new Date(),
-			};
-		}
+	Grocery.getObjectForClone = function(grocery){
+
+		var object = {
+			name: grocery.name,
+			desc: grocery.desc,
+			slug: grocery.slug,
+			img : grocery.img,
+			hideThisIds  : grocery.hideThisIds,
+			ingredientIds: grocery.ingredientIds,
+			created_at   : new Date(),
+			updated_at   : new Date(),
+		};
 
 		return object;
 	};
 
 
 	//:todo add remote method for enable API calls for this method
-	// Grocery.cloner 
+	// Grocery.cloner
 
 
 	// 	data must have this structure:
@@ -522,7 +565,7 @@ module.exports = function (Grocery) {
 	};
 
 	// This query connect grocery, ingredients and departments
-	Grocery.query1 = function () {
+	Grocery.query1 = function(){
 		return {
 			include: {
 				relation: 'ingredients',
@@ -564,7 +607,7 @@ module.exports = function (Grocery) {
 		};
 	};
 
-	Grocery.queryOneDepartment = function (departmentId) {
+	Grocery.queryOneDepartment = function(departmentId){
 		return {
 			include: {
 				relation: 'ingredients',
@@ -585,7 +628,7 @@ module.exports = function (Grocery) {
 		}
 	};
 
-	Grocery.queryDepartmentsOnly = function () {
+	Grocery.queryDepartmentsOnly = function(){
 		return {
 			include: {
 				relation: 'ingredients',
@@ -604,7 +647,7 @@ module.exports = function (Grocery) {
 		};
 	};
 
-	Grocery.withDepartments = function (groceryId, cb) {
+	Grocery.withDepartments = function(groceryId, cb){
 		Grocery.findById(groceryId, {
 			include: {
 				relation: 'ingredients',
@@ -631,7 +674,7 @@ module.exports = function (Grocery) {
 
 
 
-	// :todo think about adding count(to departments). 
+	// :todo think about adding count(to departments).
 
 	// So if ingredients in dep = 0 - don't show it
 
@@ -692,8 +735,9 @@ module.exports = function (Grocery) {
 		options.field = 'ingredientIds';
 		Grocery.proceed(options);
 	};
-	Grocery.removeIngredient = function (options) {
-		options.type = 'remove-ing';
+
+	Grocery.removeIngredient = function(options){
+		options.type  = 'remove-ing';
 		options.field = 'ingredientIds';
 		Grocery.proceed(options);
 	};
@@ -701,13 +745,13 @@ module.exports = function (Grocery) {
 	// Grocery.addItem = function(options){
 	// 	options.type  = 'add-item';
 	// 	options.field = 'itemsIds';
-	// 	Grocery.proceed(options);	
+	// 	Grocery.proceed(options);
 	// };
 
 	// Grocery.removeItem = function(options){
 	// 	options.type  = 'remove-item';
 	// 	options.field = 'itemsIds';
-	// 	Grocery.proceed(options);	
+	// 	Grocery.proceed(options);
 	// };
 	Grocery.proceed = function (options) {
 
@@ -733,11 +777,13 @@ module.exports = function (Grocery) {
 
 			}
 
+			}
 
 			if (options.type == 'remove' || options.type == 'show' || options.type == 'remove-ing') {
 
 
-				if (!model[options.field]) { return true; }
+
+                if( !model[options.field] ){ return true; }
 
 				let arr = _.map(model[options.field], item => item.toString());
 
@@ -767,10 +813,10 @@ module.exports = function (Grocery) {
 				delete: '/del/ing/' + ingredient.id + '/' + groceryId
 			};
 			// [
-			//          		 	ingredient.id, 
-			//          		 	ingredient.name,
-			//          		 	'/del/ing/' + ingredient.id + '/' + groceryId
-			//      		 	] // :todo change this to an object
+   //          		 	ingredient.id,
+   //          		 	ingredient.name,
+   //          		 	'/del/ing/' + ingredient.id + '/' + groceryId
+   //      		 	] // :todo change this to an object
 		}
 
 	};
@@ -785,12 +831,12 @@ module.exports = function (Grocery) {
 			//   console.log(item);
 			// });
 
-			// :todo remove ingredients from this list.
-			// but this will cause issue in select field
-			var departments = _.map(response.data, function (obj) {
-				// maybe it'll be better to just from an object by hands
-				return _.pick(obj, 'id', 'name', 'type', 'ingredients');
-			});
+      // :todo remove ingredients from this list.
+      // but this will cause issue in select field
+      var departments = _.map(response.data, function(obj) {
+        // maybe it'll be better to just from an object by hands
+        return _.pick(obj, 'id', 'name', 'type', 'ingredients');
+      });
 
 			var currentDepartmentCollection = _.where(response.data, { id: departmentId });
 			currentDepartmentCollection = currentDepartmentCollection[0];

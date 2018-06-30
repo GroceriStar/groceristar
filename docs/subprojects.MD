@@ -1,0 +1,13 @@
+
+* [Groceristar Features](https://github.com/GroceriStar/onboarding-features)
+* [Frontend is a repo where we trying to store all things related to fronetend work](https://github.com/GroceriStar/frontend)
+* [this is a place where we working on additional grocery list templates](https://github.com/GroceriStar/Grocery-data)
+* [this is a repo where we'll try to make Print feature and export to PDF looking nice, which is not an easy thing](https://github.com/GroceriStar/react-print-pdf)
+* [Place where we combine all ideas about including machine learning](https://github.com/GroceriStar/ml-store-all-in-one-place)
+* [separated repo for updating shoplist at react version](https://github.com/GroceriStar/react-shopping-list-template)
+* [repo where we have code for converting pinterest images into text](https://github.com/GroceriStar/gl-scrapper)
+* [html to pdf but using gatsby only](https://github.com/GroceriStar/gatsby-internship-4-html-to-pdf-template)
+* [separated repo, related to default inner pages](https://github.com/GroceriStar/account)
+* [groceristar blog section, gatsby setup](https://github.com/GroceriStar/gs-gatsby-react-blog)
+* [static repository, not remember](https://github.com/GroceriStar/groceris-static)
+* [machine learning for ...](https://github.com/GroceriStar/gs-ml-nlp)

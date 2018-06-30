@@ -3,20 +3,18 @@
   "version": "2.0.0",
   "main": "server/server.js",
   "engines": {
-    "node": "8.1.4"
+    "node": "10.0.0"
   },
   "scripts": {
     "start": "node server/server.js",
-    "start2": "webpack --config webpack.config.js",
-    "start3": "webpack-dev-server --env development",
-    "build2": "webpack --env production",
     "lint": "eslint .",
     "posttest": "npm run lint",
     "watch": "nodemon server/server.js",
-    "import": "node bin/import/import.js",
-    "migrate": "node bin/automigrate.js",
+    "import": "node bin/001-import.js",
+    "migrate": "node bin/002-automigrate.js",
+    "a": "npm run migrate && nodemon bin/001-import.js",
     "prod": "set NODE_ENV=production && nodemon server/server.js",
-    "develes": "set NODE_ENV=development && nodemon server/server.js",
+    "dev": "set NODE_ENV=staging && nodemon server/server.js",
     "test_win": "NODE_ENV=test && mocha --reporter spec",
     "test_unix": "NODE_ENV=test mocha --reporter spec",
     "unix": "export NODE_ENV=development"
@@ -32,40 +30,38 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "hoek": "^5.0.3",
-    "loopback": "^3.19.0",
-    "loopback-boot": "^2.27.1",
+    "jest": "^23.2.0",
+    "loopback": "^3.20.0",
+    "loopback-boot": "^3.1.0",
     "loopback-component-explorer": "^6.0.1",
-    "loopback-component-passport": "^3.8.1",
-    "loopback-connector-mongodb": "^3.4.3",
+    "loopback-component-passport": "^3.9.0",
+    "loopback-connector-mongodb": "^3.4.4",
     "loopback-mongo-aggregate-mixin": "^1.0.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "passport-oauth2": "^1.1.2",
     "pug": "^2.0.3",
-    "raven": "^2.6.1",
+    "raven": "^2.6.3",
     "serve-favicon": "^2.5.0",
-    "strong-error-handler": "^2.3.2",
-    "underscore": "^1.9.0"
+    "strong-error-handler": "^3.0.0",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.1",
     "eslint-config-loopback": "^10.0.0",
-    "mocha": "^5.1.1",
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.17.5",
+    "dotenv": "^6.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atherdon/groceristar.git"
+    "url": "git+https://github.com/GroceriStar/groceristar.git"
   },
   "license": "MIT",
-  "description": "A tutorial for setting up a basic passport example.",
   "bugs": {
-    "url": "https://github.com/atherdon/groceristar/issues"
+    "url": "https://github.com/GroceriStar/groceristar/issues"
   },
-  "homepage": "https://github.com/atherdon/groceristar#readme",
-  "bin": {
-    "groceristar": "automigrate-small.js"
-  },
-  "author": ""
+  "homepage": "https://github.com/GroceriStar/groceristar#readme",
+  "author": "",
+  "description": "GroceriStar API"
 }

@@ -13,16 +13,32 @@ const path         = require('path');
 const express      = require('express');
 
 const errorhandler = require('errorhandler');
+
 require("dotenv").config();
 
-var app            = module.exports = loopback();
+
+const app          = module.exports = loopback();
+
+// i use this name in order to keep away from name convig
+// const cfg          = require('config.staging.js');
+
+const Raven        = require('raven');
+// Raven.config(cfg.RAVEN_KEY).install();
+Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
 
 
 // Passport configurators..
-const loopbackPassport   = require('loopback-component-passport');
+var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var passportConfigurator = new PassportConfigurator(app);
+
+// console.log(app.datasources);
+// const cfg = require('../../server/config.staging.js');
+// Raven.config(cfg.RAVEN_KEY).install();
+
+
+
 
 /*
  * body-parser is a piece of express middleware that
@@ -48,10 +64,10 @@ var config = {};
 try {
 
   if ( process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ) {
-    // only use in development 
-    config = require('../providers.json');  
+    // only use in development
+    config = require('../providers.json');
   } else {
-    config = require('../providers.production.json');  
+    config = require('../providers.production.json');
   }
 
   // console.log(config);
@@ -59,6 +75,7 @@ try {
   console.trace(err);
   process.exit(1); // fatal
 }
+
 
 // -- Add your pre-processing middleware here --
 
@@ -73,7 +90,7 @@ var staticDir = path.join(__dirname + '/../client/public');
 app.use(express.static(staticDir));
 
 if (process.env.NODE_ENV === 'development') {
-  // only use in development 
+  // only use in development
   app.use(errorhandler());
 }
 
@@ -89,6 +106,10 @@ boot(app, __dirname);
 // }));
 
 
+
+
+
+
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
   model: app.models.accessToken, // :todo change this when we'll update model names
@@ -102,20 +123,26 @@ app.middleware('session', session({
   resave: true,
 }));
 
-passportConfigurator.init();
-
 
 // We need flash messages to see passport errors
-app.use(flash());
+// app.use(flash());
 
+passportConfigurator.init();
+//
+// // console.log(passportConfigurator);
+//
 
+console.log(app.models.user)
+console.log(app.models.userIdentity)
+console.log(app.models.userCredential)
 
-
-
+// process.on('exit', function(code) {
+//     return console.log(`About to exit with code ${code}`);
+// });
 
 passportConfigurator.setupModels({
-  userModel: app.models.user, 
-  userIdentityModel: app.models.userIdentity,
+  userModel:           app.models.user,
+  userIdentityModel:   app.models.userIdentity,
   userCredentialModel: app.models.userCredential,
 });
 

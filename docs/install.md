@@ -118,7 +118,7 @@ The current template contains:
 "profileFields": ["gender", "link", "locale", "name", "timezone", "verified", "email", "updated_time"],
 
 ```
-We recommend modifying the fields to suit your needs. For more information regarding the providers template, see http://loopback.io/doc/en/lb2/Configuring-providers.json.html.
+We recommend modifying the fields to suit your needs. For more information regarding the providers template, see http://loopback.io/doc/en/lb3/Configuring-providers.json.html.
 
 
 
@@ -132,8 +132,7 @@ error: "async function something(next) {
  ### Why
  Async functions are not supported by Node versions older than version 7.6
 
- At package.json we specified:  node v.8.1.4
-
+ At package.json we specified:  node v.10.0.0
 
 
 
@@ -157,7 +156,7 @@ The database we used in this task is mlab addon for heroku(it can be another mon
 - run "npm run import", using ctrl+c to terminate
 `Import will move sample data from json arrays to mongo documents`
 
-### 6. Run the application
+### 6. Run the application (Local)
 
   ```
   $ node .
@@ -172,7 +171,7 @@ The database we used in this task is mlab addon for heroku(it can be another mon
 
 
 - Open your browser to `http://localhost:3000`
-- Click on 'Log in' (in the header, on the rigth)
+- Click on 'Log in' (in the header, on the right)
 
 
 ### Deployment on Heroku
@@ -181,7 +180,7 @@ The database we used in this task is mlab addon for heroku(it can be another mon
  $ heroku login
  $ heroku create %your-app-name%
  ```
- 
+
  Will create an empty tables in database
  ```
  $ heroku run npm run migrate
@@ -202,11 +201,3 @@ The database we used in this task is mlab addon for heroku(it can be another mon
  Finish: https://github.com/atherdon/stripe-recurring-membership/blob/master/README.md#deploying-to-heroku
 
 [More LoopBack examples](https://loopback.io/doc/en/lb3/Tutorials-and-examples.html)
-
-
-
-## Local install
-
-
-
-## Heroku install

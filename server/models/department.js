@@ -18,7 +18,7 @@ module.exports = function(Department) {
       ctx.instance.updated_at = new Date();
 
       // ctx.instance.visible    = true;
-    } 
+    }
 
 
 
@@ -29,7 +29,7 @@ module.exports = function(Department) {
   Department.observe("before delete", function (ctx, next) {
 
     // console.log('before hook fired');
-    
+
     var Ingredient = ctx.Model.app.models.Ingredient;
 
     Ingredient.find({
@@ -66,7 +66,7 @@ module.exports = function(Department) {
   //           fields: [ 'name', 'id' ]
   //         }
   //       },
-  //       // where: 
+  //       // where:
 
 
   //   })
@@ -76,6 +76,7 @@ module.exports = function(Department) {
   //   .then(cb);
 
   // };
+
 
   // :todo think about try to filter data inside ingredients field
   Department.convertData = function(department){
@@ -99,7 +100,7 @@ module.exports = function(Department) {
             fields: [ 'name', 'id' ]
           }
         },
-        // where: 
+        // where:
     };
   };
 
@@ -113,8 +114,8 @@ module.exports = function(Department) {
             fields: [ 'name', 'id' ]
           }
         },
-        
-        // where: 
+
+        // where:
 
 
     })
@@ -131,18 +132,20 @@ module.exports = function(Department) {
 
     var Ingredient = Department.app.models.Ingredient;
 
-    // we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
-    // departmentId: { inq:departmentId } //we assume that we're have departmentId array. maybe we need to have 1-to-1 relation
+    // we assume that we're have departmentId array.
+		// maybe we need to have 1-to-1 relation
+    // departmentId: { inq:departmentId }
+
 
     Ingredient.find({
         where:{
-          departmentId: departmentId 
-    
+          departmentId: departmentId
+
         },
         fields: [
           // 'img', 'url',
 
-          ]       
+          ]
       },cb);
 
 

@@ -17,12 +17,6 @@ module.exports = function(app) {
 
   var router  = app.loopback.Router();
   var mainController = require('../controllers/main-controller');
-  
-  // routers 
-
-  
-
-
 
 
 
@@ -49,19 +43,8 @@ module.exports = function(app) {
 
 
 
-  router.get('/credits', mainController.getCreditsPage);
-
-  router.get('/privacy', mainController.getPrivacyPage);
-
-  router.get('/terms', mainController.getTermsPage);
-
   router.get('/', mainController.getHomepage);
 
-
-
-  //  app.use(function(req, res, next) {
-  //   res.status(404).send('Sorry cant find that!');
-  // });
 
   app.use(router);
 
