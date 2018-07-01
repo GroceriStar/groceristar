@@ -29,7 +29,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "hoek": "^5.0.3",
-    "jest": "^23.1.0",
+    "jest": "^23.2.0",
     "loopback": "^3.20.0",
     "loopback-boot": "^3.1.0",
     "loopback-component-explorer": "^6.0.1",
@@ -47,7 +47,7 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
+    "eslint": "^5.0.1",
     "eslint-config-loopback": "^10.0.0",
     "nodemon": "^1.17.5"
   },
