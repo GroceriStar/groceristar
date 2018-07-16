@@ -1281,9 +1281,9 @@ escodegen@^1.9.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-loopback@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-10.0.0.tgz#1362f3e5efc8e2c58761b40ddec280398bafe74f"
+eslint-config-loopback@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-11.0.0.tgz#293a0b3558ca42ac2af770d2607e2486812a2852"
   dependencies:
     eslint-plugin-mocha "^4.11.0"
 
