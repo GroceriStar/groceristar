@@ -2997,16 +2997,16 @@ loopback-component-passport@^3.10.0:
     underscore "^1.9.1"
     uuid "^3.2.1"
 
-loopback-connector-mongodb@^3.4.4:
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-3.4.4.tgz#f04129737cad45f77e04a37ba69b26c27b23c35f"
+loopback-connector-mongodb@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-3.5.0.tgz#a1a01c5215deb120d41ce1ac27a56427cd24184f"
   dependencies:
     async "^2.6.0"
     bson "^1.0.6"
     debug "^3.1.0"
-    loopback-connector "^4.0.0"
+    loopback-connector "^4.5.0"
     mongodb "^3.0.1"
-    strong-globalize "^3.1.0"
+    strong-globalize "^4.1.1"
 
 loopback-connector-remote@^3.0.0:
   version "3.4.0"
@@ -3015,9 +3015,9 @@ loopback-connector-remote@^3.0.0:
     loopback-datasource-juggler "^3.0.0"
     strong-remoting "^3.0.0"
 
-loopback-connector@^4.0.0, loopback-connector@^4.4.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/loopback-connector/-/loopback-connector-4.5.0.tgz#5a25ad214a6f9d9e95ccba5f6f185bf3e24d6783"
+loopback-connector@^4.4.0, loopback-connector@^4.5.0:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/loopback-connector/-/loopback-connector-4.5.1.tgz#98af49b2b4348fea2385023568c13df7973d21dc"
   dependencies:
     async "^2.1.5"
     bluebird "^3.4.6"
