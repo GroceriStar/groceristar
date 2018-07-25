@@ -2978,14 +2978,14 @@ loopback-boot@^3.1.0:
     strong-globalize "^3.1.0"
     toposort "^1.0.0"
 
-loopback-component-explorer@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/loopback-component-explorer/-/loopback-component-explorer-6.1.0.tgz#3aeecbcc03082e2ffddea5f37db2f94a2d3d0e76"
+loopback-component-explorer@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/loopback-component-explorer/-/loopback-component-explorer-6.2.0.tgz#0c1c3d671e99ed11261d4cd3b6b1dbcb600f14a5"
   dependencies:
-    debug "^2.2.0"
+    debug "^3.1.0"
     lodash "^4.17.5"
     loopback-swagger "^5.0.0"
-    strong-globalize "^3.1.0"
+    strong-globalize "^4.1.1"
     swagger-ui "^2.2.5"
 
 loopback-component-passport@^3.10.0:
