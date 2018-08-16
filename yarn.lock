@@ -2997,9 +2997,9 @@ loopback-component-passport@^3.10.0:
     underscore "^1.9.1"
     uuid "^3.2.1"
 
-loopback-connector-mongodb@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-3.5.0.tgz#a1a01c5215deb120d41ce1ac27a56427cd24184f"
+loopback-connector-mongodb@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-3.6.0.tgz#dc7e5a950ae08501d539cfc32ee9e50b29dc27d5"
   dependencies:
     async "^2.6.0"
     bson "^1.0.6"
