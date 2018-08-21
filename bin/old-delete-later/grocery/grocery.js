@@ -2,6 +2,8 @@
 
 const debug   = require('debug');
 const async   = require('async');
+const gf = require('@groceristar/groceristar-fetch');
+
 
 let table_name = 'Grocery'
 
@@ -22,15 +24,7 @@ let attributes  = [
 
 const get = () => {
 
-    var data     = [
-    	{
-				name : "Ultimate Grocery List",
-				img  : false,
-				desc : false,
-				slug : false //:todo do we need this fields?
-			}
-     ];
-
+var data = gf.getGrocery()
   	return data;
 
 };
