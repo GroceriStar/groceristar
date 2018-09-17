@@ -2978,9 +2978,9 @@ loopback-boot@^3.1.1:
     strong-globalize "^4.1.1"
     toposort "^2.0.2"
 
-loopback-component-explorer@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/loopback-component-explorer/-/loopback-component-explorer-6.2.0.tgz#0c1c3d671e99ed11261d4cd3b6b1dbcb600f14a5"
+loopback-component-explorer@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/loopback-component-explorer/-/loopback-component-explorer-6.3.0.tgz#3e6e5fa4a9e95ed6557bbbc840a768263ef315a6"
   dependencies:
     debug "^3.1.0"
     lodash "^4.17.5"
