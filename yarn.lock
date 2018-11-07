@@ -587,9 +587,13 @@ bser@^2.0.0:
   dependencies:
     node-int64 "^0.4.0"
 
-bson@^1.0.6, bson@~1.0.4:
+bson@^1.0.6:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.9.tgz#12319f8323b1254739b7c6bef8d3e89ae05a2f57"
+
+bson@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.0.tgz#bee57d1fb6a87713471af4e32bcae36de814b5b0"
 
 btoa@1.1.2:
   version "1.1.2"
@@ -2997,15 +3001,15 @@ loopback-component-passport@^3.10.0:
     underscore "^1.9.1"
     uuid "^3.2.1"
 
-loopback-connector-mongodb@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-3.5.0.tgz#a1a01c5215deb120d41ce1ac27a56427cd24184f"
+loopback-connector-mongodb@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-4.0.0.tgz#825a60fbfef508234903423f12f685818e51c941"
   dependencies:
-    async "^2.6.0"
+    async "^2.6.1"
     bson "^1.0.6"
     debug "^3.1.0"
     loopback-connector "^4.5.0"
-    mongodb "^3.0.1"
+    mongodb "^3.1.4"
     strong-globalize "^4.1.1"
 
 loopback-connector-remote@^3.0.0:
@@ -3298,20 +3302,22 @@ mktmpdir@^0.1.1:
   dependencies:
     rimraf "~2.2.8"
 
-mongodb-core@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.1.0.tgz#af91f36fd560ed785f4e61e694432df4d3698aad"
+mongodb-core@3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.1.8.tgz#696cd5581c17d4f44f911b9cd089239e3e687b0e"
   dependencies:
-    bson "~1.0.4"
+    bson "^1.1.0"
     require_optional "^1.0.1"
+    safe-buffer "^5.1.2"
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.1.0.tgz#20cd836381a4d8a6b1c5a194bb9c8dde852163bb"
+mongodb@^3.1.4:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.1.9.tgz#9bd205b36b6ddf4bd1fb6c3c31641e1994b62075"
   dependencies:
-    mongodb-core "3.1.0"
+    mongodb-core "3.1.8"
+    safe-buffer "^5.1.2"
 
 ms@2.0.0:
   version "2.0.0"
