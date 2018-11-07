@@ -2990,9 +2990,9 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-loopback-boot@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/loopback-boot/-/loopback-boot-3.1.1.tgz#cc4da47aebddaca1f52b401b70e6f04605624194"
+loopback-boot@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/loopback-boot/-/loopback-boot-3.2.0.tgz#d1a0c92ceb45ba18f93dcde1427c795b48452508"
   dependencies:
     async "^2.4.0"
     bluebird "^3.4.0"
