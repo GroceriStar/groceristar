@@ -1971,9 +1971,9 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.1.1"
 
-hoek@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-6.0.1.tgz#15ae90f8d30ad114e2feabe4967567014a783078"
+hoek@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-6.0.3.tgz#7884360426d927865a0a1251fc9c59313af5b798"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
