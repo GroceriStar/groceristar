@@ -12,8 +12,8 @@ var session        = require('express-session');
 const path         = require('path');
 const express      = require('express');
 
-const errorhandler = require('strong-error-handler');
-// const errorhandler = require('errorhandler');
+// const errorhandler = require('strong-error-handler');
+const errorhandler = require('errorhandler');
 
 const app = module.exports = loopback();
 
@@ -79,19 +79,19 @@ try {
 
 // Setup the view engine (jade)
 // var path = require('path');
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-
-
-// // Setup the view engine (pug)
 // app.set('views', path.join(__dirname, 'views'));
-//
-// app.set('view engine', 'pug');
-// app.set('json spaces', 2); // format json responses for easier viewing
-//
-// // in client/public we store static files right now.
-// var staticDir = path.join(__dirname + '/../client/public');
+// app.set('view engine', 'jade');
+
+
+
+// Setup the view engine (pug)
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'pug');
+app.set('json spaces', 2); // format json responses for easier viewing
+
+// in client/public we store static files right now.
+var staticDir = path.join(__dirname + '/../client/public');
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -159,22 +159,6 @@ for (var s in config) {
 
 
 
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-
-app.get('/', function(req, res, next) {
-  res.render('pages/index', {user:
-    req.user,
-    url: req.url,
-  });
-});
-
-app.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
-  res.render('pages/loginProfiles', {
-    user: req.user,
-    url: req.url,
-  });
-});
-
 // app.get('/local', function(req, res, next) {
 //   res.render('pages/local', {
 //     user: req.user,
@@ -189,12 +173,6 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
 //   });
 // });
 
-app.get('/signup', function(req, res, next) {
-  res.render('pages/signup', {
-    user: req.user,
-    url: req.url,
-  });
-});
 
 // app.post('/signup', function(req, res, next) {
 //   var User = app.models.user;
@@ -223,13 +201,13 @@ app.get('/signup', function(req, res, next) {
 //     }
 //   });
 // });
-
-app.get('/login', function(req, res, next) {
-  res.render('pages/login', {
-    user: req.user,
-    url: req.url,
-  });
-});
+//
+// app.get('/login', function(req, res, next) {
+//   res.render('pages/login', {
+//     user: req.user,
+//     url: req.url,
+//   });
+// });
 
 // app.get('/auth/logout', function(req, res, next) {
 //   req.logout();

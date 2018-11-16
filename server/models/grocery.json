@@ -1,0 +1,64 @@
+{
+  "name": "Grocery",
+  "plural": "grocery",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "created_at": {
+      "type": "date",
+      "required": true
+    },
+    "updated_at": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {    
+    "departmentsToHide": {
+      "type": "referencesMany",
+      "model": "Department",
+      "foreignKey": "hideThisIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "purchased": {
+      "type": "referencesMany",
+      "model": "Ingredient",
+      "foreignKey": "purchasedIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "ingredients": {
+      "type": "referencesMany",
+      "model": "Ingredient",
+      "foreignKey": "ingredientIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

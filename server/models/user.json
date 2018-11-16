@@ -1,0 +1,44 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
+    },
+    "groceries": {
+      "type": "referencesMany",
+      "model": "Grocery",
+      "foreignKey": "groceryIds",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "favorites": {
+      "type": "referencesMany",
+      "model": "Ingredient",
+      "foreignKey": "favs",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
