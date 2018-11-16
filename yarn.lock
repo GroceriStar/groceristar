@@ -3051,9 +3051,27 @@ loopback-connector@^4.4.0, loopback-connector@^4.5.0:
     strong-globalize "^4.1.1"
     uuid "^3.0.1"
 
-loopback-datasource-juggler@^3.0.0, loopback-datasource-juggler@^3.18.0:
+loopback-datasource-juggler@^3.0.0:
   version "3.22.0"
   resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-3.22.0.tgz#9e6cdcc2f59e1c087c03f8e07aa7b889b6824f05"
+  dependencies:
+    async "^2.6.0"
+    bluebird "^3.1.1"
+    debug "^3.1.0"
+    depd "^1.0.0"
+    inflection "^1.6.0"
+    lodash "^4.17.4"
+    loopback-connector "^4.4.0"
+    minimatch "^3.0.3"
+    qs "^6.5.0"
+    shortid "^2.2.6"
+    strong-globalize "^4.1.1"
+    traverse "^0.6.6"
+    uuid "^3.0.1"
+
+loopback-datasource-juggler@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-3.28.0.tgz#2be5e7e4a4226b2922069fa6a2e22a4e5e152f51"
   dependencies:
     async "^2.6.0"
     bluebird "^3.1.1"
@@ -3103,9 +3121,9 @@ loopback-swagger@^5.0.0:
     lodash "^4.17.2"
     strong-globalize "^3.1.0"
 
-loopback@^3.23.2:
-  version "3.23.2"
-  resolved "https://registry.yarnpkg.com/loopback/-/loopback-3.23.2.tgz#6c434ddb7732e1a70f11194a8a79ba17b4a26cfe"
+loopback@^3.24.0:
+  version "3.24.0"
+  resolved "https://registry.yarnpkg.com/loopback/-/loopback-3.24.0.tgz#a90e7535af9982daac098ecac3c50e880aecf625"
   dependencies:
     async "^2.0.1"
     bcryptjs "^2.1.0"
@@ -3119,7 +3137,7 @@ loopback@^3.23.2:
     inflection "^1.6.0"
     isemail "^2.2.1"
     loopback-connector-remote "^3.0.0"
-    loopback-datasource-juggler "^3.18.0"
+    loopback-datasource-juggler "^3.28.0"
     loopback-filters "^1.0.0"
     loopback-phase "^3.0.0"
     nodemailer "^4.0.1"
