@@ -15,7 +15,15 @@ const express      = require('express');
 const errorhandler = require('strong-error-handler');
 // const errorhandler = require('errorhandler');
 
-var app = module.exports = loopback();
+const app = module.exports = loopback();
+
+
+
+
+// const Raven        = require('raven');
+// // Raven.config(cfg.RAVEN_KEY).install();
+// Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
+
 
 
 // Passport configurators..
@@ -45,8 +53,18 @@ var flash      = require('express-flash');
 var config = {};
 try {
   config = require('../providers.json');
+
+
+//   if ( process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ) {
+//   // only use in development
+//   config = require('../providers.json');
+// } else {
+//   config = require('../providers.production.json');
+// }
+
 } catch (err) {
   console.trace(err);
+  // Raven.captureException(err);
   process.exit(1); // fatal
 }
 
@@ -64,6 +82,25 @@ try {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
+
+// // Setup the view engine (pug)
+// app.set('views', path.join(__dirname, 'views'));
+//
+// app.set('view engine', 'pug');
+// app.set('json spaces', 2); // format json responses for easier viewing
+//
+// // in client/public we store static files right now.
+// var staticDir = path.join(__dirname + '/../client/public');
+
+
+if (process.env.NODE_ENV === 'development') {
+  // only use in development
+  app.use(errorhandler());
+}
+
+
+
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
@@ -74,14 +111,18 @@ app.middleware('parse', bodyParser.urlencoded({
   extended: true,
 }));
 
+
+
+
+
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
-  model: app.models.accessToken,
+  model: app.models.accessToken, // @TODO change this when we'll update model names
 }));
 
 app.middleware('session:before', cookieParser(app.get('cookieSecret')));
 app.middleware('session', session({
-  secret: 'kitty',
+  secret: 'jinjer',
   saveUninitialized: true,
   resave: true,
 }));
@@ -103,10 +144,11 @@ passportConfigurator.init();
 app.use(flash());
 
 passportConfigurator.setupModels({
-  userModel: app.models.user,
-  userIdentityModel: app.models.userIdentity,
+  userModel:           app.models.user,
+  userIdentityModel:   app.models.userIdentity,
   userCredentialModel: app.models.userCredential,
 });
+
 for (var s in config) {
   var c = config[s];
   c.session = c.session !== false;
