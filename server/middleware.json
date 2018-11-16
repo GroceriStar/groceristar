@@ -14,10 +14,7 @@
   },
   "session": {},
   "auth": {},
-  "parse": {
-    "body-parser#json": {},
-    "body-parser#urlencoded": {"params": { "extended": true }}
-  },
+  "parse": {},
   "routes": {
     "loopback#rest": {
       "paths": [

@@ -4,38 +4,16 @@
 // License text available at https://opensource.org/licenses/MIT
 'use strict';
 
-const loopback     = require('loopback');
-const boot         = require('loopback-boot');
-const cookieParser = require('cookie-parser');
-const session      = require('express-session');
-
-const path         = require('path');
-const express      = require('express');
-
-const errorhandler = require('errorhandler');
-
-const app          = module.exports = loopback();
-
-// i use this name in order to keep away from name convig
-// const cfg          = require('config.staging.js');
-
-const Raven        = require('raven');
-// Raven.config(cfg.RAVEN_KEY).install();
-Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
-
-
+var loopback = require('loopback');
+var boot = require('loopback-boot');
+var app = module.exports = loopback();
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 // Passport configurators..
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
 var passportConfigurator = new PassportConfigurator(app);
-
-// console.log(app.datasources);
-// const cfg = require('../../server/config.staging.js');
-// Raven.config(cfg.RAVEN_KEY).install();
-
-
-
 
 /*
  * body-parser is a piece of express middleware that
@@ -43,7 +21,7 @@ var passportConfigurator = new PassportConfigurator(app);
  *   object accessible through `req.body`
  *
  */
-// const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 /**
  * Flash messages for passport
@@ -53,66 +31,38 @@ var passportConfigurator = new PassportConfigurator(app);
  * if any. This is often the best approach, because the verify callback
  * can make the most accurate determination of why authentication failed.
  */
-const flash      = require('express-flash');
+var flash      = require('express-flash');
 
 // attempt to build the providers/passport config
 var config = {};
-
 try {
-
-  if ( process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ) {
-    // only use in development
-    config = require('../providers.json');
-  } else {
-    config = require('../providers.production.json');
-  }
-
-  // console.log(config);
+  config = require('../providers.json');
 } catch (err) {
   console.trace(err);
-  Raven.captureException(err);
   process.exit(1); // fatal
 }
 
-
 // -- Add your pre-processing middleware here --
 
-// Setup the view engine (pug)
+// Setup the view engine (jade)
+var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
-
-app.set('view engine', 'pug');
-app.set('json spaces', 2); // format json responses for easier viewing
-
-// in client/public we store static files right now.
-var staticDir = path.join(__dirname + '/../client/public');
-app.use(express.static(staticDir));
-
-if (process.env.NODE_ENV === 'development') {
-  // only use in development
-  app.use(errorhandler());
-}
+app.set('view engine', 'jade');
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
-
 // to support JSON-encoded bodies
-// app.middleware('parse', bodyParser.json());
+app.middleware('parse', bodyParser.json());
 // to support URL-encoded bodies
-// app.middleware('parse', bodyParser.urlencoded({
-//   extended: true,
-// }));
-
-
-
-
-
+app.middleware('parse', bodyParser.urlencoded({
+  extended: true,
+}));
 
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
-  model: app.models.accessToken, // :todo change this when we'll update model names
+  model: app.models.accessToken,
 }));
-
 
 app.middleware('session:before', cookieParser(app.get('cookieSecret')));
 app.middleware('session', session({
@@ -120,36 +70,97 @@ app.middleware('session', session({
   saveUninitialized: true,
   resave: true,
 }));
-
+passportConfigurator.init();
 
 // We need flash messages to see passport errors
-// app.use(flash());
-
-passportConfigurator.init();
-//
-// // console.log(passportConfigurator);
-//
-
-console.log(app.models.user)
-console.log(app.models.userIdentity)
-console.log(app.models.userCredential)
-
-// process.on('exit', function(code) {
-//     return console.log(`About to exit with code ${code}`);
-// });
+app.use(flash());
 
 passportConfigurator.setupModels({
-  userModel:           app.models.user,
-  userIdentityModel:   app.models.userIdentity,
+  userModel: app.models.user,
+  userIdentityModel: app.models.userIdentity,
   userCredentialModel: app.models.userCredential,
 });
-
 for (var s in config) {
   var c = config[s];
   c.session = c.session !== false;
   passportConfigurator.configureProvider(s, c);
 }
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
+app.get('/', function(req, res, next) {
+  res.render('pages/index', {user:
+    req.user,
+    url: req.url,
+  });
+});
+
+app.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
+  res.render('pages/loginProfiles', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
+app.get('/local', function(req, res, next) {
+  res.render('pages/local', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
+app.get('/ldap', function(req, res, next) {
+  res.render('pages/ldap', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
+app.get('/signup', function(req, res, next) {
+  res.render('pages/signup', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
+app.post('/signup', function(req, res, next) {
+  var User = app.models.user;
+
+  var newUser = {};
+  newUser.email = req.body.email.toLowerCase();
+  newUser.username = req.body.username.trim();
+  newUser.password = req.body.password;
+
+  User.create(newUser, function(err, user) {
+    if (err) {
+      req.flash('error', err.message);
+      return res.redirect('back');
+    } else {
+      // Passport exposes a login() function on req (also aliased as logIn())
+      // that can be used to establish a login session. This function is
+      // primarily used when users sign up, during which req.login() can
+      // be invoked to log in the newly registered user.
+      req.login(user, function(err) {
+        if (err) {
+          req.flash('error', err.message);
+          return res.redirect('back');
+        }
+        return res.redirect('/auth/account');
+      });
+    }
+  });
+});
+
+app.get('/login', function(req, res, next) {
+  res.render('pages/login', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
+app.get('/auth/logout', function(req, res, next) {
+  req.logout();
+  res.redirect('/');
+});
 
 app.start = function() {
   // start the web server
@@ -164,12 +175,7 @@ app.start = function() {
   });
 };
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
-  if (err) throw err;
-
-  // start the server if `$ node server.js`
-  if (require.main === module)
-    app.start();
-});
+// start the server if `$ node server.js`
+if (require.main === module) {
+  app.start();
+}

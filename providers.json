@@ -12,11 +12,11 @@
   "facebook-login": {
     "provider": "facebook",
     "module": "passport-facebook",
-    "profileFields": [          
+    "profileFields": [
       "locale",
       "name",
-      "timezone",      
-      "email"       
+      "timezone",
+      "email"
     ],
     "clientID": "291799974652971",
     "clientSecret": "7473cfc3bc4cb7dcafe8b6c409e02770",

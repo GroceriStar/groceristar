@@ -2,61 +2,36 @@
   "_meta": {
     "sources": [
       "../common/models",
-      "../server/models",
       "./models",
-      "../node_modules/loopback-component-passport/lib/models"
+      "./node_modules/loopback-component-passport/lib/models"
     ]
   },
   "user": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": true
   },
   "accessToken": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
   },
   "userCredential": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
   },
   "userIdentity": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
   },
   "ACL": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
   },
   "Role": {
-    "dataSource": "groceryDS",
+    "dataSource": "db",
     "public": false
-  },
-  "Department": {
-    "dataSource": "groceryDS",
-    "public": true
-  },
-  "Grocery": {
-    "dataSource": "groceryDS",
-    "public": true
-  },
-  "Ingredient": {
-    "dataSource": "groceryDS",
-    "public": true
-  },
-  "Item": {
-    "dataSource": "groceryDS",
-    "public": true
-  },
-  "userFav": {
-    "dataSource": "groceryDS",
-    "public": true
-  },
-  "userGrocery": {
-    "dataSource": "groceryDS",
-    "public": true
   }
 }
