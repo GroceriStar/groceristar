@@ -4,11 +4,19 @@
 // License text available at https://opensource.org/licenses/MIT
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+var loopback       = require('loopback');
+var boot           = require('loopback-boot');
+var cookieParser   = require('cookie-parser');
+var session        = require('express-session');
+
+const path         = require('path');
+const express      = require('express');
+
+const errorhandler = require('strong-error-handler');
+// const errorhandler = require('errorhandler');
+
 var app = module.exports = loopback();
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
+
 
 // Passport configurators..
 var loopbackPassport = require('loopback-component-passport');
@@ -42,10 +50,17 @@ try {
   process.exit(1); // fatal
 }
 
+
+
+
+
+
+
+
 // -- Add your pre-processing middleware here --
 
 // Setup the view engine (jade)
-var path = require('path');
+// var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -70,7 +85,19 @@ app.middleware('session', session({
   saveUninitialized: true,
   resave: true,
 }));
+
+
+
 passportConfigurator.init();
+
+
+// console.log(passportConfigurator);
+//
+
+// console.log(app.models.user)
+// console.log(app.models.userIdentity)
+// console.log(app.models.userCredential)
+
 
 // We need flash messages to see passport errors
 app.use(flash());
@@ -85,6 +112,11 @@ for (var s in config) {
   c.session = c.session !== false;
   passportConfigurator.configureProvider(s, c);
 }
+
+
+
+
+
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 app.get('/', function(req, res, next) {
@@ -101,19 +133,19 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res, next) {
   });
 });
 
-app.get('/local', function(req, res, next) {
-  res.render('pages/local', {
-    user: req.user,
-    url: req.url,
-  });
-});
-
-app.get('/ldap', function(req, res, next) {
-  res.render('pages/ldap', {
-    user: req.user,
-    url: req.url,
-  });
-});
+// app.get('/local', function(req, res, next) {
+//   res.render('pages/local', {
+//     user: req.user,
+//     url: req.url,
+//   });
+// });
+//
+// app.get('/ldap', function(req, res, next) {
+//   res.render('pages/ldap', {
+//     user: req.user,
+//     url: req.url,
+//   });
+// });
 
 app.get('/signup', function(req, res, next) {
   res.render('pages/signup', {
@@ -122,33 +154,33 @@ app.get('/signup', function(req, res, next) {
   });
 });
 
-app.post('/signup', function(req, res, next) {
-  var User = app.models.user;
-
-  var newUser = {};
-  newUser.email = req.body.email.toLowerCase();
-  newUser.username = req.body.username.trim();
-  newUser.password = req.body.password;
-
-  User.create(newUser, function(err, user) {
-    if (err) {
-      req.flash('error', err.message);
-      return res.redirect('back');
-    } else {
-      // Passport exposes a login() function on req (also aliased as logIn())
-      // that can be used to establish a login session. This function is
-      // primarily used when users sign up, during which req.login() can
-      // be invoked to log in the newly registered user.
-      req.login(user, function(err) {
-        if (err) {
-          req.flash('error', err.message);
-          return res.redirect('back');
-        }
-        return res.redirect('/auth/account');
-      });
-    }
-  });
-});
+// app.post('/signup', function(req, res, next) {
+//   var User = app.models.user;
+//
+//   var newUser = {};
+//   newUser.email = req.body.email.toLowerCase();
+//   newUser.username = req.body.username.trim();
+//   newUser.password = req.body.password;
+//
+//   User.create(newUser, function(err, user) {
+//     if (err) {
+//       req.flash('error', err.message);
+//       return res.redirect('back');
+//     } else {
+//       // Passport exposes a login() function on req (also aliased as logIn())
+//       // that can be used to establish a login session. This function is
+//       // primarily used when users sign up, during which req.login() can
+//       // be invoked to log in the newly registered user.
+//       req.login(user, function(err) {
+//         if (err) {
+//           req.flash('error', err.message);
+//           return res.redirect('back');
+//         }
+//         return res.redirect('/auth/account');
+//       });
+//     }
+//   });
+// });
 
 app.get('/login', function(req, res, next) {
   res.render('pages/login', {
@@ -157,10 +189,13 @@ app.get('/login', function(req, res, next) {
   });
 });
 
-app.get('/auth/logout', function(req, res, next) {
-  req.logout();
-  res.redirect('/');
-});
+// app.get('/auth/logout', function(req, res, next) {
+//   req.logout();
+//   res.redirect('/');
+// });
+
+
+
 
 app.start = function() {
   // start the web server
@@ -176,6 +211,17 @@ app.start = function() {
 };
 
 // start the server if `$ node server.js`
-if (require.main === module) {
-  app.start();
-}
+// if (require.main === module) {
+//   app.start();
+// }
+
+
+// Bootstrap the application, configure models, datasources and middleware.
+// Sub-apps like REST API are mounted via boot scripts.
+boot(app, __dirname, function(err) {
+  if (err) throw err;
+
+  // start the server if `$ node server.js`
+  if (require.main === module)
+    app.start();
+});
