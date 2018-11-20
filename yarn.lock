@@ -1301,15 +1301,15 @@ escodegen@^1.9.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-loopback@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-11.0.0.tgz#293a0b3558ca42ac2af770d2607e2486812a2852"
+eslint-config-loopback@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-12.1.0.tgz#70c0d700161a91fd8486870af473c521f9386e51"
   dependencies:
-    eslint-plugin-mocha "^4.11.0"
+    eslint-plugin-mocha "^5.2.0"
 
-eslint-plugin-mocha@^4.11.0:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.12.1.tgz#dbacc543b178b4536ec5b19d7f8e8864d85404bf"
+eslint-plugin-mocha@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-5.2.0.tgz#d8786d9fff8cb8b5f6e4b61e40395d6568a5c4e2"
   dependencies:
     ramda "^0.25.0"
 
