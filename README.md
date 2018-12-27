@@ -1,5 +1,11 @@
 # GroceriStar Server
 
+**Dec, 2018 upd**
+We're cleaning up the server - so the latest working version of server that can be setup locally and run located at
+`loopback-fix-fast-attempt` branch. Create an issue for questions
+
+
+
 # Note!
 We're moving from Loopback into GraphQL Framework. So don't have a lot of progress here.
 
