@@ -20,7 +20,7 @@ const User    = app.models.user;
 const Raven = require('raven');
 Raven.config('https://6c8ba2737aae4d81908677e4dba9be3f:26c83aa1a38a42cdbf0beea41a82cacf@sentry.io/231031').install();
 
-   
+
 
 exports.changeName = async (req, res, next) => {
 
@@ -34,14 +34,14 @@ exports.changeName = async (req, res, next) => {
     } catch (e) {
        Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
-        next(e) 
+        next(e)
     }
 
     var renderObject = {
       user        : req.user,
-      name: 'Change Grocery list name: ' + grocery.name,     
+      name: 'Change Grocery list name: ' + grocery.name,
 
-      // departments : response.data,    
+      // departments : response.data,
       // description : d.desc,
       groceryId   : grocery.id
     };
@@ -64,9 +64,9 @@ exports.postUpdateName = (req, res, next) => {
 };
 
 exports.cloneGrocery = async (req, res, next) => {
-    var userId    = req.user.id;    
-    var groceryId = req.params.groceryId;  
-    
+    var userId    = req.user.id;
+    var groceryId = req.params.groceryId;
+
     let grocery
     try {
       grocery = await Grocery.findById(groceryId, Grocery.queryNotHidden());
@@ -74,18 +74,18 @@ exports.cloneGrocery = async (req, res, next) => {
     } catch (e) {
        Raven.captureException(e);
       //this will eventually be handled by your error handling middleware
-      next(e) 
+      next(e)
     }
 
     let cloned
-    try {   
+    try {
       var newObject = Grocery.getObjectForClone(grocery);
       cloned = await Grocery.create(newObject);
 
     } catch (e) {
        Raven.captureException(e);
       //this will eventually be handled by your error handling middleware
-      next(e) 
+      next(e)
     }
 
     var options = {
@@ -114,7 +114,7 @@ exports.getCloneForm = async (req, res, next) => {
 
   // console.log(renderObject)
 
-      
+
   res.render('pages/grocery/clone-form-page', renderObject);
 };
 
@@ -136,11 +136,11 @@ exports.postCloneForm = async (req, res, next) => {
     } catch (e) {
        Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
-        next(e) 
+        next(e)
     }
 
     let cloned
-    try {   
+    try {
       var newObject = Grocery.getObjectForClone(grocery);
       // console.log(newObject);
       newObject.name = name;
@@ -150,7 +150,7 @@ exports.postCloneForm = async (req, res, next) => {
     } catch (e) {
        Raven.captureException(e);
         //this will eventually be handled by your error handling middleware
-        next(e) 
+        next(e)
     }
 
     var options = {
@@ -190,12 +190,12 @@ exports.createNewGrocery = (req, res, next) => {
 exports.removeGrocery = (req, res, next) => {
 
   var groceryId = req.params.groceryId;
-  var userId    = req.user.id;    
-  
+  var userId    = req.user.id;
+
   var Grocery   = app.models.Grocery;
   var User   = app.models.user;
 
-  // this is a duplicated function from Grocery :todo think about it, real talk   
+  // this is a duplicated function from Grocery :todo think about it, real talk
   var options = {
     type  : 'detach',
     field : 'groceryIds',
@@ -220,9 +220,9 @@ exports.viewGrocery = async (req, res, next) => {
 
 
   let grocery
-  try {      
+  try {
      var Grocery   = app.models.Grocery;
-     
+
      // :todo this is not an awesome method. we're getting to much data by this query
      grocery  = await Grocery.findById(groceryId, Grocery.query1());
 
@@ -234,13 +234,13 @@ exports.viewGrocery = async (req, res, next) => {
   } catch (e) {
      Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
-    next(e) 
+    next(e)
   }
 
-  var renderObject = {   
+  var renderObject = {
     user: req.user,
     name: response.name,
-    
+
     groceryId: groceryId,
 
     messages: {},
@@ -252,12 +252,12 @@ exports.viewGrocery = async (req, res, next) => {
     ultimate: ultimate,
 
     isGrocery: req.originalUrl.includes('/view/grocery/'),
-    
 
-  
+
+
   };
 
-  res.render('pages/grocery/view-grocery-new', renderObject); 
+  res.render('pages/grocery/view-grocery-new', renderObject);
 
 };
 
@@ -267,52 +267,57 @@ exports.viewUltimateGrocery = async (req, res, next) => {
   var Grocery       = app.models.Grocery;
   var ultimate    = await copy_middlewarez(next);
   // console.log(ultimateId);
+
+  // we'll need to update this method, because we're has a different set of urls, related to delete of ingredients from shopplist
+  // but we'll deal with it later.........
   var response = await dropdown_departments(ultimate.id, next);
 
-  var renderObject = {   
+  var renderObject = {
     user: req.user,
     name: response.name,
-    
+
     groceryId: ultimate.id,
 
     messages: {},
 
     departments: response.data, // [data>> department >> ingredient]
 
-    title: "Grocery list " + response.name,
+    // title: "Grocery list " + response.name,
 
     ultimate: ultimate,
 
-    isGrocery: req.originalUrl.includes('/view/ultimategrocery/'),
+    // isGrocery: req.originalUrl.includes('/view/ultimategrocery/'),
    // isMobile: (md.mobile()) ? true : false
 
   };
   // // this is a duplicated template
-  res.render('pages/grocery/view-ultimate-grocery', renderObject); 
+  // res.render('pages/grocery/view-ultimate-grocery', renderObject);
+
+  res.json( renderObject )
 
 };
 
 
 
 exports.shopping = async (req, res, next) => {
-  var groceryId    = req.params.groceryId; 
-  var departmentId = req.params.departmentId; 
-  
+  var groceryId    = req.params.groceryId;
+  var departmentId = req.params.departmentId;
+
   // var ultimate    = await copy_middlewarez(next);
   // This part is work for creating dropdown list only
   var fullGroceryUrl = req.protocol + '://' + req.get('host') + '/view/grocery/' + groceryId;
 
   var response = await dropdown_departments(groceryId, next);
-  
+
 
   // :todo check my notes here, and then we'll be able to delete it
 //---------------------------
   // This part is work for creating dropdown list only
   // var response     = {};
   // let grocery
-  // try {      
+  // try {
   //    var Grocery   = app.models.Grocery;
-     
+
   //    // :todo this is not an awesome method. we're getting to much data by this query
   //    // :todo we're using more efficient method, but it must be tested better
   //    grocery  = await Grocery.findById(groceryId, Grocery.queryDepartmentsOnly());
@@ -325,20 +330,20 @@ exports.shopping = async (req, res, next) => {
   // } catch (e) {
   //    Raven.captureException(e);
   //   //this will eventually be handled by your error handling middleware
-  //   next(e) 
+  //   next(e)
   // }
 
 //--------------------
-  
+
 
   // I think this is can be improved
   // this is a duplicated code
   let grocery2
   let ingredients
-  try {      
+  try {
      var Grocery   = app.models.Grocery;
 
-     grocery2  = await Grocery.findById(groceryId, 
+     grocery2  = await Grocery.findById(groceryId,
                     Grocery.queryOneDepartment(departmentId)
                   );
      ingredients = Grocery.convertDepartmentItems(grocery2);
@@ -346,13 +351,13 @@ exports.shopping = async (req, res, next) => {
   } catch (e) {
      Raven.captureException(e);
     //this will eventually be handled by your error handling middleware
-    next(e) 
+    next(e)
   }
 
 
   // This is another bad functionality, written for this method.
   let ultimate = await middlewarez(next);
-  
+
 
   var all = ingredients.length
   var count_not_purchased = _.where(ingredients, {completed: false}).length;
@@ -375,7 +380,7 @@ exports.shopping = async (req, res, next) => {
     back: req.originalUrl.includes('/shopping/') ? fullGroceryUrl : req.get('Referrer'), // :todo very long long long line, we need to make this better.
 
     activeTodoCount: count_not_purchased,
-      
+
     text: '',
     have_completed_items: display_destroy_all_button,
 
@@ -396,4 +401,3 @@ function output (err, data) {
     colors: true
   });
 }
-
