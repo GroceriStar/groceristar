@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "eslint": "^5.11.1",
-    "eslint-config-loopback": "^12.0.0",
+    "eslint-config-loopback": "^13.0.0",
     "nodemon": "^1.18.6"
   },
   "repository": {

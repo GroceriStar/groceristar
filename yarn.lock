@@ -1138,17 +1138,17 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-loopback@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-12.0.0.tgz#9dbec533c4a14fb77841908a700a9534eafc8d1a"
-  integrity sha512-Pxz7ecK+/4ufJIMMtQ+XimQUP8qpM9IdVvIg78N17w6/PMBoFEeX1ef+ylb3c4BrAGcTzm+gb8VFtFW2JXoWKA==
+eslint-config-loopback@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-loopback/-/eslint-config-loopback-13.0.0.tgz#f400caef85bfe2e6328c9e04123634118ce92a87"
+  integrity sha512-3jeYQBDHOn7NB/qpZ1GsZXdwtUtNVXfwREtyliZHdMT8tXntgYT2iUP2CCkqrlyasS/74OfKMDD/tgGEmaykgQ==
   dependencies:
-    eslint-plugin-mocha "^4.11.0"
+    eslint-plugin-mocha "^5.2.0"
 
-eslint-plugin-mocha@^4.11.0:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-4.12.1.tgz#dbacc543b178b4536ec5b19d7f8e8864d85404bf"
-  integrity sha512-hxWtYHvLA0p/PKymRfDYh9Mxt5dYkg2Goy1vZDarTEEYfELP9ksga7kKG1NUKSQy27C8Qjc7YrSWTLUhOEOksA==
+eslint-plugin-mocha@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha/-/eslint-plugin-mocha-5.2.0.tgz#d8786d9fff8cb8b5f6e4b61e40395d6568a5c4e2"
+  integrity sha512-4VTX/qIoxUFRnXLNm6bEhEJyfGnGagmQzV4TWXKzkZgIYyP2FSubEdCjEFTyS/dGwSVRWCWGX7jO7BK8R0kppg==
   dependencies:
     ramda "^0.25.0"
 
