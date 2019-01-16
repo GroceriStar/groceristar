@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "start2": "node server/server.js",
+    "m1":"nodemon bin/0002-automigrate.js",
     "lint": "eslint .",
     "posttest": "npm run lint"
   },
