@@ -3051,9 +3051,9 @@ loopback-connector@^4.4.0, loopback-connector@^4.5.0:
     strong-globalize "^4.1.1"
     uuid "^3.0.1"
 
-loopback-datasource-juggler@^3.0.0, loopback-datasource-juggler@^3.18.0:
-  version "3.22.0"
-  resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-3.22.0.tgz#9e6cdcc2f59e1c087c03f8e07aa7b889b6824f05"
+loopback-datasource-juggler@^3.0.0, loopback-datasource-juggler@^3.28.0:
+  version "3.28.1"
+  resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-3.28.1.tgz#e53c078268d4fe1bfb8761fc3bf6d16410071261"
   dependencies:
     async "^2.6.0"
     bluebird "^3.1.1"
@@ -3103,9 +3103,9 @@ loopback-swagger@^5.0.0:
     lodash "^4.17.2"
     strong-globalize "^3.1.0"
 
-loopback@^3.23.2:
-  version "3.23.2"
-  resolved "https://registry.yarnpkg.com/loopback/-/loopback-3.23.2.tgz#6c434ddb7732e1a70f11194a8a79ba17b4a26cfe"
+loopback@^3.25.1:
+  version "3.25.1"
+  resolved "https://registry.yarnpkg.com/loopback/-/loopback-3.25.1.tgz#651af40e6626a49216885364d4812b1f3cab9020"
   dependencies:
     async "^2.0.1"
     bcryptjs "^2.1.0"
@@ -3119,7 +3119,7 @@ loopback@^3.23.2:
     inflection "^1.6.0"
     isemail "^2.2.1"
     loopback-connector-remote "^3.0.0"
-    loopback-datasource-juggler "^3.18.0"
+    loopback-datasource-juggler "^3.28.0"
     loopback-filters "^1.0.0"
     loopback-phase "^3.0.0"
     nodemailer "^4.0.1"
@@ -3130,7 +3130,7 @@ loopback@^3.23.2:
     strong-globalize "^4.1.1"
     strong-remoting "^3.11.0"
     uid2 "0.0.3"
-    underscore.string "^3.0.3"
+    underscore.string "^3.3.5"
 
 loose-envify@^1.0.0:
   version "1.3.1"
@@ -5065,9 +5065,9 @@ undefsafe@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
-underscore.string@^3.0.3:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-3.3.4.tgz#2c2a3f9f83e64762fdc45e6ceac65142864213db"
+underscore.string@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-3.3.5.tgz#fc2ad255b8bd309e239cbc5816fd23a9b7ea4023"
   dependencies:
     sprintf-js "^1.0.3"
     util-deprecate "^1.0.2"
