@@ -597,11 +597,7 @@ bser@^2.0.0:
   dependencies:
     node-int64 "^0.4.0"
 
-bson@^1.0.6:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.9.tgz#12319f8323b1254739b7c6bef8d3e89ae05a2f57"
-
-bson@^1.1.0:
+bson@^1.0.6, bson@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.0.tgz#bee57d1fb6a87713471af4e32bcae36de814b5b0"
 
@@ -3022,9 +3018,9 @@ loopback-component-passport@^3.10.0:
     underscore "^1.9.1"
     uuid "^3.2.1"
 
-loopback-connector-mongodb@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-4.0.0.tgz#825a60fbfef508234903423f12f685818e51c941"
+loopback-connector-mongodb@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/loopback-connector-mongodb/-/loopback-connector-mongodb-4.2.0.tgz#b9bd45bdf8e1d7f4b93dd3c91202b9fccbd9edf3"
   dependencies:
     async "^2.6.1"
     bson "^1.0.6"
