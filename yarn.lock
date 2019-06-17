@@ -3013,9 +3013,9 @@ loopback-component-explorer@^6.3.1:
     strong-globalize "^4.1.1"
     swagger-ui "^2.2.5"
 
-loopback-component-passport@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/loopback-component-passport/-/loopback-component-passport-3.10.0.tgz#ac9d6d3edd8774216e01e4f361b7bbee6be51e84"
+loopback-component-passport@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/loopback-component-passport/-/loopback-component-passport-3.11.0.tgz#2c4a4b02dfa9a8b16bf7281ef3533d5cf06a3679"
   dependencies:
     passport "^0.4.0"
     strong-globalize "^4.1.1"
