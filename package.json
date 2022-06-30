@@ -36,7 +36,7 @@
     "loopback-component-passport": "^3.10.0",
     "loopback-connector-mongodb": "^4.0.0",
     "loopback-mongo-aggregate-mixin": "^1.0.1",
-    "passport": "^0.4.0",
+    "passport": "^0.6.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "passport-oauth2": "^1.1.2",
